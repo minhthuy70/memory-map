@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, Plus, Search, LogOut, Menu, X } from 'lucide-react';
-import MemoryMap from '@/components/Map';
+import dynamic from 'next/dynamic';
+
+const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
 import { memoriesApi, Memory as ApiMemory } from '@/lib/memories-api';
 import { categoriesApi } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
@@ -111,6 +113,18 @@ export default function DashboardPage() {
           </div>
           
           <div className="flex items-center gap-3">
+            <button
+              onClick={() => router.push('/timeline')}
+              className="px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
+            >
+              Timeline
+            </button>
+            <button
+              onClick={() => router.push('/statistics')}
+              className="px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
+            >
+              Statistics
+            </button>
             <span className="hidden sm:block text-sm text-slate-600 dark:text-slate-400">
               {user?.name || user?.email}
             </span>

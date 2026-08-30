@@ -56,11 +56,17 @@ export interface MemoryFilters {
 export interface Statistics {
   totalMemories: number;
   placesVisited: number;
+  uniqueLocations: number;
+  uniqueCategories: number;
+  memoriesThisYear: number;
   mostCommonMood: string;
   mostUsedCategory: string;
   memoriesByMonth: Record<string, number>;
+  monthlyActivity: Record<string, number>;
   memoriesByCategory: Record<string, number>;
+  categoryDistribution: Record<string, number>;
   memoriesByMood: Record<string, number>;
+  moodDistribution: Record<string, number>;
 }
 
 export const memoriesApi = {

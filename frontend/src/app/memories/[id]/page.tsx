@@ -1,0 +1,368 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useRouter, useParams } from 'next/navigation';
+import { MapPin, Calendar, Edit, Trash2, ArrowLeft, Loader2, ImagePlus, X } from 'lucide-react';
+import dynamic from 'next/dynamic';
+
+const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
+import { memoriesApi, Memory } from '@/lib/memories-api';
+import { useAuthStore } from '@/store/auth-store';
+
+const MOOD_EMOJIS: Record<string, string> = {
+  HAPPY: '😊',
+  SAD: '😢',
+  EXCITED: '🤩',
+  PEACEFUL: '😌',
+  NOSTALGIC: '😊',
+  LOVE: '❤️',
+  ANGRY: '😡',
+  TIRED: '😴',
+  NEUTRAL: '😐',
+};
+
+export default function MemoryDetailPage() {
+  const router = useRouter();
+  const params = useParams();
+  const { isAuthenticated } = useAuthStore();
+  
+  const [memory, setMemory] = useState<Memory | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [error, setError] = useState('');
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showImageUpload, setShowImageUpload] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+  const [isUploadingImage, setIsUploadingImage] = useState(false);
+
+  const loadMemory = async (id: string) => {
+    try {
+      setIsLoading(true);
+      const data = await memoriesApi.getById(id);
+      setMemory(data);
+    } catch (err: unknown) {
+      setError((err as Error)?.message || 'Failed to load memory');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      router.push('/login');
+      return;
+    }
+    
+    if (params.id) {
+      loadMemory(params.id as string);
+    }
+  }, [isAuthenticated, router, params.id]);
+
+  const handleDelete = async () => {
+    if (!memory) return;
+    
+    setIsDeleting(true);
+    try {
+      await memoriesApi.delete(memory.id);
+      router.push('/dashboard');
+    } catch (err: unknown) {
+      setError((err as Error)?.message || 'Failed to delete memory');
+      setIsDeleting(false);
+    }
+  };
+
+  const handleAddImage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!memory || !imageUrl.trim()) return;
+    
+    setIsUploadingImage(true);
+    try {
+      await memoriesApi.addImage(memory.id, imageUrl);
+      setImageUrl('');
+      setShowImageUpload(false);
+      await loadMemory(memory.id);
+    } catch (err: unknown) {
+      setError((err as Error)?.message || 'Failed to add image');
+    } finally {
+      setIsUploadingImage(false);
+    }
+  };
+
+  const handleDeleteImage = async (imageId: string) => {
+    if (!memory) return;
+    
+    try {
+      await memoriesApi.deleteImage(memory.id, imageId);
+      await loadMemory(memory.id);
+    } catch (err: unknown) {
+      setError((err as Error)?.message || 'Failed to delete image');
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
+        <Loader2 className="h-8 w-8 text-slate-600 dark:text-slate-400 animate-spin" />
+      </div>
+    );
+  }
+
+  if (error && !memory) {
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
+          <button
+            onClick={() => router.push('/dashboard')}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+          >
+            Back to Dashboard
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!memory) {
+    return null;
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <header className="bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700">
+        <div className="flex items-center justify-between px-4 py-3">
+          <button
+            onClick={() => router.back()}
+            className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+          >
+            <ArrowLeft className="h-5 w-5" />
+            Back
+          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => router.push(`/memories/${memory.id}/edit`)}
+              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-slate-600 dark:text-slate-400"
+              title="Edit"
+            >
+              <Edit className="h-5 w-5" />
+            </button>
+            <button
+              onClick={() => setShowDeleteConfirm(true)}
+              className="p-2 hover:bg-red-100 dark:hover:bg-red-900/20 rounded-lg text-red-600 dark:text-red-400"
+              title="Delete"
+            >
+              <Trash2 className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <div className="p-4 max-w-4xl mx-auto">
+        {error && (
+          <div className="mb-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg">
+            {error}
+          </div>
+        )}
+
+        {/* Map */}
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden mb-6">
+          <div className="h-80">
+            <MemoryMap
+              memories={[memory]}
+              center={[memory.latitude, memory.longitude]}
+              zoom={15}
+            />
+          </div>
+        </div>
+
+        {/* Memory Details */}
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-6 space-y-6">
+          {/* Title and Category */}
+          <div>
+            <div className="flex items-start gap-3 mb-2">
+              <span className="text-3xl">{memory.category.icon}</span>
+              <div>
+                <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+                  {memory.title}
+                </h1>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  {memory.category.name}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Date and Mood */}
+          <div className="flex flex-wrap gap-4">
+            <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+              <Calendar className="h-4 w-4" />
+              <span>{new Date(memory.memoryDate).toLocaleDateString('vi-VN')}</span>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+              <span className="text-lg">
+                {MOOD_EMOJIS[memory.mood] || '😐'}
+              </span>
+              <span>{memory.mood}</span>
+            </div>
+          </div>
+
+          {/* Location */}
+          <div className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
+            <MapPin className="h-4 w-4 mt-0.5" />
+            <span>{memory.locationName || 'Unknown location'}</span>
+          </div>
+
+          {/* Content */}
+          {memory.content && (
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+              <p className="text-slate-700 dark:text-slate-300 whitespace-pre-wrap">
+                {memory.content}
+              </p>
+            </div>
+          )}
+
+          {/* Images */}
+          {memory.images && memory.images.length > 0 && (
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  Photos
+                </h3>
+                <button
+                  onClick={() => setShowImageUpload(true)}
+                  className="flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+                >
+                  <ImagePlus className="h-4 w-4" />
+                  Add Photo
+                </button>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {memory.images.map((image) => (
+                  <div key={image.id} className="relative group">
+                    <img
+                      src={image.imageUrl}
+                      alt="Memory photo"
+                      className="w-full h-40 object-cover rounded-lg"
+                    />
+                    <button
+                      onClick={() => handleDeleteImage(image.id)}
+                      className="absolute top-2 right-2 p-1 bg-red-600 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {memory.images && memory.images.length === 0 && (
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+              <button
+                onClick={() => setShowImageUpload(true)}
+                className="flex items-center justify-center gap-2 w-full py-4 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg text-slate-600 dark:text-slate-400 hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+              >
+                <ImagePlus className="h-5 w-5" />
+                Add Your First Photo
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Image Upload Modal */}
+      {showImageUpload && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg max-w-md w-full p-6">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+              Add Photo
+            </h3>
+            <form onSubmit={handleAddImage} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                  Image URL
+                </label>
+                <input
+                  type="url"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                  placeholder="https://example.com/image.jpg"
+                  required
+                />
+                <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+                  Enter a direct URL to an image (e.g., from Imgur, Cloudinary, etc.)
+                </p>
+              </div>
+              <div className="flex gap-3 justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowImageUpload(false);
+                    setImageUrl('');
+                  }}
+                  disabled={isUploadingImage}
+                  className="px-4 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg disabled:opacity-50"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={isUploadingImage}
+                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                >
+                  {isUploadingImage ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Adding...
+                    </>
+                  ) : (
+                    'Add Photo'
+                  )}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteConfirm && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg max-w-md w-full p-6">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
+              Delete Memory?
+            </h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-6">
+              Are you sure you want to delete this memory? This action cannot be undone.
+            </p>
+            <div className="flex gap-3 justify-end">
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                disabled={isDeleting}
+                className="px-4 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDelete}
+                disabled={isDeleting}
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              >
+                {isDeleting ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    Deleting...
+                  </>
+                ) : (
+                  'Delete'
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

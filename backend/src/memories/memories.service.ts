@@ -18,6 +18,8 @@ export class MemoriesService {
     return this.prisma.memory.create({
       data: {
         ...data,
+        mood: data.mood as any,
+        categoryId: data.categoryId,
         userId,
       },
       include: {
@@ -116,9 +118,14 @@ export class MemoriesService {
   }) {
     const memory = await this.findOne(id, userId);
 
+    const updateData: any = { ...data };
+    if (data.mood) {
+      updateData.mood = data.mood as any;
+    }
+
     return this.prisma.memory.update({
       where: { id },
-      data,
+      data: updateData,
       include: {
         category: true,
         images: true,
@@ -180,6 +187,11 @@ export class MemoriesService {
       memories.map(m => `${Number(m.latitude).toFixed(4)},${Number(m.longitude).toFixed(4)}`)
     ).size;
 
+    const uniqueCategories = new Set(memories.map(m => m.categoryId)).size;
+
+    const currentYear = new Date().getFullYear();
+    const memoriesThisYear = memories.filter(m => m.memoryDate.getFullYear() === currentYear).length;
+
     const moodCounts = memories.reduce((acc, m) => {
       acc[m.mood] = (acc[m.mood] || 0) + 1;
       return acc;
@@ -200,14 +212,30 @@ export class MemoriesService {
       return acc;
     }, {} as Record<string, number>);
 
+    // Generate monthly activity for last 12 months
+    const monthlyActivity: Record<string, number> = {};
+    const now = new Date();
+    for (let i = 11; i >= 0; i--) {
+      const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      const monthKey = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+      const monthIso = date.toISOString().slice(0, 7);
+      monthlyActivity[monthKey] = memoriesByMonth[monthIso] || 0;
+    }
+
     return {
       totalMemories,
       placesVisited: uniqueLocations,
+      uniqueLocations,
+      uniqueCategories,
+      memoriesThisYear,
       mostCommonMood: mostCommonMood ? mostCommonMood[0] : null,
       mostUsedCategory: mostUsedCategory ? mostUsedCategory[0] : null,
       memoriesByMonth,
+      monthlyActivity,
       memoriesByCategory: categoryCounts,
+      categoryDistribution: categoryCounts,
       memoriesByMood: moodCounts,
+      moodDistribution: moodCounts,
     };
   }
 }
