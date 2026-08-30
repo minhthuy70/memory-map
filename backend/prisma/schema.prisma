@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Mood {
+  HAPPY
+  SAD
+  EXCITED
+  PEACEFUL
+  NOSTALGIC
+  LOVE
+  ANGRY
+  TIRED
+  NEUTRAL
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  name         String?
+  avatar       String?
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  memories     Memory[]
+
+  @@map("users")
+}
+
+model Category {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  icon      String
+  createdAt DateTime @default(now()) @map("created_at")
+  memories  Memory[]
+
+  @@map("categories")
+}
+
+model Memory {
+  id           String        @id @default(uuid())
+  userId       String        @map("user_id")
+  title        String
+  content      String?
+  latitude     Float
+  longitude    Float
+  locationName String?       @map("location_name")
+  memoryDate   DateTime      @map("memory_date")
+  mood         Mood
+  categoryId   String        @map("category_id")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category     Category      @relation(fields: [categoryId], references: [id])
+  images       MemoryImage[]
+
+  @@map("memories")
+  @@index([userId])
+  @@index([categoryId])
+  @@index([mood])
+}
+
+model MemoryImage {
+  id        String   @id @default(uuid())
+  memoryId  String   @map("memory_id")
+  imageUrl  String   @map("image_url")
+  createdAt DateTime @default(now()) @map("created_at")
+  memory    Memory   @relation(fields: [memoryId], references: [id], onDelete: Cascade)
+
+  @@map("memory_images")
+  @@index([memoryId])
+}
