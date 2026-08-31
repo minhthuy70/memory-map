@@ -9,13 +9,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
-const passport_1 = require("@nestjs/passport");
 const config_1 = require("@nestjs/config");
 const auth_service_1 = require("./auth.service");
 const auth_controller_1 = require("./auth.controller");
 const users_module_1 = require("../users/users.module");
-const local_strategy_1 = require("./local.strategy");
 const jwt_strategy_1 = require("./jwt.strategy");
+const local_strategy_1 = require("./local.strategy");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
@@ -24,30 +23,27 @@ exports.AuthModule = AuthModule = __decorate([
         imports: [
             config_1.ConfigModule,
             users_module_1.UsersModule,
-            passport_1.PassportModule.register({
-                defaultStrategy: 'jwt',
-            }),
             jwt_1.JwtModule.registerAsync({
                 imports: [config_1.ConfigModule],
                 inject: [config_1.ConfigService],
                 useFactory: (configService) => ({
-                    secret: configService.get('JWT_SECRET') ||
-                        'memory-map-secret',
+                    secret: configService.get('JWT_SECRET') || 'memory-map-secret',
                     signOptions: {
                         expiresIn: Number(configService.get('JWT_EXPIRATION_SECONDS')) || 604800,
                     },
                 }),
             }),
         ],
-        controllers: [auth_controller_1.AuthController],
+        controllers: [
+            auth_controller_1.AuthController,
+        ],
         providers: [
             auth_service_1.AuthService,
-            local_strategy_1.LocalStrategy,
             jwt_strategy_1.JwtStrategy,
+            local_strategy_1.LocalStrategy,
         ],
         exports: [
             auth_service_1.AuthService,
-            passport_1.PassportModule,
             jwt_1.JwtModule,
         ],
     })

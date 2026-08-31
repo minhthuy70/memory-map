@@ -11,12 +11,16 @@ const common_1 = require("@nestjs/common");
 const memories_service_1 = require("./memories.service");
 const memories_controller_1 = require("./memories.controller");
 const auth_module_1 = require("../auth/auth.module");
+const users_module_1 = require("../users/users.module");
 let MemoriesModule = class MemoriesModule {
 };
 exports.MemoriesModule = MemoriesModule;
 exports.MemoriesModule = MemoriesModule = __decorate([
     (0, common_1.Module)({
-        imports: [auth_module_1.AuthModule],
+        imports: [
+            auth_module_1.AuthModule,
+            users_module_1.UsersModule,
+        ],
         controllers: [
             memories_controller_1.MemoriesController,
         ],
