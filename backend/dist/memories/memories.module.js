@@ -17,9 +17,15 @@ exports.MemoriesModule = MemoriesModule;
 exports.MemoriesModule = MemoriesModule = __decorate([
     (0, common_1.Module)({
         imports: [auth_module_1.AuthModule],
-        controllers: [memories_controller_1.MemoriesController],
-        providers: [memories_service_1.MemoriesService],
-        exports: [memories_service_1.MemoriesService],
+        controllers: [
+            memories_controller_1.MemoriesController,
+        ],
+        providers: [
+            memories_service_1.MemoriesService,
+        ],
+        exports: [
+            memories_service_1.MemoriesService,
+        ],
     })
 ], MemoriesModule);
 //# sourceMappingURL=memories.module.js.map

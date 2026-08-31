@@ -1,11 +1,13 @@
+
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { MapPin, Calendar, Save, X } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
+
 import { memoriesApi, CreateMemoryData } from '@/lib/memories-api';
 import { categoriesApi } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
@@ -28,16 +30,16 @@ const MOODS = [
   { value: 'NEUTRAL', emoji: '😐' },
 ];
 
-export default function NewMemoryPage() {
+function NewMemoryForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { isAuthenticated } = useAuthStore();
-  
+
   const [categories, setCategories] = useState<Category[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
-  
+
   const [formData, setFormData] = useState({
     title: '',
     content: '',
@@ -48,89 +50,125 @@ export default function NewMemoryPage() {
     mood: 'HAPPY',
     categoryId: '',
   });
-  
-  const [selectedLocation, setSelectedLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [isSelectingLocation, setIsSelectingLocation] = useState(false);
 
-  const loadCategories = async () => {
-    try {
-      const data = await categoriesApi.getAll();
-      setCategories(data);
-      if (data.length > 0) {
-        setFormData(prev => ({ ...prev, categoryId: data[0].id }));
-      }
-    } catch {
-      setError('Failed to load categories');
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const [selectedLocation, setSelectedLocation] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
+
+  const [isSelectingLocation, setIsSelectingLocation] = useState(false);
 
   useEffect(() => {
     if (!isAuthenticated()) {
       router.push('/login');
       return;
     }
-    
+
     const lat = searchParams.get('lat');
     const lng = searchParams.get('lng');
-    
+
     if (lat && lng) {
       const parsedLat = parseFloat(lat);
       const parsedLng = parseFloat(lng);
-      setFormData(prev => ({
-        ...prev,
-        latitude: parsedLat,
-        longitude: parsedLng,
-      }));
-      setSelectedLocation({ lat: parsedLat, lng: parsedLng });
+
+      if (!Number.isNaN(parsedLat) && !Number.isNaN(parsedLng)) {
+        setFormData((prev) => ({
+          ...prev,
+          latitude: parsedLat,
+          longitude: parsedLng,
+        }));
+
+        setSelectedLocation({
+          lat: parsedLat,
+          lng: parsedLng,
+        });
+      }
     }
-    
+
+    const loadCategories = async () => {
+      try {
+        const data = await categoriesApi.getAll();
+
+        setCategories(data);
+
+        if (data.length > 0) {
+          setFormData((prev) => ({
+            ...prev,
+            categoryId: data[0].id,
+          }));
+        }
+      } catch (err: unknown) {
+        setError(
+          err instanceof Error
+            ? err.message
+            : 'Failed to load categories',
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     loadCategories();
   }, [isAuthenticated, router, searchParams]);
 
   const handleLocationSelect = (lat: number, lng: number) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       latitude: lat,
       longitude: lng,
     }));
-    setSelectedLocation({ lat, lng });
+
+    setSelectedLocation({
+      lat,
+      lng,
+    });
+
     setIsSelectingLocation(false);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
+    setError('');
+
     if (!formData.title.trim()) {
       setError('Title is required');
       return;
     }
-    
+
     if (formData.latitude === 0 && formData.longitude === 0) {
       setError('Please select a location on the map');
       return;
     }
-    
+
+    if (!formData.categoryId) {
+      setError('Please select a category');
+      return;
+    }
+
     setIsSubmitting(true);
-    setError('');
-    
+
     try {
       const memoryData: CreateMemoryData = {
-        title: formData.title,
-        content: formData.content,
+        title: formData.title.trim(),
+        content: formData.content.trim(),
         latitude: formData.latitude,
         longitude: formData.longitude,
-        locationName: formData.locationName,
+        locationName: formData.locationName.trim(),
         memoryDate: formData.memoryDate,
         mood: formData.mood,
         categoryId: formData.categoryId,
       };
-      
+
       await memoriesApi.create(memoryData);
+
       router.push('/dashboard');
     } catch (err: unknown) {
-      setError((err as Error)?.message || 'Failed to create memory');
+      setError(
+        err instanceof Error
+          ? err.message
+          : 'Failed to create memory',
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -139,7 +177,9 @@ export default function NewMemoryPage() {
   if (isLoading) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
-        <div className="text-slate-600 dark:text-slate-400">Loading...</div>
+        <div className="text-slate-600 dark:text-slate-400">
+          Loading...
+        </div>
       </div>
     );
   }
@@ -148,10 +188,15 @@ export default function NewMemoryPage() {
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <header className="bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700">
         <div className="flex items-center justify-between px-4 py-3">
-          <h1 className="text-xl font-bold text-slate-900 dark:text-white">Add New Memory</h1>
+          <h1 className="text-xl font-bold text-slate-900 dark:text-white">
+            Add New Memory
+          </h1>
+
           <button
+            type="button"
             onClick={() => router.back()}
             className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-slate-600 dark:text-slate-400"
+            aria-label="Close"
           >
             <X className="h-6 w-6" />
           </button>
@@ -174,26 +219,48 @@ export default function NewMemoryPage() {
                   <MapPin className="h-5 w-5" />
                   Location
                 </h2>
+
                 <button
                   type="button"
-                  onClick={() => setIsSelectingLocation(!isSelectingLocation)}
+                  onClick={() =>
+                    setIsSelectingLocation(!isSelectingLocation)
+                  }
                   className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
                 >
-                  {isSelectingLocation ? 'Cancel' : 'Select on Map'}
+                  {isSelectingLocation
+                    ? 'Cancel'
+                    : 'Select on Map'}
                 </button>
               </div>
+
               {selectedLocation && (
                 <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
-                  Selected: {selectedLocation.lat.toFixed(4)}, {selectedLocation.lng.toFixed(4)}
+                  Selected:{' '}
+                  {selectedLocation.lat.toFixed(4)},{' '}
+                  {selectedLocation.lng.toFixed(4)}
+                </p>
+              )}
+
+              {!selectedLocation && (
+                <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                  Click &quot;Select on Map&quot; and choose a location.
                 </p>
               )}
             </div>
+
             <div className="h-80">
               <MemoryMap
                 memories={[]}
                 onLocationSelect={handleLocationSelect}
                 onSelectMode={isSelectingLocation}
-                center={selectedLocation ? [selectedLocation.lat, selectedLocation.lng] : [21.0285, 105.8542]}
+                center={
+                  selectedLocation
+                    ? [
+                        selectedLocation.lat,
+                        selectedLocation.lng,
+                      ]
+                    : [21.0285, 105.8542]
+                }
                 zoom={13}
               />
             </div>
@@ -205,10 +272,16 @@ export default function NewMemoryPage() {
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Title *
               </label>
+
               <input
                 type="text"
                 value={formData.title}
-                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    title: e.target.value,
+                  })
+                }
                 className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                 placeholder="What happened here?"
                 required
@@ -219,9 +292,15 @@ export default function NewMemoryPage() {
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Content
               </label>
+
               <textarea
                 value={formData.content}
-                onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    content: e.target.value,
+                  })
+                }
                 className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none"
                 rows={4}
                 placeholder="Tell me more about this memory..."
@@ -232,10 +311,16 @@ export default function NewMemoryPage() {
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Location Name
               </label>
+
               <input
                 type="text"
                 value={formData.locationName}
-                onChange={(e) => setFormData({ ...formData, locationName: e.target.value })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    locationName: e.target.value,
+                  })
+                }
                 className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                 placeholder="e.g., Central Park, New York"
               />
@@ -249,10 +334,16 @@ export default function NewMemoryPage() {
                 <Calendar className="h-4 w-4" />
                 Date
               </label>
+
               <input
                 type="date"
                 value={formData.memoryDate}
-                onChange={(e) => setFormData({ ...formData, memoryDate: e.target.value })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    memoryDate: e.target.value,
+                  })
+                }
                 className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               />
             </div>
@@ -261,9 +352,15 @@ export default function NewMemoryPage() {
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Mood
               </label>
+
               <select
                 value={formData.mood}
-                onChange={(e) => setFormData({ ...formData, mood: e.target.value })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    mood: e.target.value,
+                  })
+                }
                 className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               >
                 {MOODS.map((mood) => (
@@ -280,9 +377,15 @@ export default function NewMemoryPage() {
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
               Category
             </label>
+
             <select
               value={formData.categoryId}
-              onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  categoryId: e.target.value,
+                })
+              }
               className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
             >
               {categories.map((category) => (
@@ -293,17 +396,38 @@ export default function NewMemoryPage() {
             </select>
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
             disabled={isSubmitting}
             className="w-full flex items-center justify-center gap-2 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Save className="h-5 w-5" />
-            {isSubmitting ? 'Saving...' : 'Save Memory'}
+
+            {isSubmitting
+              ? 'Saving...'
+              : 'Save Memory'}
           </button>
         </form>
       </div>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
+      <div className="text-slate-600 dark:text-slate-400">
+        Loading...
+      </div>
+    </div>
+  );
+}
+
+export default function NewMemoryPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <NewMemoryForm />
+    </Suspense>
   );
 }

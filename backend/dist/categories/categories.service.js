@@ -17,33 +17,75 @@ let CategoriesService = class CategoriesService {
         this.prisma = prisma;
     }
     async findAll() {
-        return this.prisma.category.findMany();
+        return this.prisma.category.findMany({
+            orderBy: {
+                createdAt: 'asc',
+            },
+        });
     }
     async findById(id) {
         return this.prisma.category.findUnique({
-            where: { id },
+            where: {
+                id,
+            },
         });
     }
     async seedCategories() {
         const categories = [
-            { name: 'Love', icon: '❤️' },
-            { name: 'Family', icon: '👨‍👩‍👧' },
-            { name: 'Friends', icon: '👥' },
-            { name: 'Study', icon: '🎓' },
-            { name: 'Work', icon: '💼' },
-            { name: 'Travel', icon: '✈️' },
-            { name: 'Event', icon: '🎉' },
-            { name: 'Personal', icon: '🌱' },
-            { name: 'Other', icon: '⭐' },
+            {
+                name: 'Love',
+                icon: '❤️',
+            },
+            {
+                name: 'Family',
+                icon: '👨‍👩‍👧',
+            },
+            {
+                name: 'Friends',
+                icon: '👥',
+            },
+            {
+                name: 'Study',
+                icon: '🎓',
+            },
+            {
+                name: 'Work',
+                icon: '💼',
+            },
+            {
+                name: 'Travel',
+                icon: '✈️',
+            },
+            {
+                name: 'Event',
+                icon: '🎉',
+            },
+            {
+                name: 'Personal',
+                icon: '🌱',
+            },
+            {
+                name: 'Other',
+                icon: '📌',
+            },
         ];
+        const results = [];
         for (const category of categories) {
-            await this.prisma.category.upsert({
-                where: { name: category.name },
-                update: {},
-                create: category,
+            const result = await this.prisma.category.upsert({
+                where: {
+                    name: category.name,
+                },
+                update: {
+                    icon: category.icon,
+                },
+                create: {
+                    name: category.name,
+                    icon: category.icon,
+                },
             });
+            results.push(result);
         }
-        return this.prisma.category.findMany();
+        return results;
     }
 };
 exports.CategoriesService = CategoriesService;

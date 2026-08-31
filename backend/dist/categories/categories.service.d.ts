@@ -14,10 +14,5 @@ export declare class CategoriesService {
         icon: string;
         createdAt: Date;
     }>;
-    seedCategories(): Promise<{
-        id: string;
-        name: string;
-        icon: string;
-        createdAt: Date;
-    }[]>;
+    seedCategories(): Promise<any[]>;
 }

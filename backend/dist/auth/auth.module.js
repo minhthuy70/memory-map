@@ -24,21 +24,32 @@ exports.AuthModule = AuthModule = __decorate([
         imports: [
             config_1.ConfigModule,
             users_module_1.UsersModule,
-            passport_1.PassportModule,
+            passport_1.PassportModule.register({
+                defaultStrategy: 'jwt',
+            }),
             jwt_1.JwtModule.registerAsync({
                 imports: [config_1.ConfigModule],
                 inject: [config_1.ConfigService],
                 useFactory: (configService) => ({
-                    secret: configService.get('JWT_SECRET') || 'memory-map-secret',
+                    secret: configService.get('JWT_SECRET') ||
+                        'memory-map-secret',
                     signOptions: {
                         expiresIn: Number(configService.get('JWT_EXPIRATION_SECONDS')) || 604800,
                     },
                 }),
             }),
         ],
-        providers: [auth_service_1.AuthService, local_strategy_1.LocalStrategy, jwt_strategy_1.JwtStrategy],
         controllers: [auth_controller_1.AuthController],
-        exports: [auth_service_1.AuthService],
+        providers: [
+            auth_service_1.AuthService,
+            local_strategy_1.LocalStrategy,
+            jwt_strategy_1.JwtStrategy,
+        ],
+        exports: [
+            auth_service_1.AuthService,
+            passport_1.PassportModule,
+            jwt_1.JwtModule,
+        ],
     })
 ], AuthModule);
 //# sourceMappingURL=auth.module.js.map

@@ -8,10 +8,5 @@ export declare class CategoriesController {
         icon: string;
         createdAt: Date;
     }[]>;
-    seed(): Promise<{
-        id: string;
-        name: string;
-        icon: string;
-        createdAt: Date;
-    }[]>;
+    seed(): Promise<any[]>;
 }
