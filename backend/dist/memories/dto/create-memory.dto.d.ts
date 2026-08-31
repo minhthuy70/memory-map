@@ -1,3 +1,4 @@
+import { Mood } from '@prisma/client';
 export declare class CreateMemoryDto {
     title: string;
     content?: string;
@@ -5,6 +6,6 @@ export declare class CreateMemoryDto {
     longitude: number;
     locationName?: string;
     memoryDate: Date;
-    mood: string;
+    mood: Mood;
     categoryId: string;
 }

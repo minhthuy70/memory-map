@@ -1,4 +1,14 @@
-import { IsString, IsNumber, IsDate, IsEnum, IsOptional, Min, Max } from 'class-validator';
+
+import {
+  IsString,
+  IsNumber,
+  IsDate,
+  IsEnum,
+  IsOptional,
+  Min,
+  Max,
+} from 'class-validator';
+import { Mood } from '@prisma/client';
 
 export class CreateMemoryDto {
   @IsString()
@@ -25,8 +35,8 @@ export class CreateMemoryDto {
   @IsDate()
   memoryDate: Date;
 
-  @IsString()
-  mood: string;
+  @IsEnum(Mood)
+  mood: Mood;
 
   @IsString()
   categoryId: string;

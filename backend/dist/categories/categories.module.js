@@ -10,11 +10,13 @@ exports.CategoriesModule = void 0;
 const common_1 = require("@nestjs/common");
 const categories_service_1 = require("./categories.service");
 const categories_controller_1 = require("./categories.controller");
+const auth_module_1 = require("../auth/auth.module");
 let CategoriesModule = class CategoriesModule {
 };
 exports.CategoriesModule = CategoriesModule;
 exports.CategoriesModule = CategoriesModule = __decorate([
     (0, common_1.Module)({
+        imports: [auth_module_1.AuthModule],
         controllers: [categories_controller_1.CategoriesController],
         providers: [categories_service_1.CategoriesService],
         exports: [categories_service_1.CategoriesService],

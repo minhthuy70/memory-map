@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateMemoryDto = void 0;
 const class_validator_1 = require("class-validator");
+const client_1 = require("@prisma/client");
 class CreateMemoryDto {
 }
 exports.CreateMemoryDto = CreateMemoryDto;
@@ -45,7 +46,7 @@ __decorate([
     __metadata("design:type", Date)
 ], CreateMemoryDto.prototype, "memoryDate", void 0);
 __decorate([
-    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsEnum)(client_1.Mood),
     __metadata("design:type", String)
 ], CreateMemoryDto.prototype, "mood", void 0);
 __decorate([
