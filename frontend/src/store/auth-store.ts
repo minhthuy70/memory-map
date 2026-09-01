@@ -6,6 +6,9 @@ interface User {
   email: string;
   name: string;
   avatar: string;
+  memoryCount?: number;
+  createdAt?: string;
+  [key: string]: any;
 }
 
 interface AuthState {

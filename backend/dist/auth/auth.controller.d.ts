@@ -1,6 +1,8 @@
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
+import { ChangePasswordDto } from './dto/change-password.dto';
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
@@ -22,5 +24,24 @@ export declare class AuthController {
             avatar: string;
         };
     }>;
-    getProfile(req: any): Promise<any>;
+    getProfile(req: any): Promise<{
+        memoryCount: number;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        email: string;
+        name: string | null;
+        avatar: string | null;
+    }>;
+    updateProfile(req: any, updateProfileDto: UpdateProfileDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        email: string;
+        name: string | null;
+        avatar: string | null;
+    }>;
+    changePassword(req: any, changePasswordDto: ChangePasswordDto): Promise<{
+        message: string;
+    }>;
 }

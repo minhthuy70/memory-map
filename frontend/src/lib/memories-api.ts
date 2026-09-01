@@ -109,6 +109,10 @@ export const memoriesApi = {
     await api.delete(`/memories/${memoryId}/images/${imageId}`);
   },
 
+  updateImageOrder: async (memoryId: string, imageId: string, order: number): Promise<void> => {
+    await api.put(`/memories/${memoryId}/images/${imageId}/order`, { order });
+  },
+
   getStatistics: async (): Promise<Statistics> => {
     const response = await api.get('/memories/statistics');
     return response.data;

@@ -125,7 +125,11 @@ export class MemoriesService {
       where,
       include: {
         category: true,
-        images: true,
+        images: {
+          orderBy: {
+            order: 'asc',
+          },
+        },
       },
       orderBy: {
         memoryDate: 'desc',
@@ -242,10 +246,20 @@ export class MemoriesService {
       throw new BadRequestException('Image URL is required');
     }
 
+    // Get the current highest order for this memory
+    const images = await this.prisma.memoryImage.findMany({
+      where: { memoryId },
+      orderBy: { order: 'desc' },
+      take: 1,
+    });
+
+    const nextOrder = images.length > 0 ? images[0].order + 1 : 0;
+
     return this.prisma.memoryImage.create({
       data: {
         memoryId,
         imageUrl: imageUrl.trim(),
+        order: nextOrder,
       },
     });
   }
@@ -274,6 +288,38 @@ export class MemoriesService {
     return this.prisma.memoryImage.delete({
       where: {
         id: imageId,
+      },
+    });
+  }
+
+  async updateImageOrder(
+    imageId: string,
+    userId: string,
+    order: number,
+  ) {
+    const image = await this.prisma.memoryImage.findUnique({
+      where: {
+        id: imageId,
+      },
+      include: {
+        memory: true,
+      },
+    });
+
+    if (!image) {
+      throw new NotFoundException('Image not found');
+    }
+
+    if (image.memory.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.memoryImage.update({
+      where: {
+        id: imageId,
+      },
+      data: {
+        order,
       },
     });
   }

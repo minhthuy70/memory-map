@@ -57,6 +57,9 @@ let MemoriesController = class MemoriesController {
     async deleteImage(memoryId, imageId, req) {
         return this.memoriesService.deleteImage(imageId, req.user.id);
     }
+    async updateImageOrder(memoryId, imageId, req, order) {
+        return this.memoriesService.updateImageOrder(imageId, req.user.id, order);
+    }
 };
 exports.MemoriesController = MemoriesController;
 __decorate([
@@ -129,6 +132,16 @@ __decorate([
     __metadata("design:paramtypes", [String, String, Object]),
     __metadata("design:returntype", Promise)
 ], MemoriesController.prototype, "deleteImage", null);
+__decorate([
+    (0, common_1.Put)(':memoryId/images/:imageId/order'),
+    __param(0, (0, common_1.Param)('memoryId')),
+    __param(1, (0, common_1.Param)('imageId')),
+    __param(2, (0, common_1.Request)()),
+    __param(3, (0, common_1.Body)('order')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Object, Number]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "updateImageOrder", null);
 exports.MemoriesController = MemoriesController = __decorate([
     (0, common_1.Controller)('memories'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

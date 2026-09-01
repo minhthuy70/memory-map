@@ -69,9 +69,11 @@ model MemoryImage {
   id        String   @id @default(uuid())
   memoryId  String   @map("memory_id")
   imageUrl  String   @map("image_url")
+  order     Int      @default(0)
   createdAt DateTime @default(now()) @map("created_at")
   memory    Memory   @relation(fields: [memoryId], references: [id], onDelete: Cascade)
 
   @@map("memory_images")
   @@index([memoryId])
+  @@index([memoryId, order])
 }

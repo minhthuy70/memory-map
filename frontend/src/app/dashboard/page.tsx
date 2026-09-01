@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { MapPin, Plus, Search, LogOut, Menu, X } from 'lucide-react';
+import { MapPin, Plus, Search, LogOut, Menu, X, User, ArrowUpDown } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
@@ -47,6 +47,7 @@ export default function DashboardPage() {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedMood, setSelectedMood] = useState('');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [sortBy, setSortBy] = useState('date-newest');
 
   /**
    * Load initial dashboard data.
@@ -101,7 +102,23 @@ export default function DashboardPage() {
 
       const memoriesData = await memoriesApi.getAll(filters);
 
-      setMemories(memoriesData);
+      // Sort memories
+      const sortedMemories = [...memoriesData].sort((a, b) => {
+        switch (sortBy) {
+          case 'date-newest':
+            return new Date(b.memoryDate).getTime() - new Date(a.memoryDate).getTime();
+          case 'date-oldest':
+            return new Date(a.memoryDate).getTime() - new Date(b.memoryDate).getTime();
+          case 'title-asc':
+            return a.title.localeCompare(b.title);
+          case 'title-desc':
+            return b.title.localeCompare(a.title);
+          default:
+            return 0;
+        }
+      });
+
+      setMemories(sortedMemories);
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : 'Failed to load memories';
@@ -131,7 +148,7 @@ export default function DashboardPage() {
   useEffect(() => {
     if (
       !isAuthenticated() ||
-      (!selectedCategory && !selectedMood && !searchQuery)
+      (!selectedCategory && !selectedMood && !searchQuery && sortBy === 'date-newest')
     ) {
       return;
     }
@@ -145,6 +162,7 @@ export default function DashboardPage() {
     selectedCategory,
     selectedMood,
     searchQuery,
+    sortBy,
     isAuthenticated,
   ]);
 
@@ -203,9 +221,13 @@ export default function DashboardPage() {
               Statistics
             </button>
 
-            <span className="hidden sm:block text-sm text-slate-600 dark:text-slate-400">
+            <button
+              onClick={() => router.push('/profile')}
+              className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
+            >
+              <User className="h-4 w-4" />
               {user?.name || user?.email}
-            </span>
+            </button>
 
             <button
               onClick={handleLogout}
@@ -282,6 +304,24 @@ export default function DashboardPage() {
               </select>
             </div>
 
+            {/* Sort */}
+            <div>
+              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                Sort By
+              </h3>
+
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              >
+                <option value="date-newest">Date (Newest)</option>
+                <option value="date-oldest">Date (Oldest)</option>
+                <option value="title-asc">Title (A-Z)</option>
+                <option value="title-desc">Title (Z-A)</option>
+              </select>
+            </div>
+
             {/* Memory List */}
             <div>
               <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
@@ -350,6 +390,8 @@ export default function DashboardPage() {
               onLocationSelect={handleLocationSelect}
               onSelectMode={false}
               onMarkerClick={handleMemoryClick}
+              showSearch={true}
+              showCurrentLocationButton={true}
             />
           </div>
         </main>

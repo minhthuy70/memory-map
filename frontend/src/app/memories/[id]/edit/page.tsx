@@ -108,6 +108,13 @@ export default function EditMemoryPage() {
     setIsSelectingLocation(false);
   };
 
+  const handleLocationName = (locationName: string) => {
+    setFormData(prev => ({
+      ...prev,
+      locationName,
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -221,6 +228,10 @@ export default function EditMemoryPage() {
                 onSelectMode={isSelectingLocation}
                 center={selectedLocation ? [selectedLocation.lat, selectedLocation.lng] : [memory.latitude, memory.longitude]}
                 zoom={13}
+                showSearch={true}
+                enableReverseGeocoding={true}
+                onLocationName={handleLocationName}
+                showCurrentLocationButton={true}
               />
             </div>
           </div>

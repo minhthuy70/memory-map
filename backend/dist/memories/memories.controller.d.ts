@@ -5,27 +5,27 @@ export declare class MemoriesController {
     private memoriesService;
     constructor(memoriesService: MemoriesService);
     create(req: any, createMemoryDto: CreateMemoryDto): Promise<{
-        category: {
-            id: string;
-            name: string;
-            icon: string;
-            createdAt: Date;
-        };
         user: {
             id: string;
-            name: string;
             email: string;
+            name: string;
             avatar: string;
+        };
+        category: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
-        createdAt: Date;
         title: string;
         content: string | null;
         latitude: number;
@@ -33,6 +33,7 @@ export declare class MemoriesController {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        createdAt: Date;
         updatedAt: Date;
         userId: string;
         categoryId: string;
@@ -40,19 +41,19 @@ export declare class MemoriesController {
     findAll(req: any, categoryId?: string, mood?: string, from?: string, to?: string, search?: string): Promise<({
         category: {
             id: string;
+            createdAt: Date;
             name: string;
             icon: string;
-            createdAt: Date;
         };
         images: {
             id: string;
             createdAt: Date;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
-        createdAt: Date;
         title: string;
         content: string | null;
         latitude: number;
@@ -60,6 +61,7 @@ export declare class MemoriesController {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        createdAt: Date;
         updatedAt: Date;
         userId: string;
         categoryId: string;
@@ -80,27 +82,27 @@ export declare class MemoriesController {
         moodDistribution: Record<string, number>;
     }>;
     findOne(id: string, req: any): Promise<{
-        category: {
-            id: string;
-            name: string;
-            icon: string;
-            createdAt: Date;
-        };
         user: {
             id: string;
-            name: string;
             email: string;
+            name: string;
             avatar: string;
+        };
+        category: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
-        createdAt: Date;
         title: string;
         content: string | null;
         latitude: number;
@@ -108,6 +110,7 @@ export declare class MemoriesController {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        createdAt: Date;
         updatedAt: Date;
         userId: string;
         categoryId: string;
@@ -115,19 +118,19 @@ export declare class MemoriesController {
     update(id: string, req: any, updateMemoryDto: UpdateMemoryDto): Promise<{
         category: {
             id: string;
+            createdAt: Date;
             name: string;
             icon: string;
-            createdAt: Date;
         };
         images: {
             id: string;
             createdAt: Date;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
-        createdAt: Date;
         title: string;
         content: string | null;
         latitude: number;
@@ -135,13 +138,13 @@ export declare class MemoriesController {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        createdAt: Date;
         updatedAt: Date;
         userId: string;
         categoryId: string;
     }>;
     delete(id: string, req: any): Promise<{
         id: string;
-        createdAt: Date;
         title: string;
         content: string | null;
         latitude: number;
@@ -149,6 +152,7 @@ export declare class MemoriesController {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        createdAt: Date;
         updatedAt: Date;
         userId: string;
         categoryId: string;
@@ -158,11 +162,20 @@ export declare class MemoriesController {
         createdAt: Date;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     deleteImage(memoryId: string, imageId: string, req: any): Promise<{
         id: string;
         createdAt: Date;
         memoryId: string;
         imageUrl: string;
+        order: number;
+    }>;
+    updateImageOrder(memoryId: string, imageId: string, req: any, order: number): Promise<{
+        id: string;
+        createdAt: Date;
+        memoryId: string;
+        imageUrl: string;
+        order: number;
     }>;
 }

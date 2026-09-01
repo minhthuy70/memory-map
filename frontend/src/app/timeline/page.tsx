@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Calendar, Clock, MapPin, ArrowLeft } from 'lucide-react';
+import { Calendar, Clock, MapPin, ArrowLeft, User, ArrowUpDown } from 'lucide-react';
 import { memoriesApi, Memory } from '@/lib/memories-api';
 import { useAuthStore } from '@/store/auth-store';
 
@@ -20,17 +20,35 @@ const MOOD_EMOJIS: Record<string, string> = {
 
 export default function TimelinePage() {
   const router = useRouter();
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, user } = useAuthStore();
   
   const [memories, setMemories] = useState<Memory[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
+  const [sortBy, setSortBy] = useState('date-newest');
 
   const loadMemories = async () => {
     try {
       setIsLoading(true);
       const data = await memoriesApi.getAll();
-      setMemories(data);
+
+      // Sort memories
+      const sortedMemories = [...data].sort((a, b) => {
+        switch (sortBy) {
+          case 'date-newest':
+            return new Date(b.memoryDate).getTime() - new Date(a.memoryDate).getTime();
+          case 'date-oldest':
+            return new Date(a.memoryDate).getTime() - new Date(b.memoryDate).getTime();
+          case 'title-asc':
+            return a.title.localeCompare(b.title);
+          case 'title-desc':
+            return b.title.localeCompare(a.title);
+          default:
+            return 0;
+        }
+      });
+
+      setMemories(sortedMemories);
     } catch (err: unknown) {
       setError((err as Error)?.message || 'Failed to load memories');
     } finally {
@@ -43,9 +61,15 @@ export default function TimelinePage() {
       router.push('/login');
       return;
     }
-    
+
     loadMemories();
   }, [isAuthenticated, router]);
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      loadMemories();
+    }
+  }, [sortBy, isAuthenticated]);
 
   const groupMemoriesByYear = (memories: Memory[]) => {
     const grouped: Record<string, Memory[]> = {};
@@ -96,7 +120,25 @@ export default function TimelinePage() {
             <Clock className="h-6 w-6" />
             Timeline
           </h1>
-          <div className="w-20" />
+          <div className="flex items-center gap-2">
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+            >
+              <option value="date-newest">Newest</option>
+              <option value="date-oldest">Oldest</option>
+              <option value="title-asc">Title A-Z</option>
+              <option value="title-desc">Title Z-A</option>
+            </select>
+            <button
+              onClick={() => router.push('/profile')}
+              className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
+            >
+              <User className="h-4 w-4" />
+              {user?.name || user?.email}
+            </button>
+          </div>
         </div>
       </header>
 

@@ -417,9 +417,9 @@ Then: Return 403 Forbidden
 
 # 7. USER PROFILE
 
-**Status:** ⚪ MISSING  
+**Status:** 🟢 IMPLEMENTED  
 **Priority:** P2  
-**Route:** `/profile` (🔵 PLANNED)
+**Route:** `/profile`
 
 ## Profile View
 
@@ -607,9 +607,8 @@ Pre-fill form with coordinates
 
 ## 9.5 Current Location
 
-**Status:** ⚪ MISSING  
-**Priority:** P3  
-**Feature:** 🔵 PLANNED
+**Status:** 🟢 IMPLEMENTED  
+**Priority:** P3
 
 ### Implementation
 - Use browser Geolocation API
@@ -625,9 +624,8 @@ Pre-fill form with coordinates
 
 ## 9.6 Location Search
 
-**Status:** ⚪ MISSING  
-**Priority:** P2  
-**Feature:** 🔵 PLANNED
+**Status:** 🟢 IMPLEMENTED  
+**Priority:** P2
 
 ### Search Types
 - Place names (University, Cafe, Airport)

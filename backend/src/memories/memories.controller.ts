@@ -74,4 +74,14 @@ export class MemoriesController {
   ) {
     return this.memoriesService.deleteImage(imageId, req.user.id);
   }
+
+  @Put(':memoryId/images/:imageId/order')
+  async updateImageOrder(
+    @Param('memoryId') memoryId: string,
+    @Param('imageId') imageId: string,
+    @Request() req,
+    @Body('order') order: number,
+  ) {
+    return this.memoriesService.updateImageOrder(imageId, req.user.id, order);
+  }
 }

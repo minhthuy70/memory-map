@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { MapPin, Calendar, Edit, Trash2, ArrowLeft, Loader2, ImagePlus, X } from 'lucide-react';
+import { MapPin, Calendar, Edit, Trash2, ArrowLeft, Loader2, ImagePlus, X, ChevronLeft, ChevronRight, Maximize2, ChevronUp, ChevronDown } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
@@ -34,6 +34,9 @@ export default function MemoryDetailPage() {
   const [showImageUpload, setShowImageUpload] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [showLightbox, setShowLightbox] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const loadMemory = async (id: string) => {
     try {
@@ -73,30 +76,88 @@ export default function MemoryDetailPage() {
 
   const handleAddImage = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!memory || !imageUrl.trim()) return;
-    
+
     setIsUploadingImage(true);
+    setUploadProgress(0);
+
+    // Simulate upload progress
+    const progressInterval = setInterval(() => {
+      setUploadProgress((prev) => {
+        if (prev >= 90) {
+          clearInterval(progressInterval);
+          return 90;
+        }
+        return prev + 10;
+      });
+    }, 100);
+
     try {
       await memoriesApi.addImage(memory.id, imageUrl);
+      setUploadProgress(100);
       setImageUrl('');
       setShowImageUpload(false);
       await loadMemory(memory.id);
     } catch (err: unknown) {
       setError((err as Error)?.message || 'Failed to add image');
     } finally {
+      clearInterval(progressInterval);
       setIsUploadingImage(false);
+      setUploadProgress(0);
     }
   };
 
   const handleDeleteImage = async (imageId: string) => {
     if (!memory) return;
-    
+
     try {
       await memoriesApi.deleteImage(memory.id, imageId);
       await loadMemory(memory.id);
     } catch (err: unknown) {
       setError((err as Error)?.message || 'Failed to delete image');
+    }
+  };
+
+  const handleMoveImageUp = async (imageId: string, currentIndex: number) => {
+    if (!memory || currentIndex === 0) return;
+
+    try {
+      const images = [...memory.images];
+      const temp = images[currentIndex];
+      images[currentIndex] = images[currentIndex - 1];
+      images[currentIndex - 1] = temp;
+
+      // Update orders
+      await Promise.all([
+        memoriesApi.updateImageOrder(memory.id, images[currentIndex].id, currentIndex),
+        memoriesApi.updateImageOrder(memory.id, images[currentIndex - 1].id, currentIndex - 1),
+      ]);
+
+      await loadMemory(memory.id);
+    } catch (err: unknown) {
+      setError((err as Error)?.message || 'Failed to reorder images');
+    }
+  };
+
+  const handleMoveImageDown = async (imageId: string, currentIndex: number) => {
+    if (!memory || currentIndex === memory.images.length - 1) return;
+
+    try {
+      const images = [...memory.images];
+      const temp = images[currentIndex];
+      images[currentIndex] = images[currentIndex + 1];
+      images[currentIndex + 1] = temp;
+
+      // Update orders
+      await Promise.all([
+        memoriesApi.updateImageOrder(memory.id, images[currentIndex].id, currentIndex),
+        memoriesApi.updateImageOrder(memory.id, images[currentIndex + 1].id, currentIndex + 1),
+      ]);
+
+      await loadMemory(memory.id);
+    } catch (err: unknown) {
+      setError((err as Error)?.message || 'Failed to reorder images');
     }
   };
 
@@ -238,19 +299,54 @@ export default function MemoryDetailPage() {
                 </button>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {memory.images.map((image) => (
+                {memory.images.map((image, index) => (
                   <div key={image.id} className="relative group">
                     <img
                       src={image.imageUrl}
                       alt="Memory photo"
-                      className="w-full h-40 object-cover rounded-lg"
+                      className="w-full h-40 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                      onClick={() => {
+                        setCurrentImageIndex(index);
+                        setShowLightbox(true);
+                      }}
                     />
-                    <button
-                      onClick={() => handleDeleteImage(image.id)}
-                      className="absolute top-2 right-2 p-1 bg-red-600 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
+                    <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button
+                        onClick={() => {
+                          setCurrentImageIndex(index);
+                          setShowLightbox(true);
+                        }}
+                        className="p-1 bg-blue-600 text-white rounded"
+                        title="View fullscreen"
+                      >
+                        <Maximize2 className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => handleDeleteImage(image.id)}
+                        className="p-1 bg-red-600 text-white rounded"
+                        title="Delete"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                    <div className="absolute left-2 bottom-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button
+                        onClick={() => handleMoveImageUp(image.id, index)}
+                        disabled={index === 0}
+                        className="p-1 bg-slate-700 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                        title="Move up"
+                      >
+                        <ChevronUp className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => handleMoveImageDown(image.id, index)}
+                        disabled={index === memory.images.length - 1}
+                        className="p-1 bg-slate-700 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                        title="Move down"
+                      >
+                        <ChevronDown className="h-4 w-4" />
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -301,6 +397,7 @@ export default function MemoryDetailPage() {
                   onClick={() => {
                     setShowImageUpload(false);
                     setImageUrl('');
+                    setUploadProgress(0);
                   }}
                   disabled={isUploadingImage}
                   className="px-4 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg disabled:opacity-50"
@@ -322,6 +419,21 @@ export default function MemoryDetailPage() {
                   )}
                 </button>
               </div>
+
+              {isUploadingImage && uploadProgress > 0 && (
+                <div className="mt-4">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-sm text-slate-600 dark:text-slate-400">Uploading...</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">{uploadProgress}%</span>
+                  </div>
+                  <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                    <div
+                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${uploadProgress}%` }}
+                    />
+                  </div>
+                </div>
+              )}
             </form>
           </div>
         </div>
@@ -359,6 +471,45 @@ export default function MemoryDetailPage() {
                   'Delete'
                 )}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox Modal */}
+      {showLightbox && memory && memory.images.length > 0 && (
+        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+          <button
+            onClick={() => setShowLightbox(false)}
+            className="absolute top-4 right-4 p-2 text-white hover:bg-white/20 rounded-full transition-colors"
+          >
+            <X className="h-6 w-6" />
+          </button>
+
+          <button
+            onClick={() => setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : memory.images.length - 1))}
+            className="absolute left-4 p-2 text-white hover:bg-white/20 rounded-full transition-colors"
+          >
+            <ChevronLeft className="h-8 w-8" />
+          </button>
+
+          <button
+            onClick={() => setCurrentImageIndex((prev) => (prev < memory.images.length - 1 ? prev + 1 : 0))}
+            className="absolute right-4 p-2 text-white hover:bg-white/20 rounded-full transition-colors"
+          >
+            <ChevronRight className="h-8 w-8" />
+          </button>
+
+          <div className="max-w-4xl max-h-[80vh] px-4">
+            <img
+              src={memory.images[currentImageIndex].imageUrl}
+              alt={`Photo ${currentImageIndex + 1}`}
+              className="max-w-full max-h-[80vh] object-contain rounded-lg"
+            />
+            <div className="text-center mt-4 text-white">
+              <p className="text-sm">
+                {currentImageIndex + 1} / {memory.images.length}
+              </p>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, TrendingUp, Calendar, MapPin, Smile } from 'lucide-react';
+import { ArrowLeft, TrendingUp, Calendar, MapPin, Smile, User } from 'lucide-react';
 import { memoriesApi, Statistics } from '@/lib/memories-api';
 import { useAuthStore } from '@/store/auth-store';
 
@@ -20,7 +20,7 @@ const MOOD_EMOJIS: Record<string, string> = {
 
 export default function StatisticsPage() {
   const router = useRouter();
-  const { isAuthenticated } = useAuthStore();
+  const { isAuthenticated, user } = useAuthStore();
   
   const [statistics, setStatistics] = useState<Statistics | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -70,7 +70,13 @@ export default function StatisticsPage() {
             <TrendingUp className="h-6 w-6" />
             Statistics
           </h1>
-          <div className="w-20" />
+          <button
+            onClick={() => router.push('/profile')}
+            className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
+          >
+            <User className="h-4 w-4" />
+            {user?.name || user?.email}
+          </button>
         </div>
       </header>
 

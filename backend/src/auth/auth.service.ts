@@ -1,12 +1,15 @@
 import {
   Injectable,
   UnauthorizedException,
+  BadRequestException,
 } from '@nestjs/common';
 
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 
 import * as bcrypt from 'bcrypt';
+
+import { UpdateProfileDto } from './dto/update-profile.dto';
 
 @Injectable()
 export class AuthService {
@@ -117,6 +120,79 @@ export class AuthService {
         name: user.name,
         avatar: user.avatar,
       },
+    };
+  }
+
+  async updateProfile(
+    userId: string,
+    updateProfileDto: UpdateProfileDto,
+  ) {
+    const user = await this.usersService.findById(userId);
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    const updatedUser = await this.usersService.update(
+      userId,
+      updateProfileDto,
+    );
+
+    const {
+      passwordHash,
+      ...result
+    } = updatedUser;
+
+    return result;
+  }
+
+  async changePassword(
+    userId: string,
+    currentPassword: string,
+    newPassword: string,
+  ) {
+    const user = await this.usersService.findById(userId);
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    const isPasswordValid = await bcrypt.compare(
+      currentPassword,
+      user.passwordHash,
+    );
+
+    if (!isPasswordValid) {
+      throw new BadRequestException('Current password is incorrect');
+    }
+
+    const passwordHash = await bcrypt.hash(newPassword, 10);
+
+    await this.usersService.updatePassword(
+      userId,
+      passwordHash,
+    );
+
+    return { message: 'Password changed successfully' };
+  }
+
+  async getProfileWithStats(userId: string) {
+    const user = await this.usersService.findById(userId);
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    const memoryCount = await this.usersService.getMemoryCount(userId);
+
+    const {
+      passwordHash,
+      ...result
+    } = user;
+
+    return {
+      ...result,
+      memoryCount,
     };
   }
 }

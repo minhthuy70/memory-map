@@ -126,6 +126,13 @@ function NewMemoryForm() {
     setIsSelectingLocation(false);
   };
 
+  const handleLocationName = (locationName: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      locationName,
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -262,6 +269,10 @@ function NewMemoryForm() {
                     : [21.0285, 105.8542]
                 }
                 zoom={13}
+                showSearch={true}
+                enableReverseGeocoding={true}
+                onLocationName={handleLocationName}
+                showCurrentLocationButton={true}
               />
             </div>
           </div>

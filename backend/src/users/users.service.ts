@@ -45,4 +45,26 @@ export class UsersService {
       data,
     });
   }
+
+  async updatePassword(
+    id: string,
+    passwordHash: string,
+  ) {
+    return this.prisma.user.update({
+      where: {
+        id,
+      },
+      data: {
+        passwordHash,
+      },
+    });
+  }
+
+  async getMemoryCount(userId: string) {
+    return this.prisma.memory.count({
+      where: {
+        userId,
+      },
+    });
+  }
 }
