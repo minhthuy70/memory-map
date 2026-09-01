@@ -11,8 +11,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Đăng ký bằng Facebook OAuth - Đăng ký nhanh bằng tài khoản Facebook
 [ ] - Email verification (gửi mã xác nhận) - Gửi mã xác nhận đến email để xác thực tài khoản
 [x] - Password strength indicator - Hiển thị độ mạnh của mật khẩu khi người dùng nhập
-[ ] - Terms & conditions checkbox - Checkbox đồng ý với điều khoản sử dụng
-[ ] - Privacy policy checkbox - Checkbox đồng ý với chính sách bảo mật
+[x] - Terms & conditions checkbox - Checkbox đồng ý với điều khoản sử dụng
+[x] - Privacy policy checkbox - Checkbox đồng ý với chính sách bảo mật
  
 1.2. Login (Đăng nhập)
 [x] - Login bằng email/password - Đăng nhập bằng email và mật khẩu đã đăng ký
