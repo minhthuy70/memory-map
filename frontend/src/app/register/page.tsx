@@ -16,7 +16,6 @@ export default function RegisterPage() {
     name: '',
   });
   const [agreedToTerms, setAgreedToTerms] = useState(false);
-  const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -25,12 +24,7 @@ export default function RegisterPage() {
     setError('');
 
     if (!agreedToTerms) {
-      setError('Bạn phải đồng ý với điều khoản sử dụng');
-      return;
-    }
-
-    if (!agreedToPrivacy) {
-      setError('Bạn phải đồng ý với chính sách bảo mật');
+      setError('Bạn phải đồng ý với điều khoản sử dụng và chính sách bảo mật');
       return;
     }
 
@@ -119,8 +113,8 @@ export default function RegisterPage() {
               </p>
             </div>
 
-            {/* Terms and Privacy Checkboxes */}
-            <div className="space-y-3">
+            {/* Terms and Privacy Checkbox */}
+            <div>
               <label className="flex items-start gap-3 cursor-pointer">
                 <input
                   type="checkbox"
@@ -133,18 +127,7 @@ export default function RegisterPage() {
                   <Link href="/terms" className="text-primary hover:text-primary-hover underline">
                     điều khoản sử dụng
                   </Link>
-                </span>
-              </label>
-
-              <label className="flex items-start gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={agreedToPrivacy}
-                  onChange={(e) => setAgreedToPrivacy(e.target.checked)}
-                  className="mt-1 w-4 h-4 border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-700 text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0"
-                />
-                <span className="text-sm text-slate-600 dark:text-slate-400">
-                  Tôi đồng ý với{' '}
+                  {' '}và{' '}
                   <Link href="/privacy" className="text-primary hover:text-primary-hover underline">
                     chính sách bảo mật
                   </Link>
