@@ -88,7 +88,16 @@ export default function Home() {
       </main>
 
       <footer className="text-center py-8 text-slate-600 dark:text-slate-400">
-        <p> 2026 Memory Map. Made with </p>
+        <p>© 2026 Memory Map. Made with ❤️</p>
+        <div className="flex justify-center gap-4 mt-4 text-sm">
+          <Link href="/terms" className="hover:text-primary hover:underline">
+            Điều khoản sử dụng
+          </Link>
+          <span>|</span>
+          <Link href="/privacy" className="hover:text-primary hover:underline">
+            Chính sách bảo mật
+          </Link>
+        </div>
       </footer>
     </div>
   );

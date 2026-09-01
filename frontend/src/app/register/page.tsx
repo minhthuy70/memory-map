@@ -15,12 +15,25 @@ export default function RegisterPage() {
     password: '',
     name: '',
   });
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [agreedToPrivacy, setAgreedToPrivacy] = useState(false);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    if (!agreedToTerms) {
+      setError('Bạn phải đồng ý với điều khoản sử dụng');
+      return;
+    }
+
+    if (!agreedToPrivacy) {
+      setError('Bạn phải đồng ý với chính sách bảo mật');
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -104,6 +117,39 @@ export default function RegisterPage() {
               <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                 Minimum 6 characters
               </p>
+            </div>
+
+            {/* Terms and Privacy Checkboxes */}
+            <div className="space-y-3">
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={agreedToTerms}
+                  onChange={(e) => setAgreedToTerms(e.target.checked)}
+                  className="mt-1 w-4 h-4 border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-700 text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0"
+                />
+                <span className="text-sm text-slate-600 dark:text-slate-400">
+                  Tôi đồng ý với{' '}
+                  <Link href="/terms" className="text-primary hover:text-primary-hover underline">
+                    điều khoản sử dụng
+                  </Link>
+                </span>
+              </label>
+
+              <label className="flex items-start gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={agreedToPrivacy}
+                  onChange={(e) => setAgreedToPrivacy(e.target.checked)}
+                  className="mt-1 w-4 h-4 border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-700 text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0"
+                />
+                <span className="text-sm text-slate-600 dark:text-slate-400">
+                  Tôi đồng ý với{' '}
+                  <Link href="/privacy" className="text-primary hover:text-primary-hover underline">
+                    chính sách bảo mật
+                  </Link>
+                </span>
+              </label>
             </div>
 
             <button
