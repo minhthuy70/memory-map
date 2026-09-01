@@ -176,7 +176,7 @@ export default function MemoryDetailPage() {
           <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
           <button
             onClick={() => router.push('/dashboard')}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover"
           >
             Back to Dashboard
           </button>
@@ -292,7 +292,7 @@ export default function MemoryDetailPage() {
                 </h3>
                 <button
                   onClick={() => setShowImageUpload(true)}
-                  className="flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
+                  className="flex items-center gap-1 text-sm text-primary dark:text-accent hover:text-primary-hover dark:hover:text-accent-light"
                 >
                   <ImagePlus className="h-4 w-4" />
                   Add Photo
@@ -357,7 +357,7 @@ export default function MemoryDetailPage() {
             <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
               <button
                 onClick={() => setShowImageUpload(true)}
-                className="flex items-center justify-center gap-2 w-full py-4 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg text-slate-600 dark:text-slate-400 hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-4 border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg text-slate-600 dark:text-slate-400 hover:border-primary dark:hover:border-accent hover:text-primary dark:hover:text-accent transition-colors"
               >
                 <ImagePlus className="h-5 w-5" />
                 Add Your First Photo
@@ -383,7 +383,7 @@ export default function MemoryDetailPage() {
                   type="url"
                   value={imageUrl}
                   onChange={(e) => setImageUrl(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                  className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
                   placeholder="https://example.com/image.jpg"
                   required
                 />
@@ -407,7 +407,7 @@ export default function MemoryDetailPage() {
                 <button
                   type="submit"
                   disabled={isUploadingImage}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                  className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                 >
                   {isUploadingImage ? (
                     <>
@@ -428,7 +428,7 @@ export default function MemoryDetailPage() {
                   </div>
                   <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                     <div
-                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                      className="bg-primary h-2 rounded-full transition-all duration-300"
                       style={{ width: `${uploadProgress}%` }}
                     />
                   </div>

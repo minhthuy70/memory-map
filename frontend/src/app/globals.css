@@ -10,6 +10,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Yellow - Cyan Sea Tone */
+  --color-primary: #0891b2;
+  --color-primary-hover: #0e7490;
+  --color-secondary: #eab308;
+  --color-secondary-hover: #ca8a04;
+  --color-accent: #06b6d4;
+  --color-accent-light: #22d3ee;
+  --color-surface: #f0fdfa;
+  --color-surface-dark: #164e63;
 }
 
 @media (prefers-color-scheme: dark) {

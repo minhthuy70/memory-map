@@ -98,7 +98,7 @@ export default function StatisticsPage() {
             </p>
             <button
               onClick={() => router.push('/memories/new')}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover"
             >
               Add Your First Memory
             </button>
@@ -171,7 +171,7 @@ export default function StatisticsPage() {
                       </div>
                       <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                         <div
-                          className="bg-blue-600 h-2 rounded-full transition-all"
+                          className="bg-primary h-2 rounded-full transition-all"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
@@ -203,7 +203,7 @@ export default function StatisticsPage() {
                       </div>
                       <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                         <div
-                          className="bg-green-600 h-2 rounded-full transition-all"
+                          className="bg-secondary h-2 rounded-full transition-all"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
@@ -234,7 +234,7 @@ export default function StatisticsPage() {
                       </div>
                       <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                         <div
-                          className="bg-purple-600 h-2 rounded-full transition-all"
+                          className="bg-accent h-2 rounded-full transition-all"
                           style={{ width: `${percentage}%` }}
                         />
                       </div>

@@ -159,10 +159,10 @@ export default function MemoryMap({
         <div className="absolute bottom-4 right-4 z-[1000]">
           <button
             onClick={handleGetCurrentLocation}
-            className="p-3 bg-white dark:bg-slate-800 rounded-full shadow-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+            className="p-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary-hover transition-colors"
             title="Get my location"
           >
-            <Navigation className="h-5 w-5 text-slate-600 dark:text-slate-400" />
+            <Navigation className="h-5 w-5" />
           </button>
         </div>
       )}

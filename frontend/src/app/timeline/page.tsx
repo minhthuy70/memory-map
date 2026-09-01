@@ -124,7 +124,7 @@ export default function TimelinePage() {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+              className="px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
             >
               <option value="date-newest">Newest</option>
               <option value="date-oldest">Oldest</option>
@@ -160,7 +160,7 @@ export default function TimelinePage() {
             </p>
             <button
               onClick={() => router.push('/memories/new')}
-              className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover"
             >
               Add Your First Memory
             </button>
@@ -182,7 +182,7 @@ export default function TimelinePage() {
                         onClick={() => router.push(`/memories/${memory.id}`)}
                         className="relative bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-4 hover:shadow-md transition-shadow cursor-pointer"
                       >
-                        <div className="absolute left-[-34px] top-4 w-4 h-4 bg-blue-600 rounded-full border-4 border-slate-50 dark:border-slate-900" />
+                        <div className="absolute left-[-34px] top-4 w-4 h-4 bg-primary rounded-full border-4 border-slate-50 dark:border-slate-900" />
                         <div className="flex items-start gap-3">
                           <span className="text-3xl">{memory.category.icon}</span>
                           <div className="flex-1">

@@ -8,7 +8,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
       <nav className="flex items-center justify-between p-6 max-w-7xl mx-auto">
         <div className="flex items-center gap-2">
-          <MapPin className="h-8 w-8 text-blue-600" />
+          <MapPin className="h-8 w-8 text-primary" />
           <span className="text-2xl font-bold text-slate-900 dark:text-white">Memory Map</span>
         </div>
         <div className="flex gap-4">
@@ -20,7 +20,7 @@ export default function Home() {
           </Link>
           <Link 
             href="/register"
-            className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+            className="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary-hover transition-colors"
           >
             Sign Up
           </Link>
@@ -37,7 +37,7 @@ export default function Home() {
           </p>
           <Link 
             href="/register"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white text-lg rounded-full hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white text-lg rounded-full hover:bg-primary-hover transition-colors shadow-lg hover:shadow-xl"
           >
             <Heart className="h-5 w-5" />
             Bắt đầu lưu kỷ niệm
@@ -45,10 +45,10 @@ export default function Home() {
         </div>
 
         <div className="relative h-96 md:h-[500px] bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden shadow-2xl">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-purple-400/20" />
+          <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-secondary/20" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <MapPin className="h-16 w-16 text-blue-600 dark:text-blue-400 mx-auto mb-4 animate-pulse" />
+              <MapPin className="h-16 w-16 text-primary dark:text-accent mx-auto mb-4 animate-pulse" />
               <p className="text-slate-600 dark:text-slate-400 text-lg">
                 Bản đồ kỷ niệm của bạn
               </p>
@@ -58,7 +58,7 @@ export default function Home() {
 
         <div className="grid md:grid-cols-3 gap-8 mt-16">
           <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg">
-            <MapPin className="h-12 w-12 text-blue-600 mb-4" />
+            <MapPin className="h-12 w-12 text-primary mb-4" />
             <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
               Đánh dấu vị trí
             </h3>
@@ -67,7 +67,7 @@ export default function Home() {
             </p>
           </div>
           <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg">
-            <Heart className="h-12 w-12 text-red-500 mb-4" />
+            <Heart className="h-12 w-12 text-secondary mb-4" />
             <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
               Lưu cảm xúc
             </h3>
@@ -76,7 +76,7 @@ export default function Home() {
             </p>
           </div>
           <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg">
-            <MapPin className="h-12 w-12 text-purple-600 mb-4" />
+            <MapPin className="h-12 w-12 text-accent mb-4" />
             <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">
               Khám phá lại
             </h3>
