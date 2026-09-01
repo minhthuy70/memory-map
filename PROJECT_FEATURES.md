@@ -646,9 +646,8 @@ GET https://nominatim.openstreetmap.org/search
 
 ## 9.7 Reverse Geocoding
 
-**Status:** ⚪ MISSING  
-**Priority:** P3  
-**Feature:** 🔵 PLANNED
+**Status:** 🟢 IMPLEMENTED  
+**Priority:** P3
 
 ### Purpose
 Convert coordinates to location name automatically
@@ -923,14 +922,14 @@ Then: Return 403 Forbidden
 
 ## 10.6 Memory Sorting
 
-**Status:** 🟡 PARTIALLY IMPLEMENTED  
+**Status:** � IMPLEMENTED  
 **Priority:** P1
 
 ### Available Sort Options
 - Date (newest first) - IMPLEMENTED
-- Date (oldest first) - ⚪ MISSING
-- Title (A-Z) - ⚪ MISSING
-- Title (Z-A) - ⚪ MISSING
+- Date (oldest first) - IMPLEMENTED
+- Title (A-Z) - IMPLEMENTED
+- Title (Z-A) - IMPLEMENTED
 
 ## 10.7 Memory Filtering
 
