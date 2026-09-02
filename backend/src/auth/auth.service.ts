@@ -6,6 +6,7 @@ import {
 
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
+import { SessionsService } from '../sessions/sessions.service';
 
 import * as bcrypt from 'bcrypt';
 
@@ -16,6 +17,7 @@ export class AuthService {
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
+    private readonly sessionsService: SessionsService,
   ) {}
 
   async validateUser(
@@ -85,6 +87,8 @@ export class AuthService {
   async login(
     email: string,
     password: string,
+    deviceInfo?: string,
+    ipAddress?: string,
   ) {
     const user =
       await this.validateUser(
@@ -103,9 +107,18 @@ export class AuthService {
       sub: user.id,
     };
 
+    const token = this.jwtService.sign(payload);
+
+    // Create session
+    await this.sessionsService.createSession(
+      user.id,
+      token,
+      deviceInfo,
+      ipAddress,
+    );
+
     return {
-      access_token:
-        this.jwtService.sign(payload),
+      access_token: token,
 
       user: {
         id: user.id,

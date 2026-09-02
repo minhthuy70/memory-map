@@ -32,6 +32,7 @@ model User {
   createdAt         DateTime  @default(now()) @map("created_at")
   updatedAt         DateTime  @updatedAt @map("updated_at")
   memories          Memory[]
+  sessions          Session[]
 
   @@map("users")
 }
@@ -80,4 +81,21 @@ model MemoryImage {
   @@map("memory_images")
   @@index([memoryId])
   @@index([memoryId, order])
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  userId       String   @map("user_id")
+  token        String   @unique
+  deviceInfo   String?  @map("device_info")
+  ipAddress    String?  @map("ip_address")
+  lastActivity DateTime @default(now()) @map("last_activity")
+  expiresAt    DateTime @map("expires_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+  @@index([userId])
+  @@index([token])
+  @@index([expiresAt])
 }

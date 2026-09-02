@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { MapPin, User, Mail, Calendar, Edit, Lock, ArrowLeft, LogOut } from 'lucide-react';
+import { MapPin, User, Mail, Calendar, Edit, Lock, ArrowLeft, LogOut, Shield } from 'lucide-react';
 import { useAuthStore } from '@/store/auth-store';
 import { authApi } from '@/lib/auth-api';
+import SessionsManager from '@/components/SessionsManager';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function ProfilePage() {
   const [passwordError, setPasswordError] = useState('');
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showDeactivateConfirm, setShowDeactivateConfirm] = useState(false);
+  const [showSessionsManager, setShowSessionsManager] = useState(false);
 
   const calculatePasswordStrength = (password: string): { score: number; label: string; bgColor: string; textColor: string } => {
     let score = 0;
@@ -135,8 +137,8 @@ export default function ProfilePage() {
     }
   };
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     router.push('/');
   };
 
@@ -272,7 +274,7 @@ export default function ProfilePage() {
                 className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors"
               >
                 <Edit className="h-4 w-4" />
-                {isEditing ? 'Cancel Edit' : 'Edit Profile'}
+                {isEditing ? 'Hủy chỉnh sửa' : 'Chỉnh sửa hồ sơ'}
               </button>
 
               <button
@@ -280,7 +282,15 @@ export default function ProfilePage() {
                 className="flex items-center gap-2 px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors"
               >
                 <Lock className="h-4 w-4" />
-                {isChangingPassword ? 'Cancel' : 'Change Password'}
+                {isChangingPassword ? 'Hủy' : 'Đổi mật khẩu'}
+              </button>
+
+              <button
+                onClick={() => setShowSessionsManager(!showSessionsManager)}
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                <Shield className="h-4 w-4" />
+                {showSessionsManager ? 'Đóng quản lý phiên' : 'Quản lý phiên đăng nhập'}
               </button>
 
               <button
@@ -288,7 +298,7 @@ export default function ProfilePage() {
                 className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
               >
                 <Lock className="h-4 w-4" />
-                Deactivate Account
+                Vô hiệu hóa tài khoản
               </button>
 
               <button
@@ -296,9 +306,16 @@ export default function ProfilePage() {
                 className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
               >
                 <Lock className="h-4 w-4" />
-                Delete Account
+                Xóa tài khoản
               </button>
             </div>
+
+            {/* Sessions Manager */}
+            {showSessionsManager && (
+              <div className="mt-6 p-6 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                <SessionsManager />
+              </div>
+            )}
 
             {/* Edit Profile Form */}
             {isEditing && (
@@ -460,7 +477,7 @@ export default function ProfilePage() {
                       try {
                         setIsLoading(true);
                         await authApi.deleteAccount();
-                        logout();
+                        await logout();
                         router.push('/');
                       } catch (err: unknown) {
                         setError((err as Error)?.message || 'Failed to delete account');
@@ -498,7 +515,7 @@ export default function ProfilePage() {
                       try {
                         setIsLoading(true);
                         await authApi.deactivateAccount();
-                        logout();
+                        await logout();
                         router.push('/');
                       } catch (err: unknown) {
                         setError((err as Error)?.message || 'Failed to deactivate account');

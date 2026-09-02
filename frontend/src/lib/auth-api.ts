@@ -66,4 +66,9 @@ export const authApi = {
     const response = await api.delete('/auth/delete-account');
     return response.data;
   },
+
+  logout: async () => {
+    const response = await api.post('/auth/logout');
+    return response.data;
+  },
 };

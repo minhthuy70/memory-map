@@ -37,11 +37,11 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Edit full name - Chỉnh sửa tên đầy đủ
 [ ] - Edit email (with verification) - Thay đổi email với xác thực
 [x] - Change password (current + new + confirm) - Đổi mật khẩu (cũ + mới + xác nhận)
-[x] - Upload avatar - Tải lên ảnh đại diện
-[ ] - Delete account (with confirmation) - Xóa tài khoản với xác nhận
-[ ] - Account deactivation - Vô hiệu hóa tài khoản tạm thời
+[ ] - Upload avatar - Tải lên ảnh đại diện
+[x] - Delete account (with confirmation) - Xóa tài khoản với xác nhận
+[x] - Account deactivation - Vô hiệu hóa tài khoản tạm thời
 [x] - View account creation date - Xem ngày tạo tài khoản
-[ ] - View last login date - Xem ngày đăng nhập gần nhất
+[x] - View last login date - Xem ngày đăng nhập gần nhất
 [x] - View total memories count - Xem tổng số kỷ niệm
  
 1.5. Session Management (Quản lý phiên đăng nhập)

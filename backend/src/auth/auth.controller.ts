@@ -7,10 +7,12 @@ import {
   Put,
   Request,
   UseGuards,
+  Headers as NestHeaders,
 } from '@nestjs/common';
 
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import { SessionsService } from '../sessions/sessions.service';
 
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
@@ -21,6 +23,7 @@ import { ChangePasswordDto } from './dto/change-password.dto';
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
+    private readonly sessionsService: SessionsService,
   ) {}
 
   @Post('register')
@@ -37,10 +40,17 @@ export class AuthController {
   @Post('login')
   async login(
     @Body() loginDto: LoginDto,
+    @NestHeaders('user-agent') userAgent?: string,
+    @NestHeaders('x-forwarded-for') forwardedFor?: string,
   ) {
+    const deviceInfo = userAgent || 'Unknown Device';
+    const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
+    
     return this.authService.login(
       loginDto.email,
       loginDto.password,
+      deviceInfo,
+      ipAddress,
     );
   }
 
@@ -92,5 +102,16 @@ export class AuthController {
     @Request() req: any,
   ) {
     return this.authService.deleteAccount(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('logout')
+  async logout(
+    @Request() req: any,
+    @NestHeaders('authorization') authHeader: string,
+  ) {
+    const token = authHeader?.replace('Bearer ', '');
+    await this.sessionsService.deleteSessionByToken(token);
+    return { message: 'Logged out successfully' };
   }
 }

@@ -6,6 +6,8 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 
 import { UsersModule } from '../users/users.module';
+import { SessionsModule } from '../sessions/sessions.module';
+import { SessionsService } from '../sessions/sessions.service';
 
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
@@ -14,6 +16,7 @@ import { LocalStrategy } from './local.strategy';
   imports: [
     ConfigModule,
     UsersModule,
+    SessionsModule,
 
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -47,6 +50,7 @@ import { LocalStrategy } from './local.strategy';
     AuthService,
     JwtStrategy,
     LocalStrategy,
+    SessionsService,
   ],
 
   exports: [

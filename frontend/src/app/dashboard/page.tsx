@@ -166,8 +166,8 @@ export default function DashboardPage() {
     isAuthenticated,
   ]);
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     router.push('/');
   };
 

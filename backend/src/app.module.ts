@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { MemoriesModule } from './memories/memories.module';
 import { CategoriesModule } from './categories/categories.module';
+import { SessionsModule } from './sessions/sessions.module';
 import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
@@ -23,6 +24,8 @@ import { PrismaModule } from './prisma/prisma.module';
     MemoriesModule,
 
     CategoriesModule,
+
+    SessionsModule,
   ],
 })
 export class AppModule {}
