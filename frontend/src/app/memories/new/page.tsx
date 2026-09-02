@@ -3,7 +3,7 @@
 
 import { Suspense, useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { MapPin, Calendar, Save, X } from 'lucide-react';
+import { MapPin, Calendar, Save, X, ImagePlus } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
@@ -49,6 +49,7 @@ function NewMemoryForm() {
     memoryDate: new Date().toISOString().split('T')[0],
     mood: 'HAPPY',
     categoryId: '',
+    imageUrls: [] as string[],
   });
 
   const [selectedLocation, setSelectedLocation] = useState<{
@@ -165,6 +166,7 @@ function NewMemoryForm() {
         memoryDate: formData.memoryDate,
         mood: formData.mood,
         categoryId: formData.categoryId,
+        imageUrls: formData.imageUrls.filter(url => url.trim() !== ''),
       };
 
       await memoriesApi.create(memoryData);
@@ -253,6 +255,60 @@ function NewMemoryForm() {
                   Click &quot;Select on Map&quot; and choose a location.
                 </p>
               )}
+
+              {/* Manual Coordinate Input */}
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
+                    Latitude
+                  </label>
+                  <input
+                    type="number"
+                    step="any"
+                    value={formData.latitude || ''}
+                    onChange={(e) => {
+                      const lat = parseFloat(e.target.value);
+                      setFormData({
+                        ...formData,
+                        latitude: isNaN(lat) ? 0 : lat,
+                      });
+                      if (!isNaN(lat) && formData.longitude !== 0) {
+                        setSelectedLocation({
+                          lat: lat,
+                          lng: formData.longitude,
+                        });
+                      }
+                    }}
+                    className="w-full px-2 py-1.5 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                    placeholder="21.0285"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
+                    Longitude
+                  </label>
+                  <input
+                    type="number"
+                    step="any"
+                    value={formData.longitude || ''}
+                    onChange={(e) => {
+                      const lng = parseFloat(e.target.value);
+                      setFormData({
+                        ...formData,
+                        longitude: isNaN(lng) ? 0 : lng,
+                      });
+                      if (!isNaN(lng) && formData.latitude !== 0) {
+                        setSelectedLocation({
+                          lat: formData.latitude,
+                          lng: lng,
+                        });
+                      }
+                    }}
+                    className="w-full px-2 py-1.5 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                    placeholder="105.8542"
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="h-80">
@@ -405,6 +461,81 @@ function NewMemoryForm() {
                 </option>
               ))}
             </select>
+          </div>
+
+          {/* Images */}
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-4 space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
+                Images
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="url"
+                  value={formData.imageUrls[formData.imageUrls.length - 1] || ''}
+                  onChange={(e) => {
+                    const newUrls = [...formData.imageUrls];
+                    if (newUrls.length === 0) {
+                      newUrls.push(e.target.value);
+                    } else {
+                      newUrls[newUrls.length - 1] = e.target.value;
+                    }
+                    setFormData({
+                      ...formData,
+                      imageUrls: newUrls,
+                    });
+                  }}
+                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  placeholder="https://example.com/image.jpg"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const lastUrl = formData.imageUrls[formData.imageUrls.length - 1];
+                    if (lastUrl && lastUrl.trim() !== '') {
+                      setFormData({
+                        ...formData,
+                        imageUrls: [...formData.imageUrls, ''],
+                      });
+                    }
+                  }}
+                  className="px-3 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+
+            {/* Image Preview */}
+            {formData.imageUrls.filter(url => url.trim() !== '').length > 0 && (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {formData.imageUrls.filter(url => url.trim() !== '').map((url, index) => (
+                  <div key={index} className="relative group">
+                    <img
+                      src={url}
+                      alt={`Preview ${index + 1}`}
+                      className="w-full h-24 object-cover rounded-lg border border-slate-200 dark:border-slate-700"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const newUrls = formData.imageUrls.filter((_, i) => i !== index);
+                        setFormData({
+                          ...formData,
+                          imageUrls: newUrls,
+                        });
+                      }}
+                      className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Submit */}

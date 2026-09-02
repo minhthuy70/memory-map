@@ -69,7 +69,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Memory categories summary - Tóm tắt danh mục kỷ niệm
 [x] - Mood distribution overview - Tổng quan phân phối tâm trạng
  
- bạn kiểm tra tính năng này đã làm chưa nếu chưa thì làm đi, cái nào chưa làm thì làm, sau khi làm thì nói kết quả cho tui biết tính năng nào đã làm đầy đủ, tính năng nào chưa
+
 2.2. Create Memory (Tạo kỷ niệm)
 [x] - Select location on map - Chọn vị trí trên bản đồ
 [x] - Manual coordinate input - Nhập tọa độ thủ công
@@ -90,6 +90,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Loading state - Trạng thái đang tải
 [x] - Error display - Hiển thị lỗi
  
+  bạn kiểm tra tính năng này đã làm chưa nếu chưa thì làm đi, cái nào chưa làm thì làm, sau khi làm thì nói kết quả cho tui biết tính năng nào đã làm đầy đủ, tính năng nào chưa
 2.3. Edit Memory (Chỉnh sửa kỷ niệm)
 [x] - Load existing memory data - Tải dữ liệu kỷ niệm hiện có
 [x] - Pre-fill form with current data - Điền trước biểu mẫu với dữ liệu hiện tại
