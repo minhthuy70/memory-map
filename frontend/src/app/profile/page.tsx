@@ -28,14 +28,21 @@ export default function ProfilePage() {
   });
   const [passwordError, setPasswordError] = useState('');
 
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push('/login');
-      return;
-    }
+  const calculatePasswordStrength = (password: string): { score: number; label: string; bgColor: string; textColor: string } => {
+    let score = 0;
+    if (password.length >= 8) score++;
+    if (password.length >= 12) score++;
+    if (/[a-z]/.test(password)) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[0-9]/.test(password)) score++;
+    if (/[^a-zA-Z0-9]/.test(password)) score++;
 
-    loadProfile();
-  }, [isAuthenticated, router]);
+    if (score <= 2) return { score, label: 'Yếu', bgColor: 'bg-red-500', textColor: 'text-red-500' };
+    if (score <= 4) return { score, label: 'Trung bình', bgColor: 'bg-yellow-500', textColor: 'text-yellow-500' };
+    return { score, label: 'Mạnh', bgColor: 'bg-green-500', textColor: 'text-green-500' };
+  };
+
+  const newPasswordStrength = calculatePasswordStrength(passwordForm.newPassword);
 
   const loadProfile = async () => {
     try {
@@ -54,6 +61,15 @@ export default function ProfilePage() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      router.push('/login');
+      return;
+    }
+
+    loadProfile();
+  }, [isAuthenticated, router]);
 
   const handleProfileUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -160,7 +176,7 @@ export default function ProfilePage() {
       <main className="max-w-4xl mx-auto px-4 py-8">
         <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg overflow-hidden">
           {/* Profile Header */}
-          <div className="bg-gradient-to-r from-primary to-accent p-8 text-white">
+          <div className="bg-linear-to-r from-primary to-accent p-8 text-white">
             <div className="flex items-center gap-6">
               <div className="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center overflow-hidden border-4 border-white/30">
                 {profileData?.avatar ? (
@@ -344,6 +360,23 @@ export default function ProfilePage() {
                     required
                     minLength={6}
                   />
+                  {passwordForm.newPassword && (
+                    <div className="mt-2">
+                      <div className="flex gap-1 mb-1">
+                        {[1, 2, 3, 4, 5, 6].map((i) => (
+                          <div
+                            key={i}
+                            className={`h-1.5 flex-1 rounded-full transition-all ${
+                              i <= newPasswordStrength.score ? newPasswordStrength.bgColor : 'bg-slate-200 dark:bg-slate-700'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">
+                        Độ mạnh: <span className={`font-medium ${newPasswordStrength.textColor}`}>{newPasswordStrength.label}</span>
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div>

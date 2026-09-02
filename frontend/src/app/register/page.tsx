@@ -19,6 +19,22 @@ export default function RegisterPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const calculatePasswordStrength = (password: string): { score: number; label: string; bgColor: string; textColor: string } => {
+    let score = 0;
+    if (password.length >= 8) score++;
+    if (password.length >= 12) score++;
+    if (/[a-z]/.test(password)) score++;
+    if (/[A-Z]/.test(password)) score++;
+    if (/[0-9]/.test(password)) score++;
+    if (/[^a-zA-Z0-9]/.test(password)) score++;
+
+    if (score <= 2) return { score, label: 'Yếu', bgColor: 'bg-red-500', textColor: 'text-red-500' };
+    if (score <= 4) return { score, label: 'Trung bình', bgColor: 'bg-yellow-500', textColor: 'text-yellow-500' };
+    return { score, label: 'Mạnh', bgColor: 'bg-green-500', textColor: 'text-green-500' };
+  };
+
+  const passwordStrength = calculatePasswordStrength(formData.password);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -42,7 +58,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex items-center justify-center p-6">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2 mb-6">
@@ -108,6 +124,23 @@ export default function RegisterPage() {
                 className="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
                 placeholder="••••••••"
               />
+              {formData.password && (
+                <div className="mt-2">
+                  <div className="flex gap-1 mb-1">
+                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                      <div
+                        key={i}
+                        className={`h-1.5 flex-1 rounded-full transition-all ${
+                          i <= passwordStrength.score ? passwordStrength.bgColor : 'bg-slate-200 dark:bg-slate-700'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    Độ mạnh: <span className={`font-medium ${passwordStrength.textColor}`}>{passwordStrength.label}</span>
+                  </p>
+                </div>
+              )}
               <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                 Minimum 6 characters
               </p>
