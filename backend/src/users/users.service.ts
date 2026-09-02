@@ -103,4 +103,34 @@ export class UsersService {
       },
     });
   }
+
+  async updateLastLogin(userId: string) {
+    return this.prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        lastLoginAt: new Date(),
+      },
+    });
+  }
+
+  async deactivateAccount(userId: string) {
+    return this.prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        isActive: false,
+      },
+    });
+  }
+
+  async deleteAccount(userId: string) {
+    return this.prisma.user.delete({
+      where: {
+        id: userId,
+      },
+    });
+  }
 }

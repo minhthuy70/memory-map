@@ -27,6 +27,8 @@ model User {
   avatar            String?
   loginAttempts     Int       @default(0) @map("login_attempts")
   lockedUntil       DateTime? @map("locked_until")
+  lastLoginAt       DateTime? @map("last_login_at")
+  isActive          Boolean   @default(true) @map("is_active")
   createdAt         DateTime  @default(now()) @map("created_at")
   updatedAt         DateTime  @updatedAt @map("updated_at")
   memories          Memory[]

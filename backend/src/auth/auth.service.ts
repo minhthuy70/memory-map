@@ -55,6 +55,9 @@ export class AuthService {
         await this.usersService.resetLoginAttempts(user.id);
       }
 
+      // Update last login date
+      await this.usersService.updateLastLogin(user.id);
+
       const {
         passwordHash,
         ...result
@@ -228,5 +231,29 @@ export class AuthService {
       ...result,
       memoryCount,
     };
+  }
+
+  async deactivateAccount(userId: string) {
+    const user = await this.usersService.findById(userId);
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    await this.usersService.deactivateAccount(userId);
+
+    return { message: 'Account deactivated successfully' };
+  }
+
+  async deleteAccount(userId: string) {
+    const user = await this.usersService.findById(userId);
+
+    if (!user) {
+      throw new UnauthorizedException('User not found');
+    }
+
+    await this.usersService.deleteAccount(userId);
+
+    return { message: 'Account deleted successfully' };
   }
 }

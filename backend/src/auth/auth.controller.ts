@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Post,
   Put,
@@ -75,5 +76,21 @@ export class AuthController {
       changePasswordDto.currentPassword,
       changePasswordDto.newPassword,
     );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('deactivate-account')
+  async deactivateAccount(
+    @Request() req: any,
+  ) {
+    return this.authService.deactivateAccount(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('delete-account')
+  async deleteAccount(
+    @Request() req: any,
+  ) {
+    return this.authService.deleteAccount(req.user.id);
   }
 }

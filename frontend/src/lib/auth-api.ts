@@ -56,4 +56,14 @@ export const authApi = {
     const response = await api.post('/auth/change-password', data);
     return response.data;
   },
+
+  deactivateAccount: async () => {
+    const response = await api.post('/auth/deactivate-account');
+    return response.data;
+  },
+
+  deleteAccount: async () => {
+    const response = await api.delete('/auth/delete-account');
+    return response.data;
+  },
 };

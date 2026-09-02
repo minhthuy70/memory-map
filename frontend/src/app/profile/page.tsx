@@ -27,6 +27,8 @@ export default function ProfilePage() {
     confirmPassword: '',
   });
   const [passwordError, setPasswordError] = useState('');
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showDeactivateConfirm, setShowDeactivateConfirm] = useState(false);
 
   const calculatePasswordStrength = (password: string): { score: number; label: string; bgColor: string; textColor: string } => {
     let score = 0;
@@ -241,6 +243,18 @@ export default function ProfilePage() {
               </div>
 
               <div className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
+                <Calendar className="h-6 w-6 text-slate-600 dark:text-slate-400" />
+                <div>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">Last Login</p>
+                  <p className="font-medium text-slate-900 dark:text-white">
+                    {profileData?.lastLoginAt
+                      ? new Date(profileData.lastLoginAt).toLocaleString('vi-VN')
+                      : 'Never'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg">
                 <MapPin className="h-6 w-6 text-slate-600 dark:text-slate-400" />
                 <div>
                   <p className="text-sm text-slate-600 dark:text-slate-400">Total Memories</p>
@@ -267,6 +281,22 @@ export default function ProfilePage() {
               >
                 <Lock className="h-4 w-4" />
                 {isChangingPassword ? 'Cancel' : 'Change Password'}
+              </button>
+
+              <button
+                onClick={() => setShowDeactivateConfirm(true)}
+                className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+              >
+                <Lock className="h-4 w-4" />
+                Deactivate Account
+              </button>
+
+              <button
+                onClick={() => setShowDeleteConfirm(true)}
+                className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+              >
+                <Lock className="h-4 w-4" />
+                Delete Account
               </button>
             </div>
 
@@ -413,6 +443,82 @@ export default function ProfilePage() {
                   </button>
                 </div>
               </form>
+            )}
+
+            {/* Delete Account Confirmation */}
+            {showDeleteConfirm && (
+              <div className="mt-6 p-6 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800">
+                <h3 className="text-lg font-semibold text-red-900 dark:text-red-100 mb-4">
+                  Delete Account
+                </h3>
+                <p className="text-sm text-red-700 dark:text-red-300 mb-4">
+                  This action cannot be undone. All your memories and data will be permanently deleted.
+                </p>
+                <div className="flex gap-3">
+                  <button
+                    onClick={async () => {
+                      try {
+                        setIsLoading(true);
+                        await authApi.deleteAccount();
+                        logout();
+                        router.push('/');
+                      } catch (err: unknown) {
+                        setError((err as Error)?.message || 'Failed to delete account');
+                      } finally {
+                        setIsLoading(false);
+                      }
+                    }}
+                    disabled={isLoading}
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? 'Deleting...' : 'Delete Account'}
+                  </button>
+                  <button
+                    onClick={() => setShowDeleteConfirm(false)}
+                    className="px-4 py-2 bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-500 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Deactivate Account Confirmation */}
+            {showDeactivateConfirm && (
+              <div className="mt-6 p-6 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-200 dark:border-orange-800">
+                <h3 className="text-lg font-semibold text-orange-900 dark:text-orange-100 mb-4">
+                  Deactivate Account
+                </h3>
+                <p className="text-sm text-orange-700 dark:text-orange-300 mb-4">
+                  Your account will be deactivated. You can reactivate it by contacting support.
+                </p>
+                <div className="flex gap-3">
+                  <button
+                    onClick={async () => {
+                      try {
+                        setIsLoading(true);
+                        await authApi.deactivateAccount();
+                        logout();
+                        router.push('/');
+                      } catch (err: unknown) {
+                        setError((err as Error)?.message || 'Failed to deactivate account');
+                      } finally {
+                        setIsLoading(false);
+                      }
+                    }}
+                    disabled={isLoading}
+                    className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? 'Deactivating...' : 'Deactivate Account'}
+                  </button>
+                  <button
+                    onClick={() => setShowDeactivateConfirm(false)}
+                    className="px-4 py-2 bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-500 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
             )}
           </div>
         </div>
