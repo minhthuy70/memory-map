@@ -45,12 +45,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - View total memories count - Xem tổng số kỷ niệm
  
 1.5. Session Management (Quản lý phiên đăng nhập)
-[ ] - Auto logout after inactivity (30 minutes) - Tự động đăng xuất sau 30 phút không hoạt động
+[x] - Auto logout after inactivity (30 minutes) - Tự động đăng xuất sau 30 phút không hoạt động
 [x] - Manual logout button - Nút đăng xuất thủ công
-[ ] - Logout from all devices - Đăng xuất khỏi tất cả các thiết bị
-[ ] - View active sessions - Xem các phiên đăng nhập đang hoạt động
-[ ] - Revoke specific session - Hủy phiên đăng nhập cụ thể
-[ ] - Session timeout warning (5 minutes before) - Cảnh báo hết phiên trước 5 phút
+[x] - Logout from all devices - Đăng xuất khỏi tất cả các thiết bị
+[x] - View active sessions - Xem các phiên đăng nhập đang hoạt động
+[x] - Revoke specific session - Hủy phiên đăng nhập cụ thể
+[x] - Session timeout warning (5 minutes before) - Cảnh báo hết phiên trước 5 phút
  
 ================================================================================
  
@@ -69,6 +69,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Memory categories summary - Tóm tắt danh mục kỷ niệm
 [x] - Mood distribution overview - Tổng quan phân phối tâm trạng
  
+ bạn kiểm tra tính năng này đã làm chưa nếu chưa thì làm đi, cái nào chưa làm thì làm, sau khi làm thì nói kết quả cho tui biết tính năng nào đã làm đầy đủ, tính năng nào chưa
 2.2. Create Memory (Tạo kỷ niệm)
 [x] - Select location on map - Chọn vị trí trên bản đồ
 [x] - Manual coordinate input - Nhập tọa độ thủ công
