@@ -21,8 +21,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Remember me checkbox - Checkbox ghi nhớ đăng nhập cho lần sau
 [ ] - Forgot password link - Link để khôi phục mật khẩu khi quên
 [x] - Show/hide password toggle - Nút hiện/ẩn mật khẩu để kiểm tra
-[ ] - Login attempt limiting (5 attempts) - Giới hạn 5 lần đăng nhập thất bại
-[ ] - Account lockout after failed attempts - Khóa tài khoản sau quá nhiều lần đăng nhập thất bại
+[x] - Login attempt limiting (5 attempts) - Giới hạn 5 lần đăng nhập thất bại
+[x] - Account lockout after failed attempts - Khóa tài khoản sau quá nhiều lần đăng nhập thất bại
  
 1.3. Password Recovery (Khôi phục mật khẩu)
 [ ] - Forgot password form - Form nhập email để yêu cầu khôi phục mật khẩu

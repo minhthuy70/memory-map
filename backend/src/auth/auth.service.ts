@@ -27,19 +27,53 @@ export class AuthService {
         email,
       );
 
-    if (
-      user &&
-      (await bcrypt.compare(
-        password,
-        user.passwordHash,
-      ))
-    ) {
+    if (!user) {
+      return null;
+    }
+
+    // Check if account is locked
+    if (user.lockedUntil && new Date() < user.lockedUntil) {
+      const lockTimeRemaining = Math.ceil((user.lockedUntil.getTime() - Date.now()) / 60000);
+      throw new UnauthorizedException(
+        `Account is locked. Try again in ${lockTimeRemaining} minutes.`,
+      );
+    }
+
+    // Reset lock if expired
+    if (user.lockedUntil && new Date() >= user.lockedUntil) {
+      await this.usersService.resetLoginAttempts(user.id);
+    }
+
+    const isPasswordValid = await bcrypt.compare(
+      password,
+      user.passwordHash,
+    );
+
+    if (isPasswordValid) {
+      // Reset login attempts on successful login
+      if (user.loginAttempts > 0) {
+        await this.usersService.resetLoginAttempts(user.id);
+      }
+
       const {
         passwordHash,
         ...result
       } = user;
 
       return result;
+    }
+
+    // Increment login attempts on failed login
+    const newAttempts = user.loginAttempts + 1;
+    await this.usersService.incrementLoginAttempts(user.id);
+
+    // Lock account after 5 failed attempts for 15 minutes
+    if (newAttempts >= 5) {
+      const lockUntil = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
+      await this.usersService.lockAccount(user.id, lockUntil);
+      throw new UnauthorizedException(
+        'Too many failed login attempts. Account has been locked for 15 minutes.',
+      );
     }
 
     return null;

@@ -67,4 +67,40 @@ export class UsersService {
       },
     });
   }
+
+  async incrementLoginAttempts(userId: string) {
+    return this.prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        loginAttempts: {
+          increment: 1,
+        },
+      },
+    });
+  }
+
+  async resetLoginAttempts(userId: string) {
+    return this.prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        loginAttempts: 0,
+        lockedUntil: null,
+      },
+    });
+  }
+
+  async lockAccount(userId: string, lockedUntil: Date) {
+    return this.prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        lockedUntil,
+      },
+    });
+  }
 }
