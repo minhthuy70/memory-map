@@ -106,7 +106,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Cancel button - Nút hủy
 [x] - Validation with error messages - Kiểm tra với thông báo lỗi
 [x] - Loading state - Trạng thái đang tải
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
+
  
 2.4. Delete Memory (Xóa kỷ niệm)
 [x] - Delete button - Nút xóa
@@ -117,6 +117,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Redirect to dashboard - Chuyển hướng đến bảng điều khiển
 [x] - Loading state - Trạng thái đang tải
 [x] - Error handling - Xử lý lỗi
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 2.5. Memory Detail View (Xem chi tiết kỷ niệm)
 [x] - Display memory title - Hiển thị tiêu đề kỷ niệm
