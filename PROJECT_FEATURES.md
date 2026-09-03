@@ -155,7 +155,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Clear filters button - Nút xóa bộ lọc
 [x] - Filter combination support - Hỗ trợ kết hợp bộ lọc
 [x] - Filter count display - Hiển thị số lượng sau khi lọc
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
 
 ================================================================================
  
@@ -174,6 +173,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Current location button - Nút vị trí hiện tại
 [x] - Location search - Tìm kiếm địa điểm
 [x] - Fit bounds to show all markers - Tự động zoom để hiển thị tất cả marker
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 3.2. Map Rendering (Hiển thị bản đồ)
 [x] - Leaflet integration - Tích hợp Leaflet
