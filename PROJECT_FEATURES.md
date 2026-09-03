@@ -241,7 +241,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Error handling for failed requests - Xử lý lỗi khi request thất bại
 [x] - Loading indicator - Chỉ số đang tải
 [x] - Fallback to manual input - Fallback sang nhập thủ công
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 ================================================================================
  
@@ -262,6 +261,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Timeline sort options - Tùy chọn sắp xếp timeline
 [x] - Empty state - Trạng thái trống
 [x] - Add first memory CTA - CTA thêm kỷ niệm đầu tiên
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 4.2. Timeline Display (Hiển thị timeline)
 [x] - Newest first (default) - Mới nhất trước (mặc định)
