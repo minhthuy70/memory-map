@@ -13,6 +13,8 @@ const config_1 = require("@nestjs/config");
 const auth_service_1 = require("./auth.service");
 const auth_controller_1 = require("./auth.controller");
 const users_module_1 = require("../users/users.module");
+const sessions_module_1 = require("../sessions/sessions.module");
+const sessions_service_1 = require("../sessions/sessions.service");
 const jwt_strategy_1 = require("./jwt.strategy");
 const local_strategy_1 = require("./local.strategy");
 let AuthModule = class AuthModule {
@@ -23,6 +25,7 @@ exports.AuthModule = AuthModule = __decorate([
         imports: [
             config_1.ConfigModule,
             users_module_1.UsersModule,
+            sessions_module_1.SessionsModule,
             jwt_1.JwtModule.registerAsync({
                 imports: [config_1.ConfigModule],
                 inject: [config_1.ConfigService],
@@ -41,6 +44,7 @@ exports.AuthModule = AuthModule = __decorate([
             auth_service_1.AuthService,
             jwt_strategy_1.JwtStrategy,
             local_strategy_1.LocalStrategy,
+            sessions_service_1.SessionsService,
         ],
         exports: [
             auth_service_1.AuthService,

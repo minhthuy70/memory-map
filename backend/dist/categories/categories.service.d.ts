@@ -4,14 +4,14 @@ export declare class CategoriesService {
     constructor(prisma: PrismaService);
     findAll(): Promise<{
         id: string;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
         icon: string;
     }[]>;
     findById(id: string): Promise<{
         id: string;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
         icon: string;
     }>;
     seedCategories(): Promise<any[]>;

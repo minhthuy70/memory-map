@@ -4,8 +4,8 @@ export declare class CategoriesController {
     constructor(categoriesService: CategoriesService);
     findAll(): Promise<{
         id: string;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
         icon: string;
     }[]>;
     seed(): Promise<any[]>;

@@ -9,11 +9,20 @@ export declare class JwtStrategy extends JwtStrategy_base {
     constructor(configService: ConfigService, usersService: UsersService);
     validate(payload: any): Promise<{
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         email: string;
         name: string | null;
         avatar: string | null;
+        googleId: string | null;
+        facebookId: string | null;
+        isEmailVerified: boolean;
+        verificationCode: string | null;
+        verificationExpires: Date | null;
+        loginAttempts: number;
+        lockedUntil: Date | null;
+        lastLoginAt: Date | null;
+        isActive: boolean;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
 }
 export {};

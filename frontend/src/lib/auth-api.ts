@@ -11,13 +11,22 @@ export interface RegisterData {
   name?: string;
 }
 
+export interface OAuthData {
+  provider: 'google' | 'facebook';
+  email: string;
+  name?: string;
+  avatar?: string;
+  providerId: string;
+}
+
 export interface AuthResponse {
   access_token: string;
   user: {
     id: string;
     email: string;
     name: string;
-    avatar: string;
+    avatar?: string;
+    isEmailVerified?: boolean;
   };
 }
 
@@ -39,6 +48,21 @@ export const authApi = {
 
   register: async (data: RegisterData): Promise<AuthResponse> => {
     const response = await api.post('/auth/register', data);
+    return response.data;
+  },
+
+  oauth: async (data: OAuthData): Promise<AuthResponse> => {
+    const response = await api.post('/auth/oauth', data);
+    return response.data;
+  },
+
+  sendVerificationCode: async (email: string): Promise<{ success: boolean; message: string; debugCode?: string }> => {
+    const response = await api.post('/auth/send-verification-code', { email });
+    return response.data;
+  },
+
+  verifyEmail: async (data: { email: string; code: string }): Promise<{ success: boolean; message: string }> => {
+    const response = await api.post('/auth/verify-email', data);
     return response.data;
   },
 

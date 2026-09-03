@@ -7,13 +7,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 1.1. Registration (Đăng ký)
 [x] - Đăng ký bằng email/password - Cho phép người dùng tạo tài khoản mới với email và mật khẩu
-[ ] - Đăng ký bằng Google OAuth - Đăng ký nhanh bằng tài khoản Google
-[ ] - Đăng ký bằng Facebook OAuth - Đăng ký nhanh bằng tài khoản Facebook
-[ ] - Email verification (gửi mã xác nhận) - Gửi mã xác nhận đến email để xác thực tài khoản
+[x] - Đăng ký bằng Google OAuth - Đăng ký nhanh bằng tài khoản Google
+[x] - Đăng ký bằng Facebook OAuth - Đăng ký nhanh bằng tài khoản Facebook
+[x] - Email verification (gửi mã xác nhận) - Gửi mã xác nhận đến email để xác thực tài khoản
 [x] - Password strength indicator - Hiển thị độ mạnh của mật khẩu khi người dùng nhập
 [x] - Terms & conditions checkbox - Checkbox đồng ý với điều khoản sử dụng
 [x] - Privacy policy checkbox - Checkbox đồng ý với chính sách bảo mật
- 
+
 1.2. Login (Đăng nhập)
 [x] - Login bằng email/password - Đăng nhập bằng email và mật khẩu đã đăng ký
 [ ] - Login bằng Google OAuth - Đăng nhập nhanh bằng tài khoản Google
@@ -23,6 +23,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Show/hide password toggle - Nút hiện/ẩn mật khẩu để kiểm tra
 [x] - Login attempt limiting (5 attempts) - Giới hạn 5 lần đăng nhập thất bại
 [x] - Account lockout after failed attempts - Khóa tài khoản sau quá nhiều lần đăng nhập thất bại
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 1.3. Password Recovery (Khôi phục mật khẩu)
 [ ] - Forgot password form - Form nhập email để yêu cầu khôi phục mật khẩu
@@ -90,7 +91,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Loading state - Trạng thái đang tải
 [x] - Error display - Hiển thị lỗi
  
-  bạn kiểm tra tính năng này đã làm chưa nếu chưa thì làm đi, cái nào chưa làm thì làm, sau khi làm thì nói kết quả cho tui biết tính năng nào đã làm đầy đủ, tính năng nào chưa
+
 2.3. Edit Memory (Chỉnh sửa kỷ niệm)
 [x] - Load existing memory data - Tải dữ liệu kỷ niệm hiện có
 [x] - Pre-fill form with current data - Điền trước biểu mẫu với dữ liệu hiện tại

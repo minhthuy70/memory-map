@@ -7,11 +7,48 @@ export class UsersService {
 
   async create(data: {
     email: string;
-    passwordHash: string;
+    passwordHash?: string;
     name?: string;
+    avatar?: string;
+    googleId?: string;
+    facebookId?: string;
+    isEmailVerified?: boolean;
   }) {
     return this.prisma.user.create({
       data,
+    });
+  }
+
+  async findByGoogleId(googleId: string) {
+    return this.prisma.user.findUnique({
+      where: { googleId },
+    });
+  }
+
+  async findByFacebookId(facebookId: string) {
+    return this.prisma.user.findUnique({
+      where: { facebookId },
+    });
+  }
+
+  async setVerificationCode(email: string, code: string, expires: Date) {
+    return this.prisma.user.update({
+      where: { email },
+      data: {
+        verificationCode: code,
+        verificationExpires: expires,
+      },
+    });
+  }
+
+  async markEmailVerified(userId: string) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        isEmailVerified: true,
+        verificationCode: null,
+        verificationExpires: null,
+      },
     });
   }
 

@@ -16,6 +16,8 @@ import { SessionsService } from '../sessions/sessions.service';
 
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
+import { OAuthDto } from './dto/oauth.dto';
+import { SendVerificationCodeDto, VerifyEmailDto } from './dto/verify-email.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 
@@ -29,11 +31,18 @@ export class AuthController {
   @Post('register')
   async register(
     @Body() registerDto: RegisterDto,
+    @NestHeaders('user-agent') userAgent?: string,
+    @NestHeaders('x-forwarded-for') forwardedFor?: string,
   ) {
+    const deviceInfo = userAgent || 'Unknown Device';
+    const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
+
     return this.authService.register(
       registerDto.email,
       registerDto.password,
       registerDto.name,
+      deviceInfo,
+      ipAddress,
     );
   }
 
@@ -52,6 +61,36 @@ export class AuthController {
       deviceInfo,
       ipAddress,
     );
+  }
+
+  @Post('oauth')
+  async oauth(
+    @Body() oauthDto: OAuthDto,
+    @NestHeaders('user-agent') userAgent?: string,
+    @NestHeaders('x-forwarded-for') forwardedFor?: string,
+  ) {
+    const deviceInfo = userAgent || 'Unknown Device';
+    const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
+
+    return this.authService.handleOAuth(
+      oauthDto,
+      deviceInfo,
+      ipAddress,
+    );
+  }
+
+  @Post('send-verification-code')
+  async sendVerificationCode(
+    @Body() dto: SendVerificationCodeDto,
+  ) {
+    return this.authService.sendVerificationCode(dto.email);
+  }
+
+  @Post('verify-email')
+  async verifyEmail(
+    @Body() dto: VerifyEmailDto,
+  ) {
+    return this.authService.verifyEmail(dto.email, dto.code);
   }
 
   @UseGuards(JwtAuthGuard)

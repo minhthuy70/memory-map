@@ -2,11 +2,12 @@ import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { authApi } from '@/lib/auth-api';
 
-interface User {
+export interface User {
   id: string;
   email: string;
-  name: string;
-  avatar: string;
+  name?: string;
+  avatar?: string;
+  isEmailVerified?: boolean;
   memoryCount?: number;
   createdAt?: string;
   [key: string]: any;

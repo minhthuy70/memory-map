@@ -46,22 +46,48 @@ exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const users_service_1 = require("../users/users.service");
+const sessions_service_1 = require("../sessions/sessions.service");
 const bcrypt = __importStar(require("bcrypt"));
 let AuthService = class AuthService {
-    constructor(usersService, jwtService) {
+    constructor(usersService, jwtService, sessionsService) {
         this.usersService = usersService;
         this.jwtService = jwtService;
+        this.sessionsService = sessionsService;
     }
     async validateUser(email, password) {
         const user = await this.usersService.findByEmail(email);
-        if (user &&
-            (await bcrypt.compare(password, user.passwordHash))) {
+        if (!user) {
+            return null;
+        }
+        if (!user.passwordHash) {
+            return null;
+        }
+        if (user.lockedUntil && new Date() < user.lockedUntil) {
+            const lockTimeRemaining = Math.ceil((user.lockedUntil.getTime() - Date.now()) / 60000);
+            throw new common_1.UnauthorizedException(`Account is locked. Try again in ${lockTimeRemaining} minutes.`);
+        }
+        if (user.lockedUntil && new Date() >= user.lockedUntil) {
+            await this.usersService.resetLoginAttempts(user.id);
+        }
+        const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+        if (isPasswordValid) {
+            if (user.loginAttempts > 0) {
+                await this.usersService.resetLoginAttempts(user.id);
+            }
+            await this.usersService.updateLastLogin(user.id);
             const { passwordHash, ...result } = user;
             return result;
         }
+        const newAttempts = user.loginAttempts + 1;
+        await this.usersService.incrementLoginAttempts(user.id);
+        if (newAttempts >= 5) {
+            const lockUntil = new Date(Date.now() + 15 * 60 * 1000);
+            await this.usersService.lockAccount(user.id, lockUntil);
+            throw new common_1.UnauthorizedException('Too many failed login attempts. Account has been locked for 15 minutes.');
+        }
         return null;
     }
-    async login(email, password) {
+    async login(email, password, deviceInfo, ipAddress) {
         const user = await this.validateUser(email, password);
         if (!user) {
             throw new common_1.UnauthorizedException('Invalid credentials');
@@ -70,39 +96,137 @@ let AuthService = class AuthService {
             email: user.email,
             sub: user.id,
         };
+        const token = this.jwtService.sign(payload);
+        await this.sessionsService.createSession(user.id, token, deviceInfo, ipAddress);
         return {
-            access_token: this.jwtService.sign(payload),
+            access_token: token,
             user: {
                 id: user.id,
                 email: user.email,
                 name: user.name,
                 avatar: user.avatar,
+                isEmailVerified: user.isEmailVerified,
             },
         };
     }
-    async register(email, password, name) {
+    async register(email, password, name, deviceInfo, ipAddress) {
         const existingUser = await this.usersService.findByEmail(email);
         if (existingUser) {
-            throw new common_1.UnauthorizedException('Email already exists');
+            throw new common_1.ConflictException('Email đã được sử dụng. Vui lòng đăng nhập hoặc dùng email khác.');
         }
         const passwordHash = await bcrypt.hash(password, 10);
         const user = await this.usersService.create({
             email,
             passwordHash,
             name,
+            isEmailVerified: false,
         });
         const payload = {
             email: user.email,
             sub: user.id,
         };
+        const token = this.jwtService.sign(payload);
+        await this.sessionsService.createSession(user.id, token, deviceInfo, ipAddress);
         return {
-            access_token: this.jwtService.sign(payload),
+            access_token: token,
             user: {
                 id: user.id,
                 email: user.email,
                 name: user.name,
                 avatar: user.avatar,
+                isEmailVerified: user.isEmailVerified,
             },
+        };
+    }
+    async handleOAuth(oauthDto, deviceInfo, ipAddress) {
+        const { provider, email, name, avatar, providerId } = oauthDto;
+        let user = await this.usersService.findByEmail(email);
+        if (!user) {
+            if (provider === 'google') {
+                user = await this.usersService.findByGoogleId(providerId);
+            }
+            else if (provider === 'facebook') {
+                user = await this.usersService.findByFacebookId(providerId);
+            }
+        }
+        if (!user) {
+            user = await this.usersService.create({
+                email,
+                name: name || (provider === 'google' ? 'Google User' : 'Facebook User'),
+                avatar,
+                googleId: provider === 'google' ? providerId : undefined,
+                facebookId: provider === 'facebook' ? providerId : undefined,
+                isEmailVerified: true,
+            });
+        }
+        else {
+            const updateData = {};
+            if (provider === 'google' && !user.googleId)
+                updateData.googleId = providerId;
+            if (provider === 'facebook' && !user.facebookId)
+                updateData.facebookId = providerId;
+            if (!user.avatar && avatar)
+                updateData.avatar = avatar;
+            if (!user.name && name)
+                updateData.name = name;
+            if (!user.isEmailVerified)
+                updateData.isEmailVerified = true;
+            if (Object.keys(updateData).length > 0) {
+                user = await this.usersService.update(user.id, updateData);
+            }
+        }
+        await this.usersService.resetLoginAttempts(user.id);
+        await this.usersService.updateLastLogin(user.id);
+        const payload = {
+            email: user.email,
+            sub: user.id,
+        };
+        const token = this.jwtService.sign(payload);
+        await this.sessionsService.createSession(user.id, token, deviceInfo, ipAddress);
+        return {
+            access_token: token,
+            user: {
+                id: user.id,
+                email: user.email,
+                name: user.name,
+                avatar: user.avatar,
+                isEmailVerified: user.isEmailVerified,
+            },
+        };
+    }
+    async sendVerificationCode(email) {
+        let user = await this.usersService.findByEmail(email);
+        const code = Math.floor(100000 + Math.random() * 900000).toString();
+        const expires = new Date(Date.now() + 10 * 60 * 1000);
+        if (user) {
+            await this.usersService.setVerificationCode(email, code, expires);
+        }
+        console.log(`\n======================================================`);
+        console.log(`[EMAIL VERIFICATION] Mã xác nhận cho email ${email}: ${code}`);
+        console.log(`[EMAIL VERIFICATION] Hết hạn lúc: ${expires.toLocaleTimeString()}`);
+        console.log(`======================================================\n`);
+        return {
+            success: true,
+            message: `Mã xác nhận đã được gửi đến email ${email}. Vui lòng kiểm tra hộp thư.`,
+            email,
+            debugCode: process.env.NODE_ENV !== 'production' ? code : undefined,
+        };
+    }
+    async verifyEmail(email, code) {
+        const user = await this.usersService.findByEmail(email);
+        if (!user) {
+            throw new common_1.NotFoundException('Không tìm thấy tài khoản với email này');
+        }
+        if (!user.verificationCode || user.verificationCode !== code) {
+            throw new common_1.BadRequestException('Mã xác nhận không chính xác');
+        }
+        if (!user.verificationExpires || new Date() > user.verificationExpires) {
+            throw new common_1.BadRequestException('Mã xác nhận đã hết hạn. Vui lòng yêu cầu mã mới.');
+        }
+        await this.usersService.markEmailVerified(user.id);
+        return {
+            success: true,
+            message: 'Email đã được xác thực thành công!',
         };
     }
     async updateProfile(userId, updateProfileDto) {
@@ -118,6 +242,11 @@ let AuthService = class AuthService {
         const user = await this.usersService.findById(userId);
         if (!user) {
             throw new common_1.UnauthorizedException('User not found');
+        }
+        if (!user.passwordHash) {
+            const passwordHash = await bcrypt.hash(newPassword, 10);
+            await this.usersService.updatePassword(userId, passwordHash);
+            return { message: 'Password set successfully' };
         }
         const isPasswordValid = await bcrypt.compare(currentPassword, user.passwordHash);
         if (!isPasswordValid) {
@@ -139,11 +268,28 @@ let AuthService = class AuthService {
             memoryCount,
         };
     }
+    async deactivateAccount(userId) {
+        const user = await this.usersService.findById(userId);
+        if (!user) {
+            throw new common_1.UnauthorizedException('User not found');
+        }
+        await this.usersService.deactivateAccount(userId);
+        return { message: 'Account deactivated successfully' };
+    }
+    async deleteAccount(userId) {
+        const user = await this.usersService.findById(userId);
+        if (!user) {
+            throw new common_1.UnauthorizedException('User not found');
+        }
+        await this.usersService.deleteAccount(userId);
+        return { message: 'Account deleted successfully' };
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [users_service_1.UsersService,
-        jwt_1.JwtService])
+        jwt_1.JwtService,
+        sessions_service_1.SessionsService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

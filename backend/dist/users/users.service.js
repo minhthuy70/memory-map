@@ -21,6 +21,35 @@ let UsersService = class UsersService {
             data,
         });
     }
+    async findByGoogleId(googleId) {
+        return this.prisma.user.findUnique({
+            where: { googleId },
+        });
+    }
+    async findByFacebookId(facebookId) {
+        return this.prisma.user.findUnique({
+            where: { facebookId },
+        });
+    }
+    async setVerificationCode(email, code, expires) {
+        return this.prisma.user.update({
+            where: { email },
+            data: {
+                verificationCode: code,
+                verificationExpires: expires,
+            },
+        });
+    }
+    async markEmailVerified(userId) {
+        return this.prisma.user.update({
+            where: { id: userId },
+            data: {
+                isEmailVerified: true,
+                verificationCode: null,
+                verificationExpires: null,
+            },
+        });
+    }
     async findByEmail(email) {
         return this.prisma.user.findUnique({
             where: {
@@ -57,6 +86,66 @@ let UsersService = class UsersService {
         return this.prisma.memory.count({
             where: {
                 userId,
+            },
+        });
+    }
+    async incrementLoginAttempts(userId) {
+        return this.prisma.user.update({
+            where: {
+                id: userId,
+            },
+            data: {
+                loginAttempts: {
+                    increment: 1,
+                },
+            },
+        });
+    }
+    async resetLoginAttempts(userId) {
+        return this.prisma.user.update({
+            where: {
+                id: userId,
+            },
+            data: {
+                loginAttempts: 0,
+                lockedUntil: null,
+            },
+        });
+    }
+    async lockAccount(userId, lockedUntil) {
+        return this.prisma.user.update({
+            where: {
+                id: userId,
+            },
+            data: {
+                lockedUntil,
+            },
+        });
+    }
+    async updateLastLogin(userId) {
+        return this.prisma.user.update({
+            where: {
+                id: userId,
+            },
+            data: {
+                lastLoginAt: new Date(),
+            },
+        });
+    }
+    async deactivateAccount(userId) {
+        return this.prisma.user.update({
+            where: {
+                id: userId,
+            },
+            data: {
+                isActive: false,
+            },
+        });
+    }
+    async deleteAccount(userId) {
+        return this.prisma.user.delete({
+            where: {
+                id: userId,
             },
         });
     }

@@ -32,6 +32,7 @@ export interface CreateMemoryData {
   memoryDate: string;
   mood: string;
   categoryId: string;
+  imageUrls?: string[];
 }
 
 export interface UpdateMemoryData {
@@ -43,6 +44,7 @@ export interface UpdateMemoryData {
   memoryDate?: string;
   mood?: string;
   categoryId?: string;
+  imageUrls?: string[];
 }
 
 export interface MemoryFilters {

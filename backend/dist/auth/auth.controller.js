@@ -16,19 +16,38 @@ exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const jwt_auth_guard_1 = require("./jwt-auth.guard");
+const sessions_service_1 = require("../sessions/sessions.service");
 const register_dto_1 = require("./dto/register.dto");
 const login_dto_1 = require("./dto/login.dto");
+const oauth_dto_1 = require("./dto/oauth.dto");
+const verify_email_dto_1 = require("./dto/verify-email.dto");
 const update_profile_dto_1 = require("./dto/update-profile.dto");
 const change_password_dto_1 = require("./dto/change-password.dto");
 let AuthController = class AuthController {
-    constructor(authService) {
+    constructor(authService, sessionsService) {
         this.authService = authService;
+        this.sessionsService = sessionsService;
     }
-    async register(registerDto) {
-        return this.authService.register(registerDto.email, registerDto.password, registerDto.name);
+    async register(registerDto, userAgent, forwardedFor) {
+        const deviceInfo = userAgent || 'Unknown Device';
+        const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
+        return this.authService.register(registerDto.email, registerDto.password, registerDto.name, deviceInfo, ipAddress);
     }
-    async login(loginDto) {
-        return this.authService.login(loginDto.email, loginDto.password);
+    async login(loginDto, userAgent, forwardedFor) {
+        const deviceInfo = userAgent || 'Unknown Device';
+        const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
+        return this.authService.login(loginDto.email, loginDto.password, deviceInfo, ipAddress);
+    }
+    async oauth(oauthDto, userAgent, forwardedFor) {
+        const deviceInfo = userAgent || 'Unknown Device';
+        const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
+        return this.authService.handleOAuth(oauthDto, deviceInfo, ipAddress);
+    }
+    async sendVerificationCode(dto) {
+        return this.authService.sendVerificationCode(dto.email);
+    }
+    async verifyEmail(dto) {
+        return this.authService.verifyEmail(dto.email, dto.code);
     }
     async getProfile(req) {
         const user = await this.authService.getProfileWithStats(req.user.id);
@@ -40,22 +59,60 @@ let AuthController = class AuthController {
     async changePassword(req, changePasswordDto) {
         return this.authService.changePassword(req.user.id, changePasswordDto.currentPassword, changePasswordDto.newPassword);
     }
+    async deactivateAccount(req) {
+        return this.authService.deactivateAccount(req.user.id);
+    }
+    async deleteAccount(req) {
+        return this.authService.deleteAccount(req.user.id);
+    }
+    async logout(req, authHeader) {
+        const token = authHeader?.replace('Bearer ', '');
+        await this.sessionsService.deleteSessionByToken(token);
+        return { message: 'Logged out successfully' };
+    }
 };
 exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)('register'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Headers)('user-agent')),
+    __param(2, (0, common_1.Headers)('x-forwarded-for')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [register_dto_1.RegisterDto]),
+    __metadata("design:paramtypes", [register_dto_1.RegisterDto, String, String]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "register", null);
 __decorate([
     (0, common_1.Post)('login'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Headers)('user-agent')),
+    __param(2, (0, common_1.Headers)('x-forwarded-for')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [login_dto_1.LoginDto]),
+    __metadata("design:paramtypes", [login_dto_1.LoginDto, String, String]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
+__decorate([
+    (0, common_1.Post)('oauth'),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Headers)('user-agent')),
+    __param(2, (0, common_1.Headers)('x-forwarded-for')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [oauth_dto_1.OAuthDto, String, String]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "oauth", null);
+__decorate([
+    (0, common_1.Post)('send-verification-code'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [verify_email_dto_1.SendVerificationCodeDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "sendVerificationCode", null);
+__decorate([
+    (0, common_1.Post)('verify-email'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [verify_email_dto_1.VerifyEmailDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "verifyEmail", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('me'),
@@ -82,8 +139,34 @@ __decorate([
     __metadata("design:paramtypes", [Object, change_password_dto_1.ChangePasswordDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "changePassword", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Post)('deactivate-account'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "deactivateAccount", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Delete)('delete-account'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "deleteAccount", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Post)('logout'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Headers)('authorization')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "logout", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
-    __metadata("design:paramtypes", [auth_service_1.AuthService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService,
+        sessions_service_1.SessionsService])
 ], AuthController);
 //# sourceMappingURL=auth.controller.js.map
