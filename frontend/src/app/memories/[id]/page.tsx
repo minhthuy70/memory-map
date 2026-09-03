@@ -65,12 +65,14 @@ export default function MemoryDetailPage() {
     if (!memory) return;
     
     setIsDeleting(true);
+    setError('');
     try {
       await memoriesApi.delete(memory.id);
       router.push('/dashboard');
     } catch (err: unknown) {
-      setError((err as Error)?.message || 'Failed to delete memory');
+      setError((err as Error)?.message || 'Xóa kỷ niệm thất bại');
       setIsDeleting(false);
+      setShowDeleteConfirm(false);
     }
   };
 
@@ -441,34 +443,42 @@ export default function MemoryDetailPage() {
 
       {/* Delete Confirmation Modal */}
       {showDeleteConfirm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg max-w-md w-full p-6">
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
-              Delete Memory?
-            </h3>
-            <p className="text-slate-600 dark:text-slate-400 mb-6">
-              Are you sure you want to delete this memory? This action cannot be undone.
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4 animate-in fade-in">
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-md w-full p-6 border border-slate-200 dark:border-slate-700">
+            <div className="flex items-center gap-3 mb-3 text-rose-600 dark:text-rose-400">
+              <div className="p-2.5 rounded-xl bg-rose-100 dark:bg-rose-950/50">
+                <Trash2 className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                Xác nhận xóa kỷ niệm?
+              </h3>
+            </div>
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
+              Bạn có chắc chắn muốn xóa kỷ niệm này không? Toàn bộ nội dung và <strong>toàn bộ hình ảnh đính kèm</strong> sẽ bị xóa vĩnh viễn khỏi hệ thống và không thể hoàn tác.
             </p>
             <div className="flex gap-3 justify-end">
               <button
                 onClick={() => setShowDeleteConfirm(false)}
                 disabled={isDeleting}
-                className="px-4 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg disabled:opacity-50"
+                className="px-4 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl transition-colors cursor-pointer disabled:opacity-50"
               >
-                Cancel
+                Hủy
               </button>
               <button
                 onClick={handleDelete}
                 disabled={isDeleting}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                className="px-5 py-2.5 text-sm font-bold bg-rose-600 text-white rounded-xl hover:bg-rose-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 shadow-md transition-all cursor-pointer"
               >
                 {isDeleting ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    Deleting...
+                    <span>Đang xóa...</span>
                   </>
                 ) : (
-                  'Delete'
+                  <>
+                    <Trash2 className="h-4 w-4" />
+                    <span>Xác nhận xóa</span>
+                  </>
                 )}
               </button>
             </div>
