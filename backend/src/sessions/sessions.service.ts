@@ -5,8 +5,16 @@ import { PrismaService } from '../prisma/prisma.service';
 export class SessionsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async createSession(userId: string, token: string, deviceInfo?: string, ipAddress?: string) {
-    const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+  async createSession(
+    userId: string,
+    token: string,
+    deviceInfo?: string,
+    ipAddress?: string,
+    rememberMe?: boolean,
+  ) {
+    // 30 days if rememberMe, otherwise 7 days
+    const duration = rememberMe ? 30 * 24 * 60 * 60 * 1000 : 7 * 24 * 60 * 60 * 1000;
+    const expiresAt = new Date(Date.now() + duration);
 
     return this.prisma.session.create({
       data: {

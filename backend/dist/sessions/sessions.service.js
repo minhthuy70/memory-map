@@ -16,8 +16,9 @@ let SessionsService = class SessionsService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async createSession(userId, token, deviceInfo, ipAddress) {
-        const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+    async createSession(userId, token, deviceInfo, ipAddress, rememberMe) {
+        const duration = rememberMe ? 30 * 24 * 60 * 60 * 1000 : 7 * 24 * 60 * 60 * 1000;
+        const expiresAt = new Date(Date.now() + duration);
         return this.prisma.session.create({
             data: {
                 userId,

@@ -60,6 +60,7 @@ export class AuthController {
       loginDto.password,
       deviceInfo,
       ipAddress,
+      loginDto.rememberMe,
     );
   }
 

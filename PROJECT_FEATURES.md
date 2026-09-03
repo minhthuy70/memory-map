@@ -16,14 +16,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 
 1.2. Login (Đăng nhập)
 [x] - Login bằng email/password - Đăng nhập bằng email và mật khẩu đã đăng ký
-[ ] - Login bằng Google OAuth - Đăng nhập nhanh bằng tài khoản Google
-[ ] - Login bằng Facebook OAuth - Đăng nhập nhanh bằng tài khoản Facebook
-[ ] - Remember me checkbox - Checkbox ghi nhớ đăng nhập cho lần sau
-[ ] - Forgot password link - Link để khôi phục mật khẩu khi quên
+[x] - Login bằng Google OAuth - Đăng nhập nhanh bằng tài khoản Google
+[x] - Login bằng Facebook OAuth - Đăng nhập nhanh bằng tài khoản Facebook
+[x] - Remember me checkbox - Checkbox ghi nhớ đăng nhập cho lần sau
+[x] - Forgot password link - Link để khôi phục mật khẩu khi quên
 [x] - Show/hide password toggle - Nút hiện/ẩn mật khẩu để kiểm tra
 [x] - Login attempt limiting (5 attempts) - Giới hạn 5 lần đăng nhập thất bại
 [x] - Account lockout after failed attempts - Khóa tài khoản sau quá nhiều lần đăng nhập thất bại
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 1.3. Password Recovery (Khôi phục mật khẩu)
 [ ] - Forgot password form - Form nhập email để yêu cầu khôi phục mật khẩu
@@ -32,6 +31,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [ ] - New password validation - Kiểm tra độ mạnh của mật khẩu mới
 [ ] - Confirm new password - Nhập lại mật khẩu mới để xác nhận
 [ ] - Password reset success notification - Thông báo khi reset mật khẩu thành công
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 1.4. Profile Management (Quản lý hồ sơ)
 [x] - View profile information - Xem thông tin hồ sơ cá nhân

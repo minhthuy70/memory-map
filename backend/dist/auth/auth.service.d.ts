@@ -10,8 +10,9 @@ export declare class AuthService {
     constructor(usersService: UsersService, jwtService: JwtService, sessionsService: SessionsService);
     validateUser(email: string, password: string): Promise<{
         id: string;
-        email: string;
+        createdAt: Date;
         name: string | null;
+        email: string;
         avatar: string | null;
         googleId: string | null;
         facebookId: string | null;
@@ -22,10 +23,9 @@ export declare class AuthService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
         updatedAt: Date;
     }>;
-    login(email: string, password: string, deviceInfo?: string, ipAddress?: string): Promise<{
+    login(email: string, password: string, deviceInfo?: string, ipAddress?: string, rememberMe?: boolean): Promise<{
         access_token: string;
         user: {
             id: string;
@@ -67,8 +67,9 @@ export declare class AuthService {
     }>;
     updateProfile(userId: string, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
-        email: string;
+        createdAt: Date;
         name: string | null;
+        email: string;
         avatar: string | null;
         googleId: string | null;
         facebookId: string | null;
@@ -79,7 +80,6 @@ export declare class AuthService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
         updatedAt: Date;
     }>;
     changePassword(userId: string, currentPassword: string, newPassword: string): Promise<{
@@ -88,8 +88,9 @@ export declare class AuthService {
     getProfileWithStats(userId: string): Promise<{
         memoryCount: number;
         id: string;
-        email: string;
+        createdAt: Date;
         name: string | null;
+        email: string;
         avatar: string | null;
         googleId: string | null;
         facebookId: string | null;
@@ -100,7 +101,6 @@ export declare class AuthService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
         updatedAt: Date;
     }>;
     deactivateAccount(userId: string): Promise<{

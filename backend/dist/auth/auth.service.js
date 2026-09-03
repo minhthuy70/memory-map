@@ -57,17 +57,19 @@ let AuthService = class AuthService {
     async validateUser(email, password) {
         const user = await this.usersService.findByEmail(email);
         if (!user) {
-            return null;
+            throw new common_1.UnauthorizedException('Email hoặc mật khẩu không chính xác.');
         }
         if (!user.passwordHash) {
-            return null;
+            throw new common_1.UnauthorizedException('Tài khoản này được tạo bằng Google hoặc Facebook. Vui lòng chọn đăng nhập bằng liên kết mạng xã hội tương ứng.');
         }
         if (user.lockedUntil && new Date() < user.lockedUntil) {
             const lockTimeRemaining = Math.ceil((user.lockedUntil.getTime() - Date.now()) / 60000);
-            throw new common_1.UnauthorizedException(`Account is locked. Try again in ${lockTimeRemaining} minutes.`);
+            throw new common_1.UnauthorizedException(`Tài khoản đang bị khóa tạm thời. Vui lòng thử lại sau ${lockTimeRemaining} phút.`);
         }
         if (user.lockedUntil && new Date() >= user.lockedUntil) {
             await this.usersService.resetLoginAttempts(user.id);
+            user.loginAttempts = 0;
+            user.lockedUntil = null;
         }
         const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
         if (isPasswordValid) {
@@ -83,21 +85,19 @@ let AuthService = class AuthService {
         if (newAttempts >= 5) {
             const lockUntil = new Date(Date.now() + 15 * 60 * 1000);
             await this.usersService.lockAccount(user.id, lockUntil);
-            throw new common_1.UnauthorizedException('Too many failed login attempts. Account has been locked for 15 minutes.');
+            throw new common_1.UnauthorizedException('Bạn đã nhập sai mật khẩu quá 5 lần. Tài khoản đã bị khóa trong 15 phút để bảo mật.');
         }
-        return null;
+        const remainingAttempts = 5 - newAttempts;
+        throw new common_1.UnauthorizedException(`Mật khẩu không chính xác. Bạn còn ${remainingAttempts} lần thử trước khi tài khoản bị khóa 15 phút.`);
     }
-    async login(email, password, deviceInfo, ipAddress) {
+    async login(email, password, deviceInfo, ipAddress, rememberMe) {
         const user = await this.validateUser(email, password);
-        if (!user) {
-            throw new common_1.UnauthorizedException('Invalid credentials');
-        }
         const payload = {
             email: user.email,
             sub: user.id,
         };
         const token = this.jwtService.sign(payload);
-        await this.sessionsService.createSession(user.id, token, deviceInfo, ipAddress);
+        await this.sessionsService.createSession(user.id, token, deviceInfo, ipAddress, rememberMe);
         return {
             access_token: token,
             user: {

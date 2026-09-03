@@ -33,25 +33,29 @@ export class AuthService {
       );
 
     if (!user) {
-      return null;
+      throw new UnauthorizedException('Email hoặc mật khẩu không chính xác.');
     }
 
     if (!user.passwordHash) {
       // User registered via OAuth only
-      return null;
+      throw new UnauthorizedException(
+        'Tài khoản này được tạo bằng Google hoặc Facebook. Vui lòng chọn đăng nhập bằng liên kết mạng xã hội tương ứng.',
+      );
     }
 
     // Check if account is locked
     if (user.lockedUntil && new Date() < user.lockedUntil) {
       const lockTimeRemaining = Math.ceil((user.lockedUntil.getTime() - Date.now()) / 60000);
       throw new UnauthorizedException(
-        `Account is locked. Try again in ${lockTimeRemaining} minutes.`,
+        `Tài khoản đang bị khóa tạm thời. Vui lòng thử lại sau ${lockTimeRemaining} phút.`,
       );
     }
 
     // Reset lock if expired
     if (user.lockedUntil && new Date() >= user.lockedUntil) {
       await this.usersService.resetLoginAttempts(user.id);
+      user.loginAttempts = 0;
+      user.lockedUntil = null;
     }
 
     const isPasswordValid = await bcrypt.compare(
@@ -85,11 +89,14 @@ export class AuthService {
       const lockUntil = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
       await this.usersService.lockAccount(user.id, lockUntil);
       throw new UnauthorizedException(
-        'Too many failed login attempts. Account has been locked for 15 minutes.',
+        'Bạn đã nhập sai mật khẩu quá 5 lần. Tài khoản đã bị khóa trong 15 phút để bảo mật.',
       );
     }
 
-    return null;
+    const remainingAttempts = 5 - newAttempts;
+    throw new UnauthorizedException(
+      `Mật khẩu không chính xác. Bạn còn ${remainingAttempts} lần thử trước khi tài khoản bị khóa 15 phút.`,
+    );
   }
 
   async login(
@@ -97,18 +104,13 @@ export class AuthService {
     password: string,
     deviceInfo?: string,
     ipAddress?: string,
+    rememberMe?: boolean,
   ) {
     const user =
       await this.validateUser(
         email,
         password,
       );
-
-    if (!user) {
-      throw new UnauthorizedException(
-        'Invalid credentials',
-      );
-    }
 
     const payload = {
       email: user.email,
@@ -123,6 +125,7 @@ export class AuthService {
       token,
       deviceInfo,
       ipAddress,
+      rememberMe,
     );
 
     return {

@@ -36,7 +36,7 @@ let AuthController = class AuthController {
     async login(loginDto, userAgent, forwardedFor) {
         const deviceInfo = userAgent || 'Unknown Device';
         const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
-        return this.authService.login(loginDto.email, loginDto.password, deviceInfo, ipAddress);
+        return this.authService.login(loginDto.email, loginDto.password, deviceInfo, ipAddress, loginDto.rememberMe);
     }
     async oauth(oauthDto, userAgent, forwardedFor) {
         const deviceInfo = userAgent || 'Unknown Device';
