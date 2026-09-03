@@ -14,7 +14,7 @@ const MOOD_EMOJIS: Record<string, string> = {
   SAD: '😢',
   EXCITED: '🤩',
   PEACEFUL: '😌',
-  NOSTALGIC: '😊',
+  NOSTALGIC: '🥹',
   LOVE: '❤️',
   ANGRY: '😡',
   TIRED: '😴',

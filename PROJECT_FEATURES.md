@@ -68,7 +68,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Search functionality - Chức năng tìm kiếm
 [x] - Memory categories summary - Tóm tắt danh mục kỷ niệm
 [x] - Mood distribution overview - Tổng quan phân phối tâm trạng
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
+
 
 2.2. Create Memory (Tạo kỷ niệm)
 [x] - Select location on map - Chọn vị trí trên bản đồ
@@ -89,7 +89,6 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Form validation - Kiểm tra biểu mẫu
 [x] - Loading state - Trạng thái đang tải
 [x] - Error display - Hiển thị lỗi
- 
 
 2.3. Edit Memory (Chỉnh sửa kỷ niệm)
 [x] - Load existing memory data - Tải dữ liệu kỷ niệm hiện có
@@ -107,6 +106,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Cancel button - Nút hủy
 [x] - Validation with error messages - Kiểm tra với thông báo lỗi
 [x] - Loading state - Trạng thái đang tải
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 2.4. Delete Memory (Xóa kỷ niệm)
 [x] - Delete button - Nút xóa

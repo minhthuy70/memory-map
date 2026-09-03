@@ -21,7 +21,7 @@ const MOODS = [
   { value: 'SAD', emoji: '😢' },
   { value: 'EXCITED', emoji: '🤩' },
   { value: 'PEACEFUL', emoji: '😌' },
-  { value: 'NOSTALGIC', emoji: '😊' },
+  { value: 'NOSTALGIC', emoji: '🥹' },
   { value: 'LOVE', emoji: '❤️' },
   { value: 'ANGRY', emoji: '😡' },
   { value: 'TIRED', emoji: '😴' },
