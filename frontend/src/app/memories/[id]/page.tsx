@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import { MapPin, Calendar, Edit, Trash2, ArrowLeft, Loader2, ImagePlus, X, ChevronLeft, ChevronRight, Maximize2, ChevronUp, ChevronDown } from 'lucide-react';
+import { MapPin, Calendar, Edit, Trash2, ArrowLeft, Loader2, ImagePlus, X, ChevronLeft, ChevronRight, Maximize2, ChevronUp, ChevronDown, AlertCircle } from 'lucide-react';
 import dynamic from 'next/dynamic';
 
 const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
@@ -60,6 +60,24 @@ export default function MemoryDetailPage() {
       loadMemory(params.id as string);
     }
   }, [isAuthenticated, router, params.id]);
+
+  // Keyboard navigation for image lightbox
+  useEffect(() => {
+    if (!showLightbox || !memory || !memory.images.length) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowLightbox(false);
+      } else if (e.key === 'ArrowLeft') {
+        setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : memory.images.length - 1));
+      } else if (e.key === 'ArrowRight') {
+        setCurrentImageIndex((prev) => (prev < memory.images.length - 1 ? prev + 1 : 0));
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [showLightbox, memory]);
 
   const handleDelete = async () => {
     if (!memory) return;
@@ -173,14 +191,22 @@ export default function MemoryDetailPage() {
 
   if (error && !memory) {
     return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-600 dark:text-red-400 mb-4">{error}</p>
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center p-4">
+        <div className="text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 max-w-md w-full animate-in fade-in">
+          <div className="w-16 h-16 rounded-full bg-red-100 dark:bg-red-950/50 flex items-center justify-center mx-auto mb-4 text-red-500">
+            <AlertCircle className="w-8 h-8" />
+          </div>
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+            Không thể tải kỷ niệm
+          </h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+            {error || 'Đã có lỗi xảy ra khi tải dữ liệu kỷ niệm. Vui lòng thử lại sau.'}
+          </p>
           <button
             onClick={() => router.push('/dashboard')}
-            className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover"
+            className="w-full py-2.5 bg-primary text-white rounded-xl hover:bg-primary-hover font-semibold text-sm transition-all shadow-xs cursor-pointer"
           >
-            Back to Dashboard
+            Quay lại bảng điều khiển
           </button>
         </div>
       </div>
@@ -188,7 +214,27 @@ export default function MemoryDetailPage() {
   }
 
   if (!memory) {
-    return null;
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center p-4">
+        <div className="text-center p-8 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 max-w-md w-full animate-in fade-in">
+          <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mx-auto mb-4 text-slate-400">
+            <MapPin className="w-8 h-8" />
+          </div>
+          <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+            Không tìm thấy kỷ niệm
+          </h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+            Kỷ niệm này không tồn tại hoặc bạn không có quyền truy cập.
+          </p>
+          <button
+            onClick={() => router.push('/dashboard')}
+            className="w-full py-2.5 bg-primary text-white rounded-xl hover:bg-primary-hover font-semibold text-sm transition-all shadow-xs cursor-pointer"
+          >
+            Quay lại bảng điều khiển
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
