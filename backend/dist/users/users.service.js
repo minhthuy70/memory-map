@@ -50,6 +50,17 @@ let UsersService = class UsersService {
             },
         });
     }
+    async updateEmail(userId, newEmail) {
+        return this.prisma.user.update({
+            where: { id: userId },
+            data: {
+                email: newEmail,
+                isEmailVerified: true,
+                verificationCode: null,
+                verificationExpires: null,
+            },
+        });
+    }
     async setResetPasswordToken(email, token, expires) {
         return this.prisma.user.update({
             where: { email },

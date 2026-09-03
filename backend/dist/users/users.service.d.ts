@@ -110,6 +110,26 @@ export declare class UsersService {
         createdAt: Date;
         updatedAt: Date;
     }>;
+    updateEmail(userId: string, newEmail: string): Promise<{
+        id: string;
+        email: string;
+        passwordHash: string | null;
+        name: string | null;
+        avatar: string | null;
+        googleId: string | null;
+        facebookId: string | null;
+        isEmailVerified: boolean;
+        verificationCode: string | null;
+        verificationExpires: Date | null;
+        resetPasswordToken: string | null;
+        resetPasswordExpires: Date | null;
+        loginAttempts: number;
+        lockedUntil: Date | null;
+        lastLoginAt: Date | null;
+        isActive: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
     setResetPasswordToken(email: string, token: string, expires: Date): Promise<{
         id: string;
         email: string;

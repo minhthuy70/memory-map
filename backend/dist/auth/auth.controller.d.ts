@@ -6,6 +6,7 @@ import { OAuthDto } from './dto/oauth.dto';
 import { SendVerificationCodeDto, VerifyEmailDto } from './dto/verify-email.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { RequestEmailChangeDto, ConfirmEmailChangeDto } from './dto/change-email.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 export declare class AuthController {
@@ -104,6 +105,23 @@ export declare class AuthController {
         isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
+    }>;
+    requestEmailChange(req: any, dto: RequestEmailChangeDto): Promise<{
+        success: boolean;
+        message: string;
+        newEmail: string;
+        debugCode: string;
+    }>;
+    confirmEmailChange(req: any, dto: ConfirmEmailChangeDto): Promise<{
+        access_token: string;
+        user: {
+            id: string;
+            email: string;
+            name: string;
+            avatar: string;
+            isEmailVerified: boolean;
+        };
+        message: string;
     }>;
     changePassword(req: any, changePasswordDto: ChangePasswordDto): Promise<{
         message: string;

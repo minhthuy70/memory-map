@@ -35,15 +35,14 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 1.4. Profile Management (Quản lý hồ sơ)
 [x] - View profile information - Xem thông tin hồ sơ cá nhân
 [x] - Edit full name - Chỉnh sửa tên đầy đủ
-[ ] - Edit email (with verification) - Thay đổi email với xác thực
+[x] - Edit email (with verification) - Thay đổi email với xác thực
 [x] - Change password (current + new + confirm) - Đổi mật khẩu (cũ + mới + xác nhận)
-[ ] - Upload avatar - Tải lên ảnh đại diện
+[x] - Upload avatar - Tải lên ảnh đại diện
 [x] - Delete account (with confirmation) - Xóa tài khoản với xác nhận
 [x] - Account deactivation - Vô hiệu hóa tài khoản tạm thời
 [x] - View account creation date - Xem ngày tạo tài khoản
 [x] - View last login date - Xem ngày đăng nhập gần nhất
 [x] - View total memories count - Xem tổng số kỷ niệm
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 1.5. Session Management (Quản lý phiên đăng nhập)
 [x] - Auto logout after inactivity (30 minutes) - Tự động đăng xuất sau 30 phút không hoạt động
@@ -52,6 +51,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - View active sessions - Xem các phiên đăng nhập đang hoạt động
 [x] - Revoke specific session - Hủy phiên đăng nhập cụ thể
 [x] - Session timeout warning (5 minutes before) - Cảnh báo hết phiên trước 5 phút
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 ================================================================================
  

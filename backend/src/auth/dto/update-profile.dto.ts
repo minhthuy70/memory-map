@@ -1,14 +1,12 @@
-import { IsString, IsOptional, IsUrl, MaxLength, IsNotEmpty } from 'class-validator';
+import { IsString, IsOptional, MaxLength } from 'class-validator';
 
 export class UpdateProfileDto {
   @IsOptional()
-  @IsString()
-  @IsNotEmpty()
-  @MaxLength(255)
+  @IsString({ message: 'Tên phải là chuỗi ký tự' })
+  @MaxLength(255, { message: 'Tên không được vượt quá 255 ký tự' })
   name?: string;
 
   @IsOptional()
-  @IsUrl()
-  @MaxLength(2048)
+  @IsString({ message: 'Avatar phải là chuỗi ký tự hoặc Data URL hợp lệ' })
   avatar?: string;
 }

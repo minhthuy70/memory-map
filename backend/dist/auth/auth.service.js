@@ -335,6 +335,65 @@ let AuthService = class AuthService {
             message: 'Đặt lại mật khẩu thành công! Bạn có thể đăng nhập ngay bằng mật khẩu mới.',
         };
     }
+    async requestEmailChange(userId, newEmail) {
+        const user = await this.usersService.findById(userId);
+        if (!user) {
+            throw new common_1.UnauthorizedException('User not found');
+        }
+        if (user.email.toLowerCase() === newEmail.toLowerCase()) {
+            throw new common_1.BadRequestException('Email mới phải khác email hiện tại.');
+        }
+        const existingUser = await this.usersService.findByEmail(newEmail);
+        if (existingUser) {
+            throw new common_1.ConflictException('Email này đã được sử dụng bởi một tài khoản khác.');
+        }
+        const code = Math.floor(100000 + Math.random() * 900000).toString();
+        const expires = new Date(Date.now() + 10 * 60 * 1000);
+        await this.usersService.setVerificationCode(user.email, code, expires);
+        console.log(`\n======================================================`);
+        console.log(`[EMAIL CHANGE VERIFICATION] Mã xác nhận đổi email sang ${newEmail}: ${code}`);
+        console.log(`[EMAIL CHANGE VERIFICATION] Hết hạn lúc: ${expires.toLocaleTimeString()} (10 phút)`);
+        console.log(`======================================================\n`);
+        return {
+            success: true,
+            message: `Mã xác nhận đã được gửi đến ${newEmail}. Vui lòng kiểm tra hộp thư để xác thực.`,
+            newEmail,
+            debugCode: process.env.NODE_ENV !== 'production' ? code : undefined,
+        };
+    }
+    async confirmEmailChange(userId, newEmail, code) {
+        const user = await this.usersService.findById(userId);
+        if (!user) {
+            throw new common_1.UnauthorizedException('User not found');
+        }
+        const existingUser = await this.usersService.findByEmail(newEmail);
+        if (existingUser && existingUser.id !== userId) {
+            throw new common_1.ConflictException('Email này đã được sử dụng bởi một tài khoản khác.');
+        }
+        if (!user.verificationCode || user.verificationCode !== code) {
+            throw new common_1.BadRequestException('Mã xác nhận không chính xác.');
+        }
+        if (!user.verificationExpires || new Date() > user.verificationExpires) {
+            throw new common_1.BadRequestException('Mã xác nhận đã hết hạn. Vui lòng yêu cầu mã mới.');
+        }
+        const updatedUser = await this.usersService.updateEmail(userId, newEmail);
+        const payload = {
+            email: updatedUser.email,
+            sub: updatedUser.id,
+        };
+        const token = this.jwtService.sign(payload);
+        return {
+            access_token: token,
+            user: {
+                id: updatedUser.id,
+                email: updatedUser.email,
+                name: updatedUser.name,
+                avatar: updatedUser.avatar,
+                isEmailVerified: updatedUser.isEmailVerified,
+            },
+            message: 'Thay đổi email thành công!',
+        };
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([

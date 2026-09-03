@@ -9,20 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateProfileDto = void 0;
+exports.ConfirmEmailChangeDto = exports.RequestEmailChangeDto = void 0;
 const class_validator_1 = require("class-validator");
-class UpdateProfileDto {
+class RequestEmailChangeDto {
 }
-exports.UpdateProfileDto = UpdateProfileDto;
+exports.RequestEmailChangeDto = RequestEmailChangeDto;
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)({ message: 'Tên phải là chuỗi ký tự' }),
-    (0, class_validator_1.MaxLength)(255, { message: 'Tên không được vượt quá 255 ký tự' }),
+    (0, class_validator_1.IsEmail)({}, { message: 'Email mới không đúng định dạng' }),
     __metadata("design:type", String)
-], UpdateProfileDto.prototype, "name", void 0);
+], RequestEmailChangeDto.prototype, "newEmail", void 0);
+class ConfirmEmailChangeDto {
+}
+exports.ConfirmEmailChangeDto = ConfirmEmailChangeDto;
 __decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)({ message: 'Avatar phải là chuỗi ký tự hoặc Data URL hợp lệ' }),
+    (0, class_validator_1.IsEmail)({}, { message: 'Email mới không đúng định dạng' }),
     __metadata("design:type", String)
-], UpdateProfileDto.prototype, "avatar", void 0);
-//# sourceMappingURL=update-profile.dto.js.map
+], ConfirmEmailChangeDto.prototype, "newEmail", void 0);
+__decorate([
+    (0, class_validator_1.IsString)({ message: 'Mã xác thực phải là chuỗi ký tự' }),
+    (0, class_validator_1.Length)(6, 6, { message: 'Mã xác nhận phải gồm đúng 6 chữ số' }),
+    __metadata("design:type", String)
+], ConfirmEmailChangeDto.prototype, "code", void 0);
+//# sourceMappingURL=change-email.dto.js.map

@@ -129,4 +129,21 @@ export declare class AuthService {
         success: boolean;
         message: string;
     }>;
+    requestEmailChange(userId: string, newEmail: string): Promise<{
+        success: boolean;
+        message: string;
+        newEmail: string;
+        debugCode: string;
+    }>;
+    confirmEmailChange(userId: string, newEmail: string, code: string): Promise<{
+        access_token: string;
+        user: {
+            id: string;
+            email: string;
+            name: string;
+            avatar: string;
+            isEmailVerified: boolean;
+        };
+        message: string;
+    }>;
 }

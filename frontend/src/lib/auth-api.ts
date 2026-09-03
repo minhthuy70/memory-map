@@ -92,6 +92,16 @@ export const authApi = {
     return response.data;
   },
 
+  requestEmailChange: async (newEmail: string): Promise<{ success: boolean; message: string; newEmail: string; debugCode?: string }> => {
+    const response = await api.post('/auth/request-email-change', { newEmail });
+    return response.data;
+  },
+
+  confirmEmailChange: async (data: { newEmail: string; code: string }): Promise<{ access_token: string; user: any; message: string }> => {
+    const response = await api.post('/auth/confirm-email-change', data);
+    return response.data;
+  },
+
   changePassword: async (data: ChangePasswordData) => {
     const response = await api.post('/auth/change-password', data);
     return response.data;

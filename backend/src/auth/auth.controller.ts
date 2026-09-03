@@ -21,6 +21,7 @@ import { OAuthDto } from './dto/oauth.dto';
 import { SendVerificationCodeDto, VerifyEmailDto } from './dto/verify-email.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { RequestEmailChangeDto, ConfirmEmailChangeDto } from './dto/change-email.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 
@@ -137,6 +138,24 @@ export class AuthController {
       req.user.id,
       updateProfileDto,
     );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('request-email-change')
+  async requestEmailChange(
+    @Request() req: any,
+    @Body() dto: RequestEmailChangeDto,
+  ) {
+    return this.authService.requestEmailChange(req.user.id, dto.newEmail);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('confirm-email-change')
+  async confirmEmailChange(
+    @Request() req: any,
+    @Body() dto: ConfirmEmailChangeDto,
+  ) {
+    return this.authService.confirmEmailChange(req.user.id, dto.newEmail, dto.code);
   }
 
   @UseGuards(JwtAuthGuard)

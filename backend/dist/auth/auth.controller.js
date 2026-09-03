@@ -23,6 +23,7 @@ const oauth_dto_1 = require("./dto/oauth.dto");
 const verify_email_dto_1 = require("./dto/verify-email.dto");
 const forgot_password_dto_1 = require("./dto/forgot-password.dto");
 const reset_password_dto_1 = require("./dto/reset-password.dto");
+const change_email_dto_1 = require("./dto/change-email.dto");
 const update_profile_dto_1 = require("./dto/update-profile.dto");
 const change_password_dto_1 = require("./dto/change-password.dto");
 let AuthController = class AuthController {
@@ -66,6 +67,12 @@ let AuthController = class AuthController {
     }
     async updateProfile(req, updateProfileDto) {
         return this.authService.updateProfile(req.user.id, updateProfileDto);
+    }
+    async requestEmailChange(req, dto) {
+        return this.authService.requestEmailChange(req.user.id, dto.newEmail);
+    }
+    async confirmEmailChange(req, dto) {
+        return this.authService.confirmEmailChange(req.user.id, dto.newEmail, dto.code);
     }
     async changePassword(req, changePasswordDto) {
         return this.authService.changePassword(req.user.id, changePasswordDto.currentPassword, changePasswordDto.newPassword);
@@ -162,6 +169,24 @@ __decorate([
     __metadata("design:paramtypes", [Object, update_profile_dto_1.UpdateProfileDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "updateProfile", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Post)('request-email-change'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, change_email_dto_1.RequestEmailChangeDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "requestEmailChange", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Post)('confirm-email-change'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, change_email_dto_1.ConfirmEmailChangeDto]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "confirmEmailChange", null);
 __decorate([
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Post)('change-password'),
