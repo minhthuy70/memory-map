@@ -17,6 +17,8 @@ export declare class JwtStrategy extends JwtStrategy_base {
         isEmailVerified: boolean;
         verificationCode: string | null;
         verificationExpires: Date | null;
+        resetPasswordToken: string | null;
+        resetPasswordExpires: Date | null;
         loginAttempts: number;
         lockedUntil: Date | null;
         lastLoginAt: Date | null;

@@ -52,6 +52,35 @@ export class UsersService {
     });
   }
 
+  async setResetPasswordToken(email: string, token: string, expires: Date) {
+    return this.prisma.user.update({
+      where: { email },
+      data: {
+        resetPasswordToken: token,
+        resetPasswordExpires: expires,
+      },
+    });
+  }
+
+  async findByResetToken(token: string) {
+    return this.prisma.user.findUnique({
+      where: { resetPasswordToken: token },
+    });
+  }
+
+  async resetPasswordWithToken(userId: string, passwordHash: string) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        passwordHash,
+        resetPasswordToken: null,
+        resetPasswordExpires: null,
+        loginAttempts: 0,
+        lockedUntil: null,
+      },
+    });
+  }
+
   async findByEmail(email: string) {
     return this.prisma.user.findUnique({
       where: {

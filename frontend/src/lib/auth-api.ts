@@ -67,6 +67,21 @@ export const authApi = {
     return response.data;
   },
 
+  forgotPassword: async (email: string): Promise<{ success: boolean; message: string; resetLink?: string }> => {
+    const response = await api.post('/auth/forgot-password', { email });
+    return response.data;
+  },
+
+  verifyResetToken: async (token: string): Promise<{ valid: boolean; email: string }> => {
+    const response = await api.get('/auth/verify-reset-token', { params: { token } });
+    return response.data;
+  },
+
+  resetPassword: async (data: { token: string; newPassword: string }): Promise<{ success: boolean; message: string }> => {
+    const response = await api.post('/auth/reset-password', data);
+    return response.data;
+  },
+
   getProfile: async () => {
     const response = await api.get('/auth/me');
     return response.data;

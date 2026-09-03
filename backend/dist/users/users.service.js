@@ -50,6 +50,32 @@ let UsersService = class UsersService {
             },
         });
     }
+    async setResetPasswordToken(email, token, expires) {
+        return this.prisma.user.update({
+            where: { email },
+            data: {
+                resetPasswordToken: token,
+                resetPasswordExpires: expires,
+            },
+        });
+    }
+    async findByResetToken(token) {
+        return this.prisma.user.findUnique({
+            where: { resetPasswordToken: token },
+        });
+    }
+    async resetPasswordWithToken(userId, passwordHash) {
+        return this.prisma.user.update({
+            where: { id: userId },
+            data: {
+                passwordHash,
+                resetPasswordToken: null,
+                resetPasswordExpires: null,
+                loginAttempts: 0,
+                lockedUntil: null,
+            },
+        });
+    }
     async findByEmail(email) {
         return this.prisma.user.findUnique({
             where: {

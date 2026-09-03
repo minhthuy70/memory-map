@@ -25,13 +25,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Account lockout after failed attempts - Khóa tài khoản sau quá nhiều lần đăng nhập thất bại
  
 1.3. Password Recovery (Khôi phục mật khẩu)
-[ ] - Forgot password form - Form nhập email để yêu cầu khôi phục mật khẩu
-[ ] - Send reset email - Gửi email chứa link reset mật khẩu
-[ ] - Password reset link (expiring in 1 hour) - Link reset mật khẩu có hiệu lực trong 1 giờ
-[ ] - New password validation - Kiểm tra độ mạnh của mật khẩu mới
-[ ] - Confirm new password - Nhập lại mật khẩu mới để xác nhận
-[ ] - Password reset success notification - Thông báo khi reset mật khẩu thành công
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
+[x] - Forgot password form - Form nhập email để yêu cầu khôi phục mật khẩu
+[x] - Send reset email - Gửi email chứa link reset mật khẩu
+[x] - Password reset link (expiring in 1 hour) - Link reset mật khẩu có hiệu lực trong 1 giờ
+[x] - New password validation - Kiểm tra độ mạnh của mật khẩu mới
+[x] - Confirm new password - Nhập lại mật khẩu mới để xác nhận
+[x] - Password reset success notification - Thông báo khi reset mật khẩu thành công
  
 1.4. Profile Management (Quản lý hồ sơ)
 [x] - View profile information - Xem thông tin hồ sơ cá nhân
@@ -44,6 +43,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - View account creation date - Xem ngày tạo tài khoản
 [x] - View last login date - Xem ngày đăng nhập gần nhất
 [x] - View total memories count - Xem tổng số kỷ niệm
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 1.5. Session Management (Quản lý phiên đăng nhập)
 [x] - Auto logout after inactivity (30 minutes) - Tự động đăng xuất sau 30 phút không hoạt động

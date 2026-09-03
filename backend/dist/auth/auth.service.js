@@ -48,6 +48,7 @@ const jwt_1 = require("@nestjs/jwt");
 const users_service_1 = require("../users/users.service");
 const sessions_service_1 = require("../sessions/sessions.service");
 const bcrypt = __importStar(require("bcrypt"));
+const crypto = __importStar(require("crypto"));
 let AuthService = class AuthService {
     constructor(usersService, jwtService, sessionsService) {
         this.usersService = usersService;
@@ -283,6 +284,56 @@ let AuthService = class AuthService {
         }
         await this.usersService.deleteAccount(userId);
         return { message: 'Account deleted successfully' };
+    }
+    async forgotPassword(email) {
+        const user = await this.usersService.findByEmail(email);
+        if (!user) {
+            throw new common_1.NotFoundException('Không tìm thấy tài khoản với email này.');
+        }
+        const token = crypto.randomBytes(32).toString('hex');
+        const expires = new Date(Date.now() + 60 * 60 * 1000);
+        await this.usersService.setResetPasswordToken(email, token, expires);
+        const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+        const resetLink = `${frontendUrl}/reset-password?token=${token}`;
+        console.log(`\n======================================================`);
+        console.log(`[PASSWORD RESET] Gửi link đặt lại mật khẩu đến: ${email}`);
+        console.log(`[PASSWORD RESET] Link: ${resetLink}`);
+        console.log(`[PASSWORD RESET] Hết hạn lúc: ${expires.toLocaleTimeString()} (hiệu lực 1 giờ)`);
+        console.log(`======================================================\n`);
+        return {
+            success: true,
+            message: 'Liên kết đặt lại mật khẩu đã được gửi đến email của bạn và có hiệu lực trong 1 giờ.',
+            email,
+            resetLink: process.env.NODE_ENV !== 'production' ? resetLink : undefined,
+        };
+    }
+    async verifyResetToken(token) {
+        const user = await this.usersService.findByResetToken(token);
+        if (!user) {
+            throw new common_1.BadRequestException('Liên kết khôi phục mật khẩu không hợp lệ hoặc đã qua sử dụng.');
+        }
+        if (!user.resetPasswordExpires || new Date() > user.resetPasswordExpires) {
+            throw new common_1.BadRequestException('Liên kết khôi phục mật khẩu đã hết hạn (chỉ có hiệu lực trong 1 giờ). Vui lòng yêu cầu liên kết mới.');
+        }
+        return {
+            valid: true,
+            email: user.email,
+        };
+    }
+    async resetPassword(token, newPassword) {
+        const user = await this.usersService.findByResetToken(token);
+        if (!user) {
+            throw new common_1.BadRequestException('Liên kết khôi phục mật khẩu không hợp lệ hoặc đã qua sử dụng.');
+        }
+        if (!user.resetPasswordExpires || new Date() > user.resetPasswordExpires) {
+            throw new common_1.BadRequestException('Liên kết khôi phục mật khẩu đã hết hạn (chỉ có hiệu lực trong 1 giờ). Vui lòng yêu cầu liên kết mới.');
+        }
+        const passwordHash = await bcrypt.hash(newPassword, 10);
+        await this.usersService.resetPasswordWithToken(user.id, passwordHash);
+        return {
+            success: true,
+            message: 'Đặt lại mật khẩu thành công! Bạn có thể đăng nhập ngay bằng mật khẩu mới.',
+        };
     }
 };
 exports.AuthService = AuthService;

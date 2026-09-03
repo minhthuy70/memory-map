@@ -5,6 +5,7 @@ import {
   Get,
   Post,
   Put,
+  Query,
   Request,
   UseGuards,
   Headers as NestHeaders,
@@ -18,6 +19,8 @@ import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { OAuthDto } from './dto/oauth.dto';
 import { SendVerificationCodeDto, VerifyEmailDto } from './dto/verify-email.dto';
+import { ForgotPasswordDto } from './dto/forgot-password.dto';
+import { ResetPasswordDto } from './dto/reset-password.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
 
@@ -92,6 +95,27 @@ export class AuthController {
     @Body() dto: VerifyEmailDto,
   ) {
     return this.authService.verifyEmail(dto.email, dto.code);
+  }
+
+  @Post('forgot-password')
+  async forgotPassword(
+    @Body() dto: ForgotPasswordDto,
+  ) {
+    return this.authService.forgotPassword(dto.email);
+  }
+
+  @Get('verify-reset-token')
+  async verifyResetToken(
+    @Query('token') token: string,
+  ) {
+    return this.authService.verifyResetToken(token);
+  }
+
+  @Post('reset-password')
+  async resetPassword(
+    @Body() dto: ResetPasswordDto,
+  ) {
+    return this.authService.resetPassword(dto.token, dto.newPassword);
   }
 
   @UseGuards(JwtAuthGuard)
