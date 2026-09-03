@@ -196,7 +196,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Navigate to memory detail - Điều hướng đến chi tiết kỷ niệm
 [x] - Category-based marker colors - Màu marker theo danh mục
 [x] - Mood-based marker styles - Style marker theo tâm trạng
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 3.4. Map Interactions (Tương tác bản đồ)
 [x] - Click to select location - Click để chọn vị trí
@@ -208,6 +207,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Map click handler - Xử lý click bản đồ
 [x] - Coordinate capture - Bắt tọa độ
 [x] - Location name auto-fill - Tự động điền tên địa điểm
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 3.5. Location Search (Tìm kiếm địa điểm)
 [x] - Search input field - Ô tìm kiếm

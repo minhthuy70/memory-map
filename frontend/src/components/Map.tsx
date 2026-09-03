@@ -39,6 +39,61 @@ const TILE_LAYERS: Record<MapLayerType, { name: string; url: string; attribution
   },
 };
 
+const MOOD_EMOJIS: Record<string, string> = {
+  HAPPY: '😊',
+  SAD: '😢',
+  EXCITED: '🤩',
+  PEACEFUL: '😌',
+  NOSTALGIC: '🥹',
+  LOVE: '❤️',
+  ANGRY: '😡',
+  TIRED: '😴',
+  NEUTRAL: '😐',
+};
+
+const getCategoryColor = (categoryName?: string) => {
+  if (!categoryName) return '#6366F1';
+  const colors = [
+    '#3B82F6', // Blue
+    '#10B981', // Emerald
+    '#F59E0B', // Amber
+    '#EC4899', // Pink
+    '#8B5CF6', // Purple
+    '#06B6D4', // Cyan
+    '#F97316', // Orange
+    '#E11D48', // Rose
+  ];
+  let hash = 0;
+  for (let i = 0; i < categoryName.length; i++) {
+    hash = categoryName.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  return colors[Math.abs(hash) % colors.length];
+};
+
+const createCustomMarkerIcon = (memory: Memory) => {
+  const categoryColor = getCategoryColor(memory.category?.name);
+  const moodEmoji = MOOD_EMOJIS[memory.mood] || '✨';
+  const categoryIcon = memory.category?.icon || '📍';
+
+  return L.divIcon({
+    className: 'custom-map-marker-wrapper',
+    html: `
+      <div class="custom-map-marker" title="${memory.title}">
+        <div class="marker-pin" style="background-color: ${categoryColor};">
+          <div class="marker-content">
+            <span class="category-icon">${categoryIcon}</span>
+            <span class="mood-badge">${moodEmoji}</span>
+          </div>
+        </div>
+        <div class="marker-shadow"></div>
+      </div>
+    `,
+    iconSize: [36, 46],
+    iconAnchor: [18, 46],
+    popupAnchor: [0, -42],
+  });
+};
+
 interface MapProps {
   memories: Memory[];
   onLocationSelect?: (lat: number, lng: number) => void;
@@ -203,7 +258,12 @@ export default function MemoryMap({
         }
       },
       (error) => {
-        setLocationError('Không thể lấy vị trí hiện tại');
+        const errorMessages: Record<number, string> = {
+          1: 'Bạn đã từ chối quyền truy cập vị trí. Vui lòng cấp quyền trong cài đặt trình duyệt.',
+          2: 'Vị trí của bạn không khả dụng. Vui lòng kiểm tra kết nối GPS hoặc mạng.',
+          3: 'Yêu cầu định vị hết thời gian. Vui lòng thử lại.',
+        };
+        setLocationError(errorMessages[error.code] || 'Không thể lấy vị trí hiện tại');
         console.error('Geolocation error:', error);
       },
       {
@@ -370,26 +430,114 @@ export default function MemoryMap({
           onLocationName={onLocationName}
         />
 
+      {/* Custom Marker Hover & Appearance CSS */}
+      <style>{`
+        .custom-map-marker-wrapper {
+          background: transparent !important;
+          border: none !important;
+        }
+        .custom-map-marker {
+          position: relative;
+          width: 36px;
+          height: 46px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          cursor: pointer;
+          transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .custom-map-marker:hover {
+          transform: translateY(-6px) scale(1.16);
+          z-index: 9999 !important;
+        }
+        .marker-pin {
+          width: 34px;
+          height: 34px;
+          border-radius: 50% 50% 50% 0;
+          transform: rotate(-45deg);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          border: 2px solid #ffffff;
+        }
+        .marker-content {
+          transform: rotate(45deg);
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          background: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          font-size: 13px;
+        }
+        .mood-badge {
+          position: absolute;
+          bottom: -4px;
+          right: -5px;
+          font-size: 11px;
+          line-height: 1;
+          filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35));
+        }
+        .marker-shadow {
+          width: 14px;
+          height: 4px;
+          background: rgba(0, 0, 0, 0.25);
+          border-radius: 50%;
+          margin-top: 3px;
+          filter: blur(1px);
+        }
+      `}</style>
+
         {memories.map((memory) => (
           <Marker
             key={memory.id}
             position={[memory.latitude, memory.longitude]}
+            icon={createCustomMarkerIcon(memory)}
             eventHandlers={{
               click: () => onMarkerClick?.(memory),
             }}
           >
             <Popup>
-              <div className="p-1 min-w-[200px]">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-xl">{memory.category?.icon || '📍'}</span>
-                  <h3 className="font-bold text-slate-900 text-sm line-clamp-1">{memory.title}</h3>
+              <div className="p-1 min-w-[220px] max-w-[260px]">
+                {memory.images && memory.images.length > 0 && (
+                  <div className="mb-2 rounded-lg overflow-hidden h-28 w-full bg-slate-100">
+                    <img
+                      src={memory.images[0].imageUrl}
+                      alt={memory.title}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).style.display = 'none';
+                      }}
+                    />
+                  </div>
+                )}
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-lg shrink-0">{memory.category?.icon || '📍'}</span>
+                  <h3 className="font-bold text-slate-900 text-sm line-clamp-1 flex-1">
+                    {memory.title}
+                  </h3>
+                  <span className="text-base shrink-0" title={memory.mood}>
+                    {MOOD_EMOJIS[memory.mood] || '😐'}
+                  </span>
                 </div>
                 <p className="text-xs text-slate-600 mb-1 line-clamp-1">
                   {memory.locationName || 'Chưa đặt tên địa điểm'}
                 </p>
-                <p className="text-[11px] text-slate-400 font-medium">
-                  {new Date(memory.memoryDate).toLocaleDateString('vi-VN')}
-                </p>
+                <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
+                  <span className="text-[11px] text-slate-400 font-medium">
+                    {new Date(memory.memoryDate).toLocaleDateString('vi-VN')}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onMarkerClick?.(memory)}
+                    className="text-xs font-semibold text-primary hover:underline cursor-pointer"
+                  >
+                    Xem chi tiết &rarr;
+                  </button>
+                </div>
               </div>
             </Popup>
           </Marker>
