@@ -11,7 +11,7 @@ const MOOD_EMOJIS: Record<string, string> = {
   SAD: '😢',
   EXCITED: '🤩',
   PEACEFUL: '😌',
-  NOSTALGIC: '😊',
+  NOSTALGIC: '🥹',
   LOVE: '❤️',
   ANGRY: '😡',
   TIRED: '😴',
@@ -27,28 +27,33 @@ export default function TimelinePage() {
   const [error, setError] = useState('');
   const [sortBy, setSortBy] = useState('date-newest');
 
+  const sortMemoriesList = (list: Memory[], criterion: string) => {
+    return [...list].sort((a, b) => {
+      switch (criterion) {
+        case 'date-newest':
+          return new Date(b.memoryDate).getTime() - new Date(a.memoryDate).getTime();
+        case 'date-oldest':
+          return new Date(a.memoryDate).getTime() - new Date(b.memoryDate).getTime();
+        case 'title-asc':
+          return a.title.localeCompare(b.title);
+        case 'title-desc':
+          return b.title.localeCompare(a.title);
+        default:
+          return 0;
+      }
+    });
+  };
+
+  const handleSortChange = (newSortBy: string) => {
+    setSortBy(newSortBy);
+    setMemories(sortMemoriesList(memories, newSortBy));
+  };
+
   const loadMemories = async () => {
     try {
       setIsLoading(true);
       const data = await memoriesApi.getAll();
-
-      // Sort memories
-      const sortedMemories = [...data].sort((a, b) => {
-        switch (sortBy) {
-          case 'date-newest':
-            return new Date(b.memoryDate).getTime() - new Date(a.memoryDate).getTime();
-          case 'date-oldest':
-            return new Date(a.memoryDate).getTime() - new Date(b.memoryDate).getTime();
-          case 'title-asc':
-            return a.title.localeCompare(b.title);
-          case 'title-desc':
-            return b.title.localeCompare(a.title);
-          default:
-            return 0;
-        }
-      });
-
-      setMemories(sortedMemories);
+      setMemories(sortMemoriesList(data, sortBy));
     } catch (err: unknown) {
       setError((err as Error)?.message || 'Failed to load memories');
     } finally {
@@ -65,12 +70,6 @@ export default function TimelinePage() {
     loadMemories();
   }, [isAuthenticated, router]);
 
-  useEffect(() => {
-    if (isAuthenticated()) {
-      loadMemories();
-    }
-  }, [sortBy, isAuthenticated]);
-
   const groupMemoriesByYear = (memories: Memory[]) => {
     const grouped: Record<string, Memory[]> = {};
     
@@ -82,8 +81,10 @@ export default function TimelinePage() {
       grouped[year].push(memory);
     });
     
-    // Sort years in descending order
-    return Object.entries(grouped).sort((a, b) => Number(b[0]) - Number(a[0]));
+    // Sort years in order matching current sort mode
+    return Object.entries(grouped).sort((a, b) => 
+      sortBy === 'date-oldest' ? Number(a[0]) - Number(b[0]) : Number(b[0]) - Number(a[0])
+    );
   };
 
   const formatDate = (dateString: string) => {
@@ -121,16 +122,19 @@ export default function TimelinePage() {
             Timeline
           </h1>
           <div className="flex items-center gap-2">
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
-            >
-              <option value="date-newest">Newest</option>
-              <option value="date-oldest">Oldest</option>
-              <option value="title-asc">Title A-Z</option>
-              <option value="title-desc">Title Z-A</option>
-            </select>
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg">
+              <ArrowUpDown className="w-3.5 h-3.5 text-primary" />
+              <select
+                value={sortBy}
+                onChange={(e) => handleSortChange(e.target.value)}
+                className="text-sm bg-transparent outline-none cursor-pointer"
+              >
+                <option value="date-newest">Ngày (Mới nhất)</option>
+                <option value="date-oldest">Ngày (Cũ nhất)</option>
+                <option value="title-asc">Tiêu đề (A-Z)</option>
+                <option value="title-desc">Tiêu đề (Z-A)</option>
+              </select>
+            </div>
             <button
               onClick={() => router.push('/profile')}
               className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"

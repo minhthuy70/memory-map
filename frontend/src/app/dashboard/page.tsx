@@ -63,6 +63,29 @@ export default function DashboardPage() {
   const [statistics, setStatistics] = useState<Statistics | null>(null);
   const [showStats, setShowStats] = useState(false);
 
+  const sortMemoriesList = (list: Memory[], criterion: string) => {
+    return [...list].sort((a, b) => {
+      switch (criterion) {
+        case 'date-newest':
+          return new Date(b.memoryDate).getTime() - new Date(a.memoryDate).getTime();
+        case 'date-oldest':
+          return new Date(a.memoryDate).getTime() - new Date(b.memoryDate).getTime();
+        case 'title-asc':
+          return a.title.localeCompare(b.title);
+        case 'title-desc':
+          return b.title.localeCompare(a.title);
+        default:
+          return 0;
+      }
+    });
+  };
+
+  const handleSortChange = (newSortBy: string) => {
+    setSortBy(newSortBy);
+    // Apply sort immediately without waiting for re-fetch
+    setMemories(sortMemoriesList(memories, newSortBy));
+  };
+
   /**
    * Load initial dashboard data.
    * Memories and categories are loaded together only once.
@@ -78,7 +101,7 @@ export default function DashboardPage() {
         memoriesApi.getStatistics(),
       ]);
 
-      setMemories(memoriesData);
+      setMemories(sortMemoriesList(memoriesData, sortBy));
       setCategories(categoriesData);
       setStatistics(statsData);
     } catch (err: unknown) {
@@ -117,24 +140,7 @@ export default function DashboardPage() {
       }
 
       const memoriesData = await memoriesApi.getAll(filters);
-
-      // Sort memories
-      const sortedMemories = [...memoriesData].sort((a, b) => {
-        switch (sortBy) {
-          case 'date-newest':
-            return new Date(b.memoryDate).getTime() - new Date(a.memoryDate).getTime();
-          case 'date-oldest':
-            return new Date(a.memoryDate).getTime() - new Date(b.memoryDate).getTime();
-          case 'title-asc':
-            return a.title.localeCompare(b.title);
-          case 'title-desc':
-            return b.title.localeCompare(a.title);
-          default:
-            return 0;
-        }
-      });
-
-      setMemories(sortedMemories);
+      setMemories(sortMemoriesList(memoriesData, sortBy));
     } catch (err: unknown) {
       const message =
         err instanceof Error ? err.message : 'Failed to load memories';
@@ -322,19 +328,28 @@ export default function DashboardPage() {
 
             {/* Sort */}
             <div>
-              <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
-                Sort By
-              </h3>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                  <ArrowUpDown className="h-4 w-4 text-primary" />
+                  <span>Sắp xếp</span>
+                </h3>
+                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-primary/10 text-primary">
+                  {sortBy === 'date-newest' && 'Mới nhất'}
+                  {sortBy === 'date-oldest' && 'Cũ nhất'}
+                  {sortBy === 'title-asc' && 'A → Z'}
+                  {sortBy === 'title-desc' && 'Z → A'}
+                </span>
+              </div>
 
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                onChange={(e) => handleSortChange(e.target.value)}
+                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm cursor-pointer"
               >
-                <option value="date-newest">Date (Newest)</option>
-                <option value="date-oldest">Date (Oldest)</option>
-                <option value="title-asc">Title (A-Z)</option>
-                <option value="title-desc">Title (Z-A)</option>
+                <option value="date-newest">Ngày (Mới nhất trước)</option>
+                <option value="date-oldest">Ngày (Cũ nhất trước)</option>
+                <option value="title-asc">Tiêu đề (A-Z)</option>
+                <option value="title-desc">Tiêu đề (Z-A)</option>
               </select>
             </div>
 

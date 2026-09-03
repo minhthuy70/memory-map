@@ -142,7 +142,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Sort selector - Chọn sắp xếp
 [x] - Apply sort immediately - Áp dụng sắp xếp ngay lập tức
 [x] - Sort indicator - Chỉ số sắp xếp
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 2.7. Memory Filtering (Lọc kỷ niệm)
 [x] - Filter by category - Lọc theo danh mục
@@ -156,7 +155,8 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Clear filters button - Nút xóa bộ lọc
 [x] - Filter combination support - Hỗ trợ kết hợp bộ lọc
 [x] - Filter count display - Hiển thị số lượng sau khi lọc
- 
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
+
 ================================================================================
  
 3. MAP SYSTEM (HỆ THỐNG BẢN ĐỒ)
