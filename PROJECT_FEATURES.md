@@ -207,7 +207,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Map click handler - Xử lý click bản đồ
 [x] - Coordinate capture - Bắt tọa độ
 [x] - Location name auto-fill - Tự động điền tên địa điểm
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 3.5. Location Search (Tìm kiếm địa điểm)
 [x] - Search input field - Ô tìm kiếm
@@ -233,6 +232,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Error handling for unavailable location - Xử lý lỗi khi vị trí không khả dụng
 [x] - Error handling for timeout - Xử lý lỗi timeout
 [x] - High accuracy GPS - GPS độ chính xác cao
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 3.7. Reverse Geocoding (Geocoding ngược)
 [x] - Auto-fill location name on map click - Tự động điền tên địa điểm khi click bản đồ
