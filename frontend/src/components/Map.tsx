@@ -6,7 +6,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Memory } from '@/lib/memories-api';
 import LocationSearch from './LocationSearch';
-import { Navigation, Layers, Maximize2, Minimize2, Focus } from 'lucide-react';
+import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin } from 'lucide-react';
 
 // Fix for default marker icons in Leaflet with React
 const iconDefault = L.Icon.Default.prototype as L.Icon.Default & { _getIconUrl?: () => string };
@@ -46,6 +46,8 @@ interface MapProps {
   onMarkerClick?: (memory: Memory) => void;
   center?: [number, number];
   zoom?: number;
+  minZoom?: number;
+  maxZoom?: number;
   showSearch?: boolean;
   enableReverseGeocoding?: boolean;
   onLocationName?: (locationName: string) => void;
@@ -128,6 +130,8 @@ export default function MemoryMap({
   onMarkerClick,
   center = [21.0285, 105.8542],
   zoom = 13,
+  minZoom = 3,
+  maxZoom = 19,
   showSearch = false,
   enableReverseGeocoding = false,
   onLocationName,
@@ -216,8 +220,14 @@ export default function MemoryMap({
 
   if (!isClient) {
     return (
-      <div className="w-full h-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
-        <div className="text-slate-600 dark:text-slate-400">Đang tải bản đồ...</div>
+      <div className="w-full h-full bg-slate-100 dark:bg-slate-800/60 backdrop-blur-xs flex flex-col items-center justify-center p-6">
+        <Loader2 className="h-8 w-8 text-primary animate-spin mb-3" />
+        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+          Đang tải bản đồ tương tác...
+        </span>
+        <span className="text-xs text-slate-400 mt-1">
+          Trung tâm mặc định: Hà Nội (Mức zoom: {zoom})
+        </span>
       </div>
     );
   }
@@ -231,6 +241,16 @@ export default function MemoryMap({
             onLocationSelect={handleSearchLocationSelect}
             placeholder="Tìm kiếm địa điểm trên bản đồ..."
           />
+        </div>
+      )}
+
+      {/* Empty State Notice on Map */}
+      {!onSelectMode && memories.length === 0 && (
+        <div className="absolute bottom-6 left-6 z-[1000] pointer-events-none">
+          <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300">
+            <MapPin className="w-4 h-4 text-primary shrink-0" />
+            <span>Chưa có điểm kỷ niệm nào trên bản đồ</span>
+          </div>
         </div>
       )}
 
@@ -325,6 +345,8 @@ export default function MemoryMap({
       <MapContainer
         center={mapCenter}
         zoom={mapZoom}
+        minZoom={minZoom}
+        maxZoom={maxZoom}
         className="w-full h-full"
         style={{ height: '100%', width: '100%' }}
       >
