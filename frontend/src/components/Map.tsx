@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, CircleMarker, useMap, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Memory } from '@/lib/memories-api';
@@ -197,6 +197,7 @@ export default function MemoryMap({
   const [mapCenter, setMapCenter] = useState<[number, number]>(center);
   const [mapZoom, setMapZoom] = useState(zoom);
   const [locationError, setLocationError] = useState('');
+  const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
   
   // Layer control & Fullscreen state
   const [activeLayer, setActiveLayer] = useState<MapLayerType>('streets');
@@ -252,6 +253,7 @@ export default function MemoryMap({
         setMapCenter([latitude, longitude]);
         setMapZoom(15);
         setLocationError('');
+        setUserLocation([latitude, longitude]);
 
         if (onSelectMode && onLocationSelect) {
           onLocationSelect(latitude, longitude);
@@ -489,7 +491,55 @@ export default function MemoryMap({
           margin-top: 3px;
           filter: blur(1px);
         }
+        @keyframes pulse-ring {
+          0% { transform: scale(1); opacity: 0.8; }
+          100% { transform: scale(2.5); opacity: 0; }
+        }
+        .user-location-pulse {
+          animation: pulse-ring 1.8s ease-out infinite;
+        }
       `}</style>
+
+        {/* User Location Marker */}
+        {userLocation && (
+          <>
+            {/* Outer pulse ring */}
+            <CircleMarker
+              center={userLocation}
+              radius={16}
+              pathOptions={{
+                color: '#3B82F6',
+                fillColor: '#3B82F6',
+                fillOpacity: 0.15,
+                weight: 2,
+                opacity: 0.5,
+                className: 'user-location-pulse',
+              }}
+              interactive={false}
+            />
+            {/* Inner dot */}
+            <CircleMarker
+              center={userLocation}
+              radius={8}
+              pathOptions={{
+                color: '#ffffff',
+                fillColor: '#3B82F6',
+                fillOpacity: 1,
+                weight: 3,
+                opacity: 1,
+              }}
+            >
+              <Popup>
+                <div className="p-1 text-center">
+                  <p className="text-sm font-bold text-slate-900">📍 Vị trí của bạn</p>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    {userLocation[0].toFixed(5)}, {userLocation[1].toFixed(5)}
+                  </p>
+                </div>
+              </Popup>
+            </CircleMarker>
+          </>
+        )}
 
         {memories.map((memory) => (
           <Marker
