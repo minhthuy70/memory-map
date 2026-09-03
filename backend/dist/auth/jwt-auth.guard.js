@@ -13,10 +13,12 @@ exports.JwtAuthGuard = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const users_service_1 = require("../users/users.service");
+const sessions_service_1 = require("../sessions/sessions.service");
 let JwtAuthGuard = class JwtAuthGuard {
-    constructor(jwtService, usersService) {
+    constructor(jwtService, usersService, sessionsService) {
         this.jwtService = jwtService;
         this.usersService = usersService;
+        this.sessionsService = sessionsService;
     }
     async canActivate(context) {
         const request = context
@@ -33,10 +35,22 @@ let JwtAuthGuard = class JwtAuthGuard {
             if (!user) {
                 throw new common_1.UnauthorizedException('User not found');
             }
+            const session = await this.sessionsService.findByToken(token);
+            if (!session) {
+                throw new common_1.UnauthorizedException('Phiên đăng nhập không tồn tại hoặc đã bị thu hồi.');
+            }
+            if (new Date() > session.expiresAt) {
+                throw new common_1.UnauthorizedException('Phiên đăng nhập đã hết hạn.');
+            }
+            await this.sessionsService.updateLastActivity(token);
             request['user'] = user;
+            request['session'] = session;
             return true;
         }
-        catch {
+        catch (err) {
+            if (err instanceof common_1.UnauthorizedException) {
+                throw err;
+            }
             throw new common_1.UnauthorizedException('Invalid or expired token');
         }
     }
@@ -45,6 +59,7 @@ exports.JwtAuthGuard = JwtAuthGuard;
 exports.JwtAuthGuard = JwtAuthGuard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [jwt_1.JwtService,
-        users_service_1.UsersService])
+        users_service_1.UsersService,
+        sessions_service_1.SessionsService])
 ], JwtAuthGuard);
 //# sourceMappingURL=jwt-auth.guard.js.map

@@ -12,6 +12,7 @@ const jwt_1 = require("@nestjs/jwt");
 const config_1 = require("@nestjs/config");
 const auth_service_1 = require("./auth.service");
 const auth_controller_1 = require("./auth.controller");
+const jwt_auth_guard_1 = require("./jwt-auth.guard");
 const users_module_1 = require("../users/users.module");
 const sessions_module_1 = require("../sessions/sessions.module");
 const sessions_service_1 = require("../sessions/sessions.service");
@@ -25,7 +26,7 @@ exports.AuthModule = AuthModule = __decorate([
         imports: [
             config_1.ConfigModule,
             users_module_1.UsersModule,
-            sessions_module_1.SessionsModule,
+            (0, common_1.forwardRef)(() => sessions_module_1.SessionsModule),
             jwt_1.JwtModule.registerAsync({
                 imports: [config_1.ConfigModule],
                 inject: [config_1.ConfigService],
@@ -42,12 +43,14 @@ exports.AuthModule = AuthModule = __decorate([
         ],
         providers: [
             auth_service_1.AuthService,
+            jwt_auth_guard_1.JwtAuthGuard,
             jwt_strategy_1.JwtStrategy,
             local_strategy_1.LocalStrategy,
             sessions_service_1.SessionsService,
         ],
         exports: [
             auth_service_1.AuthService,
+            jwt_auth_guard_1.JwtAuthGuard,
             jwt_1.JwtModule,
         ],
     })

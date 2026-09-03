@@ -51,7 +51,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - View active sessions - Xem các phiên đăng nhập đang hoạt động
 [x] - Revoke specific session - Hủy phiên đăng nhập cụ thể
 [x] - Session timeout warning (5 minutes before) - Cảnh báo hết phiên trước 5 phút
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 ================================================================================
  
@@ -69,7 +68,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Search functionality - Chức năng tìm kiếm
 [x] - Memory categories summary - Tóm tắt danh mục kỷ niệm
 [x] - Mood distribution overview - Tổng quan phân phối tâm trạng
- 
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
 
 2.2. Create Memory (Tạo kỷ niệm)
 [x] - Select location on map - Chọn vị trí trên bản đồ

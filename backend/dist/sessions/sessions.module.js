@@ -9,13 +9,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SessionsModule = void 0;
 const common_1 = require("@nestjs/common");
 const sessions_service_1 = require("./sessions.service");
+const sessions_controller_1 = require("./sessions.controller");
 const prisma_module_1 = require("../prisma/prisma.module");
+const users_module_1 = require("../users/users.module");
+const auth_module_1 = require("../auth/auth.module");
 let SessionsModule = class SessionsModule {
 };
 exports.SessionsModule = SessionsModule;
 exports.SessionsModule = SessionsModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule],
+        imports: [
+            prisma_module_1.PrismaModule,
+            users_module_1.UsersModule,
+            (0, common_1.forwardRef)(() => auth_module_1.AuthModule),
+        ],
+        controllers: [sessions_controller_1.SessionsController],
         providers: [sessions_service_1.SessionsService],
         exports: [sessions_service_1.SessionsService],
     })

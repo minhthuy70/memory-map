@@ -70,8 +70,10 @@ export declare class AuthController {
     getProfile(req: any): Promise<{
         memoryCount: number;
         id: string;
-        email: string;
         name: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        email: string;
         avatar: string | null;
         googleId: string | null;
         facebookId: string | null;
@@ -84,13 +86,13 @@ export declare class AuthController {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     updateProfile(req: any, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
-        email: string;
         name: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        email: string;
         avatar: string | null;
         googleId: string | null;
         facebookId: string | null;
@@ -103,8 +105,6 @@ export declare class AuthController {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     requestEmailChange(req: any, dto: RequestEmailChangeDto): Promise<{
         success: boolean;

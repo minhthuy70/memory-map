@@ -1,9 +1,10 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
+import { JwtAuthGuard } from './jwt-auth.guard';
 
 import { UsersModule } from '../users/users.module';
 import { SessionsModule } from '../sessions/sessions.module';
@@ -16,7 +17,7 @@ import { LocalStrategy } from './local.strategy';
   imports: [
     ConfigModule,
     UsersModule,
-    SessionsModule,
+    forwardRef(() => SessionsModule),
 
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -48,6 +49,7 @@ import { LocalStrategy } from './local.strategy';
 
   providers: [
     AuthService,
+    JwtAuthGuard,
     JwtStrategy,
     LocalStrategy,
     SessionsService,
@@ -55,6 +57,7 @@ import { LocalStrategy } from './local.strategy';
 
   exports: [
     AuthService,
+    JwtAuthGuard,
     JwtModule,
   ],
 })
