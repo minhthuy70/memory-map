@@ -371,10 +371,18 @@ export default function TimelinePage() {
 
               {/* Sort Selector */}
               <div>
-                <label className="block text-xs font-medium text-slate-600 dark:text-slate-400 mb-1 flex items-center gap-1">
-                  <ArrowUpDown className="h-3.5 w-3.5 text-primary" />
-                  <span>Sắp xếp</span>
-                </label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="text-xs font-medium text-slate-600 dark:text-slate-400 flex items-center gap-1">
+                    <ArrowUpDown className="h-3.5 w-3.5 text-primary" />
+                    <span>Sắp xếp</span>
+                  </label>
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold bg-primary/10 text-primary">
+                    {sortBy === 'date-newest' && 'Mới nhất'}
+                    {sortBy === 'date-oldest' && 'Cũ nhất'}
+                    {sortBy === 'title-asc' && 'A → Z'}
+                    {sortBy === 'title-desc' && 'Z → A'}
+                  </span>
+                </div>
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}

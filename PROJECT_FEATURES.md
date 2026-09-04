@@ -311,6 +311,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Percentage calculations - Tính toán phần trăm
 [x] - Progress bars - Thanh tiến độ
 [x] - Visual data representation - Trực quan hóa dữ liệu
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 5.2. Overview Metrics (Chỉ số tổng quan)
 [x] - Total memories count - Tổng số kỷ niệm
@@ -321,6 +322,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Most used category - Danh mục được dùng nhiều nhất
 [x] - Card click to filter - Click card để lọc
 [x] - Real-time calculation - Tính toán thời gian thực
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 5.3. Mood Distribution (Phân phối tâm trạng)
 [x] - Bar chart display - Hiển thị biểu đồ cột
@@ -332,6 +334,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Color-coded bars - Thanh mã màu
 [x] - Sort by count - Sắp xếp theo số lượng
 [x] - Empty state handling - Xử lý trạng thái trống
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 5.4. Category Distribution (Phân phối danh mục)
 [x] - Bar chart display - Hiển thị biểu đồ cột
@@ -343,6 +346,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Color-coded bars - Thanh mã màu
 [x] - Sort by count - Sắp xếp theo số lượng
 [x] - Empty state handling - Xử lý trạng thái trống
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 5.5. Monthly Activity (Hoạt động hàng tháng)
 [x] - Bar chart display - Hiển thị biểu đồ cột
