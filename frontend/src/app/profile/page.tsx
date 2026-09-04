@@ -27,6 +27,7 @@ import {
 import { useAuthStore } from '@/store/auth-store';
 import { authApi } from '@/lib/auth-api';
 import SessionsManager from '@/components/SessionsManager';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -313,13 +314,16 @@ export default function ProfilePage() {
             </Link>
           </div>
 
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-3.5 py-1.5 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/30 dark:hover:text-rose-400 transition-colors font-medium cursor-pointer"
-          >
-            <LogOut className="h-4 w-4" />
-            <span>Đăng xuất</span>
-          </button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle />
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-3.5 py-1.5 text-sm bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-xl hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/30 dark:hover:text-rose-400 transition-colors font-medium cursor-pointer"
+            >
+              <LogOut className="h-4 w-4" />
+              <span>Đăng xuất</span>
+            </button>
+          </div>
         </div>
       </header>
 

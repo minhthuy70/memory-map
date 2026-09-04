@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { MapPin, Heart } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   return (
@@ -11,16 +12,17 @@ export default function Home() {
           <MapPin className="h-8 w-8 text-primary" />
           <span className="text-2xl font-bold text-slate-900 dark:text-white">Memory Map</span>
         </div>
-        <div className="flex gap-4">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link 
             href="/login"
-            className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+            className="px-4 py-2 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors text-sm font-medium"
           >
             Login
           </Link>
           <Link 
             href="/register"
-            className="px-6 py-2 bg-primary text-white rounded-full hover:bg-primary-hover transition-colors"
+            className="px-5 py-2 bg-primary text-white rounded-xl hover:bg-primary-hover transition-colors text-sm font-semibold shadow-xs"
           >
             Sign Up
           </Link>

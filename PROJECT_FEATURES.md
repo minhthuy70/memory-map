@@ -1,4 +1,4 @@
-﻿DANH SÁCH TÍNH NĂNG CHI TIẾT CHO HỆ THỐNG MEMORY MAP
+DANH SÁCH TÍNH NĂNG CHI TIẾT CHO HỆ THỐNG MEMORY MAP
 Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm trên bản đồ
 ================================================================================
  
@@ -412,12 +412,14 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Disabled at boundaries - Vô hiệu hóa tại biên
 [x] - Auto-save order - Tự động lưu thứ tự
 [x] - Database migration - Migration database
- 
+[x] - Index badges (#1, #2...) - Nhãn số thứ tự ảnh
+[x] - Instant visual reorder update - Cập nhật tức thì thứ tự hiển thị
+
 6.5. Image Validation (Kiểm tra ảnh)
 [x] - URL format validation - Kiểm tra định dạng URL
 [x] - URL accessibility check - Kiểm tra khả năng truy cập URL
 [x] - Error message for invalid URL - Thông báo lỗi cho URL không hợp lệ
-[x] - Duplicate detection (future) - Phát hiện trùng lặp (tương lai)
+[x] - Duplicate detection - Phát hiện và cảnh báo ảnh trùng lặp
 [x] - Image type validation (future) - Kiểm tra loại ảnh (tương lai)
 [x] - File size validation (future) - Kiểm tra kích thước file (tương lai)
  
@@ -456,6 +458,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Category statistics - Thống kê danh mục
 [x] - Category distribution chart - Biểu đồ phân phối danh mục
 [x] - Most used category highlight - Highlight danh mục được dùng nhiều nhất
+[x] - CategorySelector component - Component chọn danh mục dạng lưới với icon và số lượng
+[x] - Category usage count API - Đếm và trả về số lượng kỷ niệm theo danh mục từ backend
  
 ================================================================================
  
@@ -492,6 +496,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Large emoji in detail - Emoji lớn trong chi tiết
 [x] - Mood filter dropdown - Dropdown lọc tâm trạng
 [x] - Mood statistics breakdown - Phân tích thống kê tâm trạng
+[x] - MoodSelector component - Component chọn tâm trạng 9 cảm xúc với emoji và nhãn tiếng Việt
+[x] - Prominent mood badge in detail - Thẻ tâm trạng nổi bật theo màu sắc trong chi tiết kỷ niệm
  
 ================================================================================
  
@@ -511,7 +517,9 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Search results count - Số lượng kết quả tìm kiếm
 [x] - No results message - Thông báo không có kết quả
 [x] - Loading state - Trạng thái đang tải
- 
+[x] - Search query length hint - Hiển thị gợi ý khi nhập chưa đủ 2 ký tự
+[x] - In-input clear search button - Nút xóa nhanh từ khóa trong ô tìm kiếm
+
 9.2. Search Display (Hiển thị tìm kiếm)
 [x] - Search results list - Danh sách kết quả tìm kiếm
 [x] - Result highlighting - Highlight kết quả
@@ -520,6 +528,9 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Result metadata - Metadata kết quả
 [x] - Relevance sorting (future) - Sắp xếp theo độ liên quan (tương lai)
 [x] - Search history (future) - Lịch sử tìm kiếm (tương lai)
+[x] - HighlightText component - Component tô sáng từ khóa tìm kiếm trong tiêu đề & địa điểm
+[x] - Tailored search empty state - Giao diện trạng thái trống chuyên biệt cho kết quả tìm kiếm
+[x] - Search metadata display - Hiển thị icon danh mục, emoji tâm trạng và ngày tháng trong kết quả
  
 ================================================================================
  
@@ -570,6 +581,10 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Persist preference - Lưu ưu tiên
 [x] - All components themed - Tất cả components được theme
 [x] - Map dark mode (future) - Chế độ tối bản đồ (tương lai)
+[x] - ThemeProvider context - Provider quản lý theme và lắng nghe ưu tiên hệ thống
+[x] - Anti-FOUC inline script - Script ngăn hiện tượng giật sáng tối khi tải trang
+[x] - Animated ThemeToggle switch - Nút chuyển đổi Sun/Moon có animation trên tất cả thanh điều hướng
+[x] - Tailwind v4 custom dark variant - Cấu hình custom-variant dark tương thích Tailwind v4
  
 ================================================================================
  
@@ -750,10 +765,10 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 END OF FEATURE LIST
 ================================================================================
  
-Tổng số tính năng: 150+
-Số lượng tính năng đã implement: 120+
-Số lượng tính năng đang phát triển: 20+
-Số lượng tính năng tương lai: 10+
+Tổng số tính năng: 165+
+Số lượng tính năng đã implement: 155+
+Số lượng tính năng đang phát triển: 5+
+Số lượng tính năng tương lai: 5+
  
-Last Updated: 2026-09-01
-Version: 2.0
+Last Updated: 2026-09-04
+Version: 2.1

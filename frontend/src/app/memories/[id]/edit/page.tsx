@@ -23,6 +23,7 @@ import { categoriesApi, Category } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
 import MoodSelector from '@/components/MoodSelector';
 import CategorySelector from '@/components/CategorySelector';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const MOODS = [
   { value: 'HAPPY', emoji: '😊' },
@@ -313,14 +314,17 @@ export default function EditMemoryPage() {
             </h1>
           </div>
 
-          <button
-            type="button"
-            onClick={() => router.push(`/memories/${memory.id}`)}
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl text-slate-600 dark:text-slate-400 cursor-pointer"
-            title="Đóng"
-          >
-            <X className="h-5 w-5" />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => router.push(`/memories/${memory.id}`)}
+              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-xl text-slate-600 dark:text-slate-400 cursor-pointer"
+              title="Đóng"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
         </div>
       </header>
 
