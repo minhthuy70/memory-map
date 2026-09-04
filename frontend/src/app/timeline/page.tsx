@@ -474,8 +474,11 @@ export default function TimelinePage() {
                             onClick={() => router.push(`/memories/${memory.id}`)}
                             className="group relative bg-white dark:bg-slate-800 rounded-2xl shadow-sm hover:shadow-lg border border-slate-200 dark:border-slate-700 hover:border-primary/40 dark:hover:border-primary/40 p-4 sm:p-5 transition-all duration-200 cursor-pointer"
                           >
-                            {/* Connecting dot from timeline line to memory card */}
-                            <div className="absolute -left-[31px] sm:-left-[39px] top-6 w-3.5 h-3.5 rounded-full bg-white dark:bg-slate-800 border-4 border-primary group-hover:scale-125 group-hover:border-primary-hover transition-transform duration-200 ring-2 ring-slate-50 dark:ring-slate-900" />
+                            {/* Horizontal connector line from vertical timeline to card */}
+                            <div className="absolute -left-[24px] sm:-left-[32px] top-[30px] w-[24px] sm:w-[32px] h-[2px] bg-primary/25 dark:bg-primary/35 group-hover:bg-primary transition-colors" />
+
+                            {/* Connecting dot on vertical timeline */}
+                            <div className="absolute -left-[31px] sm:-left-[39px] top-6 w-3.5 h-3.5 rounded-full bg-white dark:bg-slate-800 border-4 border-primary group-hover:scale-125 group-hover:border-primary-hover transition-transform duration-200 ring-2 ring-slate-50 dark:ring-slate-900 z-10" />
 
                             <div className="flex flex-col gap-3">
                               {/* Card Header: Category & Mood */}

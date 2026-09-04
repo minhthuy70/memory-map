@@ -273,7 +273,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Visual timeline line - Đường timeline trực quan
 [x] - Connecting dots - Dots kết nối
 [x] - Responsive layout - Bố cục responsive
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 4.3. Timeline Filtering (Lọc timeline)
 [x] - Filter by year - Lọc theo năm
