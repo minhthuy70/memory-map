@@ -8,6 +8,8 @@ import dynamic from 'next/dynamic';
 const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
 import { memoriesApi, Memory } from '@/lib/memories-api';
 import { useAuthStore } from '@/store/auth-store';
+import { MOOD_OPTIONS } from '@/components/MoodSelector';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const MOOD_EMOJIS: Record<string, string> = {
   HAPPY: '😊',
@@ -37,6 +39,32 @@ export default function MemoryDetailPage() {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [showLightbox, setShowLightbox] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd || !memory) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    if (isLeftSwipe) {
+      setCurrentImageIndex((prev) => (prev < memory.images.length - 1 ? prev + 1 : 0));
+    }
+    if (isRightSwipe) {
+      setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : memory.images.length - 1));
+    }
+  };
 
   const loadMemory = async (id: string) => {
     try {
@@ -249,6 +277,7 @@ export default function MemoryDetailPage() {
             Back
           </button>
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <button
               onClick={() => router.push(`/memories/${memory.id}/edit`)}
               className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-slate-600 dark:text-slate-400"
@@ -286,40 +315,71 @@ export default function MemoryDetailPage() {
         </div>
 
         {/* Memory Details */}
-        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-6 space-y-6">
-          {/* Title and Category */}
-          <div>
-            <div className="flex items-start gap-3 mb-2">
-              <span className="text-3xl">{memory.category.icon}</span>
-              <div>
-                <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
-                  {memory.title}
-                </h1>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  {memory.category.name}
-                </p>
+        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-6 space-y-6">
+          {/* Header Row: Title, Category & Large Mood Emoji */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100 dark:border-slate-700">
+            <div className="space-y-2 flex-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-light border border-primary/20">
+                <span className="text-base">{memory.category.icon}</span>
+                <span>{memory.category.name}</span>
               </div>
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                {memory.title}
+              </h1>
             </div>
+
+            {/* Large Mood Emoji in Detail */}
+            {(() => {
+              const moodInfo = MOOD_OPTIONS.find((m) => m.value === memory.mood);
+              return (
+                <div
+                  className={`flex items-center gap-3 px-4 py-3 rounded-2xl border ${
+                    moodInfo?.badgeBg || 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+                  } shrink-0 self-start sm:self-auto shadow-xs`}
+                  title={`Tâm trạng: ${moodInfo?.label || memory.mood}`}
+                >
+                  <span className="text-3xl sm:text-4xl filter drop-shadow-xs">
+                    {moodInfo?.emoji || MOOD_EMOJIS[memory.mood] || '😐'}
+                  </span>
+                  <div>
+                    <span className="text-[10px] uppercase font-bold tracking-wider opacity-75 block">
+                      Tâm trạng
+                    </span>
+                    <span className="text-sm sm:text-base font-bold">
+                      {moodInfo?.label || memory.mood}
+                    </span>
+                  </div>
+                </div>
+              );
+            })()}
           </div>
 
-          {/* Date and Mood */}
-          <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-              <Calendar className="h-4 w-4" />
-              <span>{new Date(memory.memoryDate).toLocaleDateString('vi-VN')}</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-              <span className="text-lg">
-                {MOOD_EMOJIS[memory.mood] || '😐'}
+          {/* Date and Location Meta */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 p-3.5 bg-slate-50 dark:bg-slate-700/40 rounded-xl border border-slate-200/60 dark:border-slate-700">
+            <div className="flex items-center gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+              <Calendar className="h-4 w-4 text-primary shrink-0" />
+              <span>
+                <span className="text-slate-400 dark:text-slate-500 mr-1.5">Ngày:</span>
+                <strong className="font-semibold text-slate-800 dark:text-slate-200">
+                  {new Date(memory.memoryDate).toLocaleDateString('vi-VN', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </strong>
               </span>
-              <span>{memory.mood}</span>
             </div>
-          </div>
 
-          {/* Location */}
-          <div className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-400">
-            <MapPin className="h-4 w-4 mt-0.5" />
-            <span>{memory.locationName || 'Unknown location'}</span>
+            <div className="flex items-center gap-2.5 text-sm text-slate-700 dark:text-slate-300">
+              <MapPin className="h-4 w-4 text-rose-500 shrink-0" />
+              <span className="truncate">
+                <span className="text-slate-400 dark:text-slate-500 mr-1.5">Địa điểm:</span>
+                <strong className="font-semibold text-slate-800 dark:text-slate-200">
+                  {memory.locationName || `${memory.latitude.toFixed(4)}, ${memory.longitude.toFixed(4)}`}
+                </strong>
+              </span>
+            </div>
           </div>
 
           {/* Content */}
@@ -540,39 +600,97 @@ export default function MemoryDetailPage() {
 
       {/* Lightbox Modal */}
       {showLightbox && memory && memory.images.length > 0 && (
-        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-          <button
-            onClick={() => setShowLightbox(false)}
-            className="absolute top-4 right-4 p-2 text-white hover:bg-white/20 rounded-full transition-colors"
+        <div
+          onClick={() => setShowLightbox(false)}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+          className="fixed inset-0 bg-black/95 backdrop-blur-md flex items-center justify-center z-50 p-2 sm:p-4 animate-in fade-in duration-200"
+        >
+          {/* Top Bar: Title info & Counter & Close button */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="absolute top-0 inset-x-0 p-4 sm:p-6 flex items-center justify-between text-white bg-gradient-to-b from-black/80 via-black/40 to-transparent z-20 pointer-events-auto"
           >
-            <X className="h-6 w-6" />
-          </button>
+            <div className="flex flex-col">
+              <span className="font-bold text-sm sm:text-base truncate max-w-xs sm:max-w-md">
+                {memory.title}
+              </span>
+              <div className="flex items-center gap-3 text-xs text-slate-300">
+                <span>{new Date(memory.memoryDate).toLocaleDateString('vi-VN')}</span>
+                {memory.locationName && (
+                  <>
+                    <span>•</span>
+                    <span className="truncate max-w-[180px]">{memory.locationName}</span>
+                  </>
+                )}
+              </div>
+            </div>
 
-          <button
-            onClick={() => setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : memory.images.length - 1))}
-            className="absolute left-4 p-2 text-white hover:bg-white/20 rounded-full transition-colors"
+            <div className="flex items-center gap-4">
+              {/* Image counter */}
+              <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-xs text-xs font-semibold text-white">
+                {currentImageIndex + 1} / {memory.images.length}
+              </span>
+
+              {/* Close button */}
+              <button
+                type="button"
+                onClick={() => setShowLightbox(false)}
+                className="p-2 text-white/80 hover:text-white hover:bg-white/20 rounded-full transition-colors cursor-pointer"
+                title="Đóng (Escape hoặc click bên ngoài)"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+          </div>
+
+          {/* Previous Button */}
+          {memory.images.length > 1 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : memory.images.length - 1));
+              }}
+              className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 text-white/90 hover:text-white bg-black/40 hover:bg-black/70 rounded-full backdrop-blur-xs transition-all cursor-pointer z-20 shadow-lg hover:scale-110"
+              title="Ảnh trước (Mũi tên trái)"
+            >
+              <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8" />
+            </button>
+          )}
+
+          {/* Next Button */}
+          {memory.images.length > 1 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentImageIndex((prev) => (prev < memory.images.length - 1 ? prev + 1 : 0));
+              }}
+              className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 text-white/90 hover:text-white bg-black/40 hover:bg-black/70 rounded-full backdrop-blur-xs transition-all cursor-pointer z-20 shadow-lg hover:scale-110"
+              title="Ảnh kế tiếp (Mũi tên phải)"
+            >
+              <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8" />
+            </button>
+          )}
+
+          {/* Main Fullscreen Image Container */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-5xl max-h-[85vh] flex flex-col items-center justify-center select-none"
           >
-            <ChevronLeft className="h-8 w-8" />
-          </button>
-
-          <button
-            onClick={() => setCurrentImageIndex((prev) => (prev < memory.images.length - 1 ? prev + 1 : 0))}
-            className="absolute right-4 p-2 text-white hover:bg-white/20 rounded-full transition-colors"
-          >
-            <ChevronRight className="h-8 w-8" />
-          </button>
-
-          <div className="max-w-4xl max-h-[80vh] px-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
+              key={memory.images[currentImageIndex].imageUrl}
               src={memory.images[currentImageIndex].imageUrl}
               alt={`Photo ${currentImageIndex + 1}`}
-              className="max-w-full max-h-[80vh] object-contain rounded-lg"
+              className="max-w-full max-h-[80vh] sm:max-h-[85vh] object-contain rounded-xl shadow-2xl animate-in zoom-in-95 duration-200"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src =
+                  'https://placehold.co/800x600?text=Kh%C3%B4ng+th%E1%BB%83+t%E1%BA%A3i+%E1%BA%A3nh';
+              }}
             />
-            <div className="text-center mt-4 text-white">
-              <p className="text-sm">
-                {currentImageIndex + 1} / {memory.images.length}
-              </p>
-            </div>
           </div>
         </div>
       )}

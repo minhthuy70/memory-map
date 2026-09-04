@@ -5,14 +5,16 @@ export declare class CategoriesService {
     findAll(): Promise<{
         id: string;
         name: string;
-        createdAt: Date;
         icon: string;
+        createdAt: Date;
+        usageCount: number;
     }[]>;
     findById(id: string): Promise<{
         id: string;
         name: string;
-        createdAt: Date;
         icon: string;
+        createdAt: Date;
+        usageCount: number;
     }>;
     seedCategories(): Promise<any[]>;
 }

@@ -20,6 +20,7 @@ import {
 import { memoriesApi, Memory } from '@/lib/memories-api';
 import { categoriesApi, Category } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const MOODS = [
   { value: 'HAPPY', label: 'Vui vẻ', emoji: '😊' },
@@ -246,6 +247,8 @@ export default function TimelinePage() {
           </h1>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle />
+
             <button
               onClick={() => router.push('/memories/new')}
               className="flex items-center gap-1.5 px-3 py-1.5 bg-primary hover:bg-primary-hover text-white text-sm font-medium rounded-lg shadow-sm transition-colors"

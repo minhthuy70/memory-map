@@ -13,6 +13,7 @@ import { memoriesApi, Memory as ApiMemory, Statistics } from '@/lib/memories-api
 import { categoriesApi } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
 import { useMemoriesStore } from '@/store/memories-store';
+import ThemeToggle from '@/components/ThemeToggle';
 
 type Memory = ApiMemory;
 
@@ -39,6 +40,34 @@ const MOOD_EMOJIS: Record<string, string> = {
   TIRED: '😴',
   NEUTRAL: '😐',
 };
+
+function HighlightText({ text, query }: { text: string; query: string }) {
+  if (!query || !query.trim() || !text) {
+    return <>{text}</>;
+  }
+
+  const q = query.trim();
+  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escaped})`, 'gi');
+  const parts = text.split(regex);
+
+  return (
+    <>
+      {parts.map((part, index) =>
+        regex.test(part) ? (
+          <mark
+            key={index}
+            className="bg-amber-200 dark:bg-amber-800/80 text-amber-950 dark:text-amber-100 rounded-xs px-0.5 font-semibold"
+          >
+            {part}
+          </mark>
+        ) : (
+          <span key={index}>{part}</span>
+        )
+      )}
+    </>
+  );
+}
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -167,8 +196,9 @@ export default function DashboardPage() {
         filters.mood = selectedMood;
       }
 
-      if (searchQuery.trim()) {
-        filters.search = searchQuery.trim();
+      const trimmedSearch = searchQuery.trim();
+      if (trimmedSearch.length >= 2) {
+        filters.search = trimmedSearch;
       }
 
       if (startDate) {
@@ -289,6 +319,8 @@ export default function DashboardPage() {
               {user?.name || user?.email}
             </button>
 
+            <ThemeToggle />
+
             <button
               onClick={handleLogout}
               className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-slate-600 dark:text-slate-400"
@@ -329,16 +361,34 @@ export default function DashboardPage() {
             )}
 
             {/* Search */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <div className="space-y-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
 
-              <input
-                type="text"
-                placeholder="Tìm kiếm kỷ niệm..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-sm"
-              />
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm theo tiêu đề, địa điểm... (tối thiểu 2 ký tự)"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-8 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-xs sm:text-sm"
+                />
+
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-0.5 cursor-pointer"
+                    title="Xóa tìm kiếm"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
+              </div>
+              {searchQuery.trim().length === 1 && (
+                <p className="text-[11px] text-amber-600 dark:text-amber-400 pl-1">
+                  Nhập thêm ít nhất 1 ký tự để tìm kiếm...
+                </p>
+              )}
             </div>
 
             {/* Category Filter */}
@@ -455,33 +505,66 @@ export default function DashboardPage() {
 
               <div className="space-y-2 max-h-64 overflow-y-auto">
                 {isLoading ? (
-                  <div className="text-center py-4 text-slate-500">
-                    Loading...
+                  <div className="text-center py-6 text-slate-500 text-xs flex items-center justify-center gap-2">
+                    <span className="inline-block w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                    <span>Đang tải danh sách...</span>
                   </div>
                 ) : memories.length === 0 ? (
-                  <div className="text-center py-4 text-slate-500">
-                    No memories found
+                  <div className="text-center py-6 px-3 bg-slate-50 dark:bg-slate-700/50 rounded-xl border border-dashed border-slate-200 dark:border-slate-600">
+                    <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                      {searchQuery.trim().length >= 2
+                        ? `Không tìm thấy kết quả cho "${searchQuery}"`
+                        : 'Không có kỷ niệm nào phù hợp'}
+                    </p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                      {searchQuery.trim().length >= 2
+                        ? 'Thử tìm với từ khóa khác hoặc xóa bộ lọc.'
+                        : 'Hãy thử thay đổi điều kiện lọc hoặc tạo kỷ niệm mới.'}
+                    </p>
+                    {searchQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setSearchQuery('')}
+                        className="text-xs font-semibold text-primary hover:underline mt-2 inline-block cursor-pointer"
+                      >
+                        Xóa từ khóa tìm kiếm
+                      </button>
+                    )}
                   </div>
                 ) : (
-                  memories.slice(0, 10).map((memory) => (
+                  memories.slice(0, 15).map((memory) => (
                     <button
                       key={memory.id}
                       onClick={() => handleMemoryClick(memory)}
-                      className="w-full text-left p-3 bg-slate-50 dark:bg-slate-700 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors"
+                      className="w-full text-left p-2.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-700/60 dark:hover:bg-slate-700 rounded-xl transition-all border border-slate-200/60 dark:border-slate-600/60 hover:border-slate-300 dark:hover:border-slate-500 cursor-pointer group"
                     >
-                      <div className="flex items-start gap-2">
-                        <span className="text-lg">
+                      <div className="flex items-start gap-2.5">
+                        <span className="text-lg shrink-0 mt-0.5" title={memory.category.name}>
                           {memory.category.icon}
                         </span>
 
                         <div className="flex-1 min-w-0">
-                          <h4 className="font-medium text-slate-900 dark:text-white truncate">
-                            {memory.title}
-                          </h4>
+                          <div className="flex items-center justify-between gap-1">
+                            <h4 className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">
+                              <HighlightText text={memory.title} query={searchQuery} />
+                            </h4>
+                            <span className="text-sm shrink-0" title={`Tâm trạng: ${memory.mood}`}>
+                              {MOOD_EMOJIS[memory.mood] || '😐'}
+                            </span>
+                          </div>
 
-                          <p className="text-xs text-slate-500 dark:text-slate-400 truncate">
-                            {memory.locationName || 'Unknown location'}
+                          <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                            <HighlightText
+                              text={memory.locationName || `${memory.latitude.toFixed(4)}, ${memory.longitude.toFixed(4)}`}
+                              query={searchQuery}
+                            />
                           </p>
+
+                          <div className="flex items-center gap-2 mt-1 text-[10px] text-slate-400 dark:text-slate-500 font-medium">
+                            <span>{new Date(memory.memoryDate).toLocaleDateString('vi-VN')}</span>
+                            <span>•</span>
+                            <span className="truncate">{memory.category.name}</span>
+                          </div>
                         </div>
                       </div>
                     </button>

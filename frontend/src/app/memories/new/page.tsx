@@ -9,15 +9,12 @@ import dynamic from 'next/dynamic';
 const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
 
 import { memoriesApi, CreateMemoryData } from '@/lib/memories-api';
-import { categoriesApi } from '@/lib/categories-api';
+import { categoriesApi, Category } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
 import ImageUploader from '@/components/ImageUploader';
-
-interface Category {
-  id: string;
-  name: string;
-  icon: string;
-}
+import MoodSelector from '@/components/MoodSelector';
+import CategorySelector from '@/components/CategorySelector';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const MOODS = [
   { value: 'HAPPY', emoji: '😊' },
@@ -202,14 +199,17 @@ function NewMemoryForm() {
             Add New Memory
           </h1>
 
-          <button
-            type="button"
-            onClick={() => router.back()}
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-slate-600 dark:text-slate-400"
-            aria-label="Close"
-          >
-            <X className="h-6 w-6" />
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => router.back()}
+              className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-slate-600 dark:text-slate-400"
+              aria-label="Close"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -395,73 +395,43 @@ function NewMemoryForm() {
             </div>
           </div>
 
-          {/* Date and Mood */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-4">
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                Date
-              </label>
-
-              <input
-                type="date"
-                value={formData.memoryDate}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    memoryDate: e.target.value,
-                  })
-                }
-                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
-              />
-            </div>
-
-            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-4">
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Mood
-              </label>
-
-              <select
-                value={formData.mood}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    mood: e.target.value,
-                  })
-                }
-                className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
-              >
-                {MOODS.map((mood) => (
-                  <option key={mood.value} value={mood.value}>
-                    {mood.emoji} {mood.value}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {/* Category */}
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-4">
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-              Category
+          {/* Date Picker */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-primary" />
+              <span>Ngày kỷ niệm *</span>
             </label>
 
-            <select
-              value={formData.categoryId}
+            <input
+              type="date"
+              required
+              value={formData.memoryDate}
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  categoryId: e.target.value,
+                  memoryDate: e.target.value,
                 })
               }
-              className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
-            >
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.icon} {category.name}
-                </option>
-              ))}
-            </select>
+              className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+            />
+          </div>
+
+          {/* Mood Selector with Grid, Emojis, Labels & Selection Highlight */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+            <MoodSelector
+              value={formData.mood}
+              onChange={(newMood) => setFormData({ ...formData, mood: newMood })}
+            />
+          </div>
+
+          {/* Category Selector with Icons, Names & Selection Highlight */}
+          <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
+            <CategorySelector
+              categories={categories}
+              value={formData.categoryId}
+              onChange={(newCatId) => setFormData({ ...formData, categoryId: newCatId })}
+              showUsageCount={true}
+            />
           </div>
 
           {/* Images Upload Section */}

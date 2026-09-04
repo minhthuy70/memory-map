@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { ImagePlus, Trash2, X, AlertCircle, CheckCircle2, Loader2, Link as LinkIcon } from 'lucide-react';
+import { ImagePlus, Trash2, X, AlertCircle, Loader2, Link as LinkIcon, ChevronUp, ChevronDown } from 'lucide-react';
 
 interface ImageUploaderProps {
   images: string[];
@@ -99,6 +99,20 @@ export default function ImageUploader({
     if (error && images.length - 1 < maxImages) {
       setError('');
     }
+  };
+
+  const handleMoveUp = (index: number) => {
+    if (index === 0) return;
+    const updated = [...images];
+    [updated[index - 1], updated[index]] = [updated[index], updated[index - 1]];
+    onChange(updated);
+  };
+
+  const handleMoveDown = (index: number) => {
+    if (index === images.length - 1) return;
+    const updated = [...images];
+    [updated[index], updated[index + 1]] = [updated[index + 1], updated[index]];
+    onChange(updated);
   };
 
   return (
@@ -250,15 +264,35 @@ export default function ImageUploader({
                   #{index + 1}
                 </div>
 
-                {/* Delete button on hover / touch */}
-                <button
-                  type="button"
-                  onClick={() => handleDeleteImage(index)}
-                  className="absolute top-2 right-2 p-1.5 bg-red-600/90 hover:bg-red-700 text-white rounded-lg shadow-md opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all cursor-pointer hover:scale-110"
-                  title="Xóa ảnh này"
-                >
-                  <Trash2 className="h-3.5 w-3.5" />
-                </button>
+                {/* Reorder + Delete buttons on hover / touch */}
+                <div className="absolute top-2 right-2 flex flex-col gap-1 opacity-90 sm:opacity-0 group-hover:opacity-100 transition-all">
+                  <button
+                    type="button"
+                    onClick={() => handleMoveUp(index)}
+                    disabled={index === 0}
+                    className="p-1 bg-slate-800/80 hover:bg-slate-700 text-white rounded-md shadow-md disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer hover:scale-110 transition-transform"
+                    title="Di chuyển lên"
+                  >
+                    <ChevronUp className="h-3 w-3" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleMoveDown(index)}
+                    disabled={index === images.length - 1}
+                    className="p-1 bg-slate-800/80 hover:bg-slate-700 text-white rounded-md shadow-md disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer hover:scale-110 transition-transform"
+                    title="Di chuyển xuống"
+                  >
+                    <ChevronDown className="h-3 w-3" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteImage(index)}
+                    className="p-1 bg-red-600/90 hover:bg-red-700 text-white rounded-md shadow-md cursor-pointer hover:scale-110 transition-transform"
+                    title="Xóa ảnh này"
+                  >
+                    <Trash2 className="h-3 w-3" />
+                  </button>
+                </div>
               </div>
             ))}
           </div>

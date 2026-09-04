@@ -5,6 +5,10 @@ export interface Category {
   name: string;
   icon: string;
   createdAt: string;
+  usageCount?: number;
+  _count?: {
+    memories: number;
+  };
 }
 
 export const categoriesApi = {

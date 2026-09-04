@@ -19,6 +19,7 @@ import {
 import { memoriesApi, Statistics } from '@/lib/memories-api';
 import { categoriesApi, Category } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const MOOD_META: Record<string, { label: string; emoji: string; color: string; bg: string }> = {
   HAPPY: { label: 'Vui vẻ', emoji: '😊', color: '#F59E0B', bg: 'bg-amber-500' },
@@ -164,6 +165,8 @@ export default function StatisticsPage() {
           </h1>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle />
+
             <button
               onClick={() => router.push('/profile')}
               className="flex items-center gap-2 px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"

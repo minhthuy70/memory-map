@@ -19,14 +19,10 @@ import dynamic from 'next/dynamic';
 
 const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
 import { memoriesApi, Memory, UpdateMemoryData } from '@/lib/memories-api';
-import { categoriesApi } from '@/lib/categories-api';
+import { categoriesApi, Category } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
-
-interface Category {
-  id: string;
-  name: string;
-  icon: string;
-}
+import MoodSelector from '@/components/MoodSelector';
+import CategorySelector from '@/components/CategorySelector';
 
 const MOODS = [
   { value: 'HAPPY', emoji: '😊' },
@@ -486,12 +482,12 @@ export default function EditMemoryPage() {
           </div>
 
           {/* Date, Mood, Category */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="space-y-4">
             {/* Date */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5 flex items-center gap-2">
                 <Calendar className="h-4 w-4 text-primary" />
-                <span>Ngày kỷ niệm</span>
+                <span>Ngày kỷ niệm *</span>
               </label>
               <input
                 type="date"
@@ -502,40 +498,22 @@ export default function EditMemoryPage() {
               />
             </div>
 
-            {/* Mood */}
+            {/* Mood Selector with Grid, Emojis, Labels & Selection Highlight */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Tâm trạng
-              </label>
-              <select
+              <MoodSelector
                 value={formData.mood}
-                onChange={(e) => setFormData({ ...formData, mood: e.target.value })}
-                className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary outline-none"
-              >
-                {MOODS.map((mood) => (
-                  <option key={mood.value} value={mood.value}>
-                    {mood.emoji} {mood.value}
-                  </option>
-                ))}
-              </select>
+                onChange={(newMood) => setFormData({ ...formData, mood: newMood })}
+              />
             </div>
 
-            {/* Category */}
+            {/* Category Selector with Icons, Names & Selection Highlight */}
             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 p-4">
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Danh mục
-              </label>
-              <select
+              <CategorySelector
+                categories={categories}
                 value={formData.categoryId}
-                onChange={(e) => setFormData({ ...formData, categoryId: e.target.value })}
-                className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary outline-none"
-              >
-                {categories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.icon} {category.name}
-                  </option>
-                ))}
-              </select>
+                onChange={(newCatId) => setFormData({ ...formData, categoryId: newCatId })}
+                showUsageCount={true}
+              />
             </div>
           </div>
 

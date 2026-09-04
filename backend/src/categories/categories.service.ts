@@ -7,19 +7,47 @@ export class CategoriesService {
   constructor(private prisma: PrismaService) {}
 
   async findAll() {
-    return this.prisma.category.findMany({
+    const categories = await this.prisma.category.findMany({
       orderBy: {
         createdAt: 'asc',
       },
+      include: {
+        _count: {
+          select: { memories: true },
+        },
+      },
     });
+
+    return categories.map((category) => ({
+      id: category.id,
+      name: category.name,
+      icon: category.icon,
+      createdAt: category.createdAt,
+      usageCount: category._count?.memories ?? 0,
+    }));
   }
 
   async findById(id: string) {
-    return this.prisma.category.findUnique({
+    const category = await this.prisma.category.findUnique({
       where: {
         id,
       },
+      include: {
+        _count: {
+          select: { memories: true },
+        },
+      },
     });
+
+    if (!category) return null;
+
+    return {
+      id: category.id,
+      name: category.name,
+      icon: category.icon,
+      createdAt: category.createdAt,
+      usageCount: category._count?.memories ?? 0,
+    };
   }
 
   async seedCategories() {
@@ -58,7 +86,7 @@ export class CategoriesService {
       },
       {
         name: 'Other',
-        icon: '📌',
+        icon: '⭐',
       },
     ];
 
