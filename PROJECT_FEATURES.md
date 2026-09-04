@@ -311,7 +311,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Percentage calculations - Tính toán phần trăm
 [x] - Progress bars - Thanh tiến độ
 [x] - Visual data representation - Trực quan hóa dữ liệu
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 5.2. Overview Metrics (Chỉ số tổng quan)
 [x] - Total memories count - Tổng số kỷ niệm
