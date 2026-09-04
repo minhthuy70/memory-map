@@ -137,10 +137,27 @@ export default function EditMemoryPage() {
     e.preventDefault();
     if (!memory || !newImageUrl.trim()) return;
 
+    const trimmed = newImageUrl.trim();
+    if (memory.images && memory.images.length >= 10) {
+      setError('Đã đạt giới hạn tối đa 10 hình ảnh cho mỗi kỷ niệm.');
+      return;
+    }
+
+    try {
+      const url = new URL(trimmed);
+      if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+        setError('URL không hợp lệ. Vui lòng nhập link bắt đầu bằng http:// hoặc https://');
+        return;
+      }
+    } catch {
+      setError('URL không hợp lệ. Vui lòng nhập link bắt đầu bằng http:// hoặc https://');
+      return;
+    }
+
     try {
       setIsAddingImage(true);
       setError('');
-      await memoriesApi.addImage(memory.id, newImageUrl.trim());
+      await memoriesApi.addImage(memory.id, trimmed);
       setNewImageUrl('');
       // Reload memory to get updated images list
       const updated = await memoriesApi.getById(memory.id);

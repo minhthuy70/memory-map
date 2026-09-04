@@ -11,6 +11,7 @@ const MemoryMap = dynamic(() => import('@/components/Map'), { ssr: false });
 import { memoriesApi, CreateMemoryData } from '@/lib/memories-api';
 import { categoriesApi } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
+import ImageUploader from '@/components/ImageUploader';
 
 interface Category {
   id: string;
@@ -463,80 +464,12 @@ function NewMemoryForm() {
             </select>
           </div>
 
-          {/* Images */}
-          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-4 space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Images
-              </label>
-              <div className="flex gap-2">
-                <input
-                  type="url"
-                  value={formData.imageUrls[formData.imageUrls.length - 1] || ''}
-                  onChange={(e) => {
-                    const newUrls = [...formData.imageUrls];
-                    if (newUrls.length === 0) {
-                      newUrls.push(e.target.value);
-                    } else {
-                      newUrls[newUrls.length - 1] = e.target.value;
-                    }
-                    setFormData({
-                      ...formData,
-                      imageUrls: newUrls,
-                    });
-                  }}
-                  className="flex-1 px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
-                  placeholder="https://example.com/image.jpg"
-                />
-                <button
-                  type="button"
-                  onClick={() => {
-                    const lastUrl = formData.imageUrls[formData.imageUrls.length - 1];
-                    if (lastUrl && lastUrl.trim() !== '') {
-                      setFormData({
-                        ...formData,
-                        imageUrls: [...formData.imageUrls, ''],
-                      });
-                    }
-                  }}
-                  className="px-3 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-
-            {/* Image Preview */}
-            {formData.imageUrls.filter(url => url.trim() !== '').length > 0 && (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {formData.imageUrls.filter(url => url.trim() !== '').map((url, index) => (
-                  <div key={index} className="relative group">
-                    <img
-                      src={url}
-                      alt={`Preview ${index + 1}`}
-                      className="w-full h-24 object-cover rounded-lg border border-slate-200 dark:border-slate-700"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                      }}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const newUrls = formData.imageUrls.filter((_, i) => i !== index);
-                        setFormData({
-                          ...formData,
-                          imageUrls: newUrls,
-                        });
-                      }}
-                      className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          {/* Images Upload Section */}
+          <ImageUploader
+            images={formData.imageUrls.filter((url) => url.trim() !== '')}
+            onChange={(newUrls) => setFormData({ ...formData, imageUrls: newUrls })}
+            maxImages={10}
+          />
 
           {/* Submit */}
           <button
