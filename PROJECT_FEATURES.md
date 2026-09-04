@@ -321,7 +321,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Most used category - Danh mục được dùng nhiều nhất
 [x] - Card click to filter - Click card để lọc
 [x] - Real-time calculation - Tính toán thời gian thực
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 5.3. Mood Distribution (Phân phối tâm trạng)
 [x] - Bar chart display - Hiển thị biểu đồ cột
@@ -357,6 +356,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Max count normalization - Chuẩn hóa số lượng tối đa
 [x] - Empty state handling - Xử lý trạng thái trống
 [x] - Auto-update - Tự động cập nhật
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 ================================================================================
  
@@ -380,6 +380,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Loading state - Trạng thái đang tải
 [x] - Error handling - Xử lý lỗi
 [x] - Cancel upload - Hủy tải lên
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 6.2. Image Display (Hiển thị ảnh)
 [x] - Image gallery grid - Lưới thư viện ảnh
@@ -391,6 +392,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Object-fit cover - Object-fit cover
 [x] - Lazy loading - Lazy loading (tương lai)
 [x] - Image optimization - Tối ưu hóa ảnh (tương lai)
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 6.3. Image Fullscreen Viewer (Trình xem ảnh toàn màn hình)
 [x] - Lightbox modal - Hộp thoại lightbox
@@ -403,6 +405,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Touch swipe support - Hỗ trợ vuốt cảm ứng
 [x] - Image info display - Hiển thị thông tin ảnh
 [x] - Fade in/out animation - Animation fade in/out
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 6.4. Image Ordering (Sắp xếp ảnh)
 [x] - Move up button - Nút di chuyển lên
@@ -414,6 +417,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Disabled at boundaries - Vô hiệu hóa tại biên
 [x] - Auto-save order - Tự động lưu thứ tự
 [x] - Database migration - Migration database
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 6.5. Image Validation (Kiểm tra ảnh)
 [x] - URL format validation - Kiểm tra định dạng URL

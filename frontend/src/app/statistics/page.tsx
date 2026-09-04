@@ -281,15 +281,28 @@ export default function StatisticsPage() {
             {(statistics.mostCommonMood || statistics.mostUsedCategory) && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {statistics.mostCommonMood && (
-                  <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-500/20 dark:to-orange-500/20 border border-amber-200 dark:border-amber-800/40 rounded-2xl p-4 flex items-center gap-4">
-                    <div className="text-3xl p-2 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+                  <div
+                    onClick={() =>
+                      router.push(
+                        `/dashboard?mood=${encodeURIComponent(
+                          statistics.mostCommonMood,
+                        )}`,
+                      )
+                    }
+                    className="bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-500/20 dark:to-orange-500/20 border border-amber-200 dark:border-amber-800/40 rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-amber-300 transition-all group"
+                    title="Bấm để lọc kỷ niệm theo tâm trạng này trên bản đồ"
+                  >
+                    <div className="text-3xl p-2 bg-white dark:bg-slate-800 rounded-xl shadow-sm group-hover:scale-110 transition-transform">
                       {MOOD_META[statistics.mostCommonMood]?.emoji || '😊'}
                     </div>
                     <div>
-                      <div className="text-xs font-semibold uppercase tracking-wider text-amber-800 dark:text-amber-300">
-                        Tâm trạng phổ biến nhất
+                      <div className="text-xs font-semibold uppercase tracking-wider text-amber-800 dark:text-amber-300 flex items-center gap-1.5">
+                        <span>Tâm trạng phổ biến nhất</span>
+                        <span className="text-[10px] bg-amber-200/60 dark:bg-amber-900/40 px-1.5 py-0.5 rounded font-medium">
+                          Bấm để lọc
+                        </span>
                       </div>
-                      <div className="text-lg font-bold text-slate-900 dark:text-white">
+                      <div className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                         {MOOD_META[statistics.mostCommonMood]?.label || statistics.mostCommonMood}
                       </div>
                     </div>
@@ -297,15 +310,31 @@ export default function StatisticsPage() {
                 )}
 
                 {statistics.mostUsedCategory && (
-                  <div className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 dark:from-blue-500/20 dark:to-indigo-500/20 border border-blue-200 dark:border-blue-800/40 rounded-2xl p-4 flex items-center gap-4">
-                    <div className="text-3xl p-2 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+                  <div
+                    onClick={() => {
+                      const cat = categoryMap.get(statistics.mostUsedCategory);
+                      if (cat) {
+                        router.push(
+                          `/dashboard?category=${encodeURIComponent(cat.id)}`,
+                        );
+                      } else {
+                        router.push('/dashboard');
+                      }
+                    }}
+                    className="bg-gradient-to-r from-blue-500/10 to-indigo-500/10 dark:from-blue-500/20 dark:to-indigo-500/20 border border-blue-200 dark:border-blue-800/40 rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md hover:border-blue-300 transition-all group"
+                    title="Bấm để lọc kỷ niệm theo danh mục này trên bản đồ"
+                  >
+                    <div className="text-3xl p-2 bg-white dark:bg-slate-800 rounded-xl shadow-sm group-hover:scale-110 transition-transform">
                       {categoryMap.get(statistics.mostUsedCategory)?.icon || '📁'}
                     </div>
                     <div>
-                      <div className="text-xs font-semibold uppercase tracking-wider text-blue-800 dark:text-blue-300">
-                        Danh mục được dùng nhiều nhất
+                      <div className="text-xs font-semibold uppercase tracking-wider text-blue-800 dark:text-blue-300 flex items-center gap-1.5">
+                        <span>Danh mục được dùng nhiều nhất</span>
+                        <span className="text-[10px] bg-blue-200/60 dark:bg-blue-900/40 px-1.5 py-0.5 rounded font-medium">
+                          Bấm để lọc
+                        </span>
                       </div>
-                      <div className="text-lg font-bold text-slate-900 dark:text-white">
+                      <div className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {statistics.mostUsedCategory}
                       </div>
                     </div>
@@ -349,9 +378,18 @@ export default function StatisticsPage() {
                       };
 
                       return (
-                        <div key={mood} className="space-y-1.5">
+                        <div
+                          key={mood}
+                          onClick={() =>
+                            router.push(
+                              `/dashboard?mood=${encodeURIComponent(mood)}`,
+                            )
+                          }
+                          className="space-y-1.5 p-1.5 -mx-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/40 cursor-pointer transition-colors group"
+                          title={`Bấm để lọc kỷ niệm theo ${meta.label}`}
+                        >
                           <div className="flex items-center justify-between text-xs sm:text-sm">
-                            <span className="font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                            <span className="font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2 group-hover:text-primary transition-colors">
                               <span className="text-base">{meta.emoji}</span>
                               <span>{meta.label}</span>
                             </span>
@@ -408,9 +446,24 @@ export default function StatisticsPage() {
                       const barColor = CATEGORY_COLORS[index % CATEGORY_COLORS.length];
 
                       return (
-                        <div key={categoryName} className="space-y-1.5">
+                        <div
+                          key={categoryName}
+                          onClick={() => {
+                            if (catInfo) {
+                              router.push(
+                                `/dashboard?category=${encodeURIComponent(
+                                  catInfo.id,
+                                )}`,
+                              );
+                            } else {
+                              router.push('/dashboard');
+                            }
+                          }}
+                          className="space-y-1.5 p-1.5 -mx-1.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/40 cursor-pointer transition-colors group"
+                          title={`Bấm để lọc kỷ niệm theo ${categoryName}`}
+                        >
                           <div className="flex items-center justify-between text-xs sm:text-sm">
-                            <span className="font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2 truncate">
+                            <span className="font-medium text-slate-700 dark:text-slate-300 flex items-center gap-2 truncate group-hover:text-primary transition-colors">
                               <span className="text-base">{catInfo?.icon || '📁'}</span>
                               <span className="truncate">{categoryName}</span>
                             </span>

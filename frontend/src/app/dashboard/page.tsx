@@ -82,6 +82,17 @@ export default function DashboardPage() {
     setEndDate('');
   };
 
+  // Support reading query params on mount to filter by category or mood
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const moodParam = params.get('mood');
+      const categoryParam = params.get('category');
+      if (moodParam) setSelectedMood(moodParam);
+      if (categoryParam) setSelectedCategory(categoryParam);
+    }
+  }, []);
+
   const sortMemoriesList = (list: Memory[], criterion: string) => {
     return [...list].sort((a, b) => {
       switch (criterion) {
@@ -510,12 +521,22 @@ export default function DashboardPage() {
                           const percentage = statistics.totalMemories > 0 
                             ? (count / statistics.totalMemories) * 100 
                             : 0;
+                          const foundCat = categories.find((c) => c.name === category);
                           return (
-                            <div key={category} className="flex items-center justify-between text-xs">
-                              <span className="text-slate-700 dark:text-slate-300 truncate">
+                            <div
+                              key={category}
+                              onClick={() => {
+                                if (foundCat) {
+                                  setSelectedCategory(selectedCategory === foundCat.id ? '' : foundCat.id);
+                                }
+                              }}
+                              className="flex items-center justify-between text-xs cursor-pointer hover:text-primary transition-colors py-0.5 group"
+                              title={`Bấm để lọc theo ${category}`}
+                            >
+                              <span className="text-slate-700 dark:text-slate-300 group-hover:text-primary truncate">
                                 {category}
                               </span>
-                              <span className="text-slate-600 dark:text-slate-400">
+                              <span className="text-slate-600 dark:text-slate-400 group-hover:text-primary font-medium">
                                 {count} ({percentage.toFixed(0)}%)
                               </span>
                             </div>
@@ -538,12 +559,17 @@ export default function DashboardPage() {
                             ? (count / statistics.totalMemories) * 100 
                             : 0;
                           return (
-                            <div key={mood} className="flex items-center justify-between text-xs">
-                              <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                            <div
+                              key={mood}
+                              onClick={() => setSelectedMood(selectedMood === mood ? '' : mood)}
+                              className="flex items-center justify-between text-xs cursor-pointer hover:text-primary transition-colors py-0.5 group"
+                              title={`Bấm để lọc theo ${mood}`}
+                            >
+                              <span className="text-slate-700 dark:text-slate-300 group-hover:text-primary flex items-center gap-1">
                                 <span>{MOOD_EMOJIS[mood] || '😐'}</span>
-                                {mood}
+                                <span>{mood}</span>
                               </span>
-                              <span className="text-slate-600 dark:text-slate-400">
+                              <span className="text-slate-600 dark:text-slate-400 group-hover:text-primary font-medium">
                                 {count} ({percentage.toFixed(0)}%)
                               </span>
                             </div>
