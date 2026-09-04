@@ -332,7 +332,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Color-coded bars - Thanh mã màu
 [x] - Sort by count - Sắp xếp theo số lượng
 [x] - Empty state handling - Xử lý trạng thái trống
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 5.4. Category Distribution (Phân phối danh mục)
 [x] - Bar chart display - Hiển thị biểu đồ cột
@@ -344,7 +343,6 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Color-coded bars - Thanh mã màu
 [x] - Sort by count - Sắp xếp theo số lượng
 [x] - Empty state handling - Xử lý trạng thái trống
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 5.5. Monthly Activity (Hoạt động hàng tháng)
 [x] - Bar chart display - Hiển thị biểu đồ cột
@@ -356,7 +354,6 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Max count normalization - Chuẩn hóa số lượng tối đa
 [x] - Empty state handling - Xử lý trạng thái trống
 [x] - Auto-update - Tự động cập nhật
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 ================================================================================
  
@@ -426,6 +423,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Duplicate detection (future) - Phát hiện trùng lặp (tương lai)
 [x] - Image type validation (future) - Kiểm tra loại ảnh (tương lai)
 [x] - File size validation (future) - Kiểm tra kích thước file (tương lai)
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 ================================================================================
  
@@ -442,6 +440,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - API endpoint - API endpoint
 [x] - Category filtering - Lọc theo danh mục
 [x] - Category dropdown - Dropdown danh mục
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 7.2. Default Categories (Danh mục mặc định)
 [x] - Love (❤️) - Tình yêu
@@ -453,6 +452,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Event (🎉) - Sự kiện
 [x] - Personal (🌱) - Cá nhân
 [x] - Other (⭐) - Khác
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 7.3. Category Usage (Sử dụng danh mục)
 [x] - Category selector in form - Chọn danh mục trong biểu mẫu
@@ -462,6 +462,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Category statistics - Thống kê danh mục
 [x] - Category distribution chart - Biểu đồ phân phối danh mục
 [x] - Most used category highlight - Highlight danh mục được dùng nhiều nhất
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 ================================================================================
  
@@ -477,6 +478,7 @@ hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì ki�
 [x] - Mood filtering - Lọc theo tâm trạng
 [x] - Mood statistics - Thống kê tâm trạng
 [x] - Mood distribution chart - Biểu đồ phân phối tâm trạng
+hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 8.2. Mood Options (Tùy chọn tâm trạng)
 [x] - HAPPY (😊) - Vui vẻ

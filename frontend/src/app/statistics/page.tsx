@@ -112,6 +112,26 @@ export default function StatisticsPage() {
     return Math.max(...monthlyActivityEntries.map(([, count]) => count), 1);
   }, [monthlyActivityEntries]);
 
+  const formatMonthLabel = (monthStr: string) => {
+    const d = new Date(monthStr);
+    if (!isNaN(d.getTime())) {
+      const m = d.getMonth() + 1;
+      const y = d.getFullYear();
+      return `T${m < 10 ? '0' + m : m}/${y}`;
+    }
+    return monthStr;
+  };
+
+  const formatFullMonthLabel = (monthStr: string) => {
+    const d = new Date(monthStr);
+    if (!isNaN(d.getTime())) {
+      const m = d.getMonth() + 1;
+      const y = d.getFullYear();
+      return `Tháng ${m < 10 ? '0' + m : m}, ${y}`;
+    }
+    return monthStr;
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-slate-50 dark:bg-slate-900 flex items-center justify-center">
@@ -518,7 +538,7 @@ export default function StatisticsPage() {
                       >
                         {/* Tooltip on hover */}
                         <div className="opacity-0 group-hover:opacity-100 absolute -top-8 px-2 py-0.5 bg-slate-900 text-white text-[11px] rounded shadow-md pointer-events-none transition-opacity whitespace-nowrap z-10">
-                          {month}: {count}
+                          {formatFullMonthLabel(month)}: {count} kỷ niệm
                         </div>
 
                         {/* Column bar */}
@@ -534,7 +554,7 @@ export default function StatisticsPage() {
 
                         {/* Month Label */}
                         <span className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 mt-2 truncate w-full text-center">
-                          {month.split(' ')[0]}
+                          {formatMonthLabel(month)}
                         </span>
                       </div>
                     );
@@ -553,7 +573,7 @@ export default function StatisticsPage() {
                     >
                       <div className="flex items-center justify-between text-xs mb-1">
                         <span className="font-medium text-slate-700 dark:text-slate-300">
-                          {month}
+                          {formatFullMonthLabel(month)}
                         </span>
                         <span className="font-semibold text-slate-900 dark:text-white">
                           {count}
