@@ -173,6 +173,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Current location button - Nút vị trí hiện tại
 [x] - Location search - Tìm kiếm địa điểm
 [x] - Fit bounds to show all markers - Tự động zoom để hiển thị tất cả marker
+[x] - Statistics overlay cards on map - Card thống kê tổng quan overlay trên bản đồ (tổng/danh mục/địa điểm/tháng này)
  
 3.2. Map Rendering (Hiển thị bản đồ)
 [x] - Leaflet integration - Tích hợp Leaflet
@@ -585,6 +586,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Anti-FOUC inline script - Script ngăn hiện tượng giật sáng tối khi tải trang
 [x] - Animated ThemeToggle switch - Nút chuyển đổi Sun/Moon có animation trên tất cả thanh điều hướng
 [x] - Tailwind v4 custom dark variant - Cấu hình custom-variant dark tương thích Tailwind v4
+[x] - animate-fadeIn CSS keyframe - Keyframe animation fadeIn định nghĩa trong globals.css để dùng với class animate-fadeIn
  
 ================================================================================
  
@@ -765,10 +767,10 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 END OF FEATURE LIST
 ================================================================================
  
-Tổng số tính năng: 165+
-Số lượng tính năng đã implement: 155+
+Tổng số tính năng: 170+
+Số lượng tính năng đã implement: 160+
 Số lượng tính năng đang phát triển: 5+
 Số lượng tính năng tương lai: 5+
  
 Last Updated: 2026-09-04
-Version: 2.1
+Version: 2.2
