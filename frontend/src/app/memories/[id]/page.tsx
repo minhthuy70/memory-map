@@ -348,11 +348,17 @@ export default function MemoryDetailPage() {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {memory.images.map((image, index) => (
-                  <div key={image.id} className="relative group">
+                  <div key={image.id} className="relative group aspect-video rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/40 border border-slate-200 dark:border-slate-700 shadow-xs hover:shadow-md transition-all">
                     <img
                       src={image.imageUrl}
-                      alt="Memory photo"
-                      className="w-full h-40 object-cover rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
+                      alt={`Memory photo ${index + 1}`}
+                      className="w-full h-full object-cover cursor-pointer group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src =
+                          'https://placehold.co/600x400?text=L%E1%BB%97i+%E1%BA%A3nh';
+                      }}
                       onClick={() => {
                         setCurrentImageIndex(index);
                         setShowLightbox(true);

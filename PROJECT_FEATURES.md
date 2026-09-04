@@ -401,7 +401,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Touch swipe support - Hỗ trợ vuốt cảm ứng
 [x] - Image info display - Hiển thị thông tin ảnh
 [x] - Fade in/out animation - Animation fade in/out
-hãy kiểm tra các tính năng này, chưa làm thì làm, làm rồi thì kiểm tra tính đúng sai, có đồng nhất với  hệ thống chưa, nếu chưa thì sửa, nếu rồi thì bỏ qua. sau đó đánh dấu vào file D:\DUANCANHAN\memory-map\PROJECT_FEATURES.md
  
 6.4. Image Ordering (Sắp xếp ảnh)
 [x] - Move up button - Nút di chuyển lên
