@@ -30,6 +30,7 @@ import SessionsManager from '@/components/SessionsManager';
 import ThemeToggle from '@/components/ThemeToggle';
 import ThemeCustomizer from '@/components/ThemeCustomizer';
 import MemoryExportImport from '@/components/MemoryExportImport';
+import UserPreferences from '@/components/UserPreferences';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -700,6 +701,11 @@ export default function ProfilePage() {
             {/* Memory Export/Import */}
             <div className="mb-6">
               <MemoryExportImport />
+            </div>
+
+            {/* User Preferences */}
+            <div className="mb-6">
+              <UserPreferences />
             </div>
 
             {/* Change Password Form */}

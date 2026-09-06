@@ -566,7 +566,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Multi-column grids - Lưới đa cột
 [x] - Hover effects - Hiệu ứng hover
 [x] - Keyboard navigation - Điều hướng bàn phím
-[ ] - Tooltips (future) - Tooltips (tương lai)
+[x] - Tooltips - Tooltips
  
 ================================================================================
  
@@ -793,7 +793,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Skip option - Tùy chọn bỏ qua
  
 19.2. Personalization (Cá nhân hóa)
-[ ] - User preferences - Tùy chỉnh người dùng
+[x] - User preferences - Tùy chỉnh người dùng
 [x] - Custom theme colors - Màu theme tùy chỉnh
 [ ] - Dashboard layout customization - Tùy chỉnh bố cục dashboard
 [x] - Custom category creation - Tạo danh mục tùy chỉnh
@@ -891,9 +891,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 547
+Số lượng tính năng đã implement: 549
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 72
+Số lượng tính năng tương lai: 70
  
 Last Updated: 2026-09-06
-Version: 2.9
+Version: 3.0

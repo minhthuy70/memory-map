@@ -17,6 +17,7 @@ import ThemeToggle from '@/components/ThemeToggle';
 import MemoryReminders from '@/components/MemoryReminders';
 import KeyboardShortcuts from '@/components/KeyboardShortcuts';
 import WelcomeModal from '@/components/WelcomeModal';
+import Tooltip from '@/components/Tooltip';
 
 type Memory = ApiMemory;
 
@@ -756,13 +757,15 @@ export default function DashboardPage() {
             )}
 
             {/* Add Memory Button */}
-            <button
-              onClick={() => router.push('/memories/new')}
-              className="w-full flex items-center justify-center gap-2 py-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-medium"
-            >
-              <Plus className="h-5 w-5" />
-              Add Memory
-            </button>
+            <Tooltip content="Tạo kỷ niệm mới (N)">
+              <button
+                onClick={() => router.push('/memories/new')}
+                className="w-full flex items-center justify-center gap-2 py-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-medium"
+              >
+                <Plus className="h-5 w-5" />
+                Add Memory
+              </button>
+            </Tooltip>
 
             {/* Memory Reminders */}
             <MemoryReminders />
