@@ -785,7 +785,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 19.1. Onboarding (Hướng dẫn ban đầu)
-[x] - Welcome modal - Modal chào mừng người dùng mới
+[ ] - Welcome modal - Modal chào mừng người dùng mới
 [ ] - Feature tour - Tour giới thiệu tính năng
 [ ] - Quick start guide - Hướng dẫn bắt đầu nhanh
 [ ] - Tutorial cards - Card hướng dẫn
@@ -806,7 +806,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Memory visibility settings - Cài đặt hiển thị kỷ niệm
 [x] - Export memories - Xuất kỷ niệm
 [x] - Import memories - Nhập kỷ niệm
-[x] - Memory backup - Sao lưu kỷ niệm
+[ ] - Memory backup - Sao lưu kỷ niệm (chưa implement)
  
 ================================================================================
  
@@ -891,9 +891,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 547
+Số lượng tính năng đã implement: 545
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 72
+Số lượng tính năng tương lai: 74
  
 Last Updated: 2026-09-06
-Version: 2.6
+Version: 2.8

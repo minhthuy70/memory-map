@@ -29,6 +29,7 @@ import { authApi } from '@/lib/auth-api';
 import SessionsManager from '@/components/SessionsManager';
 import ThemeToggle from '@/components/ThemeToggle';
 import ThemeCustomizer from '@/components/ThemeCustomizer';
+import MemoryExportImport from '@/components/MemoryExportImport';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -694,6 +695,11 @@ export default function ProfilePage() {
             {/* Theme Customizer */}
             <div className="mb-6 p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700 animate-in fade-in">
               <ThemeCustomizer />
+            </div>
+
+            {/* Memory Export/Import */}
+            <div className="mb-6">
+              <MemoryExportImport />
             </div>
 
             {/* Change Password Form */}

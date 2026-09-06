@@ -15,6 +15,7 @@ import { useAuthStore } from '@/store/auth-store';
 import { useMemoriesStore } from '@/store/memories-store';
 import ThemeToggle from '@/components/ThemeToggle';
 import MemoryReminders from '@/components/MemoryReminders';
+import KeyboardShortcuts from '@/components/KeyboardShortcuts';
 
 type Memory = ApiMemory;
 
@@ -764,6 +765,48 @@ export default function DashboardPage() {
 
             {/* Memory Reminders */}
             <MemoryReminders />
+
+            {/* Keyboard Shortcuts */}
+            <KeyboardShortcuts
+              shortcuts={[
+                {
+                  key: 'n',
+                  description: 'Tạo kỷ niệm mới',
+                  action: () => router.push('/memories/new'),
+                },
+                {
+                  key: 's',
+                  description: 'Tìm kiếm',
+                  action: () => {
+                    const searchInput = document.querySelector('input[type="text"]') as HTMLInputElement;
+                    if (searchInput) searchInput.focus();
+                  },
+                },
+                {
+                  key: 'f',
+                  description: 'Bộ lọc',
+                  action: () => {
+                    const filterSelect = document.querySelector('select') as HTMLSelectElement;
+                    if (filterSelect) filterSelect.focus();
+                  },
+                },
+                {
+                  key: 't',
+                  description: 'Timeline',
+                  action: () => router.push('/timeline'),
+                },
+                {
+                  key: 'p',
+                  description: 'Profile',
+                  action: () => router.push('/profile'),
+                },
+                {
+                  key: 'a',
+                  description: 'Thống kê',
+                  action: () => router.push('/statistics'),
+                },
+              ]}
+            />
           </div>
         </aside>
 
