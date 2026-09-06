@@ -31,6 +31,7 @@ import ThemeToggle from '@/components/ThemeToggle';
 import ThemeCustomizer from '@/components/ThemeCustomizer';
 import MemoryExportImport from '@/components/MemoryExportImport';
 import UserPreferences from '@/components/UserPreferences';
+import MemoryTemplates from '@/components/MemoryTemplates';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -706,6 +707,11 @@ export default function ProfilePage() {
             {/* User Preferences */}
             <div className="mb-6">
               <UserPreferences />
+            </div>
+
+            {/* Memory Templates */}
+            <div className="mb-6">
+              <MemoryTemplates />
             </div>
 
             {/* Change Password Form */}

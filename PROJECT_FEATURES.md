@@ -684,7 +684,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 15.1. Accessibility Features (Tính năng khả năng truy cập)
 [x] - Keyboard navigation support - Hỗ trợ điều hướng bàn phím
 [x] - Focus states - Trạng thái focus
-[ ] - ARIA labels (future) - Nhãn ARIA (tương lai)
+[x] - ARIA labels - Nhãn ARIA
 [x] - Alt text for images - Alt text cho ảnh
 [x] - Color contrast compliance - Tuân thủ tương phản màu
 [ ] - Screen reader support (future) - Hỗ trợ screen reader (tương lai)
@@ -797,7 +797,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Custom theme colors - Màu theme tùy chỉnh
 [x] - Dashboard layout customization - Tùy chỉnh bố cục dashboard
 [x] - Custom category creation - Tạo danh mục tùy chỉnh
-[ ] - Memory templates - Mẫu kỷ niệm
+[x] - Memory templates - Mẫu kỷ niệm
 [x] - Keyboard shortcuts - Phím tắt
  
 19.3. Social Features (Tính năng xã hội)
@@ -891,9 +891,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 552
+Số lượng tính năng đã implement: 554
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 67
+Số lượng tính năng tương lai: 65
  
 Last Updated: 2026-09-06
-Version: 3.1
+Version: 3.2
