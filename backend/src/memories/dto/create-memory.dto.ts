@@ -5,6 +5,7 @@ import {
   IsDate,
   IsEnum,
   IsOptional,
+  IsBoolean,
   Min,
   Max,
 } from 'class-validator';
@@ -40,4 +41,8 @@ export class CreateMemoryDto {
 
   @IsString()
   categoryId: string;
+
+  @IsDate()
+  @IsOptional()
+  reminderDate?: Date;
 }

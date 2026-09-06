@@ -129,4 +129,13 @@ export const memoriesApi = {
     const response = await api.post('/memories/import', memories);
     return response.data;
   },
+
+  getUpcomingReminders: async (): Promise<any[]> => {
+    const response = await api.get('/memories/reminders/upcoming');
+    return response.data;
+  },
+
+  markReminderSent: async (memoryId: string): Promise<void> => {
+    await api.post(`/memories/${memoryId}/reminder/sent`);
+  },
 };

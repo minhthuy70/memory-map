@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker, useMap, useMapEvents, Polyline } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Memory } from '@/lib/memories-api';
 import LocationSearch from './LocationSearch';
-import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin, Ruler } from 'lucide-react';
+import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin, Ruler, Filter, X } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 // Fix for default marker icons in Leaflet with React
@@ -123,6 +123,12 @@ interface MapProps {
   enableReverseGeocoding?: boolean;
   onLocationName?: (locationName: string) => void;
   showCurrentLocationButton?: boolean;
+  showDistance?: boolean;
+  showRoutes?: boolean;
+  showFilters?: boolean;
+  filterCategory?: string;
+  filterMood?: string;
+  onFilterChange?: (filters: { category?: string; mood?: string }) => void;
 }
 
 function MapClickHandler({ 
@@ -207,6 +213,12 @@ export default function MemoryMap({
   enableReverseGeocoding = false,
   onLocationName,
   showCurrentLocationButton = false,
+  showDistance = false,
+  showRoutes = false,
+  showFilters = false,
+  filterCategory,
+  filterMood,
+  onFilterChange,
 }: MapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
@@ -221,6 +233,65 @@ export default function MemoryMap({
   const [showLayerMenu, setShowLayerMenu] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [fitBoundsTrigger, setFitBoundsTrigger] = useState(0);
+
+  // Filter state
+  const [showFilterPanel, setShowFilterPanel] = useState(false);
+  const [localFilterCategory, setLocalFilterCategory] = useState(filterCategory || '');
+  const [localFilterMood, setLocalFilterMood] = useState(filterMood || '');
+
+  // Apply filters
+  const filteredMemories = useMemo(() => {
+    return memories.filter(memory => {
+      if (localFilterCategory && memory.categoryId !== localFilterCategory) return false;
+      if (localFilterMood && memory.mood !== localFilterMood) return false;
+      return true;
+    });
+  }, [memories, localFilterCategory, localFilterMood]);
+
+  const handleApplyFilters = () => {
+    onFilterChange?.({
+      category: localFilterCategory || undefined,
+      mood: localFilterMood || undefined,
+    });
+    setShowFilterPanel(false);
+  };
+
+  const handleClearFilters = () => {
+    setLocalFilterCategory('');
+    setLocalFilterMood('');
+    onFilterChange?.({});
+    setShowFilterPanel(false);
+  };
+
+  // Calculate total distance between memories
+  const totalDistance = useMemo(() => {
+    if (!showDistance || filteredMemories.length < 2) return 0;
+    
+    const sortedMemories = [...filteredMemories]
+      .filter(m => m.latitude && m.longitude)
+      .sort((a, b) => new Date(a.memoryDate).getTime() - new Date(b.memoryDate).getTime());
+    
+    let distance = 0;
+    for (let i = 0; i < sortedMemories.length - 1; i++) {
+      distance += calculateDistance(
+        sortedMemories[i].latitude,
+        sortedMemories[i].longitude,
+        sortedMemories[i + 1].latitude,
+        sortedMemories[i + 1].longitude
+      );
+    }
+    return distance;
+  }, [filteredMemories, showDistance]);
+
+  // Generate route coordinates
+  const routeCoordinates = useMemo(() => {
+    if (!showRoutes || filteredMemories.length < 2) return [];
+    
+    return filteredMemories
+      .filter(m => m.latitude && m.longitude)
+      .sort((a, b) => new Date(a.memoryDate).getTime() - new Date(b.memoryDate).getTime())
+      .map(m => [m.latitude, m.longitude] as [number, number]);
+  }, [filteredMemories, showRoutes]);
 
   useEffect(() => {
     setIsClient(true);
@@ -420,6 +491,93 @@ export default function MemoryMap({
         </div>
       )}
 
+      {/* Distance Display */}
+      {showDistance && totalDistance > 0 && (
+        <div className="absolute top-20 left-4 z-[1000] bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300">
+          <Ruler className="h-4 w-4 text-primary" />
+          <span>Tổng khoảng cách: {totalDistance.toFixed(1)} km</span>
+        </div>
+      )}
+
+      {/* Filter Button */}
+      {showFilters && (
+        <div className="absolute top-20 right-4 z-[1000]">
+          <button
+            type="button"
+            onClick={() => setShowFilterPanel(!showFilterPanel)}
+            className={`p-2.5 rounded-xl shadow-lg transition-colors flex items-center justify-center ${
+              showFilterPanel || localFilterCategory || localFilterMood
+                ? 'bg-primary text-white'
+                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700'
+            }`}
+            title="Bộ lọc bản đồ"
+          >
+            <Filter className="h-5 w-5" />
+          </button>
+        </div>
+      )}
+
+      {/* Filter Panel */}
+      {showFilters && showFilterPanel && (
+        <div className="absolute top-32 right-4 z-[1000] bg-white dark:bg-slate-800 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 p-4 w-64 space-y-3 animate-in fade-in slide-in-from-top-2">
+          <div className="flex items-center justify-between">
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm">Bộ lọc</h4>
+            <button
+              type="button"
+              onClick={() => setShowFilterPanel(false)}
+              className="p-1 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+            >
+              <X className="h-4 w-4 text-slate-500" />
+            </button>
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">Danh mục</label>
+            <select
+              value={localFilterCategory}
+              onChange={(e) => setLocalFilterCategory(e.target.value)}
+              className="w-full px-3 py-2 text-xs border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+            >
+              <option value="">Tất cả danh mục</option>
+              {Array.from(new Set(memories.map(m => m.category?.name).filter(Boolean))).map(name => (
+                <option key={name} value={name}>{name}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">Tâm trạng</label>
+            <select
+              value={localFilterMood}
+              onChange={(e) => setLocalFilterMood(e.target.value)}
+              className="w-full px-3 py-2 text-xs border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+            >
+              <option value="">Tất cả tâm trạng</option>
+              {Object.keys(MOOD_EMOJIS).map(mood => (
+                <option key={mood} value={mood}>{MOOD_EMOJIS[mood]} {mood}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex gap-2 pt-2">
+            <button
+              type="button"
+              onClick={handleApplyFilters}
+              className="flex-1 px-3 py-2 bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-lg transition-colors"
+            >
+              Áp dụng
+            </button>
+            <button
+              type="button"
+              onClick={handleClearFilters}
+              className="px-3 py-2 bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-500 transition-colors"
+            >
+              Xóa
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Leaflet Map Container */}
       <MapContainer
         center={mapCenter}
@@ -441,7 +599,7 @@ export default function MemoryMap({
           center={mapCenter} 
           zoom={mapZoom} 
           fitBoundsTrigger={fitBoundsTrigger} 
-          memories={memories} 
+          memories={filteredMemories} 
         />
 
         <MapClickHandler
@@ -560,7 +718,20 @@ export default function MemoryMap({
           </>
         )}
 
-        {memories.map((memory) => (
+        {/* Route Visualization */}
+        {showRoutes && routeCoordinates.length > 1 && (
+          <Polyline
+            positions={routeCoordinates}
+            pathOptions={{
+              color: actualTheme === 'dark' ? '#8b5cf6' : '#6366f1',
+              weight: 3,
+              opacity: 0.7,
+              dashArray: '10, 10',
+            }}
+          />
+        )}
+
+        {filteredMemories.map((memory) => (
           <Marker
             key={memory.id}
             position={[memory.latitude, memory.longitude]}

@@ -38,6 +38,16 @@ export class MemoriesController {
     return this.memoriesService.getStatistics(req.user.id);
   }
 
+  @Get('reminders/upcoming')
+  async getUpcomingReminders(@Request() req) {
+    return this.memoriesService.getUpcomingReminders(req.user.id);
+  }
+
+  @Post(':id/reminder/sent')
+  async markReminderSent(@Param('id') id: string, @Request() req) {
+    return this.memoriesService.markReminderSent(id, req.user.id);
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string, @Request() req) {
     return this.memoriesService.findOne(id, req.user.id);

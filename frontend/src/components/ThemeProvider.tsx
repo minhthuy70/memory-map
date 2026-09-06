@@ -4,18 +4,34 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark' | 'system';
 
+interface CustomColors {
+  primary: string;
+  secondary: string;
+  accent: string;
+}
+
 interface ThemeContextType {
   theme: Theme;
   actualTheme: 'light' | 'dark';
+  customColors: CustomColors;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
+  setCustomColors: (colors: CustomColors) => void;
+  resetCustomColors: () => void;
 }
+
+const DEFAULT_COLORS: CustomColors = {
+  primary: '#6366f1',
+  secondary: '#8b5cf6',
+  accent: '#ec4899',
+};
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>('system');
   const [actualTheme, setActualTheme] = useState<'light' | 'dark'>('light');
+  const [customColors, setCustomColorsState] = useState<CustomColors>(DEFAULT_COLORS);
 
   const applyTheme = (targetTheme: Theme) => {
     let effectiveTheme: 'light' | 'dark' = 'light';
@@ -37,11 +53,30 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const applyCustomColors = (colors: CustomColors) => {
+    const root = document.documentElement;
+    root.style.setProperty('--color-primary', colors.primary);
+    root.style.setProperty('--color-secondary', colors.secondary);
+    root.style.setProperty('--color-accent', colors.accent);
+  };
+
   useEffect(() => {
     const saved = localStorage.getItem('theme') as Theme | null;
     const initialTheme: Theme = saved === 'light' || saved === 'dark' || saved === 'system' ? saved : 'system';
     setThemeState(initialTheme);
     applyTheme(initialTheme);
+
+    // Load custom colors
+    const savedColors = localStorage.getItem('customColors');
+    if (savedColors) {
+      try {
+        const parsedColors = JSON.parse(savedColors);
+        setCustomColorsState(parsedColors);
+        applyCustomColors(parsedColors);
+      } catch (e) {
+        console.error('Failed to parse custom colors:', e);
+      }
+    }
 
     // Listen to system preference changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -67,8 +102,28 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(next);
   };
 
+  const setCustomColors = (colors: CustomColors) => {
+    setCustomColorsState(colors);
+    localStorage.setItem('customColors', JSON.stringify(colors));
+    applyCustomColors(colors);
+  };
+
+  const resetCustomColors = () => {
+    setCustomColors(DEFAULT_COLORS);
+    localStorage.removeItem('customColors');
+    applyCustomColors(DEFAULT_COLORS);
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, actualTheme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{ 
+      theme, 
+      actualTheme, 
+      customColors,
+      setTheme, 
+      toggleTheme,
+      setCustomColors,
+      resetCustomColors,
+    }}>
       {children}
     </ThemeContext.Provider>
   );

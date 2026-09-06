@@ -45,6 +45,7 @@ export class MemoriesService {
       memoryDate: Date;
       mood: Mood;
       categoryId: string;
+      reminderDate?: Date;
     },
   ) {
     const category = await this.prisma.category.findUnique({
@@ -67,6 +68,7 @@ export class MemoriesService {
         memoryDate: data.memoryDate,
         mood: data.mood,
         categoryId: data.categoryId,
+        reminderDate: data.reminderDate,
         userId,
       },
       include: {
@@ -201,6 +203,7 @@ export class MemoriesService {
       memoryDate?: Date;
       mood?: Mood;
       categoryId?: string;
+      reminderDate?: Date;
     },
   ) {
     await this.findOne(id, userId);
@@ -225,6 +228,7 @@ export class MemoriesService {
       locationName: data.locationName,
       memoryDate: data.memoryDate,
       mood: data.mood,
+      reminderDate: data.reminderDate,
     };
 
     if (data.categoryId) {
@@ -488,6 +492,40 @@ export class MemoriesService {
 
       moodDistribution: moodCounts,
     };
+  }
+
+  async getUpcomingReminders(userId: string): Promise<any[]> {
+    const now = new Date();
+    const oneWeekFromNow = new Date();
+    oneWeekFromNow.setDate(oneWeekFromNow.getDate() + 7);
+
+    const memories = await this.prisma.memory.findMany({
+      where: {
+        userId,
+        reminderDate: {
+          gte: now,
+          lte: oneWeekFromNow,
+        },
+        reminderSent: false,
+      },
+      include: {
+        category: true,
+      },
+      orderBy: {
+        reminderDate: 'asc',
+      },
+    });
+
+    return memories;
+  }
+
+  async markReminderSent(memoryId: string, userId: string): Promise<void> {
+    await this.findOne(memoryId, userId);
+
+    await this.prisma.memory.update({
+      where: { id: memoryId },
+      data: { reminderSent: true },
+    });
   }
 
   async exportMemories(userId: string): Promise<ExportMemory[]> {

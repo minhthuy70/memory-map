@@ -710,6 +710,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - PUT /memories/:id - Cập nhật kỷ niệm
 [x] - DELETE /memories/:id - Xóa kỷ niệm
 [x] - GET /memories/statistics - Lấy thống kê kỷ niệm
+[x] - GET /memories/reminders/upcoming - Lấy nhắc nhở sắp tới
+[x] - POST /memories/:id/reminder/sent - Đánh dấu nhắc nhở đã gửi
  
 16.3. Image Endpoints
 [x] - POST /memories/:id/images - Thêm ảnh vào kỷ niệm
@@ -748,6 +750,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - memories.userId - Index người dùng trong kỷ niệm
 [x] - memories.categoryId - Index danh mục trong kỷ niệm
 [x] - memories.mood - Index tâm trạng trong kỷ niệm
+[x] - memories.reminderDate - Index ngày nhắc nhở
 [x] - memory_images.memoryId - Index kỷ niệm trong ảnh
 [x] - memory_images.order - Index thứ tự trong ảnh
  
@@ -763,20 +766,21 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 18. MIGRATIONS (MIGRATIONS)
 ================================================================================
- 
+
 18.1. Database Migrations (Migrations database)
 [x] - Initial schema migration - Migration schema ban đầu
 [x] - Add image order field migration - Migration thêm trường thứ tự ảnh
 [x] - Add category color field migration - Migration thêm trường màu danh mục
+[x] - Add reminder fields migration - Migration thêm trường nhắc nhở
 [x] - Prisma migrate dev - Prisma migrate dev
 [x] - Prisma migrate deploy - Prisma migrate deploy
 [x] - Prisma db push - Prisma db push
 [x] - Migration rollback support - Hỗ trợ rollback migration (tương lai)
 [x] - Migration testing - Kiểm thử migration (tương lai)
 [x] - Migration backup - Sao lưu migration (tương lai)
- 
+
 ================================================================================
- 
+
 19. ENHANCED USER EXPERIENCE (TRẢI NGHIỆM NGƯỜI DÙNG NÂNG CAO)
 ================================================================================
  
@@ -790,7 +794,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 19.2. Personalization (Cá nhân hóa)
 [ ] - User preferences - Tùy chỉnh người dùng
-[ ] - Custom theme colors - Màu theme tùy chỉnh
+[x] - Custom theme colors - Màu theme tùy chỉnh
 [ ] - Dashboard layout customization - Tùy chỉnh bố cục dashboard
 [x] - Custom category creation - Tạo danh mục tùy chỉnh
 [ ] - Memory templates - Mẫu kỷ niệm
@@ -811,8 +815,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 20.1. Map Analytics (Phân tích bản đồ)
 [ ] - Heat map - Bản đồ nhiệt
-[ ] - Route visualization - Trực quan hóa lộ trình
-[ ] - Distance calculations - Tính toán khoảng cách
+[x] - Route visualization - Trực quan hóa lộ trình
+[x] - Distance calculations - Tính toán khoảng cách
 [ ] - Travel statistics - Thống kê di chuyển
 [ ] - Geographic insights - Thông tin địa lý
 [ ] - Location frequency - Tần suất địa điểm
@@ -820,7 +824,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 20.2. Map Customization (Tùy chỉnh bản đồ)
 [ ] - Custom map styles - Phong cách bản đồ tùy chỉnh
 [ ] - Custom markers - Marker tùy chỉnh
-[ ] - Map filters - Bộ lọc bản đồ
+[x] - Map filters - Bộ lọc bản đồ
 [ ] - Saved map views - Lưu chế độ xem bản đồ
 [ ] - Map annotations - Ghi chú bản đồ
 [ ] - Drawing tools - Công cụ vẽ
@@ -842,7 +846,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Apple Calendar sync - Đồng bộ Apple Calendar
 [ ] - Outlook Calendar sync - Đồng bộ Outlook Calendar
 [ ] - Calendar export - Xuất lịch
-[ ] - Memory reminders - Nhắc nhở kỷ niệm
+[x] - Memory reminders - Nhắc nhở kỷ niệm
  
 21.3. Cloud Storage Integration (Tích hợp lưu trữ đám mây)
 [ ] - Google Drive integration - Tích hợp Google Drive
@@ -853,13 +857,43 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 ================================================================================
  
+22. NOTIFICATIONS & ALERTS (THÔNG BÁO & CẢNH BÁO)
+================================================================================
+ 
+22.1. In-App Notifications (Thông báo trong ứng dụng)
+[x] - Reminder notifications - Thông báo nhắc nhở
+[ ] - Achievement notifications - Thông báo thành tích
+[ ] - Milestone notifications - Thông báo cột mốc
+[ ] - Social notifications - Thông báo xã hội
+[ ] - System notifications - Thông báo hệ thống
+[ ] - Notification center - Trung tâm thông báo
+[ ] - Notification preferences - Tùy chọn thông báo
+ 
+22.2. Email Notifications (Thông báo email)
+[ ] - Daily memory digest - Tóm tắt kỷ niệm hàng ngày
+[ ] - Weekly memory summary - Tóm tắt kỷ niệm hàng tuần
+[ ] - Memory anniversary - Kỷ niệm ngày kỷ niệm
+[ ] - Reminder emails - Email nhắc nhở
+[ ] - Activity reports - Báo cáo hoạt động
+[ ] - Email preferences - Tùy chọn email
+ 
+22.3. Push Notifications (Thông báo đẩy)
+[ ] - Browser push notifications - Thông báo đẩy trình duyệt
+[ ] - Mobile push notifications - Thông báo đẩy mobile
+[ ] - Scheduled notifications - Thông báo theo lịch
+[ ] - Location-based notifications - Thông báo dựa trên vị trí
+[ ] - Quiet hours - Giờ yên tĩnh
+[ ] - Notification grouping - Gom nhóm thông báo
+ 
+================================================================================
+ 
 END OF FEATURE LIST
 ================================================================================
  
-Tổng số tính năng: 200+
-Số lượng tính năng đã implement: 170+
+Tổng số tính năng: 220+
+Số lượng tính năng đã implement: 175+
 Số lượng tính năng đang phát triển: 5+
-Số lượng tính năng tương lai: 25+
+Số lượng tính năng tương lai: 40+
  
-Last Updated: 2026-09-05
-Version: 2.4
+Last Updated: 2026-09-06
+Version: 2.5

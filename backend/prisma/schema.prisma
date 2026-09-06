@@ -66,6 +66,8 @@ model Memory {
   memoryDate   DateTime      @map("memory_date")
   mood         Mood
   categoryId   String        @map("category_id")
+  reminderDate DateTime?     @map("reminder_date")
+  reminderSent Boolean       @default(false) @map("reminder_sent")
   createdAt    DateTime      @default(now()) @map("created_at")
   updatedAt    DateTime      @updatedAt @map("updated_at")
   user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -76,6 +78,7 @@ model Memory {
   @@index([userId])
   @@index([categoryId])
   @@index([mood])
+  @@index([reminderDate])
 }
 
 model MemoryImage {
