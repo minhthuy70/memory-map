@@ -16,6 +16,7 @@ import { useMemoriesStore } from '@/store/memories-store';
 import ThemeToggle from '@/components/ThemeToggle';
 import MemoryReminders from '@/components/MemoryReminders';
 import KeyboardShortcuts from '@/components/KeyboardShortcuts';
+import WelcomeModal from '@/components/WelcomeModal';
 
 type Memory = ApiMemory;
 
@@ -883,6 +884,9 @@ export default function DashboardPage() {
           </div>
         </main>
       </div>
+
+      {/* Welcome Modal */}
+      <WelcomeModal />
     </div>
   );
 }

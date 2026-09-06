@@ -785,12 +785,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 19.1. Onboarding (Hướng dẫn ban đầu)
-[ ] - Welcome modal - Modal chào mừng người dùng mới
+[x] - Welcome modal - Modal chào mừng người dùng mới
 [ ] - Feature tour - Tour giới thiệu tính năng
 [ ] - Quick start guide - Hướng dẫn bắt đầu nhanh
 [ ] - Tutorial cards - Card hướng dẫn
 [ ] - Progress indicators - Chỉ số tiến độ
-[ ] - Skip option - Tùy chọn bỏ qua
+[x] - Skip option - Tùy chọn bỏ qua
  
 19.2. Personalization (Cá nhân hóa)
 [ ] - User preferences - Tùy chỉnh người dùng
@@ -891,9 +891,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 545
+Số lượng tính năng đã implement: 547
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 74
+Số lượng tính năng tương lai: 72
  
 Last Updated: 2026-09-06
-Version: 2.8
+Version: 2.9
