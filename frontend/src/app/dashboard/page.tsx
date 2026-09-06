@@ -19,6 +19,7 @@ import KeyboardShortcuts from '@/components/KeyboardShortcuts';
 import WelcomeModal from '@/components/WelcomeModal';
 import Tooltip from '@/components/Tooltip';
 import { AchievementSystem } from '@/components/AchievementSystem';
+import SearchHistory from '@/components/SearchHistory';
 
 type Memory = ApiMemory;
 
@@ -100,6 +101,7 @@ export default function DashboardPage() {
   const [showStats, setShowStats] = useState(false);
   const [filterCategory, setFilterCategory] = useState('');
   const [filterMood, setFilterMood] = useState('');
+  const [showSearchHistory, setShowSearchHistory] = useState(false);
   const isFirstRender = useRef(true);
 
   const handleFilterChange = (filters: { category?: string; mood?: string }) => {
@@ -381,7 +383,14 @@ export default function DashboardPage() {
                   type="text"
                   placeholder="Tìm kiếm theo tiêu đề, địa điểm... (tối thiểu 2 ký tự)"
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    if (e.target.value && (window as any).addSearchHistory) {
+                      (window as any).addSearchHistory(e.target.value);
+                    }
+                  }}
+                  onFocus={() => setShowSearchHistory(true)}
+                  onBlur={() => setTimeout(() => setShowSearchHistory(false), 200)}
                   className="w-full pl-9 pr-8 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none text-xs sm:text-sm"
                 />
 
@@ -400,6 +409,16 @@ export default function DashboardPage() {
                 <p className="text-[11px] text-amber-600 dark:text-amber-400 pl-1">
                   Nhập thêm ít nhất 1 ký tự để tìm kiếm...
                 </p>
+              )}
+
+              {showSearchHistory && !searchQuery && (
+                <SearchHistory
+                  onSelect={(query) => {
+                    setSearchQuery(query);
+                    setShowSearchHistory(false);
+                  }}
+                  onClear={() => setShowSearchHistory(false)}
+                />
               )}
             </div>
 

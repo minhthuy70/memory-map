@@ -528,7 +528,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Click to view detail - Click để xem chi tiết
 [x] - Result metadata - Metadata kết quả
 [ ] - Relevance sorting (future) - Sắp xếp theo độ liên quan (tương lai)
-[ ] - Search history (future) - Lịch sử tìm kiếm (tương lai)
+[x] - Search history - Lịch sử tìm kiếm
 [x] - HighlightText component - Component tô sáng từ khóa tìm kiếm trong tiêu đề & địa điểm
 [x] - Tailored search empty state - Giao diện trạng thái trống chuyên biệt cho kết quả tìm kiếm
 [x] - Search metadata display - Hiển thị icon danh mục, emoji tâm trạng và ngày tháng trong kết quả
@@ -867,7 +867,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Social notifications - Thông báo xã hội
 [ ] - System notifications - Thông báo hệ thống
 [ ] - Notification center - Trung tâm thông báo
-[ ] - Notification preferences - Tùy chọn thông báo
+[x] - Notification preferences - Tùy chọn thông báo
  
 22.2. Email Notifications (Thông báo email)
 [ ] - Daily memory digest - Tóm tắt kỷ niệm hàng ngày
@@ -891,9 +891,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 556
+Số lượng tính năng đã implement: 558
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 63
+Số lượng tính năng tương lai: 61
  
 Last Updated: 2026-09-06
-Version: 3.3
+Version: 3.4

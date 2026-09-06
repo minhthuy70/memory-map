@@ -33,6 +33,7 @@ import MemoryExportImport from '@/components/MemoryExportImport';
 import UserPreferences from '@/components/UserPreferences';
 import MemoryTemplates from '@/components/MemoryTemplates';
 import { AchievementsList } from '@/components/AchievementSystem';
+import NotificationPreferences from '@/components/NotificationPreferences';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -718,6 +719,11 @@ export default function ProfilePage() {
             {/* Achievements List */}
             <div className="mb-6">
               <AchievementsList />
+            </div>
+
+            {/* Notification Preferences */}
+            <div className="mb-6">
+              <NotificationPreferences />
             </div>
 
             {/* Change Password Form */}
