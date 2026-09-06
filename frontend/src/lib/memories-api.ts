@@ -119,4 +119,14 @@ export const memoriesApi = {
     const response = await api.get('/memories/statistics');
     return response.data;
   },
+
+  exportMemories: async (): Promise<any[]> => {
+    const response = await api.get('/memories/export-data');
+    return response.data;
+  },
+
+  importMemories: async (memories: any[]): Promise<{ imported: number; errors: string[] }> => {
+    const response = await api.post('/memories/import', memories);
+    return response.data;
+  },
 };

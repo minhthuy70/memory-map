@@ -43,6 +43,16 @@ export class MemoriesController {
     return this.memoriesService.findOne(id, req.user.id);
   }
 
+  @Post('import')
+  async importMemories(@Request() req, @Body() memories: any[]) {
+    return this.memoriesService.importMemories(req.user.id, memories);
+  }
+
+  @Get('export-data')
+  async exportMemories(@Request() req) {
+    return this.memoriesService.exportMemories(req.user.id);
+  }
+
   @Put(':id')
   async update(
     @Param('id') id: string,
@@ -83,5 +93,15 @@ export class MemoriesController {
     @Body('order') order: number,
   ) {
     return this.memoriesService.updateImageOrder(imageId, req.user.id, order);
+  }
+
+  @Get('export/all')
+  async exportMemories(@Request() req) {
+    return this.memoriesService.exportMemories(req.user.id);
+  }
+
+  @Post('import')
+  async importMemories(@Request() req, @Body() memories: any[]) {
+    return this.memoriesService.importMemories(req.user.id, memories);
   }
 }

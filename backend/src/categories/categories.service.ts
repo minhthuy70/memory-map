@@ -1,6 +1,8 @@
 
-import { Injectable } from '@nestjs/common';
+import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Injectable()
 export class CategoriesService {
@@ -123,5 +125,98 @@ export class CategoriesService {
     }
 
     return results;
+  }
+
+  async create(createCategoryDto: CreateCategoryDto) {
+    const existingCategory = await this.prisma.category.findUnique({
+      where: { name: createCategoryDto.name },
+    });
+
+    if (existingCategory) {
+      throw new ConflictException('Danh mục với tên này đã tồn tại');
+    }
+
+    const category = await this.prisma.category.create({
+      data: {
+        name: createCategoryDto.name,
+        icon: createCategoryDto.icon,
+        color: createCategoryDto.color || '#6366f1',
+      },
+    });
+
+    return {
+      id: category.id,
+      name: category.name,
+      icon: category.icon,
+      color: category.color,
+      createdAt: category.createdAt,
+      usageCount: 0,
+    };
+  }
+
+  async update(id: string, updateCategoryDto: UpdateCategoryDto) {
+    const existingCategory = await this.prisma.category.findUnique({
+      where: { id },
+    });
+
+    if (!existingCategory) {
+      throw new NotFoundException('Không tìm thấy danh mục');
+    }
+
+    if (updateCategoryDto.name && updateCategoryDto.name !== existingCategory.name) {
+      const nameConflict = await this.prisma.category.findUnique({
+        where: { name: updateCategoryDto.name },
+      });
+
+      if (nameConflict) {
+        throw new ConflictException('Danh mục với tên này đã tồn tại');
+      }
+    }
+
+    const category = await this.prisma.category.update({
+      where: { id },
+      data: updateCategoryDto,
+      include: {
+        _count: {
+          select: { memories: true },
+        },
+      },
+    });
+
+    return {
+      id: category.id,
+      name: category.name,
+      icon: category.icon,
+      color: category.color,
+      createdAt: category.createdAt,
+      usageCount: category._count?.memories ?? 0,
+    };
+  }
+
+  async delete(id: string) {
+    const category = await this.prisma.category.findUnique({
+      where: { id },
+      include: {
+        _count: {
+          select: { memories: true },
+        },
+      },
+    });
+
+    if (!category) {
+      throw new NotFoundException('Không tìm thấy danh mục');
+    }
+
+    if (category._count?.memories > 0) {
+      throw new ConflictException(
+        `Không thể xóa danh mục này vì còn ${category._count.memories} kỷ niệm đang sử dụng`
+      );
+    }
+
+    await this.prisma.category.delete({
+      where: { id },
+    });
+
+    return { message: 'Danh mục đã được xóa thành công' };
   }
 }

@@ -715,13 +715,18 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - POST /memories/:id/images - Thêm ảnh vào kỷ niệm
 [x] - DELETE /memories/:memoryId/images/:imageId - Xóa ảnh
 [x] - PUT /memories/:memoryId/images/:imageId/order - Cập nhật thứ tự ảnh
+
+16.4. Export/Import Endpoints
+[x] - GET /memories/export-data - Xuất tất cả kỷ niệm
+[x] - POST /memories/import - Nhập kỷ niệm từ file
  
-16.4. Category Endpoints
+16.5. Category Endpoints
 [x] - GET /categories - Lấy tất cả danh mục
 [x] - GET /categories/:id - Lấy danh mục cụ thể
 [x] - POST /categories/seed - Seeding danh mục mặc định
-[x] - PUT /categories/:id - Cập nhật danh mục (tương lai)
-[x] - DELETE /categories/:id - Xóa danh mục (tương lai)
+[x] - POST /categories - Tạo danh mục mới
+[x] - PUT /categories/:id - Cập nhật danh mục
+[x] - DELETE /categories/:id - Xóa danh mục
  
 ================================================================================
  
@@ -772,8 +777,6 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 ================================================================================
  
-================================================================================
- 
 19. ENHANCED USER EXPERIENCE (TRẢI NGHIỆM NGƯỜI DÙNG NÂNG CAO)
 ================================================================================
  
@@ -789,17 +792,17 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - User preferences - Tùy chỉnh người dùng
 [ ] - Custom theme colors - Màu theme tùy chỉnh
 [ ] - Dashboard layout customization - Tùy chỉnh bố cục dashboard
-[ ] - Custom category creation - Tạo danh mục tùy chỉnh
+[x] - Custom category creation - Tạo danh mục tùy chỉnh
 [ ] - Memory templates - Mẫu kỷ niệm
-[ ] - Keyboard shortcuts - Phím tắt
+[x] - Keyboard shortcuts - Phím tắt
  
 19.3. Social Features (Tính năng xã hội)
 [ ] - Share memories - Chia sẻ kỷ niệm
 [ ] - Public memory links - Link kỷ niệm công khai
 [ ] - Memory visibility settings - Cài đặt hiển thị kỷ niệm
-[ ] - Export memories - Xuất kỷ niệm
-[ ] - Import memories - Nhập kỷ niệm
-[ ] - Memory backup - Sao lưu kỷ niệm
+[x] - Export memories - Xuất kỷ niệm
+[x] - Import memories - Nhập kỷ niệm
+[x] - Memory backup - Sao lưu kỷ niệm
  
 ================================================================================
  
@@ -854,9 +857,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 200+
-Số lượng tính năng đã implement: 165+
+Số lượng tính năng đã implement: 170+
 Số lượng tính năng đang phát triển: 5+
-Số lượng tính năng tương lai: 30+
+Số lượng tính năng tương lai: 25+
  
 Last Updated: 2026-09-05
-Version: 2.3
+Version: 2.4
