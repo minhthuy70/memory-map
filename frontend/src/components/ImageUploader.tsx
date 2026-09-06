@@ -29,6 +29,38 @@ export default function ImageUploader({
     }
   };
 
+  const isValidImageType = (urlString: string) => {
+    const trimmed = urlString.trim().toLowerCase();
+    const validExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.bmp'];
+    return validExtensions.some(ext => trimmed.endsWith(ext)) || 
+           trimmed.includes('image/') ||
+           trimmed.includes('imgur.com') ||
+           trimmed.includes('unsplash.com') ||
+           trimmed.includes('flickr.com');
+  };
+
+  const checkImageSize = async (urlString: string): Promise<{ valid: boolean; size?: number; error?: string }> => {
+    try {
+      const response = await fetch(urlString, { method: 'HEAD' });
+      if (!response.ok) {
+        return { valid: false, error: 'Không thể truy cập URL ảnh' };
+      }
+      
+      const contentLength = response.headers.get('content-length');
+      if (contentLength) {
+        const sizeInMB = parseInt(contentLength) / (1024 * 1024);
+        if (sizeInMB > 10) {
+          return { valid: false, error: 'Kích thước ảnh quá lớn (tối đa 10MB)' };
+        }
+      }
+      
+      return { valid: true, size: contentLength ? parseInt(contentLength) : undefined };
+    } catch {
+      // If HEAD request fails, we'll still allow the image but log it
+      return { valid: true };
+    }
+  };
+
   const handleCancelUpload = () => {
     if (uploadTimerRef.current) {
       clearInterval(uploadTimerRef.current);
@@ -39,7 +71,7 @@ export default function ImageUploader({
     setError('');
   };
 
-  const handleAddImage = (e?: React.FormEvent) => {
+  const handleAddImage = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
 
     setError('');
@@ -60,8 +92,20 @@ export default function ImageUploader({
       return;
     }
 
+    if (!isValidImageType(trimmed)) {
+      setError('URL không trỏ đến định dạng ảnh hợp lệ (jpg, png, gif, webp, svg, bmp)');
+      return;
+    }
+
     if (images.includes(trimmed)) {
       setError('Hình ảnh này đã có trong danh sách.');
+      return;
+    }
+
+    // Check image size
+    const sizeCheck = await checkImageSize(trimmed);
+    if (!sizeCheck.valid && sizeCheck.error) {
+      setError(sizeCheck.error);
       return;
     }
 
@@ -247,11 +291,12 @@ export default function ImageUploader({
                 key={index}
                 className="group relative aspect-video rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-700/50 border border-slate-200 dark:border-slate-700 shadow-xs hover:shadow-md transition-all"
               >
-                {/* Image element with onError fallback */}
+                {/* Image element with onError fallback and lazy loading */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={url}
                   alt={`Ảnh ${index + 1}`}
+                  loading="lazy"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src =

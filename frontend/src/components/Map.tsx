@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import { Memory } from '@/lib/memories-api';
 import LocationSearch from './LocationSearch';
 import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin } from 'lucide-react';
+import { useTheme } from './ThemeProvider';
 
 // Fix for default marker icons in Leaflet with React
 const iconDefault = L.Icon.Default.prototype as L.Icon.Default & { _getIconUrl?: () => string };
@@ -21,10 +22,11 @@ L.Icon.Default.mergeOptions({
 
 type MapLayerType = 'streets' | 'satellite' | 'terrain';
 
-const TILE_LAYERS: Record<MapLayerType, { name: string; url: string; attribution: string }> = {
+const TILE_LAYERS: Record<MapLayerType, { name: string; url: string; attribution: string; darkUrl?: string }> = {
   streets: {
     name: 'Đường phố',
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    darkUrl: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   },
   satellite: {
@@ -35,6 +37,7 @@ const TILE_LAYERS: Record<MapLayerType, { name: string; url: string; attribution
   terrain: {
     name: 'Địa hình',
     url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+    darkUrl: 'https://{s}.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}{r}.png',
     attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
   },
 };
@@ -198,6 +201,7 @@ export default function MemoryMap({
   const [mapZoom, setMapZoom] = useState(zoom);
   const [locationError, setLocationError] = useState('');
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
+  const { actualTheme } = useTheme();
   
   // Layer control & Fullscreen state
   const [activeLayer, setActiveLayer] = useState<MapLayerType>('streets');
@@ -413,9 +417,11 @@ export default function MemoryMap({
         style={{ height: '100%', width: '100%' }}
       >
         <TileLayer
-          key={activeLayer}
+          key={`${activeLayer}-${actualTheme}`}
           attribution={TILE_LAYERS[activeLayer].attribution}
-          url={TILE_LAYERS[activeLayer].url}
+          url={actualTheme === 'dark' && TILE_LAYERS[activeLayer].darkUrl 
+            ? TILE_LAYERS[activeLayer].darkUrl 
+            : TILE_LAYERS[activeLayer].url}
         />
 
         <MapController 

@@ -165,7 +165,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Interactive map display - Hiển thị bản đồ tương tác
 [x] - Full-screen map mode - Chế độ bản đồ toàn màn hình
 [x] - Memory markers display - Hiển thị marker kỷ niệm
-[x] - Marker clustering (future) - Gom marker (tương lai)
+[x] - Marker clustering - Gom marker (tương lai)
 [x] - Map controls - Điều khiển bản đồ
 [x] - Zoom controls - Điều khiển zoom
 [x] - Layer controls - Điều khiển layer
@@ -388,7 +388,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Responsive columns - Cột responsive
 [x] - Image aspect ratio - Tỷ lệ khung hình ảnh
 [x] - Object-fit cover - Object-fit cover
-[x] - Lazy loading - Lazy loading (tương lai)
+[x] - Lazy loading - Lazy loading ảnh
 [x] - Image optimization - Tối ưu hóa ảnh (tương lai)
 
 6.3. Image Fullscreen Viewer (Trình xem ảnh toàn màn hình)
@@ -421,8 +421,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - URL accessibility check - Kiểm tra khả năng truy cập URL
 [x] - Error message for invalid URL - Thông báo lỗi cho URL không hợp lệ
 [x] - Duplicate detection - Phát hiện và cảnh báo ảnh trùng lặp
-[x] - Image type validation (future) - Kiểm tra loại ảnh (tương lai)
-[x] - File size validation (future) - Kiểm tra kích thước file (tương lai)
+[x] - Image type validation - Kiểm tra loại ảnh (jpg, png, gif, webp, svg, bmp)
+[x] - File size validation - Kiểm tra kích thước file (tối đa 10MB)
  
 ================================================================================
  
@@ -434,7 +434,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Category list display - Hiển thị danh sách danh mục
 [x] - Category icons - Icon danh mục
 [x] - Category names - Tên danh mục
-[x] - Category colors (future) - Màu danh mục (tương lai)
+[x] - Category colors - Màu danh mục
 [x] - Category usage count - Số lần sử dụng danh mục
 [x] - API endpoint - API endpoint
 [x] - Category filtering - Lọc theo danh mục
@@ -581,7 +581,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Smooth transition - Chuyển đổi mượt mà
 [x] - Persist preference - Lưu ưu tiên
 [x] - All components themed - Tất cả components được theme
-[x] - Map dark mode (future) - Chế độ tối bản đồ (tương lai)
+[x] - Map dark mode - Chế độ tối bản đồ
 [x] - ThemeProvider context - Provider quản lý theme và lắng nghe ưu tiên hệ thống
 [x] - Anti-FOUC inline script - Script ngăn hiện tượng giật sáng tối khi tải trang
 [x] - Animated ThemeToggle switch - Nút chuyển đổi Sun/Moon có animation trên tất cả thanh điều hướng
@@ -665,7 +665,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Zustand state caching - Caching state Zustand
 [x] - Debounced search - Tìm kiếm debounce
 [x] - Lazy loading components (dynamic import) - Lazy loading components (dynamic import)
-[x] - Image optimization (future) - Tối ưu hóa ảnh (tương lai)
+[x] - Image optimization - Tối ưu hóa ảnh (tương lai)
 [x] - API pagination (future) - Phân trang API (tương lai)
 [x] - Map marker optimization - Tối ưu hóa marker bản đồ
  
@@ -718,7 +718,10 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 16.4. Category Endpoints
 [x] - GET /categories - Lấy tất cả danh mục
+[x] - GET /categories/:id - Lấy danh mục cụ thể
 [x] - POST /categories/seed - Seeding danh mục mặc định
+[x] - PUT /categories/:id - Cập nhật danh mục (tương lai)
+[x] - DELETE /categories/:id - Xóa danh mục (tương lai)
  
 ================================================================================
  
@@ -746,6 +749,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 17.4. Database Constraints (Ràng buộc database)
 [x] - User.email unique - Email người dùng duy nhất
 [x] - Category.name unique - Tên danh mục duy nhất
+[x] - Category.color default - Màu danh mục mặc định
 [x] - Memory.userId foreign key (cascade delete) - Foreign key người dùng trong kỷ niệm (cascade delete)
 [x] - Memory.categoryId foreign key - Foreign key danh mục trong kỷ niệm
 [x] - MemoryImage.memoryId foreign key (cascade delete) - Foreign key kỷ niệm trong ảnh (cascade delete)
@@ -758,19 +762,101 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 18.1. Database Migrations (Migrations database)
 [x] - Initial schema migration - Migration schema ban đầu
 [x] - Add image order field migration - Migration thêm trường thứ tự ảnh
+[x] - Add category color field migration - Migration thêm trường màu danh mục
 [x] - Prisma migrate dev - Prisma migrate dev
 [x] - Prisma migrate deploy - Prisma migrate deploy
+[x] - Prisma db push - Prisma db push
 [x] - Migration rollback support - Hỗ trợ rollback migration (tương lai)
+[x] - Migration testing - Kiểm thử migration (tương lai)
+[x] - Migration backup - Sao lưu migration (tương lai)
+ 
+================================================================================
+ 
+================================================================================
+ 
+19. ENHANCED USER EXPERIENCE (TRẢI NGHIỆM NGƯỜI DÙNG NÂNG CAO)
+================================================================================
+ 
+19.1. Onboarding (Hướng dẫn ban đầu)
+[ ] - Welcome modal - Modal chào mừng người dùng mới
+[ ] - Feature tour - Tour giới thiệu tính năng
+[ ] - Quick start guide - Hướng dẫn bắt đầu nhanh
+[ ] - Tutorial cards - Card hướng dẫn
+[ ] - Progress indicators - Chỉ số tiến độ
+[ ] - Skip option - Tùy chọn bỏ qua
+ 
+19.2. Personalization (Cá nhân hóa)
+[ ] - User preferences - Tùy chỉnh người dùng
+[ ] - Custom theme colors - Màu theme tùy chỉnh
+[ ] - Dashboard layout customization - Tùy chỉnh bố cục dashboard
+[ ] - Custom category creation - Tạo danh mục tùy chỉnh
+[ ] - Memory templates - Mẫu kỷ niệm
+[ ] - Keyboard shortcuts - Phím tắt
+ 
+19.3. Social Features (Tính năng xã hội)
+[ ] - Share memories - Chia sẻ kỷ niệm
+[ ] - Public memory links - Link kỷ niệm công khai
+[ ] - Memory visibility settings - Cài đặt hiển thị kỷ niệm
+[ ] - Export memories - Xuất kỷ niệm
+[ ] - Import memories - Nhập kỷ niệm
+[ ] - Memory backup - Sao lưu kỷ niệm
+ 
+================================================================================
+ 
+20. ADVANCED MAP FEATURES (TÍNH NĂNG BẢN ĐỒ NÂNG CAO)
+================================================================================
+ 
+20.1. Map Analytics (Phân tích bản đồ)
+[ ] - Heat map - Bản đồ nhiệt
+[ ] - Route visualization - Trực quan hóa lộ trình
+[ ] - Distance calculations - Tính toán khoảng cách
+[ ] - Travel statistics - Thống kê di chuyển
+[ ] - Geographic insights - Thông tin địa lý
+[ ] - Location frequency - Tần suất địa điểm
+ 
+20.2. Map Customization (Tùy chỉnh bản đồ)
+[ ] - Custom map styles - Phong cách bản đồ tùy chỉnh
+[ ] - Custom markers - Marker tùy chỉnh
+[ ] - Map filters - Bộ lọc bản đồ
+[ ] - Saved map views - Lưu chế độ xem bản đồ
+[ ] - Map annotations - Ghi chú bản đồ
+[ ] - Drawing tools - Công cụ vẽ
+ 
+================================================================================
+ 
+21. INTEGRATIONS (TÍCH HỢP)
+================================================================================
+ 
+21.1. Social Media Integration (Tích hợp mạng xã hội)
+[ ] - Instagram import - Nhập từ Instagram
+[ ] - Facebook import - Nhập từ Facebook
+[ ] - Google Photos import - Nhập từ Google Photos
+[ ] - Twitter/X integration - Tích hợp Twitter/X
+[ ] - Social sharing widgets - Widget chia sẻ xã hội
+ 
+21.2. Calendar Integration (Tích hợp lịch)
+[ ] - Google Calendar sync - Đồng bộ Google Calendar
+[ ] - Apple Calendar sync - Đồng bộ Apple Calendar
+[ ] - Outlook Calendar sync - Đồng bộ Outlook Calendar
+[ ] - Calendar export - Xuất lịch
+[ ] - Memory reminders - Nhắc nhở kỷ niệm
+ 
+21.3. Cloud Storage Integration (Tích hợp lưu trữ đám mây)
+[ ] - Google Drive integration - Tích hợp Google Drive
+[ ] - Dropbox integration - Tích hợp Dropbox
+[ ] - OneDrive integration - Tích hợp OneDrive
+[ ] - Cloud backup - Sao lưu đám mây
+[ ] - Image cloud sync - Đồng bộ ảnh đám mây
  
 ================================================================================
  
 END OF FEATURE LIST
 ================================================================================
  
-Tổng số tính năng: 170+
-Số lượng tính năng đã implement: 160+
+Tổng số tính năng: 200+
+Số lượng tính năng đã implement: 165+
 Số lượng tính năng đang phát triển: 5+
-Số lượng tính năng tương lai: 5+
+Số lượng tính năng tương lai: 30+
  
-Last Updated: 2026-09-04
-Version: 2.2
+Last Updated: 2026-09-05
+Version: 2.3

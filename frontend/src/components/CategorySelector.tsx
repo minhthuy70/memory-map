@@ -49,9 +49,17 @@ export default function CategorySelector({
               onClick={() => onChange(cat.id)}
               className={`flex items-center gap-2 p-2.5 rounded-xl border text-left transition-all cursor-pointer select-none text-xs sm:text-sm ${
                 isSelected
-                  ? 'border-primary bg-primary/10 text-primary ring-2 ring-primary/20 font-bold dark:border-primary dark:bg-primary/20 dark:text-primary-light'
+                  ? 'ring-2 font-bold'
                   : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:border-slate-300'
               }`}
+              style={{
+                ...(isSelected ? {
+                  borderColor: cat.color,
+                  backgroundColor: `${cat.color}15`,
+                  color: cat.color,
+                  '--tw-ring-color': cat.color,
+                } : {})
+              }}
             >
               <span className="text-lg shrink-0">{cat.icon}</span>
               <div className="min-w-0 flex-1">

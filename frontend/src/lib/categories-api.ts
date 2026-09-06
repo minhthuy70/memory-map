@@ -4,6 +4,7 @@ export interface Category {
   id: string;
   name: string;
   icon: string;
+  color: string;
   createdAt: string;
   usageCount?: number;
   _count?: {
