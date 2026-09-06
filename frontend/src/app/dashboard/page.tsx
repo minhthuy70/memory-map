@@ -18,6 +18,7 @@ import MemoryReminders from '@/components/MemoryReminders';
 import KeyboardShortcuts from '@/components/KeyboardShortcuts';
 import WelcomeModal from '@/components/WelcomeModal';
 import Tooltip from '@/components/Tooltip';
+import { AchievementSystem } from '@/components/AchievementSystem';
 
 type Memory = ApiMemory;
 
@@ -890,6 +891,9 @@ export default function DashboardPage() {
 
       {/* Welcome Modal */}
       <WelcomeModal />
+
+      {/* Achievement System */}
+      <AchievementSystem memoryCount={memories.length} />
     </div>
   );
 }

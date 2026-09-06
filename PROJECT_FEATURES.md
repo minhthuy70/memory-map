@@ -825,7 +825,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Custom map styles - Phong cách bản đồ tùy chỉnh
 [ ] - Custom markers - Marker tùy chỉnh
 [x] - Map filters - Bộ lọc bản đồ
-[ ] - Saved map views - Lưu chế độ xem bản đồ
+[x] - Saved map views - Lưu chế độ xem bản đồ
 [ ] - Map annotations - Ghi chú bản đồ
 [ ] - Drawing tools - Công cụ vẽ
  
@@ -862,7 +862,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 22.1. In-App Notifications (Thông báo trong ứng dụng)
 [x] - Reminder notifications - Thông báo nhắc nhở
-[ ] - Achievement notifications - Thông báo thành tích
+[x] - Achievement notifications - Thông báo thành tích
 [ ] - Milestone notifications - Thông báo cột mốc
 [ ] - Social notifications - Thông báo xã hội
 [ ] - System notifications - Thông báo hệ thống
@@ -891,9 +891,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 554
+Số lượng tính năng đã implement: 556
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 65
+Số lượng tính năng tương lai: 63
  
 Last Updated: 2026-09-06
-Version: 3.2
+Version: 3.3

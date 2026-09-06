@@ -32,6 +32,7 @@ import ThemeCustomizer from '@/components/ThemeCustomizer';
 import MemoryExportImport from '@/components/MemoryExportImport';
 import UserPreferences from '@/components/UserPreferences';
 import MemoryTemplates from '@/components/MemoryTemplates';
+import { AchievementsList } from '@/components/AchievementSystem';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -712,6 +713,11 @@ export default function ProfilePage() {
             {/* Memory Templates */}
             <div className="mb-6">
               <MemoryTemplates />
+            </div>
+
+            {/* Achievements List */}
+            <div className="mb-6">
+              <AchievementsList />
             </div>
 
             {/* Change Password Form */}
