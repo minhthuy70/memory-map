@@ -8,6 +8,7 @@ interface UserPreferences {
   itemsPerPage: number;
   defaultSort: 'date-newest' | 'date-oldest' | 'title-az' | 'title-za';
   showStatistics: boolean;
+  sidebarPosition: 'left' | 'right';
 }
 
 const DEFAULT_PREFERENCES: UserPreferences = {
@@ -15,6 +16,7 @@ const DEFAULT_PREFERENCES: UserPreferences = {
   itemsPerPage: 15,
   defaultSort: 'date-newest',
   showStatistics: true,
+  sidebarPosition: 'left',
 };
 
 export default function UserPreferences() {
@@ -138,6 +140,21 @@ export default function UserPreferences() {
             />
             <div className="w-11 h-6 bg-slate-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary rounded-full peer dark:bg-slate-600 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
           </label>
+        </div>
+
+        {/* Sidebar Position */}
+        <div>
+          <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
+            Vị trí sidebar
+          </label>
+          <select
+            value={preferences.sidebarPosition}
+            onChange={(e) => setPreferences({ ...preferences, sidebarPosition: e.target.value as 'left' | 'right' })}
+            className="w-full px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm outline-none focus:ring-2 focus:ring-primary"
+          >
+            <option value="left">Bên trái</option>
+            <option value="right">Bên phải</option>
+          </select>
         </div>
       </div>
 

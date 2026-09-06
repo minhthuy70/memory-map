@@ -604,12 +604,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - 500 Server Error handling - Xử lý 500 Server Error
 [x] - Error messages - Thông báo lỗi
 [x] - Retry buttons - Nút thử lại
-[ ] - Error toast notifications (future) - Thông báo lỗi toast (tương lai)
+[x] - Error toast notifications - Thông báo lỗi toast
  
 12.2. Loading States (Trạng thái đang tải)
 [x] - Loading spinners - Spinner đang tải
 [x] - Loading text - Văn bản đang tải
-[ ] - Skeleton screens (future) - Skeleton screens (tương lai)
+[x] - Skeleton screens - Skeleton screens
 [x] - Progress indicators - Chỉ số tiến độ
 [x] - Disabled buttons during load - Vô hiệu hóa nút khi đang tải
 [x] - Loading overlays - Overlay đang tải
@@ -795,7 +795,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 19.2. Personalization (Cá nhân hóa)
 [x] - User preferences - Tùy chỉnh người dùng
 [x] - Custom theme colors - Màu theme tùy chỉnh
-[ ] - Dashboard layout customization - Tùy chỉnh bố cục dashboard
+[x] - Dashboard layout customization - Tùy chỉnh bố cục dashboard
 [x] - Custom category creation - Tạo danh mục tùy chỉnh
 [ ] - Memory templates - Mẫu kỷ niệm
 [x] - Keyboard shortcuts - Phím tắt
@@ -891,9 +891,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 549
+Số lượng tính năng đã implement: 552
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 70
+Số lượng tính năng tương lai: 67
  
 Last Updated: 2026-09-06
-Version: 3.0
+Version: 3.1
