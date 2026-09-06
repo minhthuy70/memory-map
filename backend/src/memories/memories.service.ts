@@ -8,7 +8,7 @@ import {
 import { PrismaService } from '../prisma/prisma.service';
 import { Mood, Prisma } from '@prisma/client';
 
-interface ExportMemory {
+export interface ExportMemory {
   id: string;
   title: string;
   content?: string;

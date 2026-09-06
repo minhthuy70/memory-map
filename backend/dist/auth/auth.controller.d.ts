@@ -70,10 +70,10 @@ export declare class AuthController {
     getProfile(req: any): Promise<{
         memoryCount: number;
         id: string;
-        name: string | null;
         createdAt: Date;
         updatedAt: Date;
         email: string;
+        name: string | null;
         avatar: string | null;
         googleId: string | null;
         facebookId: string | null;
@@ -89,10 +89,10 @@ export declare class AuthController {
     }>;
     updateProfile(req: any, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
-        name: string | null;
         createdAt: Date;
         updatedAt: Date;
         email: string;
+        name: string | null;
         avatar: string | null;
         googleId: string | null;
         facebookId: string | null;

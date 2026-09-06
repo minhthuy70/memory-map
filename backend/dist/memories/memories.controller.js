@@ -42,8 +42,20 @@ let MemoriesController = class MemoriesController {
     async getStatistics(req) {
         return this.memoriesService.getStatistics(req.user.id);
     }
+    async getUpcomingReminders(req) {
+        return this.memoriesService.getUpcomingReminders(req.user.id);
+    }
+    async importMemories(req, memories) {
+        return this.memoriesService.importMemories(req.user.id, memories);
+    }
+    async exportMemories(req) {
+        return this.memoriesService.exportMemories(req.user.id);
+    }
     async findOne(id, req) {
         return this.memoriesService.findOne(id, req.user.id);
+    }
+    async markReminderSent(id, req) {
+        return this.memoriesService.markReminderSent(id, req.user.id);
     }
     async update(id, req, updateMemoryDto) {
         return this.memoriesService.update(id, req.user.id, updateMemoryDto);
@@ -90,6 +102,28 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MemoriesController.prototype, "getStatistics", null);
 __decorate([
+    (0, common_1.Get)('reminders/upcoming'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "getUpcomingReminders", null);
+__decorate([
+    (0, common_1.Post)('import'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Array]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "importMemories", null);
+__decorate([
+    (0, common_1.Get)('export-data'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "exportMemories", null);
+__decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Request)()),
@@ -97,6 +131,14 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], MemoriesController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(':id/reminder/sent'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "markReminderSent", null);
 __decorate([
     (0, common_1.Put)(':id'),
     __param(0, (0, common_1.Param)('id')),

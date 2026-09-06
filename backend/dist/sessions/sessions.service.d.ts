@@ -5,16 +5,18 @@ export declare class SessionsService {
     createSession(userId: string, token: string, deviceInfo?: string, ipAddress?: string, rememberMe?: boolean): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }>;
     findByToken(token: string): Promise<{
         user: {
             id: string;
+            createdAt: Date;
+            updatedAt: Date;
             email: string;
             passwordHash: string | null;
             name: string | null;
@@ -30,59 +32,57 @@ export declare class SessionsService {
             lockedUntil: Date | null;
             lastLoginAt: Date | null;
             isActive: boolean;
-            createdAt: Date;
-            updatedAt: Date;
         };
     } & {
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }>;
     updateLastActivity(token: string): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }>;
     getUserSessions(userId: string): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }[]>;
     deleteSession(sessionId: string): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }>;
     deleteAllUserSessions(userId: string, exceptToken?: string): Promise<import(".prisma/client").Prisma.BatchPayload>;
     deleteExpiredSessions(): Promise<import(".prisma/client").Prisma.BatchPayload>;
     deleteSessionByToken(token: string): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }>;
 }

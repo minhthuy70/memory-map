@@ -14,6 +14,7 @@ import { categoriesApi } from '@/lib/categories-api';
 import { useAuthStore } from '@/store/auth-store';
 import { useMemoriesStore } from '@/store/memories-store';
 import ThemeToggle from '@/components/ThemeToggle';
+import MemoryReminders from '@/components/MemoryReminders';
 
 type Memory = ApiMemory;
 
@@ -93,7 +94,14 @@ export default function DashboardPage() {
   const [sortBy, setSortBy] = useState('date-newest');
   const [statistics, setStatistics] = useState<Statistics | null>(null);
   const [showStats, setShowStats] = useState(false);
+  const [filterCategory, setFilterCategory] = useState('');
+  const [filterMood, setFilterMood] = useState('');
   const isFirstRender = useRef(true);
+
+  const handleFilterChange = (filters: { category?: string; mood?: string }) => {
+    setFilterCategory(filters.category || '');
+    setFilterMood(filters.mood || '');
+  };
 
   const activeFilterCount = [
     selectedCategory,
@@ -753,6 +761,9 @@ export default function DashboardPage() {
               <Plus className="h-5 w-5" />
               Add Memory
             </button>
+
+            {/* Memory Reminders */}
+            <MemoryReminders />
           </div>
         </aside>
 
@@ -819,6 +830,12 @@ export default function DashboardPage() {
               onMarkerClick={handleMemoryClick}
               showSearch={true}
               showCurrentLocationButton={true}
+              showDistance={true}
+              showRoutes={true}
+              showFilters={true}
+              filterCategory={filterCategory}
+              filterMood={filterMood}
+              onFilterChange={handleFilterChange}
             />
           </div>
         </main>

@@ -227,8 +227,8 @@ export default function CategoryManager({ categories, onCategoriesChange }: Cate
                 </div>
                 <div>
                   <span className="text-sm font-medium text-slate-900 dark:text-white">{category.name}</span>
-                  {category.usageCount > 0 && (
-                    <span className="text-xs text-slate-500 dark:text-slate-400 ml-2">({category.usageCount} kỷ niệm)</span>
+                  {(category.usageCount ?? 0) > 0 && (
+                    <span className="text-xs text-slate-500 dark:text-slate-400 ml-2">({category.usageCount ?? 0} kỷ niệm)</span>
                   )}
                 </div>
               </div>
@@ -265,9 +265,9 @@ export default function CategoryManager({ categories, onCategoriesChange }: Cate
                   <button
                     type="button"
                     onClick={() => handleDelete(category.id)}
-                    disabled={category.usageCount > 0}
+                    disabled={(category.usageCount ?? 0) > 0}
                     className="p-1.5 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                    title={category.usageCount > 0 ? 'Không thể xóa danh mục đang sử dụng' : 'Xóa danh mục'}
+                    title={(category.usageCount ?? 0) > 0 ? 'Không thể xóa danh mục đang sử dụng' : 'Xóa danh mục'}
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>

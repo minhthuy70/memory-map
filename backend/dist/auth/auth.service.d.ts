@@ -10,6 +10,8 @@ export declare class AuthService {
     constructor(usersService: UsersService, jwtService: JwtService, sessionsService: SessionsService);
     validateUser(email: string, password: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         name: string | null;
         avatar: string | null;
@@ -24,8 +26,6 @@ export declare class AuthService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     login(email: string, password: string, deviceInfo?: string, ipAddress?: string, rememberMe?: boolean): Promise<{
         access_token: string;
@@ -69,6 +69,8 @@ export declare class AuthService {
     }>;
     updateProfile(userId: string, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         name: string | null;
         avatar: string | null;
@@ -83,8 +85,6 @@ export declare class AuthService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     changePassword(userId: string, currentPassword: string, newPassword: string): Promise<{
         message: string;
@@ -92,6 +92,8 @@ export declare class AuthService {
     getProfileWithStats(userId: string): Promise<{
         memoryCount: number;
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         name: string | null;
         avatar: string | null;
@@ -106,8 +108,6 @@ export declare class AuthService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     deactivateAccount(userId: string): Promise<{
         message: string;

@@ -1,5 +1,26 @@
 import { PrismaService } from '../prisma/prisma.service';
 import { Mood } from '@prisma/client';
+export interface ExportMemory {
+    id: string;
+    title: string;
+    content?: string;
+    latitude: number;
+    longitude: number;
+    locationName?: string;
+    memoryDate: string;
+    mood: string;
+    category: {
+        name: string;
+        icon: string;
+        color: string;
+    };
+    images: {
+        imageUrl: string;
+        order: number;
+    }[];
+    createdAt: string;
+    updatedAt: string;
+}
 export declare class MemoriesService {
     private prisma;
     constructor(prisma: PrismaService);
@@ -12,6 +33,7 @@ export declare class MemoriesService {
         memoryDate: Date;
         mood: Mood;
         categoryId: string;
+        reminderDate?: Date;
     }): Promise<{
         user: {
             id: string;
@@ -21,22 +43,20 @@ export declare class MemoriesService {
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             icon: string;
+            color: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: string;
         title: string;
         content: string | null;
         latitude: number;
@@ -44,6 +64,11 @@ export declare class MemoriesService {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        reminderDate: Date | null;
+        reminderSent: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         categoryId: string;
     }>;
     findAll(userId: string, filters?: {
@@ -55,22 +80,20 @@ export declare class MemoriesService {
     }): Promise<({
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             icon: string;
+            color: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: string;
         title: string;
         content: string | null;
         latitude: number;
@@ -78,6 +101,11 @@ export declare class MemoriesService {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        reminderDate: Date | null;
+        reminderSent: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         categoryId: string;
     })[]>;
     findOne(id: string, userId: string): Promise<{
@@ -89,22 +117,20 @@ export declare class MemoriesService {
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             icon: string;
+            color: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: string;
         title: string;
         content: string | null;
         latitude: number;
@@ -112,6 +138,11 @@ export declare class MemoriesService {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        reminderDate: Date | null;
+        reminderSent: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         categoryId: string;
     }>;
     update(id: string, userId: string, data: {
@@ -123,25 +154,24 @@ export declare class MemoriesService {
         memoryDate?: Date;
         mood?: Mood;
         categoryId?: string;
+        reminderDate?: Date;
     }): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             icon: string;
+            color: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: string;
         title: string;
         content: string | null;
         latitude: number;
@@ -149,13 +179,15 @@ export declare class MemoriesService {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        reminderDate: Date | null;
+        reminderSent: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         categoryId: string;
     }>;
     delete(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: string;
         title: string;
         content: string | null;
         latitude: number;
@@ -163,28 +195,33 @@ export declare class MemoriesService {
         locationName: string | null;
         memoryDate: Date;
         mood: import(".prisma/client").$Enums.Mood;
+        reminderDate: Date | null;
+        reminderSent: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         categoryId: string;
     }>;
     addImage(memoryId: string, userId: string, imageUrl: string): Promise<{
         id: string;
         createdAt: Date;
-        order: number;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     deleteImage(imageId: string, userId: string): Promise<{
         id: string;
         createdAt: Date;
-        order: number;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     updateImageOrder(imageId: string, userId: string, order: number): Promise<{
         id: string;
         createdAt: Date;
-        order: number;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     getStatistics(userId: string): Promise<{
         totalMemories: number;
@@ -200,5 +237,12 @@ export declare class MemoriesService {
         categoryDistribution: Record<string, number>;
         memoriesByMood: Record<string, number>;
         moodDistribution: Record<string, number>;
+    }>;
+    getUpcomingReminders(userId: string): Promise<any[]>;
+    markReminderSent(memoryId: string, userId: string): Promise<void>;
+    exportMemories(userId: string): Promise<ExportMemory[]>;
+    importMemories(userId: string, memories: ExportMemory[]): Promise<{
+        imported: number;
+        errors: string[];
     }>;
 }

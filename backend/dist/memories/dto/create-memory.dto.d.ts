@@ -8,4 +8,5 @@ export declare class CreateMemoryDto {
     memoryDate: Date;
     mood: Mood;
     categoryId: string;
+    reminderDate?: Date;
 }

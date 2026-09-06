@@ -36,6 +36,7 @@ let MemoriesService = class MemoriesService {
                 memoryDate: data.memoryDate,
                 mood: data.mood,
                 categoryId: data.categoryId,
+                reminderDate: data.reminderDate,
                 userId,
             },
             include: {
@@ -156,6 +157,7 @@ let MemoriesService = class MemoriesService {
             locationName: data.locationName,
             memoryDate: data.memoryDate,
             mood: data.mood,
+            reminderDate: data.reminderDate,
         };
         if (data.categoryId) {
             updateData.category = {
@@ -322,6 +324,115 @@ let MemoriesService = class MemoriesService {
             memoriesByMood: moodCounts,
             moodDistribution: moodCounts,
         };
+    }
+    async getUpcomingReminders(userId) {
+        const now = new Date();
+        const oneWeekFromNow = new Date();
+        oneWeekFromNow.setDate(oneWeekFromNow.getDate() + 7);
+        const memories = await this.prisma.memory.findMany({
+            where: {
+                userId,
+                reminderDate: {
+                    gte: now,
+                    lte: oneWeekFromNow,
+                },
+                reminderSent: false,
+            },
+            include: {
+                category: true,
+            },
+            orderBy: {
+                reminderDate: 'asc',
+            },
+        });
+        return memories;
+    }
+    async markReminderSent(memoryId, userId) {
+        await this.findOne(memoryId, userId);
+        await this.prisma.memory.update({
+            where: { id: memoryId },
+            data: { reminderSent: true },
+        });
+    }
+    async exportMemories(userId) {
+        const memories = await this.prisma.memory.findMany({
+            where: { userId },
+            include: {
+                category: true,
+                images: {
+                    orderBy: { order: 'asc' },
+                },
+            },
+            orderBy: { memoryDate: 'desc' },
+        });
+        return memories.map((memory) => ({
+            id: memory.id,
+            title: memory.title,
+            content: memory.content,
+            latitude: memory.latitude,
+            longitude: memory.longitude,
+            locationName: memory.locationName,
+            memoryDate: memory.memoryDate.toISOString(),
+            mood: memory.mood,
+            category: {
+                name: memory.category.name,
+                icon: memory.category.icon,
+                color: memory.category.color,
+            },
+            images: memory.images.map((img) => ({
+                imageUrl: img.imageUrl,
+                order: img.order,
+            })),
+            createdAt: memory.createdAt.toISOString(),
+            updatedAt: memory.updatedAt.toISOString(),
+        }));
+    }
+    async importMemories(userId, memories) {
+        const errors = [];
+        let imported = 0;
+        for (const memoryData of memories) {
+            try {
+                let category = await this.prisma.category.findUnique({
+                    where: { name: memoryData.category.name },
+                });
+                if (!category) {
+                    category = await this.prisma.category.create({
+                        data: {
+                            name: memoryData.category.name,
+                            icon: memoryData.category.icon,
+                            color: memoryData.category.color,
+                        },
+                    });
+                }
+                const memory = await this.prisma.memory.create({
+                    data: {
+                        userId,
+                        title: memoryData.title,
+                        content: memoryData.content,
+                        latitude: memoryData.latitude,
+                        longitude: memoryData.longitude,
+                        locationName: memoryData.locationName,
+                        memoryDate: new Date(memoryData.memoryDate),
+                        mood: memoryData.mood,
+                        categoryId: category.id,
+                    },
+                });
+                for (const imageData of memoryData.images) {
+                    await this.prisma.memoryImage.create({
+                        data: {
+                            memoryId: memory.id,
+                            imageUrl: imageData.imageUrl,
+                            order: imageData.order,
+                        },
+                    });
+                }
+                imported++;
+            }
+            catch (error) {
+                errors.push(`Failed to import memory "${memoryData.title}": ${error}`);
+            }
+        }
+        return { imported, errors };
     }
 };
 exports.MemoriesService = MemoriesService;

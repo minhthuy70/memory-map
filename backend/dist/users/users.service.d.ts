@@ -12,6 +12,8 @@ export declare class UsersService {
         isEmailVerified?: boolean;
     }): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -27,11 +29,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     findByGoogleId(googleId: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -47,11 +49,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     findByFacebookId(facebookId: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -67,11 +69,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     setVerificationCode(email: string, code: string, expires: Date): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -87,11 +89,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     markEmailVerified(userId: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -107,11 +109,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     updateEmail(userId: string, newEmail: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -127,11 +129,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     setResetPasswordToken(email: string, token: string, expires: Date): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -147,11 +149,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     findByResetToken(token: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -167,11 +169,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     resetPasswordWithToken(userId: string, passwordHash: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -187,11 +189,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     findByEmail(email: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -207,11 +209,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     findById(id: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -227,14 +229,14 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     update(id: string, data: {
         name?: string;
         avatar?: string;
     }): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -250,11 +252,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     updatePassword(id: string, passwordHash: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -270,12 +272,12 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     getMemoryCount(userId: string): Promise<number>;
     incrementLoginAttempts(userId: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -291,11 +293,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     resetLoginAttempts(userId: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -311,11 +313,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     lockAccount(userId: string, lockedUntil: Date): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -331,11 +333,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     updateLastLogin(userId: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -351,11 +353,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     deactivateAccount(userId: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -371,11 +373,11 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     deleteAccount(userId: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         passwordHash: string | null;
         name: string | null;
@@ -391,7 +393,5 @@ export declare class UsersService {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
 }

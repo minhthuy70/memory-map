@@ -9,6 +9,8 @@ export declare class JwtStrategy extends JwtStrategy_base {
     constructor(configService: ConfigService, usersService: UsersService);
     validate(payload: any): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         email: string;
         name: string | null;
         avatar: string | null;
@@ -23,8 +25,6 @@ export declare class JwtStrategy extends JwtStrategy_base {
         lockedUntil: Date | null;
         lastLoginAt: Date | null;
         isActive: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
 }
 export {};

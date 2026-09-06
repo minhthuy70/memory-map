@@ -43,16 +43,6 @@ export class MemoriesController {
     return this.memoriesService.getUpcomingReminders(req.user.id);
   }
 
-  @Post(':id/reminder/sent')
-  async markReminderSent(@Param('id') id: string, @Request() req) {
-    return this.memoriesService.markReminderSent(id, req.user.id);
-  }
-
-  @Get(':id')
-  async findOne(@Param('id') id: string, @Request() req) {
-    return this.memoriesService.findOne(id, req.user.id);
-  }
-
   @Post('import')
   async importMemories(@Request() req, @Body() memories: any[]) {
     return this.memoriesService.importMemories(req.user.id, memories);
@@ -61,6 +51,16 @@ export class MemoriesController {
   @Get('export-data')
   async exportMemories(@Request() req) {
     return this.memoriesService.exportMemories(req.user.id);
+  }
+
+  @Get(':id')
+  async findOne(@Param('id') id: string, @Request() req) {
+    return this.memoriesService.findOne(id, req.user.id);
+  }
+
+  @Post(':id/reminder/sent')
+  async markReminderSent(@Param('id') id: string, @Request() req) {
+    return this.memoriesService.markReminderSent(id, req.user.id);
   }
 
   @Put(':id')
@@ -103,15 +103,5 @@ export class MemoriesController {
     @Body('order') order: number,
   ) {
     return this.memoriesService.updateImageOrder(imageId, req.user.id, order);
-  }
-
-  @Get('export/all')
-  async exportMemories(@Request() req) {
-    return this.memoriesService.exportMemories(req.user.id);
-  }
-
-  @Post('import')
-  async importMemories(@Request() req, @Body() memories: any[]) {
-    return this.memoriesService.importMemories(req.user.id, memories);
   }
 }
