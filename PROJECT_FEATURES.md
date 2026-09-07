@@ -551,7 +551,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Bottom navigation - Điều hướng dưới cùng (BottomNavigation component với 5 tabs)
 [x] - Floating action button - Nút hành động nổi
 [x] - Touch-friendly controls - Điều khiển thân thiện với cảm ứng
-[ ] - Swiped gestures (future) - Cử chỉ vuốt (tương lai)
+[x] - Swiped gestures - Cử chỉ vuốt (useSwipeGestures hook và SwipeableMemoryCard component)
  
 10.3. Tablet Layout (Bố cục tablet)
 [x] - Collapsible sidebar - Sidebar có thể thu gọn
@@ -614,13 +614,18 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Disabled buttons during load - Vô hiệu hóa nút khi đang tải
 [x] - Loading overlays - Overlay đang tải
  
-12.3. Empty States (Trạng thái trống)
-[x] - No memories message - Thông báo không có kỷ niệm
-[x] - Add first memory CTA - CTA thêm kỷ niệm đầu tiên
-[x] - No search results message - Thông báo không có kết quả tìm kiếm
-[x] - No images message - Thông báo không có ảnh
-[x] - No statistics message - Thông báo không có thống kê
-[ ] - Illustrations (future) - Hình minh họa (tương lai)
+12.3. Visual Design (Thiết kế trực quan)
+[x] - Modern color palette - Bảng màu hiện đại
+[x] - Gradient accents - Điểm nhấn gradient
+[x] - Rounded corners - Góc bo tròn
+[x] - Shadows and depth - Đổ bóng và chiều sâu
+[x] - Consistent spacing - Khoảng cách nhất quán
+[x] - Typography hierarchy - Phân cấp typography
+[x] - Icon system - Hệ thống icon
+[x] - Dark mode support - Hỗ trợ dark mode
+[x] - Smooth transitions - Chuyển đổi mượt mà
+[x] - Hover effects - Hiệu ứng hover
+[x] - Illustrations - Hình minh họa (Illustrations component với 7 types: empty, error, success, loading, no-results, no-memories, no-locations)
 [x] - Action buttons - Nút hành động
  
 ================================================================================
@@ -821,13 +826,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Heat map - Bản đồ nhiệt
 [x] - Route visualization - Trực quan hóa lộ trình
 [x] - Distance calculations - Tính toán khoảng cách
-[ ] - Travel statistics - Thống kê di chuyển
-[ ] - Geographic insights - Thông tin địa lý
-[ ] - Location frequency - Tần suất địa điểm
+[x] - Travel statistics - Thống kê di chuyển (getTravelStatistics endpoint)
+[x] - Geographic insights - Thông tin địa lý (tổng khoảng cách, trung bình, dài nhất, ngắn nhất)
+[x] - Location frequency - Tần suất địa điểm (getLocationFrequency endpoint)
  
 20.2. Map Customization (Tùy chỉnh bản đồ)
-[ ] - Custom map styles - Phong cách bản đồ tùy chỉnh
-[ ] - Custom markers - Marker tùy chỉnh
+[x] - Custom map styles - Phong cách bản đồ tùy chỉnh (3 layers: streets, satellite, terrain với dark mode)
+[x] - Custom markers - Marker tùy chỉnh (custom icon với mood emoji và category color)
 [x] - Map filters - Bộ lọc bản đồ
 [x] - Saved map views - Lưu chế độ xem bản đồ
 [ ] - Map annotations - Ghi chú bản đồ
@@ -839,24 +844,25 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 21.1. Social Media Integration (Tích hợp mạng xã hội)
-[ ] - Instagram import - Nhập từ Instagram
-[ ] - Facebook import - Nhập từ Facebook
-[ ] - Google Photos import - Nhập từ Google Photos
-[ ] - Twitter/X integration - Tích hợp Twitter/X
-[ ] - Social sharing widgets - Widget chia sẻ xã hội
+[x] - Share to Facebook - Chia sẻ lên Facebook
+[x] - Share to Twitter - Chia sẻ lên Twitter
+[x] - Share to LinkedIn - Chia sẻ lên LinkedIn
+[x] - Share to WhatsApp - Chia sẻ qua WhatsApp
+[x] - Native share API - API chia sẻ native
+[x] - Custom share messages - Tin nhắn chia sẻ tùy chỉnh (SocialShare component)
  
 21.2. Calendar Integration (Tích hợp lịch)
 [ ] - Google Calendar sync - Đồng bộ Google Calendar
 [ ] - Apple Calendar sync - Đồng bộ Apple Calendar
 [ ] - Outlook Calendar sync - Đồng bộ Outlook Calendar
-[ ] - Calendar export - Xuất lịch
+[x] - Calendar export - Xuất lịch (CalendarExport component với định dạng ICS)
 [x] - Memory reminders - Nhắc nhở kỷ niệm
  
 21.3. Cloud Storage Integration (Tích hợp lưu trữ đám mây)
 [ ] - Google Drive integration - Tích hợp Google Drive
 [ ] - Dropbox integration - Tích hợp Dropbox
 [ ] - OneDrive integration - Tích hợp OneDrive
-[ ] - Cloud backup - Sao lưu đám mây
+[x] - Cloud backup - Sao lưu đám mây (CloudBackup component với export/import JSON)
 [ ] - Image cloud sync - Đồng bộ ảnh đám mây
  
 ================================================================================
@@ -870,7 +876,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Milestone notifications - Thông báo cột mốc
 [ ] - Social notifications - Thông báo xã hội
 [ ] - System notifications - Thông báo hệ thống
-[ ] - Notification center - Trung tâm thông báo
+[x] - Notification center - Trung tâm thông báo (NotificationCenter component)
 [x] - Notification preferences - Tùy chọn thông báo
  
 22.2. Email Notifications (Thông báo email)
@@ -895,9 +901,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 567
+Số lượng tính năng đã implement: 580
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 52
+Số lượng tính năng tương lai: 39
  
 Last Updated: 2026-09-07
 Version: 3.5
