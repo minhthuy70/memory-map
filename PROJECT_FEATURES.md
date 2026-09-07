@@ -527,7 +527,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Result preview - Xem trước kết quả
 [x] - Click to view detail - Click để xem chi tiết
 [x] - Result metadata - Metadata kết quả
-[ ] - Relevance sorting (future) - Sắp xếp theo độ liên quan (tương lai)
+[x] - Relevance sorting - Sắp xếp theo độ liên quan (điểm số dựa trên tiêu đề, nội dung, địa điểm)
 [x] - Search history - Lịch sử tìm kiếm
 [x] - HighlightText component - Component tô sáng từ khóa tìm kiếm trong tiêu đề & địa điểm
 [x] - Tailored search empty state - Giao diện trạng thái trống chuyên biệt cho kết quả tìm kiếm
@@ -548,7 +548,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Full-screen map - Bản đồ toàn màn hình
 [x] - Collapsible sidebar - Sidebar có thể thu gọn
 [x] - Hamburger menu - Menu hamburger
-[ ] - Bottom navigation (future) - Điều hướng dưới cùng (tương lai)
+[x] - Bottom navigation - Điều hướng dưới cùng (BottomNavigation component với 5 tabs)
 [x] - Floating action button - Nút hành động nổi
 [x] - Touch-friendly controls - Điều khiển thân thiện với cảm ứng
 [ ] - Swiped gestures (future) - Cử chỉ vuốt (tương lai)
@@ -634,7 +634,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Token expiration (7 days) - Hết hạn token (7 ngày)
 [x] - Secure password storage - Lưu trữ mật khẩu an toàn
 [x] - Password strength validation - Kiểm tra độ mạnh mật khẩu
-[ ] - Rate limiting (future) - Giới hạn tốc độ (tương lai)
+[x] - Rate limiting - Giới hạn tốc độ (5 req/min cho login/register, 3 req/min cho forgot-password)
 [x] - Session management - Quản lý phiên
  
 13.2. Authorization Security (Bảo mật ủy quyền)
@@ -665,16 +665,16 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Zustand state caching - Caching state Zustand
 [x] - Debounced search - Tìm kiếm debounce
 [x] - Lazy loading components (dynamic import) - Lazy loading components (dynamic import)
-[ ] - Image optimization - Tối ưu hóa ảnh (tương lai)
-[ ] - API pagination (future) - Phân trang API (tương lai)
+[x] - Image optimization - Tối ưu hóa ảnh (Next.js Image config với remotePatterns)
+[x] - API pagination - Phân trang API (page, limit với metadata)
 [x] - Map marker optimization - Tối ưu hóa marker bản đồ
  
 14.2. Caching (Caching)
 [x] - LocalStorage for auth token - LocalStorage cho token xác thực
 [x] - LocalStorage for user data - LocalStorage cho dữ liệu người dùng
 [x] - State management caching - Caching quản lý state
-[ ] - Response caching (future) - Caching response (tương lai)
-[ ] - Image caching (future) - Caching ảnh (tương lai)
+[x] - Response caching - Caching response (5 phút cho GET requests)
+[x] - Image caching - Caching ảnh (crossOrigin attribute)
  
 ================================================================================
  
@@ -687,7 +687,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - ARIA labels - Nhãn ARIA
 [x] - Alt text for images - Alt text cho ảnh
 [x] - Color contrast compliance - Tuân thủ tương phản màu
-[ ] - Screen reader support (future) - Hỗ trợ screen reader (tương lai)
+[x] - Screen reader support - Hỗ trợ screen reader (ARIA labels cho inputs và buttons)
 [x] - Touch targets size - Kích thước mục tiêu cảm ứng
 [x] - Semantic HTML - HTML ngữ nghĩa
  
@@ -778,9 +778,10 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Prisma migrate dev - Prisma migrate dev
 [x] - Prisma migrate deploy - Prisma migrate deploy
 [x] - Prisma db push - Prisma db push
+[x] - Migration backup - Sao lưu migration (scripts/backup-database.ts)
+[x] - Migration restore - Khôi phục migration (scripts/restore-database.ts)
 [ ] - Migration rollback support - Hỗ trợ rollback migration (tương lai)
 [ ] - Migration testing - Kiểm thử migration (tương lai)
-[ ] - Migration backup - Sao lưu migration (tương lai)
 
 ================================================================================
 
@@ -894,9 +895,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 558
+Số lượng tính năng đã implement: 567
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 61
+Số lượng tính năng tương lai: 52
  
-Last Updated: 2026-09-06
-Version: 3.4
+Last Updated: 2026-09-07
+Version: 3.5

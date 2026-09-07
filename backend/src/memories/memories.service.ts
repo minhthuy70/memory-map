@@ -171,8 +171,59 @@ export class MemoriesService {
       this.prisma.memory.count({ where }),
     ]);
 
+    // Apply relevance sorting when search is active
+    let sortedMemories = memories;
+    if (filters?.search) {
+      sortedMemories = memories.map(memory => {
+        const searchTerm = filters.search!.toLowerCase();
+        const title = memory.title.toLowerCase();
+        const content = (memory.content || '').toLowerCase();
+        const locationName = (memory.locationName || '').toLowerCase();
+
+        let relevanceScore = 0;
+
+        // Title match gets highest score
+        if (title.includes(searchTerm)) {
+          relevanceScore += 10;
+          // Exact match in title gets bonus
+          if (title === searchTerm) {
+            relevanceScore += 5;
+          }
+          // Match at start of title gets bonus
+          if (title.startsWith(searchTerm)) {
+            relevanceScore += 3;
+          }
+        }
+
+        // Content match gets medium score
+        if (content.includes(searchTerm)) {
+          relevanceScore += 5;
+          // Count occurrences in content
+          const occurrences = (content.match(new RegExp(searchTerm, 'g')) || []).length;
+          relevanceScore += Math.min(occurrences, 3); // Max 3 points for occurrences
+        }
+
+        // Location name match gets medium score
+        if (locationName.includes(searchTerm)) {
+          relevanceScore += 5;
+          // Exact match in location gets bonus
+          if (locationName === searchTerm) {
+            relevanceScore += 3;
+          }
+        }
+
+        return { ...memory, relevanceScore };
+      }).sort((a, b) => {
+        // Sort by relevance score descending, then by date
+        if (b.relevanceScore !== a.relevanceScore) {
+          return b.relevanceScore - a.relevanceScore;
+        }
+        return new Date(b.memoryDate).getTime() - new Date(a.memoryDate).getTime();
+      });
+    }
+
     return {
-      memories,
+      memories: sortedMemories,
       pagination: {
         page,
         limit,

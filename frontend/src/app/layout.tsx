@@ -4,6 +4,7 @@ import './globals.css';
 import SessionWarning from '@/components/SessionWarning';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { ToastProvider } from '@/components/Toast';
+import BottomNavigation from '@/components/BottomNavigation';
 
 export const metadata: Metadata = {
   title: 'Memory Map',
@@ -40,7 +41,10 @@ export default function RootLayout({
         <ThemeProvider>
           <ToastProvider>
             <SessionWarning />
-            {children}
+            <div className="flex-1 pb-16 md:pb-0">
+              {children}
+            </div>
+            <BottomNavigation />
           </ToastProvider>
         </ThemeProvider>
       </body>
