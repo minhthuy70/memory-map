@@ -165,7 +165,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Interactive map display - Hiển thị bản đồ tương tác
 [x] - Full-screen map mode - Chế độ bản đồ toàn màn hình
 [x] - Memory markers display - Hiển thị marker kỷ niệm
-[ ] - Marker clustering - Gom marker (tương lai)
+[x] - Marker clustering - Gom marker
 [x] - Map controls - Điều khiển bản đồ
 [x] - Zoom controls - Điều khiển zoom
 [x] - Layer controls - Điều khiển layer
@@ -786,10 +786,10 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 19.1. Onboarding (Hướng dẫn ban đầu)
 [x] - Welcome modal - Modal chào mừng người dùng mới
-[ ] - Feature tour - Tour giới thiệu tính năng
-[ ] - Quick start guide - Hướng dẫn bắt đầu nhanh
-[ ] - Tutorial cards - Card hướng dẫn
-[ ] - Progress indicators - Chỉ số tiến độ
+[x] - Feature tour - Tour giới thiệu tính năng
+[x] - Quick start guide - Hướng dẫn bắt đầu nhanh
+[x] - Tutorial cards - Card hướng dẫn
+[x] - Progress indicators - Chỉ số tiến độ
 [x] - Skip option - Tùy chọn bỏ qua
  
 19.2. Personalization (Cá nhân hóa)
@@ -801,12 +801,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Keyboard shortcuts - Phím tắt
  
 19.3. Social Features (Tính năng xã hội)
-[ ] - Share memories - Chia sẻ kỷ niệm
-[ ] - Public memory links - Link kỷ niệm công khai
-[ ] - Memory visibility settings - Cài đặt hiển thị kỷ niệm
+[x] - Share memories - Chia sẻ kỷ niệm
+[x] - Public memory links - Link kỷ niệm công khai
+[x] - Memory visibility settings - Cài đặt hiển thị kỷ niệm
 [x] - Export memories - Xuất kỷ niệm
 [x] - Import memories - Nhập kỷ niệm
-[ ] - Memory backup - Sao lưu kỷ niệm (chưa implement)
+[x] - Memory backup - Sao lưu kỷ niệm
  
 ================================================================================
  

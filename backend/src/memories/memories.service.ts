@@ -621,4 +621,107 @@ export class MemoriesService {
 
     return { imported, errors };
   }
+
+  // Public Memory Links
+  async generatePublicSlug(memoryId: string, userId: string) {
+    const memory = await this.prisma.memory.findUnique({
+      where: { id: memoryId },
+    });
+
+    if (!memory) {
+      throw new NotFoundException('Memory not found');
+    }
+
+    if (memory.userId !== userId) {
+      throw new ForbiddenException('You do not have permission to share this memory');
+    }
+
+    // Generate a unique slug
+    const slug = this.generateSlug();
+    
+    const updatedMemory = await this.prisma.memory.update({
+      where: { id: memoryId },
+      data: {
+        isPublic: true,
+        publicSlug: slug,
+        publicExpiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
+      },
+    });
+
+    return {
+      slug: updatedMemory.publicSlug,
+      expiresAt: updatedMemory.publicExpiresAt,
+      publicUrl: `${process.env.FRONTEND_URL || 'http://localhost:3000'}/public/${updatedMemory.publicSlug}`,
+    };
+  }
+
+  async makeMemoryPrivate(memoryId: string, userId: string) {
+    const memory = await this.prisma.memory.findUnique({
+      where: { id: memoryId },
+    });
+
+    if (!memory) {
+      throw new NotFoundException('Memory not found');
+    }
+
+    if (memory.userId !== userId) {
+      throw new ForbiddenException('You do not have permission to modify this memory');
+    }
+
+    await this.prisma.memory.update({
+      where: { id: memoryId },
+      data: {
+        isPublic: false,
+        publicSlug: null,
+        publicExpiresAt: null,
+      },
+    });
+
+    return { message: 'Memory is now private' };
+  }
+
+  async getPublicMemoryBySlug(slug: string) {
+    const memory = await this.prisma.memory.findUnique({
+      where: { publicSlug: slug },
+      include: {
+        category: true,
+        images: {
+          orderBy: { order: 'asc' },
+        },
+      },
+    });
+
+    if (!memory) {
+      throw new NotFoundException('Public memory not found or expired');
+    }
+
+    if (!memory.isPublic || !memory.publicSlug) {
+      throw new NotFoundException('Memory is not public');
+    }
+
+    // Check if expired
+    if (memory.publicExpiresAt && new Date() > memory.publicExpiresAt) {
+      // Automatically make private if expired
+      await this.prisma.memory.update({
+        where: { id: memory.id },
+        data: {
+          isPublic: false,
+          publicSlug: null,
+          publicExpiresAt: null,
+        },
+      });
+      throw new NotFoundException('Public memory link has expired');
+    }
+
+    return memory;
+  }
+
+  private generateSlug(): string {
+    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    for (let i = 0; i < 8; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+  }
 }

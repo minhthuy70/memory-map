@@ -10,6 +10,8 @@ import { memoriesApi, Memory } from '@/lib/memories-api';
 import { useAuthStore } from '@/store/auth-store';
 import { MOOD_OPTIONS } from '@/components/MoodSelector';
 import ThemeToggle from '@/components/ThemeToggle';
+import ShareMemory from '@/components/ShareMemory';
+import PublicMemoryLink from '@/components/PublicMemoryLink';
 
 const MOOD_EMOJIS: Record<string, string> = {
   HAPPY: '😊',
@@ -278,6 +280,7 @@ export default function MemoryDetailPage() {
           </button>
           <div className="flex items-center gap-2">
             <ThemeToggle />
+            <ShareMemory memory={memory} />
             <button
               onClick={() => router.push(`/memories/${memory.id}/edit`)}
               className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg text-slate-600 dark:text-slate-400"
@@ -390,6 +393,18 @@ export default function MemoryDetailPage() {
               </p>
             </div>
           )}
+
+          {/* Public Memory Link */}
+          <div className="pt-4 border-t border-slate-200 dark:border-slate-700">
+            <PublicMemoryLink
+              memoryId={memory.id}
+              memoryTitle={memory.title}
+              isPublic={memory.isPublic}
+              publicSlug={memory.publicSlug}
+              publicExpiresAt={memory.publicExpiresAt}
+              onUpdate={() => loadMemory(memory.id)}
+            />
+          </div>
 
           {/* Images */}
           {memory.images && memory.images.length > 0 && (

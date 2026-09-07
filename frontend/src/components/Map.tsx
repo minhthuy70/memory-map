@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker, useMap, useMapEvents, Polyline } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Memory } from '@/lib/memories-api';
@@ -107,6 +108,30 @@ const createCustomMarkerIcon = (memory: Memory) => {
     iconSize: [36, 46],
     iconAnchor: [18, 46],
     popupAnchor: [0, -42],
+  });
+};
+
+// Custom cluster icon
+const createClusterIcon = (cluster: any) => {
+  const count = cluster.getChildCount();
+  let size = 40;
+  let className = 'custom-cluster-icon';
+  
+  if (count < 10) {
+    size = 40;
+    className = 'custom-cluster-icon-small';
+  } else if (count < 100) {
+    size = 50;
+    className = 'custom-cluster-icon-medium';
+  } else {
+    size = 60;
+    className = 'custom-cluster-icon-large';
+  }
+
+  return L.divIcon({
+    html: `<div class="${className}"><span>${count}</span></div>`,
+    className: 'custom-marker-cluster',
+    iconSize: L.point(size, size),
   });
 };
 
@@ -675,6 +700,44 @@ export default function MemoryMap({
         .user-location-pulse {
           animation: pulse-ring 1.8s ease-out infinite;
         }
+        .custom-marker-cluster {
+          background: transparent;
+          border: none;
+        }
+        .custom-cluster-icon {
+          background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: bold;
+          box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+          border: 3px solid white;
+          transition: all 0.3s ease;
+        }
+        .custom-cluster-icon:hover {
+          transform: scale(1.1);
+          box-shadow: 0 6px 16px rgba(99, 102, 241, 0.5);
+        }
+        .custom-cluster-icon-small {
+          width: 40px;
+          height: 40px;
+          font-size: 14px;
+        }
+        .custom-cluster-icon-medium {
+          width: 50px;
+          height: 50px;
+          font-size: 16px;
+        }
+        .custom-cluster-icon-large {
+          width: 60px;
+          height: 60px;
+          font-size: 18px;
+        }
+        .custom-cluster-icon span {
+          pointer-events: none;
+        }
       `}</style>
 
         {/* User Location Marker */}
@@ -731,57 +794,66 @@ export default function MemoryMap({
           />
         )}
 
-        {filteredMemories.map((memory) => (
-          <Marker
-            key={memory.id}
-            position={[memory.latitude, memory.longitude]}
-            icon={createCustomMarkerIcon(memory)}
-            eventHandlers={{
-              click: () => onMarkerClick?.(memory),
-            }}
-          >
-            <Popup>
-              <div className="p-1 min-w-[220px] max-w-[260px]">
-                {memory.images && memory.images.length > 0 && (
-                  <div className="mb-2 rounded-lg overflow-hidden h-28 w-full bg-slate-100">
-                    <img
-                      src={memory.images[0].imageUrl}
-                      alt={memory.title}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                      }}
-                    />
+        <MarkerClusterGroup
+          chunkedLoading
+          iconCreateFunction={createClusterIcon}
+          maxClusterRadius={60}
+          spiderfyOnMaxZoom={true}
+          showCoverageOnHover={false}
+          zoomToBoundsOnClick={true}
+        >
+          {filteredMemories.map((memory) => (
+            <Marker
+              key={memory.id}
+              position={[memory.latitude, memory.longitude]}
+              icon={createCustomMarkerIcon(memory)}
+              eventHandlers={{
+                click: () => onMarkerClick?.(memory),
+              }}
+            >
+              <Popup>
+                <div className="p-1 min-w-[220px] max-w-[260px]">
+                  {memory.images && memory.images.length > 0 && (
+                    <div className="mb-2 rounded-lg overflow-hidden h-28 w-full bg-slate-100">
+                      <img
+                        src={memory.images[0].imageUrl}
+                        alt={memory.title}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
+                    </div>
+                  )}
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-lg shrink-0">{memory.category?.icon || '📍'}</span>
+                    <h3 className="font-bold text-slate-900 text-sm line-clamp-1 flex-1">
+                      {memory.title}
+                    </h3>
+                    <span className="text-base shrink-0" title={memory.mood}>
+                      {MOOD_EMOJIS[memory.mood] || '😐'}
+                    </span>
                   </div>
-                )}
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-lg shrink-0">{memory.category?.icon || '📍'}</span>
-                  <h3 className="font-bold text-slate-900 text-sm line-clamp-1 flex-1">
-                    {memory.title}
-                  </h3>
-                  <span className="text-base shrink-0" title={memory.mood}>
-                    {MOOD_EMOJIS[memory.mood] || '😐'}
-                  </span>
+                  <p className="text-xs text-slate-600 mb-1 line-clamp-1">
+                    {memory.locationName || 'Chưa đặt tên địa điểm'}
+                  </p>
+                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
+                    <span className="text-[11px] text-slate-400 font-medium">
+                      {new Date(memory.memoryDate).toLocaleDateString('vi-VN')}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => onMarkerClick?.(memory)}
+                      className="text-xs font-semibold text-primary hover:underline cursor-pointer"
+                    >
+                      Xem chi tiết &rarr;
+                    </button>
+                  </div>
                 </div>
-                <p className="text-xs text-slate-600 mb-1 line-clamp-1">
-                  {memory.locationName || 'Chưa đặt tên địa điểm'}
-                </p>
-                <div className="flex items-center justify-between mt-2 pt-2 border-t border-slate-100">
-                  <span className="text-[11px] text-slate-400 font-medium">
-                    {new Date(memory.memoryDate).toLocaleDateString('vi-VN')}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => onMarkerClick?.(memory)}
-                    className="text-xs font-semibold text-primary hover:underline cursor-pointer"
-                  >
-                    Xem chi tiết &rarr;
-                  </button>
-                </div>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+              </Popup>
+            </Marker>
+          ))}
+        </MarkerClusterGroup>
       </MapContainer>
     </div>
   );

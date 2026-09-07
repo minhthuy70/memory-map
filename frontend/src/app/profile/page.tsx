@@ -34,6 +34,7 @@ import UserPreferences from '@/components/UserPreferences';
 import MemoryTemplates from '@/components/MemoryTemplates';
 import { AchievementsList } from '@/components/AchievementSystem';
 import NotificationPreferences from '@/components/NotificationPreferences';
+import MemoryBackup from '@/components/MemoryBackup';
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -704,6 +705,11 @@ export default function ProfilePage() {
             {/* Memory Export/Import */}
             <div className="mb-6">
               <MemoryExportImport />
+            </div>
+
+            {/* Memory Backup */}
+            <div className="mb-6">
+              <MemoryBackup />
             </div>
 
             {/* User Preferences */}

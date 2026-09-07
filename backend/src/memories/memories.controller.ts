@@ -104,4 +104,20 @@ export class MemoriesController {
   ) {
     return this.memoriesService.updateImageOrder(imageId, req.user.id, order);
   }
+
+  // Public Memory Links
+  @Post(':id/public')
+  async generatePublicLink(@Param('id') id: string, @Request() req) {
+    return this.memoriesService.generatePublicSlug(id, req.user.id);
+  }
+
+  @Delete(':id/public')
+  async makeMemoryPrivate(@Param('id') id: string, @Request() req) {
+    return this.memoriesService.makeMemoryPrivate(id, req.user.id);
+  }
+
+  @Get('public/:slug')
+  async getPublicMemory(@Param('slug') slug: string) {
+    return this.memoriesService.getPublicMemoryBySlug(slug);
+  }
 }

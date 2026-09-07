@@ -1,4 +1,5 @@
 import api from './api';
+import axios from 'axios';
 
 export interface Memory {
   id: string;
@@ -12,6 +13,9 @@ export interface Memory {
   categoryId: string;
   createdAt: string;
   updatedAt: string;
+  isPublic?: boolean;
+  publicSlug?: string;
+  publicExpiresAt?: string;
   category: {
     id: string;
     name: string;
@@ -137,5 +141,23 @@ export const memoriesApi = {
 
   markReminderSent: async (memoryId: string): Promise<void> => {
     await api.post(`/memories/${memoryId}/reminder/sent`);
+  },
+
+  // Public Memory Links
+  generatePublicLink: async (memoryId: string): Promise<{ slug: string; expiresAt: string; publicUrl: string }> => {
+    const response = await api.post(`/memories/${memoryId}/public`);
+    return response.data;
+  },
+
+  makeMemoryPrivate: async (memoryId: string): Promise<{ message: string }> => {
+    const response = await api.delete(`/memories/${memoryId}/public`);
+    return response.data;
+  },
+
+  getPublicMemory: async (slug: string): Promise<Memory> => {
+    // Use direct axios call without auth for public endpoints
+    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+    const response = await axios.get(`${API_URL}/memories/public/${slug}`);
+    return response.data;
   },
 };

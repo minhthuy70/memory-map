@@ -20,6 +20,10 @@ import WelcomeModal from '@/components/WelcomeModal';
 import Tooltip from '@/components/Tooltip';
 import { AchievementSystem } from '@/components/AchievementSystem';
 import SearchHistory from '@/components/SearchHistory';
+import FeatureTour from '@/components/FeatureTour';
+import QuickStartGuide from '@/components/QuickStartGuide';
+import TutorialCards from '@/components/TutorialCards';
+import ProgressIndicators from '@/components/ProgressIndicators';
 
 type Memory = ApiMemory;
 
@@ -287,7 +291,7 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       {/* Header */}
-      <header className="bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700">
+      <header className="dashboard-header bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
             <button
@@ -313,27 +317,29 @@ export default function DashboardPage() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => router.push('/timeline')}
-              className="px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
+              className="timeline-section px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
             >
               Timeline
             </button>
 
             <button
               onClick={() => router.push('/statistics')}
-              className="px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
+              className="statistics-section px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
             >
               Statistics
             </button>
 
             <button
               onClick={() => router.push('/profile')}
-              className="hidden sm:flex items-center gap-2 px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
+              className="profile-menu hidden sm:flex items-center gap-2 px-3 py-1.5 text-sm bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-600"
             >
               <User className="h-4 w-4" />
               {user?.name || user?.email}
             </button>
 
-            <ThemeToggle />
+            <div className="theme-toggle">
+              <ThemeToggle />
+            </div>
 
             <button
               onClick={handleLogout}
@@ -354,7 +360,7 @@ export default function DashboardPage() {
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
           } lg:translate-x-0 fixed lg:relative z-40 w-80 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 h-full overflow-y-auto transition-transform duration-300 ease-in-out`}
         >
-          <div className="p-4 space-y-5">
+          <div className="filter-controls p-4 space-y-5">
             {/* Active Filters Summary & Clear Button */}
             {activeFilterCount > 0 && (
               <div className="flex items-center justify-between p-2.5 bg-primary/10 rounded-xl border border-primary/20 animate-in fade-in">
@@ -780,7 +786,7 @@ export default function DashboardPage() {
             <Tooltip content="Tạo kỷ niệm mới (N)">
               <button
                 onClick={() => router.push('/memories/new')}
-                className="w-full flex items-center justify-center gap-2 py-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-medium"
+                className="add-memory-button w-full flex items-center justify-center gap-2 py-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-medium"
               >
                 <Plus className="h-5 w-5" />
                 Add Memory
@@ -789,6 +795,12 @@ export default function DashboardPage() {
 
             {/* Memory Reminders */}
             <MemoryReminders />
+
+            {/* Tutorial Cards */}
+            <TutorialCards />
+
+            {/* Progress Indicators */}
+            <ProgressIndicators />
 
             {/* Keyboard Shortcuts */}
             <KeyboardShortcuts
@@ -889,7 +901,7 @@ export default function DashboardPage() {
             </div>
           )}
 
-          <div className="h-full">
+          <div className="memory-map-container h-full">
             <MemoryMap
               memories={memories}
               onLocationSelect={handleLocationSelect}
@@ -913,6 +925,12 @@ export default function DashboardPage() {
 
       {/* Achievement System */}
       <AchievementSystem memoryCount={memories.length} />
+
+      {/* Feature Tour */}
+      <FeatureTour />
+
+      {/* Quick Start Guide */}
+      <QuickStartGuide />
     </div>
   );
 }
