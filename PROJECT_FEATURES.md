@@ -389,7 +389,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Image aspect ratio - Tỷ lệ khung hình ảnh
 [x] - Object-fit cover - Object-fit cover
 [x] - Lazy loading - Lazy loading ảnh
-[ ] - Image optimization - Tối ưu hóa ảnh (tương lai)
+[x] - Image optimization - Tối ưu hóa ảnh (Next.js Image config với remotePatterns)
 
 6.3. Image Fullscreen Viewer (Trình xem ảnh toàn màn hình)
 [x] - Lightbox modal - Hộp thoại lightbox
@@ -901,9 +901,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 580
+Số lượng tính năng đã implement: 581
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 39
+Số lượng tính năng tương lai: 38
  
 Last Updated: 2026-09-07
 Version: 3.5
