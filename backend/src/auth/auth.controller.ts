@@ -10,6 +10,7 @@ import {
   UseGuards,
   Headers as NestHeaders,
 } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
@@ -32,6 +33,7 @@ export class AuthController {
     private readonly sessionsService: SessionsService,
   ) {}
 
+  @Throttle({ default: { limit: 5, ttl: 60000 } })
   @Post('register')
   async register(
     @Body() registerDto: RegisterDto,
@@ -50,6 +52,7 @@ export class AuthController {
     );
   }
 
+  @Throttle({ default: { limit: 5, ttl: 60000 } })
   @Post('login')
   async login(
     @Body() loginDto: LoginDto,
@@ -84,6 +87,7 @@ export class AuthController {
     );
   }
 
+  @Throttle({ default: { limit: 3, ttl: 60000 } })
   @Post('send-verification-code')
   async sendVerificationCode(
     @Body() dto: SendVerificationCodeDto,
@@ -98,6 +102,7 @@ export class AuthController {
     return this.authService.verifyEmail(dto.email, dto.code);
   }
 
+  @Throttle({ default: { limit: 3, ttl: 60000 } })
   @Post('forgot-password')
   async forgotPassword(
     @Body() dto: ForgotPasswordDto,

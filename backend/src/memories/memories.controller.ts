@@ -1,4 +1,5 @@
 import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards, Request, ParseIntPipe, DefaultValuePipe, ParseBoolPipe } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
 import { MemoriesService } from './memories.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { CreateMemoryDto } from './dto/create-memory.dto';
@@ -9,6 +10,7 @@ import { UpdateMemoryDto } from './dto/update-memory.dto';
 export class MemoriesController {
   constructor(private memoriesService: MemoriesService) {}
 
+  @Throttle({ default: { limit: 20, ttl: 60000 } })
   @Post()
   async create(@Request() req, @Body() createMemoryDto: CreateMemoryDto) {
     return this.memoriesService.create(req.user.id, createMemoryDto);
@@ -22,6 +24,8 @@ export class MemoriesController {
     @Query('from') from?: string,
     @Query('to') to?: string,
     @Query('search') search?: string,
+    @Query('page') page?: string,
+    @Query('limit') limit?: string,
   ) {
     const filters: any = {};
     if (categoryId) filters.categoryId = categoryId;
@@ -29,6 +33,8 @@ export class MemoriesController {
     if (from) filters.from = new Date(from);
     if (to) filters.to = new Date(to);
     if (search) filters.search = search;
+    if (page) filters.page = parseInt(page);
+    if (limit) filters.limit = parseInt(limit);
 
     return this.memoriesService.findAll(req.user.id, filters);
   }
@@ -119,5 +125,17 @@ export class MemoriesController {
   @Get('public/:slug')
   async getPublicMemory(@Param('slug') slug: string) {
     return this.memoriesService.getPublicMemoryBySlug(slug);
+  }
+
+  // Travel Statistics
+  @Get('travel-statistics')
+  async getTravelStatistics(@Request() req) {
+    return this.memoriesService.getTravelStatistics(req.user.id);
+  }
+
+  // Location Frequency
+  @Get('location-frequency')
+  async getLocationFrequency(@Request() req) {
+    return this.memoriesService.getLocationFrequency(req.user.id);
   }
 }

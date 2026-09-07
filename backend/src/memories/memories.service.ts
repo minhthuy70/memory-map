@@ -94,6 +94,8 @@ export class MemoriesService {
       from?: Date;
       to?: Date;
       search?: string;
+      page?: number;
+      limit?: number;
     },
   ) {
     const where: Prisma.MemoryWhereInput = {
@@ -145,20 +147,41 @@ export class MemoriesService {
       ];
     }
 
-    return this.prisma.memory.findMany({
-      where,
-      include: {
-        category: true,
-        images: {
-          orderBy: {
-            order: 'asc',
+    const page = filters?.page || 1;
+    const limit = filters?.limit || 20;
+    const skip = (page - 1) * limit;
+
+    const [memories, total] = await Promise.all([
+      this.prisma.memory.findMany({
+        where,
+        include: {
+          category: true,
+          images: {
+            orderBy: {
+              order: 'asc',
+            },
           },
         },
+        orderBy: {
+          memoryDate: 'desc',
+        },
+        skip,
+        take: limit,
+      }),
+      this.prisma.memory.count({ where }),
+    ]);
+
+    return {
+      memories,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages: Math.ceil(total / limit),
+        hasNext: page * limit < total,
+        hasPrev: page > 1,
       },
-      orderBy: {
-        memoryDate: 'desc',
-      },
-    });
+    };
   }
 
   async findOne(id: string, userId: string) {
@@ -723,5 +746,113 @@ export class MemoriesService {
       result += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     return result;
+  }
+
+  // Travel Statistics
+  async getTravelStatistics(userId: string) {
+    const memories = await this.prisma.memory.findMany({
+      where: { userId },
+      select: {
+        latitude: true,
+        longitude: true,
+        memoryDate: true,
+        locationName: true,
+      },
+      orderBy: { memoryDate: 'asc' },
+    });
+
+    if (memories.length < 2) {
+      return {
+        totalDistance: 0,
+        averageDistance: 0,
+        longestDistance: 0,
+        shortestDistance: 0,
+        travelDays: 0,
+        uniqueLocations: memories.length,
+      };
+    }
+
+    let totalDistance = 0;
+    let longestDistance = 0;
+    let shortestDistance = Infinity;
+
+    for (let i = 0; i < memories.length - 1; i++) {
+      const dist = this.calculateDistance(
+        memories[i].latitude,
+        memories[i].longitude,
+        memories[i + 1].latitude,
+        memories[i + 1].longitude,
+      );
+      totalDistance += dist;
+      longestDistance = Math.max(longestDistance, dist);
+      shortestDistance = Math.min(shortestDistance, dist);
+    }
+
+    // Calculate unique travel days
+    const uniqueDates = new Set(
+      memories.map(m => new Date(m.memoryDate).toDateString())
+    );
+
+    return {
+      totalDistance: Math.round(totalDistance * 100) / 100,
+      averageDistance: Math.round((totalDistance / (memories.length - 1)) * 100) / 100,
+      longestDistance: Math.round(longestDistance * 100) / 100,
+      shortestDistance: shortestDistance === Infinity ? 0 : Math.round(shortestDistance * 100) / 100,
+      travelDays: uniqueDates.size,
+      uniqueLocations: memories.length,
+    };
+  }
+
+  // Location Frequency
+  async getLocationFrequency(userId: string) {
+    const memories = await this.prisma.memory.findMany({
+      where: { userId },
+      select: {
+        latitude: true,
+        longitude: true,
+        locationName: true,
+      },
+    });
+
+    const locationMap = new Map<string, { count: number; locations: { lat: number; lng: number; name: string }[] }>();
+
+    memories.forEach(memory => {
+      const key = `${memory.latitude.toFixed(4)},${memory.longitude.toFixed(4)}`;
+      if (!locationMap.has(key)) {
+        locationMap.set(key, {
+          count: 0,
+          locations: [],
+        });
+      }
+      const locationData = locationMap.get(key)!;
+      locationData.count++;
+      locationData.locations.push({
+        lat: memory.latitude,
+        lng: memory.longitude,
+        name: memory.locationName || 'Unknown',
+      });
+    });
+
+    return Array.from(locationMap.entries())
+      .map(([key, data]) => ({
+        key,
+        count: data.count,
+        lat: data.locations[0].lat,
+        lng: data.locations[0].lng,
+        name: data.locations[0].name,
+      }))
+      .sort((a, b) => b.count - a.count);
+  }
+
+  private calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    const R = 6371; // Earth's radius in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+      Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
   }
 }

@@ -13,6 +13,14 @@ async function bootstrap() {
     next();
   });
   
+  // Response caching for GET requests
+  app.use((req, res, next) => {
+    if (req.method === 'GET') {
+      res.setHeader('Cache-Control', 'public, max-age=300'); // 5 minutes cache
+    }
+    next();
+  });
+  
   app.enableCors({
     origin: process.env.FRONTEND_URL || 'http://localhost:3000',
     credentials: true,

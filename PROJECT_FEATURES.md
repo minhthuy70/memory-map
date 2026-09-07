@@ -712,6 +712,9 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - GET /memories/statistics - Lấy thống kê kỷ niệm
 [x] - GET /memories/reminders/upcoming - Lấy nhắc nhở sắp tới
 [x] - POST /memories/:id/reminder/sent - Đánh dấu nhắc nhở đã gửi
+[x] - POST /memories/:id/public - Tạo link công khai cho kỷ niệm
+[x] - DELETE /memories/:id/public - Hủy link công khai
+[x] - GET /memories/public/:slug - Lấy kỷ niệm công khai theo slug
  
 16.3. Image Endpoints
 [x] - POST /memories/:id/images - Thêm ảnh vào kỷ niệm
@@ -814,7 +817,7 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 20.1. Map Analytics (Phân tích bản đồ)
-[ ] - Heat map - Bản đồ nhiệt
+[x] - Heat map - Bản đồ nhiệt
 [x] - Route visualization - Trực quan hóa lộ trình
 [x] - Distance calculations - Tính toán khoảng cách
 [ ] - Travel statistics - Thống kê di chuyển

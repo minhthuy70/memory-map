@@ -3,11 +3,12 @@
 import { useEffect, useState, useRef, useMemo } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, CircleMarker, useMap, useMapEvents, Polyline } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
+import { HeatmapLayer } from 'react-leaflet-heatmap-layer';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Memory } from '@/lib/memories-api';
 import LocationSearch from './LocationSearch';
-import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin, Ruler, Filter, X } from 'lucide-react';
+import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin, Ruler, Filter, X, Flame } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 // Fix for default marker icons in Leaflet with React
@@ -151,6 +152,7 @@ interface MapProps {
   showDistance?: boolean;
   showRoutes?: boolean;
   showFilters?: boolean;
+  showHeatMap?: boolean;
   filterCategory?: string;
   filterMood?: string;
   onFilterChange?: (filters: { category?: string; mood?: string }) => void;
@@ -241,6 +243,7 @@ export default function MemoryMap({
   showDistance = false,
   showRoutes = false,
   showFilters = false,
+  showHeatMap = false,
   filterCategory,
   filterMood,
   onFilterChange,
@@ -258,6 +261,7 @@ export default function MemoryMap({
   const [showLayerMenu, setShowLayerMenu] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [fitBoundsTrigger, setFitBoundsTrigger] = useState(0);
+  const [localShowHeatMap, setLocalShowHeatMap] = useState(showHeatMap);
 
   // Filter state
   const [showFilterPanel, setShowFilterPanel] = useState(false);
@@ -317,6 +321,19 @@ export default function MemoryMap({
       .sort((a, b) => new Date(a.memoryDate).getTime() - new Date(b.memoryDate).getTime())
       .map(m => [m.latitude, m.longitude] as [number, number]);
   }, [filteredMemories, showRoutes]);
+
+  // Generate heatmap data
+  const heatmapData = useMemo(() => {
+    if (!localShowHeatMap || filteredMemories.length === 0) return [];
+    
+    return filteredMemories
+      .filter(m => m.latitude && m.longitude)
+      .map(m => ({
+        lat: m.latitude,
+        lng: m.longitude,
+        intensity: 1, // Can be customized based on memory properties
+      }));
+  }, [filteredMemories, localShowHeatMap]);
 
   useEffect(() => {
     setIsClient(true);
@@ -479,6 +496,23 @@ export default function MemoryMap({
             aria-label="Fit Bounds"
           >
             <Focus className="h-5 w-5" />
+          </button>
+        )}
+
+        {/* Heatmap toggle button */}
+        {memories && memories.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setLocalShowHeatMap(!localShowHeatMap)}
+            className={`p-2.5 rounded-xl shadow-md transition-colors border cursor-pointer ${
+              localShowHeatMap
+                ? 'bg-orange-500 text-white border-orange-500'
+                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+            }`}
+            title="Bản đồ nhiệt (Heat map)"
+            aria-label="Heatmap Toggle"
+          >
+            <Flame className="h-5 w-5" />
           </button>
         )}
 
@@ -792,6 +826,54 @@ export default function MemoryMap({
               dashArray: '10, 10',
             }}
           />
+        )}
+
+        {/* Heatmap visualization using CircleMarker with gradient opacity */}
+        {showHeatMap && heatmapData.length > 0 && (
+          <>
+            {heatmapData.map((point, index) => (
+              <CircleMarker
+                key={`heatmap-${index}`}
+                center={[point.lat, point.lng]}
+                radius={150}
+                pathOptions={{
+                  color: 'transparent',
+                  fillColor: '#ff6b6b',
+                  fillOpacity: 0.3,
+                  weight: 0,
+                }}
+                interactive={false}
+              />
+            ))}
+            {heatmapData.map((point, index) => (
+              <CircleMarker
+                key={`heatmap-inner-${index}`}
+                center={[point.lat, point.lng]}
+                radius={75}
+                pathOptions={{
+                  color: 'transparent',
+                  fillColor: '#ffa500',
+                  fillOpacity: 0.4,
+                  weight: 0,
+                }}
+                interactive={false}
+              />
+            ))}
+            {heatmapData.map((point, index) => (
+              <CircleMarker
+                key={`heatmap-core-${index}`}
+                center={[point.lat, point.lng]}
+                radius={30}
+                pathOptions={{
+                  color: 'transparent',
+                  fillColor: '#ff4500',
+                  fillOpacity: 0.5,
+                  weight: 0,
+                }}
+                interactive={false}
+              />
+            ))}
+          </>
         )}
 
         <MarkerClusterGroup

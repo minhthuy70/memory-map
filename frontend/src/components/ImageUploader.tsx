@@ -202,6 +202,8 @@ export default function ImageUploader({
               }}
               disabled={isUploading || images.length >= maxImages}
               placeholder="Dán đường dẫn ảnh (VD: https://images.unsplash.com/...)"
+              aria-label="URL hình ảnh"
+              aria-describedby="image-upload-help"
               className="w-full pl-9 pr-3 py-2.5 text-xs sm:text-sm border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:border-transparent outline-none disabled:opacity-60 disabled:cursor-not-allowed"
             />
             {inputUrl && !isUploading && (
@@ -220,6 +222,7 @@ export default function ImageUploader({
               type="button"
               onClick={() => handleAddImage()}
               disabled={isUploading || !inputUrl.trim() || images.length >= maxImages}
+              aria-label="Thêm hình ảnh"
               className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-primary hover:bg-primary-hover text-white text-xs sm:text-sm font-semibold rounded-xl transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {isUploading ? (
@@ -239,6 +242,7 @@ export default function ImageUploader({
               <button
                 type="button"
                 onClick={handleCancelUpload}
+                aria-label="Hủy tải lên"
                 className="px-3 py-2.5 bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/60 text-rose-600 dark:text-rose-400 text-xs font-semibold rounded-xl transition-colors border border-rose-200 dark:border-rose-800 cursor-pointer"
                 title="Hủy tải lên"
               >
@@ -302,6 +306,11 @@ export default function ImageUploader({
                     (e.target as HTMLImageElement).src =
                       'https://placehold.co/600x400?text=L%E1%BB%97i+%E1%BA%A3nh';
                   }}
+                  onLoad={(e) => {
+                    // Cache image in browser after successful load
+                    const img = e.target as HTMLImageElement;
+                    img.crossOrigin = 'anonymous';
+                  }}
                 />
 
                 {/* Index badge */}
@@ -315,6 +324,7 @@ export default function ImageUploader({
                     type="button"
                     onClick={() => handleMoveUp(index)}
                     disabled={index === 0}
+                    aria-label={`Di chuyển ảnh ${index + 1} lên`}
                     className="p-1 bg-slate-800/80 hover:bg-slate-700 text-white rounded-md shadow-md disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer hover:scale-110 transition-transform"
                     title="Di chuyển lên"
                   >
@@ -324,6 +334,7 @@ export default function ImageUploader({
                     type="button"
                     onClick={() => handleMoveDown(index)}
                     disabled={index === images.length - 1}
+                    aria-label={`Di chuyển ảnh ${index + 1} xuống`}
                     className="p-1 bg-slate-800/80 hover:bg-slate-700 text-white rounded-md shadow-md disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer hover:scale-110 transition-transform"
                     title="Di chuyển xuống"
                   >
@@ -332,6 +343,7 @@ export default function ImageUploader({
                   <button
                     type="button"
                     onClick={() => handleDeleteImage(index)}
+                    aria-label={`Xóa ảnh ${index + 1}`}
                     className="p-1 bg-red-600/90 hover:bg-red-700 text-white rounded-md shadow-md cursor-pointer hover:scale-110 transition-transform"
                     title="Xóa ảnh này"
                   >
