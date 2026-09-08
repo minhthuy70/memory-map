@@ -785,8 +785,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Prisma db push - Prisma db push
 [x] - Migration backup - Sao lưu migration (scripts/backup-database.ts)
 [x] - Migration restore - Khôi phục migration (scripts/restore-database.ts)
-[ ] - Migration rollback support - Hỗ trợ rollback migration (tương lai)
-[ ] - Migration testing - Kiểm thử migration (tương lai)
+[x] - Migration rollback support - Hỗ trợ rollback migration (scripts/rollback-migration.ts với npm run prisma:rollback)
+[x] - Migration testing - Kiểm thử migration (scripts/test-migration.ts với npm run prisma:test)
 
 ================================================================================
 
@@ -901,9 +901,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 581
+Số lượng tính năng đã implement: 583
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 38
+Số lượng tính năng tương lai: 36
  
-Last Updated: 2026-09-07
-Version: 3.5
+Last Updated: 2026-09-08
+Version: 3.6

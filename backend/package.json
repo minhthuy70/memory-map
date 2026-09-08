@@ -10,6 +10,10 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:seed": "tsx prisma/seed.ts",
+    "prisma:rollback": "tsx scripts/rollback-migration.ts",
+    "prisma:test": "tsx scripts/test-migration.ts",
+    "db:backup": "tsx scripts/backup-database.ts",
+    "db:restore": "tsx scripts/restore-database.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
