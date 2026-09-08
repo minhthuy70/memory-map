@@ -8,7 +8,9 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Memory } from '@/lib/memories-api';
 import LocationSearch from './LocationSearch';
-import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin, Ruler, Filter, X, Flame } from 'lucide-react';
+import MapAnnotations from './MapAnnotations';
+import MapDrawingTools from './MapDrawingTools';
+import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin, Ruler, Filter, X, Flame, PenTool, Pencil } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 // Fix for default marker icons in Leaflet with React
@@ -136,6 +138,27 @@ const createClusterIcon = (cluster: any) => {
   });
 };
 
+interface MapAnnotation {
+  id: string;
+  position: [number, number];
+  text: string;
+  color: string;
+  createdAt: Date;
+}
+
+type DrawingTool = 'none' | 'polyline' | 'circle' | 'rectangle' | 'polygon';
+
+interface DrawingShape {
+  id: string;
+  type: DrawingTool;
+  coordinates: [number, number][];
+  center?: [number, number];
+  radius?: number;
+  color: string;
+  name?: string;
+  createdAt: Date;
+}
+
 interface MapProps {
   memories: Memory[];
   onLocationSelect?: (lat: number, lng: number) => void;
@@ -153,9 +176,18 @@ interface MapProps {
   showRoutes?: boolean;
   showFilters?: boolean;
   showHeatMap?: boolean;
+  showAnnotations?: boolean;
+  showDrawingTools?: boolean;
   filterCategory?: string;
   filterMood?: string;
   onFilterChange?: (filters: { category?: string; mood?: string }) => void;
+  annotations?: MapAnnotation[];
+  onAddAnnotation?: (annotation: Omit<MapAnnotation, 'id' | 'createdAt'>) => void;
+  onDeleteAnnotation?: (id: string) => void;
+  onUpdateAnnotation?: (id: string, text: string) => void;
+  drawingShapes?: DrawingShape[];
+  onAddDrawingShape?: (shape: Omit<DrawingShape, 'id' | 'createdAt'>) => void;
+  onDeleteDrawingShape?: (id: string) => void;
 }
 
 function MapClickHandler({ 
@@ -244,9 +276,18 @@ export default function MemoryMap({
   showRoutes = false,
   showFilters = false,
   showHeatMap = false,
+  showAnnotations = false,
+  showDrawingTools = false,
   filterCategory,
   filterMood,
   onFilterChange,
+  annotations = [],
+  onAddAnnotation,
+  onDeleteAnnotation,
+  onUpdateAnnotation,
+  drawingShapes = [],
+  onAddDrawingShape,
+  onDeleteDrawingShape,
 }: MapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
@@ -262,6 +303,8 @@ export default function MemoryMap({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [fitBoundsTrigger, setFitBoundsTrigger] = useState(0);
   const [localShowHeatMap, setLocalShowHeatMap] = useState(showHeatMap);
+  const [localShowAnnotations, setLocalShowAnnotations] = useState(showAnnotations);
+  const [localShowDrawingTools, setLocalShowDrawingTools] = useState(showDrawingTools);
 
   // Filter state
   const [showFilterPanel, setShowFilterPanel] = useState(false);
@@ -516,6 +559,36 @@ export default function MemoryMap({
           </button>
         )}
 
+        {/* Annotations toggle button */}
+        <button
+          type="button"
+          onClick={() => setLocalShowAnnotations(!localShowAnnotations)}
+          className={`p-2.5 rounded-xl shadow-md transition-colors border cursor-pointer ${
+            localShowAnnotations
+              ? 'bg-green-500 text-white border-green-500'
+              : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+          }`}
+          title="Ghi chú bản đồ (Map annotations)"
+          aria-label="Annotations Toggle"
+        >
+          <PenTool className="h-5 w-5" />
+        </button>
+
+        {/* Drawing tools toggle button */}
+        <button
+          type="button"
+          onClick={() => setLocalShowDrawingTools(!localShowDrawingTools)}
+          className={`p-2.5 rounded-xl shadow-md transition-colors border cursor-pointer ${
+            localShowDrawingTools
+              ? 'bg-purple-500 text-white border-purple-500'
+              : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700'
+          }`}
+          title="Công cụ vẽ (Drawing tools)"
+          aria-label="Drawing Tools Toggle"
+        >
+          <Pencil className="h-5 w-5" />
+        </button>
+
         {/* Full-screen map mode toggle */}
         <button
           type="button"
@@ -659,6 +732,23 @@ export default function MemoryMap({
           zoom={mapZoom} 
           fitBoundsTrigger={fitBoundsTrigger} 
           memories={filteredMemories} 
+        />
+
+        {/* Map Annotations */}
+        <MapAnnotations
+          annotations={annotations}
+          onAddAnnotation={onAddAnnotation}
+          onDeleteAnnotation={onDeleteAnnotation}
+          onUpdateAnnotation={onUpdateAnnotation}
+          enabled={localShowAnnotations}
+        />
+
+        {/* Map Drawing Tools */}
+        <MapDrawingTools
+          shapes={drawingShapes}
+          onAddShape={onAddDrawingShape}
+          onDeleteShape={onDeleteDrawingShape}
+          enabled={localShowDrawingTools}
         />
 
         <MapClickHandler

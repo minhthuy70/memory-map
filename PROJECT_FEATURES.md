@@ -835,8 +835,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Custom markers - Marker tùy chỉnh (custom icon với mood emoji và category color)
 [x] - Map filters - Bộ lọc bản đồ
 [x] - Saved map views - Lưu chế độ xem bản đồ
-[ ] - Map annotations - Ghi chú bản đồ
-[ ] - Drawing tools - Công cụ vẽ
+[x] - Map annotations - Ghi chú bản đồ (MapAnnotations component với thêm, sửa, xóa ghi chú trên bản đồ)
+[x] - Drawing tools - Công cụ vẽ (MapDrawingTools component với vẽ đường, hình tròn, hình chữ nhật, đa giác)
  
 ================================================================================
  
@@ -901,9 +901,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 583
+Số lượng tính năng đã implement: 585
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 36
+Số lượng tính năng tương lai: 34
  
 Last Updated: 2026-09-08
-Version: 3.6
+Version: 3.7
