@@ -853,15 +853,15 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 21.2. Calendar Integration (Tích hợp lịch)
 [x] - Google Calendar sync - Đồng bộ Google Calendar (GoogleCalendarSync component với auto-sync, error handling)
-[ ] - Apple Calendar sync - Đồng bộ Apple Calendar
-[ ] - Outlook Calendar sync - Đồng bộ Outlook Calendar
+[x] - Apple Calendar sync - Đồng bộ Apple Calendar (AppleCalendarSync component với ICS export)
+[x] - Outlook Calendar sync - Đồng bộ Outlook Calendar (OutlookCalendarSync component với ICS export)
 [x] - Calendar export - Xuất lịch (CalendarExport component với định dạng ICS)
 [x] - Memory reminders - Nhắc nhở kỷ niệm
  
 21.3. Cloud Storage Integration (Tích hợp lưu trữ đám mây)
 [x] - Google Drive integration - Tích hợp Google Drive (GoogleDriveIntegration component với backup/restore, auto-backup)
-[ ] - Dropbox integration - Tích hợp Dropbox
-[ ] - OneDrive integration - Tích hợp OneDrive
+[x] - Dropbox integration - Tích hợp Dropbox (DropboxIntegration component với backup/restore, auto-backup)
+[x] - OneDrive integration - Tích hợp OneDrive (OneDriveIntegration component với backup/restore, auto-backup)
 [x] - Cloud backup - Sao lưu đám mây (CloudBackup component với export/import JSON)
 [ ] - Image cloud sync - Đồng bộ ảnh đám mây
  
@@ -901,9 +901,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 587
+Số lượng tính năng đã implement: 591
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 32
+Số lượng tính năng tương lai: 28
  
 Last Updated: 2026-09-08
-Version: 3.8
+Version: 3.9
