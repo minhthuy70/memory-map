@@ -873,9 +873,9 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 22.1. In-App Notifications (Thông báo trong ứng dụng)
 [x] - Reminder notifications - Thông báo nhắc nhở
 [x] - Achievement notifications - Thông báo thành tích
-[ ] - Milestone notifications - Thông báo cột mốc
-[ ] - Social notifications - Thông báo xã hội
-[ ] - System notifications - Thông báo hệ thống
+[x] - Milestone notifications - Thông báo cột mốc (MilestoneNotifications component với hệ thống thành tích)
+[x] - Social notifications - Thông báo xã hội (SocialNotifications component với like/comment/share)
+[x] - System notifications - Thông báo hệ thống (SystemNotifications component với security/info/error)
 [x] - Notification center - Trung tâm thông báo (NotificationCenter component)
 [x] - Notification preferences - Tùy chọn thông báo
  
@@ -885,15 +885,15 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Memory anniversary - Kỷ niệm ngày kỷ niệm
 [ ] - Reminder emails - Email nhắc nhở
 [ ] - Activity reports - Báo cáo hoạt động
-[ ] - Email preferences - Tùy chọn email
+[x] - Email preferences - Tùy chọn email (EmailPreferences component với frequency/time settings)
  
 22.3. Push Notifications (Thông báo đẩy)
-[ ] - Browser push notifications - Thông báo đẩy trình duyệt
+[x] - Browser push notifications - Thông báo đẩy trình duyệt (BrowserPushNotifications component với permission handling)
 [ ] - Mobile push notifications - Thông báo đẩy mobile
-[ ] - Scheduled notifications - Thông báo theo lịch
+[x] - Scheduled notifications - Thông báo theo lịch (ScheduledNotifications component với recurrence)
 [ ] - Location-based notifications - Thông báo dựa trên vị trí
-[ ] - Quiet hours - Giờ yên tĩnh
-[ ] - Notification grouping - Gom nhóm thông báo
+[x] - Quiet hours - Giờ yên tĩnh (QuietHours component với periods/exceptions)
+[x] - Notification grouping - Gom nhóm thông báo (NotificationGrouping component với type/time/priority modes)
  
 ================================================================================
  
@@ -901,9 +901,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 619
-Số lượng tính năng đã implement: 591
+Số lượng tính năng đã implement: 600
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 28
+Số lượng tính năng tương lai: 19
  
 Last Updated: 2026-09-08
-Version: 3.9
+Version: 4.0
