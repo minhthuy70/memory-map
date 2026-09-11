@@ -1033,12 +1033,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Right to be forgotten - Quyền bị xóa (RightToBeForgotten component - placeholder)
  
 27.3. Security Monitoring (Giám sát bảo mật)
-[ ] - Audit logs - Nhật ký kiểm tra (AuditLogs component - placeholder)
-[ ] - Security alerts - Cảnh báo bảo mật (SecurityAlerts component - placeholder)
-[ ] - Intrusion detection - Phát hiện xâm nhập (IntrusionDetection component - placeholder)
-[ ] - Rate limiting per user - Giới hạn tốc độ mỗi người dùng (RateLimitingPerUser component - placeholder)
-[ ] - IP whitelisting - Whitelist IP (IPWhitelisting component - placeholder)
-[ ] - Security dashboard - Dashboard bảo mật (SecurityDashboard component - placeholder)
+[x] - Audit logs - Nhật ký kiểm tra (AuditLogs component với full-text search, lọc theo severity/action/user/date range, xem chi tiết JSON payload, real-time feed, xuất CSV/JSON/PDF)
+[x] - Security alerts - Cảnh báo bảo mật (SecurityAlerts component với phân loại CRITICAL/HIGH/MEDIUM/LOW, advanced filtering, timeline view, bulk acknowledge/resolve/dismiss, threat intelligence, alert rules management)
+[x] - Intrusion detection - Phát hiện xâm nhập (IntrusionDetection component với IDS/IPS engine, 248 signatures (SQLi/XSS/DDoS/Brute-force/Port-scan/Backdoor), network traffic monitor, quarantine/allowlist IP, auto-block, threat geolocation)
+[x] - Rate limiting per user - Giới hạn tốc độ mỗi người dùng (RateLimitingPerUser component với Sliding Window/Token Bucket/Fixed Window algorithms, per-endpoint rules, usage charts, exemptions cho trusted users, real-time traffic distribution)
+[x] - IP whitelisting - Whitelist IP (IPWhitelisting component với ACL management, 3 chế độ (Whitelist-only/Blacklist/Selective), CIDR range support, access history, auto-block suspicious IPs, import/export rules)
+[x] - Security dashboard - Dashboard bảo mật (SecurityDashboard component với health score 96/100 A+, 4 security pillars, recent incidents feed, vulnerability scanner, tab navigation tới 5 sub-modules, xuất compliance report)
  
 ================================================================================
  
@@ -1075,9 +1075,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 736
-Số lượng tính năng đã implement: 650
+Số lượng tính năng đã implement: 656
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 86
+Số lượng tính năng tương lai: 80
  
-Last Updated: 2026-09-09
+Last Updated: 2026-09-11
 Version: 8.3
