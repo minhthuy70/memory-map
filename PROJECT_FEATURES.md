@@ -1213,10 +1213,10 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Video transcoding - Chuyển đổi định dạng video tự động (MP4/WebM/MOV/AVI) với codec selection (H.264/VP9/XviD), quality levels (High/Medium/Low), progress tracking, original/transcoded size comparison, transcode time tracking, auto-transcode on upload, hardware acceleration, và multi-thread processing (VideoTranscoding component - 455 lines)
  
 33.2. Video Editing (Chỉnh sửa video)
-[ ] - In-app video trimming - Cắt video trực tiếp trong app
-[ ] - Add music to video - Thêm nhạc nền vào video
-[ ] - Add text overlay - Thêm chữ overlay lên video
-[ ] - Video filters & effects - Bộ lọc và hiệu ứng cho video
+[x] - In-app video trimming - Cắt video trực tiếp trong app với visual trim timeline, drag handles for start/end time, timecode input (frame/second precision), quick trim options (reset/first half/second half/middle 50%), preview functionality, trim job tracking, duration reduction calculation, auto-save trim, và preserve quality (InAppVideoTrimming component - 456 lines)
+[x] - Add music to video - Thêm nhạc nền vào video với audio track management (music/voiceover/sound-effect), volume control for video and tracks, fade in/out settings, start time adjustment, track add/remove functionality, preview mixed audio, auto-mix on save, normalize audio, và audio compression (AddMusicToVideo component - 481 lines)
+[x] - Add text overlay - Thêm chữ overlay lên video với text overlay management, positioning (X/Y position sliders), alignment (left/center/right), font styling (size/family/color/background), text style (bold/italic/underline), opacity control, timing (start/end), visibility toggle, preview functionality, auto-render on save, text effects, và shadow effects (AddTextOverlay component - 617 lines)
+[x] - Video filters & effects - Bộ lọc và hiệu ứng video với filter types (brightness/contrast/saturation/blur/vignette), effect types (speed/reverse/transition/animation/overlay), intensity control, enable/disable toggle, real-time preview, auto-render on change, GPU acceleration, và comprehensive video enhancement options (VideoFiltersAndEffects component - 555 lines)
 [ ] - Video stabilization - Chống rung video tự động
 [ ] - Slow motion support - Hỗ trợ video chậm
 [ ] - Time-lapse creation - Tạo video time-lapse
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 738
+Số lượng tính năng đã implement: 742
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 310
+Số lượng tính năng tương lai: 306
  
 Last Updated: 2026-09-14
-Version: 10.3
+Version: 10.4
