@@ -1175,13 +1175,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 32.1. Voice Recording (Ghi âm giọng nói)
-[ ] - Voice memo for memories - Ghi âm ghi chú giọng nói kèm theo kỷ niệm
-[ ] - Voice-to-text transcription - Chuyển giọng nói thành văn bản tự động
-[ ] - Background ambient sound - Ghi âm tiếng môi trường xung quanh
-[ ] - Voice journal entries - Nhật ký giọng nói thay thế gõ phím
-[ ] - Audio timeline - Timeline âm thanh của kỷ niệm
-[ ] - Noise cancellation - Khử tiếng ồn khi ghi âm
-[ ] - Voice emotion detection - Phát hiện cảm xúc qua giọng nói (buồn/vui/hào hứng)
+[x] - Voice memo for memories - Ghi âm ghi chú giọng nói kèm theo kỷ niệm với voice recording interface, real-time duration tracking, auto-save on stop, high-quality recording, noise reduction, playback controls (play/pause/volume), memo management (edit/download/delete), audio format support (MP3/WAV), và comprehensive voice memo system (VoiceMemoForMemories component - 401 lines)
+[x] - Voice-to-text transcription - Chuyển giọng nói thành văn bản tự động với audio file upload, real-time transcription progress, confidence scoring, language selection (English/Vietnamese/French/Japanese), auto-detect language, auto-punctuation, edit transcription, copy to clipboard, word count tracking, và comprehensive speech-to-text system (VoiceToTextTranscription component - 402 lines)
+[x] - Background ambient sound - Ghi âm tiếng môi trường xung quanh với ambient sound recording, location auto-detection (GPS coordinates), categorization (nature/urban/indoor/traffic/other), playback controls (play/pause/volume), loop playback, noise reduction, sound management (download/delete), category filtering, và comprehensive ambient sound capture system (BackgroundAmbientSound component - 477 lines)
+[x] - Voice journal entries - Nhật ký giọng nói thay thế gõ phím với voice recording interface, real-time duration tracking, auto-transcription, mood tracking (happy/sad/neutral/excited/anxious), privacy controls (private/public), playback controls (play/pause/volume), journal management (edit/download/delete), mood filtering, và comprehensive voice journal system (VoiceJournalEntries component - 511 lines)
+[x] - Audio timeline - Timeline âm thanh của kỷ niệm với waveform visualization, timeline navigation (play/pause/seek/skip), segment management (add/delete/color label), zoom controls, volume adjustment, current time indicator, auto-scroll on play, high-resolution waveform, và comprehensive audio timeline system (AudioTimeline component - 498 lines)
+[x] - Noise cancellation - Khử tiếng ồn khi ghi âm với noise cancellation toggle, threshold control, sensitivity adjustment, algorithm selection (basic/advanced/AI), noise level monitoring, noise history visualization, audio enhancement (noise reduction/voice enhancement), adaptive threshold, real-time monitoring, và comprehensive noise cancellation system (NoiseCancellation component - 388 lines)
+[x] - Voice emotion detection - Phát hiện cảm xúc qua giọng nói với emotion detection (happy/sad/neutral/excited/anxious), confidence scoring, audio file upload, detection progress tracking, emotion filtering, playback controls, emotion distribution visualization, auto-detect on recording, confidence threshold, AI model (BERT-based), và comprehensive voice emotion analysis system (VoiceEmotionDetection component - 509 lines)
  
 32.2. Voice Commands (Lệnh giọng nói)
 [x] - Voice search - Tìm kiếm bằng giọng nói với voice recording interface, real-time transcription, speech-to-text conversion, confidence scoring, language selection (Vietnamese/English/French/Japanese), auto-search on stop, search history, voice command recognition, và processing time tracking (VoiceSearch component - 428 lines)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 753
+Số lượng tính năng đã implement: 760
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 295
+Số lượng tính năng tương lai: 288
  
 Last Updated: 2026-09-14
-Version: 10.6
+Version: 10.7
