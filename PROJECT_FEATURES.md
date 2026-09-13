@@ -967,12 +967,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Growth metrics - Chỉ số tăng trưởng với memory count tracking, growth rate calculation, milestone system, target progress, predictions, và storage usage monitoring (GrowthMetrics component - 362 lines)
  
 25.2. Comparative Analytics (Phân tích so sánh)
-[ ] - Year-over-year comparison - So sánh năm qua năm (YearOverYearComparison component - placeholder)
-[ ] - Month-over-month comparison - So sánh tháng qua tháng (MonthOverMonthComparison component - placeholder)
-[ ] - Category comparison - So sánh danh mục (CategoryComparison component - placeholder)
-[ ] - Mood comparison - So sánh tâm trạng (MoodComparison component - placeholder)
-[ ] - Location comparison - So sánh địa điểm (LocationComparison component - placeholder)
-[ ] - Trend analysis - Phân tích xu hướng (TrendAnalysis component - placeholder)
+[x] - Year-over-year comparison - So sánh năm qua năm với year selection, comparison metrics (memory count/mood/rating), trend analysis (up/down/stable), mood distribution comparison, và year details (YearOverYearComparison component - 395 lines)
+[x] - Month-over-month comparison - So sánh tháng qua tháng với year/month selection, comparison metrics, mood distribution visualization, month details, và trend tracking (MonthOverMonthComparison component - 437 lines)
+[x] - Category comparison - So sánh danh mục với category comparison (Personal/Career/Travel/Education/Social), mood distribution, rating comparison, growth rate tracking, sorting options, và percentage visualization (CategoryComparison component - 326 lines)
+[x] - Mood comparison - So sánh tâm trạng với period selection (Q1-Q4), mood comparison (happy/sad/neutral/excited/nostalgic), intensity tracking, trend view, breakdown view, và side-by-side comparison (MoodComparison component - 379 lines)
+[x] - Location comparison - So sánh địa điểm với location comparison (Hanoi/HCMC/Da Nang/Ha Long/Can Tho), mood distribution, rating/growth tracking, category filtering (city/nature/landmark/home), geo-coordinates, và percentage visualization (LocationComparison component - 377 lines)
+[x] - Trend analysis - Phân tích xu hướng với trend line visualization, detected patterns (seasonal/cyclical/linear/exponential), pattern strength/confidence tracking, predictions, trend insights, và multi-type analysis (memory/mood/location/category) (TrendAnalysis component - 411 lines)
  
 25.3. Predictive Analytics (Phân tích dự đoán)
 [ ] - Memory prediction - Dự đoán kỷ niệm (MemoryPrediction component - placeholder)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 692
+Số lượng tính năng đã implement: 698
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 356
+Số lượng tính năng tương lai: 350
  
 Last Updated: 2026-09-13
-Version: 9.5
+Version: 9.6
