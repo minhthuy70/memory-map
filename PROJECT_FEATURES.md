@@ -1163,11 +1163,11 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - AR time capsule - Tạo time capsule AR chỉ mở được tại địa điểm và thời gian nhất định
  
 31.3. WebXR Integration (Tích hợp WebXR)
-[ ] - WebXR API integration - Tích hợp WebXR API cho trình duyệt
-[ ] - VR memory gallery - Thư viện kỷ niệm 3D trong VR
-[ ] - VR world tour - Du lịch VR qua tất cả địa điểm kỷ niệm
-[ ] - 360° photo support - Hỗ trợ ảnh 360 độ (spherical photos)
-[ ] - 360° video memories - Kỷ niệm video 360 độ
+[x] - WebXR API integration - Tích hợp WebXR API cho trình duyệt (device scanning, VR/AR device management, battery/signal monitoring, session management, immersive mode, auto-connect)
+[x] - VR memory gallery - Thư viện kỷ niệm 3D trong VR (3D positioning x/y/z, rotation control, scale adjustment, view modes gallery/grid/timeline, favorite system, visibility toggle, hand tracking, spatial audio)
+[x] - VR world tour - Du lịch VR qua tất cả địa điểm kỷ niệm (route creation, location management, GPS coordinates, tour navigation next/previous/go to, progress tracking, auto-advance, favorite locations, 360° panorama)
+[x] - 360° photo support - Hỗ trợ ảnh 360 độ (spherical photos) (panoramic upload, equirectangular format, viewer mode rotate/zoom/fullscreen, grid view, default selection, auto-enhance, HDR stitching, high-resolution export)
+[x] - 360° video memories - Kỷ niệm video 360 độ (panoramic video upload, equirectangular format, viewer mode look around/zoom, grid view, playback controls, volume adjustment, auto-transcode, video stabilization, spatial audio)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 760
+Số lượng tính năng đã implement: 765
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 288
+Số lượng tính năng tương lai: 283
  
 Last Updated: 2026-09-14
-Version: 10.7
+Version: 10.8
