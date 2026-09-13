@@ -1025,12 +1025,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - OAuth 2.0 - OAuth 2.0 (OAuth2 component - placeholder)
  
 27.2. Data Protection (Bảo vệ dữ liệu)
-[ ] - End-to-end encryption - Mã hóa end-to-end (EndToEndEncryption component - placeholder)
-[ ] - Data masking - Che giấu dữ liệu (DataMasking component - placeholder)
-[ ] - Secure storage - Lưu trữ an toàn (SecureStorage component - placeholder)
-[ ] - Privacy controls - Kiểm soát quyền riêng tư (PrivacyControls component - placeholder)
-[ ] - Data retention policy - Chính sách lưu trữ dữ liệu (DataRetentionPolicy component - placeholder)
-[ ] - Right to be forgotten - Quyền bị xóa (RightToBeForgotten component - placeholder)
+[x] - End-to-end encryption - Mã hóa end-to-end (EndToEndEncryption component với encryption keys management, protected data types, auto-rotation, AES-256-GCM algorithm)
+[x] - Data masking - Che giấu dữ liệu (DataMasking component với field-level masking rules, full/partial/hash/tokenize strategies, data type filtering, preview patterns)
+[x] - Secure storage - Lưu trữ an toàn (SecureStorage component với keychain/keystore/encrypted storage types, token/secret/certificate/data items, revoke/refresh functionality)
+[x] - Privacy controls - Kiểm soát quyền riêng tư (PrivacyControls component với data collection/sharing/processing/storage settings, consent tracking, export/delete data)
+[x] - Data retention policy - Chính sách lưu trữ dữ liệu (DataRetentionPolicy component với automatic/manual policies, retention periods, compliance tracking, deletion logs)
+[x] - Right to be forgotten - Quyền bị xóa (RightToBeForgotten component với deletion requests, verification workflow, GDPR compliance, deletion logs)
  
 27.3. Security Monitoring (Giám sát bảo mật)
 [x] - Audit logs - Nhật ký kiểm tra (AuditLogs component với full-text search, lọc theo severity/action/user/date range, xem chi tiết JSON payload, real-time feed, xuất CSV/JSON/PDF)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 656
+Số lượng tính năng đã implement: 668
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 392
+Số lượng tính năng tương lai: 380
  
 Last Updated: 2026-09-11
-Version: 9.0
+Version: 9.1
