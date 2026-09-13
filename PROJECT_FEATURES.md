@@ -1136,12 +1136,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Duplicate detection on import - Phát hiện trùng lặp khi nhập
  
 30.3. Print & Physical (In & Vật lý)
-[ ] - Print memory cards - In thẻ kỷ niệm A5/A4 đẹp
-[ ] - Print timeline poster - In poster timeline cuộc đời
-[ ] - Print map poster - In bản đồ hành trình dạng poster
-[ ] - Order photo book - Đặt in sách ảnh qua đối tác in ấn
-[ ] - QR code memory cards - Thẻ kỷ niệm có QR code dẫn đến bản số
-[ ] - Custom postcard print - In bưu thiếp kỷ niệm
+[x] - Print memory cards - In thẻ kỷ niệm A5/A4 đẹp (paper size A5/A4/Square/Custom, layout options single/grid/collage, orientation portrait/landscape, quality levels standard/high/premium, quantity control, card selection, preview mode, pricing calculation)
+[x] - Print timeline poster - In poster timeline cuộc đời (poster size A3/A2/A1/Custom, time range year/month/all, style variants minimal/colorful/elegant/modern, layout vertical/horizontal/spiral, photo/location inclusion, event selection, preview mode, pricing calculation)
+[x] - Print map poster - In bản đồ hành trình dạng poster (poster size A3/A2/A1/Custom, map style satellite/terrain/street/minimal, route visualization, labels, photo markers, location selection, preview mode, pricing calculation, auto-route optimization, high-resolution map)
+[x] - Order photo book - Đặt in sách ảnh qua đối tác in ấn (book size 6x6/8x8/10x10/Custom, cover types hardcover/softcover/premium, paper types standard/premium/archival, binding options saddle/perfect/layflat, quantity control, book selection, preview mode, pricing calculation, auto-layout pages, print-quality optimization, partner integration)
+[x] - QR code memory cards - Thẻ kỷ niệm có QR code dẫn đến bản số (card size standard/large/wallet, QR style standard/dots/rounded, title/date/location inclusion, card selection, preview mode, pricing calculation, auto-generate QR codes, print-ready format, QR code validation, link to digital memory, scan capability)
+[x] - Custom postcard print - In bưu thiếp kỷ niệm (postcard size standard/large/oversized, paper types matte/glossy/textured, envelope inclusion, stamp inclusion, quantity control, custom message, recipient info, design templates vintage/modern/minimal/colorful, image upload, preview mode, pricing calculation, auto-format addresses, print-quality optimization, postal service integration)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 775
+Số lượng tính năng đã implement: 781
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 273
+Số lượng tính năng tương lai: 267
  
 Last Updated: 2026-09-14
-Version: 10.9
+Version: 11.0

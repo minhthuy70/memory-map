@@ -1,115 +1,127 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Printer, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, FlipHorizontal, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Card, CreditCard, Package, Truck, Clock as ClockIcon, DollarSign, AlertCircle, CopyRight } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Map, RefreshCw, Check, Zap as ZapIcon, Plus, MapPin, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Map as MapIcon, Navigation, Globe, Compass, Route, DollarSign, Printer, CopyRight, Filter as FilterIcon, Satellite, Mountain, Waves, TreePine, Building } from 'lucide-react';
 
-interface MemoryCard {
+interface MapLocation {
   id: string;
-  memoryId: string;
   title: string;
   description: string;
+  coordinates: { lat: number; lng: number };
   imageUrl: string;
   date: Date;
-  location: string;
   isSelected: boolean;
 }
 
-interface PrintConfig {
-  paperSize: 'A5' | 'A4' | 'Square' | 'Custom';
-  layout: 'single' | 'grid' | 'collage';
-  orientation: 'portrait' | 'landscape';
-  quality: 'standard' | 'high' | 'premium';
+interface MapPosterConfig {
+  size: 'A3' | 'A2' | 'A1' | 'Custom';
+  mapStyle: 'satellite' | 'terrain' | 'street' | 'minimal';
+  showRoute: boolean;
+  showLabels: boolean;
+  showPhotos: boolean;
   quantity: number;
   totalPrice: number;
 }
 
-interface PrintMemoryCardsProps {
+interface PrintMapPosterProps {
   onCancel?: () => void;
-  onPrint?: (config: PrintConfig, cards: MemoryCard[]) => Promise<void>;
-  onPreview?: (config: PrintConfig, cards: MemoryCard[]) => Promise<void>;
+  onPrint?: (config: MapPosterConfig, locations: MapLocation[]) => Promise<void>;
+  onPreview?: (config: MapPosterConfig, locations: MapLocation[]) => Promise<void>;
 }
 
-const DEFAULT_CARDS: MemoryCard[] = [
+const DEFAULT_LOCATIONS: MapLocation[] = [
   {
-    id: 'card-1',
-    memoryId: 'mem-1',
-    title: 'Đà Lạt Adventure',
-    description: 'Morning mist at Đà Lạt',
-    imageUrl: '/card-1.jpg',
+    id: 'loc-1',
+    title: 'Đà Lạt',
+    description: 'Morning mist adventure',
+    coordinates: { lat: 11.9405, lng: 108.4583 },
+    imageUrl: '/loc-1.jpg',
     date: new Date('2024-01-12'),
-    location: 'Đà Lạt, Vietnam',
     isSelected: true,
   },
   {
-    id: 'card-2',
-    memoryId: 'mem-2',
-    title: 'Beach Day',
-    description: 'Relaxing at the beach',
-    imageUrl: '/card-2.jpg',
+    id: 'loc-2',
+    title: 'Nha Trang',
+    description: 'Beach relaxation',
+    coordinates: { lat: 12.2380, lng: 109.1967 },
+    imageUrl: '/loc-2.jpg',
     date: new Date('2024-02-15'),
-    location: 'Nha Trang, Vietnam',
+    isSelected: true,
+  },
+  {
+    id: 'loc-3',
+    title: 'Hanoi',
+    description: 'City exploration',
+    coordinates: { lat: 21.0285, lng: 105.8542 },
+    imageUrl: '/loc-3.jpg',
+    date: new Date('2024-03-20'),
     isSelected: true,
   },
 ];
 
 const PRICING = {
-  A5: { standard: 5, high: 8, premium: 12 },
-  A4: { standard: 8, high: 12, premium: 18 },
-  Square: { standard: 4, high: 6, premium: 10 },
-  Custom: { standard: 10, high: 15, premium: 25 },
+  A3: 20,
+  A2: 30,
+  A1: 50,
+  Custom: 60,
 };
 
-export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: PrintMemoryCardsProps) {
-  const [cards, setCards] = useState<MemoryCard[]>(DEFAULT_CARDS);
+export default function PrintMapPoster({ onCancel, onPrint, onPreview }: PrintMapPosterProps) {
+  const [locations, setLocations] = useState<MapLocation[]>(DEFAULT_LOCATIONS);
   const [showSettings, setShowSettings] = useState(false);
-  const [selectedCards, setSelectedCards] = useState<MemoryCard[]>(DEFAULT_CARDS.filter(c => c.isSelected));
-  const [config, setConfig] = useState<PrintConfig>({
-    paperSize: 'A5',
-    layout: 'single',
-    orientation: 'portrait',
-    quality: 'standard',
+  const [selectedLocations, setSelectedLocations] = useState<MapLocation[]>(DEFAULT_LOCATIONS.filter(l => l.isSelected));
+  const [config, setConfig] = useState<MapPosterConfig>({
+    size: 'A3',
+    mapStyle: 'satellite',
+    showRoute: true,
+    showLabels: true,
+    showPhotos: true,
     quantity: 1,
-    totalPrice: 5,
+    totalPrice: 20,
   });
   const [isPreviewing, setIsPreviewing] = useState(false);
   const [isPrinting, setIsPrinting] = useState(false);
 
-  const selectedCount = selectedCards.length;
-  const basePrice = PRICING[config.paperSize][config.quality];
-  const totalPrice = basePrice * config.quantity * selectedCount;
+  const selectedCount = selectedLocations.length;
+  const basePrice = PRICING[config.size];
+  const totalPrice = basePrice * config.quantity;
 
-  const handleToggleCard = (cardId: string) => {
-    setCards(cards.map(c => 
-      c.id === cardId ? { ...c, isSelected: !c.isSelected } : c
+  const handleToggleLocation = (locationId: string) => {
+    setLocations(locations.map(l => 
+      l.id === locationId ? { ...l, isSelected: !l.isSelected } : l
     ));
-    setSelectedCards(cards.filter(c => c.id === cardId ? !c.isSelected : c.isSelected));
+    setSelectedLocations(locations.filter(l => l.id === locationId ? !l.isSelected : l.isSelected));
   };
 
   const handlePrint = async () => {
     setIsPrinting(true);
-    await onPrint?.(config, selectedCards);
+    await onPrint?.(config, selectedLocations);
     setIsPrinting(false);
   };
 
   const handlePreview = async () => {
     setIsPreviewing(true);
-    await onPreview?.(config, selectedCards);
+    await onPreview?.(config, selectedLocations);
     setIsPreviewing(false);
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('vi-VN');
   };
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl">
-            <Printer className="h-5 w-5 text-white" />
+          <div className="p-2 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-xl">
+            <Map className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              In thẻ kỷ niệm A5/A4 đẹp
+              In bản đồ hành trình dạng poster
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              {selectedCount} cards selected
+              {selectedCount} locations selected
             </p>
           </div>
         </div>
@@ -134,26 +146,26 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
       </div>
 
       {showSettings && (
-        <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
+        <div className="mb-4 p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg">
           <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Cài đặt in ấn
+            Cài đặt map poster
           </h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600 dark:text-slate-400">
-                Auto-save print settings
+                Auto-route optimization
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600 dark:text-slate-400">
-                Print quality optimization
+                High-resolution map
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600 dark:text-slate-400">
-                Color calibration
+                Print-ready format
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
             </div>
@@ -165,11 +177,11 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Card className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Cards</span>
+            <MapPin className="h-3 w-3 text-slate-500" />
+            <span className="text-[10px] text-slate-600 dark:text-slate-400">Locations</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {cards.length}
+            {locations.length}
           </div>
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
@@ -201,68 +213,78 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
         </div>
       </div>
 
-      {/* Print Configuration */}
+      {/* Map Poster Configuration */}
       <div className="mb-4">
         <div className="p-4 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 mb-4">
           <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Print Configuration
+            Map Poster Configuration
           </h4>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
-                Paper Size
+                Poster Size
               </label>
               <select
-                value={config.paperSize}
-                onChange={(e) => setConfig({ ...config, paperSize: e.target.value as any })}
+                value={config.size}
+                onChange={(e) => setConfig({ ...config, size: e.target.value as any })}
                 className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
               >
-                <option value="A5">A5</option>
-                <option value="A4">A4</option>
-                <option value="Square">Square</option>
+                <option value="A3">A3</option>
+                <option value="A2">A2</option>
+                <option value="A1">A1</option>
                 <option value="Custom">Custom</option>
               </select>
             </div>
             <div>
               <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
-                Layout
+                Map Style
               </label>
               <select
-                value={config.layout}
-                onChange={(e) => setConfig({ ...config, layout: e.target.value as any })}
+                value={config.mapStyle}
+                onChange={(e) => setConfig({ ...config, mapStyle: e.target.value as any })}
                 className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
               >
-                <option value="single">Single</option>
-                <option value="grid">Grid</option>
-                <option value="collage">Collage</option>
+                <option value="satellite">Satellite</option>
+                <option value="terrain">Terrain</option>
+                <option value="street">Street</option>
+                <option value="minimal">Minimal</option>
               </select>
             </div>
-            <div>
-              <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
-                Orientation
+          </div>
+
+          <div className="mt-3 flex gap-3">
+            <div className="flex-1">
+              <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 mb-1">
+                <input
+                  type="checkbox"
+                  checked={config.showRoute}
+                  onChange={(e) => setConfig({ ...config, showRoute: e.target.checked })}
+                  className="rounded"
+                />
+                Show Route
               </label>
-              <select
-                value={config.orientation}
-                onChange={(e) => setConfig({ ...config, orientation: e.target.value as any })}
-                className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
-              >
-                <option value="portrait">Portrait</option>
-                <option value="landscape">Landscape</option>
-              </select>
             </div>
-            <div>
-              <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
-                Quality
+            <div className="flex-1">
+              <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 mb-1">
+                <input
+                  type="checkbox"
+                  checked={config.showLabels}
+                  onChange={(e) => setConfig({ ...config, showLabels: e.target.checked })}
+                  className="rounded"
+                />
+                Show Labels
               </label>
-              <select
-                value={config.quality}
-                onChange={(e) => setConfig({ ...config, quality: e.target.value as any })}
-                className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
-              >
-                <option value="standard">Standard</option>
-                <option value="high">High</option>
-                <option value="premium">Premium</option>
-              </select>
+            </div>
+            <div className="flex-1">
+              <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 mb-1">
+                <input
+                  type="checkbox"
+                  checked={config.showPhotos}
+                  onChange={(e) => setConfig({ ...config, showPhotos: e.target.checked })}
+                  className="rounded"
+                />
+                Show Photos
+              </label>
             </div>
           </div>
 
@@ -273,65 +295,76 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
             <input
               type="number"
               min="1"
-              max="100"
+              max="50"
               value={config.quantity}
               onChange={(e) => setConfig({ ...config, quantity: parseInt(e.target.value) })}
               className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
             />
           </div>
 
-          <div className="mt-3 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+          <div className="mt-3 p-3 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                 Total Price
               </span>
-              <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
+              <span className="text-lg font-bold text-emerald-600 dark:text-emerald-400">
                 ${totalPrice}
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              ${basePrice} per card × {config.quantity} copies × {selectedCount} cards
+              ${basePrice} per poster × {config.quantity} copies
             </p>
           </div>
         </div>
       </div>
 
-      {/* Card Selection */}
+      {/* Location Selection */}
       <div className="mb-4">
         <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Select Memories
+          Select Map Locations
         </h4>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {cards.map((card) => (
+        <div className="space-y-2">
+          {locations.map((location) => (
             <div
-              key={card.id}
+              key={location.id}
               className={`p-4 rounded-lg border-2 cursor-pointer transition-colors ${
-                card.isSelected
-                  ? 'bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800'
+                location.isSelected
+                  ? 'bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-800'
                   : 'bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600'
               }`}
-              onClick={() => handleToggleCard(card.id)}
+              onClick={() => handleToggleLocation(location.id)}
             >
-              <div className="aspect-square bg-slate-200 dark:bg-slate-600 rounded-lg mb-2 flex items-center justify-center">
-                <ImageIcon className="h-8 w-8 text-slate-400" />
-              </div>
-              <span className="text-sm font-medium text-slate-700 dark:text-slate-300 line-clamp-1">
-                {card.title}
-              </span>
-              <div className="text-xs text-slate-500 dark:text-slate-400">
-                {card.location}
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-12 h-12 bg-slate-200 dark:bg-slate-600 rounded-lg flex items-center justify-center">
+                    <MapPin className="h-6 w-6 text-slate-400" />
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                      {location.title}
+                    </span>
+                    <div className="text-xs text-slate-500 dark:text-slate-400">
+                      {formatDate(location.date)}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  {location.isSelected && (
+                    <CheckCircle className="h-4 w-4 text-emerald-500" />
+                  )}
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Preview */}
+      {/* Map Preview */}
       <div className="mb-4">
         <div className="p-4 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 mb-4">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              Preview
+              Map Preview
             </span>
             <div className="flex items-center gap-2">
               <button className="p-2 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 dark:hover:bg-slate-500 rounded-lg transition-colors">
@@ -343,38 +376,44 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
             </div>
           </div>
 
-          {/* Preview Area */}
-          <div
-            className={`aspect-[3/4] bg-slate-200 dark:bg-slate-600 rounded-lg mx-auto relative overflow-hidden ${
-              config.orientation === 'landscape' ? 'aspect-video' : 'aspect-[3/4]'
-            }`}
-            style={{ maxWidth: '300px' }}
-          >
+          {/* Map Preview Area */}
+          <div className="aspect-video bg-slate-200 dark:bg-slate-600 rounded-lg relative overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <Card className="h-12 w-12 text-slate-400 mx-auto mb-2" />
+                <Globe className="h-12 w-12 text-slate-400 mx-auto mb-2" />
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {config.paperSize} - {config.layout}
+                  {config.size} - {config.mapStyle}
                 </p>
                 <p className="text-xs text-slate-400 dark:text-slate-400">
-                  {config.quality} quality
+                  {config.showRoute ? 'With route' : 'No route'}
                 </p>
               </div>
             </div>
 
-            {/* Selected Cards Preview */}
-            {selectedCards.slice(0, 4).map((card, index) => (
+            {/* Map Pins */}
+            {selectedLocations.map((location, index) => (
               <div
-                key={card.id}
-                className="absolute w-12 h-12 bg-slate-300 dark:bg-slate-500 rounded-lg flex items-center justify-center"
+                key={location.id}
+                className="absolute w-4 h-4 bg-emerald-500 rounded-full"
                 style={{
-                  top: `${10 + index * 25}%`,
-                  left: `${10 + index * 20}%`,
+                  top: `${20 + index * 20}%`,
+                  left: `${20 + index * 25}%`,
                 }}
-              >
-                <ImageIcon className="h-6 w-6 text-slate-400" />
-              </div>
+              />
             ))}
+
+            {/* Route Line */}
+            {config.showRoute && selectedLocations.length > 1 && (
+              <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                <path
+                  d={`M ${selectedLocations[0]?.coordinates.lng || 50} ${selectedLocations[0]?.coordinates.lat || 50} L ${selectedLocations[1]?.coordinates.lng || 70} ${selectedLocations[1]?.coordinates.lat || 70}`}
+                  stroke="#10b981"
+                  strokeWidth="2"
+                  fill="none"
+                  className="opacity-50"
+                />
+              </svg>
+            )}
           </div>
         </div>
       </div>
@@ -403,7 +442,7 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
           type="button"
           onClick={handlePrint}
           disabled={isPrinting || selectedCount === 0}
-          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-400 to-indigo-500 hover:from-blue-500 hover:to-indigo-600 text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-500 hover:to-teal-600 text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPrinting ? (
             <>
@@ -413,15 +452,15 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
           ) : (
             <>
               <Printer className="h-4 w-4" />
-              Print Cards
+              Print Poster
             </>
           )}
         </button>
       </div>
 
-      <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900 rounded-lg">
-        <p className="text-[10px] text-blue-700 dark:text-blue-400">
-          <strong>Lưu ý:</strong> In thẻ kỷ niệm A5/A4 đẹp với paper size selection (A5/A4/Square/Custom), layout options (single/grid/collage), orientation (portrait/landscape), quality levels (standard/high/premium), quantity control, card selection, preview mode, pricing calculation, và comprehensive print memory cards system.
+      <div className="mt-4 p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-900 rounded-lg">
+        <p className="text-[10px] text-emerald-700 dark:text-emerald-400">
+          <strong>Lưu ý:</strong> In bản đồ hành trình dạng poster với poster size selection (A3/A2/A1/Custom), map style options (satellite/terrain/street/minimal), route visualization, labels, photo markers, location selection, preview mode, pricing calculation, auto-route optimization, high-resolution map, và comprehensive print map poster system.
         </p>
       </div>
     </div>

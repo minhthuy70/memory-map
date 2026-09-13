@@ -1,115 +1,129 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Printer, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, FlipHorizontal, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Card, CreditCard, Package, Truck, Clock as ClockIcon, DollarSign, AlertCircle, CopyRight } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Calendar as CalendarIcon, Clock as ClockIcon, Timeline, DollarSign, Printer, MapPin, User, Filter as FilterIcon, ArrowUp, ArrowDown, ChevronLeft, ChevronRight, DateRange, Year, CopyRight } from 'lucide-react';
 
-interface MemoryCard {
+interface TimelineEvent {
   id: string;
-  memoryId: string;
   title: string;
   description: string;
-  imageUrl: string;
   date: Date;
+  imageUrl: string;
   location: string;
   isSelected: boolean;
 }
 
-interface PrintConfig {
-  paperSize: 'A5' | 'A4' | 'Square' | 'Custom';
-  layout: 'single' | 'grid' | 'collage';
-  orientation: 'portrait' | 'landscape';
-  quality: 'standard' | 'high' | 'premium';
+interface PosterConfig {
+  size: 'A3' | 'A2' | 'A1' | 'Custom';
+  timeRange: 'year' | 'month' | 'all';
+  style: 'minimal' | 'colorful' | 'elegant' | 'modern';
+  layout: 'vertical' | 'horizontal' | 'spiral';
+  includePhotos: boolean;
+  includeLocations: boolean;
   quantity: number;
   totalPrice: number;
 }
 
-interface PrintMemoryCardsProps {
+interface PrintTimelinePosterProps {
   onCancel?: () => void;
-  onPrint?: (config: PrintConfig, cards: MemoryCard[]) => Promise<void>;
-  onPreview?: (config: PrintConfig, cards: MemoryCard[]) => Promise<void>;
+  onPrint?: (config: PosterConfig, events: TimelineEvent[]) => Promise<void>;
+  onPreview?: (config: PosterConfig, events: TimelineEvent[]) => Promise<void>;
 }
 
-const DEFAULT_CARDS: MemoryCard[] = [
+const DEFAULT_EVENTS: TimelineEvent[] = [
   {
-    id: 'card-1',
-    memoryId: 'mem-1',
-    title: 'Đà Lạt Adventure',
-    description: 'Morning mist at Đà Lạt',
-    imageUrl: '/card-1.jpg',
-    date: new Date('2024-01-12'),
-    location: 'Đà Lạt, Vietnam',
+    id: 'event-1',
+    title: 'Born',
+    description: 'The beginning of the journey',
+    date: new Date('1990-01-15'),
+    imageUrl: '/event-1.jpg',
+    location: 'Hanoi, Vietnam',
     isSelected: true,
   },
   {
-    id: 'card-2',
-    memoryId: 'mem-2',
-    title: 'Beach Day',
-    description: 'Relaxing at the beach',
-    imageUrl: '/card-2.jpg',
-    date: new Date('2024-02-15'),
-    location: 'Nha Trang, Vietnam',
+    id: 'event-2',
+    title: 'Graduation',
+    description: 'University graduation day',
+    date: new Date('2012-06-20'),
+    imageUrl: '/event-2.jpg',
+    location: 'Ho Chi Minh City, Vietnam',
+    isSelected: true,
+  },
+  {
+    id: 'event-3',
+    title: 'First Job',
+    description: 'Started working at Tech Corp',
+    date: new Date('2012-08-01'),
+    imageUrl: '/event-3.jpg',
+    location: 'Hanoi, Vietnam',
     isSelected: true,
   },
 ];
 
 const PRICING = {
-  A5: { standard: 5, high: 8, premium: 12 },
-  A4: { standard: 8, high: 12, premium: 18 },
-  Square: { standard: 4, high: 6, premium: 10 },
-  Custom: { standard: 10, high: 15, premium: 25 },
+  A3: 15,
+  A2: 25,
+  A1: 40,
+  Custom: 50,
 };
 
-export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: PrintMemoryCardsProps) {
-  const [cards, setCards] = useState<MemoryCard[]>(DEFAULT_CARDS);
+export default function PrintTimelinePoster({ onCancel, onPrint, onPreview }: PrintTimelinePosterProps) {
+  const [events, setEvents] = useState<TimelineEvent[]>(DEFAULT_EVENTS);
   const [showSettings, setShowSettings] = useState(false);
-  const [selectedCards, setSelectedCards] = useState<MemoryCard[]>(DEFAULT_CARDS.filter(c => c.isSelected));
-  const [config, setConfig] = useState<PrintConfig>({
-    paperSize: 'A5',
-    layout: 'single',
-    orientation: 'portrait',
-    quality: 'standard',
+  const [selectedEvents, setSelectedEvents] = useState<TimelineEvent[]>(DEFAULT_EVENTS.filter(e => e.isSelected));
+  const [config, setConfig] = useState<PosterConfig>({
+    size: 'A3',
+    timeRange: 'all',
+    style: 'modern',
+    layout: 'vertical',
+    includePhotos: true,
+    includeLocations: true,
     quantity: 1,
-    totalPrice: 5,
+    totalPrice: 15,
   });
   const [isPreviewing, setIsPreviewing] = useState(false);
   const [isPrinting, setIsPrinting] = useState(false);
 
-  const selectedCount = selectedCards.length;
-  const basePrice = PRICING[config.paperSize][config.quality];
-  const totalPrice = basePrice * config.quantity * selectedCount;
+  const selectedCount = selectedEvents.length;
+  const basePrice = PRICING[config.size];
+  const totalPrice = basePrice * config.quantity;
 
-  const handleToggleCard = (cardId: string) => {
-    setCards(cards.map(c => 
-      c.id === cardId ? { ...c, isSelected: !c.isSelected } : c
+  const handleToggleEvent = (eventId: string) => {
+    setEvents(events.map(e => 
+      e.id === eventId ? { ...e, isSelected: !e.isSelected } : e
     ));
-    setSelectedCards(cards.filter(c => c.id === cardId ? !c.isSelected : c.isSelected));
+    setSelectedEvents(events.filter(e => e.id === eventId ? !e.isSelected : e.isSelected));
   };
 
   const handlePrint = async () => {
     setIsPrinting(true);
-    await onPrint?.(config, selectedCards);
+    await onPrint?.(config, selectedEvents);
     setIsPrinting(false);
   };
 
   const handlePreview = async () => {
     setIsPreviewing(true);
-    await onPreview?.(config, selectedCards);
+    await onPreview?.(config, selectedEvents);
     setIsPreviewing(false);
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('vi-VN');
   };
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl">
-            <Printer className="h-5 w-5 text-white" />
+          <div className="p-2 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl">
+            <Timeline className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              In thẻ kỷ niệm A5/A4 đẹp
+              In poster timeline cuộc đời
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              {selectedCount} cards selected
+              {selectedCount} events selected
             </p>
           </div>
         </div>
@@ -134,26 +148,26 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
       </div>
 
       {showSettings && (
-        <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
+        <div className="mb-4 p-4 bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800 rounded-lg">
           <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Cài đặt in ấn
+            Cài đặt poster timeline
           </h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600 dark:text-slate-400">
-                Auto-save print settings
+                Auto-arrange timeline
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600 dark:text-slate-400">
-                Print quality optimization
+                High-resolution export
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600 dark:text-slate-400">
-                Color calibration
+                Print-ready format
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
             </div>
@@ -165,11 +179,11 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Card className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Cards</span>
+            <Timeline className="h-3 w-3 text-slate-500" />
+            <span className="text-[10px] text-slate-600 dark:text-slate-400">Events</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {cards.length}
+            {events.length}
           </div>
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
@@ -201,26 +215,55 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
         </div>
       </div>
 
-      {/* Print Configuration */}
+      {/* Poster Configuration */}
       <div className="mb-4">
         <div className="p-4 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 mb-4">
           <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Print Configuration
+            Poster Configuration
           </h4>
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
-                Paper Size
+                Poster Size
               </label>
               <select
-                value={config.paperSize}
-                onChange={(e) => setConfig({ ...config, paperSize: e.target.value as any })}
+                value={config.size}
+                onChange={(e) => setConfig({ ...config, size: e.target.value as any })}
                 className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
               >
-                <option value="A5">A5</option>
-                <option value="A4">A4</option>
-                <option value="Square">Square</option>
+                <option value="A3">A3</option>
+                <option value="A2">A2</option>
+                <option value="A1">A1</option>
                 <option value="Custom">Custom</option>
+              </select>
+            </div>
+            <div>
+              <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
+                Time Range
+              </label>
+              <select
+                value={config.timeRange}
+                onChange={(e) => setConfig({ ...config, timeRange: e.target.value as any })}
+                className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
+              >
+                <option value="year">By Year</option>
+                <option value="month">By Month</option>
+                <option value="all">All Time</option>
+              </select>
+            </div>
+            <div>
+              <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
+                Style
+              </label>
+              <select
+                value={config.style}
+                onChange={(e) => setConfig({ ...config, style: e.target.value as any })}
+                className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
+              >
+                <option value="minimal">Minimal</option>
+                <option value="colorful">Colorful</option>
+                <option value="elegant">Elegant</option>
+                <option value="modern">Modern</option>
               </select>
             </div>
             <div>
@@ -232,37 +275,35 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
                 onChange={(e) => setConfig({ ...config, layout: e.target.value as any })}
                 className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
               >
-                <option value="single">Single</option>
-                <option value="grid">Grid</option>
-                <option value="collage">Collage</option>
+                <option value="vertical">Vertical</option>
+                <option value="horizontal">Horizontal</option>
+                <option value="spiral">Spiral</option>
               </select>
             </div>
-            <div>
-              <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
-                Orientation
+          </div>
+
+          <div className="mt-3 flex gap-3">
+            <div className="flex-1">
+              <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 mb-1">
+                <input
+                  type="checkbox"
+                  checked={config.includePhotos}
+                  onChange={(e) => setConfig({ ...config, includePhotos: e.target.checked })}
+                  className="rounded"
+                />
+                Include Photos
               </label>
-              <select
-                value={config.orientation}
-                onChange={(e) => setConfig({ ...config, orientation: e.target.value as any })}
-                className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
-              >
-                <option value="portrait">Portrait</option>
-                <option value="landscape">Landscape</option>
-              </select>
             </div>
-            <div>
-              <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
-                Quality
+            <div className="flex-1">
+              <label className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-400 mb-1">
+                <input
+                  type="checkbox"
+                  checked={config.includeLocations}
+                  onChange={(e) => setConfig({ ...config, includeLocations: e.target.checked })}
+                  className="rounded"
+                />
+                Include Locations
               </label>
-              <select
-                value={config.quality}
-                onChange={(e) => setConfig({ ...config, quality: e.target.value as any })}
-                className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
-              >
-                <option value="standard">Standard</option>
-                <option value="high">High</option>
-                <option value="premium">Premium</option>
-              </select>
             </div>
           </div>
 
@@ -273,53 +314,64 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
             <input
               type="number"
               min="1"
-              max="100"
+              max="50"
               value={config.quantity}
               onChange={(e) => setConfig({ ...config, quantity: parseInt(e.target.value) })}
               className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
             />
           </div>
 
-          <div className="mt-3 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+          <div className="mt-3 p-3 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                 Total Price
               </span>
-              <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
+              <span className="text-lg font-bold text-purple-600 dark:text-purple-400">
                 ${totalPrice}
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              ${basePrice} per card × {config.quantity} copies × {selectedCount} cards
+              ${basePrice} per poster × {config.quantity} copies
             </p>
           </div>
         </div>
       </div>
 
-      {/* Card Selection */}
+      {/* Event Selection */}
       <div className="mb-4">
         <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Select Memories
+          Select Timeline Events
         </h4>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-          {cards.map((card) => (
+        <div className="space-y-2">
+          {events.map((event) => (
             <div
-              key={card.id}
+              key={event.id}
               className={`p-4 rounded-lg border-2 cursor-pointer transition-colors ${
-                card.isSelected
-                  ? 'bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800'
+                event.isSelected
+                  ? 'bg-purple-50 dark:bg-purple-950/30 border-purple-200 dark:border-purple-800'
                   : 'bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600'
               }`}
-              onClick={() => handleToggleCard(card.id)}
+              onClick={() => handleToggleEvent(event.id)}
             >
-              <div className="aspect-square bg-slate-200 dark:bg-slate-600 rounded-lg mb-2 flex items-center justify-center">
-                <ImageIcon className="h-8 w-8 text-slate-400" />
-              </div>
-              <span className="text-sm font-medium text-slate-700 dark:text-slate-300 line-clamp-1">
-                {card.title}
-              </span>
-              <div className="text-xs text-slate-500 dark:text-slate-400">
-                {card.location}
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-12 h-12 bg-slate-200 dark:bg-slate-600 rounded-lg flex items-center justify-center">
+                    <CalendarIcon className="h-6 w-6 text-slate-400" />
+                  </div>
+                  <div>
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                      {event.title}
+                    </span>
+                    <div className="text-xs text-slate-500 dark:text-slate-400">
+                      {formatDate(event.date)}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  {event.isSelected && (
+                    <CheckCircle className="h-4 w-4 text-purple-500" />
+                  )}
+                </div>
               </div>
             </div>
           ))}
@@ -331,7 +383,7 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
         <div className="p-4 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 mb-4">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              Preview
+              Timeline Preview
             </span>
             <div className="flex items-center gap-2">
               <button className="p-2 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 dark:hover:bg-slate-500 rounded-lg transition-colors">
@@ -343,37 +395,30 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
             </div>
           </div>
 
-          {/* Preview Area */}
-          <div
-            className={`aspect-[3/4] bg-slate-200 dark:bg-slate-600 rounded-lg mx-auto relative overflow-hidden ${
-              config.orientation === 'landscape' ? 'aspect-video' : 'aspect-[3/4]'
-            }`}
-            style={{ maxWidth: '300px' }}
-          >
+          {/* Timeline Preview Area */}
+          <div className="aspect-[3/4] bg-slate-200 dark:bg-slate-600 rounded-lg relative overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <Card className="h-12 w-12 text-slate-400 mx-auto mb-2" />
+                <Timeline className="h-12 w-12 text-slate-400 mx-auto mb-2" />
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {config.paperSize} - {config.layout}
+                  {config.size} - {config.style}
                 </p>
                 <p className="text-xs text-slate-400 dark:text-slate-400">
-                  {config.quality} quality
+                  {config.layout} layout
                 </p>
               </div>
             </div>
 
-            {/* Selected Cards Preview */}
-            {selectedCards.slice(0, 4).map((card, index) => (
+            {/* Timeline Points */}
+            {selectedEvents.map((event, index) => (
               <div
-                key={card.id}
-                className="absolute w-12 h-12 bg-slate-300 dark:bg-slate-500 rounded-lg flex items-center justify-center"
+                key={event.id}
+                className="absolute w-4 h-4 bg-purple-500 rounded-full"
                 style={{
-                  top: `${10 + index * 25}%`,
-                  left: `${10 + index * 20}%`,
+                  top: `${15 + index * 25}%`,
+                  left: config.layout === 'horizontal' ? `${15 + index * 25}%` : '50%',
                 }}
-              >
-                <ImageIcon className="h-6 w-6 text-slate-400" />
-              </div>
+              />
             ))}
           </div>
         </div>
@@ -403,7 +448,7 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
           type="button"
           onClick={handlePrint}
           disabled={isPrinting || selectedCount === 0}
-          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-400 to-indigo-500 hover:from-blue-500 hover:to-indigo-600 text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-400 to-pink-500 hover:from-purple-500 hover:to-pink-600 text-white text-sm font-semibold rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isPrinting ? (
             <>
@@ -413,15 +458,15 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
           ) : (
             <>
               <Printer className="h-4 w-4" />
-              Print Cards
+              Print Poster
             </>
           )}
         </button>
       </div>
 
-      <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900 rounded-lg">
-        <p className="text-[10px] text-blue-700 dark:text-blue-400">
-          <strong>Lưu ý:</strong> In thẻ kỷ niệm A5/A4 đẹp với paper size selection (A5/A4/Square/Custom), layout options (single/grid/collage), orientation (portrait/landscape), quality levels (standard/high/premium), quantity control, card selection, preview mode, pricing calculation, và comprehensive print memory cards system.
+      <div className="mt-4 p-3 bg-purple-50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-900 rounded-lg">
+        <p className="text-[10px] text-purple-700 dark:text-purple-400">
+          <strong>Lưu ý:</strong> In poster timeline cuộc đời với poster size selection (A3/A2/A1/Custom), time range options (year/month/all), style variants (minimal/colorful/elegant/modern), layout options (vertical/horizontal/spiral), photo/location inclusion, event selection, preview mode, pricing calculation, và comprehensive print timeline poster system.
         </p>
       </div>
     </div>
