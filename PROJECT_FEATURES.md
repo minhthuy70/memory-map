@@ -1004,12 +1004,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Haptic feedback - Phản hồi xúc giác với Vibration API, customizable haptic patterns (success/warning/error/light/medium/heavy), intensity control, và system haptics (HapticFeedback component - 364 lines)
  
 26.3. Native UI Components (Component UI native)
-[ ] - Native navigation - Điều hướng native (NativeNavigation component - placeholder)
-[ ] - Native modals - Modal native (NativeModals component - placeholder)
-[ ] - Native pull-to-refresh - Pull-to-refresh native (NativePullToRefresh component - placeholder)
-[ ] - Native scroll behavior - Hành vi cuộn native (NativeScrollBehavior component - placeholder)
-[ ] - Native gestures - Cử chỉ native (NativeGestures component - placeholder)
-[ ] - Native animations - Animation native (NativeAnimations component - placeholder)
+[x] - Native navigation - Điều hướng native với stack navigation, tab bar, bottom sheet, customizable transitions (push/pop/modal/replace), và animation controls (NativeNavigation component - 362 lines)
+[x] - Native modals - Modal native với sheet/fullscreen/alert/popover/bottomsheet presentation, animation, dismissal options (swipe/background tap), và modal management (NativeModals component - 378 lines)
+[x] - Native pull-to-refresh - Pull-to-refresh native với configurable threshold, animation, pull distance tracking, refresh history, success rate monitoring, và auto-refresh support (NativePullToRefresh component - 340 lines)
+[x] - Native scroll behavior - Hành vi cuộn native với bounce effects, momentum scrolling, configurable damping/deceleration rate, scroll position tracking, direction monitoring, và scroll metrics (NativeScrollBehavior component - 329 lines)
+[x] - Native gestures - Cử chỉ native với tap/longPress/swipe/pinch/pan/rotate recognizers, configurable thresholds (tap duration, long press duration, swipe velocity), gesture event logging, và direction/scale tracking (NativeGestures component - 401 lines)
+[x] - Native animations - Animation native với fade/slide/scale/rotate/spring/parallax types, easing functions (linear/easeIn/easeOut/easeInOut/spring), hardware acceleration, Core Animation support, và animation management (NativeAnimations component - 401 lines)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 680
+Số lượng tính năng đã implement: 686
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 368
+Số lượng tính năng tương lai: 362
  
 Last Updated: 2026-09-13
-Version: 9.3
+Version: 9.4
