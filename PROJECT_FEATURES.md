@@ -1149,18 +1149,18 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 31.1. AR Memory Viewer (Xem kỷ niệm AR)
-[ ] - AR memory overlay on camera - Hiển thị kỷ niệm overlay qua camera khi đến địa điểm cũ
-[ ] - AR location pins - Pin kỷ niệm AR xuất hiện khi trỏ camera vào hướng
-[ ] - AR memory replay - Phát lại kỷ niệm bằng AR tại địa điểm gốc
-[ ] - AR photo comparison - So sánh ảnh xưa và nay bằng AR (then vs now)
-[ ] - AR memory cloud - Đám mây kỷ niệm nổi 3D tại điểm hotspot
+[x] - AR memory overlay on camera - Hiển thị kỷ niệm overlay qua camera khi đến địa điểm cũ (camera AR integration, GPS location tracking, compass direction, distance calculation, memory overlay pins, opacity adjustment, auto-detect location, show/hide overlays, AR view with crosshair)
+[x] - AR location pins - Pin kỷ niệm AR xuất hiện khi trỏ camera vào hướng (AR direction view, GPS coordinates, distance/angle calculation, pin color customization, pin size adjustment, visibility toggle, auto-update position, compass directions, show in direction mode)
+[x] - AR memory replay - Phát lại kỷ niệm bằng AR tại địa điểm gốc (location detection, auto-play at location, AR overlay when at location, playback controls play/pause/skip, progress tracking, volume adjustment, favorite system, loop playback, media type support image/video/audio)
+[x] - AR photo comparison - So sánh ảnh xưa và nay bằng AR (then vs now) (split view adjustable, overlay mode opacity control, side-by-side view, auto-align photos, similarity detection, AR alignment, time span calculation, favorite system, split position adjustment)
+[x] - AR memory cloud - Đám mây kỷ niệm nổi 3D tại điểm hotspot (3D cloud rendering, particle effects, rotation speed control, scale adjustment, hotspot management, GPS coordinates, cloud color customization, auto-rotate, visibility toggle, memory cloud visualization)
  
 31.2. AR Creation (Tạo nội dung AR)
-[ ] - AR stickers on photos - Dán sticker AR lên ảnh kỷ niệm
-[ ] - AR text annotations - Ghi chú AR 3D floating trên ảnh
-[ ] - AR face filters on memory photos - Filter khuôn mặt AR cho ảnh kỷ niệm
-[ ] - AR location marker placement - Đặt marker AR tại vị trí thực tế
-[ ] - AR time capsule - Tạo time capsule AR chỉ mở được tại địa điểm và thời gian nhất định
+[x] - AR stickers on photos - Dán sticker AR lên ảnh kỷ niệm (emoji library, custom stickers, animated stickers, sticker positioning x/y, size adjustment, rotation control, opacity adjustment, lock/unlock stickers, visibility toggle, sticker editing)
+[x] - AR text annotations - Ghi chú AR 3D floating trên ảnh (3D floating mode, text positioning x/y/z, font family selection, font styling bold/italic/underline, text alignment left/center/right, color customization, background color, opacity adjustment, lock/unlock annotations, visibility toggle)
+[x] - AR face filters on memory photos - Filter khuôn mặt AR cho ảnh kỷ niệm (face detection, face tracking, filter presets masks/accessories/effects/colors, intensity adjustment, opacity control, lock/unlock filters, visibility toggle, real-time rendering, color customization)
+[x] - AR location marker placement - Đặt marker AR tại vị trí thực tế (AR placement mode, GPS coordinates, altitude tracking, marker types landmark/waypoint/hotspot/checkpoint, permanent/temporary markers, visibility toggle, marker icon customization, size adjustment, location management)
+[x] - AR time capsule - Tạo time capsule AR chỉ mở được tại địa điểm và thời gian nhất định (location verification GPS coordinates, time verification open/close dates, accessibility radius, max open attempts, lock/unlock capsules, AR placement, content management)
  
 31.3. WebXR Integration (Tích hợp WebXR)
 [x] - WebXR API integration - Tích hợp WebXR API cho trình duyệt (device scanning, VR/AR device management, battery/signal monitoring, session management, immersive mode, auto-connect)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 765
+Số lượng tính năng đã implement: 775
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 283
+Số lượng tính năng tương lai: 273
  
 Last Updated: 2026-09-14
-Version: 10.8
+Version: 10.9
