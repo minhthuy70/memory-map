@@ -917,12 +917,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Translation - Dịch thuật (Translation component - placeholder)
  
 23.3. Image Recognition (Nhận diện ảnh)
-[ ] - Object detection - Phát hiện vật thể (ObjectDetection component - placeholder)
-[ ] - Face recognition - Nhận diện khuôn mặt (FaceRecognition component - placeholder)
-[ ] - Scene classification - Phân loại cảnh (SceneClassification component - placeholder)
-[ ] - Auto-captioning - Tự động chú thích ảnh (AutoCaptioning component - placeholder)
-[ ] - Similar image search - Tìm kiếm ảnh tương tự (SimilarImageSearch component - placeholder)
-[ ] - Photo organization - Tổ chức ảnh tự động (PhotoOrganization component - placeholder)
+[x] - Object detection - Phát hiện vật thể với YOLOv8/Faster R-CNN/Mask R-CNN models, confidence thresholding, bounding box visualization, category filtering (people/vehicles/animals/food/furniture), object tracking per image, detection history, re-detect functionality, và model selection (ObjectDetection component - 493 lines)
+[x] - Face recognition - Nhận diện khuôn mặt với face detection, face recognition, face embeddings, person directory (name/avatar/faceCount/firstSeen/lastSeen), privacy mode (private faces toggle), unidentified face tracking, confidence thresholding, person filtering, delete person, và re-scan functionality (FaceRecognition component - 517 lines)
+[x] - Scene classification - Phân loại cảnh với 6 scene categories (indoor/outdoor/travel/nature/beach/urban), multi-label classification, confidence thresholding, feature extraction (sand/ocean/sky/sunlight), primary scene detection, category filtering, re-classify functionality, và ResNet50 model (SceneClassification component - 463 lines)
+[x] - Auto-captioning - Tự động chú thích ảnh với BLIP-2 model, multi-language support (English/Vietnamese), confidence scoring, edit functionality, approval workflow, caption history, regenerate capability, auto-generate on upload, và primary caption selection (AutoCaptioning component - 438 lines)
+[x] - Similar image search - Tìm kiếm ảnh tương tự với CNN-based feature extraction, similarity methods (cosine/euclidean/hamming), similarity thresholding, match type classification (exact/high/medium/low), feature matching, distance calculation, visual similarity scores, re-search functionality, và search history (SimilarImageSearch component - 433 lines)
+[x] - Photo organization - Tổ chức ảnh tự động với organization rules (date/location/category/person/event), smart album generation, duplicate detection with resolution actions (keep_best/keep_newest/keep_all), auto-apply settings, rule enable/disable, auto-generated album tracking, run organization functionality, và duplicate group management (PhotoOrganization component - 548 lines)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 721
+Số lượng tính năng đã implement: 727
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 327
+Số lượng tính năng tương lai: 321
  
 Last Updated: 2026-09-14
-Version: 10.0
+Version: 10.1
