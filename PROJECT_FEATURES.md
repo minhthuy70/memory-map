@@ -1333,13 +1333,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 37.1. Visual Accessibility (Khả năng truy cập thị giác)
-[ ] - High contrast mode - Chế độ tương phản cao
-[ ] - Large text mode - Chế độ chữ to
-[ ] - Color blind mode - Chế độ mù màu (Deuteranopia/Protanopia/Tritanopia)
-[ ] - Reduce motion mode - Chế độ giảm chuyển động (cho người nhạy cảm)
-[ ] - Screen magnifier support - Hỗ trợ kính lúp màn hình
-[ ] - Custom font size slider - Thanh chỉnh kích thước chữ
-[ ] - Focus indicator enhancement - Tăng cường chỉ báo focus bàn phím
+[x] - High contrast mode - Chế độ tương phản cao (HighContrastMode.tsx: contrast themes with name/description/foreground/background/accent, enable/disable per theme, theme creation/deletion, test contrast functionality, total/default/custom/active metrics, contrast preview with sample text/button, comprehensive high contrast mode for visual accessibility)
+[x] - Large text mode - Chế độ chữ to (LargeTextMode.tsx: text size presets with name/description/fontSize/lineHeight, enable/disable per preset, increase/decrease font size, custom font size/line height, reset to default, total/preset/font/line/scale metrics, text preview with applied settings, comprehensive large text mode for readability)
+[x] - Color blind mode - Chế độ mù màu (ColorBlindMode.tsx: color blind modes with name/description/type/simulationLevel, types deuteranopia/protanopia/tritanopia/achromatopsia, enable/disable per mode, custom mode creation/deletion, simulation level adjustment, color preview with sample colors, comprehensive color blind mode support)
+[x] - Reduce motion mode - Chế độ giảm chuyển động (ReduceMotionMode.tsx: motion settings with name/description/category, categories animation/transition/scroll/parallax, enable/disable per setting, reduce all/restore all functionality, category filtering, test motion reduction, total/reduced/normal/coverage metrics, comprehensive reduce motion mode for sensitive users)
+[x] - Screen magnifier support - Hỗ trợ kính lúp màn hình (ScreenMagnifierSupport.tsx: magnifier presets with name/description/zoomLevel, enable/disable per preset, zoom in/out controls, custom zoom level 100-500%, lens size 100-300px, follow cursor toggle, test magnifier functionality, total/zoom/lens/follow metrics, zoom preview with sample text, comprehensive screen magnifier support)
+[x] - Custom font size slider - Thanh chỉnh kích thước chữ (CustomFontSizeSlider.tsx: font size elements with name/element/currentSize/minSize/maxSize/unit, per-element size adjustment, global multiplier 0.5-2x, reset to defaults, test slider functionality, total/avg/multiplier/unit metrics, font preview with all element types, comprehensive custom font size slider)
+[x] - Focus indicator enhancement - Tăng cường chỉ báo focus bàn phím (FocusIndicatorEnhancement.tsx: focus styles with name/description/color/width/style/offset, border styles solid/dashed/dotted/double, enable/disable per style, custom style creation/deletion, test focus functionality, total/active/width/offset metrics, focus preview with button/input/element, comprehensive focus indicator enhancement)
  
 37.2. Motor Accessibility (Khả năng truy cập vận động)
 [x] - Switch control support - Hỗ trợ switch control (người dùng khuyết tật vận động) (SwitchControlSupport.tsx: switch actions with name/action/keyBinding, enable/disable per action, scan speed control 10-100%, category filtering, custom action creation/delete, test scan functionality, total/active/custom metrics tracking, comprehensive switch control for motor accessibility)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 905 (86.4%)
+Số lượng tính năng đã implement: 912 (87.0%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 143
+Số lượng tính năng tương lai: 136
  
 Last Updated: 2026-09-14
-Version: 12.4
+Version: 12.5
