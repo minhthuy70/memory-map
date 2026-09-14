@@ -1342,12 +1342,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Focus indicator enhancement - Tăng cường chỉ báo focus bàn phím
  
 37.2. Motor Accessibility (Khả năng truy cập vận động)
-[ ] - Switch control support - Hỗ trợ switch control (người dùng khuyết tật vận động)
-[ ] - Voice control full support - Hỗ trợ đầy đủ điều khiển giọng nói
-[ ] - Sticky keys support - Hỗ trợ phím dính (Sticky Keys)
-[ ] - Large click targets (44px+) - Vùng click lớn tối thiểu 44px
-[ ] - Gesture alternatives - Thay thế cử chỉ bằng nút bấm
-[ ] - Dwell clicking support - Hỗ trợ click bằng cách di chuột (dwell)
+[x] - Switch control support - Hỗ trợ switch control (người dùng khuyết tật vận động) (SwitchControlSupport.tsx: switch actions with name/action/keyBinding, enable/disable per action, scan speed control 10-100%, category filtering, custom action creation/delete, test scan functionality, total/active/custom metrics tracking, comprehensive switch control for motor accessibility)
+[x] - Voice control full support - Hỗ trợ đầy đủ điều khiển giọng nói (VoiceControlSupport.tsx: voice commands with phrase/action/category/confidence, start/stop listening with visual feedback, category filtering, custom command creation/delete, toggle enable per command, total/active/custom/avg confidence metrics, comprehensive voice control for hands-free operation)
+[x] - Sticky keys support - Hỗ trợ phím dính (Sticky Keys) (StickyKeysSupport.tsx: sticky key config for shift/ctrl/alt/windows modifiers, timeout configuration 3-30s, sound/visual feedback toggle, global enable/disable, test sticky keys functionality, total/sticky/sound/visual metrics tracking, comprehensive sticky keys for easier keyboard input)
+[x] - Large click targets (44px+) - Vùng click lớn tối thiểu 44px (LargeClickTargets.tsx: click target config with element/type/currentSize/minSize, WCAG 2.2 compliance tracking (44px minimum), compliant/non-compliant status, size adjustment per element, global min size apply to all, total/compliant/non-compliant metrics, comprehensive large click target implementation)
+[x] - Gesture alternatives - Thay thế cử chỉ bằng nút bấm (GestureAlternatives.tsx: gesture alternatives with gesture/description/alternativeType/alternativeControl, alternative types button/switch/toggle/slider, toggle enable per alternative, custom alternative creation/delete, type filtering, total/active/custom/covered metrics, alternative control type overview, comprehensive gesture alternatives for touch accessibility)
+[x] - Dwell clicking support - Hỗ trợ click bằng cách di chuột (dwell) (DwellClickingSupport.tsx: dwell config with element/dwellTime/feedback options, dwell time 0.5-5s adjustable, visual/sound/progress feedback toggle, global enable/disable, test dwell clicking, total/enabled/visual/avg dwell time metrics, feedback options management, comprehensive dwell clicking for motor-impaired users)
  
 37.3. Cognitive Accessibility (Khả năng truy cập nhận thức)
 [x] - Simplified mode - Chế độ đơn giản hóa giao diện (SimplifiedMode.tsx: minimal navigation with hidden advanced menu items, large text option, high contrast colors, hide complex features, single column layout, reduce animations/disabled transitions, global toggle for all settings, individual setting controls, interface preview showing simplified vs full mode, toggle per setting, comprehensive simplified mode for cognitive ease)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 899 (85.8%)
+Số lượng tính năng đã implement: 905 (86.4%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 149
+Số lượng tính năng tương lai: 143
  
 Last Updated: 2026-09-14
-Version: 12.3
+Version: 12.4
