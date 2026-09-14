@@ -1350,12 +1350,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Dwell clicking support - Hỗ trợ click bằng cách di chuột (dwell)
  
 37.3. Cognitive Accessibility (Khả năng truy cập nhận thức)
-[ ] - Simplified mode - Chế độ đơn giản hóa giao diện
-[ ] - Reading guide overlay - Đường dẫn đọc overlay trên màn hình
-[ ] - Dyslexia-friendly font - Phông chữ thân thiện người dyslexia (OpenDyslexic)
-[ ] - Content warnings - Cảnh báo nội dung nhạy cảm
-[ ] - Progress save at every step - Tự động lưu tiến trình mọi bước
-[ ] - Undo/redo everywhere - Undo/Redo toàn diện mọi thao tác
+[x] - Simplified mode - Chế độ đơn giản hóa giao diện (SimplifiedMode.tsx: minimal navigation with hidden advanced menu items, large text option, high contrast colors, hide complex features, single column layout, reduce animations/disabled transitions, global toggle for all settings, individual setting controls, interface preview showing simplified vs full mode, toggle per setting, comprehensive simplified mode for cognitive ease)
+[x] - Reading guide overlay - Đường dẫn đọc overlay trên màn hình (ReadingGuideOverlay.tsx: configurable guide height 1-5 lines, guide opacity 10-80%, guide color options yellow/blue/green/pink/orange, auto-follow cursor/scroll toggle, enable/disable per setting, real-time preview showing guide overlay on sample text, slider controls for height/opacity, color selection, comprehensive reading guide for dyslexic users)
+[x] - Dyslexia-friendly font - Phông chữ thân thiện người dyslexia (DyslexiaFriendlyFont.tsx: font selection OpenDyslexic/Arial/Verdana/Comic Sans MS, font size 14-24px adjustable, letter spacing 0-3px, line height 1.2-2.2, word spacing 0-2px, enable/disable per setting, real-time text preview with applied settings, slider controls for each typography parameter, comprehensive dyslexia-friendly typography system)
+[x] - Content warnings - Cảnh báo nội dung nhạy cảm (ContentWarnings.tsx: warning rules with types sensitive/trigger/mature/graphic, severity levels low/medium/high, auto-block toggle per rule, enable/disable per rule, warning history with action showed/blocked and timestamp, user acknowledgment tracking, custom rule creation, delete custom rules, warning level color coding, comprehensive content warning system)
+[x] - Progress save at every step - Tự động lưu tiến trình mọi bước (ProgressSave.tsx: auto-save enabled/disabled toggle, configurable interval 15s/30s/1m/2m/5m, saved progress tracking with type memory/form/wizard/upload, storage usage calculation with formatBytes, restore progress functionality, delete individual saved items, clear all saved items, export all saved progress, save history with timestamps, IndexedDB storage for persistence, auto-cleanup old saves 30 days, max 20 items per type, comprehensive auto-save system)
+[x] - Undo/redo everywhere - Undo/Redo toàn diện mọi thao tác (UndoRedoEverywhere.tsx: global undo/redo toggle, configurable max history 10/25/50/100 actions, undo stack with action types create/edit/delete/move/change, redo stack for restored actions, action history with description/timestamp/type, clear history functionality, keyboard shortcuts Ctrl+Z/Ctrl+Y, action type icons and color coding, action count indicators, comprehensive global undo/redo system)
  
 37.4. WCAG 2.2 Compliance (Tuân thủ WCAG 2.2)
 [ ] - Level AA compliance - Tuân thủ WCAG 2.2 Level AA đầy đủ
