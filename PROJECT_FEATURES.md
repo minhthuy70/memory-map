@@ -1087,12 +1087,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Hidden achievements - Thành tích ẩn được mở khóa bất ngờ
  
 29.2. Leaderboards (Bảng xếp hạng)
-[ ] - Global leaderboard - Bảng xếp hạng toàn cầu theo XP
-[ ] - Friends leaderboard - Bảng xếp hạng bạn bè
-[ ] - Regional leaderboard - Bảng xếp hạng theo khu vực
-[ ] - Monthly leaderboard - Bảng xếp hạng hàng tháng
-[ ] - Category leaderboard - Bảng xếp hạng theo danh mục (du lịch nhiều nhất, ảnh đẹp nhất)
-[ ] - Leaderboard history - Lịch sử vị trí trên bảng xếp hạng
+[x] - Global leaderboard - Bảng xếp hạng toàn cầu theo XP (GlobalLeaderboard.tsx: time range all/week/month/year, region filtering NA/EU/Asia/SA/OC/AF, sort by XP/level/streak, search by username, show top 10 toggle, rank icons for top 3, change indicators, badges display, streak tracking, user entry with my rank highlight, statistics display, refresh functionality)
+[x] - Friends leaderboard - Bảng xếp hạng bạn bè (FriendsLeaderboard.tsx: time range all/week/month, sort by XP/level/friendship, show offline toggle, search friends, friend add/remove functionality, friendship level tracking, online/away/offline status, last active time, message/social buttons, invite friends modal with email/share, my rank highlight, friendship stats)
+[x] - Regional leaderboard - Bảng xếp hạng theo khu vực (RegionalLeaderboard.tsx: region selection NA/EU/Asia/SA/OC/AF with user counts, time range all/week/month, sort by XP/level/score, search by username/city, city and country display, change indicators, regional icons with color coding, my region highlight, score metric, regional statistics, refresh functionality)
+[x] - Monthly leaderboard - Bảng xếp hạng hàng tháng (MonthlyLeaderboard.tsx: month/year navigation with prev/next buttons, time range all/week/month, sort by total XP/XP gained/activities, show current/previous toggle, search by username, monthly badges and activities tracking, change indicators, XP gained display, monthly rewards structure, my rank highlight, monthly statistics)
+[x] - Category leaderboard - Bảng xếp hạng theo danh mục (du lịch nhiều nhất, ảnh đẹp nhất) (CategoryLeaderboard.tsx: 5 categories travel/photos/social/creativity/consistency with icons and colors, category selection grid, sort by score/change, search by username, metric display (countries/photos/shares/words/days), badge system per category, category-specific rewards, my rank in selected category, category statistics)
+[x] - Leaderboard history - Lịch sử vị trí trên bảng xếp hạng (LeaderboardHistory.tsx: leaderboard type filtering global/friends/regional/monthly/category, time range week/month/quarter/year, sort by date/rank/XP gained, rank trend graph visualization, change indicators, XP gained tracking, badge display, stats calculation best/worst/average rank, improvements/declines count, export CSV/share functionality, tips to improve rank)
  
 29.3. Rewards & Incentives (Phần thưởng & Khuyến khích)
 [x] - Virtual trophies - Cúp ảo sưu tập được (VirtualTrophies.tsx: 12 trophies with rarity levels common/rare/epic/legendary, categories exploration/creativity/consistency/social/special, progress tracking, unlock status, show/hide locked trophies, category/rarity filtering, sort by newest/oldest/rarity, trophy details modal with share/download, visual trophy grid with icons)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 811 (77.4%)
+Số lượng tính năng đã implement: 817 (77.9%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 237
+Số lượng tính năng tương lai: 231
  
 Last Updated: 2026-09-14
-Version: 11.3
+Version: 11.4
