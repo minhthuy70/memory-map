@@ -1275,11 +1275,11 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 35.1. Data Ownership (Sở hữu dữ liệu)
-[ ] - Decentralized storage option - Tùy chọn lưu trữ phi tập trung (IPFS/Arweave)
-[ ] - Self-hosted data export - Xuất toàn bộ dữ liệu để tự lưu trữ
-[ ] - Data portability guarantee - Cam kết khả năng di chuyển dữ liệu
-[ ] - Zero-knowledge proof auth - Xác thực không tiết lộ thông tin (ZKP)
-[ ] - Encrypted backup with user key - Sao lưu mã hóa bằng khóa riêng của người dùng
+[x] - Decentralized storage option - Tùy chọn lưu trữ phi tập trung (IPFS/Arweave) (DecentralizedStorageOption.tsx: storage providers with name/type/icon/isEnabled/storageUsed/storageLimit/costPerGB/replication/isActive, enable/disable providers, upload to decentralized storage with CID tracking, stored files management, enable/disable decentralized storage, total/active/files/storage metrics, comprehensive decentralized storage (IPFS/Arweave/Filecoin/Storj))
+[x] - Self-hosted data export - Xuất toàn bộ dữ liệu để tự lưu trữ (SelfHostedDataExport.tsx: export formats with name/extension/description/icon/isEnabled, data categories with name/count/size/isSelected, export records with format/fileSize/itemCount/exportedAt/status/downloadUrl, enable/disable formats, select/deselect categories, export/download data, total/exports/size/items/formats metrics, comprehensive self-hosted data export (JSON/CSV/ZIP/SQLite))
+[x] - Data portability guarantee - Cam kết khả năng di chuyển dữ liệu (DataPortabilityGuarantee.tsx: portability features with name/description/isSupported/compliance, portability requests with type/platform/status/requestedAt/dataSize, supported platforms with export/import/transfer support, enable/disable features, request export/import/transfer, GDPR/CCPA/PDPA/LGPD compliance, total/features/supported/requests/platforms metrics, comprehensive data portability guarantee)
+[x] - Zero-knowledge proof auth - Xác thực không tiết lộ thông tin (ZKP) (ZeroKnowledgeProofAuth.tsx: ZKP methods with name/description/isEnabled/verificationTime/securityLevel, ZKP verifications with userId/userName/method/status/timestamp/proofHash, ZKP config with enableZKP/requireProof/proofTimeout/maxAttempts, enable/disable methods, generate/verify proofs, configuration management, total/methods/active/verifications/successRate metrics, comprehensive zero-knowledge proof auth (ZK-SNARK/ZK-STARK/Bulletproofs/Ring Signatures))
+[x] - Encrypted backup with user key - Sao lưu mã hóa bằng khóa riêng của người dùng (EncryptedBackupWithUserKey.tsx: backup keys with name/algorithm/keyLength/createdAt/lastUsed/isActive, encrypted backups with name/size/keyId/algorithm/createdAt/status/backupUrl/checksum, encryption config with algorithm/keyLength/compression/checksum, toggle key active, generate/restore backups, create encrypted backups, show/hide keys, total/keys/active/backups/size metrics, comprehensive encrypted backup with user key (AES-256/ChaCha20/RSA))
  
 35.2. NFT & Digital Collectibles (NFT & Vật phẩm số)
 [x] - Mint memory as NFT - Đúc kỷ niệm thành NFT trên blockchain (MintMemoryAsNFT.tsx: memories with title/description/image/date/location/isMinted, mint to blockchain with token ID/contractAddress/blockchain/transactionHash, blockchain selection (Ethereum/Polygon/Solana/BSC), minted NFTs tracking, enable/disable minting, total/minted/NFTs/blockchains metrics, comprehensive NFT minting system)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 943 (90.0%)
+Số lượng tính năng đã implement: 948 (90.5%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 105
+Số lượng tính năng tương lai: 100
  
 Last Updated: 2026-09-14
-Version: 13.0
+Version: 13.1
