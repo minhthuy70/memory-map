@@ -1095,12 +1095,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Leaderboard history - Lịch sử vị trí trên bảng xếp hạng
  
 29.3. Rewards & Incentives (Phần thưởng & Khuyến khích)
-[ ] - Virtual trophies - Cúp ảo sưu tập được
-[ ] - Memory coins - Đồng xu kỷ niệm (dùng để mở khóa themes, stickers)
-[ ] - Spin-the-wheel daily reward - Quay vòng phần thưởng hàng ngày
-[ ] - Referral rewards - Phần thưởng giới thiệu bạn bè
-[ ] - Premium trial unlock - Mở khóa dùng thử premium bằng thành tích
-[ ] - Seasonal events - Sự kiện theo mùa (Tết, Giáng sinh, kỷ niệm ngày đặc biệt)
+[x] - Virtual trophies - Cúp ảo sưu tập được (VirtualTrophies.tsx: 12 trophies with rarity levels common/rare/epic/legendary, categories exploration/creativity/consistency/social/special, progress tracking, unlock status, show/hide locked trophies, category/rarity filtering, sort by newest/oldest/rarity, trophy details modal with share/download, visual trophy grid with icons)
+[x] - Memory coins - Đồng xu kỷ niệm (dùng để mở khóa themes, stickers) (MemoryCoins.tsx: coin balance tracking, transaction history with earned/spent/bonus types, item shop with themes/stickers/badges/effects categories, purchase functionality, coin earning methods, transaction filtering, sort by price/name, item purchase with balance check, earned/spent tracking)
+[x] - Spin-the-wheel daily reward - Quay vòng phần thưởng hàng ngày (SpinTheWheelDailyReward.tsx: 8 prize segments with different probabilities, spin animation with visual wheel, streak bonus system up to 30 days, spins available tracking, prize reveal modal, probability display, next spin countdown, spin history, streak progress visualization, base reward 50-500 coins, bonus items sticker packs/themes)
+[x] - Referral rewards - Phần thưởng giới thiệu bạn bè (ReferralRewards.tsx: unique referral code/link generation, share to Twitter/Facebook/Email/WhatsApp, referral tracking with status pending/completed/rewarded, tier system Bronze/Silver/Gold/Platinum with multipliers 1x/1.25x/1.5x/2x, base reward 500 coins per referral, referral history with join dates, total earnings tracking, QR code generation, reward structure display, pro tips)
+[x] - Premium trial unlock - Mở khóa dùng thử premium bằng thành tích (PremiumTrialUnlock.tsx: 8 achievements with trial day rewards 7-30 days, achievement categories exploration/creativity/consistency/social, progress tracking, claim functionality for completed achievements, trial days available/used/total tracking, achievement filtering by category, sort by trial days/progress, premium features list, tips to earn more trial days, visual progress indicators)
+[x] - Seasonal events - Sự kiện theo mùa (Tết, Giáng sinh, kỷ niệm ngày đặc biệt) (SeasonalEvents.tsx: 6 seasonal events Tet/Christmas/Summer/Spring/Halloween/Valentine, event tasks with completion tracking, reward systems with coins/badges/sticker packs/themes, event status upcoming/active/completed, date ranges, progress per event, task completion with claim rewards, event calendar, season filtering, sort by date/rewards/progress, visual event cards with icons)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 805 (76.8%)
+Số lượng tính năng đã implement: 811 (77.4%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 243
+Số lượng tính năng tương lai: 237
  
 Last Updated: 2026-09-14
-Version: 11.2
+Version: 11.3
