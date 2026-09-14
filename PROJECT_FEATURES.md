@@ -1300,16 +1300,16 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 36.1. Premium Subscription (Gói đăng ký trả phí)
-[ ] - Freemium model - Mô hình miễn phí có giới hạn
-[ ] - Basic plan - Gói cơ bản (unlimited memories, 10GB storage)
-[ ] - Pro plan - Gói Pro (AI features, video, 100GB storage)
-[ ] - Family plan - Gói gia đình (5 accounts, shared workspace)
-[ ] - Enterprise plan - Gói doanh nghiệp (custom domain, SSO, admin panel)
-[ ] - Annual discount (2 months free) - Giảm giá thanh toán năm (2 tháng miễn phí)
-[ ] - Student discount - Giảm giá sinh viên (50%)
-[ ] - Payment gateway (Stripe/PayPal/Momo/VNPay) - Tích hợp cổng thanh toán
-[ ] - Subscription management - Quản lý đăng ký, gia hạn, hủy
-[ ] - Invoice generation - Tạo hóa đơn PDF tự động
+[x] - Freemium model - Mô hình miễn phí có giới hạn (FreemiumModel.tsx: feature limits with name/description/freeLimit/currentUsage/isUnlimitedForPremium, enable/disable per feature, usage tracking, category filtering, custom limit adjustment, total/atLimit/nearLimit/safe metrics, comprehensive freemium model management)
+[x] - Basic plan - Gói cơ bản (unlimited memories, 10GB storage) (BasicPlan.tsx: plan features with name/description/isIncluded/value, unlimited memories/10GB storage, enable/disable per feature, plan selection toggle, pricing (monthly/yearly/trial), total/included/storage/memories metrics, comprehensive basic plan management)
+[x] - Pro plan - Gói Pro (AI features, video, 100GB storage) (ProPlan.tsx: plan features with name/description/isIncluded/value, unlimited memories/100GB storage/unlimited AI, enable/disable per feature, plan selection toggle, pricing (monthly/yearly/trial), total/included/storage/AI metrics, comprehensive pro plan management)
+[x] - Family plan - Gói gia đình (5 accounts, shared workspace) (FamilyPlan.tsx: family members with name/email/role/joinedAt/isActive, add/remove/activate/deactivate members, shared workspace, parental controls, 50GB storage, total/members/active/storage metrics, comprehensive family plan management)
+[x] - Enterprise plan - Gói doanh nghiệp (custom domain, SSO, admin panel) (EnterprisePlan.tsx: plan features with name/description/isIncluded/value, custom domain/SSO/admin panel, 1TB+ storage, enable/disable per feature, plan selection toggle, enterprise benefits (custom domain/SSO/admin panel), total/included/storage/support metrics, comprehensive enterprise plan management)
+[x] - Annual discount (2 months free) - Giảm giá thanh toán năm (2 tháng miễn phí) (AnnualDiscount.tsx: discount plans with name/monthlyPrice/yearlyPrice/savings/freeMonths, enable/disable annual discount, plan selection toggle, savings breakdown, total/freeMonths/savings/plans/selected metrics, comprehensive annual discount management)
+[x] - Student discount - Giảm giá sinh viên (50%) (StudentDiscount.tsx: student verifications with name/email/institution/studentId/status, verify/reject students, student pricing with 50% discount, enable/disable student discount, total/verified/pending/plans metrics, comprehensive student discount management)
+[x] - Payment gateway (Stripe/PayPal/Momo/VNPay) - Tích hợp cổng thanh toán (PaymentGateway.tsx: payment gateways with name/icon/isEnabled/supportedCurrencies/transactionFee/monthlyVolume/successRate, enable/disable per gateway, recent transactions, total/active/successRate/volume metrics, comprehensive payment gateway integration)
+[x] - Subscription management - Quản lý đăng ký, gia hạn, hủy (SubscriptionManagement.tsx: subscriptions with userId/userName/plan/status/startDate/endDate/nextBillingDate/amount/billingCycle/autoRenew, toggle auto-renew, pause/resume/cancel/upgrade/downgrade, status filtering, total/active/revenue/auto-renew metrics, comprehensive subscription management)
+[x] - Invoice generation - Tạo hóa đơn PDF tự động (InvoiceGeneration.tsx: invoices with invoiceNumber/userId/userName/plan/amount/status/issueDate/dueDate/paidDate/pdfUrl, generate/view/download PDF invoices, mark as paid/cancel/delete, status filtering, total/paid/pending/amount metrics, comprehensive invoice generation)
  
 36.2. Themes & Customization Store (Chợ giao diện)
 [x] - Theme marketplace - Chợ giao diện (mua/bán themes) (ThemeMarketplace.tsx: themes with name/creator/category/price/rating/downloads, install/favorite toggles, premium/free status, category filtering, theme creation/deletion, total/installed/premium/downloads metrics, category overview, comprehensive theme marketplace)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 924 (88.2%)
+Số lượng tính năng đã implement: 934 (89.1%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 124
+Số lượng tính năng tương lai: 114
  
 Last Updated: 2026-09-14
-Version: 12.7
+Version: 12.8
