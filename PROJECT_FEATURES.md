@@ -1312,13 +1312,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Invoice generation - Tạo hóa đơn PDF tự động
  
 36.2. Themes & Customization Store (Chợ giao diện)
-[ ] - Theme marketplace - Chợ giao diện (mua/bán themes)
-[ ] - Memory card templates store - Chợ mẫu thẻ kỷ niệm
-[ ] - Sticker packs - Gói sticker (mua trong app)
-[ ] - Icon packs - Gói icon danh mục tùy chỉnh
-[ ] - Font packs - Gói phông chữ cho kỷ niệm
-[ ] - Map skin marketplace - Chợ skin bản đồ tùy chỉnh
-[ ] - Creator revenue share - Chia sẻ doanh thu cho designer
+[x] - Theme marketplace - Chợ giao diện (mua/bán themes) (ThemeMarketplace.tsx: themes with name/creator/category/price/rating/downloads, install/favorite toggles, premium/free status, category filtering, theme creation/deletion, total/installed/premium/downloads metrics, category overview, comprehensive theme marketplace)
+[x] - Memory card templates store - Chợ mẫu thẻ kỷ niệm (MemoryCardTemplatesStore.tsx: templates with name/creator/category/price/rating/downloads, install/favorite toggles, premium/free status, category filtering, template creation/deletion, total/installed/premium/downloads metrics, category overview, comprehensive template store)
+[x] - Sticker packs - Gói sticker (mua trong app) (StickerPacks.tsx: sticker packs with name/creator/category/stickerCount/price/rating/downloads, purchase/favorite toggles, premium/free status, category filtering, pack creation/deletion, total/purchased/premium/stickers metrics, category overview, comprehensive sticker pack management)
+[x] - Icon packs - Gói icon danh mục tùy chỉnh (IconPacks.tsx: icon packs with name/creator/category/iconCount/price/rating/downloads, install/favorite toggles, premium/free status, category filtering, pack creation/deletion, total/installed/premium/icons metrics, category overview, comprehensive icon pack management)
+[x] - Font packs - Gói phông chữ cho kỷ niệm (FontPacks.tsx: font packs with name/creator/category/fontCount/price/rating/downloads, install/favorite toggles, premium/free status, category filtering, pack creation/deletion, total/installed/premium/fonts metrics, category overview, comprehensive font pack management)
+[x] - Map skin marketplace - Chợ skin bản đồ tùy chỉnh (MapSkinMarketplace.tsx: map skins with name/creator/category/price/rating/downloads, install/favorite toggles, premium/free status, category filtering, skin creation/deletion, total/installed/premium/downloads metrics, category overview, comprehensive map skin marketplace)
+[x] - Creator revenue share - Chia sẻ doanh thu cho designer (CreatorRevenueShare.tsx: creators with name/creatorType/productsCount/totalRevenue/commissionRate, types theme/template/sticker/icon/font/map, active/verified toggles, pending/paid payout tracking, payout processing, type filtering, creator creation/deletion, total/active/revenue/pending metrics, revenue overview, comprehensive creator revenue share management)
  
 36.3. Business Features (Tính năng kinh doanh)
 [x] - Business accounts - Tài khoản doanh nghiệp (BusinessAccounts.tsx: business accounts with name/industry/plan/teamSize/memoriesCount/storage, plans starter/professional/enterprise, enable/disable per account, account creation/deletion, plan filtering, total/active/team/memories metrics, plan overview with storage limits, comprehensive business account management)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 917 (87.5%)
+Số lượng tính năng đã implement: 924 (88.2%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 131
+Số lượng tính năng tương lai: 124
  
 Last Updated: 2026-09-14
-Version: 12.6
+Version: 12.7
