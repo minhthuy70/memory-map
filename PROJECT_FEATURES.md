@@ -1263,11 +1263,11 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - AI memory time capsule - AI tạo time capsule dự đoán tương lai dựa trên quá khứ
  
 34.4. Multimodal AI (AI Đa phương thức)
-[ ] - Image + text combined search - Tìm kiếm kết hợp ảnh + văn bản
-[ ] - Voice + location memory creation - Tạo kỷ niệm bằng giọng nói + GPS tự động
-[ ] - AI context-aware notifications - Thông báo thông minh dựa trên ngữ cảnh hiện tại
-[ ] - AI memory narration - AI đọc kỷ niệm dạng câu chuyện có cảm xúc
-[ ] - AI personalized insights report - Báo cáo insights cá nhân hàng tháng từ AI
+[x] - Image + text combined search - Tìm kiếm kết hợp ảnh + văn bản (ImageTextCombinedSearch.tsx: search results with title/description/imageUrl/textMatch/imageMatch/combinedScore/timestamp/location, search queries with imageInput/textInput/imageWeight/textWeight/resultsCount/timestamp, adjustable image/text weights, search with text input, total/results/queries/avgScore/topMatch metrics, comprehensive multi-modal search with image and text)
+[x] - Voice + location memory creation - Tạo kỷ niệm bằng giọng nói + GPS tự động (VoiceLocationMemoryCreation.tsx: voice recordings with duration/transcript/confidence/language/createdAt, location data with latitude/longitude/address/city/country/accuracy, created memories with title/transcript/location/voiceRecording/timestamp/status, enable/disable recording, start/stop recording, GPS auto-capture, speech-to-text transcription, create memories with voice+location, total/recordings/memories/duration/avgConfidence metrics, comprehensive voice+location memory creation)
+[x] - AI context-aware notifications - Thông báo thông minh dựa trên ngữ cảnh hiện tại (AIContextAwareNotifications.tsx: context triggers with name/description/type/isEnabled/sensitivity, notifications with title/message/context/trigger/timestamp/status/type, notification rules with name/condition/action/isActive, enable/disable triggers and rules, dismiss notifications, test notifications, location/time/weather/calendar/activity triggers, total/triggers/active/notifications/rules metrics, comprehensive AI context-aware notifications)
+[x] - AI memory narration - AI đọc kỷ niệm dạng câu chuyện có cảm xúc (AIMemoryNarration.tsx: memories with title/date/location/description/hasNarration, narrations with memoryId/title/content/emotion/voice/duration/createdAt/isPlaying, voice settings with voice/speed/pitch/volume, generate emotional narrations, toggle play/pause, emotions: happy/nostalgic/excited/peaceful/adventurous, customizable voice, total/memories/narrated/duration/stories metrics, comprehensive AI memory narration with emotional storytelling)
+[x] - AI personalized insights report - Báo cáo insights cá nhân hàng tháng từ AI (AIPersonalizedInsightsReport.tsx: insight categories with name/description/insightsCount/trend, insight reports with month/year/generatedAt/status/insights, report sections with name/description/isIncluded, generate monthly reports, toggle report sections, view/download/share reports, memory statistics/mood analysis/location trends/activity patterns/recommendations, total/categories/reports/insights/sections metrics, comprehensive AI personalized insights report)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 948 (90.5%)
+Số lượng tính năng đã implement: 953 (90.9%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 100
+Số lượng tính năng tương lai: 95
  
 Last Updated: 2026-09-14
-Version: 13.1
+Version: 13.2
