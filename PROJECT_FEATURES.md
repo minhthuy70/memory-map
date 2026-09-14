@@ -1282,11 +1282,11 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Encrypted backup with user key - Sao lưu mã hóa bằng khóa riêng của người dùng
  
 35.2. NFT & Digital Collectibles (NFT & Vật phẩm số)
-[ ] - Mint memory as NFT - Đúc kỷ niệm thành NFT trên blockchain
-[ ] - Memory NFT marketplace - Sàn giao dịch NFT kỷ niệm
-[ ] - NFT gallery display - Trưng bày NFT trong profile
-[ ] - Cross-chain NFT support - Hỗ trợ NFT đa chuỗi (Ethereum, Polygon, Solana)
-[ ] - Memory certificate - Chứng chỉ xác thực kỷ niệm có chữ ký số blockchain
+[x] - Mint memory as NFT - Đúc kỷ niệm thành NFT trên blockchain (MintMemoryAsNFT.tsx: memories with title/description/image/date/location/isMinted, mint to blockchain with token ID/contractAddress/blockchain/transactionHash, blockchain selection (Ethereum/Polygon/Solana/BSC), minted NFTs tracking, enable/disable minting, total/minted/NFTs/blockchains metrics, comprehensive NFT minting system)
+[x] - Memory NFT marketplace - Sàn giao dịch NFT kỷ niệm (MemoryNFTMarketplace.tsx: listed NFTs with tokenId/title/description/image/seller/price/currency/blockchain/likes/views/status, buy/cancel listing, like NFTs, sales history tracking, status filtering, enable/disable marketplace, total/listed/sold/volume/views metrics, comprehensive NFT marketplace)
+[x] - NFT gallery display - Trưng bày NFT trong profile (NFTGalleryDisplay.tsx: gallery NFTs with tokenId/title/description/image/blockchain/contractAddress/likes/views/isPublic, grid/list view modes, toggle public/private visibility, like NFTs, share functionality, enable/disable gallery, total/public/likes/views metrics, comprehensive NFT gallery display)
+[x] - Cross-chain NFT support - Hỗ trợ NFT đa chuỗi (CrossChainNFTSupport.tsx: blockchains with name/symbol/icon/isEnabled/networkId/gasPrice/blockTime, cross-chain bridges with fromChain/toChain/nftId/status/transactionHash, enable/disable blockchains, initiate/complete bridges, NFT location tracking, total/active/bridges/completed metrics, comprehensive cross-chain NFT support)
+[x] - Memory certificate - Chứng chỉ xác thực kỷ niệm có chữ ký số blockchain (MemoryCertificate.tsx: certificates with memoryId/memoryTitle/certificateNumber/issueDate/issuer/blockchain/contractAddress/transactionHash/signature/isValid/status, issue/revoke/verify certificates, blockchain digital signature verification, download/share/view on chain, total/valid/revoked/expired metrics, comprehensive memory certificate system)
  
 35.3. Crypto Integration (Tích hợp Crypto)
 [x] - Crypto payment for premium - Thanh toán premium bằng crypto (CryptoPaymentForPremium.tsx: crypto currencies with name/symbol/icon/isEnabled/exchangeRate/network/confirmations/minAmount, enable/disable per currency, recent transactions with status tracking, USD equivalent conversion, total/active/transactions/completed metrics, comprehensive crypto payment integration)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 938 (89.5%)
+Số lượng tính năng đã implement: 943 (90.0%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 110
+Số lượng tính năng tương lai: 105
  
 Last Updated: 2026-09-14
-Version: 12.9
+Version: 13.0
