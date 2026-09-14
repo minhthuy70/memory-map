@@ -1122,18 +1122,18 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Memory digest PDF - Xuất digest kỷ niệm dạng newsletter
  
 30.2. Import Sources (Nguồn nhập)
-[ ] - Import from Google Photos - Nhập từ Google Photos (metadata + ảnh)
-[ ] - Import from Apple Photos - Nhập từ Apple Photos (HEIC support)
-[ ] - Import from Instagram - Nhập từ archive Instagram
-[ ] - Import from Facebook - Nhập từ archive Facebook Memories
-[ ] - Import from Daylio - Nhập từ app nhật ký Daylio
-[ ] - Import from Day One - Nhập từ app nhật ký Day One
-[ ] - Import from Evernote - Nhập từ Evernote
-[ ] - Import from Notion - Nhập từ Notion database
-[ ] - Import from CSV template - Nhập từ template CSV tùy chỉnh
-[ ] - Import from GPX track - Nhập lộ trình GPS từ file GPX
-[ ] - Bulk import wizard - Trình hướng dẫn nhập hàng loạt với preview
-[ ] - Duplicate detection on import - Phát hiện trùng lặp khi nhập
+[x] - Import from Google Photos - Nhập từ Google Photos (metadata + ảnh)
+[x] - Import from Apple Photos - Nhập từ Apple Photos (HEIC support)
+[x] - Import from Instagram - Nhập từ archive Instagram
+[x] - Import from Facebook - Nhập từ archive Facebook Memories
+[x] - Import from Daylio - Nhập từ app nhật ký Daylio
+[x] - Import from Day One - Nhập từ app nhật ký Day One
+[x] - Import from Evernote - Nhập từ Evernote
+[x] - Import from Notion - Nhập từ Notion database
+[x] - Import from CSV template - Nhập từ template CSV tùy chỉnh
+[x] - Import from GPX track - Nhập lộ trình GPS từ file GPX
+[x] - Bulk import wizard - Trình hướng dẫn nhập hàng loạt với preview
+[x] - Duplicate detection on import - Phát hiện trùng lặp khi nhập
  
 30.3. Print & Physical (In & Vật lý)
 [x] - Print memory cards - In thẻ kỷ niệm A5/A4 đẹp (paper size A5/A4/Square/Custom, layout options single/grid/collage, orientation portrait/landscape, quality levels standard/high/premium, quantity control, card selection, preview mode, pricing calculation)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 781
+Số lượng tính năng đã implement: 793 (75.7%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 267
+Số lượng tính năng tương lai: 255
  
 Last Updated: 2026-09-14
-Version: 11.0
+Version: 11.1
