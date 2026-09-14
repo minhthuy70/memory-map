@@ -1,0 +1,335 @@
+'use client';
+
+import { useState } from 'react';
+import { Download, X, RefreshCw, Search, Filter, User, FileText, CheckCircle, Info, FileJson, FileSpreadsheet, Settings, Plus, Trash2 } from 'lucide-react';
+
+interface ExportUserListProps {
+  onCancel?: () => void;
+}
+
+interface User {
+  id: string;
+  username: string;
+  email: string;
+  role: 'user' | 'moderator' | 'admin';
+  status: 'active' | 'banned' | 'suspended';
+  joinedDate: string;
+  lastActive: string;
+  memories: number;
+}
+
+interface ExportField {
+  id: string;
+  name: string;
+  selected: boolean;
+}
+
+interface ExportFormat {
+  id: string;
+  name: string;
+  icon: React.ReactNode;
+  extension: string;
+}
+
+export default function ExportUserList({ onCancel }: ExportUserListProps) {
+  const [showDetails, setShowDetails] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<string>('all');
+  const [selectedStatus, setSelectedStatus] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedFormat, setSelectedFormat] = useState<string>('csv');
+  const [selectedFields, setSelectedFields] = useState<Set<string>>(new Set(['username', 'email', 'role', 'status', 'joinedDate']));
+
+  const [users, setUsers] = useState<User[]>([
+    { id: '1', username: 'john_doe', email: 'john@example.com', role: 'user', status: 'active', joinedDate: '2026-09-01', lastActive: '2026-09-14', memories: 25 },
+    { id: '2', username: 'jane_smith', email: 'jane@example.com', role: 'moderator', status: 'active', joinedDate: '2026-08-15', lastActive: '2026-09-14', memories: 142 },
+    { id: '3', username: 'admin_user', email: 'admin@example.com', role: 'admin', status: 'active', joinedDate: '2026-07-01', lastActive: '2026-09-14', memories: 520 },
+    { id: '4', username: 'spam_user', email: 'spam@example.com', role: 'user', status: 'banned', joinedDate: '2026-09-10', lastActive: '2026-09-10', memories: 3 },
+    { id: '5', username: 'suspended_user', email: 'suspended@example.com', role: 'user', status: 'suspended', joinedDate: '2026-08-20', lastActive: '2026-09-12', memories: 45 },
+  ]);
+
+  const [exportFields, setExportFields] = useState<ExportField[]>([
+    { id: 'id', name: 'User ID', selected: false },
+    { id: 'username', name: 'Username', selected: true },
+    { id: 'email', name: 'Email', selected: true },
+    { id: 'role', name: 'Role', selected: true },
+    { id: 'status', name: 'Status', selected: true },
+    { id: 'joinedDate', name: 'Joined Date', selected: true },
+    { id: 'lastActive', name: 'Last Active', selected: false },
+    { id: 'memories', name: 'Memories Count', selected: false },
+  ]);
+
+  const [exportFormats] = useState<ExportFormat[]>([
+    { id: 'csv', name: 'CSV', icon: <FileSpreadsheet className="h-4 w-4" />, extension: '.csv' },
+    { id: 'json', name: 'JSON', icon: <FileJson className="h-4 w-4" />, extension: '.json' },
+    { id: 'txt', name: 'Text', icon: <FileText className="h-4 w-4" />, extension: '.txt' },
+  ]);
+
+  const filteredUsers = users.filter(user => {
+    const matchesRole = selectedRole === 'all' || user.role === selectedRole;
+    const matchesStatus = selectedStatus === 'all' || user.status === selectedStatus;
+    const matchesSearch = user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         user.email.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesRole && matchesStatus && matchesSearch;
+  });
+
+  const toggleField = (fieldId: string) => {
+    const newSelected = new Set(selectedFields);
+    if (newSelected.has(fieldId)) {
+      newSelected.delete(fieldId);
+    } else {
+      newSelected.add(fieldId);
+    }
+    setSelectedFields(newSelected);
+  };
+
+  const exportData = () => {
+    const selectedFieldData = exportFields.filter(f => selectedFields.has(f.id));
+    const exportDataUsers = filteredUsers.map(user => {
+      const row: any = {};
+      selectedFieldData.forEach(field => {
+        row[field.name] = user[field.id as keyof User];
+      });
+      return row;
+    });
+
+    let content: string;
+    let filename: string;
+
+    if (selectedFormat === 'csv') {
+      const headers = selectedFieldData.map(f => f.name);
+      const rows = exportDataUsers.map(user => selectedFieldData.map(f => user[f.name]));
+      content = [headers.join(','), ...rows.map(row => row.join(','))].join('\n');
+      filename = 'users_export.csv';
+    } else if (selectedFormat === 'json') {
+      content = JSON.stringify(exportDataUsers, null, 2);
+      filename = 'users_export.json';
+    } else {
+      content = exportDataUsers.map(user => Object.entries(user).map(([k, v]) => `${k}: ${v}`).join('\n')).join('\n\n');
+      filename = 'users_export.txt';
+    }
+
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+  };
+
+  const getRoleColor = (role: string) => {
+    switch (role) {
+      case 'admin': return 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300';
+      case 'moderator': return 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300';
+      case 'user': return 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300';
+      default: return 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300';
+    }
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'active': return 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300';
+      case 'banned': return 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300';
+      case 'suspended': return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300';
+      default: return 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300';
+    }
+  };
+
+  return (
+    <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6">
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl">
+            <Download className="h-5 w-5 text-white" />
+          </div>
+          <div>
+            <h3 className="font-bold text-slate-900 dark:text-white text-lg">
+              Export User List
+            </h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Export user data in various formats
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setShowDetails(!showDetails)}
+            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+            title="Show details"
+          >
+            {showDetails ? <Info className="h-4 w-4 text-slate-500" /> : <Info className="h-4 w-4 text-slate-500" />}
+          </button>
+          <button
+            type="button"
+            onClick={onCancel}
+            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+            title="Đóng"
+          >
+            <X className="h-4 w-4 text-slate-500" />
+          </button>
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Total Users</p>
+            <p className="text-lg font-bold text-slate-900 dark:text-white">{users.length}</p>
+          </div>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">To Export</p>
+            <p className="text-lg font-bold text-green-600 dark:text-green-400">{filteredUsers.length}</p>
+          </div>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Fields</p>
+            <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{selectedFields.size}</p>
+          </div>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Format</p>
+            <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{selectedFormat.toUpperCase()}</p>
+          </div>
+        </div>
+
+        <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Export Configuration</h4>
+          <div className="space-y-3">
+            <div>
+              <label className="text-xs text-slate-500 dark:text-slate-400 mb-2 block">Export Format</label>
+              <div className="flex gap-2">
+                {exportFormats.map((format) => (
+                  <button
+                    key={format.id}
+                    type="button"
+                    onClick={() => setSelectedFormat(format.id)}
+                    className={`flex-1 p-3 rounded-lg border-2 text-xs flex items-center justify-center gap-2 ${
+                      selectedFormat === format.id
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+                        : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                    }`}
+                  >
+                    {format.icon}
+                    {format.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <label className="text-xs text-slate-500 dark:text-slate-400 mb-2 block">Export Fields</label>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                {exportFields.map((field) => (
+                  <button
+                    key={field.id}
+                    type="button"
+                    onClick={() => toggleField(field.id)}
+                    className={`p-2 rounded-lg border text-xs flex items-center gap-2 ${
+                      selectedFields.has(field.id)
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300'
+                        : 'border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                    }`}
+                  >
+                    {selectedFields.has(field.id) ? (
+                      <CheckCircle className="h-3 w-3" />
+                    ) : (
+                      <div className="w-3 h-3 border border-slate-400 rounded" />
+                    )}
+                    {field.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          <select
+            value={selectedRole}
+            onChange={(e) => setSelectedRole(e.target.value)}
+            className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0"
+          >
+            <option value="all">All Roles</option>
+            <option value="admin">Admin</option>
+            <option value="moderator">Moderator</option>
+            <option value="user">User</option>
+          </select>
+          <select
+            value={selectedStatus}
+            onChange={(e) => setSelectedStatus(e.target.value)}
+            className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0"
+          >
+            <option value="all">All Status</option>
+            <option value="active">Active</option>
+            <option value="banned">Banned</option>
+            <option value="suspended">Suspended</option>
+          </select>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search users..."
+            className="px-3 py-1.5 rounded-lg text-xs bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600 flex-1"
+          />
+          <button
+            type="button"
+            className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0 flex items-center gap-1"
+          >
+            <RefreshCw className="h-3 w-3" />
+            Refresh
+          </button>
+          <button
+            type="button"
+            onClick={exportData}
+            disabled={selectedFields.size === 0 || filteredUsers.length === 0}
+            className="px-3 py-1.5 rounded-lg text-xs bg-green-600 hover:bg-green-700 text-white border-0 flex items-center gap-1 disabled:bg-slate-300 dark:disabled:bg-slate-600 disabled:text-slate-500 dark:disabled:text-slate-400"
+          >
+            <Download className="h-3 w-3" />
+            Export Now
+          </button>
+        </div>
+
+        <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Preview ({filteredUsers.length} users)</h4>
+          <div className="space-y-2 max-h-64 overflow-y-auto">
+            {filteredUsers.slice(0, 5).map((user) => (
+              <div key={user.id} className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center">
+                    <User className="h-5 w-5 text-slate-400" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs font-semibold text-slate-900 dark:text-white">{user.username}</span>
+                      <span className={`px-2 py-0.5 rounded text-xs ${getRoleColor(user.role)}`}>
+                        {user.role}
+                      </span>
+                      <span className={`px-2 py-0.5 rounded text-xs ${getStatusColor(user.status)}`}>
+                        {user.status}
+                      </span>
+                    </div>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{user.email}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+            {filteredUsers.length > 5 && (
+              <p className="text-xs text-slate-500 dark:text-slate-400 text-center py-2">
+                ... and {filteredUsers.length - 5} more users
+              </p>
+            )}
+          </div>
+        </div>
+
+        {showDetails && (
+          <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Export Tips</h4>
+            <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+              <li>• CSV is best for spreadsheet applications</li>
+              <li>• JSON preserves data structure for developers</li>
+              <li>• Filter users before exporting to reduce file size</li>
+              <li>• Select only necessary fields for cleaner exports</li>
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
