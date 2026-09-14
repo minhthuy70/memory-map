@@ -1321,11 +1321,11 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Creator revenue share - Chia sẻ doanh thu cho designer
  
 36.3. Business Features (Tính năng kinh doanh)
-[ ] - Business accounts - Tài khoản doanh nghiệp (lưu kỷ niệm công ty, team)
-[ ] - Brand memory pages - Trang kỷ niệm thương hiệu công khai
-[ ] - Sponsored memories - Kỷ niệm được tài trợ (quảng cáo địa điểm)
-[ ] - Travel agency integration - Tích hợp đại lý du lịch (gợi ý địa điểm mới)
-[ ] - Hotel/restaurant partnerships - Đối tác khách sạn/nhà hàng
+[x] - Business accounts - Tài khoản doanh nghiệp (BusinessAccounts.tsx: business accounts with name/industry/plan/teamSize/memoriesCount/storage, plans starter/professional/enterprise, enable/disable per account, account creation/deletion, plan filtering, total/active/team/memories metrics, plan overview with storage limits, comprehensive business account management)
+[x] - Brand memory pages - Trang kỷ niệm thương hiệu công khai (BrandMemoryPages.tsx: brand pages with brandName/slug/description/category, public/verified toggles, follower/memories/engagement tracking, category filtering, page creation/deletion, total/public/verified/followers metrics, category overview, comprehensive brand memory page management)
+[x] - Sponsored memories - Kỷ niệm được tài trợ (SponsoredMemories.tsx: sponsored memories with title/sponsor/location/type/budget/performance, types location/event/product/service, budget/spent tracking, impressions/clicks/CTR metrics, status active/paused/completed, type filtering, sponsorship creation/deletion, total/active/budget/CTR metrics, performance overview, comprehensive sponsored memory management)
+[x] - Travel agency integration - Tích hợp đại lý du lịch (TravelAgencyIntegration.tsx: travel agencies with name/locations/destinations/rating/partnershipTier, tiers bronze/silver/gold/platinum, API connection toggle, recommendations/bookings tracking, commission rates, tier filtering, agency creation/deletion, total/active/API/bookings metrics, partnership tier overview, comprehensive travel agency integration)
+[x] - Hotel/restaurant partnerships - Đối tác khách sạn/nhà hàng (HotelRestaurantPartnerships.tsx: partners with name/type/location/rating/partnershipLevel, types hotel/restaurant/cafe/bar, partnership levels basic/premium/exclusive, active/featured toggles, memories tagged/check-ins/special offers tracking, type filtering, partner creation/deletion, total/active/featured/check-ins metrics, type overview, comprehensive hotel/restaurant partnership management)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 912 (87.0%)
+Số lượng tính năng đã implement: 917 (87.5%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 136
+Số lượng tính năng tương lai: 131
  
 Last Updated: 2026-09-14
-Version: 12.5
+Version: 12.6
