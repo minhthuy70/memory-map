@@ -1108,18 +1108,18 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 30.1. Export Formats (Định dạng xuất)
-[ ] - Export to PDF - Xuất kỷ niệm thành PDF đẹp với ảnh và bản đồ
-[ ] - Export to EPUB - Xuất thành sách điện tử EPUB
-[ ] - Export to Word (.docx) - Xuất thành tài liệu Word
-[ ] - Export to HTML - Xuất thành trang web tĩnh
-[ ] - Export to Markdown - Xuất thành định dạng Markdown
-[ ] - Export to JSON - Xuất toàn bộ dữ liệu JSON có cấu trúc
-[ ] - Export to CSV/Excel - Xuất thành bảng tính
-[ ] - Export to KML/GPX - Xuất lộ trình địa lý cho Google Maps/GPS
-[ ] - Export to iCalendar - Xuất lịch sự kiện ICS
-[ ] - Photo book generator - Tạo sách ảnh in được (layout tự động)
-[ ] - Slideshow export - Xuất slideshow PowerPoint/video
-[ ] - Memory digest PDF - Xuất digest kỷ niệm dạng newsletter
+[x] - Export to PDF - Xuất kỷ niệm thành PDF đẹp với ảnh và bản đồ (ExportToPDF.tsx: page size A4/A5/Letter/Custom, orientation portrait/landscape, quality standard/high/premium, theme light/dark/colorful, layout single/grid/timeline, font family/size, include images/map/metadata/location/date/mood/tags, cover page, table of contents, page numbers, watermark, preview mode, download functionality)
+[x] - Export to EPUB - Xuất thành sách điện tử EPUB (ExportToEPUB.tsx: book metadata title/author/description, chapter by date/location/category/none, cover image, TOC enabled, font size/family, theme light/sepia/dark, layout reflowable/fixed, include images/map/metadata/location/date/mood/tags, page breaks, embed fonts, compress images, preview mode, EPUB download)
+[x] - Export to Word (.docx) - Xuất thành tài liệu Word (ExportToWord.tsx: template default/modern/classic/minimal, page size A4/Letter/Legal, orientation portrait/landscape, font family Calibri/Arial/Times/Verdana, font size, include images/map/metadata/location/date/mood/tags, cover page, table of contents, page numbers, header/footer, compress images, track changes, preview mode, DOCX download)
+[x] - Export to HTML - Xuất thành trang web tĩnh (ExportToHTML.tsx: template default/gallery/timeline/blog, theme light/dark/custom, responsive design, interactive map, include CSS/JS, embed images, compression, font family/size, custom CSS, single page/pagination, preview mode, HTML download)
+[x] - Export to Markdown - Xuất thành định dạng Markdown (ExportToMarkdown.tsx: flavor CommonMark/GitHub/MultiMarkdown, include images/frontmatter/metadata/location/date/mood/tags, image style reference/embed, header style ATX/Setext, list style dash/asterisk, code blocks, tables, task lists, strikethrough, emoji, line breaks, preview mode, MD download)
+[x] - Export to JSON - Xuất toàn bộ dữ liệu JSON có cấu trúc (ExportToJSON.tsx: format pretty/compact/minified, include images/metadata/location/date/mood/tags/relations/comments, schema version, date format ISO/timestamp/string, null values, custom fields, encryption, compression, preview mode, JSON download)
+[x] - Export to CSV/Excel - Xuất thành bảng tính (ExportToCSVExcel.tsx: format CSV/Excel, delimiter comma/semicolon/tab/pipe, include headers/images/metadata/location/date/mood/tags, encoding UTF-8/UTF-16/ASCII, date style ISO/US/EU, boolean style true/false/1/0, null value, compression, sheet name, preview mode, CSV/XLSX download)
+[x] - Export to KML/GPX - Xuất lộ trình địa lý cho Google Maps/GPS (ExportToKMLGPX.tsx: format KML/GPX/both, include placemarks/tracks/routes/images/metadata, color by category/mood/date/none, style default/custom, timestamp, elevation, compression, icon style default/custom, preview mode, KML/GPX download)
+[x] - Export to iCalendar - Xuất lịch sự kiện ICS (ExportToICalendar.tsx: category memory/anniversary/milestone, recurrence none/yearly/monthly, event duration, reminder minutes, all day event, include location/description/attachments/reminders, timezone local/UTC, privacy public/private, method request/publish, preview mode, ICS download)
+[x] - Photo book generator - Tạo sách ảnh in được (layout tự động) (PhotoBookGenerator.tsx: book size A4/A5/Letter/square, orientation portrait/landscape, page layout single/double/collage, cover style hardcover/softcover/none, cover image/title/subtitle/spine text, background color, quality standard/high/premium, page count, bleed margin, auto layout, include captions/dates/locations/page numbers, preview mode, photo book generation/download)
+[x] - Slideshow export - Xuất slideshow PowerPoint/video (SlideshowExport.tsx: format MP4/WebM/GIF/PPTX, resolution 720p/1080p/4K, frame rate, slide duration, transition fade/slide/zoom/none, transition duration, include music with volume control, include captions with style bottom/top/overlay, auto advance with interval, loop, aspect ratio 16:9/4:3/1:1, quality low/medium/high, preview mode with playback controls, slideshow export/download)
+[x] - Memory digest PDF - Xuất digest kỷ niệm dạng newsletter (MemoryDigestPDF.tsx: date range week/month/quarter/year/custom with start/end dates, template modern/classic/minimal/colorful, layout single/double/magazine, theme light/dark/colorful, language English/Vietnamese/French/German, page size A4/Letter, include images/map/stats/highlights/quotes/moods, watermark, preview mode, digest PDF generation/download)
  
 30.2. Import Sources (Nguồn nhập)
 [x] - Import from Google Photos - Nhập từ Google Photos (metadata + ảnh)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 793 (75.7%)
+Số lượng tính năng đã implement: 805 (76.8%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 255
+Số lượng tính năng tương lai: 243
  
 Last Updated: 2026-09-14
-Version: 11.1
+Version: 11.2
