@@ -1,104 +1,74 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { WifiOff, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Database, HardDrive, Cloud, CloudOff, Download, Upload, Clock, Trash2, AlertCircle } from 'lucide-react';
-
-interface OfflineData {
-  id: string;
-  type: 'memory' | 'location' | 'settings' | 'media';
-  name: string;
-  size: string;
-  lastSynced: Date;
-  status: 'synced' | 'pending' | 'conflict';
-  localVersion: number;
-  serverVersion: number;
-}
-
-interface SyncQueueItem {
-  id: string;
-  type: 'upload' | 'download';
-  dataType: string;
-  size: string;
-  status: 'pending' | 'syncing' | 'completed' | 'failed';
-  timestamp: Date;
-}
+import { Wifi, X, WifiOff, Download, Upload, RefreshCw, Clock, Database, HardDrive, CheckCircle, AlertTriangle, Settings, Info, BarChart3, Cloud, Smartphone, Trash2, Sync } from 'lucide-react';
 
 interface OfflineModeProps {
   onCancel?: () => void;
-  onSyncNow?: () => Promise<void>;
-  onClearCache?: () => Promise<void>;
 }
 
-const DEFAULT_OFFLINE_DATA: OfflineData[] = [
-  {
-    id: 'data-1',
-    type: 'memory',
-    name: 'My Memories',
-    size: '25.5 MB',
-    lastSynced: new Date(),
-    status: 'synced',
-    localVersion: 15,
-    serverVersion: 15,
-  },
-  {
-    id: 'data-2',
-    type: 'location',
-    name: 'Location History',
-    size: '8.2 MB',
-    lastSynced: new Date(Date.now() - 3600000),
-    status: 'synced',
-    localVersion: 42,
-    serverVersion: 42,
-  },
-  {
-    id: 'data-3',
-    type: 'settings',
-    name: 'User Settings',
-    size: '0.5 MB',
-    lastSynced: new Date(Date.now() - 86400000),
-    status: 'pending',
-    localVersion: 8,
-    serverVersion: 9,
-  },
-  {
-    id: 'data-4',
-    type: 'media',
-    name: 'Cached Images',
-    size: '125.3 MB',
-    lastSynced: new Date(Date.now() - 7200000),
-    status: 'synced',
-    localVersion: 234,
-    serverVersion: 234,
-  },
-];
+interface OfflineData {
+  id: string;
+  type: 'memory' | 'photo' | 'location' | 'settings';
+  name: string;
+  size: number;
+  synced: boolean;
+  lastModified: string;
+}
 
-const DEFAULT_SYNC_QUEUE: SyncQueueItem[] = [
-  {
-    id: 'sync-1',
-    type: 'upload',
-    dataType: 'New Memory',
-    size: '2.5 MB',
-    status: 'pending',
-    timestamp: new Date(),
-  },
-  {
-    id: 'sync-2',
-    type: 'download',
-    dataType: 'Location Updates',
-    size: '1.2 MB',
-    status: 'completed',
-    timestamp: new Date(Date.now() - 3600000),
-  },
-];
-
-export default function OfflineMode({ onCancel, onSyncNow, onClearCache }: OfflineModeProps) {
+export default function OfflineMode({ onCancel }: OfflineModeProps) {
   const [isOnline, setIsOnline] = useState(true);
-  const [offlineData, setOfflineData] = useState<OfflineData[]>(DEFAULT_OFFLINE_DATA);
-  const [syncQueue, setSyncQueue] = useState<SyncQueueItem[]>(DEFAULT_SYNC_QUEUE);
-  const [showSettings, setShowSettings] = useState(false);
-  const [isSyncing, setIsSyncing] = useState(false);
   const [autoSync, setAutoSync] = useState(true);
-  const [cacheSize, setCacheSize] = useState(500);
+  const [showStorage, setShowStorage] = useState(false);
+
+  const [offlineData, setOfflineData] = useState<OfflineData[]>([
+    {
+      id: '1',
+      type: 'memory',
+      name: 'Recent memories (last 30 days)',
+      size: 25000000,
+      synced: true,
+      lastModified: '2026-09-14 10:30',
+    },
+    {
+      id: '2',
+      type: 'photo',
+      name: 'Cached photos',
+      size: 150000000,
+      synced: true,
+      lastModified: '2026-09-14 09:15',
+    },
+    {
+      id: '3',
+      type: 'location',
+      name: 'Location history',
+      size: 5000000,
+      synced: true,
+      lastModified: '2026-09-14 08:00',
+    },
+    {
+      id: '4',
+      type: 'settings',
+      name: 'User preferences',
+      size: 50000,
+      synced: true,
+      lastModified: '2026-09-13 15:20',
+    },
+    {
+      id: '5',
+      type: 'memory',
+      name: 'Pending sync (3 items)',
+      size: 3000000,
+      synced: false,
+      lastModified: '2026-09-14 11:00',
+    },
+  ]);
+
+  const [syncQueue] = useState([
+    { id: '1', type: 'memory', name: 'New memory - Hanoi trip', status: 'pending' },
+    { id: '2', type: 'photo', name: 'Photo upload - Sunset.jpg', status: 'pending' },
+    { id: '3', type: 'memory', name: 'Memory edit - Updated description', status: 'pending' },
+  ]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -111,85 +81,55 @@ export default function OfflineMode({ onCancel, onSyncNow, onClearCache }: Offli
     };
   }, []);
 
-  const handleSyncNow = async () => {
-    setIsSyncing(true);
-    if (onSyncNow) {
-      await onSyncNow();
-    } else {
-      await new Promise(resolve => setTimeout(resolve, 3000));
-    }
-    setIsSyncing(false);
-    setOfflineData(prev => prev.map(d => 
-      d.status === 'pending' ? { ...d, status: 'synced' as const, localVersion: d.serverVersion } : d
-    ));
-    setSyncQueue(prev => prev.map(s => 
-      s.status === 'pending' ? { ...s, status: 'completed' as const } : s
-    ));
+  const formatBytes = (bytes: number) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
   };
 
-  const handleClearCache = async () => {
-    if (onClearCache) {
-      await onClearCache();
-    }
-    setOfflineData(prev => prev.filter(d => d.type !== 'media'));
+  const totalStorage = offlineData.reduce((sum, item) => sum + item.size, 0);
+  const syncedCount = offlineData.filter(d => d.synced).length;
+  const pendingSync = offlineData.filter(d => !d.synced).length;
+
+  const handleSyncNow = () => {
+    setOfflineData(offlineData.map(item => {
+      if (!item.synced) {
+        return { ...item, synced: true };
+      }
+      return item;
+    }));
   };
 
-  const getStatusColor = (status: OfflineData['status']) => {
-    switch (status) {
-      case 'synced':
-        return 'text-green-500';
-      case 'pending':
-        return 'text-amber-500';
-      case 'conflict':
-        return 'text-red-500';
-      default:
-        return 'text-slate-500';
-    }
+  const clearCache = () => {
+    setOfflineData(offlineData.filter(item => item.type !== 'photo'));
   };
-
-  const getSyncStatusColor = (status: SyncQueueItem['status']) => {
-    switch (status) {
-      case 'pending':
-        return 'text-amber-500';
-      case 'syncing':
-        return 'text-blue-500';
-      case 'completed':
-        return 'text-green-500';
-      case 'failed':
-        return 'text-red-500';
-      default:
-        return 'text-slate-500';
-    }
-  };
-
-  const totalCacheSize = offlineData.reduce((sum, d) => sum + parseFloat(d.size), 0);
-  const pendingSyncs = syncQueue.filter(s => s.status === 'pending').length;
-  const conflicts = offlineData.filter(d => d.status === 'conflict').length;
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className={`p-2 bg-gradient-to-br ${isOnline ? 'from-green-400 to-emerald-500' : 'from-orange-400 to-amber-500'} rounded-xl`}>
-            {isOnline ? <Cloud className="h-5 w-5 text-white" /> : <CloudOff className="h-5 w-5 text-white" />}
+          <div className={`p-2 rounded-xl ${isOnline ? 'bg-gradient-to-br from-green-400 to-emerald-500' : 'bg-gradient-to-br from-red-400 to-rose-500'}`}>
+            {isOnline ? <Wifi className="h-5 w-5 text-white" /> : <WifiOff className="h-5 w-5 text-white" />}
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Chế độ offline
+              Offline Mode
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              {isOnline ? 'Online' : 'Offline'} • {totalCacheSize.toFixed(1)} MB cached
+              {isOnline ? 'Connected - Syncing enabled' : 'Offline - Using cached data'}
             </p>
           </div>
         </div>
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => setShowSettings(!showSettings)}
+            onClick={() => setShowStorage(!showStorage)}
             className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
-            title="Cài đặt"
+            title="Show storage"
           >
-            <Settings className="h-4 w-4 text-slate-500" />
+            {showStorage ? <BarChart3 className="h-4 w-4 text-slate-500" /> : <Info className="h-4 w-4 text-slate-500" />}
           </button>
           <button
             type="button"
@@ -202,229 +142,168 @@ export default function OfflineMode({ onCancel, onSyncNow, onClearCache }: Offli
         </div>
       </div>
 
-      {showSettings && (
-        <div className="mb-4 p-4 bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Cài đặt offline
-          </h4>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-600 dark:text-slate-400">
-                Auto-sync when online
-              </span>
+      <div className="space-y-4">
+        <div className={`p-4 rounded-lg border ${isOnline ? 'bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border-green-200 dark:border-green-800' : 'bg-gradient-to-r from-red-50 to-rose-50 dark:from-red-900/20 dark:to-rose-900/20 border-red-200 dark:border-red-800'}`}>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <div className={`p-3 rounded-xl ${isOnline ? 'bg-green-500' : 'bg-red-500'}`}>
+                {isOnline ? <CheckCircle className="h-6 w-6 text-white" /> : <AlertTriangle className="h-6 w-6 text-white" />}
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 dark:text-white text-lg">
+                  {isOnline ? 'Online' : 'Offline'}
+                </p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  {isOnline ? 'All features available' : 'Limited functionality, using cached data'}
+                </p>
+              </div>
+            </div>
+            {!isOnline && (
               <button
                 type="button"
-                onClick={() => setAutoSync(!autoSync)}
-                className={`relative w-10 h-5 rounded-full transition-colors ${
-                  autoSync ? 'bg-orange-500' : 'bg-slate-300 dark:bg-slate-600'
-                }`}
+                className="px-4 py-2 bg-blue-500 text-white rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors flex items-center gap-1"
               >
-                <span
-                  className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform ${
-                    autoSync ? 'translate-x-5' : ''
-                  }`}
-                />
+                <RefreshCw className="h-4 w-4" />
+                Retry Connection
               </button>
-            </div>
-            <div>
-              <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                Max cache size: {cacheSize} MB
-              </label>
-              <input
-                type="range"
-                min="100"
-                max="2000"
-                value={cacheSize}
-                onChange={(e) => setCacheSize(parseInt(e.target.value))}
-                className="w-full"
-              />
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-600 dark:text-slate-400">
-                Prefetch memories
-              </span>
-              <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
-            </div>
+            )}
           </div>
         </div>
-      )}
 
-      {/* Overall Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <HardDrive className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Cache Size</span>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Storage Used</p>
+            <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{formatBytes(totalStorage)}</p>
           </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {totalCacheSize.toFixed(1)} MB
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Synced Items</p>
+            <p className="text-lg font-bold text-green-600 dark:text-green-400">{syncedCount}</p>
           </div>
-        </div>
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <Database className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Offline Data</span>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Pending Sync</p>
+            <p className="text-lg font-bold text-orange-600 dark:text-orange-400">{pendingSync}</p>
           </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {offlineData.length}
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Auto Sync</p>
+            <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{autoSync ? 'On' : 'Off'}</p>
           </div>
         </div>
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <RefreshCw className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Pending Sync</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {pendingSyncs}
-          </div>
-        </div>
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <AlertCircle className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Conflicts</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {conflicts}
-          </div>
-        </div>
-      </div>
 
-      {/* Sync Button */}
-      {!isOnline && (
-        <div className="mb-4 p-3 bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800 rounded-lg">
-          <p className="text-xs text-orange-700 dark:text-orange-400 mb-2">
-            <strong>Offline mode:</strong> App đang chạy trong chế độ offline
-          </p>
+        <div className="flex flex-wrap gap-2">
           <button
             type="button"
             onClick={handleSyncNow}
-            disabled={isSyncing}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 disabled:bg-slate-300 dark:disabled:bg-slate-600 text-white text-sm font-semibold rounded-lg transition-colors"
+            disabled={!isOnline || pendingSync === 0}
+            className={`px-3 py-1.5 rounded-lg text-xs border-0 flex items-center gap-1 ${isOnline && pendingSync > 0 ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-slate-100 text-slate-400 dark:bg-slate-700 dark:text-slate-500 cursor-not-allowed'}`}
           >
-            {isSyncing ? (
-              <>
-                <RefreshCw className="h-4 w-4 animate-spin" />
-                Đang sync...
-              </>
-            ) : (
-              <>
-                <RefreshCw className="h-4 w-4" />
-                Sync khi có kết nối
-              </>
-            )}
+            <Sync className="h-3 w-3" />
+            Sync Now
+          </button>
+          <button
+            type="button"
+            onClick={() => setAutoSync(!autoSync)}
+            className={`px-3 py-1.5 rounded-lg text-xs border-0 flex items-center gap-1 ${autoSync ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300'}`}
+          >
+            <Cloud className="h-3 w-3" />
+            {autoSync ? 'Auto Sync On' : 'Auto Sync Off'}
+          </button>
+          <button
+            type="button"
+            onClick={clearCache}
+            className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0 flex items-center gap-1"
+          >
+            <Trash2 className="h-3 w-3" />
+            Clear Cache
           </button>
         </div>
-      )}
 
-      {/* Offline Data */}
-      <div className="mb-4">
-        <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Dữ liệu offline
-        </h4>
-        <div className="space-y-2">
-          {offlineData.map((data) => (
-            <div
-              key={data.id}
-              className="p-3 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <Database className="h-4 w-4 text-slate-500" />
-                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                    {data.name}
-                  </span>
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${getStatusColor(data.status)}`}>
-                    {data.status}
-                  </span>
-                </div>
-                <span className="text-xs text-slate-500 dark:text-slate-400">
-                  {data.size}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-3 gap-2 mb-2">
-                <div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Local v</div>
-                  <div className="text-xs text-slate-700 dark:text-slate-300">
-                    {data.localVersion}
+        {showStorage && (
+          <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Offline Storage</h4>
+            <div className="space-y-2">
+              {offlineData.map((item) => (
+                <div key={item.id} className="flex items-center justify-between p-2 bg-white dark:bg-slate-800 rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <Database className="h-4 w-4 text-blue-500" />
+                    <div>
+                      <p className="text-xs font-semibold text-slate-900 dark:text-white">{item.name}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">{formatBytes(item.size)} • {item.lastModified}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400 capitalize">
+                      {item.type}
+                    </span>
+                    {item.synced ? (
+                      <div className="flex items-center gap-1 text-xs text-green-600 dark:text-green-400">
+                        <CheckCircle className="h-3 w-3" />
+                        <span>Synced</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center gap-1 text-xs text-orange-600 dark:text-orange-400">
+                        <Clock className="h-3 w-3" />
+                        <span>Pending</span>
+                      </div>
+                    )}
                   </div>
                 </div>
-                <div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Server v</div>
-                  <div className="text-xs text-slate-700 dark:text-slate-300">
-                    {data.serverVersion}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Last Sync</div>
-                  <div className="text-xs text-slate-700 dark:text-slate-300">
-                    {new Date(data.lastSynced).toLocaleDateString('vi-VN')}
-                  </div>
-                </div>
-              </div>
-
-              {data.status === 'conflict' && (
-                <div className="flex items-center gap-2 text-[10px] text-red-600 dark:text-red-400">
-                  <AlertTriangle className="h-3 w-3" />
-                  <span>Version conflict detected</span>
-                </div>
-              )}
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        )}
 
-      {/* Sync Queue */}
-      <div className="mb-4">
-        <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Sync Queue
-        </h4>
-        <div className="space-y-2">
-          {syncQueue.map((item) => (
-            <div
-              key={item.id}
-              className="p-3 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  {item.type === 'upload' ? <Upload className="h-4 w-4 text-slate-500" /> : <Download className="h-4 w-4 text-slate-500" />}
-                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                    {item.dataType}
-                  </span>
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${getSyncStatusColor(item.status)}`}>
+        {pendingSync > 0 && (
+          <div className="p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg">
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Sync Queue ({syncQueue.length} items)</h4>
+            <div className="space-y-2">
+              {syncQueue.map((item) => (
+                <div key={item.id} className="flex items-center justify-between p-2 bg-white dark:bg-slate-800 rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-orange-500" />
+                    <div>
+                      <p className="text-xs font-semibold text-slate-900 dark:text-white">{item.name}</p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 capitalize">{item.type}</p>
+                    </div>
+                  </div>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">
                     {item.status}
                   </span>
                 </div>
-                <span className="text-xs text-slate-500 dark:text-slate-400">
-                  {item.size}
-                </span>
-              </div>
-
-              <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400">
-                <Clock className="h-3 w-3" />
-                <span>{new Date(item.timestamp).toLocaleString('vi-VN')}</span>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+        )}
+
+        <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <Settings className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
+              Offline Features
+            </h4>
+          </div>
+          <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+            <li>• View cached memories and photos</li>
+            <li>• Create new memories (synced when online)</li>
+            <li>• Edit existing memories (synced when online)</li>
+            <li>• Access location history</li>
+            <li>• View and manage settings</li>
+          </ul>
         </div>
-      </div>
 
-      {/* Clear Cache */}
-      <div className="mb-4">
-        <button
-          type="button"
-          onClick={handleClearCache}
-          className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-sm font-semibold rounded-lg transition-colors"
-        >
-          <Trash2 className="h-4 w-4" />
-          Xóa cache
-        </button>
-      </div>
-
-      <div className="mt-4 p-3 bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-900 rounded-lg">
-        <p className="text-[10px] text-orange-700 dark:text-orange-400">
-          <strong>Lưu ý:</strong> Chế độ offline sử dụng IndexedDB và Service Worker để cache dữ liệu, sync queue, và conflict resolution.
-        </p>
+        <div className="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <HardDrive className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
+              Storage Management
+            </h4>
+          </div>
+          <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+            <li>• Offline data uses device storage</li>
+            <li>• Photos take the most space</li>
+            <li>• Clear cache to free up storage</li>
+            <li>• Auto-sync when connection is restored</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

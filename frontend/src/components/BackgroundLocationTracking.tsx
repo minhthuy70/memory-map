@@ -1,174 +1,105 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { MapPin, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Clock, Battery, Map, Play, Pause, Navigation, Activity, Signal } from 'lucide-react';
+import { MapPin, X, Navigation, Play, Pause, RefreshCw, Clock, Map, Activity, Battery, Signal, Settings, Info, BarChart3, CheckCircle, AlertTriangle, Calendar, MoreVertical } from 'lucide-react';
+
+interface BackgroundLocationTrackingProps {
+  onCancel?: () => void;
+}
 
 interface LocationPoint {
   id: string;
   latitude: number;
   longitude: number;
+  timestamp: string;
   accuracy: number;
-  timestamp: Date;
-  speed: number;
-  altitude: number;
+  speed?: number;
+  heading?: number;
 }
 
-interface Geofence {
-  id: string;
-  name: string;
-  latitude: number;
-  longitude: number;
-  radius: number;
-  active: boolean;
-  enterAlert: boolean;
-  exitAlert: boolean;
-}
-
-interface BackgroundLocationTrackingProps {
-  onCancel?: () => void;
-  onStartTracking?: () => Promise<void>;
-  onStopTracking?: () => Promise<void>;
-}
-
-const DEFAULT_LOCATION_POINTS: LocationPoint[] = [
-  {
-    id: 'loc-1',
-    latitude: 21.0285,
-    longitude: 105.8542,
-    accuracy: 10,
-    timestamp: new Date(),
-    speed: 0,
-    altitude: 15,
-  },
-  {
-    id: 'loc-2',
-    latitude: 21.0290,
-    longitude: 105.8550,
-    accuracy: 8,
-    timestamp: new Date(Date.now() - 60000),
-    speed: 5.2,
-    altitude: 15,
-  },
-  {
-    id: 'loc-3',
-    latitude: 21.0295,
-    longitude: 105.8558,
-    accuracy: 12,
-    timestamp: new Date(Date.now() - 120000),
-    speed: 8.5,
-    altitude: 16,
-  },
-];
-
-const DEFAULT_GEOFENCES: Geofence[] = [
-  {
-    id: 'geo-1',
-    name: 'Home',
-    latitude: 21.0285,
-    longitude: 105.8542,
-    radius: 100,
-    active: true,
-    enterAlert: true,
-    exitAlert: true,
-  },
-  {
-    id: 'geo-2',
-    name: 'Office',
-    latitude: 21.0300,
-    longitude: 105.8560,
-    radius: 50,
-    active: true,
-    enterAlert: true,
-    exitAlert: false,
-  },
-];
-
-export default function BackgroundLocationTracking({ onCancel, onStartTracking, onStopTracking }: BackgroundLocationTrackingProps) {
+export default function BackgroundLocationTracking({ onCancel }: BackgroundLocationTrackingProps) {
   const [isTracking, setIsTracking] = useState(false);
-  const [locationPoints, setLocationPoints] = useState<LocationPoint[]>(DEFAULT_LOCATION_POINTS);
-  const [geofences, setGeofences] = useState<Geofence[]>(DEFAULT_GEOFENCES);
-  const [showSettings, setShowSettings] = useState(false);
-  const [updateInterval, setUpdateInterval] = useState(30);
-  const [accuracyThreshold, setAccuracyThreshold] = useState(20);
+  const [locationPoints, setLocationPoints] = useState<LocationPoint[]>([]);
+  const [currentLocation, setCurrentLocation] = useState<LocationPoint | null>(null);
+  const [trackingInterval, setTrackingInterval] = useState(5);
   const [batteryOptimization, setBatteryOptimization] = useState(true);
+  const [showHistory, setShowHistory] = useState(false);
 
   useEffect(() => {
     if (isTracking) {
       const interval = setInterval(() => {
-        const newPoint: LocationPoint = {
-          id: `loc-${Date.now()}`,
-          latitude: 21.0285 + (Math.random() - 0.5) * 0.001,
-          longitude: 105.8542 + (Math.random() - 0.5) * 0.001,
-          accuracy: Math.floor(Math.random() * 15) + 5,
-          timestamp: new Date(),
-          speed: Math.random() * 10,
-          altitude: 15 + Math.random() * 5,
-        };
-        setLocationPoints(prev => [newPoint, ...prev].slice(0, 10));
-      }, updateInterval * 1000);
+        simulateLocationUpdate();
+      }, trackingInterval * 1000);
       return () => clearInterval(interval);
     }
-  }, [isTracking, updateInterval]);
+  }, [isTracking, trackingInterval]);
 
-  const handleStart = async () => {
-    if (onStartTracking) {
-      await onStartTracking();
+  const simulateLocationUpdate = () => {
+    const newPoint: LocationPoint = {
+      id: Date.now().toString(),
+      latitude: 21.0285 + (Math.random() - 0.5) * 0.01,
+      longitude: 105.8542 + (Math.random() - 0.5) * 0.01,
+      timestamp: new Date().toISOString(),
+      accuracy: Math.floor(Math.random() * 20) + 5,
+      speed: Math.random() * 10,
+      heading: Math.random() * 360,
+    };
+    setCurrentLocation(newPoint);
+    setLocationPoints(prev => [...prev.slice(-99), newPoint]);
+  };
+
+  const handleToggleTracking = () => {
+    setIsTracking(!isTracking);
+    if (!isTracking) {
+      simulateLocationUpdate();
     }
-    setIsTracking(true);
   };
 
-  const handleStop = async () => {
-    if (onStopTracking) {
-      await onStopTracking();
-    }
-    setIsTracking(false);
+  const clearHistory = () => {
+    setLocationPoints([]);
+    setCurrentLocation(null);
   };
 
-  const toggleGeofence = (geofenceId: string) => {
-    setGeofences(prev => prev.map(g => 
-      g.id === geofenceId ? { ...g, active: !g.active } : g
-    ));
-  };
-
-  const latestLocation = locationPoints[0];
-  const totalDistance = locationPoints.reduce((sum, _, idx) => {
-    if (idx === 0) return 0;
-    const prev = locationPoints[idx - 1];
-    const curr = locationPoints[idx];
-    const R = 6371;
-    const dLat = (curr.latitude - prev.latitude) * Math.PI / 180;
-    const dLon = (curr.longitude - prev.longitude) * Math.PI / 180;
-    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(prev.latitude * Math.PI / 180) * Math.cos(curr.latitude * Math.PI / 180) *
-              Math.sin(dLon/2) * Math.sin(dLon/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    return sum + R * c;
+  const totalDistance = locationPoints.reduce((sum, point, index) => {
+    if (index === 0) return 0;
+    const prev = locationPoints[index - 1];
+    const lat1 = (prev.latitude * Math.PI) / 180;
+    const lat2 = (point.latitude * Math.PI) / 180;
+    const lon1 = (prev.longitude * Math.PI) / 180;
+    const lon2 = (point.longitude * Math.PI) / 180;
+    const dLat = lat2 - lat1;
+    const dLon = lon2 - lon1;
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(lat1) * Math.cos(lat2) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return sum + 6371 * c;
   }, 0);
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl">
+          <div className="p-2 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl">
             <MapPin className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Theo dõi vị trí nền
+              Background Location Tracking
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              {isTracking ? 'Đang theo dõi' : 'Đã dừng'}
+              Track location in the background
             </p>
           </div>
         </div>
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => setShowSettings(!showSettings)}
+            onClick={() => setShowHistory(!showHistory)}
             className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
-            title="Cài đặt"
+            title="Show history"
           >
-            <Settings className="h-4 w-4 text-slate-500" />
+            {showHistory ? <BarChart3 className="h-4 w-4 text-slate-500" /> : <Info className="h-4 w-4 text-slate-500" />}
           </button>
           <button
             type="button"
@@ -181,237 +112,155 @@ export default function BackgroundLocationTracking({ onCancel, onStartTracking, 
         </div>
       </div>
 
-      {showSettings && (
-        <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Cài đặt location tracking
-          </h4>
-          <div className="space-y-2">
-            <div>
-              <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                Update interval: {updateInterval}s
-              </label>
-              <input
-                type="range"
-                min="10"
-                max="300"
-                value={updateInterval}
-                onChange={(e) => setUpdateInterval(parseInt(e.target.value))}
-                className="w-full"
-              />
+      <div className="space-y-4">
+        <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <div className={`p-3 rounded-xl ${isTracking ? 'bg-green-500' : 'bg-slate-300 dark:bg-slate-600'}`}>
+                {isTracking ? <Navigation className="h-6 w-6 text-white" /> : <MapPin className="h-6 w-6 text-white" />}
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 dark:text-white text-lg">
+                  {isTracking ? 'Tracking Active' : 'Tracking Paused'}
+                </p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  {isTracking ? 'Location updates every ' + trackingInterval + 's' : 'Tap to start tracking'}
+                </p>
+              </div>
             </div>
-            <div>
-              <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                Accuracy threshold: {accuracyThreshold}m
-              </label>
-              <input
-                type="range"
-                min="5"
-                max="100"
-                value={accuracyThreshold}
-                onChange={(e) => setAccuracyThreshold(parseInt(e.target.value))}
-                className="w-full"
-              />
+            <button
+              type="button"
+              onClick={handleToggleTracking}
+              className={`p-3 rounded-xl transition-colors ${isTracking ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'}`}
+            >
+              {isTracking ? <Pause className="h-6 w-6 text-white" /> : <Play className="h-6 w-6 text-white" />}
+            </button>
+          </div>
+          {currentLocation && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-3">
+              <div className="p-2 bg-white dark:bg-slate-800 rounded-lg">
+                <p className="text-xs text-slate-500 dark:text-slate-400">Latitude</p>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">{currentLocation.latitude.toFixed(6)}</p>
+              </div>
+              <div className="p-2 bg-white dark:bg-slate-800 rounded-lg">
+                <p className="text-xs text-slate-500 dark:text-slate-400">Longitude</p>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">{currentLocation.longitude.toFixed(6)}</p>
+              </div>
+              <div className="p-2 bg-white dark:bg-slate-800 rounded-lg">
+                <p className="text-xs text-slate-500 dark:text-slate-400">Accuracy</p>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">±{currentLocation.accuracy}m</p>
+              </div>
+              <div className="p-2 bg-white dark:bg-slate-800 rounded-lg">
+                <p className="text-xs text-slate-500 dark:text-slate-400">Speed</p>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">{currentLocation.speed?.toFixed(1) || 0} km/h</p>
+              </div>
             </div>
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-600 dark:text-slate-400">
-                Battery optimization
-              </span>
-              <button
-                type="button"
-                onClick={() => setBatteryOptimization(!batteryOptimization)}
-                className={`relative w-10 h-5 rounded-full transition-colors ${
-                  batteryOptimization ? 'bg-blue-500' : 'bg-slate-300 dark:bg-slate-600'
-                }`}
-              >
-                <span
-                  className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform ${
-                    batteryOptimization ? 'translate-x-5' : ''
-                  }`}
-                />
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Overall Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <Navigation className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Accuracy</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {latestLocation?.accuracy || 0}m
-          </div>
-        </div>
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <Activity className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Speed</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {latestLocation?.speed.toFixed(1) || 0} km/h
-          </div>
-        </div>
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <Map className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Distance</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {totalDistance.toFixed(2)} km
-          </div>
-        </div>
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <Battery className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Points</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {locationPoints.length}
-          </div>
-        </div>
-      </div>
-
-      {/* Control Button */}
-      <div className="mb-4">
-        <button
-          type="button"
-          onClick={isTracking ? handleStop : handleStart}
-          className={`w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl transition-all ${
-            isTracking
-              ? 'bg-red-500 hover:bg-red-600 text-white'
-              : 'bg-green-500 hover:bg-green-600 text-white'
-          }`}
-        >
-          {isTracking ? (
-            <>
-              <Pause className="h-4 w-4" />
-              Dừng theo dõi
-            </>
-          ) : (
-            <>
-              <Play className="h-4 w-4" />
-              Bắt đầu theo dõi
-            </>
           )}
-        </button>
-      </div>
+        </div>
 
-      {/* Current Location */}
-      {latestLocation && (
-        <div className="mb-4 p-4 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Vị trí hiện tại
-          </h4>
-          <div className="grid grid-cols-2 gap-2">
-            <div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400">Latitude</div>
-              <div className="text-xs text-slate-700 dark:text-slate-300">
-                {latestLocation.latitude.toFixed(6)}
-              </div>
-            </div>
-            <div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400">Longitude</div>
-              <div className="text-xs text-slate-700 dark:text-slate-300">
-                {latestLocation.longitude.toFixed(6)}
-              </div>
-            </div>
-            <div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400">Altitude</div>
-              <div className="text-xs text-slate-700 dark:text-slate-300">
-                {latestLocation.altitude.toFixed(1)}m
-              </div>
-            </div>
-            <div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400">Timestamp</div>
-              <div className="text-xs text-slate-700 dark:text-slate-300">
-                {new Date(latestLocation.timestamp).toLocaleTimeString('vi-VN')}
-              </div>
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Points Collected</p>
+            <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{locationPoints.length}</p>
+          </div>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Total Distance</p>
+            <p className="text-lg font-bold text-green-600 dark:text-green-400">{totalDistance.toFixed(2)} km</p>
+          </div>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Update Interval</p>
+            <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{trackingInterval}s</p>
+          </div>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Battery Opt</p>
+            <p className="text-lg font-bold text-orange-600 dark:text-orange-400">{batteryOptimization ? 'On' : 'Off'}</p>
           </div>
         </div>
-      )}
 
-      {/* Geofences */}
-      <div className="mb-4">
-        <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Geofences
-        </h4>
-        <div className="space-y-2">
-          {geofences.map((geofence) => (
-            <div
-              key={geofence.id}
-              className="p-3 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4 text-slate-500" />
-                  <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                    {geofence.name}
-                  </span>
-                  {geofence.active && (
-                    <CheckCircle className="h-3 w-3 text-green-500" />
-                  )}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => toggleGeofence(geofence.id)}
-                  className={`relative w-10 h-5 rounded-full transition-colors ${
-                    geofence.active ? 'bg-blue-500' : 'bg-slate-300 dark:bg-slate-600'
-                  }`}
-                >
-                  <span
-                    className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform ${
-                      geofence.active ? 'translate-x-5' : ''
-                    }`}
-                  />
-                </button>
-              </div>
-
-              <div className="flex items-center gap-3 text-[10px] text-slate-500 dark:text-slate-400">
-                <span>Radius: {geofence.radius}m</span>
-                {geofence.enterAlert && <span>• Enter alert</span>}
-                {geofence.exitAlert && <span>• Exit alert</span>}
-              </div>
-            </div>
-          ))}
+        <div className="flex flex-wrap gap-2">
+          <select
+            value={trackingInterval.toString()}
+            onChange={(e) => setTrackingInterval(parseInt(e.target.value))}
+            className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0"
+          >
+            <option value="5">5 seconds</option>
+            <option value="10">10 seconds</option>
+            <option value="30">30 seconds</option>
+            <option value="60">1 minute</option>
+            <option value="300">5 minutes</option>
+          </select>
+          <button
+            type="button"
+            onClick={() => setBatteryOptimization(!batteryOptimization)}
+            className={`px-3 py-1.5 rounded-lg text-xs border-0 flex items-center gap-1 ${batteryOptimization ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300'}`}
+          >
+            <Battery className="h-3 w-3" />
+            {batteryOptimization ? 'Battery Opt On' : 'Battery Opt Off'}
+          </button>
+          <button
+            type="button"
+            onClick={clearHistory}
+            className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0 flex items-center gap-1"
+          >
+            <RefreshCw className="h-3 w-3" />
+            Clear History
+          </button>
         </div>
-      </div>
 
-      {/* Location History */}
-      <div className="mb-4">
-        <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Lịch sử vị trí
-        </h4>
-        <div className="space-y-2 max-h-48 overflow-y-auto">
-          {locationPoints.slice(0, 5).map((point) => (
-            <div
-              key={point.id}
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/50"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Signal className="h-3 w-3 text-slate-500" />
-                  <span className="text-xs text-slate-700 dark:text-slate-300">
-                    {point.latitude.toFixed(4)}, {point.longitude.toFixed(4)}
-                  </span>
+        {showHistory && (
+          <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Location History</h4>
+            <div className="space-y-2 max-h-48 overflow-y-auto">
+              {locationPoints.slice(-10).reverse().map((point) => (
+                <div key={point.id} className="flex items-center justify-between p-2 bg-white dark:bg-slate-800 rounded-lg">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-green-500" />
+                    <div>
+                      <p className="text-xs text-slate-700 dark:text-slate-300">
+                        {point.latitude.toFixed(6)}, {point.longitude.toFixed(6)}
+                      </p>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">{new Date(point.timestamp).toLocaleString()}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-xs text-slate-500 dark:text-slate-400">±{point.accuracy}m</p>
+                    {point.speed && <p className="text-xs text-slate-500 dark:text-slate-400">{point.speed.toFixed(1)} km/h</p>}
+                  </div>
                 </div>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400">
-                  {new Date(point.timestamp).toLocaleTimeString('vi-VN')}
-                </span>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        )}
 
-      <div className="mt-4 p-3 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-900 rounded-lg">
-        <p className="text-[10px] text-blue-700 dark:text-blue-400">
-          <strong>Lưu ý:</strong> Theo dõi vị trí nền sử dụng native GPS với configurable update intervals, geofencing, và battery optimization.
-        </p>
+        <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <Settings className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
+              Tracking Settings
+            </h4>
+          </div>
+          <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+            <li>• Update interval: Controls how often location is recorded</li>
+            <li>• Battery optimization: Reduces GPS accuracy to save battery</li>
+            <li>• Background tracking: Continues when app is closed</li>
+            <li>• Location data: Stored locally and synced when online</li>
+          </ul>
+        </div>
+
+        <div className="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
+              Battery & Privacy Notice
+            </h4>
+          </div>
+          <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+            <li>• Background location tracking may drain battery faster</li>
+            <li>• Enable battery optimization for longer tracking sessions</li>
+            <li>• Location data is encrypted and stored securely</li>
+            <li>• You can stop tracking at any time from settings</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

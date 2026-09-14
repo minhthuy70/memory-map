@@ -1,165 +1,164 @@
 'use client';
 
 import { useState } from 'react';
-import { Zap, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Plus, Trash2, MapPin, Camera, Search, Calendar, Star, Smartphone, Apple, Android, Activity, Edit } from 'lucide-react';
-
-interface AppShortcut {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-  deepLink: string;
-  enabled: boolean;
-  usageCount: number;
-  lastUsed: Date | null;
-  platform: 'ios' | 'android' | 'both';
-}
+import { Zap, X, Plus, Trash2, RefreshCw, Clock, CheckCircle, Settings, Info, BarChart3, Smartphone, GripVertical, Edit, ExternalLink, MoreVertical, Star, Heart, MapPin, Camera, Calendar, Search } from 'lucide-react';
 
 interface AppShortcutsProps {
   onCancel?: () => void;
-  onAddShortcut?: (shortcut: Omit<AppShortcut, 'id' | 'usageCount' | 'lastUsed'>) => Promise<AppShortcut>;
-  onRemoveShortcut?: (shortcutId: string) => Promise<void>;
-  onUpdateShortcut?: (shortcutId: string, shortcut: Partial<AppShortcut>) => Promise<void>;
 }
 
-const DEFAULT_SHORTCUTS: AppShortcut[] = [
-  {
-    id: 'shortcut-1',
-    title: 'Add Memory',
-    description: 'Quickly add a new memory',
-    icon: 'camera',
-    deepLink: 'memorymap://memories/new',
-    enabled: true,
-    usageCount: 1250,
-    lastUsed: new Date(),
-    platform: 'both',
-  },
-  {
-    id: 'shortcut-2',
-    title: 'View Map',
-    description: 'Open the memory map',
-    icon: 'map',
-    deepLink: 'memorymap://map',
-    enabled: true,
-    usageCount: 890,
-    lastUsed: new Date(Date.now() - 3600000),
-    platform: 'both',
-  },
-  {
-    id: 'shortcut-3',
-    title: 'Search',
-    description: 'Search your memories',
-    icon: 'search',
-    deepLink: 'memorymap://search',
-    enabled: true,
-    usageCount: 5420,
-    lastUsed: new Date(Date.now() - 86400000),
-    platform: 'both',
-  },
-  {
-    id: 'shortcut-4',
-    title: 'Favorites',
-    description: 'View favorite memories',
-    icon: 'star',
-    deepLink: 'memorymap://favorites',
-    enabled: false,
-    usageCount: 320,
-    lastUsed: new Date(Date.now() - 86400000 * 7),
-    platform: 'both',
-  },
-];
+interface Shortcut {
+  id: string;
+  name: string;
+  icon: string;
+  deepLink: string;
+  enabled: boolean;
+  position: number;
+  isCustom: boolean;
+  usageCount: number;
+}
 
-export default function AppShortcuts({ onCancel, onAddShortcut, onRemoveShortcut, onUpdateShortcut }: AppShortcutsProps) {
-  const [shortcuts, setShortcuts] = useState<AppShortcut[]>(DEFAULT_SHORTCUTS);
-  const [showSettings, setShowSettings] = useState(false);
-  const [showCreateModal, setShowCreateModal] = useState(false);
-  const [selectedShortcut, setSelectedShortcut] = useState<AppShortcut | null>(null);
+export default function AppShortcuts({ onCancel }: AppShortcutsProps) {
+  const [shortcutsEnabled, setShortcutsEnabled] = useState(true);
+  const [editMode, setEditMode] = useState(false);
+  const [showUsage, setShowUsage] = useState(false);
 
-  const handleAdd = async (shortcut: Omit<AppShortcut, 'id' | 'usageCount' | 'lastUsed'>) => {
-    if (onAddShortcut) {
-      const newShortcut = await onAddShortcut(shortcut);
-      setShortcuts(prev => [newShortcut, ...prev]);
-    } else {
-      const newShortcut: AppShortcut = {
-        ...shortcut,
-        id: `shortcut-${Date.now()}`,
-        usageCount: 0,
-        lastUsed: null,
-      };
-      setShortcuts(prev => [newShortcut, ...prev]);
-    }
-    setShowCreateModal(false);
-  };
-
-  const handleRemove = async (shortcutId: string) => {
-    if (onRemoveShortcut) {
-      await onRemoveShortcut(shortcutId);
-    }
-    setShortcuts(prev => prev.filter(s => s.id !== shortcutId));
-  };
-
-  const handleToggle = async (shortcutId: string) => {
-    const shortcut = shortcuts.find(s => s.id === shortcutId);
-    if (shortcut && onUpdateShortcut) {
-      await onUpdateShortcut(shortcutId, { enabled: !shortcut.enabled });
-    }
-    setShortcuts(prev => prev.map(s => 
-      s.id === shortcutId ? { ...s, enabled: !s.enabled } : s
-    ));
-  };
+  const [shortcuts, setShortcuts] = useState<Shortcut[]>([
+    {
+      id: '1',
+      name: 'Create Memory',
+      icon: 'plus',
+      deepLink: '/memories/create',
+      enabled: true,
+      position: 1,
+      isCustom: false,
+      usageCount: 45,
+    },
+    {
+      id: '2',
+      name: 'Quick Search',
+      icon: 'search',
+      deepLink: '/search',
+      enabled: true,
+      position: 2,
+      isCustom: false,
+      usageCount: 32,
+    },
+    {
+      id: '3',
+      name: 'Recent Photos',
+      icon: 'camera',
+      deepLink: '/photos/recent',
+      enabled: true,
+      position: 3,
+      isCustom: false,
+      usageCount: 28,
+    },
+    {
+      id: '4',
+      name: 'My Locations',
+      icon: 'mapPin',
+      deepLink: '/locations',
+      enabled: true,
+      position: 4,
+      isCustom: false,
+      usageCount: 15,
+    },
+    {
+      id: '5',
+      name: 'Today\'s Memories',
+      icon: 'calendar',
+      deepLink: '/memories/today',
+      enabled: false,
+      position: 5,
+      isCustom: false,
+      usageCount: 0,
+    },
+    {
+      id: '6',
+      name: 'Favorites',
+      icon: 'heart',
+      deepLink: '/favorites',
+      enabled: false,
+      position: 6,
+      isCustom: true,
+      usageCount: 0,
+    },
+  ]);
 
   const getShortcutIcon = (icon: string) => {
     switch (icon) {
-      case 'camera':
-        return <Camera className="h-4 w-4" />;
-      case 'map':
-        return <MapPin className="h-4 w-4" />;
-      case 'search':
-        return <Search className="h-4 w-4" />;
-      case 'star':
-        return <Star className="h-4 w-4" />;
-      case 'calendar':
-        return <Calendar className="h-4 w-4" />;
-      default:
-        return <Zap className="h-4 w-4" />;
+      case 'plus': return <Plus className="h-5 w-5" />;
+      case 'search': return <Search className="h-5 w-5" />;
+      case 'camera': return <Camera className="h-5 w-5" />;
+      case 'mapPin': return <MapPin className="h-5 w-5" />;
+      case 'calendar': return <Calendar className="h-5 w-5" />;
+      case 'heart': return <Heart className="h-5 w-5" />;
+      case 'star': return <Star className="h-5 w-5" />;
+      default: return <Zap className="h-5 w-5" />;
     }
   };
 
-  const enabledShortcuts = shortcuts.filter(s => s.enabled).length;
+  const toggleShortcut = (id: string) => {
+    setShortcuts(shortcuts.map(shortcut => {
+      if (shortcut.id === id) {
+        return { ...shortcut, enabled: !shortcut.enabled };
+      }
+      return shortcut;
+    }));
+  };
+
+  const deleteShortcut = (id: string) => {
+    setShortcuts(shortcuts.filter(shortcut => shortcut.id !== id));
+  };
+
+  const reorderShortcut = (id: string, direction: 'up' | 'down') => {
+    const currentIndex = shortcuts.findIndex(s => s.id === id);
+    const newIndex = direction === 'up' ? currentIndex - 1 : currentIndex + 1;
+    if (newIndex >= 0 && newIndex < shortcuts.length) {
+      const newShortcuts = [...shortcuts];
+      [newShortcuts[currentIndex], newShortcuts[newIndex]] = [newShortcuts[newIndex], newShortcuts[currentIndex]];
+      newShortcuts.forEach((shortcut, index) => shortcut.position = index + 1);
+      setShortcuts(newShortcuts);
+    }
+  };
+
+  const enabledCount = shortcuts.filter(s => s.enabled).length;
+  const totalCount = shortcuts.length;
   const totalUsage = shortcuts.reduce((sum, s) => sum + s.usageCount, 0);
 
   return (
     <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-xl">
+          <div className="p-2 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl">
             <Zap className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Phím tắt app
+              App Shortcuts
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              {enabledShortcuts} shortcuts • {totalUsage.toLocaleString()} uses
+              Quick access to common actions
             </p>
           </div>
         </div>
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => setShowCreateModal(true)}
-            className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
-            title="Tạo shortcut mới"
+            onClick={() => setEditMode(!editMode)}
+            className={`p-2 rounded-lg transition-colors ${editMode ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400' : 'hover:bg-slate-100 dark:hover:bg-slate-700'}`}
+            title={editMode ? 'Exit edit mode' : 'Edit shortcuts'}
           >
-            <Plus className="h-4 w-4 text-slate-500" />
+            {editMode ? <CheckCircle className="h-4 w-4" /> : <Edit className="h-4 w-4 text-slate-500" />}
           </button>
           <button
             type="button"
-            onClick={() => setShowSettings(!showSettings)}
+            onClick={() => setShowUsage(!showUsage)}
             className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
-            title="Cài đặt"
+            title="Show usage"
           >
-            <Settings className="h-4 w-4 text-slate-500" />
+            {showUsage ? <BarChart3 className="h-4 w-4 text-slate-500" /> : <Info className="h-4 w-4 text-slate-500" />}
           </button>
           <button
             type="button"
@@ -172,286 +171,182 @@ export default function AppShortcuts({ onCancel, onAddShortcut, onRemoveShortcut
         </div>
       </div>
 
-      {showSettings && (
-        <div className="mb-4 p-4 bg-teal-50 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-800 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Cài đặt app shortcuts
-          </h4>
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-600 dark:text-slate-400">
-                iOS 3D Touch
-              </span>
-              <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
+      <div className="space-y-4">
+        <div className={`p-4 rounded-lg border ${shortcutsEnabled ? 'bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 border-yellow-200 dark:border-yellow-800' : 'bg-slate-50 dark:bg-slate-700/30 border-slate-200 dark:border-slate-600'}`}>
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <div className={`p-3 rounded-xl ${shortcutsEnabled ? 'bg-yellow-500' : 'bg-slate-300 dark:bg-slate-600'}`}>
+                <Zap className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <p className="font-bold text-slate-900 dark:text-white text-lg">
+                  {shortcutsEnabled ? 'Shortcuts Enabled' : 'Shortcuts Disabled'}
+                </p>
+                <p className="text-sm text-slate-600 dark:text-slate-400">
+                  {shortcutsEnabled ? 'Quick access from home screen' : 'Shortcuts hidden from home screen'}
+                </p>
+              </div>
             </div>
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-600 dark:text-slate-400">
-                Android Long Press
-              </span>
-              <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-slate-600 dark:text-slate-400">
-                Max shortcuts
-              </span>
-              <span className="text-xs text-slate-700 dark:text-slate-300">4</span>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Platform Info */}
-      <div className="mb-4 p-4 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-        <div className="flex items-center gap-2 mb-3">
-          <Smartphone className="h-4 w-4 text-slate-500" />
-          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-            Platform Support
-          </span>
-        </div>
-        <div className="flex gap-4">
-          <div className="flex items-center gap-2">
-            <Apple className="h-4 w-4 text-slate-500" />
-            <span className="text-xs text-slate-600 dark:text-slate-400">
-              3D Touch, Home Screen Quick Actions
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Android className="h-4 w-4 text-slate-500" />
-            <span className="text-xs text-slate-600 dark:text-slate-400">
-              App Shortcuts, Long Press
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Overall Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <Zap className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Enabled</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {enabledShortcuts}
-          </div>
-        </div>
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <Activity className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Total Uses</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {totalUsage.toLocaleString()}
-          </div>
-        </div>
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <Smartphone className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Platform</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            Both
-          </div>
-        </div>
-        <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
-          <div className="flex items-center gap-2 mb-1">
-            <CheckCircle className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Active</span>
-          </div>
-          <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {shortcuts.length}
-          </div>
-        </div>
-      </div>
-
-      {/* App Shortcuts */}
-      <div className="mb-4">
-        <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          App Shortcuts
-        </h4>
-        <div className="space-y-2">
-          {shortcuts.map((shortcut) => (
-            <div
-              key={shortcut.id}
-              className="p-4 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600"
+            <button
+              type="button"
+              onClick={() => setShortcutsEnabled(!shortcutsEnabled)}
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${shortcutsEnabled ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-green-500 text-white hover:bg-green-600'}`}
             >
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <div className="p-2 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-lg">
+              {shortcutsEnabled ? 'Disable' : 'Enable'}
+            </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Active</p>
+            <p className="text-lg font-bold text-green-600 dark:text-green-400">{enabledCount}/{totalCount}</p>
+          </div>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Custom</p>
+            <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{shortcuts.filter(s => s.isCustom).length}</p>
+          </div>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Total Usage</p>
+            <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{totalUsage}</p>
+          </div>
+          <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Edit Mode</p>
+            <p className="text-lg font-bold text-orange-600 dark:text-orange-400">{editMode ? 'On' : 'Off'}</p>
+          </div>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            className="px-3 py-1.5 rounded-lg text-xs bg-yellow-500 text-white border-0 flex items-center gap-1 hover:bg-yellow-600 transition-colors"
+          >
+            <Plus className="h-3 w-3" />
+            Add Shortcut
+          </button>
+          <button
+            type="button"
+            className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0 flex items-center gap-1"
+          >
+            <RefreshCw className="h-3 w-3" />
+            Reset to Default
+          </button>
+        </div>
+
+        {showUsage && (
+          <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Usage Statistics</h4>
+            <div className="space-y-2">
+              {shortcuts
+                .filter(s => s.usageCount > 0)
+                .sort((a, b) => b.usageCount - a.usageCount)
+                .map((shortcut) => (
+                  <div key={shortcut.id} className="flex items-center justify-between p-2 bg-white dark:bg-slate-800 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      {getShortcutIcon(shortcut.icon)}
+                      <p className="text-xs font-semibold text-slate-900 dark:text-white">{shortcut.name}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <p className="text-xs text-slate-500 dark:text-slate-400">{shortcut.usageCount} uses</p>
+                      <div className="w-16 bg-slate-200 dark:bg-slate-600 rounded-full h-2">
+                        <div
+                          className="bg-yellow-500 h-2 rounded-full"
+                          style={{ width: `${(shortcut.usageCount / totalUsage) * 100}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
+
+        <div>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Home Screen Shortcuts</h4>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {shortcuts.map((shortcut) => (
+              <div
+                key={shortcut.id}
+                className={`p-4 rounded-lg border-2 ${shortcut.enabled ? 'border-yellow-300 dark:border-yellow-600 bg-white dark:bg-slate-800' : 'border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700/30 opacity-60'}`}
+              >
+                <div className="flex items-start justify-between mb-2">
+                  <div className={`p-2 rounded-lg ${shortcut.enabled ? 'bg-yellow-500' : 'bg-slate-300 dark:bg-slate-600'}`}>
                     {getShortcutIcon(shortcut.icon)}
                   </div>
-                  <div>
-                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                      {shortcut.title}
-                    </span>
-                    {shortcut.enabled && (
-                      <CheckCircle className="h-3 w-3 text-green-500 inline ml-2" />
-                    )}
-                  </div>
+                  {editMode && (
+                    <div className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => reorderShortcut(shortcut.id, 'up')}
+                        disabled={shortcut.position === 1}
+                        className="p-1 hover:bg-slate-100 dark:hover:bg-slate-600 rounded"
+                      >
+                        <ExternalLink className="h-3 w-3 text-slate-500 rotate-[-45deg]" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => reorderShortcut(shortcut.id, 'down')}
+                        disabled={shortcut.position === shortcuts.length}
+                        className="p-1 hover:bg-slate-100 dark:hover:bg-slate-600 rounded"
+                      >
+                        <ExternalLink className="h-3 w-3 text-slate-500 rotate-45" />
+                      </button>
+                      {shortcut.isCustom && (
+                        <button
+                          type="button"
+                          onClick={() => deleteShortcut(shortcut.id)}
+                          className="p-1 hover:bg-red-100 dark:hover:bg-red-900/30 rounded"
+                        >
+                          <Trash2 className="h-3 w-3 text-red-500" />
+                        </button>
+                      )}
+                    </div>
+                  )}
                 </div>
+                <p className="font-semibold text-slate-900 dark:text-white text-sm mb-1">{shortcut.name}</p>
                 <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => handleToggle(shortcut.id)}
-                    className={`relative w-10 h-5 rounded-full transition-colors ${
-                      shortcut.enabled ? 'bg-teal-500' : 'bg-slate-300 dark:bg-slate-600'
-                    }`}
-                  >
-                    <span
-                      className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform ${
-                        shortcut.enabled ? 'translate-x-5' : ''
-                      }`}
-                    />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleRemove(shortcut.id)}
-                    className="p-1 hover:bg-slate-200 dark:hover:bg-slate-600 rounded transition-colors"
-                    title="Delete"
-                  >
-                    <Trash2 className="h-3 w-3 text-slate-500" />
-                  </button>
+                  <span className={`text-xs px-2 py-0.5 rounded-full ${shortcut.isCustom ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400'}`}>
+                    {shortcut.isCustom ? 'Custom' : 'Default'}
+                  </span>
+                  {shortcut.usageCount > 0 && (
+                    <span className="text-xs text-slate-500 dark:text-slate-400">{shortcut.usageCount} uses</span>
+                  )}
                 </div>
               </div>
-
-              <p className="text-xs text-slate-600 dark:text-slate-400 mb-2">
-                {shortcut.description}
-              </p>
-
-              <div className="grid grid-cols-3 gap-2 mb-2">
-                <div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Uses</div>
-                  <div className="text-xs text-slate-700 dark:text-slate-300">
-                    {shortcut.usageCount}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Platform</div>
-                  <div className="text-xs text-slate-700 dark:text-slate-300">
-                    {shortcut.platform}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Last Used</div>
-                  <div className="text-xs text-slate-700 dark:text-slate-300">
-                    {shortcut.lastUsed ? new Date(shortcut.lastUsed).toLocaleDateString('vi-VN') : 'Never'}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400">
-                <span>Deep Link:</span>
-                <code className="text-xs">{shortcut.deepLink}</code>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Create Modal */}
-      {showCreateModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 max-w-md w-full mx-4">
-            <div className="flex items-center justify-between mb-4">
-              <h4 className="font-bold text-slate-900 dark:text-white">
-                Tạo App Shortcut
-              </h4>
-              <button
-                type="button"
-                onClick={() => setShowCreateModal(false)}
-                className="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
-              >
-                <X className="h-4 w-4 text-slate-500" />
-              </button>
-            </div>
-
-            <div className="space-y-3">
-              <div>
-                <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  placeholder="My Shortcut"
-                  className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                  Description
-                </label>
-                <input
-                  type="text"
-                  placeholder="Quick action description"
-                  className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                  Icon
-                </label>
-                <select className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none">
-                  <option value="camera">Camera</option>
-                  <option value="map">Map</option>
-                  <option value="search">Search</option>
-                  <option value="star">Star</option>
-                  <option value="calendar">Calendar</option>
-                </select>
-              </div>
-              <div>
-                <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                  Deep Link
-                </label>
-                <input
-                  type="text"
-                  placeholder="memorymap://path"
-                  className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                  Platform
-                </label>
-                <select className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none">
-                  <option value="both">Both</option>
-                  <option value="ios">iOS</option>
-                  <option value="android">Android</option>
-                </select>
-              </div>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => setShowCreateModal(false)}
-                  className="flex-1 px-3 py-2 bg-slate-300 dark:bg-slate-600 text-slate-700 dark:text-slate-300 text-sm font-semibold rounded-lg transition-colors"
-                >
-                  Hủy
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    handleAdd({
-                      title: 'New Shortcut',
-                      description: 'Quick action',
-                      icon: 'star',
-                      deepLink: 'memorymap://path',
-                      enabled: true,
-                      platform: 'both',
-                    });
-                  }}
-                  className="flex-1 px-3 py-2 bg-teal-500 hover:bg-teal-600 text-white text-sm font-semibold rounded-lg transition-colors"
-                >
-                  Tạo
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
-      )}
 
-      <div className="mt-4 p-3 bg-teal-50 dark:bg-teal-950/30 border border-teal-200 dark:border-teal-900 rounded-lg">
-        <p className="text-[10px] text-teal-700 dark:text-teal-400">
-          <strong>Lưu ý:</strong> App shortcuts hỗ trợ iOS 3D Touch, Home Screen Quick Actions, và Android App Shortcuts với deep linking.
-        </p>
+        <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <Settings className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
+              Shortcut Configuration
+            </h4>
+          </div>
+          <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+            <li>• Deep links navigate directly to app screens</li>
+            <li>• Reorder shortcuts by dragging or using arrows</li>
+            <li>• Create custom shortcuts for any app screen</li>
+            <li>• Toggle visibility without deleting</li>
+            <li>• Track usage to optimize your shortcuts</li>
+          </ul>
+        </div>
+
+        <div className="p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+          <div className="flex items-center gap-2 mb-2">
+            <Smartphone className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
+              Platform Notes
+            </h4>
+          </div>
+          <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
+            <li>• iOS: Shortcuts appear in 3D Touch menu</li>
+            <li>• Android: Shortcuts appear in app launcher</li>
+            <li>• Maximum 4 shortcuts on home screen</li>
+            <li>• Custom icons require app update</li>
+          </ul>
+        </div>
       </div>
     </div>
   );
