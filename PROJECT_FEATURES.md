@@ -1235,13 +1235,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 34.1. AI Writing Assistant (Trợ lý viết lách AI)
-[ ] - AI description generator - Tự động gợi ý mô tả kỷ niệm từ ảnh + vị trí
-[ ] - AI title suggester - Gợi ý tiêu đề hay cho kỷ niệm
-[ ] - AI grammar correction - Tự động sửa lỗi ngữ pháp và chính tả
-[ ] - AI writing style coach - Hướng dẫn phong cách viết phù hợp
-[ ] - AI expand short notes - Mở rộng ghi chú ngắn thành đoạn văn đầy đủ
-[ ] - AI poetry generator - Tạo thơ từ kỷ niệm
-[ ] - AI letter writer - Viết thư cho người thân từ kỷ niệm bằng AI
+[x] - AI description generator - Tự động gợi ý mô tả kỷ niệm từ ảnh + vị trí (AIDescriptionGenerator.tsx: generated descriptions with memoryId/memoryTitle/location/description/keywords/tone/createdAt, tone options with name/description/isActive, generation context with imageInput/location/mood/date, generate descriptions, tones formal/casual/poetic/detailed, total/generated/keywords/avgLength metrics, comprehensive AI description generator)
+[x] - AI title suggester - Gợi ý tiêu đề hay cho kỷ niệm (AITitleSuggester.tsx: suggested titles with title/relevance/category/memoryContext/createdAt/isAccepted, suggestion settings with autoSuggest/maxSuggestions/categoryFilter/lengthPreference, suggest titles, accept titles, categories emotional/descriptive/creative/simple, length preference short/medium/long, total/suggested/accepted/avgRelevance metrics, comprehensive AI title suggester)
+[x] - AI grammar correction - Tự động sửa lỗi ngữ pháp và chính tả (AIGrammarCorrection.tsx: correction items with originalText/correctedText/errorType/severity/explanation/isAccepted/createdAt, correction settings with autoCorrect/checkSpelling/checkGrammar/checkPunctuation/checkStyle, run correction, accept/reject corrections, error types grammar/spelling/punctuation/style, severity critical/minor/suggestion, total/errors/accepted/critical metrics, comprehensive AI grammar correction)
+[x] - AI writing style coach - Hướng dẫn phong cách viết phù hợp (AIWritingStyleCoach.tsx: style suggestions with originalText/suggestedText/style/reason/readabilityScore/isApplied/createdAt, writing metrics with clarity/conciseness/engagement/tone, style coach settings with autoCoach/targetStyle/readabilityThreshold/suggestImprovements, analyze style, apply suggestions, styles formal/casual/academic/creative/professional, readability scoring, total/suggestions/applied/avgReadability metrics, comprehensive AI writing style coach)
+[x] - AI expand short notes - Mở rộng ghi chú ngắn thành đoạn văn đầy đủ (AIExpandShortNotes.tsx: expanded notes with originalNote/expandedText/expansionLevel/wordCount/createdAt/isSaved, expansion settings with autoExpand/defaultLevel/includeContext/maintainTone, expand notes, save notes, levels brief/detailed/comprehensive, context and tone preservation, total/expanded/saved/avgWords metrics, comprehensive AI note expansion)
+[x] - AI poetry generator - Tạo thơ từ kỷ niệm (AIPoetryGenerator.tsx: generated poems with memoryId/memoryTitle/poem/style/mood/lineCount/createdAt/isSaved, poetry settings with autoGenerate/defaultStyle/defaultMood/rhymeScheme/meter, generate poems, save poems, styles haiku/sonnet/free_verse/limerick/acrostic, moods happy/sad/nostalgic/romantic/adventurous, rhyme scheme and meter options, total/poems/saved/avgLines metrics, comprehensive AI poetry generator)
+[x] - AI letter writer - Viết thư cho người thân từ kỷ niệm bằng AI (AILetterWriter.tsx: generated letters with memoryId/memoryTitle/recipient/relationship/letter/tone/wordCount/createdAt/isSent, letter settings with autoWrite/defaultTone/includeMemories/personalDetails, write letters, send letters, relationships family/friend/partner/colleague/mentor, tones formal/casual/warm/professional/romantic, memory inclusion options, total/letters/sent/avgWords metrics, comprehensive AI letter writer)
  
 34.2. AI Photo Enhancement (Nâng cao ảnh bằng AI)
 [x] - AI photo colorization - Tô màu ảnh đen trắng bằng AI (AIPhotoColorization.tsx: colorized photos with originalName/colorizedName/originalSize/colorizedSize/processedAt/quality/status, colorization models with name/description/quality/speed/isActive, colorization settings with autoColorize/quality/preserveDetails, colorize photos, quality settings low/medium/high, total/colorized/avgQuality/totalSize/models metrics, comprehensive AI photo colorization)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 968 (92.4%)
+Số lượng tính năng đã implement: 975 (93.0%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 80
+Số lượng tính năng tương lai: 73
  
 Last Updated: 2026-09-14
-Version: 13.4
+Version: 13.5
