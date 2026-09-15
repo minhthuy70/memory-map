@@ -1222,12 +1222,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Time-lapse creation - Tạo video time-lapse
  
 33.3. Memory Video Generation (Tạo video kỷ niệm tự động)
-[ ] - Auto memory movie maker - Tự động tạo phim ngắn từ ảnh + video kỷ niệm
-[ ] - Year-in-review video - Video tổng kết năm tự động
-[ ] - Memory reels (Instagram-style) - Reels kỷ niệm ngắn kiểu Instagram
-[ ] - Journey video from map points - Video hành trình từ các điểm trên bản đồ
-[ ] - Birthday memory montage - Montage kỷ niệm tự động cho dịp sinh nhật
-[ ] - AI cinematic video - Video điện ảnh tự động từ ảnh tĩnh bằng AI
+[x] - Auto memory movie maker - Tự động tạo phim ngắn từ ảnh + video kỷ niệm (AutoMemoryMovieMaker.tsx: generated movies with title/duration/memoryCount/style/music/transitions/createdAt/status, movie settings with autoGenerate/defaultStyle/defaultDuration/includeMusic/autoTransitions, generate movies, styles cinematic/slideshow/dynamic/peaceful, duration 60-600s, total/movies/avgDuration/totalMemories/styles metrics, comprehensive auto memory movie maker)
+[x] - Year-in-review video - Video tổng kết năm tự động (YearInReviewVideo.tsx: yearly videos with year/title/duration/memoryCount/highlights/theme/music/createdAt/status, yearly settings with autoGenerate/defaultTheme/includeHighlights/includeStats/autoTransitions, generate yearly videos, select year, themes modern/retro/minimal/colorful, include highlights and stats, total/videos/avgDuration/totalMemories/themes metrics, comprehensive year-in-review video)
+[x] - Memory reels (Instagram-style) - Reels kỷ niệm ngắn kiểu Instagram (MemoryReels.tsx: memory reels with title/duration/memoryCount/aspectRatio/style/music/filters/createdAt/status/views, reel settings with autoGenerate/defaultAspectRatio/defaultStyle/includeMusic/autoFilters, create reels, aspect ratios 9:16/1:1/4:5, styles trending/aesthetic/minimal/vibrant, view tracking, total/reels/avgDuration/totalViews/styles metrics, comprehensive Instagram-style memory reels)
+[x] - Journey video from map points - Video hành trình từ các điểm trên bản đồ (JourneyVideoFromMapPoints.tsx: journey videos with title/duration/points/style/music/createdAt/status, map points with name/location/memoryCount/visitedAt, journey settings with autoGenerate/defaultStyle/includePhotos/includeTimeline/animationSpeed, create journey videos, map styles satellite/street/terrain/hybrid, animation speed control, total/journeys/avgDuration/totalPoints/mapStyles metrics, comprehensive journey video from map points)
+[x] - Birthday memory montage - Montage kỷ niệm tự động cho dịp sinh nhật (BirthdayMemoryMontage.tsx: birthday montages with title/personName/birthdayDate/duration/memoryCount/theme/music/includeCake/includeBalloons/createdAt/status, montage settings with autoGenerate/defaultTheme/defaultDuration/includeCake/includeBalloons, create montages, themes colorful/elegant/fun/party, cake and balloons options, person name and birthday date, total/montages/avgDuration/totalMemories/themes metrics, comprehensive birthday memory montage)
+[x] - AI cinematic video - Video điện ảnh tự động từ ảnh tĩnh bằng AI (AICinematicVideo.tsx: cinematic videos with title/duration/photoCount/cameraMovement/transitionStyle/music/createdAt/status/quality, cinematic settings with autoGenerate/defaultMovement/defaultTransition/defaultQuality/includeMusic/aiEnhancement, generate cinematic videos, camera movements pan/zoom/rotate/parallax, transitions fade/slide/warp/morph, quality 720p/1080p/4K, AI enhancement, total/videos/avgDuration/totalPhotos/movements metrics, comprehensive AI cinematic video)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 975 (93.0%)
+Số lượng tính năng đã implement: 981 (93.6%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 73
+Số lượng tính năng tương lai: 67
  
 Last Updated: 2026-09-14
-Version: 13.5
+Version: 13.6
