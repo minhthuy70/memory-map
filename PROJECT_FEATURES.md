@@ -1244,13 +1244,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - AI letter writer - Viết thư cho người thân từ kỷ niệm bằng AI
  
 34.2. AI Photo Enhancement (Nâng cao ảnh bằng AI)
-[ ] - AI photo colorization - Tô màu ảnh đen trắng bằng AI
-[ ] - AI photo restoration - Khôi phục ảnh cũ bị hư hỏng bằng AI
-[ ] - AI photo upscaling - Tăng độ phân giải ảnh bằng AI (4x upscale)
-[ ] - AI background removal - Xóa nền ảnh tự động bằng AI
-[ ] - AI face enhancement - Làm đẹp khuôn mặt trong ảnh bằng AI
-[ ] - AI style transfer - Chuyển ảnh thành tranh vẽ (Van Gogh, Monet, anime...)
-[ ] - AI duplicate photo detection - Phát hiện ảnh trùng lặp/tương tự bằng AI
+[x] - AI photo colorization - Tô màu ảnh đen trắng bằng AI (AIPhotoColorization.tsx: colorized photos with originalName/colorizedName/originalSize/colorizedSize/processedAt/quality/status, colorization models with name/description/quality/speed/isActive, colorization settings with autoColorize/quality/preserveDetails, colorize photos, quality settings low/medium/high, total/colorized/avgQuality/totalSize/models metrics, comprehensive AI photo colorization)
+[x] - AI photo restoration - Khôi phục ảnh cũ bị hư hỏng bằng AI (AIPhotoRestoration.tsx: restored photos with originalName/restoredName/originalSize/restoredSize/processedAt/qualityScore/damageLevel/status, restoration types with name/description/isActive, restoration settings with autoRestore/enhanceColors/removeNoise/sharpenDetails, restore photos, damage levels low/medium/high, total/restored/avgQuality/totalSize/types metrics, comprehensive AI photo restoration)
+[x] - AI photo upscaling - Tăng độ phân giải ảnh bằng AI (4x upscale) (AIPhotoUpscaling.tsx: upscaled photos with originalName/upscaledName/originalResolution/upscaledResolution/originalSize/upscaledSize/scaleFactor/processedAt/qualityScore/status, upscale models with name/maxScale/description/isActive, upscale settings with autoUpscale/defaultScale/preserveAspectRatio/enhanceDetails, upscale photos, 2x/4x/8x scaling, total/upscaled/avgQuality/totalSize/avgScale metrics, comprehensive AI photo upscaling)
+[x] - AI background removal - Xóa nền ảnh tự động bằng AI (AIBackgroundRemoval.tsx: processed photos with originalName/processedName/originalSize/processedSize/backgroundType/processedAt/accuracy/status, background options with name/type/preview/isActive, removal settings with autoRemove/defaultBackground/edgeSmoothing/featherEdges, remove backgrounds, transparent/solid/gradient/custom backgrounds, total/processed/avgAccuracy/totalSize/transparent metrics, comprehensive AI background removal)
+[x] - AI face enhancement - Làm đẹp khuôn mặt trong ảnh bằng AI (AIFaceEnhancement.tsx: enhanced photos with originalName/enhancedName/originalSize/enhancedSize/enhancementType/processedAt/qualityScore/status, enhancement features with name/description/isActive, enhancement settings with autoEnhance/enhancementLevel/preserveSkinTone/removeBlemishes, enhance faces, enhancement types smooth/natural/dramatic, features: skin smoothing/eye brightening/teeth whitening/contouring, total/enhanced/avgQuality/totalSize/features metrics, comprehensive AI face enhancement)
+[x] - AI style transfer - Chuyển ảnh thành tranh vẽ (Van Gogh, Monet, anime...) (AIStyleTransfer.tsx: styled photos with originalName/styledName/originalSize/styledSize/styleName/styleArtist/processedAt/similarity/status, art styles with name/artist/description/preview/isActive, style transfer settings with autoTransfer/intensity/preserveDetails/applyToAll, transfer styles, styles: Van Gogh/Monet/Munch/Anime/Pop Art, adjustable intensity, total/styled/avgSimilarity/totalSize/styles metrics, comprehensive AI style transfer)
+[x] - AI duplicate photo detection - Phát hiện ảnh trùng lặp/tương tự bằng AI (AIDuplicatePhotoDetection.tsx: duplicate groups with photos/similarity/groupType/createdAt, detected photos with name/size/date/isOriginal, detection settings with autoDetect/similarityThreshold/checkBy/autoDelete, run detection, mark original/delete duplicates, group types exact/near/similar, check by content/hash/metadata, total/groups/duplicates/spaceSaved/avgSimilarity metrics, comprehensive AI duplicate photo detection)
  
 34.3. AI Insights & Intelligence (AI Thông minh & Phân tích)
 [x] - AI life pattern recognition - Nhận diện mẫu cuộc sống từ toàn bộ kỷ niệm (AILifePatternRecognition.tsx: life patterns with name/description/type/confidence/frequency/trend, pattern insights with patternId/title/description/detectedAt/impact, pattern categories with name/description/patternsCount/insightsCount, analyze patterns, daily/weekly/monthly/seasonal patterns, total/patterns/insights/categories/avgConfidence metrics, comprehensive AI life pattern recognition)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 961 (91.7%)
+Số lượng tính năng đã implement: 968 (92.4%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 87
+Số lượng tính năng tương lai: 80
  
 Last Updated: 2026-09-14
-Version: 13.3
+Version: 13.4
