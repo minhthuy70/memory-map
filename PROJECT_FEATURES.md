@@ -1535,16 +1535,16 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Academic citation export - Xuất trích dẫn học thuật (APA/MLA/Chicago)
  
 42.3. Health & Wellness Tracking (Theo dõi sức khỏe & Sức khỏe)
-[ ] - Mental health journal - Nhật ký sức khỏe tâm thần
-[ ] - Mood tracking graph (long-term) - Biểu đồ theo dõi tâm trạng dài hạn
-[ ] - Gratitude journal integration - Tích hợp nhật ký biết ơn hàng ngày
-[ ] - Mindfulness memory prompts - Gợi ý chánh niệm từ kỷ niệm cũ
-[ ] - Therapy session notes - Ghi chú buổi trị liệu tâm lý (private, encrypted)
-[ ] - Medication tracking - Theo dõi thuốc men (kỷ niệm y tế)
-[ ] - Medical history timeline - Timeline lịch sử y tế
-[ ] - Wellness score tracking - Theo dõi điểm sức khỏe tổng thể
-[ ] - Sleep & mood correlation - Tương quan giấc ngủ và tâm trạng
-[ ] - Exercise memory tagging - Gắn thẻ tập thể dục vào kỷ niệm
+[x] - Mental health journal - Nhật ký sức khỏe tâm thần - MentalHealthJournal.tsx (journals with mood/thoughts/triggers/tags, mood rating 1-10, categories anxiety/depression/stress/other, filter/search, privacy toggle, entries management)
+[x] - Mood tracking graph (long-term) - Biểu đồ theo dõi tâm trạng dài hạn - MoodTrackingGraph.tsx (mood entries with date/mood/energy/sleep/notes, mood rating 1-10, time range filters week/month/year, trend analysis, statistics cards, mood distribution chart)
+[x] - Gratitude journal integration - Tích hợp nhật ký biết ơn hàng ngày - GratitudeJournalIntegration.tsx (gratitude entries with content/date/mood/tags, linked memories, daily prompts, mood rating, categories, search/filter, gratitude streak tracking)
+[x] - Mindfulness memory prompts - Gợi ý chánh niệm từ kỷ niệm cũ - MindfulnessMemoryPrompts.tsx (AI prompts with category/breathing/reflection/gratitude/grounding/visualization, linked memories, completion tracking, auto-generate, daily frequency, reminder settings)
+[x] - Therapy session notes - Ghi chú buổi trị liệu tâm lý (private, encrypted) - TherapySessionNotes.tsx (session records with therapist/date/type/duration/topics/insights/mood before/after, private/encrypted indicator, notes, auto-encrypt settings, mood tracking)
+[x] - Medication tracking - Theo dõi thuốc men (kỷ niệm y tế) - MedicationTracking.tsx (medication records with name/dosage/frequency/time/start date/active status, adherence tracking, dose logging, reminders, auto-log settings)
+[x] - Medical history timeline - Timeline lịch sử y tế - MedicalHistoryTimeline.tsx (chronological events with date/type/provider/facility/diagnosis/treatment/notes, event types checkup/diagnosis/treatment/surgery/emergency/vaccination/lab_test, attachments, filtering)
+[x] - Wellness score tracking - Theo dõi điểm sức khỏe tổng thể - WellnessScoreTracking.tsx (wellness dimensions Physical/Mental/Emotional/Social/Spiritual with scores/weights/trends, overall score calculation, factors/notes, auto-calculate settings, include sleep/exercise)
+[x] - Sleep & mood correlation - Tương quan giấc ngủ và tâm trạng - SleepMoodCorrelation.tsx (sleep entries with hours/quality/bedtime/wake time, mood entries with mood/energy/stress, correlation analysis, date range filters, correlation metrics/charts)
+[x] - Exercise memory tagging - Gắn thẻ tập thể dục vào kỷ niệm - ExerciseMemoryTagging.tsx (exercise-tagged memories with activity type/duration/intensity/calories/distance/heart rate, activity types running/walking/cycling/swimming/gym/yoga/hiking/sports, auto-tag, sync with health, stats tracking)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 984 (93.9%)
+Số lượng tính năng đã implement: 994 (94.9%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 64
+Số lượng tính năng tương lai: 54
  
 Last Updated: 2026-09-14
-Version: 13.7
+Version: 13.8
