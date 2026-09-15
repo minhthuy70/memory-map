@@ -1527,12 +1527,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Memory palace technique - Kỹ thuật cung điện ký ức tích hợp
  
 42.2. Research & Documentation (Nghiên cứu & Lưu trữ)
-[ ] - Family history documentation - Lưu lịch sử gia đình theo dòng thời gian
-[ ] - Oral history recorder - Ghi lại lịch sử truyền miệng của người cao tuổi
-[ ] - Field research journal - Nhật ký nghiên cứu thực địa
-[ ] - Travel documentation - Tài liệu hóa chuyến đi chi tiết
-[ ] - Cultural heritage documentation - Lưu trữ di sản văn hóa
-[ ] - Academic citation export - Xuất trích dẫn học thuật (APA/MLA/Chicago)
+[x] - Family history documentation - Lưu lịch sử gia đình theo dòng thời gian - FamilyHistoryDocumentation.tsx (family members with name/relationship/birth/death/location/occupation/biography, family events timeline with birth/marriage/death/migration/milestone, auto-link memories, include photos, timeline view)
+[x] - Oral history recorder - Ghi lại lịch sử truyền miệng của người cao tuổi - OralHistoryRecorder.tsx (oral history recordings with interviewee/date/topic/language/transcript/summary/tags, auto-transcribe with speech-to-text, auto-summarize, recording status tracking, quality settings)
+[x] - Field research journal - Nhật ký nghiên cứu thực địa - FieldResearchJournal.tsx (research entries with date/location/topic/methodology/findings/notes/tags, data points and samples tracking, auto-tag, include location, data sync, archive functionality)
+[x] - Travel documentation - Tài liệu hóa chuyến đi chi tiết - TravelDocumentation.tsx (travel entries with destination/dates/location/purpose/highlights/notes/budget/actual cost, purpose types leisure/business/adventure/cultural/educational, auto-link memories, auto-sync photos, budget tracking)
+[x] - Cultural heritage documentation - Lưu trữ di sản văn hóa - CulturalHeritageDocumentation.tsx (heritage sites with name/location/country/type/significance/description/year recognized/visit date, heritage types natural/cultural/mixed/intangible, auto-tag, include photos, map integration)
+[x] - Academic citation export - Xuất trích dẫn học thuật (APA/MLA/Chicago) - AcademicCitationExport.tsx (citation generation in APA/MLA/Chicago/Harvard/Vancouver formats, memory-to-citation conversion, copy to clipboard, export functionality, auto-generate, include URL/DOI options)
  
 42.3. Health & Wellness Tracking (Theo dõi sức khỏe & Sức khỏe)
 [x] - Mental health journal - Nhật ký sức khỏe tâm thần - MentalHealthJournal.tsx (journals with mood/thoughts/triggers/tags, mood rating 1-10, categories anxiety/depression/stress/other, filter/search, privacy toggle, entries management)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 994 (94.9%)
+Số lượng tính năng đã implement: 1000 (95.4%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 54
+Số lượng tính năng tương lai: 48
  
 Last Updated: 2026-09-14
-Version: 13.8
+Version: 13.9
