@@ -1217,9 +1217,9 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [x] - Add music to video - Thêm nhạc nền vào video với audio track management (music/voiceover/sound-effect), volume control for video and tracks, fade in/out settings, start time adjustment, track add/remove functionality, preview mixed audio, auto-mix on save, normalize audio, và audio compression (AddMusicToVideo component - 481 lines)
 [x] - Add text overlay - Thêm chữ overlay lên video với text overlay management, positioning (X/Y position sliders), alignment (left/center/right), font styling (size/family/color/background), text style (bold/italic/underline), opacity control, timing (start/end), visibility toggle, preview functionality, auto-render on save, text effects, và shadow effects (AddTextOverlay component - 617 lines)
 [x] - Video filters & effects - Bộ lọc và hiệu ứng video với filter types (brightness/contrast/saturation/blur/vignette), effect types (speed/reverse/transition/animation/overlay), intensity control, enable/disable toggle, real-time preview, auto-render on change, GPU acceleration, và comprehensive video enhancement options (VideoFiltersAndEffects component - 555 lines)
-[ ] - Video stabilization - Chống rung video tự động
-[ ] - Slow motion support - Hỗ trợ video chậm
-[ ] - Time-lapse creation - Tạo video time-lapse
+[x] - Video stabilization - Chống rung video tự động (VideoStabilization.tsx: stabilized videos with originalName/stabilizedName/originalDuration/stabilizedDuration/stabilityScore/shakeLevel/algorithm/createdAt/status, stabilization settings with autoStabilize/defaultAlgorithm/intensity/cropToStabilize/smoothness, stabilize videos, algorithms optical_flow/feature_tracking/motion_vectors, shake levels low/medium/high, intensity and smoothness control, total/stabilized/avgStability/totalTime/algorithms metrics, comprehensive video stabilization)
+[x] - Slow motion support - Hỗ trợ video chậm (SlowMotionSupport.tsx: slow motion videos with originalName/slowMoName/originalDuration/slowMoDuration/speedFactor/quality/frameInterpolation/createdAt/status, slow motion settings with autoSlowMo/defaultSpeed/defaultQuality/frameInterpolation/preserveAudio, create slow motion, speed range 0.1x-1x, quality high/medium/low, frame interpolation, total/slowMoVideos/avgSpeed/totalDuration/interpolated metrics, comprehensive slow motion support)
+[x] - Time-lapse creation - Tạo video time-lapse (TimeLapseCreation.tsx: time-lapse videos with title/sourceCount/originalDuration/timeLapseDuration/interval/frameRate/createdAt/status, time-lapse settings with autoCreate/defaultInterval/defaultFrameRate/smoothTransitions/includeTimestamp, create time-lapses, interval 1s-3600s, frame rate 12fps-60fps, smooth transitions and timestamp options, total/time-lapses/avgInterval/totalSources/avgFrameRate metrics, comprehensive time-lapse creation)
  
 33.3. Memory Video Generation (Tạo video kỷ niệm tự động)
 [x] - Auto memory movie maker - Tự động tạo phim ngắn từ ảnh + video kỷ niệm (AutoMemoryMovieMaker.tsx: generated movies with title/duration/memoryCount/style/music/transitions/createdAt/status, movie settings with autoGenerate/defaultStyle/defaultDuration/includeMusic/autoTransitions, generate movies, styles cinematic/slideshow/dynamic/peaceful, duration 60-600s, total/movies/avgDuration/totalMemories/styles metrics, comprehensive auto memory movie maker)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 981 (93.6%)
+Số lượng tính năng đã implement: 984 (93.9%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 67
+Số lượng tính năng tương lai: 64
  
 Last Updated: 2026-09-14
-Version: 13.6
+Version: 13.7
