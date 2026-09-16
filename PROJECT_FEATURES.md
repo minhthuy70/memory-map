@@ -1500,12 +1500,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Fitness activity tagging - Gắn thẻ hoạt động thể chất vào kỷ niệm
  
 41.2. Smart Home Integration (Tích hợp nhà thông minh)
-[ ] - Google Home/Assistant - Tích hợp Google Home
-[ ] - Amazon Alexa skill - Alexa Skill cho Memory Map
-[ ] - Apple HomeKit/Siri - Tích hợp Siri/HomeKit
-[ ] - Smart display (Google Nest Hub) - Hiển thị kỷ niệm trên smart display
-[ ] - Smart frame integration - Tích hợp khung ảnh thông minh
-[ ] - Location-triggered auto-capture - Tự động tạo kỷ niệm khi đến địa điểm quen
+[x] - Google Home/Assistant - Tích hợp Google Home - GoogleHomeIntegration.tsx (Google devices with name/type/location/connection state, voice commands with command/response/timestamp/status, voice control settings, auto-play memories, memory playback mode random/recent/favorites, language settings, volume control)
+[x] - Amazon Alexa skill - Alexa Skill cho Memory Map - AmazonAlexaSkill.tsx (Alexa devices with name/type/location/connection state/skill enabled, Alexa skills with name/description/invocation phrase/action, voice command history, voice control settings, auto-play memories, memory playback mode, skill notifications, voice feedback)
+[x] - Apple HomeKit/Siri - Tích hợp Siri/HomeKit - AppleHomeKitSiri.tsx (Apple devices with name/type/location/connection state/HomeKit enabled, Siri shortcuts with name/description/trigger phrase/action, Siri command history, Siri control settings, auto-play memories, memory playback mode, shortcut sync, HomeKit secure)
+[x] - Smart display (Google Nest Hub) - Hiển thị kỷ niệm trên smart display - SmartDisplay.tsx (display devices with name/model/location/connection state/screen mode/brightness, display content with memory title/content type/duration/scheduled time/playing status, auto-display settings, display mode random/recent/favorites/timeline, slideshow interval, show captions/date, dim at night)
+[x] - Smart frame integration - Tích hợp khung ảnh thông minh - SmartFrameIntegration.tsx (frame devices with name/brand/model/location/connection state/brightness/photo count, frame photos with memory title/filename/size/uploaded time/displayed status, auto-upload settings, upload mode random/recent/favorites/album, photo quality original/high/medium/low, rotation interval, show captions/date, auto brightness)
+[x] - Location-triggered auto-capture - Tự động tạo kỷ niệm khi đến địa điểm quen - LocationTriggeredAutoCapture.tsx (location zones with name/type/address/latitude/longitude/radius/auto-capture enabled/capture type/trigger count, capture events with zone name/triggered time/capture type/status/memory ID, location services settings, auto-capture all zones, minimum stay duration, max captures per visit, background monitoring, notification on capture)
  
 41.3. Connected Devices (Thiết bị kết nối)
 [x] - GoPro integration - Tích hợp GoPro (tự động nhập video) - GoProIntegration.tsx (GoPro devices with name/model/connection state/media counts, WiFi/Bluetooth/cloud connection options, auto-import settings, quality settings, transfer progress monitoring, import/pause/retry/delete/archive interactions)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 1010 (96.4%)
+Số lượng tính năng đã implement: 1016 (96.9%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 38
+Số lượng tính năng tương lai: 32
  
 Last Updated: 2026-09-14
-Version: 14.1
+Version: 14.2
