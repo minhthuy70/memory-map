@@ -1491,13 +1491,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 41.1. Wearable Integration (Tích hợp thiết bị đeo)
-[ ] - Apple Watch companion app - App đồng hành Apple Watch
-[ ] - Wear OS support - Hỗ trợ Wear OS
-[ ] - Quick memory capture from watch - Tạo kỷ niệm nhanh từ đồng hồ
-[ ] - Heart rate at memory - Lưu nhịp tim tại thời điểm tạo kỷ niệm
-[ ] - Step count context - Ngữ cảnh số bước chân hàng ngày
-[ ] - Sleep data correlation - Tương quan dữ liệu giấc ngủ với tâm trạng
-[ ] - Fitness activity tagging - Gắn thẻ hoạt động thể chất vào kỷ niệm
+[x] - Apple Watch companion app - App đồng hành Apple Watch - AppleWatchCompanion.tsx (Apple Watch devices with name/model/series/connection state/battery/watchOS version, watch apps with name/version/installed status, watch notifications with title/message/timestamp, companion settings with auto-sync/notifications/quick capture/health data sync)
+[x] - Wear OS support - Hỗ trợ Wear OS - WearOSSupport.tsx (Wear OS devices with name/brand/model/connection state/battery/Wear OS version, Wear OS apps with name/version/installed status, Wear OS notifications with title/message/timestamp, Wear OS settings with auto-sync/notifications/quick capture/health data sync)
+[x] - Quick memory capture from watch - Tạo kỷ niệm nhanh từ đồng hồ - QuickMemoryCaptureWatch.tsx (capture methods with name/type/icon/enabled status, quick captures with method/memory title/captured time/status, capture settings with auto-upload/capture location/capture mood/default method/quick capture button/voice input)
+[x] - Heart rate at memory - Lưu nhịp tim tại thời điểm tạo kỷ niệm - HeartRateAtMemory.tsx (heart rate data with memory title/heart rate/heart rate zone/timestamp/device, heart rate stats with average/max/min/resting/zone distribution, heart rate settings with auto record/recording interval/zone alerts/sync with health/show in memory)
+[x] - Step count context - Ngữ cảnh số bước chân hàng ngày - StepCountContext.tsx (step data with memory title/step count/distance/calories/timestamp/device, step stats with average/max/min/total steps/distance/calories, step settings with auto record/recording interval/step goal/distance unit/sync with health/show in memory)
+[x] - Sleep data correlation - Tương quan dữ liệu giấc ngủ với tâm trạng - SleepDataCorrelation.tsx (sleep data with memory title/sleep hours/sleep quality/deep sleep/REM sleep/wake time/bed time/device, sleep stats with average/max/min sleep/average quality/quality distribution, sleep settings with auto record/recording interval/sleep goal/sync with health/show in memory/analyze correlation)
+[x] - Fitness activity tagging - Gắn thẻ hoạt động thể chất vào kỷ niệm - FitnessActivityTagging.tsx (fitness activities with memory title/activity type/duration/intensity/calories/distance/heart rate/timestamp/device, activity types running/walking/cycling/swimming/gym/yoga/hiking/sports/other, intensity levels low/moderate/high/intense, activity settings with auto tag/tag on detection/intensity tracking/heart rate tracking/distance tracking/sync with health)
  
 41.2. Smart Home Integration (Tích hợp nhà thông minh)
 [x] - Google Home/Assistant - Tích hợp Google Home - GoogleHomeIntegration.tsx (Google devices with name/type/location/connection state, voice commands with command/response/timestamp/status, voice control settings, auto-play memories, memory playback mode random/recent/favorites, language settings, volume control)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 1016 (96.9%)
+Số lượng tính năng đã implement: 1023 (97.6%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 32
+Số lượng tính năng tương lai: 25
  
 Last Updated: 2026-09-14
-Version: 14.2
+Version: 14.3
