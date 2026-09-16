@@ -1520,11 +1520,11 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 42.1. Memory Learning (Học tập qua kỷ niệm)
-[ ] - Memory-based language learning - Học ngôn ngữ qua kỷ niệm của mình
-[ ] - Flashcard generation from memories - Tạo flashcard từ kỷ niệm (Anki-style)
-[ ] - Spaced repetition review - Ôn lại kỷ niệm theo thuật toán lặp cách quãng
-[ ] - Quiz from your memories - Câu hỏi trắc nghiệm từ chi tiết kỷ niệm
-[ ] - Memory palace technique - Kỹ thuật cung điện ký ức tích hợp
+[x] - Memory-based language learning - Học ngôn ngữ qua kỷ niệm của mình - MemoryBasedLanguageLearning.tsx (vocabulary items with word/translation/memory context/language/proficiency/review count/mastery, multiple language support, auto-generate from memories, audio pronunciation, daily goals, learning progress tracking)
+[x] - Flashcard generation from memories - Tạo flashcard từ kỷ niệm (Anki-style) - FlashcardGenerationFromMemories.tsx (flashcards with front/back/memory link/category/difficulty/review count/accuracy, deck organization, difficulty levels easy/medium/hard, auto-generate, batch generation, review and mastery tracking)
+[x] - Spaced repetition review - Ôn lại kỷ niệm theo thuật toán lặp cách quãng - SpacedRepetitionReview.tsx (review items with interval/ease factor/repetitions/next review date/status, SM-2 algorithm implementation, grade-based interval adjustment, algorithm options SM2/FSRS/Anki, daily new cards and reviews limits, review session tracking)
+[x] - Quiz from your memories - Câu hỏi trắc nghiệm từ chi tiết kỷ niệm - QuizFromYourMemories.tsx (quiz questions with memory link/question/options/correct answer/difficulty/category, multiple choice format, auto-generate from memory details, difficulty levels easy/medium/hard/mixed, time limits, quiz attempt tracking with scores)
+[x] - Memory palace technique - Kỹ thuật cung điện ký ức tích hợp - MemoryPalaceTechnique.tsx (memory palaces with name/description/location count/memory count, palace locations with name/description/memory association/position/visual prompt/association note, auto-associate memories, visual prompts, review frequency, favorite palaces)
  
 42.2. Research & Documentation (Nghiên cứu & Lưu trữ)
 [x] - Family history documentation - Lưu lịch sử gia đình theo dòng thời gian - FamilyHistoryDocumentation.tsx (family members with name/relationship/birth/death/location/occupation/biography, family events timeline with birth/marriage/death/migration/milestone, auto-link memories, include photos, timeline view)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 1000 (95.4%)
+Số lượng tính năng đã implement: 1005 (95.9%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 48
+Số lượng tính năng tương lai: 43
  
 Last Updated: 2026-09-14
-Version: 13.9
+Version: 14.0
