@@ -1508,11 +1508,11 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Location-triggered auto-capture - Tự động tạo kỷ niệm khi đến địa điểm quen
  
 41.3. Connected Devices (Thiết bị kết nối)
-[ ] - GoPro integration - Tích hợp GoPro (tự động nhập video)
-[ ] - Drone footage import - Nhập footage từ drone
-[ ] - Car GPS integration - Tích hợp GPS xe hơi (tự động log hành trình)
-[ ] - Smart camera auto-upload - Tự động upload từ camera thông minh
-[ ] - DSLR/mirrorless sync - Đồng bộ từ máy ảnh DSLR/mirrorless qua WiFi
+[x] - GoPro integration - Tích hợp GoPro (tự động nhập video) - GoProIntegration.tsx (GoPro devices with name/model/connection state/media counts, WiFi/Bluetooth/cloud connection options, auto-import settings, quality settings, transfer progress monitoring, import/pause/retry/delete/archive interactions)
+[x] - Drone footage import - Nhập footage từ drone - DroneFootageImport.tsx (drone devices with name/model/flight count/last flight, footage files with flight date/location/duration/resolution/format/file size, import queue/status management, GPS metadata, storage destination, import/pause/retry/delete/archive actions)
+[x] - Car GPS integration - Tích hợp GPS xe hơi (tự động log hành trình) - CarGPSIntegration.tsx (car devices with name/model/connection state/battery/mileage, journey logs with start/end point/distance/duration/average speed, auto-log settings, auto-link memories, configurable logging interval, date filtering and trip search)
+[x] - Smart camera auto-upload - Tự động upload từ camera thông minh - SmartCameraAutoUpload.tsx (camera devices with name/model/connection state/battery/storage, uploaded photos with filename/resolution/size/captured/uploaded time, auto-upload settings, WiFi auto-connect, quality settings original/high/medium/low, upload queue/status with pending/uploading/completed/failed states)
+[x] - DSLR/mirrorless sync - Đồng bộ từ máy ảnh DSLR/mirrorless qua WiFi - DSLRMirrorlessSync.tsx (camera devices with brand/model/connection state/battery/SD card/photos count, synced photos with filename/format/resolution/size/metadata lens/aperture/ISO/shutter speed, sync settings with all/raw_only/jpeg_only formats, preserve structure, metadata display RAW/JPEG/Video)
  
 ================================================================================
  
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 1005 (95.9%)
+Số lượng tính năng đã implement: 1010 (96.4%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 43
+Số lượng tính năng tương lai: 38
  
 Last Updated: 2026-09-14
-Version: 14.0
+Version: 14.1
