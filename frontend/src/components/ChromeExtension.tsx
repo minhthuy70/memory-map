@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Globe, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Link2 } from 'lucide-react';
+import { Globe, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Link2, FileText } from 'lucide-react';
 
 interface ChromeExtensionProps {
   onCancel?: () => void;
