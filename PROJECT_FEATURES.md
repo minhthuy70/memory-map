@@ -1465,13 +1465,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - API analytics dashboard - Dashboard phân tích sử dụng API
  
 40.2. SDK & Libraries (SDK & Thư viện)
-[ ] - JavaScript/TypeScript SDK - SDK JavaScript/TypeScript
-[ ] - Python SDK - SDK Python
-[ ] - React Native SDK - SDK React Native
-[ ] - Flutter plugin - Plugin Flutter
-[ ] - CLI tool (memory-map-cli) - Công cụ CLI
-[ ] - SDK documentation - Tài liệu SDK với ví dụ
-[ ] - Code samples repository - Repository code mẫu
+[x] - JavaScript/TypeScript SDK - SDK JavaScript/TypeScript - JSTypeScriptSDK.tsx (SDK versions with version/type/download count/is latest, SDK features with implemented status/documentation URL, installation methods with npm/yarn/pnpm commands, comprehensive JavaScript/TypeScript SDK)
+[x] - Python SDK - SDK Python - PythonSDK.tsx (SDK versions with version/type/download count/is latest, SDK features with implemented status/documentation URL, installation methods with pip/pipenv/poetry commands, comprehensive Python SDK with async support)
+[x] - React Native SDK - SDK React Native - ReactNativeSDK.tsx (SDK versions with version/type/download count/is latest, SDK features with implemented status/documentation URL, installation methods with npm/yarn/expo commands, comprehensive React Native SDK with camera integration/offline support/push notifications)
+[x] - Flutter plugin - Plugin Flutter - FlutterPlugin.tsx (plugin versions with version/type/download count/is latest, plugin features with implemented status/documentation URL, installation methods with pub/yaml commands, comprehensive Flutter plugin with platform channels/local storage)
+[x] - CLI tool (memory-map-cli) - Công cụ CLI - CLITool.tsx (CLI commands with name/command/description/category/implemented status, installation methods with npm/yarn/brew commands, CLI settings with API key/output format/timeout/verbose, comprehensive CLI tool)
+[x] - SDK documentation - Tài liệu SDK với ví dụ - SDKDocumentation.tsx (documentation sections with title/description/page count/last updated/published status, SDK guides with title/sdk/type/url/last updated, documentation versions with version/is latest/published at, comprehensive SDK documentation)
+[x] - Code samples repository - Repository code mẫu - CodeSamplesRepository.tsx (code samples with title/description/sdk/language/stars/forks/last updated/public status, sample categories with name/count, sample tags with name/color, comprehensive code samples repository)
  
 40.3. Integration Marketplace (Chợ tích hợp)
 [x] - Zapier integration - Tích hợp Zapier (1500+ apps) - ZapierIntegration.tsx (Zapier accounts with name/email/connected status, Zapier flows with name/trigger/action/status/last run, flow management with create/enable/disable/test/delete, comprehensive Zapier integration)
@@ -1552,9 +1552,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1048
-Số lượng tính năng đã implement: 1033 (98.6%)
+Số lượng tính năng đã implement: 1040 (99.3%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai: 15
+Số lượng tính năng tương lai: 8
  
 Last Updated: 2026-09-16
-Version: 14.4
+Version: 14.5
