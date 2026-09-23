@@ -5,10 +5,8 @@ export class RequestEmailChangeDto {
   newEmail: string;
 }
 
+/** Note: newEmail is intentionally removed — the backend reads it from DB (pendingEmail) to prevent email-swap attacks. */
 export class ConfirmEmailChangeDto {
-  @IsEmail({}, { message: 'Email mới không đúng định dạng' })
-  newEmail: string;
-
   @IsString({ message: 'Mã xác thực phải là chuỗi ký tự' })
   @Length(6, 6, { message: 'Mã xác nhận phải gồm đúng 6 chữ số' })
   code: string;

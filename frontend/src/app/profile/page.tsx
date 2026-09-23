@@ -231,7 +231,6 @@ export default function ProfilePage() {
 
     try {
       const res = await authApi.confirmEmailChange({
-        newEmail,
         code: fullCode,
       });
 

@@ -160,7 +160,7 @@ export class AuthController {
     @Request() req: any,
     @Body() dto: ConfirmEmailChangeDto,
   ) {
-    return this.authService.confirmEmailChange(req.user.id, dto.newEmail, dto.code);
+    return this.authService.confirmEmailChange(req.user.id, dto.code);
   }
 
   @UseGuards(JwtAuthGuard)

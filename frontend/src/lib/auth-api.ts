@@ -97,7 +97,7 @@ export const authApi = {
     return response.data;
   },
 
-  confirmEmailChange: async (data: { newEmail: string; code: string }): Promise<{ access_token: string; user: any; message: string }> => {
+  confirmEmailChange: async (data: { code: string }): Promise<{ access_token: string; user: any; message: string }> => {
     const response = await api.post('/auth/confirm-email-change', data);
     return response.data;
   },

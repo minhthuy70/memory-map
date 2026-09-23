@@ -553,48 +553,56 @@ export class AuthService {
   }
 
   async requestEmailChange(userId: string, newEmail: string) {
+    const normalizedNew = newEmail.toLowerCase().trim();
+
     const user = await this.usersService.findById(userId);
     if (!user) {
-      throw new UnauthorizedException('User not found');
+      throw new UnauthorizedException('Không tìm thấy tài khoản.');
     }
 
-    if (user.email.toLowerCase() === newEmail.toLowerCase()) {
+    if (user.email.toLowerCase() === normalizedNew) {
       throw new BadRequestException('Email mới phải khác email hiện tại.');
     }
 
-    const existingUser = await this.usersService.findByEmail(newEmail);
+    const existingUser = await this.usersService.findByEmail(normalizedNew);
     if (existingUser) {
       throw new ConflictException('Email này đã được sử dụng bởi một tài khoản khác.');
     }
 
-    // Generate 6-digit verification code
+    // Generate 6-digit OTP
     const code = Math.floor(100000 + Math.random() * 900000).toString();
     const expires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
-    await this.usersService.setVerificationCode(user.email, code, expires);
+    // ✅ FIX: Store BOTH the pending email AND the verification code in DB
+    await this.usersService.setPendingEmail(userId, normalizedNew, code, expires);
 
-    console.log(`\n======================================================`);
-    console.log(`[EMAIL CHANGE VERIFICATION] Mã xác nhận đổi email sang ${newEmail}: ${code}`);
-    console.log(`[EMAIL CHANGE VERIFICATION] Hết hạn lúc: ${expires.toLocaleTimeString()} (10 phút)`);
-    console.log(`======================================================\n`);
+    // ✅ FIX: Send the code to the NEW email (not the current one)
+    await this.mailService.sendVerificationCode(normalizedNew, code, expires);
 
     return {
       success: true,
-      message: `Mã xác nhận đã được gửi đến ${newEmail}. Vui lòng kiểm tra hộp thư để xác thực.`,
-      newEmail,
+      message: `Mã xác nhận đã được gửi đến ${normalizedNew}. Vui lòng kiểm tra hộp thư để xác thực.`,
+      newEmail: normalizedNew,
       debugCode: process.env.NODE_ENV !== 'production' ? code : undefined,
     };
   }
 
-  async confirmEmailChange(userId: string, newEmail: string, code: string) {
+  async confirmEmailChange(userId: string, code: string) {
     const user = await this.usersService.findById(userId);
     if (!user) {
-      throw new UnauthorizedException('User not found');
+      throw new UnauthorizedException('Không tìm thấy tài khoản.');
     }
 
+    // ✅ FIX: Read pendingEmail from DB — never trust newEmail from request body
+    const newEmail = user.pendingEmail;
+    if (!newEmail) {
+      throw new BadRequestException('Không có yêu cầu đổi email nào đang chờ xác nhận. Vui lòng thực hiện lại từ đầu.');
+    }
+
+    // Double-check the new email is still available (race condition guard)
     const existingUser = await this.usersService.findByEmail(newEmail);
     if (existingUser && existingUser.id !== userId) {
-      throw new ConflictException('Email này đã được sử dụng bởi một tài khoản khác.');
+      throw new ConflictException('Email này vừa được sử dụng bởi một tài khoản khác. Vui lòng chọn email khác.');
     }
 
     if (!user.verificationCode || user.verificationCode !== code) {
@@ -605,13 +613,11 @@ export class AuthService {
       throw new BadRequestException('Mã xác nhận đã hết hạn. Vui lòng yêu cầu mã mới.');
     }
 
+    // Apply the pending email change (clears pendingEmail, verificationCode, verificationExpires)
     const updatedUser = await this.usersService.updateEmail(userId, newEmail);
 
-    const payload = {
-      email: updatedUser.email,
-      sub: updatedUser.id,
-    };
-
+    // Issue a new JWT with the updated email
+    const payload = { email: updatedUser.email, sub: updatedUser.id };
     const token = this.jwtService.sign(payload);
 
     return {
