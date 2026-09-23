@@ -73,7 +73,9 @@ export default function AutoCaptioning({ onCancel, onGenerateCaption, onEditCapt
 
   const totalCaptions = results.reduce((sum, r) => sum + r.captions.length, 0);
   const approvedCaptions = results.reduce((sum, r) => sum + r.captions.filter(c => c.isApproved).length, 0);
-  const avgConfidence = results.reduce((sum, r) => sum + r.captions.reduce((s, c) => s + c.confidence, 0), 0), 0) / totalCaptions;
+  const avgConfidence = totalCaptions > 0 
+    ? results.reduce((sum, r) => sum + r.captions.reduce((s, c) => s + c.confidence, 0), 0) / totalCaptions 
+    : 0;
   const avgProcessingTime = results.reduce((sum, r) => sum + r.processingTime, 0) / results.length;
 
   const handleGenerate = async (imageId: string) => {
