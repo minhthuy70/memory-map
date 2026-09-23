@@ -1,5 +1,4 @@
-import api from './api';
-import axios from 'axios';
+import api, { publicApi } from './api';
 
 export interface Memory {
   id: string;
@@ -172,9 +171,7 @@ export const memoriesApi = {
   },
 
   getPublicMemory: async (slug: string): Promise<Memory> => {
-    // Use direct axios call without auth for public endpoints
-    const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-    const response = await axios.get(`${API_URL}/memories/public/${slug}`);
+    const response = await publicApi.get(`/memories/public/${slug}`);
     return response.data;
   },
 };
