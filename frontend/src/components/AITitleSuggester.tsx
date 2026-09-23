@@ -263,7 +263,7 @@ export default function AITitleSuggester({ onCancel }: AITitleSuggesterProps) {
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Title Suggester Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• AI suggests creative titles based on memory context</li>
-li>• Categories: emotional, descriptive, creative, simple</li>
+              <li>• Categories: emotional, descriptive, creative, simple</li>
               <li>• Relevance scoring for title quality</li>
               <li>• Length preference: short, medium, long</li>
             </ul>
