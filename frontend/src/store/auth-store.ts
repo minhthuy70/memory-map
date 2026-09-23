@@ -36,7 +36,14 @@ export const useAuthStore = create<AuthState>()(
       user: null,
       lastActivity: null,
       inactivityWarning: false,
-      setAuth: (token, user) => set({ token, user, lastActivity: Date.now(), inactivityWarning: false }),
+      setAuth: (token, user) => {
+        if (typeof window !== 'undefined') {
+          try {
+            localStorage.setItem('token', token);
+          } catch {}
+        }
+        set({ token, user, lastActivity: Date.now(), inactivityWarning: false });
+      },
       logout: async () => {
         try {
           if (get().token) {
@@ -45,6 +52,11 @@ export const useAuthStore = create<AuthState>()(
         } catch (error) {
           console.error('Logout error:', error);
         } finally {
+          if (typeof window !== 'undefined') {
+            try {
+              localStorage.removeItem('token');
+            } catch {}
+          }
           set({ token: null, user: null, lastActivity: null, inactivityWarning: false });
         }
       },
