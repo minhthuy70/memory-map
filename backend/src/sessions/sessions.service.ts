@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -48,10 +48,24 @@ export class SessionsService {
     });
   }
 
-  async deleteSession(sessionId: string) {
-    return this.prisma.session.delete({
+  async deleteSession(sessionId: string, userId: string) {
+    const session = await this.prisma.session.findUnique({
       where: { id: sessionId },
     });
+
+    if (!session) {
+      throw new NotFoundException('Phiên đăng nhập không tồn tại');
+    }
+
+    if (session.userId !== userId) {
+      throw new ForbiddenException('Bạn không có quyền thu hồi phiên đăng nhập này');
+    }
+
+    await this.prisma.session.delete({
+      where: { id: sessionId },
+    });
+
+    return { message: 'Đã thu hồi phiên đăng nhập thành công' };
   }
 
   async deleteAllUserSessions(userId: string, exceptToken?: string) {

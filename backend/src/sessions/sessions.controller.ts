@@ -31,7 +31,10 @@ export class SessionsController {
   }
 
   @Delete(':id')
-  async deleteSession(@Param('id') sessionId: string) {
-    return this.sessionsService.deleteSession(sessionId);
+  async deleteSession(
+    @Request() req: any,
+    @Param('id') sessionId: string,
+  ) {
+    return this.sessionsService.deleteSession(sessionId, req.user.id);
   }
 }
