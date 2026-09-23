@@ -18,6 +18,12 @@ import { OAuthDto } from './dto/oauth.dto';
 
 @Injectable()
 export class AuthService {
+  // In-memory store for pending email verifications (supports verification before account registration)
+  private readonly pendingEmailVerifications = new Map<
+    string,
+    { code: string; expires: Date; verified: boolean }
+  >();
+
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
@@ -154,9 +160,10 @@ export class AuthService {
     deviceInfo?: string,
     ipAddress?: string,
   ) {
+    const normalizedEmail = email.toLowerCase().trim();
     const existingUser =
       await this.usersService.findByEmail(
-        email,
+        normalizedEmail,
       );
 
     if (existingUser) {
@@ -168,12 +175,19 @@ export class AuthService {
     const passwordHash =
       await bcrypt.hash(password, 10);
 
+    // Check if email was pre-verified via OTP code
+    const pending = this.pendingEmailVerifications.get(normalizedEmail);
+    const isPreVerified = pending?.verified === true;
+    if (pending) {
+      this.pendingEmailVerifications.delete(normalizedEmail);
+    }
+
     const user =
       await this.usersService.create({
-        email,
+        email: normalizedEmail,
         passwordHash,
         name,
-        isEmailVerified: false,
+        isEmailVerified: isPreVerified,
       });
 
     const payload = {
@@ -283,51 +297,79 @@ export class AuthService {
   }
 
   async sendVerificationCode(email: string) {
-    let user = await this.usersService.findByEmail(email);
+    const normalizedEmail = email.toLowerCase().trim();
+    let user = await this.usersService.findByEmail(normalizedEmail);
     
     // Generate a 6-digit OTP code
     const code = Math.floor(100000 + Math.random() * 900000).toString();
     const expires = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
     if (user) {
-      await this.usersService.setVerificationCode(email, code, expires);
+      await this.usersService.setVerificationCode(normalizedEmail, code, expires);
     }
+
+    // Always store in pendingEmailVerifications so registration flow can verify before user is created
+    this.pendingEmailVerifications.set(normalizedEmail, {
+      code,
+      expires,
+      verified: false,
+    });
 
     // Log the verification code for development & testing visibility
     console.log(`\n======================================================`);
-    console.log(`[EMAIL VERIFICATION] Mã xác nhận cho email ${email}: ${code}`);
+    console.log(`[EMAIL VERIFICATION] Mã xác nhận cho email ${normalizedEmail}: ${code}`);
     console.log(`[EMAIL VERIFICATION] Hết hạn lúc: ${expires.toLocaleTimeString()}`);
     console.log(`======================================================\n`);
 
     return {
       success: true,
-      message: `Mã xác nhận đã được gửi đến email ${email}. Vui lòng kiểm tra hộp thư.`,
-      email,
+      message: `Mã xác nhận đã được gửi đến email ${normalizedEmail}. Vui lòng kiểm tra hộp thư.`,
+      email: normalizedEmail,
       // Provide code in dev mode for easy testing
       debugCode: process.env.NODE_ENV !== 'production' ? code : undefined,
     };
   }
 
   async verifyEmail(email: string, code: string) {
-    const user = await this.usersService.findByEmail(email);
+    const normalizedEmail = email.toLowerCase().trim();
+    const user = await this.usersService.findByEmail(normalizedEmail);
+    const pending = this.pendingEmailVerifications.get(normalizedEmail);
 
-    if (!user) {
-      throw new NotFoundException('Không tìm thấy tài khoản với email này');
+    // 1. If user already exists in DB
+    if (user) {
+      if (!user.verificationCode || user.verificationCode !== code) {
+        throw new BadRequestException('Mã xác nhận không chính xác');
+      }
+
+      if (!user.verificationExpires || new Date() > user.verificationExpires) {
+        throw new BadRequestException('Mã xác nhận đã hết hạn. Vui lòng yêu cầu mã mới.');
+      }
+
+      await this.usersService.markEmailVerified(user.id);
+      if (pending) {
+        pending.verified = true;
+      }
+
+      return {
+        success: true,
+        message: 'Email đã được xác thực thành công!',
+      };
     }
 
-    if (!user.verificationCode || user.verificationCode !== code) {
-      throw new BadRequestException('Mã xác nhận không chính xác');
+    // 2. If user is verifying before registration
+    if (!pending || pending.code !== code) {
+      throw new BadRequestException('Mã xác nhận không chính xác hoặc không tồn tại');
     }
 
-    if (!user.verificationExpires || new Date() > user.verificationExpires) {
+    if (new Date() > pending.expires) {
       throw new BadRequestException('Mã xác nhận đã hết hạn. Vui lòng yêu cầu mã mới.');
     }
 
-    await this.usersService.markEmailVerified(user.id);
+    pending.verified = true;
 
     return {
       success: true,
-      message: 'Email đã được xác thực thành công!',
+      message: 'Email đã được xác thực thành công! Bạn có thể tiếp tục hoàn tất đăng ký.',
     };
   }
 
