@@ -154,6 +154,23 @@ export const memoriesApi = {
     return response.data;
   },
 
+  getTravelStatistics: async (): Promise<{
+    totalDistance: number;
+    averageDistance: number;
+    longestDistance: number;
+    shortestDistance: number;
+    travelDays: number;
+    uniqueLocations: number;
+  }> => {
+    const response = await api.get('/memories/travel-statistics');
+    return response.data;
+  },
+
+  getLocationFrequency: async (): Promise<any[]> => {
+    const response = await api.get('/memories/location-frequency');
+    return response.data;
+  },
+
   getPublicMemory: async (slug: string): Promise<Memory> => {
     // Use direct axios call without auth for public endpoints
     const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
