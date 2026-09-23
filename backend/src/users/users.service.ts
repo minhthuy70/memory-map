@@ -60,6 +60,19 @@ export class UsersService {
         isEmailVerified: true,
         verificationCode: null,
         verificationExpires: null,
+        pendingEmail: null,
+      },
+    });
+  }
+
+  /** Store the requested new email so confirmEmailChange can read it from DB (not from request body). */
+  async setPendingEmail(userId: string, pendingEmail: string | null, code: string | null, expires: Date | null) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        pendingEmail,
+        verificationCode: code,
+        verificationExpires: expires,
       },
     });
   }
