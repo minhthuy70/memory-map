@@ -81,7 +81,7 @@ export const useAuthStore = create<AuthState>()(
   )
 );
 
-// Inactivity checker - runs every minute
+// Inactivity checker - runs every 10 seconds
 if (typeof window !== 'undefined') {
   setInterval(() => {
     const state = useAuthStore.getState();
@@ -100,22 +100,31 @@ if (typeof window !== 'undefined') {
       state.logout();
       window.location.href = '/login';
     }
-  }, 60000); // Check every minute
+  }, 10000); // Check every 10 seconds for higher precision
 }
 
 // Activity listeners
 if (typeof window !== 'undefined') {
-  const activityEvents = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
+  // Loại bỏ 'mousemove' để cảnh báo hết phiên không bị biến mất ngay khi rê chuột.
+  // Thay 'keypress' bằng 'keydown' theo chuẩn web hiện đại.
+  const activityEvents = ['mousedown', 'keydown', 'scroll', 'touchstart', 'click'];
   
   activityEvents.forEach(event => {
     window.addEventListener(event, () => {
       const state = useAuthStore.getState();
       if (state.token) {
-        state.updateActivity();
+        // Khi cảnh báo hết phiên đang hiển thị, không tự động tắt cảnh báo.
+        // Người dùng cần bấm "Tiếp tục phiên" trên banner để chủ động gia hạn.
         if (state.inactivityWarning) {
-          state.setInactivityWarning(false);
+          return;
+        }
+
+        const now = Date.now();
+        // Throttle updates: chỉ cập nhật nếu đã qua ít nhất 10 giây
+        if (!state.lastActivity || now - state.lastActivity > 10000) {
+          state.updateActivity();
         }
       }
-    });
+    }, { passive: true });
   });
 }

@@ -7,27 +7,34 @@ import { useRouter } from 'next/navigation';
 
 export default function SessionWarning() {
   const router = useRouter();
-  const { inactivityWarning, resetInactivityTimer, logout } = useAuthStore();
+  const { inactivityWarning, resetInactivityTimer, logout, lastActivity } = useAuthStore();
   const [timeRemaining, setTimeRemaining] = useState(300); // 5 minutes in seconds
 
   useEffect(() => {
     if (inactivityWarning) {
+      const calculateRemaining = () => {
+        if (!lastActivity) return 300;
+        const elapsed = Date.now() - lastActivity;
+        const total = 30 * 60 * 1000; // 30 minutes
+        return Math.max(0, Math.round((total - elapsed) / 1000));
+      };
+
+      setTimeRemaining(calculateRemaining());
+
       const timer = setInterval(() => {
-        setTimeRemaining(prev => {
-          if (prev <= 1) {
-            clearInterval(timer);
-            logout().then(() => router.push('/login'));
-            return 0;
-          }
-          return prev - 1;
-        });
+        const remaining = calculateRemaining();
+        setTimeRemaining(remaining);
+        if (remaining <= 0) {
+          clearInterval(timer);
+          logout().then(() => router.push('/login'));
+        }
       }, 1000);
 
       return () => clearInterval(timer);
     } else {
       setTimeRemaining(300);
     }
-  }, [inactivityWarning, logout, router]);
+  }, [inactivityWarning, lastActivity, logout, router]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
