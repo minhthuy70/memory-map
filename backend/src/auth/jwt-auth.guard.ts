@@ -43,6 +43,10 @@ export class JwtAuthGuard implements CanActivate {
         throw new UnauthorizedException('User not found');
       }
 
+      if (user.isActive === false) {
+        throw new UnauthorizedException('Tài khoản của bạn đã bị vô hiệu hóa.');
+      }
+
       // Verify session in database (guarantees revocation and logout-from-all-devices works immediately)
       const session = await this.sessionsService.findByToken(token);
       if (!session) {

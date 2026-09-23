@@ -37,6 +37,12 @@ export class AuthService {
       throw new UnauthorizedException('Email hoặc mật khẩu không chính xác.');
     }
 
+    if (user.isActive === false) {
+      throw new UnauthorizedException(
+        'Tài khoản của bạn đã bị vô hiệu hóa. Vui lòng liên hệ quản trị viên để được hỗ trợ.',
+      );
+    }
+
     if (!user.passwordHash) {
       // User registered via OAuth only
       throw new UnauthorizedException(
@@ -213,6 +219,12 @@ export class AuthService {
       } else if (provider === 'facebook') {
         user = await this.usersService.findByFacebookId(providerId);
       }
+    }
+
+    if (user && user.isActive === false) {
+      throw new UnauthorizedException(
+        'Tài khoản của bạn đã bị vô hiệu hóa. Vui lòng liên hệ quản trị viên để được hỗ trợ.',
+      );
     }
 
     if (!user) {
@@ -407,7 +419,10 @@ export class AuthService {
 
     await this.usersService.deactivateAccount(userId);
 
-    return { message: 'Account deactivated successfully' };
+    // Invalidate all active sessions so current tokens are immediately rejected
+    await this.sessionsService.deleteAllUserSessions(userId);
+
+    return { message: 'Tài khoản đã được vô hiệu hóa thành công' };
   }
 
   async deleteAccount(userId: string) {

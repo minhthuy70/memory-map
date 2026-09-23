@@ -22,6 +22,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     if (!user) {
       throw new UnauthorizedException();
     }
+    if (user.isActive === false) {
+      throw new UnauthorizedException('Tài khoản của bạn đã bị vô hiệu hóa.');
+    }
     const { passwordHash, ...result } = user;
     return result;
   }
