@@ -11,16 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.JwtAuthGuard = void 0;
 const common_1 = require("@nestjs/common");
+const core_1 = require("@nestjs/core");
 const jwt_1 = require("@nestjs/jwt");
 const users_service_1 = require("../users/users.service");
 const sessions_service_1 = require("../sessions/sessions.service");
+const public_decorator_1 = require("./public.decorator");
 let JwtAuthGuard = class JwtAuthGuard {
-    constructor(jwtService, usersService, sessionsService) {
+    constructor(jwtService, usersService, sessionsService, reflector) {
         this.jwtService = jwtService;
         this.usersService = usersService;
         this.sessionsService = sessionsService;
+        this.reflector = reflector;
     }
     async canActivate(context) {
+        const isPublic = this.reflector?.getAllAndOverride(public_decorator_1.IS_PUBLIC_KEY, [
+            context.getHandler(),
+            context.getClass(),
+        ]);
+        if (isPublic) {
+            return true;
+        }
         const request = context
             .switchToHttp()
             .getRequest();
@@ -63,6 +73,7 @@ exports.JwtAuthGuard = JwtAuthGuard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [jwt_1.JwtService,
         users_service_1.UsersService,
-        sessions_service_1.SessionsService])
+        sessions_service_1.SessionsService,
+        core_1.Reflector])
 ], JwtAuthGuard);
 //# sourceMappingURL=jwt-auth.guard.js.map

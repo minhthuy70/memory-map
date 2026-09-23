@@ -2,6 +2,7 @@ import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards, Requ
 import { Throttle } from '@nestjs/throttler';
 import { MemoriesService } from './memories.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { Public } from '../auth/public.decorator';
 import { CreateMemoryDto } from './dto/create-memory.dto';
 import { UpdateMemoryDto } from './dto/update-memory.dto';
 
@@ -44,6 +45,18 @@ export class MemoriesController {
     return this.memoriesService.getStatistics(req.user.id);
   }
 
+  // Travel Statistics
+  @Get('travel-statistics')
+  async getTravelStatistics(@Request() req) {
+    return this.memoriesService.getTravelStatistics(req.user.id);
+  }
+
+  // Location Frequency
+  @Get('location-frequency')
+  async getLocationFrequency(@Request() req) {
+    return this.memoriesService.getLocationFrequency(req.user.id);
+  }
+
   @Get('reminders/upcoming')
   async getUpcomingReminders(@Request() req) {
     return this.memoriesService.getUpcomingReminders(req.user.id);
@@ -57,6 +70,13 @@ export class MemoriesController {
   @Get('export-data')
   async exportMemories(@Request() req) {
     return this.memoriesService.exportMemories(req.user.id);
+  }
+
+  // Public Memory Links - bypass JWT Auth
+  @Public()
+  @Get('public/:slug')
+  async getPublicMemory(@Param('slug') slug: string) {
+    return this.memoriesService.getPublicMemoryBySlug(slug);
   }
 
   @Get(':id')
@@ -111,7 +131,7 @@ export class MemoriesController {
     return this.memoriesService.updateImageOrder(imageId, req.user.id, order);
   }
 
-  // Public Memory Links
+  // Manage Public Memory Links (Authenticated)
   @Post(':id/public')
   async generatePublicLink(@Param('id') id: string, @Request() req) {
     return this.memoriesService.generatePublicSlug(id, req.user.id);
@@ -120,22 +140,5 @@ export class MemoriesController {
   @Delete(':id/public')
   async makeMemoryPrivate(@Param('id') id: string, @Request() req) {
     return this.memoriesService.makeMemoryPrivate(id, req.user.id);
-  }
-
-  @Get('public/:slug')
-  async getPublicMemory(@Param('slug') slug: string) {
-    return this.memoriesService.getPublicMemoryBySlug(slug);
-  }
-
-  // Travel Statistics
-  @Get('travel-statistics')
-  async getTravelStatistics(@Request() req) {
-    return this.memoriesService.getTravelStatistics(req.user.id);
-  }
-
-  // Location Frequency
-  @Get('location-frequency')
-  async getLocationFrequency(@Request() req) {
-    return this.memoriesService.getLocationFrequency(req.user.id);
   }
 }

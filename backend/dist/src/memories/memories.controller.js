@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const throttler_1 = require("@nestjs/throttler");
 const memories_service_1 = require("./memories.service");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const public_decorator_1 = require("../auth/public.decorator");
 const create_memory_dto_1 = require("./dto/create-memory.dto");
 const update_memory_dto_1 = require("./dto/update-memory.dto");
 let MemoriesController = class MemoriesController {
@@ -47,6 +48,12 @@ let MemoriesController = class MemoriesController {
     async getStatistics(req) {
         return this.memoriesService.getStatistics(req.user.id);
     }
+    async getTravelStatistics(req) {
+        return this.memoriesService.getTravelStatistics(req.user.id);
+    }
+    async getLocationFrequency(req) {
+        return this.memoriesService.getLocationFrequency(req.user.id);
+    }
     async getUpcomingReminders(req) {
         return this.memoriesService.getUpcomingReminders(req.user.id);
     }
@@ -55,6 +62,9 @@ let MemoriesController = class MemoriesController {
     }
     async exportMemories(req) {
         return this.memoriesService.exportMemories(req.user.id);
+    }
+    async getPublicMemory(slug) {
+        return this.memoriesService.getPublicMemoryBySlug(slug);
     }
     async findOne(id, req) {
         return this.memoriesService.findOne(id, req.user.id);
@@ -82,15 +92,6 @@ let MemoriesController = class MemoriesController {
     }
     async makeMemoryPrivate(id, req) {
         return this.memoriesService.makeMemoryPrivate(id, req.user.id);
-    }
-    async getPublicMemory(slug) {
-        return this.memoriesService.getPublicMemoryBySlug(slug);
-    }
-    async getTravelStatistics(req) {
-        return this.memoriesService.getTravelStatistics(req.user.id);
-    }
-    async getLocationFrequency(req) {
-        return this.memoriesService.getLocationFrequency(req.user.id);
     }
 };
 exports.MemoriesController = MemoriesController;
@@ -125,6 +126,20 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], MemoriesController.prototype, "getStatistics", null);
 __decorate([
+    (0, common_1.Get)('travel-statistics'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "getTravelStatistics", null);
+__decorate([
+    (0, common_1.Get)('location-frequency'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "getLocationFrequency", null);
+__decorate([
     (0, common_1.Get)('reminders/upcoming'),
     __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
@@ -146,6 +161,14 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], MemoriesController.prototype, "exportMemories", null);
+__decorate([
+    (0, public_decorator_1.Public)(),
+    (0, common_1.Get)('public/:slug'),
+    __param(0, (0, common_1.Param)('slug')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "getPublicMemory", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
@@ -223,27 +246,6 @@ __decorate([
     __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
 ], MemoriesController.prototype, "makeMemoryPrivate", null);
-__decorate([
-    (0, common_1.Get)('public/:slug'),
-    __param(0, (0, common_1.Param)('slug')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], MemoriesController.prototype, "getPublicMemory", null);
-__decorate([
-    (0, common_1.Get)('travel-statistics'),
-    __param(0, (0, common_1.Request)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
-], MemoriesController.prototype, "getTravelStatistics", null);
-__decorate([
-    (0, common_1.Get)('location-frequency'),
-    __param(0, (0, common_1.Request)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
-], MemoriesController.prototype, "getLocationFrequency", null);
 exports.MemoriesController = MemoriesController = __decorate([
     (0, common_1.Controller)('memories'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

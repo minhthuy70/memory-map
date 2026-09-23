@@ -7,8 +7,8 @@ export declare class MemoriesController {
     create(req: any, createMemoryDto: CreateMemoryDto): Promise<{
         user: {
             id: string;
-            name: string;
             email: string;
+            name: string;
             avatar: string;
         };
         category: {
@@ -26,10 +26,8 @@ export declare class MemoriesController {
             order: number;
         }[];
     } & {
+        isPublic: boolean;
         id: string;
-        createdAt: Date;
-        userId: string;
-        updatedAt: Date;
         title: string;
         content: string | null;
         latitude: number;
@@ -39,9 +37,11 @@ export declare class MemoriesController {
         mood: import(".prisma/client").$Enums.Mood;
         reminderDate: Date | null;
         reminderSent: boolean;
-        isPublic: boolean;
         publicSlug: string | null;
         publicExpiresAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         categoryId: string;
     }>;
     findAll(req: any, categoryId?: string, mood?: string, from?: string, to?: string, search?: string, page?: string, limit?: string): Promise<{
@@ -61,10 +61,8 @@ export declare class MemoriesController {
                 order: number;
             }[];
         } & {
+            isPublic: boolean;
             id: string;
-            createdAt: Date;
-            userId: string;
-            updatedAt: Date;
             title: string;
             content: string | null;
             latitude: number;
@@ -74,9 +72,11 @@ export declare class MemoriesController {
             mood: import(".prisma/client").$Enums.Mood;
             reminderDate: Date | null;
             reminderSent: boolean;
-            isPublic: boolean;
             publicSlug: string | null;
             publicExpiresAt: Date | null;
+            createdAt: Date;
+            updatedAt: Date;
+            userId: string;
             categoryId: string;
         })[];
         pagination: {
@@ -103,17 +103,66 @@ export declare class MemoriesController {
         memoriesByMood: Record<string, number>;
         moodDistribution: Record<string, number>;
     }>;
+    getTravelStatistics(req: any): Promise<{
+        totalDistance: number;
+        averageDistance: number;
+        longestDistance: number;
+        shortestDistance: number;
+        travelDays: number;
+        uniqueLocations: number;
+    }>;
+    getLocationFrequency(req: any): Promise<{
+        key: string;
+        count: number;
+        lat: number;
+        lng: number;
+        name: string;
+    }[]>;
     getUpcomingReminders(req: any): Promise<any[]>;
     importMemories(req: any, memories: any[]): Promise<{
         imported: number;
         errors: string[];
     }>;
     exportMemories(req: any): Promise<import("./memories.service").ExportMemory[]>;
+    getPublicMemory(slug: string): Promise<{
+        category: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            icon: string;
+            color: string;
+        };
+        images: {
+            id: string;
+            createdAt: Date;
+            memoryId: string;
+            imageUrl: string;
+            order: number;
+        }[];
+    } & {
+        isPublic: boolean;
+        id: string;
+        title: string;
+        content: string | null;
+        latitude: number;
+        longitude: number;
+        locationName: string | null;
+        memoryDate: Date;
+        mood: import(".prisma/client").$Enums.Mood;
+        reminderDate: Date | null;
+        reminderSent: boolean;
+        publicSlug: string | null;
+        publicExpiresAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        categoryId: string;
+    }>;
     findOne(id: string, req: any): Promise<{
         user: {
             id: string;
-            name: string;
             email: string;
+            name: string;
             avatar: string;
         };
         category: {
@@ -131,10 +180,8 @@ export declare class MemoriesController {
             order: number;
         }[];
     } & {
+        isPublic: boolean;
         id: string;
-        createdAt: Date;
-        userId: string;
-        updatedAt: Date;
         title: string;
         content: string | null;
         latitude: number;
@@ -144,9 +191,11 @@ export declare class MemoriesController {
         mood: import(".prisma/client").$Enums.Mood;
         reminderDate: Date | null;
         reminderSent: boolean;
-        isPublic: boolean;
         publicSlug: string | null;
         publicExpiresAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         categoryId: string;
     }>;
     markReminderSent(id: string, req: any): Promise<void>;
@@ -166,10 +215,8 @@ export declare class MemoriesController {
             order: number;
         }[];
     } & {
+        isPublic: boolean;
         id: string;
-        createdAt: Date;
-        userId: string;
-        updatedAt: Date;
         title: string;
         content: string | null;
         latitude: number;
@@ -179,16 +226,16 @@ export declare class MemoriesController {
         mood: import(".prisma/client").$Enums.Mood;
         reminderDate: Date | null;
         reminderSent: boolean;
-        isPublic: boolean;
         publicSlug: string | null;
         publicExpiresAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         categoryId: string;
     }>;
     delete(id: string, req: any): Promise<{
+        isPublic: boolean;
         id: string;
-        createdAt: Date;
-        userId: string;
-        updatedAt: Date;
         title: string;
         content: string | null;
         latitude: number;
@@ -198,9 +245,11 @@ export declare class MemoriesController {
         mood: import(".prisma/client").$Enums.Mood;
         reminderDate: Date | null;
         reminderSent: boolean;
-        isPublic: boolean;
         publicSlug: string | null;
         publicExpiresAt: Date | null;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         categoryId: string;
     }>;
     addImage(id: string, req: any, imageUrl: string): Promise<{
@@ -232,53 +281,4 @@ export declare class MemoriesController {
     makeMemoryPrivate(id: string, req: any): Promise<{
         message: string;
     }>;
-    getPublicMemory(slug: string): Promise<{
-        category: {
-            id: string;
-            createdAt: Date;
-            name: string;
-            icon: string;
-            color: string;
-        };
-        images: {
-            id: string;
-            createdAt: Date;
-            memoryId: string;
-            imageUrl: string;
-            order: number;
-        }[];
-    } & {
-        id: string;
-        createdAt: Date;
-        userId: string;
-        updatedAt: Date;
-        title: string;
-        content: string | null;
-        latitude: number;
-        longitude: number;
-        locationName: string | null;
-        memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
-        reminderDate: Date | null;
-        reminderSent: boolean;
-        isPublic: boolean;
-        publicSlug: string | null;
-        publicExpiresAt: Date | null;
-        categoryId: string;
-    }>;
-    getTravelStatistics(req: any): Promise<{
-        totalDistance: number;
-        averageDistance: number;
-        longestDistance: number;
-        shortestDistance: number;
-        travelDays: number;
-        uniqueLocations: number;
-    }>;
-    getLocationFrequency(req: any): Promise<{
-        key: string;
-        count: number;
-        lat: number;
-        lng: number;
-        name: string;
-    }[]>;
 }
