@@ -42,7 +42,7 @@ export default function AcademicCitationExport({ onCancel }: AcademicCitationExp
     { name: 'APA', style: 'APA', description: 'American Psychological Association', example: 'Smith, J. (2024). Memory title. Source.' },
     { name: 'MLA', style: 'MLA', description: 'Modern Language Association', example: 'Smith, John. "Memory Title." Source, 2024.' },
     { name: 'Chicago', style: 'Chicago', description: 'Chicago Manual of Style', example: 'Smith, John. 2024. "Memory Title." Source.' },
-    { name: 'Harvard', style: 'Harvard', description: 'Harvard Referencing Style', example: 'Smith, J. (2024) 'Memory Title', Source.' },
+    { name: 'Harvard', style: 'Harvard', description: 'Harvard Referencing Style', example: "Smith, J. (2024) 'Memory Title', Source." },
     { name: 'Vancouver', style: 'Vancouver', description: 'Vancouver Citation Style', example: 'Smith J. Memory title. Source. 2024.' },
   ]);
 
