@@ -15,6 +15,7 @@ import * as crypto from 'crypto';
 
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { OAuthDto } from './dto/oauth.dto';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class AuthService {
@@ -28,6 +29,7 @@ export class AuthService {
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
     private readonly sessionsService: SessionsService,
+    private readonly mailService: MailService,
   ) {}
 
   async validateUser(
@@ -315,11 +317,8 @@ export class AuthService {
       verified: false,
     });
 
-    // Log the verification code for development & testing visibility
-    console.log(`\n======================================================`);
-    console.log(`[EMAIL VERIFICATION] Mã xác nhận cho email ${normalizedEmail}: ${code}`);
-    console.log(`[EMAIL VERIFICATION] Hết hạn lúc: ${expires.toLocaleTimeString()}`);
-    console.log(`======================================================\n`);
+    // Send real email (falls back to logger when SMTP is not configured)
+    await this.mailService.sendVerificationCode(normalizedEmail, code, expires);
 
     return {
       success: true,

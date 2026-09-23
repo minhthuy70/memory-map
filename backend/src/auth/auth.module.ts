@@ -9,6 +9,7 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 import { UsersModule } from '../users/users.module';
 import { SessionsModule } from '../sessions/sessions.module';
 import { SessionsService } from '../sessions/sessions.service';
+import { MailModule } from '../mail/mail.module';
 
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
@@ -18,6 +19,7 @@ import { LocalStrategy } from './local.strategy';
     ConfigModule,
     UsersModule,
     forwardRef(() => SessionsModule),
+    MailModule,
 
     JwtModule.registerAsync({
       imports: [ConfigModule],
