@@ -77,8 +77,13 @@ export class SessionsService {
   }
 
   async deleteSessionByToken(token: string) {
-    return this.prisma.session.delete({
-      where: { token },
-    });
+    if (!token) return { count: 0 };
+    try {
+      return await this.prisma.session.deleteMany({
+        where: { token },
+      });
+    } catch {
+      return { count: 0 };
+    }
   }
 }
