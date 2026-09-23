@@ -1,15 +1,17 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Monitor, Smartphone, Globe, Trash2, Shield, Clock, Calendar } from 'lucide-react';
+import { Monitor, Smartphone, Globe, Trash2, Shield, Clock, Calendar, LogOut } from 'lucide-react';
 import { sessionsApi, Session } from '@/lib/sessions-api';
 import { useAuthStore } from '@/store/auth-store';
 
 export default function SessionsManager() {
-  const { token } = useAuthStore();
+  const { token, logout } = useAuthStore();
   const [sessions, setSessions] = useState<Session[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isActionLoading, setIsActionLoading] = useState(false);
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const loadSessions = async () => {
     try {
@@ -31,30 +33,56 @@ export default function SessionsManager() {
 
   const handleDeleteSession = async (sessionId: string) => {
     try {
+      setError('');
+      setSuccessMessage('');
       await sessionsApi.deleteSession(sessionId);
-      setSessions(sessions.filter(s => s.id !== sessionId));
+      setSessions(prev => prev.filter(s => s.id !== sessionId));
+      setSuccessMessage('Đã thu hồi phiên đăng nhập thành công');
+      setTimeout(() => setSuccessMessage(''), 3000);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Failed to delete session';
       setError(message);
     }
   };
 
-  const handleDeleteAllSessions = async () => {
-    if (!confirm('Bạn có chắc chắn muốn đăng xuất khỏi tất cả các thiết bị không?')) {
+  const handleDeleteOtherSessions = async () => {
+    if (!confirm('Bạn có chắc chắn muốn đăng xuất khỏi tất cả các thiết bị khác không?')) {
       return;
     }
 
     try {
-      await sessionsApi.deleteAllSessions();
-      // Keep only current session if token is available
+      setIsActionLoading(true);
+      setError('');
+      setSuccessMessage('');
+      const res = await sessionsApi.deleteOtherSessions();
       if (token) {
-        setSessions(sessions.filter(s => s.token === token));
-      } else {
-        setSessions([]);
+        setSessions(prev => prev.filter(s => s.token === token));
       }
+      setSuccessMessage(res?.message || 'Đã đăng xuất khỏi các thiết bị khác thành công');
+      setTimeout(() => setSuccessMessage(''), 3000);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to delete other sessions';
+      setError(message);
+    } finally {
+      setIsActionLoading(false);
+    }
+  };
+
+  const handleDeleteAllSessions = async () => {
+    if (!confirm('Bạn có chắc chắn muốn đăng xuất khỏi TẤT CẢ các thiết bị (bao gồm thiết bị hiện tại)? Bạn sẽ cần đăng nhập lại.')) {
+      return;
+    }
+
+    try {
+      setIsActionLoading(true);
+      setError('');
+      await sessionsApi.deleteAllSessions();
+      await logout();
+      window.location.href = '/login';
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Failed to delete all sessions';
       setError(message);
+      setIsActionLoading(false);
     }
   };
 
@@ -115,20 +143,41 @@ export default function SessionsManager() {
         </div>
       )}
 
-      <div className="flex items-center justify-between mb-4">
+      {successMessage && (
+        <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-green-700 dark:text-green-300">
+          {successMessage}
+        </div>
+      )}
+
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="text-lg font-semibold text-slate-900 dark:text-white flex items-center gap-2">
           <Shield className="h-5 w-5" />
           Quản lý phiên đăng nhập
         </h3>
-        {sessions.length > 1 && (
-          <button
-            onClick={handleDeleteAllSessions}
-            className="px-3 py-1.5 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2"
-          >
-            <Trash2 className="h-4 w-4" />
-            Đăng xuất tất cả
-          </button>
-        )}
+        <div className="flex items-center gap-2">
+          {sessions.filter(s => !isCurrentSession(s)).length > 0 && (
+            <button
+              onClick={handleDeleteOtherSessions}
+              disabled={isActionLoading}
+              className="px-3 py-1.5 text-sm bg-amber-600 text-white rounded-lg hover:bg-amber-700 disabled:opacity-50 transition-colors flex items-center gap-1.5"
+              title="Đăng xuất khỏi tất cả các thiết bị khác ngoài thiết bị này"
+            >
+              <LogOut className="h-4 w-4" />
+              Đăng xuất thiết bị khác
+            </button>
+          )}
+          {sessions.length > 0 && (
+            <button
+              onClick={handleDeleteAllSessions}
+              disabled={isActionLoading}
+              className="px-3 py-1.5 text-sm bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 transition-colors flex items-center gap-1.5"
+              title="Đăng xuất khỏi tất cả các thiết bị kể cả phiên hiện tại"
+            >
+              <Trash2 className="h-4 w-4" />
+              Đăng xuất tất cả
+            </button>
+          )}
+        </div>
       </div>
 
       {sessions.length === 0 ? (

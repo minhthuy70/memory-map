@@ -22,7 +22,12 @@ export class SessionsController {
   }
 
   @Delete('all')
-  async deleteAllSessions(
+  async deleteAllSessions(@Request() req: any) {
+    return this.sessionsService.deleteAllUserSessions(req.user.id);
+  }
+
+  @Delete('other')
+  async deleteOtherSessions(
     @Request() req: any,
     @Headers('authorization') authHeader: string,
   ) {

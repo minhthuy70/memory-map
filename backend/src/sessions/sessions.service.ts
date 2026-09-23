@@ -70,16 +70,24 @@ export class SessionsService {
 
   async deleteAllUserSessions(userId: string, exceptToken?: string) {
     if (exceptToken) {
-      return this.prisma.session.deleteMany({
+      const result = await this.prisma.session.deleteMany({
         where: {
           userId,
           token: { not: exceptToken },
         },
       });
+      return {
+        message: 'Đã đăng xuất khỏi các thiết bị khác thành công',
+        count: result.count,
+      };
     }
-    return this.prisma.session.deleteMany({
+    const result = await this.prisma.session.deleteMany({
       where: { userId },
     });
+    return {
+      message: 'Đã đăng xuất khỏi tất cả các thiết bị thành công',
+      count: result.count,
+    };
   }
 
   async deleteExpiredSessions() {

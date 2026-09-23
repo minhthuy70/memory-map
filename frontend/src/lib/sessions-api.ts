@@ -21,7 +21,13 @@ export const sessionsApi = {
     await api.delete(`/sessions/${sessionId}`);
   },
 
-  deleteAllSessions: async (): Promise<void> => {
-    await api.delete('/sessions/all');
+  deleteAllSessions: async (): Promise<{ message: string; count: number }> => {
+    const response = await api.delete('/sessions/all');
+    return response.data;
+  },
+
+  deleteOtherSessions: async (): Promise<{ message: string; count: number }> => {
+    const response = await api.delete('/sessions/other');
+    return response.data;
   },
 };
