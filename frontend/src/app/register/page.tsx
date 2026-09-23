@@ -20,6 +20,7 @@ import {
 import { authApi } from '@/lib/auth-api';
 import { useAuthStore } from '@/store/auth-store';
 import GoogleOAuthModal from '@/components/GoogleOAuthModal';
+import FacebookOAuthModal from '@/components/FacebookOAuthModal';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -42,6 +43,7 @@ export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [oauthLoading, setOauthLoading] = useState<'google' | 'facebook' | null>(null);
   const [showGoogleModal, setShowGoogleModal] = useState(false);
+  const [showFacebookModal, setShowFacebookModal] = useState(false);
 
   // Email verification modal state
   const [showVerifyModal, setShowVerifyModal] = useState(false);
@@ -172,31 +174,35 @@ export default function RegisterPage() {
   };
 
   // Facebook OAuth Handler
-  const handleFacebookOAuth = async () => {
+  const handleFacebookOAuth = () => {
+    setError('');
+    setShowFacebookModal(true);
+  };
+
+  const handleFacebookAccountSelected = async (accountData: {
+    email: string;
+    name: string;
+    avatar: string;
+    providerId: string;
+  }) => {
     setError('');
     setOauthLoading('facebook');
     try {
-      // Simulate/Trigger Facebook OAuth authentication
-      const email = prompt('Nhập địa chỉ Email Facebook để đăng ký nhanh:', formData.email || 'user@facebook.com');
-      if (!email) {
-        setOauthLoading(null);
-        return;
-      }
-
-      const fbName = email.split('@')[0];
       const response = await authApi.oauth({
         provider: 'facebook',
-        email: email,
-        name: fbName.charAt(0).toUpperCase() + fbName.slice(1),
-        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
-        providerId: `fb_${Date.now()}`,
+        email: accountData.email,
+        name: accountData.name,
+        avatar: accountData.avatar,
+        providerId: accountData.providerId,
       });
 
       setAuth(response.access_token, response.user);
+      setShowFacebookModal(false);
       router.push('/dashboard');
     } catch (err: any) {
       const message = err.response?.data?.message || err.message || 'Đăng ký bằng Facebook thất bại.';
       setError(message);
+      throw err;
     } finally {
       setOauthLoading(null);
     }
@@ -697,6 +703,16 @@ export default function RegisterPage() {
         isLoading={oauthLoading === 'google'}
         defaultEmail={formData.email}
         title="Đăng ký tài khoản với Google"
+      />
+
+      {/* Facebook OAuth Modal */}
+      <FacebookOAuthModal
+        isOpen={showFacebookModal}
+        onClose={() => setShowFacebookModal(false)}
+        onSelectAccount={handleFacebookAccountSelected}
+        isLoading={oauthLoading === 'facebook'}
+        defaultEmail={formData.email}
+        title="Đăng ký tài khoản với Facebook"
       />
     </div>
   );
