@@ -101,7 +101,7 @@ export default function AIDuplicatePhotoDetection({ onCancel }: AIDuplicatePhoto
   const markAsOriginal = (groupId: string, photoId: string) => {
     setDuplicateGroups(duplicateGroups.map(group => 
       group.id === groupId 
-        ? { ...group, photos: group.photos.map(p => p.id === photoId ? { ...p, isOriginal: true } : { ...p, isOriginal: false })) }
+        ? { ...group, photos: group.photos.map(p => p.id === photoId ? { ...p, isOriginal: true } : { ...p, isOriginal: false }) }
         : group
     ));
   };
