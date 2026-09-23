@@ -397,19 +397,25 @@ export class AuthService {
 
   async changePassword(
     userId: string,
-    currentPassword: string,
+    currentPassword: string | undefined,
     newPassword: string,
   ) {
     const user = await this.usersService.findById(userId);
 
     if (!user) {
-      throw new UnauthorizedException('User not found');
+      throw new UnauthorizedException('Không tìm thấy tài khoản.');
     }
 
+    // OAuth user: no password yet — just set a new one
     if (!user.passwordHash) {
       const passwordHash = await bcrypt.hash(newPassword, 10);
       await this.usersService.updatePassword(userId, passwordHash);
-      return { message: 'Password set successfully' };
+      return { message: 'Đặt mật khẩu thành công.' };
+    }
+
+    // Normal user: must supply current password
+    if (!currentPassword) {
+      throw new BadRequestException('Vui lòng nhập mật khẩu hiện tại.');
     }
 
     const isPasswordValid = await bcrypt.compare(
@@ -418,7 +424,7 @@ export class AuthService {
     );
 
     if (!isPasswordValid) {
-      throw new BadRequestException('Current password is incorrect');
+      throw new BadRequestException('Mật khẩu hiện tại không chính xác.');
     }
 
     const passwordHash = await bcrypt.hash(newPassword, 10);
@@ -428,7 +434,7 @@ export class AuthService {
       passwordHash,
     );
 
-    return { message: 'Password changed successfully' };
+    return { message: 'Đổi mật khẩu thành công.' };
   }
 
   async getProfileWithStats(userId: string) {
@@ -448,6 +454,7 @@ export class AuthService {
     return {
       ...result,
       memoryCount,
+      hasPassword: !!passwordHash,
     };
   }
 

@@ -256,6 +256,8 @@ export default function ProfilePage() {
     e.preventDefault();
     setPasswordError('');
 
+    const isOAuthUser = profileData && !profileData.hasPassword;
+
     if (passwordForm.newPassword !== passwordForm.confirmPassword) {
       setPasswordError('Mật khẩu xác nhận không khớp.');
       return;
@@ -266,12 +268,22 @@ export default function ProfilePage() {
       return;
     }
 
+    // For normal users, current password is mandatory
+    if (!isOAuthUser && !passwordForm.currentPassword) {
+      setPasswordError('Vui lòng nhập mật khẩu hiện tại.');
+      return;
+    }
+
     try {
       setIsLoading(true);
       await authApi.changePassword({
-        currentPassword: passwordForm.currentPassword,
+        ...(isOAuthUser ? {} : { currentPassword: passwordForm.currentPassword }),
         newPassword: passwordForm.newPassword,
       });
+
+      // Refresh profile so hasPassword becomes true after setting password
+      const updated = await authApi.getProfile();
+      setProfileData(updated);
 
       setPasswordForm({
         currentPassword: '',
@@ -279,7 +291,7 @@ export default function ProfilePage() {
         confirmPassword: '',
       });
       setIsChangingPassword(false);
-      setSuccessMessage('Đổi mật khẩu thành công!');
+      setSuccessMessage(isOAuthUser ? 'Đặt mật khẩu thành công!' : 'Đổi mật khẩu thành công!');
       setTimeout(() => setSuccessMessage(''), 3000);
     } catch (err: any) {
       setPasswordError(err.response?.data?.message || err.message || 'Đổi mật khẩu thất bại.');
@@ -659,7 +671,13 @@ export default function ProfilePage() {
                 className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 dark:bg-slate-700 text-white rounded-xl hover:bg-slate-700 font-semibold text-sm transition-all shadow-xs cursor-pointer"
               >
                 <Lock className="h-4 w-4" />
-                <span>{isChangingPassword ? 'Đóng form đổi mật khẩu' : 'Đổi mật khẩu'}</span>
+                <span>
+                  {isChangingPassword
+                    ? 'Đóng form'
+                    : profileData && !profileData.hasPassword
+                    ? 'Đặt mật khẩu'
+                    : 'Đổi mật khẩu'}
+                </span>
               </button>
 
               <button
@@ -737,8 +755,16 @@ export default function ProfilePage() {
               <form onSubmit={handlePasswordChange} className="mb-6 p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-4 animate-in fade-in">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
                   <Lock className="w-5 h-5 text-primary" />
-                  <span>Đổi mật khẩu tài khoản</span>
+                  <span>{profileData && !profileData.hasPassword ? 'Đặt mật khẩu cho tài khoản' : 'Đổi mật khẩu tài khoản'}</span>
                 </h3>
+
+                {/* Info banner for OAuth users who have no password yet */}
+                {profileData && !profileData.hasPassword && (
+                  <div className="p-3 bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-900 text-sky-700 dark:text-sky-300 rounded-xl text-xs flex items-start gap-2">
+                    <ShieldCheck className="w-4 h-4 shrink-0 mt-0.5" />
+                    <span>Tài khoản của bạn được tạo qua Google hoặc Facebook và chưa có mật khẩu. Bạn có thể đặt mật khẩu để đăng nhập trực tiếp.</span>
+                  </div>
+                )}
 
                 {passwordError && (
                   <div className="p-3.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 rounded-xl text-xs sm:text-sm flex items-center gap-2">
@@ -747,29 +773,30 @@ export default function ProfilePage() {
                   </div>
                 )}
 
-                {/* Current Password */}
-                <div>
-                  <label className="block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                    Mật khẩu hiện tại
-                  </label>
-                  <div className="relative">
-                    <input
-                      type={showCurrentPassword ? 'text' : 'password'}
-                      value={passwordForm.currentPassword}
-                      onChange={(e) => setPasswordForm({ ...passwordForm, currentPassword: e.target.value })}
-                      className="w-full pl-4 pr-10 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm outline-none focus:ring-2 focus:ring-primary"
-                      required
-                      placeholder="Nhập mật khẩu hiện tại"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                      className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
-                    >
-                      {showCurrentPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                    </button>
+                {/* Current Password — only shown for users who already have a password */}
+                {profileData && profileData.hasPassword && (
+                  <div>
+                    <label className="block text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+                      Mật khẩu hiện tại
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showCurrentPassword ? 'text' : 'password'}
+                        value={passwordForm.currentPassword}
+                        onChange={(e) => setPasswordForm({ ...passwordForm, currentPassword: e.target.value })}
+                        className="w-full pl-4 pr-10 py-2.5 border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white text-sm outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="Nhập mật khẩu hiện tại"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                        className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
+                      >
+                        {showCurrentPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                      </button>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* New Password */}
                 <div>
