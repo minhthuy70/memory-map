@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { authApi } from '@/lib/auth-api';
 import { useAuthStore } from '@/store/auth-store';
+import GoogleOAuthModal from '@/components/GoogleOAuthModal';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,6 +32,7 @@ export default function LoginPage() {
   const [isLocked, setIsLocked] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [oauthLoading, setOauthLoading] = useState<'google' | 'facebook' | null>(null);
+  const [showGoogleModal, setShowGoogleModal] = useState(false);
 
   // Load remembered email on mount
   useEffect(() => {
@@ -84,31 +86,37 @@ export default function LoginPage() {
   };
 
   // Google OAuth Login
-  const handleGoogleOAuth = async () => {
+  const handleGoogleOAuth = () => {
+    setError('');
+    setIsLocked(false);
+    setShowGoogleModal(true);
+  };
+
+  const handleGoogleAccountSelected = async (accountData: {
+    email: string;
+    name: string;
+    avatar: string;
+    providerId: string;
+  }) => {
     setError('');
     setIsLocked(false);
     setOauthLoading('google');
     try {
-      const email = prompt('Nhập địa chỉ Gmail để đăng nhập nhanh:', formData.email || 'user@gmail.com');
-      if (!email) {
-        setOauthLoading(null);
-        return;
-      }
-
-      const googleName = email.split('@')[0];
       const response = await authApi.oauth({
         provider: 'google',
-        email: email,
-        name: googleName.charAt(0).toUpperCase() + googleName.slice(1),
-        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
-        providerId: `google_${Date.now()}`,
+        email: accountData.email,
+        name: accountData.name,
+        avatar: accountData.avatar,
+        providerId: accountData.providerId,
       });
 
       setAuth(response.access_token, response.user);
+      setShowGoogleModal(false);
       router.push('/dashboard');
     } catch (err: any) {
       const msg = err.response?.data?.message || err.message || 'Đăng nhập bằng Google thất bại.';
       setError(msg);
+      throw err;
     } finally {
       setOauthLoading(null);
     }
@@ -338,6 +346,15 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+
+      {/* Google OAuth Modal */}
+      <GoogleOAuthModal
+        isOpen={showGoogleModal}
+        onClose={() => setShowGoogleModal(false)}
+        onSelectAccount={handleGoogleAccountSelected}
+        isLoading={oauthLoading === 'google'}
+        defaultEmail={formData.email}
+      />
     </div>
   );
 }

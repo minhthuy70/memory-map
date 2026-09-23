@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { authApi } from '@/lib/auth-api';
 import { useAuthStore } from '@/store/auth-store';
+import GoogleOAuthModal from '@/components/GoogleOAuthModal';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -40,6 +41,7 @@ export default function RegisterPage() {
   const [successMessage, setSuccessMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [oauthLoading, setOauthLoading] = useState<'google' | 'facebook' | null>(null);
+  const [showGoogleModal, setShowGoogleModal] = useState(false);
 
   // Email verification modal state
   const [showVerifyModal, setShowVerifyModal] = useState(false);
@@ -135,31 +137,35 @@ export default function RegisterPage() {
   };
 
   // Google OAuth Handler
-  const handleGoogleOAuth = async () => {
+  const handleGoogleOAuth = () => {
+    setError('');
+    setShowGoogleModal(true);
+  };
+
+  const handleGoogleAccountSelected = async (accountData: {
+    email: string;
+    name: string;
+    avatar: string;
+    providerId: string;
+  }) => {
     setError('');
     setOauthLoading('google');
     try {
-      // Simulate/Trigger Google OAuth authentication
-      const email = prompt('Nhập địa chỉ Gmail để đăng ký nhanh:', formData.email || 'user@gmail.com');
-      if (!email) {
-        setOauthLoading(null);
-        return;
-      }
-
-      const googleName = email.split('@')[0];
       const response = await authApi.oauth({
         provider: 'google',
-        email: email,
-        name: googleName.charAt(0).toUpperCase() + googleName.slice(1),
-        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${email}`,
-        providerId: `google_${Date.now()}`,
+        email: accountData.email,
+        name: accountData.name,
+        avatar: accountData.avatar,
+        providerId: accountData.providerId,
       });
 
       setAuth(response.access_token, response.user);
+      setShowGoogleModal(false);
       router.push('/dashboard');
     } catch (err: any) {
       const message = err.response?.data?.message || err.message || 'Đăng ký bằng Google thất bại.';
       setError(message);
+      throw err;
     } finally {
       setOauthLoading(null);
     }
@@ -682,6 +688,16 @@ export default function RegisterPage() {
           </div>
         </div>
       )}
+
+      {/* Google OAuth Modal */}
+      <GoogleOAuthModal
+        isOpen={showGoogleModal}
+        onClose={() => setShowGoogleModal(false)}
+        onSelectAccount={handleGoogleAccountSelected}
+        isLoading={oauthLoading === 'google'}
+        defaultEmail={formData.email}
+        title="Đăng ký tài khoản với Google"
+      />
     </div>
   );
 }
