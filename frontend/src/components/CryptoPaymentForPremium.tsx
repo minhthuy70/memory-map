@@ -244,8 +244,7 @@ export default function CryptoPayment({ onCancel }: CryptoPaymentProps) {
         {showDetails && (
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Crypto Payment Tips</h4>
-            <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
-              <              <li>• Multiple cryptocurrencies supported (BTC, ETH, USDT, MATIC)</li>
+              <li>• Multiple cryptocurrencies supported (BTC, ETH, USDT, MATIC)</li>
               <li>• Automatic conversion to USD equivalent</li>
               <li>• Blockchain confirmations required for completion</li>
               <li>• Transaction tracking with hash verification</li>
