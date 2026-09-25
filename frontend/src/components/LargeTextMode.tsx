@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Type, X, RefreshCw, Info, CheckCircle, Settings, ZoomIn, ZoomOut, Maximize } from 'lucide-react';
+import { CheckCircle, Info, Maximize, RefreshCw, Settings, Type, ZoomIn, ZoomOut } from 'lucide-react';
 
 interface LargeTextModeProps {
   onCancel?: () => void;

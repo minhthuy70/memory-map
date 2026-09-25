@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Dumbbell, X, RefreshCw, Info, Activity, Flame, Clock, Target, Star, MapPin, Zap } from 'lucide-react';
+import {
+  Activity,
+  Clock,
+  Dumbbell,
+  Flame,
+  Info,
+  MapPin,
+  RefreshCw,
+  Star,
+  Target,
+  Zap
+} from 'lucide-react';
 
 interface ExerciseMemoryTaggingProps {
   onCancel?: () => void;
@@ -365,7 +376,7 @@ export default function ExerciseMemoryTagging({ onCancel }: ExerciseMemoryTaggin
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Activity className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sync with Health</span>
+                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw with Health</span>
               </div>
               <input
                 type="checkbox"

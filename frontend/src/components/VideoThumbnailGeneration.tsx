@@ -1,7 +1,36 @@
 'use client';
 
 import { useState } from 'react';
-import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Image as ImageIcon, Settings as SettingsIcon, Eye, Zap as ZapIcon, RefreshCw, Grid, Check, Layers, Sliders, Crop, Maximize2, Sparkles } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Crop,
+  Download,
+  Eye,
+  Filter,
+  Grid,
+  Image,
+  ImageIcon,
+  Layers,
+  Maximize2,
+  Pause,
+  Play,
+  RefreshCw,
+  Settings,
+  SettingsIcon,
+  Sliders,
+  Sparkles,
+  Trash2,
+  Video,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface Thumbnail {
   id: string;

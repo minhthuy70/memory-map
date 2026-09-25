@@ -1,7 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Activity, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Clock, Calendar, TrendingUp, Zap } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  RefreshCw,
+  Settings,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface UptimeRecord {
   timestamp: Date;

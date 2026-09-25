@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Globe, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Link2, FileText } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  FileText,
+  Globe,
+  Info,
+  Link2,
+  Plus,
+  RefreshCw,
+  Settings,
+  Trash2
+} from 'lucide-react';
 
 interface ChromeExtensionProps {
   onCancel?: () => void;
@@ -228,7 +242,7 @@ export default function ChromeExtension({ onCancel }: ChromeExtensionProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <RefreshCw className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sync Interval (min)</span>
+                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw Interval (min)</span>
               </div>
               <input
                 type="number"

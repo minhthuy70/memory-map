@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Target, X, RefreshCw, Info, CheckCircle, Settings, Crosshair, Circle } from 'lucide-react';
+import { CheckCircle, Circle, Crosshair, Info, RefreshCw, Settings, Target } from 'lucide-react';
 
 interface FocusIndicatorEnhancementProps {
   onCancel?: () => void;

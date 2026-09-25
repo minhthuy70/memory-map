@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Lock, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Key, Shield, FileText, Database, Clock, Eye, EyeOff, RotateCw } from 'lucide-react';
+import {
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  Database,
+  Eye,
+  EyeOff,
+  FileText,
+  Key,
+  Lock,
+  RefreshCw,
+  RotateCw,
+  Settings,
+  Shield
+} from 'lucide-react';
 
 interface EncryptionKey {
   id: string;

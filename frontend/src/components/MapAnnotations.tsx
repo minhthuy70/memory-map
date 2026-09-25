@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { MessageSquare, Edit2, Trash2, Pin, MapPin } from 'lucide-react';
+import { Edit2, MapPin, MessageSquare, Pin, Trash2 } from 'lucide-react';
 
 interface MapAnnotation {
   id: string;

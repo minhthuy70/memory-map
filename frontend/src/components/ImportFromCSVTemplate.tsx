@@ -1,7 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Upload, Download, CheckCircle, AlertTriangle, Loader2, FileSpreadsheet, FileText, Table, Eye, Database, Check, Play, Pause, SkipForward, RefreshCw, ChevronDown, ChevronUp, Filter } from 'lucide-react';
+import {
+  AlertTriangle,
+  Check,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Database,
+  Download,
+  Eye,
+  FileSpreadsheet,
+  FileText,
+  Filter,
+  Loader2,
+  Pause,
+  Play,
+  RefreshCw,
+  Settings,
+  SkipForward,
+  Table,
+  Upload
+} from 'lucide-react';
 
 interface ImportFromCSVTemplateProps {
   onCancel?: () => void;

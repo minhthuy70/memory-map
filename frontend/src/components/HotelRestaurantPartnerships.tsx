@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Utensils, Building, X, RefreshCw, Info, CheckCircle, Plus, Trash2, MapPin, Star, Calendar } from 'lucide-react';
+import {
+  Building,
+  Calendar,
+  CheckCircle,
+  Info,
+  MapPin,
+  Plus,
+  RefreshCw,
+  Star,
+  Trash2,
+  Utensils
+} from 'lucide-react';
 
 interface HotelRestaurantPartnershipsProps {
   onCancel?: () => void;

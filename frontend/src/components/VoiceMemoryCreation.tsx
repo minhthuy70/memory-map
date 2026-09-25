@@ -1,7 +1,42 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Plus as PlusIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Sparkles, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Tag, Layers, Save, Trash2 as TrashIcon, ExternalLink, StopCircle, MessageSquare, PenTool } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  Filter,
+  Image,
+  ImageIcon,
+  Layers,
+  MapPin,
+  MessageSquare,
+  Mic,
+  Pause,
+  PenTool,
+  Play,
+  Plus,
+  PlusIcon,
+  RefreshCw,
+  Save,
+  Settings,
+  SettingsIcon,
+  Sparkles,
+  StopCircle,
+  Tag,
+  Trash2,
+  TrashIcon,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface VoiceMemory {
   id: string;

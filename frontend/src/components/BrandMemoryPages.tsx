@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Flag, X, RefreshCw, Info, CheckCircle, Plus, Trash2, Globe, Eye, Star } from 'lucide-react';
+import {
+  CheckCircle,
+  Eye,
+  Flag,
+  Globe,
+  Info,
+  Plus,
+  RefreshCw,
+  Star,
+  Trash2
+} from 'lucide-react';
 
 interface BrandMemoryPagesProps {
   onCancel?: () => void;

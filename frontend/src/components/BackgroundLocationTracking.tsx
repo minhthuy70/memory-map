@@ -1,7 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { MapPin, X, Navigation, Play, Pause, RefreshCw, Clock, Map, Activity, Battery, Signal, Settings, Info, BarChart3, CheckCircle, AlertTriangle, Calendar, MoreVertical } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  BarChart3,
+  Battery,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Info,
+  Map,
+  MapPin,
+  MoreVertical,
+  Navigation,
+  Pause,
+  Play,
+  RefreshCw,
+  Settings,
+  Signal
+} from 'lucide-react';
 
 interface BackgroundLocationTrackingProps {
   onCancel?: () => void;

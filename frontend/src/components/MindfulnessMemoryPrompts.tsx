@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Sparkles, X, RefreshCw, Info, CheckCircle, Star, Zap, Clock, Play, Flower2 } from 'lucide-react';
+import {
+  CheckCircle,
+  Clock,
+  Flower2,
+  Info,
+  Play,
+  RefreshCw,
+  Sparkles,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface MindfulnessMemoryPromptsProps {
   onCancel?: () => void;

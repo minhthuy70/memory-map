@@ -1,7 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { Cloud, Upload, Download, CheckCircle, XCircle, AlertCircle, Settings, RefreshCw, Image as ImageIcon, HardDrive } from 'lucide-react';
+import {
+  AlertCircle,
+  as,
+  CheckCircle,
+  Cloud,
+  Download,
+  HardDrive,
+  Image,
+  ImageIcon,
+  RefreshCw,
+  Settings,
+  Upload,
+  XCircle
+} from 'lucide-react';
 
 interface CloudSyncProvider {
   id: string;

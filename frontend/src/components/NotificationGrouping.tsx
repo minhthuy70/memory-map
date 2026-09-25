@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Layers, Check, X, Save, Settings, Group, AlertTriangle, Info, Heart, MessageSquare, Shield } from 'lucide-react';
+import {
+  AlertTriangle,
+  Check,
+  Group,
+  Heart,
+  Info,
+  Layers,
+  MessageSquare,
+  Save,
+  Settings,
+  Shield
+} from 'lucide-react';
 
 interface NotificationGroup {
   id: string;

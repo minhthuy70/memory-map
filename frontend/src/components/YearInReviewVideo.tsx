@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, TrendingUp } from 'lucide-react';
+import {
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  Info,
+  Play,
+  RefreshCw,
+  Star,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface YearInReviewVideoProps {
   onCancel?: () => void;
@@ -33,8 +44,8 @@ export default function YearInReviewVideo({ onCancel }: YearInReviewVideoProps) 
   const [isGeneratorEnabled, setIsGeneratorEnabled] = useState(true);
 
   const [yearlyVideos, setYearlyVideos] = useState<YearlyVideo[]>([
-    { id: '1', year: 2023, title: 'Year in Review 2023', duration: 300, memoryCount: 156, highlights: ['Beach Trip', 'Birthday', 'Graduation'], theme: 'modern', music: 'upbeat', createdAt: '2024-01-15', status: 'completed' },
-    { id: '2', year: 2022, title: 'Year in Review 2022', duration: 280, memoryCount: 142, highlights: ['Wedding', 'New Home', 'Holiday'], theme: 'retro', music: 'emotional', createdAt: '2024-02-20', status: 'completed' },
+    { id: '1', year: 2023, title: 'CalendarDays in Review 2023', duration: 300, memoryCount: 156, highlights: ['Beach Trip', 'PartyPopper', 'Graduation'], theme: 'modern', music: 'upbeat', createdAt: '2024-01-15', status: 'completed' },
+    { id: '2', year: 2022, title: 'CalendarDays in Review 2022', duration: 280, memoryCount: 142, highlights: ['Wedding', 'New Home', 'Holiday'], theme: 'retro', music: 'emotional', createdAt: '2024-02-20', status: 'completed' },
   ]);
 
   const [yearlySettings, setYearlySettings] = useState<YearlySettings>({
@@ -52,7 +63,7 @@ export default function YearInReviewVideo({ onCancel }: YearInReviewVideoProps) 
     const newVideo: YearlyVideo = {
       id: Date.now().toString(),
       year: selectedYear,
-      title: `Year in Review ${selectedYear}`,
+      title: `CalendarDays in Review ${selectedYear}`,
       duration: Math.floor(Math.random() * 200) + 200,
       memoryCount: Math.floor(Math.random() * 100) + 100,
       highlights: ['Family Trip', 'Celebration', 'Adventure'],
@@ -92,7 +103,7 @@ export default function YearInReviewVideo({ onCancel }: YearInReviewVideoProps) 
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Year-in-Review Video
+              CalendarDays-in-Review Video
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Auto-generated yearly summary video
@@ -158,7 +169,7 @@ export default function YearInReviewVideo({ onCancel }: YearInReviewVideoProps) 
             className="px-3 py-1.5 rounded-lg text-xs bg-blue-600 hover:bg-blue-700 text-white border-0 flex items-center gap-1"
           >
             <Calendar className="h-3 w-3" />
-            Generate Year Video
+            Generate CalendarDays Video
           </button>
           <button
             type="button"
@@ -170,12 +181,12 @@ export default function YearInReviewVideo({ onCancel }: YearInReviewVideoProps) 
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Year Selection</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">CalendarDays Selection</h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Calendar className="h-4 w-4 text-indigo-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Select Year</span>
+                <span className="text-xs text-slate-900 dark:text-white">Select CalendarDays</span>
               </div>
               <input
                 type="number"
@@ -306,7 +317,7 @@ export default function YearInReviewVideo({ onCancel }: YearInReviewVideoProps) 
 
         {showDetails && (
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
-            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Year-in-Review Tips</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">CalendarDays-in-Review Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• AI generates yearly summary videos automatically</li>
               <li>• Themes: modern, retro, minimal, colorful</li>

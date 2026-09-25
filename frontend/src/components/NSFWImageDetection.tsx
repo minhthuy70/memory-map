@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { Shield, X, RefreshCw, CheckCircle, AlertTriangle, Info, Image, Eye, EyeOff, Sliders, ToggleLeft, ToggleRight, BarChart3, Upload, Trash2, ZoomIn, ZoomOut } from 'lucide-react';
+import {
+  AlertTriangle,
+  BarChart3,
+  CheckCircle,
+  Eye,
+  EyeOff,
+  Image,
+  Info,
+  RefreshCw,
+  Shield,
+  Sliders,
+  ToggleLeft,
+  ToggleRight,
+  Trash2,
+  Upload,
+  ZoomIn,
+  ZoomOut
+} from 'lucide-react';
 
 interface NSFWImageDetectionProps {
   onCancel?: () => void;

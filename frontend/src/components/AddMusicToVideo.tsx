@@ -1,7 +1,39 @@
 'use client';
 
 import { useState } from 'react';
-import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Music, Volume2, VolumeX, PlayCircle, RefreshCw, Check, Zap as ZapIcon, Sliders, Upload, Trash2 as TrashIcon, Plus, Layers, AudioLines, SkipBack, SkipForward } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  AudioLines,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Download,
+  Filter,
+  Layers,
+  Music,
+  Pause,
+  Play,
+  PlayCircle,
+  Plus,
+  RefreshCw,
+  Settings,
+  SettingsIcon,
+  SkipBack,
+  SkipForward,
+  Sliders,
+  Trash2,
+  TrashIcon,
+  Upload,
+  Video,
+  Volume2,
+  VolumeX,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface AudioTrack {
   id: string;
@@ -281,7 +313,7 @@ export default function AddMusicToVideo({ onCancel, onAddTrack, onMixAudio, onPr
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Waveform className="h-3 w-3 text-slate-500" />
+            <BarChart2 className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Avg/Video</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">

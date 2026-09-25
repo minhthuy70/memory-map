@@ -1,7 +1,25 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, Globe, Lock, Eye, EyeOff, Navigation, Map } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Eye,
+  EyeOff,
+  Filter,
+  Globe,
+  Lock,
+  Map,
+  MapPin,
+  Navigation,
+  Settings,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface LocationShare {
   id: string;

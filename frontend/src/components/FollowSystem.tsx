@@ -1,7 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { UserPlus, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, UserMinus, Bell, Search, Check, X as XIcon, Heart, Star } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Bell,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Filter,
+  Heart,
+  Search,
+  Settings,
+  Star,
+  UserMinus,
+  UserPlus,
+  Users,
+  XIcon,
+  Zap
+} from 'lucide-react';
 
 interface User {
   id: string;

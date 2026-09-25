@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { Monitor, X, RefreshCw, Info, Settings, Play, Image as ImageIcon, Clock, Calendar, Heart, CheckCircle, AlertCircle, Layout } from 'lucide-react';
+import {
+  AlertCircle,
+  as,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Heart,
+  Image,
+  ImageIcon,
+  Info,
+  Layout,
+  Monitor,
+  Play,
+  RefreshCw,
+  Settings
+} from 'lucide-react';
 
 interface SmartDisplayProps {
   onCancel?: () => void;
@@ -277,7 +292,7 @@ export default function SmartDisplay({ onCancel }: SmartDisplayProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Dim at Night</span>
+                <span className="text-xs text-slate-900 dark:text-white">Dim at Sunset</span>
               </div>
               <input
                 type="checkbox"
@@ -322,7 +337,7 @@ export default function SmartDisplay({ onCancel }: SmartDisplayProps) {
                 </div>
                 <div className="flex gap-2 mb-2">
                   <span className="text-xs text-slate-500 dark:text-slate-400">Brightness: {device.brightness}%</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Last Sync: {device.lastSync || 'Never'}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Last RefreshCcw: {device.lastSync || 'Never'}</span>
                 </div>
                 {device.isConnected && (
                   <button

@@ -1,7 +1,30 @@
 'use client';
 
 import { useState } from 'react';
-import { Zap, X, TrendingUp, Plus, Minus, Star, Flame, Trophy, Gift, History, BarChart3, Calendar, ArrowUp, ArrowDown, Target, Award, Sparkles, Clock, RefreshCw, Filter, ChevronDown, ChevronUp, Info } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowUp,
+  Award,
+  BarChart3,
+  Calendar,
+  ChevronDown,
+  ChevronUp,
+  Clock,
+  Filter,
+  Flame,
+  Gift,
+  History,
+  Info,
+  Minus,
+  Plus,
+  RefreshCw,
+  Sparkles,
+  Star,
+  Target,
+  TrendingUp,
+  Trophy,
+  Zap
+} from 'lucide-react';
 
 interface XPPointsSystemProps {
   onCancel?: () => void;

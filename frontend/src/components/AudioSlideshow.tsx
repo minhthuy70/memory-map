@@ -1,7 +1,43 @@
 'use client';
 
 import { useState } from 'react';
-import { Music, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, PlayCircle, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, Sliders, Layers, Zap as ZapIcon2, SkipBack, SkipForward, Repeat, Share2, Trash2 as TrashIcon, Film, Clock as ClockIcon, Timer, Music2 } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  ClockIcon,
+  Download,
+  Film,
+  Filter,
+  Image,
+  ImageIcon,
+  Layers,
+  Music,
+  Music2,
+  Pause,
+  Play,
+  PlayCircle,
+  Plus,
+  RefreshCw,
+  Repeat,
+  Settings,
+  SettingsIcon,
+  Share2,
+  SkipBack,
+  SkipForward,
+  Sliders,
+  Timer,
+  Trash2,
+  TrashIcon,
+  Zap,
+  ZapIcon,
+  ZapIcon2
+} from 'lucide-react';
 
 interface Slide {
   id: string;

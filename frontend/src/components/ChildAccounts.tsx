@@ -1,7 +1,28 @@
 'use client';
 
 import { useState } from 'react';
-import { Baby, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, Plus, Shield, Eye, EyeOff, Lock, Unlock, Monitor, Timer, Smartphone } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  Baby,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Eye,
+  EyeOff,
+  Filter,
+  Lock,
+  Monitor,
+  Plus,
+  Settings,
+  Shield,
+  Smartphone,
+  Timer,
+  Unlock,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface ChildAccount {
   id: string;

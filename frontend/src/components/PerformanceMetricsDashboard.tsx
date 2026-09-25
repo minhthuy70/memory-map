@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { Activity, X, RefreshCw, CheckCircle, AlertTriangle, Info, TrendingUp, TrendingDown, Zap, Clock, Server, Database, HardDrive, Cpu, MemoryStick } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  Cpu,
+  Database,
+  HardDrive,
+  Info,
+  MemoryStick,
+  RefreshCw,
+  Server,
+  TrendingDown,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface PerformanceMetricsDashboardProps {
   onCancel?: () => void;

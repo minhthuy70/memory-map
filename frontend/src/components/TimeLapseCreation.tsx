@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Timer, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, Calendar } from 'lucide-react';
+import {
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  Info,
+  Play,
+  RefreshCw,
+  Star,
+  Timer,
+  Zap
+} from 'lucide-react';
 
 interface TimeLapseCreationProps {
   onCancel?: () => void;

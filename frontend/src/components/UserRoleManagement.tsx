@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Shield, X, RefreshCw, Search, Filter, User, Plus, Trash2, Edit2, Info, Crown, Users, CheckCircle, AlertTriangle } from 'lucide-react';
+import {
+  AlertTriangle,
+  CheckCircle,
+  Crown,
+  Edit2,
+  Filter,
+  Info,
+  Plus,
+  RefreshCw,
+  Search,
+  Shield,
+  Trash2,
+  User,
+  Users
+} from 'lucide-react';
 
 interface UserRoleManagementProps {
   onCancel?: () => void;

@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, X, RefreshCw, Info, Calendar, MapPin, FileText, Star, Plus, Tag, Activity, Edit } from 'lucide-react';
+import {
+  Activity,
+  BookOpen,
+  Calendar,
+  Edit,
+  FileText,
+  Info,
+  MapPin,
+  Plus,
+  RefreshCw,
+  Star,
+  Tag
+} from 'lucide-react';
 
 interface FieldResearchJournalProps {
   onCancel?: () => void;
@@ -34,7 +46,7 @@ export default function FieldResearchJournal({ onCancel }: FieldResearchJournalP
 
   const [researchEntries, setResearchEntries] = useState<ResearchEntry[]>([
     { id: '1', date: '2024-01-17', location: 'Amazon Rainforest', researchTopic: 'Biodiversity Study', methodology: 'Field observation & sample collection', findings: 'Discovered 3 new species of insects', notes: 'Weather conditions were optimal for sampling', tags: ['biodiversity', 'insects', 'fieldwork'], dataPoints: 25, samplesCollected: 12, isArchived: false },
-    { id: '2', date: '2024-01-15', location: 'Local River', researchTopic: 'Water Quality Analysis', methodology: 'Water sampling & lab testing', findings: 'pH levels within normal range', notes: 'Increased turbidity near industrial area', tags: ['water', 'environment', 'testing'], dataPoints: 18, samplesCollected: 8, isArchived: false },
+    { id: '2', date: '2024-01-15', location: 'Local River', researchTopic: 'Water Gauge Analysis', methodology: 'Water sampling & lab testing', findings: 'pH levels within normal range', notes: 'Increased turbidity near industrial area', tags: ['water', 'environment', 'testing'], dataPoints: 18, samplesCollected: 8, isArchived: false },
     { id: '3', date: '2024-01-10', location: 'Mountain Trail', researchTopic: 'Vegetation Survey', methodology: 'Quadrat sampling', findings: 'Vegetation density higher at lower elevations', notes: 'Need to sample in spring for comparison', tags: ['vegetation', 'ecology', 'survey'], dataPoints: 30, samplesCollected: 15, isArchived: true },
   ]);
 
@@ -314,7 +326,7 @@ export default function FieldResearchJournal({ onCancel }: FieldResearchJournalP
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Activity className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Data Sync</span>
+                <span className="text-xs text-slate-900 dark:text-white">Data RefreshCcw</span>
               </div>
               <input
                 type="checkbox"

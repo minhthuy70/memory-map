@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Github, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Download, FileText, Star, Fork } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  FileText,
+  GitBranch,
+  GitFork,
+  Info,
+  Plus,
+  RefreshCw,
+  Settings,
+  Star,
+  Trash2
+} from 'lucide-react';
 
 interface CodeSamplesRepositoryProps {
   onCancel?: () => void;
@@ -73,7 +89,7 @@ export default function CodeSamplesRepository({ onCancel }: CodeSamplesRepositor
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl">
-            <Github className="h-5 w-5 text-white" />
+            <GitBranch className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -184,7 +200,7 @@ export default function CodeSamplesRepository({ onCancel }: CodeSamplesRepositor
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-slate-100 dark:bg-slate-700 rounded-lg">
-                      <Github className="h-4 w-4 text-slate-400" />
+                      <GitBranch className="h-4 w-4 text-slate-400" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
@@ -225,7 +241,7 @@ export default function CodeSamplesRepository({ onCancel }: CodeSamplesRepositor
                     <span className="text-xs text-slate-500 dark:text-slate-400">{sample.stars}</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <Fork className="h-3 w-3 text-slate-400" />
+                    <GitFork className="h-3 w-3 text-slate-400" />
                     <span className="text-xs text-slate-500 dark:text-slate-400">{sample.forks}</span>
                   </div>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Updated: {sample.lastUpdated}</span>
@@ -240,7 +256,7 @@ export default function CodeSamplesRepository({ onCancel }: CodeSamplesRepositor
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Code Samples Repository Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• Explore code samples for all SDKs</li>
-              <li>• Fork and customize samples for your needs</li>
+              <li>• GitFork and customize samples for your needs</li>
               <li>• Star samples you find useful</li>
               <li>• Contribute your own samples</li>
             </ul>

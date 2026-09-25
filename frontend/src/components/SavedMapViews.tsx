@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Bookmark, Trash2, Plus, Map as MapIcon } from 'lucide-react';
+import { as, Bookmark, Map, MapIcon, Plus, Trash2 } from 'lucide-react';
 
 interface SavedMapView {
   id: string;

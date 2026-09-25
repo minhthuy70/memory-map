@@ -1,7 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { Flame, X, Settings, CheckCircle, AlertTriangle, Calendar, MapPin, Activity, Clock, Filter, Grid, BarChart3, Thermometer } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Filter,
+  Flame,
+  Grid,
+  MapPin,
+  Settings,
+  Thermometer
+} from 'lucide-react';
 
 interface HeatmapData {
   id: string;

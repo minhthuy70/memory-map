@@ -1,7 +1,48 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Clock as ClockIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, Calendar as CalendarIcon, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, MapPin, Lock, Unlock, Map as MapIcon, Lock as LockIcon, Unlock as UnlockIcon, Sparkles, CalendarClock, Timer, Shield, AlertCircle, Hourglass, Clock as ClockLucide } from 'lucide-react';
+import {
+  Activity,
+  AlertCircle,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  CalendarClock,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  Clock,
+  ClockIcon,
+  ClockLucide,
+  Download,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  Filter,
+  Hourglass,
+  Layers,
+  Lock,
+  LockIcon,
+  Map,
+  MapIcon,
+  MapPin,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Settings,
+  SettingsIcon,
+  Shield,
+  Sparkles,
+  Timer,
+  Trash2,
+  TrashIcon,
+  Unlock,
+  UnlockIcon,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface ARTimeCapsule {
   id: string;

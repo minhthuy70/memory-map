@@ -1,7 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Server, X, Settings, RefreshCw, Activity, Cpu, HardDrive, Thermometer, CheckCircle, AlertTriangle, TrendingUp, TrendingDown } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  CheckCircle,
+  Cpu,
+  HardDrive,
+  RefreshCw,
+  Server,
+  Settings,
+  Thermometer,
+  TrendingDown,
+  TrendingUp
+} from 'lucide-react';
 
 interface ServerMetrics {
   name: string;

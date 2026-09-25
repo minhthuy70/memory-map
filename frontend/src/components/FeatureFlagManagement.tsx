@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Flag, X, Plus, Trash2, RefreshCw, CheckCircle, AlertTriangle, Info, Shield, ToggleLeft, ToggleRight, Users, Globe, Zap, Layers, Target } from 'lucide-react';
+import {
+  AlertTriangle,
+  CheckCircle,
+  Flag,
+  Globe,
+  Info,
+  Layers,
+  Plus,
+  RefreshCw,
+  Shield,
+  Target,
+  ToggleLeft,
+  ToggleRight,
+  Trash2,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface FeatureFlagManagementProps {
   onCancel?: () => void;

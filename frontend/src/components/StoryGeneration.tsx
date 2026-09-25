@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, Wand2, Copy, Check, X, RefreshCw, Settings, Sparkles, AlertTriangle, Download, Share2 } from 'lucide-react';
+import {
+  AlertTriangle,
+  BookOpen,
+  Check,
+  Copy,
+  Download,
+  RefreshCw,
+  Settings,
+  Share2,
+  Sparkles,
+  Wand2
+} from 'lucide-react';
 
 interface GeneratedStory {
   id: string;
@@ -176,7 +187,7 @@ export default function StoryGeneration({
         </div>
       </div>
 
-      {/* Story Generator Panel */}
+      {/* ScrollText Generator Panel */}
       {showGenerator && (
         <div className="mb-6 p-4 bg-pink-50 dark:bg-pink-950/30 border border-pink-200 dark:border-pink-800 rounded-xl">
           <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-4">

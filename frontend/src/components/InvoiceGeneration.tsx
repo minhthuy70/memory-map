@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { FileText, X, RefreshCw, Info, CheckCircle, Star, Zap, Download, Eye, Trash2, Filter } from 'lucide-react';
+import {
+  CheckCircle,
+  Download,
+  Eye,
+  FileText,
+  Filter,
+  Info,
+  RefreshCw,
+  Star,
+  Trash2,
+  Zap
+} from 'lucide-react';
 
 interface InvoiceGenerationProps {
   onCancel?: () => void;

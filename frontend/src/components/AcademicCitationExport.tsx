@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { FileText, X, RefreshCw, Info, Download, Copy, Check, Star, Plus, BookOpen, ExternalLink, Calendar } from 'lucide-react';
+import {
+  BookOpen,
+  Calendar,
+  Check,
+  Copy,
+  Download,
+  ExternalLink,
+  FileText,
+  Info,
+  Plus,
+  RefreshCw,
+  Star
+} from 'lucide-react';
 
 interface AcademicCitationExportProps {
   onCancel?: () => void;

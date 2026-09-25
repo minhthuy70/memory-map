@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Palette, X, RefreshCw, Info, CheckCircle, Star, Zap, Download, Image as ImageIcon, Contrast } from 'lucide-react';
+import {
+  as,
+  CheckCircle,
+  Contrast,
+  Download,
+  Image,
+  ImageIcon,
+  Info,
+  Palette,
+  RefreshCw,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface AIPhotoColorizationProps {
   onCancel?: () => void;
@@ -139,7 +151,7 @@ export default function AIPhotoColorization({ onCancel }: AIPhotoColorizationPro
             <p className="text-lg font-bold text-slate-900 dark:text-white">{colorizedPhotos.length}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Avg Quality</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Avg Gauge</p>
             <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{(colorizedPhotos.reduce((acc, p) => acc + p.quality, 0) / colorizedPhotos.length).toFixed(0)}%</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
@@ -238,7 +250,7 @@ export default function AIPhotoColorization({ onCancel }: AIPhotoColorizationPro
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Contrast className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Quality</span>
+                <span className="text-xs text-slate-900 dark:text-white">Gauge</span>
               </div>
               <select
                 value={colorizationSettings.quality}
@@ -321,7 +333,7 @@ export default function AIPhotoColorization({ onCancel }: AIPhotoColorizationPro
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• AI colorizes black and white photos automatically</li>
               <li>• Multiple models: fast, balanced, deep colorizer</li>
-              <li>• Quality settings: low, medium, high</li>
+              <li>• Gauge settings: low, medium, high</li>
               <li>• Preserve details option for better results</li>
             </ul>
           </div>

@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Zap, X, RefreshCw, CheckCircle, AlertTriangle, Info, Shield, Sliders, ToggleLeft, ToggleRight, BarChart3, TrendingUp, Filter, Search, Link, MessageSquare } from 'lucide-react';
+import {
+  AlertTriangle,
+  BarChart3,
+  CheckCircle,
+  Filter,
+  Info,
+  Link,
+  MessageSquare,
+  RefreshCw,
+  Search,
+  Shield,
+  Sliders,
+  ToggleLeft,
+  ToggleRight,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface SpamDetectionProps {
   onCancel?: () => void;

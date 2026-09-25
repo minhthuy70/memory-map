@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Sun, X, Settings, CheckCircle, AlertTriangle, Snowflake, Flower, Leaf, Cloud, TrendingUp, Calendar, Activity, BarChart3, Filter, Zap, Sparkles } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Cloud,
+  Filter,
+  Flower,
+  Leaf,
+  Settings,
+  Snowflake,
+  Sparkles,
+  Sun,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface SeasonalData {
   season: string;

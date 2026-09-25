@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Minimize, X, Layout, Eye, EyeOff, Settings, Info, BarChart3, Smartphone, CheckCircle, Maximize, Layers, Zap, Focus, MapPin, Plus } from 'lucide-react';
+import {
+  BarChart3,
+  CheckCircle,
+  Eye,
+  EyeOff,
+  Focus,
+  Info,
+  Layers,
+  Layout,
+  MapPin,
+  Maximize,
+  Minimize,
+  Plus,
+  Settings,
+  Smartphone,
+  Zap
+} from 'lucide-react';
 
 interface SimplifiedModeProps {
   onCancel?: () => void;

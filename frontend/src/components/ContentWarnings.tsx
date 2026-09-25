@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { AlertTriangle, X, Plus, Trash2, CheckCircle, Settings, Info, BarChart3, Smartphone, Eye, EyeOff, Shield, Zap, Lock, Unlock } from 'lucide-react';
+import {
+  AlertTriangle,
+  BarChart3,
+  CheckCircle,
+  Eye,
+  EyeOff,
+  Info,
+  Lock,
+  Plus,
+  Settings,
+  Shield,
+  Smartphone,
+  Trash2,
+  Unlock,
+  Zap
+} from 'lucide-react';
 
 interface ContentWarningsProps {
   onCancel?: () => void;

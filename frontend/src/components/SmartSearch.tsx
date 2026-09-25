@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, Sparkles, Filter, Check, X, RefreshCw, Settings, TrendingUp, AlertTriangle, Zap } from 'lucide-react';
+import {
+  AlertTriangle,
+  Check,
+  Filter,
+  RefreshCw,
+  Search,
+  Settings,
+  Sparkles,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface SmartSearchResult {
   id: string;

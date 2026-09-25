@@ -1,28 +1,28 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  ShieldCheck, 
-  X, 
-  Settings, 
-  RefreshCw, 
-  CheckCircle, 
-  AlertTriangle, 
-  Key, 
-  Smartphone, 
-  Mail, 
-  QrCode, 
-  Clock, 
-  Lock, 
-  Plus, 
-  Trash2, 
-  Eye, 
-  EyeOff, 
-  Download, 
-  Copy, 
-  Check, 
-  Smartphone as Device, 
-  AlertCircle 
+import {
+  AlertCircle,
+  AlertTriangle,
+  as,
+  Check,
+  CheckCircle,
+  Clock,
+  Copy,
+  Device,
+  Download,
+  Eye,
+  EyeOff,
+  Key,
+  Lock,
+  Mail,
+  Plus,
+  QrCode,
+  RefreshCw,
+  Settings,
+  ShieldCheck,
+  Smartphone,
+  Trash2
 } from 'lucide-react';
 import { authApi } from '@/lib/auth-api';
 

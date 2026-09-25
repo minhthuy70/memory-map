@@ -1,7 +1,28 @@
 'use client';
 
 import { useState } from 'react';
-import { User, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Globe, Eye, EyeOff, Lock, Shield, Share2, MapPin, Star, Users, MessageCircle } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Eye,
+  EyeOff,
+  Filter,
+  Globe,
+  Lock,
+  MapPin,
+  MessageCircle,
+  Settings,
+  Share2,
+  Shield,
+  Star,
+  User,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface PublicProfile {
   id: string;

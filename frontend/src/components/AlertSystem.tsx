@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Bell, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Info, Mail, Phone, MessageSquare, Trash2, Clock, Filter, Plus } from 'lucide-react';
+import {
+  AlertTriangle,
+  Bell,
+  CheckCircle,
+  Clock,
+  Filter,
+  Info,
+  Mail,
+  MessageSquare,
+  Phone,
+  Plus,
+  RefreshCw,
+  Settings,
+  Trash2
+} from 'lucide-react';
 
 interface Alert {
   id: string;

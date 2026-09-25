@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { ShieldCheck, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Eye, EyeOff, Globe, Download, Trash2, Clock, FileText, User, Lock } from 'lucide-react';
+import {
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  Download,
+  Eye,
+  EyeOff,
+  FileText,
+  Globe,
+  Lock,
+  RefreshCw,
+  Settings,
+  ShieldCheck,
+  Trash2,
+  User
+} from 'lucide-react';
 
 interface PrivacySetting {
   id: string;

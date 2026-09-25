@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Cloud, Upload, Download, CheckCircle, AlertCircle } from 'lucide-react';
+import { AlertCircle, CheckCircle, Cloud, Download, Upload } from 'lucide-react';
 
 interface CloudBackupProps {
   onBackup: () => Promise<string>;

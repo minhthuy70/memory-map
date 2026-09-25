@@ -1,7 +1,45 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Glasses, Glasses, Grid, Layers, Star, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, MoveHorizontal, RotateCw, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, MapPin, Calendar as CalendarIcon } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Download,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  Filter,
+  Glasses,
+  Grid,
+  Image,
+  ImageIcon,
+  Layers,
+  MapPin,
+  MoveHorizontal,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  RotateCw,
+  Settings,
+  SettingsIcon,
+  Star,
+  Trash2,
+  TrashIcon,
+  Zap,
+  ZapIcon,
+  ZoomIn,
+  ZoomOut
+} from 'lucide-react';
 
 interface VRMemory {
   id: string;
@@ -211,7 +249,7 @@ export default function VRMemoryGallery({ onCancel, onEnterVR, onExitVR, onArran
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Vr className="h-3 w-3 text-slate-500" />
+            <Cuboid className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">VR Status</span>
           </div>
           <div className={`text-lg font-bold ${isInVR ? 'text-green-500' : 'text-slate-500'}`}>
@@ -244,7 +282,7 @@ export default function VRMemoryGallery({ onCancel, onEnterVR, onExitVR, onArran
           >
             {isInVR ? (
               <>
-                <ExitVR className="h-4 w-4" />
+                <LogOut className="h-4 w-4" />
                 Exit VR
               </>
             ) : (

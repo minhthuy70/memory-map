@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Clock, X, RefreshCw, Info, CheckCircle, Settings, Zap, MousePointer } from 'lucide-react';
+import { CheckCircle, Clock, Info, MousePointer, RefreshCw, Settings, Zap } from 'lucide-react';
 
 interface DwellClickingSupportProps {
   onCancel?: () => void;

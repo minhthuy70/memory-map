@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Hash, X, RefreshCw, Globe, Info, Calculator, CheckCircle } from 'lucide-react';
+import { Calculator, CheckCircle, Globe, Hash, Info, RefreshCw } from 'lucide-react';
 
 interface NumberFormatLocalizationProps {
   onCancel?: () => void;

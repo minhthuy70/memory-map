@@ -1,7 +1,24 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Wifi, X, WifiOff, Download, Upload, RefreshCw, Clock, Database, HardDrive, CheckCircle, AlertTriangle, Settings, Info, BarChart3, Cloud, Smartphone, Trash2, RefreshCw } from 'lucide-react';
+import {
+  AlertTriangle,
+  BarChart3,
+  CheckCircle,
+  Clock,
+  Cloud,
+  Database,
+  Download,
+  HardDrive,
+  Info,
+  RefreshCw,
+  Settings,
+  Smartphone,
+  Trash2,
+  Upload,
+  Wifi,
+  WifiOff
+} from 'lucide-react';
 
 interface OfflineModeProps {
   onCancel?: () => void;
@@ -180,11 +197,11 @@ export default function OfflineMode({ onCancel }: OfflineModeProps) {
             <p className="text-lg font-bold text-green-600 dark:text-green-400">{syncedCount}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Pending Sync</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Pending RefreshCcw</p>
             <p className="text-lg font-bold text-orange-600 dark:text-orange-400">{pendingSync}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Auto Sync</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Auto RefreshCcw</p>
             <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{autoSync ? 'On' : 'Off'}</p>
           </div>
         </div>
@@ -196,8 +213,8 @@ export default function OfflineMode({ onCancel }: OfflineModeProps) {
             disabled={!isOnline || pendingSync === 0}
             className={`px-3 py-1.5 rounded-lg text-xs border-0 flex items-center gap-1 ${isOnline && pendingSync > 0 ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-slate-100 text-slate-400 dark:bg-slate-700 dark:text-slate-500 cursor-not-allowed'}`}
           >
-            <Sync className="h-3 w-3" />
-            Sync Now
+            <RefreshCcw className="h-3 w-3" />
+            RefreshCcw Now
           </button>
           <button
             type="button"
@@ -205,7 +222,7 @@ export default function OfflineMode({ onCancel }: OfflineModeProps) {
             className={`px-3 py-1.5 rounded-lg text-xs border-0 flex items-center gap-1 ${autoSync ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300'}`}
           >
             <Cloud className="h-3 w-3" />
-            {autoSync ? 'Auto Sync On' : 'Auto Sync Off'}
+            {autoSync ? 'Auto RefreshCcw On' : 'Auto RefreshCcw Off'}
           </button>
           <button
             type="button"
@@ -254,7 +271,7 @@ export default function OfflineMode({ onCancel }: OfflineModeProps) {
 
         {pendingSync > 0 && (
           <div className="p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800 rounded-lg">
-            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Sync Queue ({syncQueue.length} items)</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">RefreshCcw Queue ({syncQueue.length} items)</h4>
             <div className="space-y-2">
               {syncQueue.map((item) => (
                 <div key={item.id} className="flex items-center justify-between p-2 bg-white dark:bg-slate-800 rounded-lg">

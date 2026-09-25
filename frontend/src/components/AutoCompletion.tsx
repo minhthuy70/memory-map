@@ -1,7 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { Type, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Sparkles, Zap as ZapIcon, Lightbulb, ArrowRight, History, Star, Trash2, Edit2 } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowRight,
+  as,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Edit2,
+  Filter,
+  History,
+  Lightbulb,
+  Settings,
+  Sparkles,
+  Star,
+  Trash2,
+  Type,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface Suggestion {
   id: string;

@@ -1,7 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { Users, X, Settings, RefreshCw, Activity, Clock, Mouse, Keyboard, Eye, ArrowRight, TrendingUp, CheckCircle, AlertTriangle } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowRight,
+  CheckCircle,
+  Clock,
+  Eye,
+  Keyboard,
+  Mouse,
+  RefreshCw,
+  Settings,
+  TrendingUp,
+  Users
+} from 'lucide-react';
 
 interface UserSession {
   id: string;

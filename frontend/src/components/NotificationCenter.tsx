@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Bell, X, Check, Settings } from 'lucide-react';
+import { Bell, Check, Settings } from 'lucide-react';
 
 interface Notification {
   id: string;

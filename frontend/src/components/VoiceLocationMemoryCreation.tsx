@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, RefreshCw, Info, CheckCircle, Star, Zap, MapPin, Play, Pause, StopCircle, Volume2 } from 'lucide-react';
+import {
+  CheckCircle,
+  Info,
+  MapPin,
+  Mic,
+  Pause,
+  Play,
+  RefreshCw,
+  Star,
+  StopCircle,
+  Volume2,
+  Zap
+} from 'lucide-react';
 
 interface VoiceLocationMemoryCreationProps {
   onCancel?: () => void;

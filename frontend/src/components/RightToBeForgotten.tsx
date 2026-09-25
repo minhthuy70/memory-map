@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { Trash2, X, Settings, RefreshCw, CheckCircle, AlertTriangle, FileText, Clock, Shield, Check, Ban, Download, AlertCircle, User, Mail, File, Plus } from 'lucide-react';
+import {
+  AlertCircle,
+  AlertTriangle,
+  Ban,
+  Check,
+  CheckCircle,
+  Clock,
+  Download,
+  File,
+  FileText,
+  Mail,
+  Plus,
+  RefreshCw,
+  Settings,
+  Shield,
+  Trash2,
+  User
+} from 'lucide-react';
 
 interface DeletionRequest {
   id: string;

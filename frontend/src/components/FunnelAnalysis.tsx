@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { Funnel, X, Calendar, BarChart3, Download, RefreshCw, Filter, Eye, EyeOff, Info, Grid, Layers, CheckCircle, AlertTriangle, TrendingUp, TrendingDown, ArrowRight } from 'lucide-react';
+import {
+  AlertTriangle,
+  ArrowRight,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Download,
+  Eye,
+  EyeOff,
+  Filter,
+  Funnel,
+  Grid,
+  Info,
+  Layers,
+  RefreshCw,
+  TrendingDown,
+  TrendingUp
+} from 'lucide-react';
 
 interface FunnelAnalysisProps {
   onCancel?: () => void;
@@ -105,7 +122,7 @@ export default function FunnelAnalysis({ onCancel }: FunnelAnalysisProps) {
             <option value="week">This Week</option>
             <option value="month">This Month</option>
             <option value="quarter">This Quarter</option>
-            <option value="year">This Year</option>
+            <option value="year">This CalendarDays</option>
           </select>
           <button
             type="button"

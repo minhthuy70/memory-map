@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Lock, X, RefreshCw, Info, CheckCircle, Star, Zap, TrendingUp, Award, Unlock, Wallet } from 'lucide-react';
+import {
+  Award,
+  CheckCircle,
+  Info,
+  Lock,
+  RefreshCw,
+  Star,
+  TrendingUp,
+  Unlock,
+  Wallet,
+  Zap
+} from 'lucide-react';
 
 interface DeFiStakingProps {
   onCancel?: () => void;

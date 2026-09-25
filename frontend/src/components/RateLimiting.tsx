@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Gauge, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Shield, Zap } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  Gauge,
+  Info,
+  Plus,
+  RefreshCw,
+  Settings,
+  Shield,
+  Trash2,
+  Zap
+} from 'lucide-react';
 
 interface RateLimitingProps {
   onCancel?: () => void;

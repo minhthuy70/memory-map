@@ -1,7 +1,117 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Lock, Unlock, CheckCircle, AlertTriangle, Loader2, CheckSquare, Square, Database, Layout, Table, Kanban, Calendar, GalleryVertical, FileStack, Text, Heading1, Heading2, Heading3, List, ListOrdered, ListTodo, Code, Quote, MessageSquare, Bookmark, Link, PlayCircle, Video, Sigma, Image, Video, File, Search, ExternalLink, Download, RefreshCw, Eye, EyeOff, Check, Plus, Minus, ArrowRight, ArrowLeft, ArrowUp, ArrowDown, Bold, Italic, Underline, Strikethrough, AlignLeft, AlignCenter, AlignRight, Highlighter, Palette as PaletteIcon, SeparatorHorizontal, ToggleLeft, ToggleRight, Database as DatabaseIcon, Layout as LayoutIcon, Table as TableIcon, Kanban as KanbanIcon, Calendar as CalendarIcon, GalleryVertical as GalleryVerticalIcon, FileStack as FileStackIcon, Text as TextIcon, Heading1 as Heading1Icon, Heading2 as Heading2Icon, Heading3 as Heading3Icon, List as ListIcon, ListOrdered as ListOrderedIcon, ListTodo as ListTodoIcon, Code as CodeIcon, Quote as QuoteIcon, MessageSquare as CalloutIcon, Bookmark as BookmarkIcon, Link as LinkIcon, PlayCircle as YoutubeIcon, Video as VimeoIcon, Sigma as FigmaIcon, Image as ImageIcon, Video as VideoIcon, File as FileIcon, Search as SearchIcon, ExternalLink as ExternalLinkIcon, Download as DownloadIcon, RefreshCw as RefreshCwIcon, Eye as EyeIcon, EyeOff as EyeOffIcon, Check as CheckIcon, Plus as PlusIcon, Minus as MinusIcon, ArrowRight as ArrowRightIcon, ArrowLeft as ArrowLeftIcon, ArrowUp as ArrowUpIcon, ArrowDown as ArrowDownIcon, Bold as BoldIcon, Italic as ItalicIcon, Underline as UnderlineIcon, Strikethrough as StrikethroughIcon, AlignLeft as AlignLeftIcon, AlignCenter as AlignCenterIcon, AlignRight as AlignRightIcon, Highlighter as HighlighterIcon, SeparatorHorizontal as SeparatorHorizontalIcon, ToggleLeft as ToggleLeftIcon, ToggleRight as ToggleRightIcon, NotepadText } from 'lucide-react';
+import {
+  AlertTriangle,
+  AlignCenter,
+  AlignCenterIcon,
+  AlignLeft,
+  AlignLeftIcon,
+  AlignRight,
+  AlignRightIcon,
+  ArrowDown,
+  ArrowDownIcon,
+  ArrowLeft,
+  ArrowLeftIcon,
+  ArrowRight,
+  ArrowRightIcon,
+  ArrowUp,
+  ArrowUpIcon,
+  as,
+  Bold,
+  BoldIcon,
+  Bookmark,
+  BookmarkIcon,
+  Calendar,
+  CalendarIcon,
+  CalloutIcon,
+  Check,
+  CheckCircle,
+  CheckIcon,
+  CheckSquare,
+  Code,
+  CodeIcon,
+  Database,
+  DatabaseIcon,
+  Download,
+  DownloadIcon,
+  ExternalLink,
+  ExternalLinkIcon,
+  Eye,
+  EyeIcon,
+  EyeOff,
+  EyeOffIcon,
+  FigmaIcon,
+  File,
+  FileIcon,
+  FileStack,
+  FileStackIcon,
+  GalleryVertical,
+  GalleryVerticalIcon,
+  Heading1,
+  Heading1Icon,
+  Heading2,
+  Heading2Icon,
+  Heading3,
+  Heading3Icon,
+  Highlighter,
+  HighlighterIcon,
+  Image,
+  ImageIcon,
+  Italic,
+  ItalicIcon,
+  Kanban,
+  KanbanIcon,
+  Layout,
+  LayoutIcon,
+  Link,
+  LinkIcon,
+  List,
+  ListIcon,
+  ListOrdered,
+  ListOrderedIcon,
+  ListTodo,
+  ListTodoIcon,
+  Loader2,
+  Lock,
+  MessageSquare,
+  Minus,
+  MinusIcon,
+  NotepadText,
+  Palette,
+  PaletteIcon,
+  PlayCircle,
+  Plus,
+  PlusIcon,
+  Quote,
+  QuoteIcon,
+  RefreshCw,
+  RefreshCwIcon,
+  Search,
+  SearchIcon,
+  SeparatorHorizontal,
+  SeparatorHorizontalIcon,
+  Settings,
+  Sigma,
+  Square,
+  Strikethrough,
+  StrikethroughIcon,
+  Table,
+  TableIcon,
+  Text,
+  TextIcon,
+  ToggleLeft,
+  ToggleLeftIcon,
+  ToggleRight,
+  ToggleRightIcon,
+  Underline,
+  UnderlineIcon,
+  Unlock,
+  Video,
+  VideoIcon,
+  VimeoIcon,
+  YoutubeIcon
+} from 'lucide-react';
 
 interface NotionPage {
   id: string;
@@ -181,11 +291,11 @@ export default function ImportFromNotion({ onCancel, onConnect, onImport, onDisc
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl">
-            <Notion className="h-5 w-5 text-white" />
+            <BookMarked className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Nhập từ Notion
+              Nhập từ BookMarked
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               {isConnected ? 'Connected' : 'Not connected'}
@@ -215,7 +325,7 @@ export default function ImportFromNotion({ onCancel, onConnect, onImport, onDisc
       {showSettings && (
         <div className="mb-4 p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
           <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Cài đặt Notion import
+            Cài đặt BookMarked import
           </h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
@@ -390,7 +500,7 @@ export default function ImportFromNotion({ onCancel, onConnect, onImport, onDisc
         <div className="p-4 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 mb-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              Notion Connection
+              BookMarked Connection
             </span>
             {isConnected && (
               <span className="px-2 py-1 bg-slate-200 dark:bg-slate-600 text-slate-600 dark:text-slate-400 text-[10px] font-semibold rounded-full">
@@ -415,7 +525,7 @@ export default function ImportFromNotion({ onCancel, onConnect, onImport, onDisc
             ) : (
               <>
                 <Unlock className="h-4 w-4" />
-                Connect to Notion
+                Connect to BookMarked
               </>
             )}
           </button>
@@ -451,7 +561,7 @@ export default function ImportFromNotion({ onCancel, onConnect, onImport, onDisc
         <div className="mb-4">
           <div className="flex items-center justify-between mb-3">
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
-              Notion Pages
+              BookMarked Pages
             </h4>
             <div className="flex items-center gap-2">
               <button
@@ -503,7 +613,7 @@ export default function ImportFromNotion({ onCancel, onConnect, onImport, onDisc
                     {page.isDuplicate && (
                       <div className="flex items-center gap-1 ml-2">
                         <AlertTriangle className="h-3 w-3 text-amber-500" />
-                        <span className="text-[10px] text-amber-600 dark:text-amber-400">Duplicate</span>
+                        <span className="text-[10px] text-amber-600 dark:text-amber-400">Files</span>
                       </div>
                     )}
                   </div>
@@ -542,7 +652,7 @@ export default function ImportFromNotion({ onCancel, onConnect, onImport, onDisc
                         onClick={(e) => e.stopPropagation()}
                       >
                         <ExternalLinkIcon className="h-3 w-3" />
-                        View in Notion
+                        View in BookMarked
                       </a>
                     )}
                   </div>
@@ -665,7 +775,7 @@ export default function ImportFromNotion({ onCancel, onConnect, onImport, onDisc
 
       <div className="mt-4 p-3 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
         <p className="text-[10px] text-slate-700 dark:text-slate-400">
-          <strong>Lưu ý:</strong> Nhập từ Notion với OAuth connection, page/database scanning, title/content extraction, block parsing (heading/text/list/code/quote/callout/bookmark/link/youtube/vimeo/figma/image/video/file), property extraction (text/select/date/number/multi-select/people), tag extraction, database support (page/kanban/calendar/list/table types), URL preservation, date/time tracking, duplicate detection, auto-select options, page selection with preview, batch import, comprehensive Notion API integration, và full page/block preservation.
+          <strong>Lưu ý:</strong> Nhập từ BookMarked với OAuth connection, page/database scanning, title/content extraction, block parsing (heading/text/list/code/quote/callout/bookmark/link/youtube/vimeo/figma/image/video/file), property extraction (text/select/date/number/multi-select/people), tag extraction, database support (page/kanban/calendar/list/table types), URL preservation, date/time tracking, duplicate detection, auto-select options, page selection with preview, batch import, comprehensive BookMarked API integration, và full page/block preservation.
         </p>
       </div>
     </div>

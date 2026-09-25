@@ -1,7 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Trophy, Star, Calendar, MapPin, Users, Award, Bell, X, Check, Settings } from 'lucide-react';
+import {
+  Award,
+  Bell,
+  Calendar,
+  Check,
+  MapPin,
+  Settings,
+  Star,
+  Trophy,
+  Users
+} from 'lucide-react';
 
 interface Milestone {
   id: string;

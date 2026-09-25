@@ -2,22 +2,21 @@
 
 import { useState } from 'react';
 import {
+  Ban,
+  CheckCircle2,
+  ChevronRight,
+  Clock,
+  Crosshair,
+  Globe,
+  RefreshCw,
+  Search,
+  Settings,
+  Shield,
   ShieldAlert,
   ShieldCheck,
-  Shield,
-  X,
-  Settings,
-  Search,
-  RefreshCw,
-  CheckCircle2,
-  Globe,
-  Clock,
-  Ban,
-  Zap,
   Terminal,
   Unlock,
-  ChevronRight,
-  Crosshair
+  Zap
 } from 'lucide-react';
 
 export interface IntrusionEvent {

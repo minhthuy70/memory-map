@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { History, X, RefreshCw, CheckCircle, XCircle, AlertTriangle, Info, Search, Filter, Calendar, User, Shield, FileText, Download, Trash2, Clock } from 'lucide-react';
+import {
+  AlertTriangle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  FileText,
+  Filter,
+  History,
+  Info,
+  RefreshCw,
+  Search,
+  Shield,
+  Trash2,
+  User,
+  XCircle
+} from 'lucide-react';
 
 interface ModerationHistoryProps {
   onCancel?: () => void;

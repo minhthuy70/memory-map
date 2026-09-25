@@ -1,7 +1,29 @@
 'use client';
 
 import { useState } from 'react';
-import { Languages, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Zap as ZapIcon, RefreshCw, Copy, Check, ArrowRight, Globe, FileText, History } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowRight,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Copy,
+  Eye,
+  FileText,
+  Filter,
+  Globe,
+  History,
+  Languages,
+  RefreshCw,
+  Scan,
+  Settings,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface Translation {
   id: string;
@@ -294,7 +316,7 @@ export default function Translation({ onCancel, onTranslate }: TranslationProps)
             className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-400 to-cyan-500 hover:from-blue-500 hover:to-cyan-600 disabled:from-slate-400 disabled:to-slate-500 text-white text-sm font-semibold rounded-lg transition-colors disabled:cursor-not-allowed"
           >
             <RefreshCw className={`h-4 w-4 ${isTranslating ? 'animate-spin' : ''}`} />
-            {isTranslating ? 'Translating...' : 'Translate'}
+            {isTranslating ? 'Translating...' : 'Languages'}
           </button>
           <button
             type="button"

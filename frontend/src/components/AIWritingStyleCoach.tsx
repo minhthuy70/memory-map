@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { PenTool, X, RefreshCw, Info, CheckCircle, Star, Zap, Copy, BookOpen, TrendingUp } from 'lucide-react';
+import {
+  BookOpen,
+  CheckCircle,
+  Copy,
+  Info,
+  PenTool,
+  RefreshCw,
+  Star,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface AIWritingStyleCoachProps {
   onCancel?: () => void;

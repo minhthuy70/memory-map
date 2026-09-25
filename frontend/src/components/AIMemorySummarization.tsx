@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Sparkles, FileText, Copy, Check, X, RefreshCw, Settings, Lightbulb, AlertTriangle } from 'lucide-react';
+import { AlertTriangle, Check, Copy, FileText, Lightbulb, RefreshCw, Settings, Sparkles } from 'lucide-react';
 
 interface MemorySummary {
   id: string;

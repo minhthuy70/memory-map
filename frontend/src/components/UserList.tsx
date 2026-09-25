@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { Users, X, RefreshCw, Search, Filter, CheckCircle, XCircle, AlertTriangle, Shield, Calendar, User, Eye, Download, Trash2, Plus } from 'lucide-react';
+import {
+  AlertTriangle,
+  Calendar,
+  CheckCircle,
+  Download,
+  Eye,
+  Filter,
+  Plus,
+  RefreshCw,
+  Search,
+  Shield,
+  Trash2,
+  User,
+  Users,
+  XCircle
+} from 'lucide-react';
 
 interface UserListProps {
   onCancel?: () => void;

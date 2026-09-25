@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Terminal, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Download, FileText } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  FileText,
+  Info,
+  Plus,
+  RefreshCw,
+  Settings,
+  Terminal,
+  Trash2
+} from 'lucide-react';
 
 interface PythonSDKProps {
   onCancel?: () => void;

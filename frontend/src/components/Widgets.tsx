@@ -1,7 +1,28 @@
 'use client';
 
 import { useState } from 'react';
-import { Layout, X, Plus, Trash2, RefreshCw, Clock, CheckCircle, Settings, Info, BarChart3, Smartphone, Zap, Calendar, MapPin, TrendingUp, Edit, ExternalLink, GripVertical, Star, Flame, Award } from 'lucide-react';
+import {
+  Award,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Edit,
+  ExternalLink,
+  Flame,
+  GripVertical,
+  Info,
+  Layout,
+  MapPin,
+  Plus,
+  RefreshCw,
+  Settings,
+  Smartphone,
+  Star,
+  Trash2,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface WidgetsProps {
   onCancel?: () => void;
@@ -352,7 +373,7 @@ export default function Widgets({ onCancel }: WidgetsProps) {
           </div>
           <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
             <li>• iOS: Home screen widgets (iOS 14+)</li>
-            <li>• Android: Home screen widgets</li>
+            <li>• TabletSmartphone: Home screen widgets</li>
             <li>• Lock screen widgets (limited support)</li>
             <li>• Dynamic content updates</li>
           </ul>

@@ -1,7 +1,43 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Navigation, RefreshCw, Check, Zap as ZapIcon, Plus, Compass, MapPin, ArrowRight, ArrowLeft, ArrowUp, ArrowDown, Home, Layout, Users, Calendar as CalendarIcon, Layers, Trash2 as TrashIcon, ExternalLink, Zap as ZapIcon2 } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  as,
+  BarChart3,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  Clock,
+  Compass,
+  Download,
+  ExternalLink,
+  Filter,
+  Home,
+  Layers,
+  Layout,
+  MapPin,
+  Mic,
+  Navigation,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Settings,
+  SettingsIcon,
+  Trash2,
+  TrashIcon,
+  Users,
+  Zap,
+  ZapIcon,
+  ZapIcon2
+} from 'lucide-react';
 
 interface VoiceNavigationCommand {
   id: string;

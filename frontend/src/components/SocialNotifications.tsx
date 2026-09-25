@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Users, Heart, MessageSquare, Share2, Bell, X, Check, Settings, Clock } from 'lucide-react';
+import { Bell, Check, Clock, Heart, MessageSquare, Settings, Share2, Users } from 'lucide-react';
 
 interface SocialNotification {
   id: string;

@@ -1,7 +1,31 @@
 'use client';
 
 import { useState } from 'react';
-import { Sparkles, X, Lock, Unlock, Eye, EyeOff, Star, Trophy, Target, Flame, Zap, Crown, Heart, MapPin, Gift, Clock, RefreshCw, Info, BarChart3, CheckCircle, HelpCircle, Award, Wand2, Infinity } from 'lucide-react';
+import {
+  Award,
+  BarChart3,
+  CheckCircle,
+  Clock,
+  Crown,
+  Eye,
+  EyeOff,
+  Flame,
+  Gift,
+  Heart,
+  HelpCircle,
+  Infinity,
+  Info,
+  Lock,
+  MapPin,
+  RefreshCw,
+  Sparkles,
+  Star,
+  Target,
+  Trophy,
+  Unlock,
+  Wand2,
+  Zap
+} from 'lucide-react';
 
 interface HiddenAchievementsProps {
   onCancel?: () => void;
@@ -27,7 +51,7 @@ export default function HiddenAchievements({ onCancel }: HiddenAchievementsProps
   const [achievements, setAchievements] = useState<HiddenAchievement[]>([
     {
       id: '1',
-      name: 'Night Owl',
+      name: 'Sunset Owl',
       description: 'Create a memory between 2 AM and 4 AM',
       hint: 'The darkest hours reveal the brightest memories',
       icon: 'moon',
@@ -138,7 +162,7 @@ export default function HiddenAchievements({ onCancel }: HiddenAchievementsProps
     switch (category) {
       case 'secret': return <Lock className="h-4 w-4" />;
       case 'easter_egg': return <Gift className="h-4 w-4" />;
-      case 'mystery': return <Mystery className="h-4 w-4" />;
+      case 'mystery': return <HelpCircle className="h-4 w-4" />;
       case 'special': return <Sparkles className="h-4 w-4" />;
       default: return <Award className="h-4 w-4" />;
     }
@@ -154,7 +178,7 @@ export default function HiddenAchievements({ onCancel }: HiddenAchievementsProps
       case 'sparkles': return <Sparkles className="h-5 w-5" />;
       case 'wand2': return <Wand2 className="h-5 w-5" />;
       case 'infinity': return <Infinity className="h-5 w-5" />;
-      default: return <Mystery className="h-5 w-5" />;
+      default: return <HelpCircle className="h-5 w-5" />;
     }
   };
 
@@ -249,7 +273,7 @@ export default function HiddenAchievements({ onCancel }: HiddenAchievementsProps
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-3">
                   <div className={`p-2 bg-gradient-to-br ${getRarityColor(achievement.rarity)} rounded-lg text-white ${achievement.unlocked ? '' : 'grayscale'}`}>
-                    {achievement.discovered ? getAchievementIcon(achievement.icon) : <Mystery className="h-5 w-5" />}
+                    {achievement.discovered ? getAchievementIcon(achievement.icon) : <HelpCircle className="h-5 w-5" />}
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900 dark:text-white text-sm">

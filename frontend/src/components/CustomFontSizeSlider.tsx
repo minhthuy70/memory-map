@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Type, X, RefreshCw, Info, CheckCircle, Settings, Sliders } from 'lucide-react';
+import { CheckCircle, Info, RefreshCw, Settings, Sliders, Type } from 'lucide-react';
 
 interface CustomFontSizeSliderProps {
   onCancel?: () => void;

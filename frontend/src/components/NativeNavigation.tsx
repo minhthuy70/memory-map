@@ -1,7 +1,26 @@
 'use client';
 
 import { useState } from 'react';
-import { Navigation, X, Settings, RefreshCw, CheckCircle, AlertTriangle, ArrowLeft, ArrowRight, Smartphone, Layers, Zap, Clock, Activity, Home, BookOpen, User, Settings as SettingsIcon, Layout } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowLeft,
+  ArrowRight,
+  as,
+  BookOpen,
+  CheckCircle,
+  Clock,
+  Home,
+  Layers,
+  Layout,
+  Navigation,
+  RefreshCw,
+  Settings,
+  SettingsIcon,
+  Smartphone,
+  User,
+  Zap
+} from 'lucide-react';
 
 interface NavigationRoute {
   id: string;

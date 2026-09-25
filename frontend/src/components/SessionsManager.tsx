@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Monitor, Smartphone, Globe, Trash2, Shield, Clock, Calendar, LogOut } from 'lucide-react';
+import { Calendar, Clock, Globe, LogOut, Monitor, Shield, Smartphone, Trash2 } from 'lucide-react';
 import { sessionsApi, Session } from '@/lib/sessions-api';
 import { useAuthStore } from '@/store/auth-store';
 

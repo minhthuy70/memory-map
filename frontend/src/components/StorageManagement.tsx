@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { HardDrive, X, Trash2, RefreshCw, CheckCircle, AlertTriangle, Info, Upload, Download, Folder, FileImage, FileVideo, FileText, Zap, Shield, BarChart3 } from 'lucide-react';
+import {
+  AlertTriangle,
+  BarChart3,
+  CheckCircle,
+  Download,
+  FileImage,
+  FileText,
+  FileVideo,
+  Folder,
+  HardDrive,
+  Info,
+  RefreshCw,
+  Shield,
+  Trash2,
+  Upload,
+  Zap
+} from 'lucide-react';
 
 interface StorageManagementProps {
   onCancel?: () => void;

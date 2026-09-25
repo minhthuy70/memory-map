@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, RefreshCw, Globe, Info, Clock, CheckCircle } from 'lucide-react';
+import { Calendar, CheckCircle, Clock, Globe, Info, RefreshCw } from 'lucide-react';
 
 interface DateFormatLocalizationProps {
   onCancel?: () => void;

@@ -1,7 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { Film, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, Image as ImageIcon } from 'lucide-react';
+import {
+  as,
+  CheckCircle,
+  Clock,
+  Download,
+  Film,
+  Image,
+  ImageIcon,
+  Info,
+  Play,
+  RefreshCw,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface AutoMemoryMovieMakerProps {
   onCancel?: () => void;

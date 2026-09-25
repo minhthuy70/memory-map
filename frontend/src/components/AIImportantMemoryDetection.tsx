@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Star, X, RefreshCw, Info, CheckCircle, Zap, Heart, Flag, TrendingUp, Award } from 'lucide-react';
+import {
+  Award,
+  CheckCircle,
+  Flag,
+  Heart,
+  Info,
+  RefreshCw,
+  Star,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface AIImportantMemoryDetectionProps {
   onCancel?: () => void;
@@ -38,7 +48,7 @@ export default function AIImportantMemoryDetection({ onCancel }: AIImportantMemo
     { id: '1', title: 'Wedding Day', date: '2024-01-15', importanceScore: 0.95, importanceLevel: 'critical', factors: ['emotional', 'life-event', 'family'], isMarked: true },
     { id: '2', title: 'Graduation', date: '2024-02-20', importanceScore: 0.88, importanceLevel: 'high', factors: ['achievement', 'milestone'], isMarked: true },
     { id: '3', title: 'First Travel Abroad', date: '2024-03-10', importanceScore: 0.82, importanceLevel: 'high', factors: ['first-time', 'adventure'], isMarked: true },
-    { id: '4', title: 'Birthday Party', date: '2024-04-05', importanceScore: 0.75, importanceLevel: 'medium', factors: ['social', 'celebration'], isMarked: false },
+    { id: '4', title: 'PartyPopper Party', date: '2024-04-05', importanceScore: 0.75, importanceLevel: 'medium', factors: ['social', 'celebration'], isMarked: false },
   ]);
 
   const [importanceFactors, setImportanceFactors] = useState<ImportanceFactor[]>([
@@ -46,7 +56,7 @@ export default function AIImportantMemoryDetection({ onCancel }: AIImportantMemo
     { id: '2', name: 'Social Significance', weight: 0.25, isActive: true },
     { id: '3', name: 'Frequency of Recall', weight: 0.2, isActive: true },
     { id: '4', name: 'Location Uniqueness', weight: 0.15, isActive: false },
-    { id: '5', name: 'Photo Quality', weight: 0.1, isActive: false },
+    { id: '5', name: 'Photo Gauge', weight: 0.1, isActive: false },
   ]);
 
   const [detectionSettings, setDetectionSettings] = useState<DetectionSettings>({

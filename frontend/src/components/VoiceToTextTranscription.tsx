@@ -1,7 +1,42 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, FileText, RefreshCw, Check, Zap as ZapIcon, Plus, Upload, Mic as MicIcon, StopCircle, MessageSquare, Save, Edit, Trash2 as TrashIcon, ExternalLink, Languages, Sparkles, FileAudio, CheckSquare, Copy } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  CheckSquare,
+  Clock,
+  Copy,
+  Download,
+  Edit,
+  ExternalLink,
+  FileAudio,
+  FileText,
+  Filter,
+  Languages,
+  MessageSquare,
+  Mic,
+  MicIcon,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Save,
+  Settings,
+  SettingsIcon,
+  Sparkles,
+  StopCircle,
+  Trash2,
+  TrashIcon,
+  Upload,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface Transcription {
   id: string;

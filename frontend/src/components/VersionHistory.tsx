@@ -1,7 +1,28 @@
 'use client';
 
 import { useState } from 'react';
-import { History, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, Eye, RotateCcw, GitBranch, ArrowRight, Download, Trash2, Plus, Undo, Redo } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowRight,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  Eye,
+  Filter,
+  GitBranch,
+  History,
+  Plus,
+  Redo,
+  RotateCcw,
+  Settings,
+  Trash2,
+  Undo,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface Version {
   id: string;

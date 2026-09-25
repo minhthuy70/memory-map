@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { Sparkles, X, Settings, CheckCircle, AlertTriangle, TrendingUp, Clock, Activity, BarChart3, Filter, Zap, Target, ThumbsUp, ThumbsDown, RefreshCw } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  BarChart3,
+  CheckCircle,
+  Clock,
+  Filter,
+  RefreshCw,
+  Settings,
+  Sparkles,
+  Target,
+  ThumbsDown,
+  ThumbsUp,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface Recommendation {
   id: string;

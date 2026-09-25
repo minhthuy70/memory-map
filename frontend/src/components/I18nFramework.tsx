@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Languages, X, RefreshCw, Info, CheckCircle, Globe, Settings, FileText, Code } from 'lucide-react';
+import { CheckCircle, Code, FileText, Globe, Info, Languages, RefreshCw, Settings } from 'lucide-react';
 
 interface I18nFrameworkProps {
   onCancel?: () => void;

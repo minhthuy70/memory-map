@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Workflow, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  Info,
+  Plus,
+  RefreshCw,
+  Settings,
+  Trash2,
+  Workflow
+} from 'lucide-react';
 
 interface MakeIntegrationProps {
   onCancel?: () => void;
@@ -193,7 +205,7 @@ export default function MakeIntegration({ onCancel }: MakeIntegrationProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-purple-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Auto Sync</span>
+                <span className="text-xs text-slate-900 dark:text-white">Auto RefreshCcw</span>
               </div>
               <input
                 type="checkbox"
@@ -205,7 +217,7 @@ export default function MakeIntegration({ onCancel }: MakeIntegrationProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sync Interval (min)</span>
+                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw Interval (min)</span>
               </div>
               <input
                 type="number"

@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { FileText, X, RefreshCw, Info, CheckCircle, Star, Zap, TrendingUp, Calendar, Download, Share2, Eye } from 'lucide-react';
+import {
+  Calendar,
+  CheckCircle,
+  Download,
+  Eye,
+  FileText,
+  Info,
+  RefreshCw,
+  Share2,
+  Star,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface AIPersonalizedInsightsReportProps {
   onCancel?: () => void;

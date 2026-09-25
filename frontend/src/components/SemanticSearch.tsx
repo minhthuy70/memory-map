@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Brain, Sparkles, Check, X, RefreshCw, Settings, Search, Filter, TrendingUp } from 'lucide-react';
+import { Brain, Check, Filter, RefreshCw, Search, Settings, Sparkles, TrendingUp } from 'lucide-react';
 
 interface SemanticResult {
   id: string;

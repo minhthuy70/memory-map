@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { AlertTriangle, X, Calendar, TrendingDown, ArrowUp, ArrowDown, BarChart3, Download, RefreshCw, Users, PieChart, CheckCircle, Info, Eye, EyeOff, Zap } from 'lucide-react';
+import {
+  AlertTriangle,
+  ArrowDown,
+  ArrowUp,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Download,
+  Eye,
+  EyeOff,
+  Info,
+  PieChart,
+  RefreshCw,
+  TrendingDown,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface ChurnRateAnalysisProps {
   onCancel?: () => void;
@@ -108,7 +124,7 @@ export default function ChurnRateAnalysis({ onCancel }: ChurnRateAnalysisProps) 
             <option value="week">This Week</option>
             <option value="month">This Month</option>
             <option value="quarter">This Quarter</option>
-            <option value="year">This Year</option>
+            <option value="year">This CalendarDays</option>
           </select>
           <button
             type="button"

@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Radio, X, RefreshCw, Info, CheckCircle, AlertTriangle, Plus, Trash2, Volume2, Bell } from 'lucide-react';
+import {
+  AlertTriangle,
+  Bell,
+  CheckCircle,
+  Info,
+  Plus,
+  Radio,
+  RefreshCw,
+  Trash2,
+  Volume2
+} from 'lucide-react';
 
 interface ARIALiveRegionsProps {
   onCancel?: () => void;

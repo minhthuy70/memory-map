@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { Smile, X, Settings, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, Activity, TrendingUp, TrendingDown, BarChart3, Filter, Zap, Frown, Meh, Sparkles, HeartCrack } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowDown,
+  ArrowUp,
+  BarChart3,
+  CheckCircle,
+  Filter,
+  Frown,
+  HeartCrack,
+  Meh,
+  Settings,
+  Smile,
+  Sparkles,
+  TrendingDown,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface MoodComparisonData {
   period: string;
@@ -63,7 +80,7 @@ export default function MoodComparison({ onCancel, onCompareMoods }: MoodCompari
       case 'excited':
         return <Sparkles className="h-4 w-4" />;
       case 'nostalgic':
-        return <HeartBroken className="h-4 w-4" />;
+        return <HeartCrack className="h-4 w-4" />;
       default:
         return <Meh className="h-4 w-4" />;
     }

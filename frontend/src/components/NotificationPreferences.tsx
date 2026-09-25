@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Bell, BellOff, Save, RotateCcw } from 'lucide-react';
+import { Bell, BellOff, RotateCcw, Save } from 'lucide-react';
 
 interface NotificationPreferences {
   reminderNotifications: boolean;

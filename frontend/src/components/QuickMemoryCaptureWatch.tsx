@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Watch, X, RefreshCw, Info, Settings, Camera, Mic, Plus, Trash2, CheckCircle, AlertCircle, Clock, MapPin, Smile } from 'lucide-react';
+import {
+  AlertCircle,
+  Camera,
+  CheckCircle,
+  Clock,
+  Info,
+  MapPin,
+  Mic,
+  Plus,
+  RefreshCw,
+  Settings,
+  Smile,
+  Trash2,
+  Watch
+} from 'lucide-react';
 
 interface QuickMemoryCaptureWatchProps {
   onCancel?: () => void;

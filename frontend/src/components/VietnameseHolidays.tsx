@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, RefreshCw, Info, CheckCircle, Star, Bell, Clock } from 'lucide-react';
+import { Bell, Calendar, CheckCircle, Clock, Info, RefreshCw, Star } from 'lucide-react';
 
 interface VietnameseHolidaysProps {
   onCancel?: () => void;
@@ -24,8 +24,8 @@ export default function VietnameseHolidays({ onCancel }: VietnameseHolidaysProps
   const [showLunar, setShowLunar] = useState(true);
 
   const [holidays, setHolidays] = useState<Holiday[]>([
-    { id: '1', name: 'New Year', nameVN: 'Tết Dương Lịch', date: '2026-01-01', type: 'fixed', isPublic: true, description: 'International New Year Day' },
-    { id: '2', name: 'Tet Holiday', nameVN: 'Tết Nguyên Đán', date: '2026-01-29', lunarDate: '2026年正月初一', type: 'lunar', isPublic: true, description: 'Vietnamese Lunar New Year - 3 days off' },
+    { id: '1', name: 'New CalendarDays', nameVN: 'Tết Dương Lịch', date: '2026-01-01', type: 'fixed', isPublic: true, description: 'International New CalendarDays Day' },
+    { id: '2', name: 'Tet Holiday', nameVN: 'Tết Nguyên Đán', date: '2026-01-29', lunarDate: '2026年正月初一', type: 'lunar', isPublic: true, description: 'Vietnamese Lunar New CalendarDays - 3 days off' },
     { id: '3', name: 'King Hung Temple Festival', nameVN: 'Giỗ Tổ Hùng Vương', date: '2026-04-14', lunarDate: '2026年三月初十', type: 'lunar', isPublic: true, description: 'Commemoration of Hung Kings' },
     { id: '4', name: 'Reunification Day', nameVN: 'Ngày Giải Phóng', date: '2026-04-30', type: 'fixed', isPublic: true, description: 'Fall of Saigon / Reunification Day' },
     { id: '5', name: 'Labor Day', nameVN: 'Ngày Quốc tế Lao động', date: '2026-05-01', type: 'fixed', isPublic: true, description: 'International Workers Day' },
@@ -108,7 +108,7 @@ export default function VietnameseHolidays({ onCancel }: VietnameseHolidaysProps
             <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{holidays.filter(h => h.type === 'lunar').length}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Selected Year</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Selected CalendarDays</p>
             <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{selectedYear}</p>
           </div>
         </div>
@@ -211,7 +211,7 @@ export default function VietnameseHolidays({ onCancel }: VietnameseHolidaysProps
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Vietnamese Holiday Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
-              <li>• Tet (Lunar New Year) is the most important holiday</li>
+              <li>• Tet (Lunar New CalendarDays) is the most important holiday</li>
               <li>• Public holidays typically have days off</li>
               <li>• Lunar holidays vary each year on solar calendar</li>
               <li>• King Hung Temple Festival honors Vietnamese ancestors</li>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Zap, X, RefreshCw, Info, CheckCircle, Settings, Pause, Play } from 'lucide-react';
+import { CheckCircle, Info, Pause, Play, RefreshCw, Settings, Zap } from 'lucide-react';
 
 interface ReduceMotionModeProps {
   onCancel?: () => void;

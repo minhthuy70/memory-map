@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Video, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, Camera } from 'lucide-react';
+import {
+  Camera,
+  CheckCircle,
+  Clock,
+  Download,
+  Info,
+  Play,
+  RefreshCw,
+  Star,
+  Video,
+  Zap
+} from 'lucide-react';
 
 interface AICinematicVideoProps {
   onCancel?: () => void;
@@ -240,7 +251,7 @@ export default function AICinematicVideo({ onCancel }: AICinematicVideoProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Zap className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Default Quality</span>
+                <span className="text-xs text-slate-900 dark:text-white">Default Gauge</span>
               </div>
               <select
                 value={cinematicSettings.defaultQuality}
@@ -349,7 +360,7 @@ export default function AICinematicVideo({ onCancel }: AICinematicVideoProps) {
               <li>• AI creates cinematic videos from static photos</li>
               <li>• Camera movements: pan, zoom, rotate, parallax</li>
               <li>• Transitions: fade, slide, warp, morph</li>
-              <li>• Quality options: 720p, 1080p, 4K</li>
+              <li>• Gauge options: 720p, 1080p, 4K</li>
             </ul>
           </div>
         )}

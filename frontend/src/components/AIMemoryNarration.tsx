@@ -1,7 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Pause, Volume2, Heart, Smile, CloudSun } from 'lucide-react';
+import {
+  BookOpen,
+  CheckCircle,
+  CloudSun,
+  Heart,
+  Info,
+  Pause,
+  Play,
+  RefreshCw,
+  Smile,
+  Star,
+  Volume2,
+  Zap
+} from 'lucide-react';
 
 interface AIMemoryNarrationProps {
   onCancel?: () => void;
@@ -50,7 +63,7 @@ export default function AIMemoryNarration({ onCancel }: AIMemoryNarrationProps) 
     { 
       id: '1', 
       memoryId: '1', 
-      title: 'Paris Sunset Story', 
+      title: 'Paris Sunset ScrollText', 
       content: 'That unforgettable evening in Paris, when the golden sun dipped below the Eiffel Tower, painting the sky in shades of amber and rose. Standing there with my family, I felt an overwhelming sense of joy and gratitude. The laughter, the warmth, the magical moment frozen in time - this is what memories are made of.',
       emotion: 'nostalgic',
       voice: 'Natural',
@@ -86,7 +99,7 @@ export default function AIMemoryNarration({ onCancel }: AIMemoryNarrationProps) 
     const newNarration: Narration = {
       id: Date.now().toString(),
       memoryId,
-      title: `${memory.title} Story`,
+      title: `${memory.title} ScrollText`,
       content: `An AI-generated emotional narrative about ${memory.description} from ${memory.date} at ${memory.location}. The story captures the feelings and emotions of that special moment.`,
       emotion: emotions[Math.floor(Math.random() * emotions.length)],
       voice: voiceSettings.voice,
@@ -291,7 +304,7 @@ export default function AIMemoryNarration({ onCancel }: AIMemoryNarrationProps) 
                       onClick={() => generateNarration(memory.id)}
                       className="px-2 py-1 rounded text-xs bg-pink-600 hover:bg-pink-700 text-white"
                     >
-                      Generate Story
+                      Generate ScrollText
                     </button>
                   )}
                 </div>

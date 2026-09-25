@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Moon, Sun, Clock, Check, X, Save, Settings, Volume2, VolumeX } from 'lucide-react';
+import { Check, Clock, Moon, Save, Settings, Sun, Volume2, VolumeX } from 'lucide-react';
 
 interface QuietHoursSettings {
   enabled: boolean;

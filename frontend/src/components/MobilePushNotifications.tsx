@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Smartphone, Bell, BellOff, Check, X, Save, Settings, Shield, AlertTriangle, Wifi, Signal } from 'lucide-react';
+import {
+  AlertTriangle,
+  Bell,
+  BellOff,
+  Check,
+  Save,
+  Settings,
+  Shield,
+  Signal,
+  Smartphone,
+  Wifi
+} from 'lucide-react';
 
 interface MobilePushSettings {
   enabled: boolean;
@@ -199,7 +210,7 @@ export default function MobilePushNotifications({
           </div>
           <div>
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              {localSettings.deviceType === 'ios' ? 'iOS Device' : 'Android Device'}
+              {localSettings.deviceType === 'ios' ? 'iOS Device' : 'TabletSmartphone Device'}
             </span>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Push notifications supported

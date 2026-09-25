@@ -1,7 +1,40 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, Snowflake, Sun, Flower, Leaf, Ghost, Heart, Star, Gift, Clock, Check, Lock, Unlock, Zap, TrendingUp, Award, Trophy, Flame, Sparkles, Eye, EyeOff, Filter, ChevronDown, ChevronUp, RefreshCw, MapPin, Calendar as CalendarIcon, Target, Users, Share2, Download } from 'lucide-react';
+import {
+  as,
+  Award,
+  Calendar,
+  CalendarIcon,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  Clock,
+  Download,
+  Eye,
+  EyeOff,
+  Filter,
+  Flame,
+  Flower,
+  Ghost,
+  Gift,
+  Heart,
+  Leaf,
+  Lock,
+  MapPin,
+  RefreshCw,
+  Share2,
+  Snowflake,
+  Sparkles,
+  Star,
+  Sun,
+  Target,
+  TrendingUp,
+  Trophy,
+  Unlock,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface SeasonalEventsProps {
   onCancel?: () => void;
@@ -39,7 +72,7 @@ export default function SeasonalEvents({ onCancel }: SeasonalEventsProps) {
     {
       id: '1',
       name: 'Tet Nguyen Dan 2026',
-      description: 'Celebrate Vietnamese New Year with special memories',
+      description: 'Celebrate Vietnamese New CalendarDays with special memories',
       icon: 'flower',
       season: 'tet',
       startDate: '2026-01-28',

@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Database, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Play, Code } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Code,
+  Database,
+  ExternalLink,
+  Info,
+  Play,
+  Plus,
+  RefreshCw,
+  Settings,
+  Trash2
+} from 'lucide-react';
 
 interface GraphQLEndpointProps {
   onCancel?: () => void;

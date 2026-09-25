@@ -1,7 +1,55 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Upload, Image as ImageIcon, CheckCheck, FolderOpen, Lock, Unlock, CheckCircle as CheckCircleIcon, ExternalLink, Filter as FilterIcon, Search, Calendar as CalendarIcon, MapPin, Clock as ClockIcon, Eye, EyeOff, Trash2 as TrashIcon, Shield, AlertCircle, Database, Globe, Cloud, Wifi, Loader2, CheckSquare, Square, AlertTriangle as AlertTriangleIcon, Copyright } from 'lucide-react';
+import {
+  Activity,
+  AlertCircle,
+  AlertTriangle,
+  AlertTriangleIcon,
+  as,
+  BarChart3,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCheck,
+  CheckCircle,
+  CheckCircleIcon,
+  CheckSquare,
+  Clock,
+  ClockIcon,
+  Cloud,
+  Copyright,
+  Database,
+  Download,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  Filter,
+  FilterIcon,
+  FolderOpen,
+  Globe,
+  Image,
+  ImageIcon,
+  Loader2,
+  Lock,
+  MapPin,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Search,
+  Settings,
+  SettingsIcon,
+  Shield,
+  Square,
+  Trash2,
+  TrashIcon,
+  Unlock,
+  Upload,
+  Wifi,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface GooglePhoto {
   id: string;
@@ -353,7 +401,7 @@ export default function ImportFromGooglePhotos({ onCancel, onConnect, onImport, 
                 {photo.isDuplicate && (
                   <div className="mt-1 flex items-center gap-1">
                     <AlertTriangleIcon className="h-3 w-3 text-amber-500" />
-                    <span className="text-[10px] text-amber-600 dark:text-amber-400">Duplicate</span>
+                    <span className="text-[10px] text-amber-600 dark:text-amber-400">Files</span>
                   </div>
                 )}
               </div>

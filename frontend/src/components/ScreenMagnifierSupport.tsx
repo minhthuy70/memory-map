@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ZoomIn, X, RefreshCw, Info, CheckCircle, Settings, Maximize, Minimize, Search } from 'lucide-react';
+import { CheckCircle, Info, Maximize, Minimize, RefreshCw, Search, Settings, ZoomIn } from 'lucide-react';
 
 interface ScreenMagnifierSupportProps {
   onCancel?: () => void;

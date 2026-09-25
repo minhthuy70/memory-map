@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Star, X, RefreshCw, Info, CheckCircle, Heart, Calendar, Award, Sparkles } from 'lucide-react';
+import { Award, Calendar, CheckCircle, Heart, Info, RefreshCw, Sparkles, Star } from 'lucide-react';
 
 interface GratitudeJournalIntegrationProps {
   onCancel?: () => void;

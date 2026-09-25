@@ -1,7 +1,41 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Download, FileText, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Palette, Type, ZoomIn, ZoomOut, Maximize2, Minimize2, Printer, Share2, Eye, EyeOff, BookOpen, Layers, Grid } from 'lucide-react';
+import {
+  AlertTriangle,
+  as,
+  BookOpen,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Download,
+  Eye,
+  EyeOff,
+  FileText,
+  Filter,
+  Grid,
+  Image,
+  ImageIcon,
+  Layers,
+  Layout,
+  Loader2,
+  MapPin,
+  Maximize2,
+  Minimize2,
+  Palette,
+  Pause,
+  Play,
+  Printer,
+  RefreshCw,
+  Settings,
+  Share2,
+  Type,
+  ZoomIn,
+  ZoomOut
+} from 'lucide-react';
 
 interface ExportToPDFProps {
   onCancel?: () => void;
@@ -167,7 +201,7 @@ export default function ExportToPDF({ onCancel, onExport }: ExportToPDFProps) {
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="text-xs text-slate-600 dark:text-slate-400 block mb-1">
-                  Quality
+                  Gauge
                 </label>
                 <select
                   value={options.quality}
@@ -420,7 +454,7 @@ export default function ExportToPDF({ onCancel, onExport }: ExportToPDFProps) {
               </span>
             </div>
             <div>
-              <span className="text-slate-500 dark:text-slate-400">Quality:</span>
+              <span className="text-slate-500 dark:text-slate-400">Gauge:</span>
               <span className="ml-2 font-medium text-slate-900 dark:text-white">
                 {options.quality}
               </span>

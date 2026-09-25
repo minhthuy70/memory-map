@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { GraduationCap, X, RefreshCw, Info, CheckCircle, Star, Zap, FileText } from 'lucide-react';
+import { CheckCircle, FileText, GraduationCap, Info, RefreshCw, Star, Zap } from 'lucide-react';
 
 interface StudentDiscountProps {
   onCancel?: () => void;

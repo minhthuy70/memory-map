@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, RefreshCw, Info, CheckCircle, Moon, Sun, Star } from 'lucide-react';
+import { Calendar, CheckCircle, Info, Moon, RefreshCw, Star, Sun } from 'lucide-react';
 
 interface CalendarSystemSupportProps {
   onCancel?: () => void;

@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Brain, X, RefreshCw, Info, CheckCircle, Star, Zap, TrendingUp, Calendar, MapPin, Activity, Target } from 'lucide-react';
+import {
+  Activity,
+  Brain,
+  Calendar,
+  CheckCircle,
+  Info,
+  MapPin,
+  RefreshCw,
+  Star,
+  Target,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface AILifePatternRecognitionProps {
   onCancel?: () => void;

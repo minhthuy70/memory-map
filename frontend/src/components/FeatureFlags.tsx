@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Flag, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Plus, ToggleLeft, ToggleRight, Users, Globe, Code, Clock, Shield } from 'lucide-react';
+import {
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  Code,
+  Flag,
+  Globe,
+  Plus,
+  RefreshCw,
+  Settings,
+  Shield,
+  ToggleLeft,
+  ToggleRight,
+  Users
+} from 'lucide-react';
 
 interface FeatureFlag {
   id: string;

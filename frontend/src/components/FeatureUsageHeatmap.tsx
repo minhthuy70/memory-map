@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Flame, X, Calendar, BarChart3, Download, RefreshCw, Filter, Eye, EyeOff, Info, Grid, Zap, Activity, Layers, CheckCircle, AlertTriangle } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Download,
+  Eye,
+  EyeOff,
+  Filter,
+  Flame,
+  Grid,
+  Info,
+  Layers,
+  RefreshCw,
+  Zap
+} from 'lucide-react';
 
 interface FeatureUsageHeatmapProps {
   onCancel?: () => void;
@@ -124,7 +140,7 @@ export default function FeatureUsageHeatmap({ onCancel }: FeatureUsageHeatmapPro
             <option value="week">This Week</option>
             <option value="month">This Month</option>
             <option value="quarter">This Quarter</option>
-            <option value="year">This Year</option>
+            <option value="year">This CalendarDays</option>
           </select>
           <select
             value={selectedCategory}

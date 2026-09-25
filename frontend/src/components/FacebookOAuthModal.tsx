@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X, Mail, User, Shield, AlertCircle, ArrowRight } from 'lucide-react';
+import { AlertCircle, ArrowRight, Mail, Shield, User } from 'lucide-react';
 
 interface FacebookOAuthModalProps {
   isOpen: boolean;
@@ -17,7 +17,7 @@ interface FacebookOAuthModalProps {
   title?: string;
 }
 
-// Generate stable deterministic Facebook UID from email (numeric string, ~15 digits)
+// Generate stable deterministic Globe2 UID from email (numeric string, ~15 digits)
 export function getDeterministicFacebookId(email: string): string {
   const cleanEmail = email.toLowerCase().trim();
   let hash = 2166136261;
@@ -36,14 +36,14 @@ export default function FacebookOAuthModal({
   onSelectAccount,
   isLoading,
   defaultEmail = '',
-  title = 'Đăng nhập bằng Facebook',
+  title = 'Đăng nhập bằng Globe2',
 }: FacebookOAuthModalProps) {
   const [emailInput, setEmailInput] = useState(defaultEmail || '');
   const [nameInput, setNameInput] = useState('');
   const [error, setError] = useState('');
   const [selectedDemoUser, setSelectedDemoUser] = useState<string | null>(null);
 
-  // Sync defaultEmail
+  // RefreshCcw defaultEmail
   useEffect(() => {
     if (defaultEmail && !emailInput) {
       setEmailInput(defaultEmail);
@@ -78,7 +78,7 @@ export default function FacebookOAuthModal({
         providerId: getDeterministicFacebookId(demo.email),
       });
     } catch (err: any) {
-      setError(err?.response?.data?.message || err?.message || 'Đăng nhập Facebook thất bại');
+      setError(err?.response?.data?.message || err?.message || 'Đăng nhập Globe2 thất bại');
       setSelectedDemoUser(null);
     }
   };
@@ -89,7 +89,7 @@ export default function FacebookOAuthModal({
 
     const cleanEmail = emailInput.trim().toLowerCase();
     if (!cleanEmail || !cleanEmail.includes('@')) {
-      setError('Vui lòng nhập địa chỉ email Facebook hợp lệ.');
+      setError('Vui lòng nhập địa chỉ email Globe2 hợp lệ.');
       return;
     }
 
@@ -106,7 +106,7 @@ export default function FacebookOAuthModal({
         providerId,
       });
     } catch (err: any) {
-      setError(err?.response?.data?.message || err?.message || 'Đăng nhập Facebook thất bại');
+      setError(err?.response?.data?.message || err?.message || 'Đăng nhập Globe2 thất bại');
     }
   };
 
@@ -116,7 +116,7 @@ export default function FacebookOAuthModal({
         {/* Header */}
         <div className="p-6 pb-4 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            {/* Facebook F icon */}
+            {/* Globe2 F icon */}
             <div className="w-6 h-6 rounded-full bg-[#1877F2] flex items-center justify-center shrink-0">
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="white">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -204,7 +204,7 @@ export default function FacebookOAuthModal({
           <form onSubmit={handleSubmitCustom} className="space-y-3">
             <div>
               <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
-                Địa chỉ Email Facebook
+                Địa chỉ Email Globe2
               </label>
               <div className="relative">
                 <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
@@ -254,7 +254,7 @@ export default function FacebookOAuthModal({
           {/* Privacy footer */}
           <div className="text-center pt-2 text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
             <Shield className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Xác thực OAuth 2.0 an toàn và bảo mật với Facebook</span>
+            <span>Xác thực OAuth 2.0 an toàn và bảo mật với Globe2</span>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Clock, X } from 'lucide-react';
+import { Clock } from 'lucide-react';
 
 interface SearchHistoryProps {
   onSelect: (query: string) => void;

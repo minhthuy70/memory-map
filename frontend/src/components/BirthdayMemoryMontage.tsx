@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Cake, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, Gift } from 'lucide-react';
+import {
+  Cake,
+  CheckCircle,
+  Clock,
+  Download,
+  Gift,
+  Info,
+  Play,
+  RefreshCw,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface BirthdayMemoryMontageProps {
   onCancel?: () => void;
@@ -35,8 +46,8 @@ export default function BirthdayMemoryMontage({ onCancel }: BirthdayMemoryMontag
   const [isMontageEnabled, setIsMontageEnabled] = useState(true);
 
   const [birthdayMontages, setBirthdayMontages] = useState<BirthdayMontage[]>([
-    { id: '1', title: 'Sarah\'s Birthday 2024', personName: 'Sarah', birthdayDate: '2024-03-15', duration: 180, memoryCount: 25, theme: 'colorful', music: 'celebration', includeCake: true, includeBalloons: true, createdAt: '2024-03-15', status: 'completed' },
-    { id: '2', title: 'John\'s Birthday 2024', personName: 'John', birthdayDate: '2024-05-20', duration: 150, memoryCount: 18, theme: 'elegant', music: 'classical', includeCake: true, includeBalloons: false, createdAt: '2024-05-20', status: 'completed' },
+    { id: '1', title: 'Sarah\'s PartyPopper 2024', personName: 'Sarah', birthdayDate: '2024-03-15', duration: 180, memoryCount: 25, theme: 'colorful', music: 'celebration', includeCake: true, includeBalloons: true, createdAt: '2024-03-15', status: 'completed' },
+    { id: '2', title: 'John\'s PartyPopper 2024', personName: 'John', birthdayDate: '2024-05-20', duration: 150, memoryCount: 18, theme: 'elegant', music: 'classical', includeCake: true, includeBalloons: false, createdAt: '2024-05-20', status: 'completed' },
   ]);
 
   const [montageSettings, setMontageSettings] = useState<MontageSettings>({
@@ -54,7 +65,7 @@ export default function BirthdayMemoryMontage({ onCancel }: BirthdayMemoryMontag
     const themes: Array<'colorful' | 'elegant' | 'fun' | 'party'> = ['colorful', 'elegant', 'fun', 'party'];
     const newMontage: BirthdayMontage = {
       id: Date.now().toString(),
-      title: `${personName || 'Person'}'s Birthday`,
+      title: `${personName || 'Person'}'s PartyPopper`,
       personName: personName || 'Person',
       birthdayDate: birthdayDate,
       duration: montageSettings.defaultDuration,
@@ -98,7 +109,7 @@ export default function BirthdayMemoryMontage({ onCancel }: BirthdayMemoryMontag
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Birthday Memory Montage
+              PartyPopper Memory Montage
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Auto birthday montage for special occasions
@@ -176,7 +187,7 @@ export default function BirthdayMemoryMontage({ onCancel }: BirthdayMemoryMontag
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Birthday Person</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">PartyPopper Person</h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
@@ -194,7 +205,7 @@ export default function BirthdayMemoryMontage({ onCancel }: BirthdayMemoryMontag
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Birthday Date</span>
+                <span className="text-xs text-slate-900 dark:text-white">PartyPopper Date</span>
               </div>
               <input
                 type="date"
@@ -282,7 +293,7 @@ export default function BirthdayMemoryMontage({ onCancel }: BirthdayMemoryMontag
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Birthday Montages</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">PartyPopper Montages</h4>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {birthdayMontages.map((montage) => (
               <div key={montage.id} className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
@@ -340,7 +351,7 @@ export default function BirthdayMemoryMontage({ onCancel }: BirthdayMemoryMontag
 
         {showDetails && (
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
-            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Birthday Montage Tips</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">PartyPopper Montage Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• Auto birthday montage for special occasions</li>
               <li>• Themes: colorful, elegant, fun, party</li>

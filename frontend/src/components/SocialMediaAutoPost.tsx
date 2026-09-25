@@ -1,7 +1,26 @@
 'use client';
 
 import { useState } from 'react';
-import { Share2, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Globe, Lock, Users, AtSign, Camera, Briefcase, Send, RefreshCw } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  AtSign,
+  BarChart3,
+  Briefcase,
+  Calendar,
+  Camera,
+  CheckCircle,
+  Clock,
+  Filter,
+  Globe,
+  Lock,
+  RefreshCw,
+  Send,
+  Settings,
+  Share2,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface Platform {
   id: string;
@@ -39,24 +58,24 @@ interface SocialMediaAutoPostProps {
 const DEFAULT_PLATFORMS: Platform[] = [
   {
     id: 'facebook',
-    name: 'Facebook',
-    icon: Facebook,
+    name: 'Globe2',
+    icon: Globe2,
     connected: true,
     accountName: '@memorymap.user',
     lastPosted: new Date('2024-01-10'),
   },
   {
     id: 'twitter',
-    name: 'Twitter',
-    icon: Twitter,
+    name: 'MessageCircle',
+    icon: MessageCircle,
     connected: true,
     accountName: '@memorymap',
     lastPosted: new Date('2024-01-12'),
   },
   {
     id: 'instagram',
-    name: 'Instagram',
-    icon: Instagram,
+    name: 'ImagePlus',
+    icon: ImagePlus,
     connected: false,
     accountName: '',
     lastPosted: null,
@@ -64,7 +83,7 @@ const DEFAULT_PLATFORMS: Platform[] = [
   {
     id: 'linkedin',
     name: 'LinkedIn',
-    icon: Linkedin,
+    icon: Link2,
     connected: true,
     accountName: 'Memory Map',
     lastPosted: new Date('2024-01-08'),

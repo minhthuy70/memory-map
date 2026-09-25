@@ -1,29 +1,28 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Fingerprint, 
-  X, 
-  Shield, 
-  Lock, 
-  Unlock, 
-  RefreshCw, 
-  Clock, 
-  CheckCircle, 
-  AlertTriangle, 
-  Settings, 
-  Info, 
-  BarChart3, 
-  Smartphone, 
-  Key, 
-  Eye, 
-  EyeOff, 
-  Zap,
-  Trash2,
-  Plus,
+import {
   AlertCircle,
+  AlertTriangle,
+  BarChart3,
+  Check,
+  CheckCircle,
+  Clock,
+  Eye,
+  EyeOff,
+  Fingerprint,
+  Info,
+  Key,
   Laptop,
-  Check
+  Lock,
+  Plus,
+  RefreshCw,
+  Settings,
+  Shield,
+  Smartphone,
+  Trash2,
+  Unlock,
+  Zap
 } from 'lucide-react';
 import { authApi, WebAuthnCredentialItem } from '@/lib/auth-api';
 import { webauthnHelper } from '@/lib/webauthn';

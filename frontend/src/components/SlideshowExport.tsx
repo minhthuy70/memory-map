@@ -1,7 +1,42 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Download, Play, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Filter, Check, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Share2, Eye, EyeOff, File, Film, Layers, Copy, PlayCircle, SkipBack, SkipForward, Volume2, Timer, Music, Sparkles, Zap } from 'lucide-react';
+import {
+  AlertTriangle,
+  as,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Copy,
+  Download,
+  Eye,
+  EyeOff,
+  File,
+  Film,
+  Filter,
+  Image,
+  ImageIcon,
+  Layers,
+  Layout,
+  Loader2,
+  MapPin,
+  Music,
+  Pause,
+  Play,
+  PlayCircle,
+  RefreshCw,
+  Settings,
+  Share2,
+  SkipBack,
+  SkipForward,
+  Sparkles,
+  Timer,
+  Volume2,
+  Zap
+} from 'lucide-react';
 
 interface SlideshowExportProps {
   onCancel?: () => void;
@@ -234,7 +269,7 @@ export default function SlideshowExport({ onCancel, onExport }: SlideshowExportP
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="text-xs text-slate-600 dark:text-slate-400 block mb-1">
-                  Quality
+                  Gauge
                 </label>
                 <select
                   value={options.quality}

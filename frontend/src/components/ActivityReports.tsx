@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { BarChart3, TrendingUp, Calendar, Mail, Download, Check, X, Save, Settings, FileText, PieChart, Activity } from 'lucide-react';
+import {
+  Activity,
+  BarChart3,
+  Calendar,
+  Check,
+  Download,
+  FileText,
+  Mail,
+  PieChart,
+  Save,
+  Settings,
+  TrendingUp
+} from 'lucide-react';
 
 interface ActivityReportConfig {
   enabled: boolean;

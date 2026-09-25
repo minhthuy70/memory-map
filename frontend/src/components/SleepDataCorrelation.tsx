@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Moon, X, RefreshCw, Info, Settings, TrendingUp, TrendingDown, CheckCircle, AlertCircle, Clock, Calendar, Bed } from 'lucide-react';
+import {
+  AlertCircle,
+  Bed,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Info,
+  Moon,
+  RefreshCw,
+  Settings,
+  TrendingDown,
+  TrendingUp
+} from 'lucide-react';
 
 interface SleepDataCorrelationProps {
   onCancel?: () => void;
@@ -156,7 +168,7 @@ export default function SleepDataCorrelation({ onCancel }: SleepDataCorrelationP
             <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{sleepStats.minSleep}h</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Avg Quality</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Avg Gauge</p>
             <p className="text-lg font-bold text-violet-600 dark:text-violet-400 capitalize">{sleepStats.averageQuality}</p>
           </div>
         </div>
@@ -230,7 +242,7 @@ export default function SleepDataCorrelation({ onCancel }: SleepDataCorrelationP
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <TrendingUp className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sync with Health</span>
+                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw with Health</span>
               </div>
               <input
                 type="checkbox"
@@ -267,7 +279,7 @@ export default function SleepDataCorrelation({ onCancel }: SleepDataCorrelationP
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Quality Distribution</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Gauge Distribution</h4>
           <div className="grid grid-cols-4 gap-2">
             <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded-lg text-center">
               <p className="text-xs text-red-700 dark:text-red-300 mb-1">Poor</p>
@@ -327,7 +339,7 @@ export default function SleepDataCorrelation({ onCancel }: SleepDataCorrelationP
               <li>• Auto-record sleep data when creating memories</li>
               <li>• Track sleep quality: poor/fair/good/excellent</li>
               <li>• Analyze correlation between sleep and mood</li>
-              <li>• Sync with health apps for comprehensive data</li>
+              <li>• RefreshCcw with health apps for comprehensive data</li>
             </ul>
           </div>
         )}

@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { EyeOff, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Shield, Hash, CreditCard, Mail, Phone, Eye, Lock, Plus, FileText } from 'lucide-react';
+import {
+  AlertTriangle,
+  CheckCircle,
+  CreditCard,
+  Eye,
+  EyeOff,
+  FileText,
+  Hash,
+  Lock,
+  Mail,
+  Phone,
+  Plus,
+  RefreshCw,
+  Settings,
+  Shield
+} from 'lucide-react';
 
 interface MaskingRule {
   id: string;

@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Zap, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  Info,
+  Plus,
+  RefreshCw,
+  Settings,
+  Trash2,
+  Zap
+} from 'lucide-react';
 
 interface ZapierIntegrationProps {
   onCancel?: () => void;
@@ -38,13 +50,13 @@ export default function ZapierIntegration({ onCancel }: ZapierIntegrationProps) 
   const [isZapierEnabled, setIsZapierEnabled] = useState(true);
 
   const [zapierZaps, setZapierZaps] = useState<ZapierZap[]>([
-    { id: '1', name: 'Memory to Notion', trigger: 'New Memory Created', action: 'Create Notion Page', isEnabled: true, lastRun: '2024-01-17 18:30', runCount: 125, status: 'active' },
+    { id: '1', name: 'Memory to BookMarked', trigger: 'New Memory Created', action: 'Create BookMarked Page', isEnabled: true, lastRun: '2024-01-17 18:30', runCount: 125, status: 'active' },
     { id: '2', name: 'Memory to Slack', trigger: 'New Memory Created', action: 'Send Slack Message', isEnabled: true, lastRun: '2024-01-16 10:15', runCount: 89, status: 'active' },
-    { id: '3', name: 'Calendar Sync', trigger: 'Memory Date', action: 'Add to Google Calendar', isEnabled: false, lastRun: '2024-01-15 14:00', runCount: 45, status: 'paused' },
+    { id: '3', name: 'Calendar RefreshCcw', trigger: 'Memory Date', action: 'Add to Google Calendar', isEnabled: false, lastRun: '2024-01-15 14:00', runCount: 45, status: 'paused' },
   ]);
 
   const [zapierApps, setZapierApps] = useState<ZapierApp[]>([
-    { id: '1', name: 'Notion', category: 'Productivity', isConnected: true },
+    { id: '1', name: 'BookMarked', category: 'Productivity', isConnected: true },
     { id: '2', name: 'Slack', category: 'Communication', isConnected: true },
     { id: '3', name: 'Google Sheets', category: 'Productivity', isConnected: false },
     { id: '4', name: 'Trello', category: 'Productivity', isConnected: false },
@@ -193,7 +205,7 @@ export default function ZapierIntegration({ onCancel }: ZapierIntegrationProps) 
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-orange-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Auto Sync</span>
+                <span className="text-xs text-slate-900 dark:text-white">Auto RefreshCcw</span>
               </div>
               <input
                 type="checkbox"
@@ -205,7 +217,7 @@ export default function ZapierIntegration({ onCancel }: ZapierIntegrationProps) 
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sync Interval (min)</span>
+                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw Interval (min)</span>
               </div>
               <input
                 type="number"

@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Fingerprint, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Smartphone, User, Smile, Scan, Clock, Shield, Lock, Plus, Trash2, Activity } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  Fingerprint,
+  Lock,
+  Plus,
+  RefreshCw,
+  Scan,
+  Settings,
+  Shield,
+  Smartphone,
+  Smile,
+  Trash2,
+  User
+} from 'lucide-react';
 import { webauthnHelper } from '@/lib/webauthn';
 
 interface BiometricMethod {
@@ -192,7 +208,7 @@ export default function BiometricAuthEnhanced({ onCancel, onEnrollBiometric, onD
   const getMethodIcon = (type: BiometricMethod['type']) => {
     switch (type) {
       case 'face-id':
-        return <FaceSmile className="h-4 w-4" />;
+        return <Smile className="h-4 w-4" />;
       case 'touch-id':
         return <Fingerprint className="h-4 w-4" />;
       case 'fingerprint':

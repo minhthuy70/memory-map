@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { TrendingUp, X, RefreshCw, Info, CheckCircle, Star, Zap, BarChart3, Calendar, LineChart } from 'lucide-react';
+import {
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Info,
+  LineChart,
+  RefreshCw,
+  Star,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface MoodTrackingGraphProps {
   onCancel?: () => void;
@@ -34,7 +44,7 @@ export default function MoodTrackingGraph({ onCancel }: MoodTrackingGraphProps) 
     { id: '4', date: '2024-01-11', mood: 'good', moodScore: 7, factors: ['nature', 'relaxation'], memoryContext: 'Evening walk' },
     { id: '5', date: '2024-01-12', mood: 'anxious', moodScore: 4, factors: ['uncertainty', 'change'], memoryContext: 'News about changes' },
     { id: '6', date: '2024-01-13', mood: 'good', moodScore: 8, factors: ['friends', 'fun'], memoryContext: 'Weekend gathering' },
-    { id: '7', date: '2024-01-14', mood: 'excellent', moodScore: 9, factors: ['success', 'celebration'], memoryContext: 'Birthday party' },
+    { id: '7', date: '2024-01-14', mood: 'excellent', moodScore: 9, factors: ['success', 'celebration'], memoryContext: 'PartyPopper party' },
   ]);
 
   const [graphSettings, setGraphSettings] = useState<GraphSettings>({
@@ -177,7 +187,7 @@ export default function MoodTrackingGraph({ onCancel }: MoodTrackingGraphProps) 
                 <option value="week">Week</option>
                 <option value="month">Month</option>
                 <option value="quarter">Quarter</option>
-                <option value="year">Year</option>
+                <option value="year">CalendarDays</option>
               </select>
             </div>
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">

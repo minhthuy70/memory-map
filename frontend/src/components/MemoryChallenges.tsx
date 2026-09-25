@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { Trophy, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Target, Users, Star, Award, Play, CheckCircle2 } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  Award,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  CheckCircle2,
+  Clock,
+  Filter,
+  Play,
+  Settings,
+  Star,
+  Target,
+  Trophy,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface Challenge {
   id: string;

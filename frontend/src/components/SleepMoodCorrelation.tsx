@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Moon, X, RefreshCw, Info, Smile, Activity, TrendingUp, Calendar, Star, Clock, Bed } from 'lucide-react';
+import {
+  Activity,
+  Bed,
+  Calendar,
+  Clock,
+  Info,
+  Moon,
+  RefreshCw,
+  Smile,
+  Star,
+  TrendingUp
+} from 'lucide-react';
 
 interface SleepMoodCorrelationProps {
   onCancel?: () => void;
@@ -278,7 +289,7 @@ export default function SleepMoodCorrelation({ onCancel }: SleepMoodCorrelationP
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Star className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Quality</span>
+                <span className="text-xs text-slate-900 dark:text-white">Gauge</span>
               </div>
               <div className="flex items-center gap-2">
                 <input
@@ -404,7 +415,7 @@ export default function SleepMoodCorrelation({ onCancel }: SleepMoodCorrelationP
                 <option value="week">Week</option>
                 <option value="month">Month</option>
                 <option value="quarter">Quarter</option>
-                <option value="year">Year</option>
+                <option value="year">CalendarDays</option>
               </select>
             </div>
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">

@@ -1,7 +1,68 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Upload, Image as ImageIcon, CheckCheck, FolderOpen, Lock, Unlock, CheckCircle as CheckCircleIcon, ExternalLink, Filter as FilterIcon, Search, Calendar as CalendarIcon, MapPin, Clock as ClockIcon, Eye, EyeOff, Trash2 as TrashIcon, Shield, AlertCircle, Database, Globe, Cloud, Wifi, Loader2, CheckSquare, Square, AlertTriangle as AlertTriangleIcon, Copyright, Heart, MessageCircle, Share2, Hash, Camera, Grid, Copyright as CopyRightIcon, Archive, Calendar as CalendarIcon2, Image as ImageIcon2, Video, ThumbsUp, Star } from 'lucide-react';
+import {
+  Activity,
+  AlertCircle,
+  AlertTriangle,
+  AlertTriangleIcon,
+  Archive,
+  as,
+  BarChart3,
+  Calendar,
+  CalendarIcon,
+  CalendarIcon2,
+  Camera,
+  Check,
+  CheckCheck,
+  CheckCircle,
+  CheckCircleIcon,
+  CheckSquare,
+  Clock,
+  ClockIcon,
+  Cloud,
+  Copyright,
+  CopyRightIcon,
+  Database,
+  Download,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  Filter,
+  FilterIcon,
+  FolderOpen,
+  Globe,
+  Grid,
+  Hash,
+  Heart,
+  Image,
+  ImageIcon,
+  ImageIcon2,
+  Loader2,
+  Lock,
+  MapPin,
+  MessageCircle,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Search,
+  Settings,
+  SettingsIcon,
+  Share2,
+  Shield,
+  Square,
+  Star,
+  ThumbsUp,
+  Trash2,
+  TrashIcon,
+  Unlock,
+  Upload,
+  Video,
+  Wifi,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface InstagramPost {
   id: string;
@@ -112,7 +173,7 @@ export default function ImportFromInstagram({ onCancel, onConnect, onImport, onD
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Nhập từ Instagram (archive Instagram)
+              Nhập từ ImagePlus (archive ImagePlus)
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               {isConnected ? 'Connected' : 'Not connected'}
@@ -142,7 +203,7 @@ export default function ImportFromInstagram({ onCancel, onConnect, onImport, onD
       {showSettings && (
         <div className="mb-4 p-4 bg-pink-50 dark:bg-pink-950/30 border border-pink-200 dark:border-pink-800 rounded-lg">
           <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Cài đặt Instagram import
+            Cài đặt ImagePlus import
           </h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
@@ -281,7 +342,7 @@ export default function ImportFromInstagram({ onCancel, onConnect, onImport, onD
         <div className="p-4 rounded-lg border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600 mb-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              Instagram Connection
+              ImagePlus Connection
             </span>
             {isConnected && (
               <span className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-[10px] font-semibold rounded-full">
@@ -306,7 +367,7 @@ export default function ImportFromInstagram({ onCancel, onConnect, onImport, onD
             ) : (
               <>
                 <Unlock className="h-4 w-4" />
-                Connect to Instagram
+                Connect to ImagePlus
               </>
             )}
           </button>
@@ -342,7 +403,7 @@ export default function ImportFromInstagram({ onCancel, onConnect, onImport, onD
         <div className="mb-4">
           <div className="flex items-center justify-between mb-3">
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm">
-              Instagram Posts
+              ImagePlus Posts
             </h4>
             <div className="flex items-center gap-2">
               <button
@@ -396,7 +457,7 @@ export default function ImportFromInstagram({ onCancel, onConnect, onImport, onD
                 {post.isDuplicate && (
                   <div className="mt-1 flex items-center gap-1">
                     <AlertTriangleIcon className="h-3 w-3 text-amber-500" />
-                    <span className="text-[10px] text-amber-600 dark:text-amber-400">Duplicate</span>
+                    <span className="text-[10px] text-amber-600 dark:text-amber-400">Files</span>
                   </div>
                 )}
               </div>
@@ -480,7 +541,7 @@ export default function ImportFromInstagram({ onCancel, onConnect, onImport, onD
 
       <div className="mt-4 p-3 bg-pink-50 dark:bg-pink-950/30 border border-pink-200 dark:border-pink-900 rounded-lg">
         <p className="text-[10px] text-pink-700 dark:text-pink-400">
-          <strong>Lưu ý:</strong> Nhập từ Instagram với OAuth connection, post/archive scanning, caption extraction, engagement data (likes/comments/shares), hashtag extraction, location data, duplicate detection, auto-select options, post selection with preview, batch import, comprehensive Instagram API integration, và full metadata preservation.
+          <strong>Lưu ý:</strong> Nhập từ ImagePlus với OAuth connection, post/archive scanning, caption extraction, engagement data (likes/comments/shares), hashtag extraction, location data, duplicate detection, auto-select options, post selection with preview, batch import, comprehensive ImagePlus API integration, và full metadata preservation.
         </p>
       </div>
     </div>

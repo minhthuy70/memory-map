@@ -1,7 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, FileText } from 'lucide-react';
+import {
+  AlertCircle,
+  BookOpen,
+  Calendar,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  FileText,
+  Info,
+  Plus,
+  RefreshCw,
+  Settings,
+  Trash2
+} from 'lucide-react';
 
 interface ObsidianPluginProps {
   onCancel?: () => void;
@@ -198,7 +211,7 @@ export default function ObsidianPlugin({ onCancel }: ObsidianPluginProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-purple-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Auto Sync</span>
+                <span className="text-xs text-slate-900 dark:text-white">Auto RefreshCcw</span>
               </div>
               <input
                 type="checkbox"
@@ -210,7 +223,7 @@ export default function ObsidianPlugin({ onCancel }: ObsidianPluginProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sync Interval (min)</span>
+                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw Interval (min)</span>
               </div>
               <input
                 type="number"
@@ -300,7 +313,7 @@ export default function ObsidianPlugin({ onCancel }: ObsidianPluginProps) {
                 </div>
                 <div className="flex gap-2 mb-2">
                   <span className="text-xs text-slate-500 dark:text-slate-400">Notes: {vault.noteCount}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Last Sync: {vault.lastSync || 'Never'}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Last RefreshCcw: {vault.lastSync || 'Never'}</span>
                 </div>
                 {vault.isConnected && (
                   <button
@@ -309,7 +322,7 @@ export default function ObsidianPlugin({ onCancel }: ObsidianPluginProps) {
                     className="w-full px-2 py-1 rounded text-xs bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1"
                   >
                     <RefreshCw className="h-3 w-3" />
-                    Sync Note
+                    RefreshCcw Note
                   </button>
                 )}
               </div>

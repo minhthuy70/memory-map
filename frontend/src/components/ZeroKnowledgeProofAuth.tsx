@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { ShieldCheck, X, RefreshCw, Info, CheckCircle, Star, Zap, Lock, Unlock, Key, Fingerprint } from 'lucide-react';
+import {
+  CheckCircle,
+  Fingerprint,
+  Info,
+  Key,
+  Lock,
+  RefreshCw,
+  ShieldCheck,
+  Star,
+  Unlock,
+  Zap
+} from 'lucide-react';
 
 interface ZeroKnowledgeProofAuthProps {
   onCancel?: () => void;

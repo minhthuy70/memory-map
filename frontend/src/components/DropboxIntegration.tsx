@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { HardDrive, Upload, Download, CheckCircle, XCircle, AlertCircle, Settings, RefreshCw, FolderOpen, FileText } from 'lucide-react';
+import {
+  AlertCircle,
+  CheckCircle,
+  Download,
+  FileText,
+  FolderOpen,
+  HardDrive,
+  RefreshCw,
+  Settings,
+  Upload,
+  XCircle
+} from 'lucide-react';
 
 interface DropboxIntegrationProps {
   onBackup?: () => Promise<void>;

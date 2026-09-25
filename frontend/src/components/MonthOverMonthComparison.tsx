@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { CalendarDays, X, Settings, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, Activity, TrendingUp, TrendingDown, BarChart3, Filter, Zap, Calendar } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowDown,
+  ArrowUp,
+  BarChart3,
+  Calendar,
+  CalendarDays,
+  CheckCircle,
+  Filter,
+  Settings,
+  TrendingDown,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface MonthData {
   year: number;
@@ -216,10 +230,10 @@ export default function MonthOverMonthComparison({ onCancel, onCompareMonths }: 
         </div>
       )}
 
-      {/* Year Selection */}
+      {/* CalendarDays Selection */}
       <div className="mb-4">
         <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-          Year
+          CalendarDays
         </label>
         <select
           value={selectedYear}

@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, X, RefreshCw, Info, CheckCircle, Star, Zap, Calendar, Download, Share2, TrendingUp, Heart } from 'lucide-react';
+import {
+  BookOpen,
+  Calendar,
+  CheckCircle,
+  Download,
+  Heart,
+  Info,
+  RefreshCw,
+  Share2,
+  Star,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface AIYearlyReflectionProps {
   onCancel?: () => void;
@@ -40,7 +52,7 @@ export default function AIYearlyReflection({ onCancel }: AIYearlyReflectionProps
     { 
       id: '1', 
       year: 2023, 
-      title: '2023 Year in Review', 
+      title: '2023 CalendarDays in Review', 
       summary: '2023 was a year of growth and adventure. You created 245 memories across 15 locations, with a focus on travel and family time. Your most positive memories were beach trips and mountain adventures.',
       highlights: ['First international trip', 'New family traditions', 'Achieved fitness goals', 'Met new friends'],
       generatedAt: '2024-01-01',
@@ -78,7 +90,7 @@ export default function AIYearlyReflection({ onCancel }: AIYearlyReflectionProps
     const newReflection: YearlyReflection = {
       id: Date.now().toString(),
       year: currentYear,
-      title: `${currentYear} Year in Review`,
+      title: `${currentYear} CalendarDays in Review`,
       summary: `AI-generated reflection for ${currentYear}. This year was filled with memorable experiences, personal growth, and meaningful connections.`,
       highlights: ['Achieved new milestones', 'Created lasting memories', 'Strengthened relationships', 'Explored new places'],
       generatedAt: new Date().toISOString().split('T')[0],
@@ -189,12 +201,12 @@ export default function AIYearlyReflection({ onCancel }: AIYearlyReflectionProps
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Current Year Stats</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Current CalendarDays Stats</h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Calendar className="h-4 w-4 text-sky-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Year</span>
+                <span className="text-xs text-slate-900 dark:text-white">CalendarDays</span>
               </div>
               <span className="text-xs text-slate-500 dark:text-slate-400">{yearlyStats.year}</span>
             </div>

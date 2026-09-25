@@ -1,7 +1,30 @@
 'use client';
 
 import { useState } from 'react';
-import { Crown, X, TrendingUp, Star, Zap, Award, Target, Sparkles, Flame, ChevronRight, ChevronLeft, Info, Gift, Shield, Sword, Gem, Wand2, Heart, MapPin, Calendar, Clock, BarChart3, RefreshCw } from 'lucide-react';
+import {
+  Award,
+  BarChart3,
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Crown,
+  Flame,
+  Gem,
+  Gift,
+  Heart,
+  Info,
+  MapPin,
+  RefreshCw,
+  Shield,
+  Sparkles,
+  Star,
+  Sword,
+  Target,
+  TrendingUp,
+  Wand2,
+  Zap
+} from 'lucide-react';
 
 interface LevelProgressionProps {
   onCancel?: () => void;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Palette, X, RefreshCw, Info, CheckCircle, Settings, Eye, Droplet } from 'lucide-react';
+import { CheckCircle, Droplet, Eye, Info, Palette, RefreshCw, Settings } from 'lucide-react';
 
 interface ColorBlindModeProps {
   onCancel?: () => void;

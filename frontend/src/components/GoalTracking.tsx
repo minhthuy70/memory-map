@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Target, X, Settings, CheckCircle, AlertTriangle, TrendingUp, Clock, Activity, BarChart3, Filter, Zap, Calendar, Plus, Award, Pause, Play } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  Award,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Filter,
+  Pause,
+  Play,
+  Plus,
+  Settings,
+  Target,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface Goal {
   id: string;

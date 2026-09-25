@@ -1,7 +1,41 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Zap, RefreshCw, Check, Zap as ZapIcon, Plus, Mic as MicIcon, StopCircle, Volume2, Trash2 as TrashIcon, ExternalLink, Sliders, Waves, Activity as ActivityIcon, Shield, Gauge, FileAudio, ToggleLeft, ToggleRight } from 'lucide-react';
+import {
+  Activity,
+  ActivityIcon,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  FileAudio,
+  Filter,
+  Gauge,
+  Mic,
+  MicIcon,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Settings,
+  SettingsIcon,
+  Shield,
+  Sliders,
+  StopCircle,
+  ToggleLeft,
+  ToggleRight,
+  Trash2,
+  TrashIcon,
+  Volume2,
+  Waves,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface NoiseLevel {
   id: string;

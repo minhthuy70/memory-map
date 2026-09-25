@@ -1,7 +1,33 @@
 'use client';
 
 import { useState } from 'react';
-import { Trophy, X, TrendingUp, TrendingDown, Medal, Award, Crown, Star, Users, Filter, ChevronDown, ChevronUp, RefreshCw, Search, Globe, MapPin, Calendar, Clock, Zap, Flame, Target, Eye, EyeOff, ArrowUp, ArrowDown, Minus } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowUp,
+  Award,
+  Calendar,
+  ChevronDown,
+  ChevronUp,
+  Clock,
+  Crown,
+  Eye,
+  EyeOff,
+  Filter,
+  Flame,
+  Globe,
+  MapPin,
+  Medal,
+  Minus,
+  RefreshCw,
+  Search,
+  Star,
+  Target,
+  TrendingDown,
+  TrendingUp,
+  Trophy,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface GlobalLeaderboardProps {
   onCancel?: () => void;
@@ -240,16 +266,16 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
             <option value="all">All Time</option>
             <option value="week">This Week</option>
             <option value="month">This Month</option>
-            <option value="year">This Year</option>
+            <option value="year">This CalendarDays</option>
           </select>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
             className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0"
           >
-            <option value="xp">Sort by XP</option>
-            <option value="level">Sort by Level</option>
-            <option value="streak">Sort by Streak</option>
+            <option value="xp">ListOrdered by XP</option>
+            <option value="level">ListOrdered by Level</option>
+            <option value="streak">ListOrdered by Streak</option>
           </select>
           <select
             value={selectedRegion}

@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Palette, X, RefreshCw, Info, CheckCircle, Plus, ShoppingCart, Star, Download, Heart } from 'lucide-react';
+import {
+  CheckCircle,
+  Download,
+  Heart,
+  Info,
+  Palette,
+  Plus,
+  RefreshCw,
+  ShoppingCart,
+  Star
+} from 'lucide-react';
 
 interface ThemeMarketplaceProps {
   onCancel?: () => void;

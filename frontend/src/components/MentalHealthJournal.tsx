@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Heart, X, RefreshCw, Info, CheckCircle, Star, Zap, BookOpen, Calendar, Brain, Clock, Edit } from 'lucide-react';
+import {
+  BookOpen,
+  Brain,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Edit,
+  Heart,
+  Info,
+  RefreshCw,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface MentalHealthJournalProps {
   onCancel?: () => void;
@@ -217,7 +229,7 @@ export default function MentalHealthJournal({ onCancel }: MentalHealthJournalPro
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Calendar className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sleep Quality</span>
+                <span className="text-xs text-slate-900 dark:text-white">Sleep Gauge</span>
               </div>
               <div className="flex items-center gap-2">
                 <input

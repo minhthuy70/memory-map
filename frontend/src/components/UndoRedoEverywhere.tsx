@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { RotateCcw, X, CheckCircle, ArrowLeft, ArrowRight, Clock, Settings, Info, BarChart3, Smartphone, Eye, EyeOff, Trash2, Zap, History, Undo, Redo } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  BarChart3,
+  CheckCircle,
+  Clock,
+  Eye,
+  EyeOff,
+  History,
+  Info,
+  Redo,
+  RotateCcw,
+  Settings,
+  Smartphone,
+  Trash2,
+  Undo,
+  Zap
+} from 'lucide-react';
 
 interface UndoRedoEverywhereProps {
   onCancel?: () => void;

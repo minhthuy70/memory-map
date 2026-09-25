@@ -1,7 +1,26 @@
 'use client';
 
 import { useState } from 'react';
-import { Key, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Shield, Clock, Globe, Lock, Plus, Trash2, Copy, Eye, EyeOff, ExternalLink, Code, FileText, AlertCircle } from 'lucide-react';
+import {
+  AlertCircle,
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  Code,
+  Copy,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  FileText,
+  Globe,
+  Key,
+  Lock,
+  Plus,
+  RefreshCw,
+  Settings,
+  Shield,
+  Trash2
+} from 'lucide-react';
 
 interface OAuthClient {
   id: string;

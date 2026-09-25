@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Shapes, X, RefreshCw, Info, CheckCircle, Plus, ShoppingCart, Star, Download, Heart } from 'lucide-react';
+import {
+  CheckCircle,
+  Download,
+  Heart,
+  Info,
+  Plus,
+  RefreshCw,
+  Shapes,
+  ShoppingCart,
+  Star
+} from 'lucide-react';
 
 interface IconPacksProps {
   onCancel?: () => void;
@@ -29,11 +39,11 @@ export default function IconPacks({ onCancel }: IconPacksProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const [iconPacks, setIconPacks] = useState<IconPack[]>([
-    { id: '1', name: 'Basic Icons', creator: 'IconMaster', category: 'Basic', iconCount: 50, price: 0, rating: 4.7, downloads: 78900, reviews: 3450, isPremium: false, isInstalled: true, isFavorite: true, preview: 'basic', isCustom: false },
-    { id: '2', name: 'Travel Icons', creator: 'TravelIcons', category: 'Travel', iconCount: 32, price: 1.99, rating: 4.6, downloads: 45600, reviews: 2180, isPremium: true, isInstalled: false, isFavorite: false, preview: 'travel', isCustom: false },
-    { id: '3', name: 'Food Icons', creator: 'FoodieIcons', category: 'Food', iconCount: 45, price: 0, rating: 4.8, downloads: 98700, reviews: 4560, isPremium: false, isInstalled: true, isFavorite: true, preview: 'food', isCustom: false },
-    { id: '4', name: 'Nature Icons', creator: 'NatureDesign', category: 'Nature', iconCount: 38, price: 2.49, rating: 4.5, downloads: 34500, reviews: 1780, isPremium: true, isInstalled: false, isFavorite: false, preview: 'nature', isCustom: false },
-    { id: '5', name: 'Business Icons', creator: 'BizIcons', category: 'Business', iconCount: 42, price: 1.99, rating: 4.7, downloads: 56700, reviews: 2890, isPremium: true, isInstalled: true, isFavorite: false, preview: 'business', isCustom: false },
+    { id: '1', name: 'Basic LayoutGrid', creator: 'IconMaster', category: 'Basic', iconCount: 50, price: 0, rating: 4.7, downloads: 78900, reviews: 3450, isPremium: false, isInstalled: true, isFavorite: true, preview: 'basic', isCustom: false },
+    { id: '2', name: 'Travel LayoutGrid', creator: 'TravelIcons', category: 'Travel', iconCount: 32, price: 1.99, rating: 4.6, downloads: 45600, reviews: 2180, isPremium: true, isInstalled: false, isFavorite: false, preview: 'travel', isCustom: false },
+    { id: '3', name: 'Food LayoutGrid', creator: 'FoodieIcons', category: 'Food', iconCount: 45, price: 0, rating: 4.8, downloads: 98700, reviews: 4560, isPremium: false, isInstalled: true, isFavorite: true, preview: 'food', isCustom: false },
+    { id: '4', name: 'Nature LayoutGrid', creator: 'NatureDesign', category: 'Nature', iconCount: 38, price: 2.49, rating: 4.5, downloads: 34500, reviews: 1780, isPremium: true, isInstalled: false, isFavorite: false, preview: 'nature', isCustom: false },
+    { id: '5', name: 'Business LayoutGrid', creator: 'BizIcons', category: 'Business', iconCount: 42, price: 1.99, rating: 4.7, downloads: 56700, reviews: 2890, isPremium: true, isInstalled: true, isFavorite: false, preview: 'business', isCustom: false },
   ]);
 
   const filteredPacks = selectedCategory === 'all' 
@@ -99,7 +109,7 @@ export default function IconPacks({ onCancel }: IconPacksProps) {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl">
-            <Icons className="h-5 w-5 text-white" />
+            <LayoutGrid className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -145,7 +155,7 @@ export default function IconPacks({ onCancel }: IconPacksProps) {
             <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{iconPacks.filter(p => p.isPremium).length}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Total Icons</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Total LayoutGrid</p>
             <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{iconPacks.reduce((sum, p) => sum + p.iconCount, 0)}</p>
           </div>
         </div>
@@ -184,7 +194,7 @@ export default function IconPacks({ onCancel }: IconPacksProps) {
               <div key={pack.id} className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center">
-                    <Icons className="h-5 w-5 text-slate-400" />
+                    <LayoutGrid className="h-5 w-5 text-slate-400" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">

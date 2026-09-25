@@ -1,7 +1,33 @@
 'use client';
 
 import { useState } from 'react';
-import { Camera, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Upload, Scan, Image as ImageIcon, Box, Check, Sparkles, Eye, Zap as ZapIcon, Users, Car, PawPrint, Pizza, Armchair } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  Armchair,
+  as,
+  BarChart3,
+  Box,
+  Calendar,
+  Camera,
+  Car,
+  Check,
+  CheckCircle,
+  Clock,
+  Eye,
+  Filter,
+  Image,
+  ImageIcon,
+  PawPrint,
+  Pizza,
+  Scan,
+  Settings,
+  Sparkles,
+  Upload,
+  Users,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface DetectedObject {
   id: string;

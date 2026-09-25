@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { History, X, RefreshCw, Info, Calendar, Stethoscope, FileText, Hospital, Plus, Filter } from 'lucide-react';
+import {
+  Calendar,
+  FileText,
+  Filter,
+  History,
+  Hospital,
+  Info,
+  Plus,
+  RefreshCw,
+  Stethoscope
+} from 'lucide-react';
 
 interface MedicalHistoryTimelineProps {
   onCancel?: () => void;

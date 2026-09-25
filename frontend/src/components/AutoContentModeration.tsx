@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { Bot, X, RefreshCw, CheckCircle, AlertTriangle, Info, Settings, Zap, Shield, Sliders, ToggleLeft, ToggleRight, BarChart3, TrendingUp, Target } from 'lucide-react';
+import {
+  AlertTriangle,
+  BarChart3,
+  Bot,
+  CheckCircle,
+  Info,
+  RefreshCw,
+  Settings,
+  Shield,
+  Sliders,
+  Target,
+  ToggleLeft,
+  ToggleRight,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface AutoContentModerationProps {
   onCancel?: () => void;

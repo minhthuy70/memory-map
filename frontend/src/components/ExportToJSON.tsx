@@ -1,7 +1,37 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Download, Database, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Share2, Eye, EyeOff, File, Hash, Code, Layers, Copy, Braces } from 'lucide-react';
+import {
+  AlertTriangle,
+  as,
+  Braces,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Code,
+  Copy,
+  Database,
+  Download,
+  Eye,
+  EyeOff,
+  File,
+  Filter,
+  Hash,
+  Image,
+  ImageIcon,
+  Layers,
+  Layout,
+  Loader2,
+  MapPin,
+  Pause,
+  Play,
+  RefreshCw,
+  Settings,
+  Share2
+} from 'lucide-react';
 
 interface ExportToJSONProps {
   onCancel?: () => void;

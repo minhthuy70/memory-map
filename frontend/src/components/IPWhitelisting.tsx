@@ -2,16 +2,15 @@
 
 import { useState } from 'react';
 import {
-  Globe,
-  X,
-  Search,
-  Plus,
-  Trash2,
   CheckCircle2,
-  XCircle,
+  Globe,
+  Play,
+  Plus,
   RefreshCw,
+  Search,
   Terminal,
-  Play
+  Trash2,
+  XCircle
 } from 'lucide-react';
 
 export interface WhitelistRule {

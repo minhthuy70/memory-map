@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { Snowflake, X, Shield, Clock, Gift, RefreshCw, Star, Award, Zap, Info, BarChart3, CheckCircle, Calendar, Flame, Plus, Minus, ShoppingBag } from 'lucide-react';
+import {
+  Award,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Flame,
+  Gift,
+  Info,
+  Minus,
+  Plus,
+  RefreshCw,
+  Shield,
+  ShoppingBag,
+  Snowflake,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface StreakFreezeProps {
   onCancel?: () => void;

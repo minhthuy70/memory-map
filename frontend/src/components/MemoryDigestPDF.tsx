@@ -1,7 +1,40 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Download, FileText, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Share2, Eye, EyeOff, File, Newspaper, Layers, Copy, Calendar as CalendarIcon2, TrendingUp, Heart, Star, Sparkles } from 'lucide-react';
+import {
+  AlertTriangle,
+  as,
+  Calendar,
+  CalendarIcon,
+  CalendarIcon2,
+  Check,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Copy,
+  Download,
+  Eye,
+  EyeOff,
+  File,
+  FileText,
+  Filter,
+  Heart,
+  Image,
+  ImageIcon,
+  Layers,
+  Layout,
+  Loader2,
+  MapPin,
+  Newspaper,
+  Pause,
+  Play,
+  RefreshCw,
+  Settings,
+  Share2,
+  Sparkles,
+  Star,
+  TrendingUp
+} from 'lucide-react';
 
 interface MemoryDigestPDFProps {
   onCancel?: () => void;

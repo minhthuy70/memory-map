@@ -1,7 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import { Flame, X, Calendar, Clock, TrendingUp, Award, Star, Zap, Target, Sparkles, RefreshCw, Info, BarChart3, ChevronLeft, ChevronRight, Snowflake, Sun, Moon, Cloud, Heart } from 'lucide-react';
+import {
+  Award,
+  BarChart3,
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Cloud,
+  Flame,
+  Heart,
+  Info,
+  Moon,
+  RefreshCw,
+  Snowflake,
+  Sparkles,
+  Star,
+  Sun,
+  Target,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface StreakTrackingProps {
   onCancel?: () => void;

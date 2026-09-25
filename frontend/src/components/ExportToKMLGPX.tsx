@@ -1,7 +1,37 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Download, MapPin, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, Calendar as CalendarIcon, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Share2, Eye, EyeOff, File, Route, Navigation, Layers, Copy, Globe, Compass } from 'lucide-react';
+import {
+  AlertTriangle,
+  as,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Compass,
+  Copy,
+  Download,
+  Eye,
+  EyeOff,
+  File,
+  Filter,
+  Globe,
+  Image,
+  ImageIcon,
+  Layers,
+  Layout,
+  Loader2,
+  MapPin,
+  Navigation,
+  Pause,
+  Play,
+  RefreshCw,
+  Route,
+  Settings,
+  Share2
+} from 'lucide-react';
 
 interface ExportToKMLGPXProps {
   onCancel?: () => void;

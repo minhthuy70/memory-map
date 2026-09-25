@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FolderOpen, Tag, Check, X, RefreshCw, Settings, Sparkles, AlertTriangle, Lightbulb } from 'lucide-react';
+import { AlertTriangle, Check, FolderOpen, Lightbulb, RefreshCw, Settings, Sparkles, Tag } from 'lucide-react';
 
 interface CategorySuggestion {
   id: string;

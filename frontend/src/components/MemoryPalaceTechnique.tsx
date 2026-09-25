@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Castle, X, RefreshCw, Info, MapPin, Star, Plus, Target, Image as ImageIcon, Eye, Layers, Calendar } from 'lucide-react';
+import {
+  as,
+  Calendar,
+  Castle,
+  Eye,
+  Image,
+  ImageIcon,
+  Info,
+  Layers,
+  MapPin,
+  Plus,
+  RefreshCw,
+  Star,
+  Target
+} from 'lucide-react';
 
 interface MemoryPalaceTechniqueProps {
   onCancel?: () => void;

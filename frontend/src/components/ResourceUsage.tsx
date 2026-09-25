@@ -1,7 +1,19 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Cpu, X, Settings, RefreshCw, HardDrive, Activity, Thermometer, Network, Zap, CheckCircle, AlertTriangle, TrendingUp } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  CheckCircle,
+  Cpu,
+  HardDrive,
+  Network,
+  RefreshCw,
+  Settings,
+  Thermometer,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface ResourceMetric {
   name: string;

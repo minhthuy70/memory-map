@@ -2,23 +2,22 @@
 
 import { useState } from 'react';
 import {
-  Shield,
-  ShieldCheck,
-  ShieldAlert,
-  X,
-  RefreshCw,
+  Activity,
   CheckCircle2,
+  ChevronRight,
+  Download,
   FileText,
   Gauge,
   Globe,
-  Download,
-  Play,
-  Activity,
-  Zap,
-  ChevronRight,
   Layers,
+  Play,
+  RefreshCw,
+  Server,
+  Shield,
+  ShieldAlert,
+  ShieldCheck,
   Sparkles,
-  Server
+  Zap
 } from 'lucide-react';
 
 import AuditLogs from './AuditLogs';

@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Download, X, RefreshCw, Info, CheckCircle, Star, Zap, FileText, HardDrive, Archive, CheckSquare } from 'lucide-react';
+import {
+  Archive,
+  CheckCircle,
+  CheckSquare,
+  Download,
+  FileText,
+  HardDrive,
+  Info,
+  RefreshCw,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface SelfHostedDataExportProps {
   onCancel?: () => void;

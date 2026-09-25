@@ -1,7 +1,24 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Camera, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Video, Image as ImageIcon, Camera as CameraIcon, RotateCw, Zap, Monitor, Smartphone, Check, AlertCircle } from 'lucide-react';
+import {
+  AlertCircle,
+  AlertTriangle,
+  as,
+  Camera,
+  CameraIcon,
+  Check,
+  CheckCircle,
+  Image,
+  ImageIcon,
+  Monitor,
+  RefreshCw,
+  RotateCw,
+  Settings,
+  Smartphone,
+  Video,
+  Zap
+} from 'lucide-react';
 
 interface CameraPermission {
   granted: boolean;

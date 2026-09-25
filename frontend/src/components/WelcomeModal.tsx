@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { X, Sparkles, MapPin, Heart } from 'lucide-react';
+import { Heart, MapPin, Sparkles } from 'lucide-react';
 
 export default function WelcomeModal() {
   const [isOpen, setIsOpen] = useState(false);

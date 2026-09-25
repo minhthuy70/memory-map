@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Footprints, X, RefreshCw, Info, Settings, TrendingUp, TrendingDown, CheckCircle, AlertCircle, Clock, Calendar, Activity } from 'lucide-react';
+import {
+  Activity,
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Footprints,
+  Info,
+  RefreshCw,
+  Settings,
+  TrendingDown,
+  TrendingUp
+} from 'lucide-react';
 
 interface StepCountContextProps {
   onCancel?: () => void;
@@ -222,7 +234,7 @@ export default function StepCountContext({ onCancel }: StepCountContextProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Footprints className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sync with Health</span>
+                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw with Health</span>
               </div>
               <input
                 type="checkbox"
@@ -282,7 +294,7 @@ export default function StepCountContext({ onCancel }: StepCountContextProps) {
               <li>• Auto-record step count when creating memories</li>
               <li>• Track distance and calories burned</li>
               <li>• Set daily step goals for motivation</li>
-              <li>• Sync with health apps for comprehensive data</li>
+              <li>• RefreshCcw with health apps for comprehensive data</li>
             </ul>
           </div>
         )}

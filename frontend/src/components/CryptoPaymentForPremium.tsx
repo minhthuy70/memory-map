@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Bitcoin, X, RefreshCw, Info, CheckCircle, Star, Zap, Wallet, ExternalLink } from 'lucide-react';
+import { Bitcoin, CheckCircle, ExternalLink, Info, RefreshCw, Star, Wallet, Zap } from 'lucide-react';
 
 interface CryptoPaymentProps {
   onCancel?: () => void;

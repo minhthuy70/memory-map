@@ -1,7 +1,40 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Download, Globe, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Palette, Type, Code, Share2, Eye, EyeOff, File, Layers, Grid, Smartphone, Monitor, Globe2 } from 'lucide-react';
+import {
+  AlertTriangle,
+  as,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Code,
+  Download,
+  Eye,
+  EyeOff,
+  File,
+  Filter,
+  Globe,
+  Globe2,
+  Grid,
+  Image,
+  ImageIcon,
+  Layers,
+  Layout,
+  Loader2,
+  MapPin,
+  Monitor,
+  Palette,
+  Pause,
+  Play,
+  RefreshCw,
+  Settings,
+  Share2,
+  Smartphone,
+  Type
+} from 'lucide-react';
 
 interface ExportToHTMLProps {
   onCancel?: () => void;

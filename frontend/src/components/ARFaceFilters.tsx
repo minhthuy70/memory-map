@@ -1,7 +1,48 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Smile, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, Shield, Image as ImageIcon, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, RotateCw, ZoomIn, ZoomOut, Maximize2, Sparkles, Wand2, Palette, Sliders, Star, Zap as ZapIcon2, Flame, Sparkles as SparklesIcon } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  Filter,
+  Flame,
+  Image,
+  ImageIcon,
+  Layers,
+  Maximize2,
+  Palette,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  RotateCw,
+  Settings,
+  SettingsIcon,
+  Shield,
+  Sliders,
+  Smile,
+  Sparkles,
+  SparklesIcon,
+  Star,
+  Trash2,
+  TrashIcon,
+  Wand2,
+  Zap,
+  ZapIcon,
+  ZapIcon2,
+  ZoomIn,
+  ZoomOut
+} from 'lucide-react';
 
 interface ARFaceFilter {
   id: string;
@@ -121,7 +162,7 @@ export default function ARFaceFilters({ onCancel, onAddFilter, onRemoveFilter, o
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-rose-400 to-pink-500 rounded-xl">
-            <FaceMask className="h-5 w-5 text-white" />
+            <ShieldCheck className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -196,7 +237,7 @@ export default function ARFaceFilters({ onCancel, onAddFilter, onRemoveFilter, o
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <FaceMask className="h-3 w-3 text-slate-500" />
+            <ShieldCheck className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Filters</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -335,7 +376,7 @@ export default function ARFaceFilters({ onCancel, onAddFilter, onRemoveFilter, o
               {/* Face Indicator */}
               {autoDetect && (
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-2 border-rose-500 rounded-full flex items-center justify-center">
-                  <FaceMask className="h-8 w-8 text-rose-500" />
+                  <ShieldCheck className="h-8 w-8 text-rose-500" />
                 </div>
               )}
 

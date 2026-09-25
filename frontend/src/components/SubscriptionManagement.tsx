@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { RefreshCw, X, Info, CheckCircle, Star, Zap, Calendar, CreditCard, ArrowUp, ArrowDown, PauseCircle, PlayCircle } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowUp,
+  Calendar,
+  CheckCircle,
+  CreditCard,
+  Info,
+  PauseCircle,
+  PlayCircle,
+  RefreshCw,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface SubscriptionManagementProps {
   onCancel?: () => void;

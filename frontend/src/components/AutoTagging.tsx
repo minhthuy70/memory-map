@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Tag, Plus, X, Check, RefreshCw, Settings, Sparkles, AlertTriangle, Hash } from 'lucide-react';
+import { AlertTriangle, Check, Hash, Plus, RefreshCw, Settings, Sparkles, Tag } from 'lucide-react';
 
 interface SuggestedTag {
   id: string;

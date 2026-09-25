@@ -1,7 +1,17 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { ImagePlus, Trash2, X, AlertCircle, Loader2, Link as LinkIcon, ChevronUp, ChevronDown } from 'lucide-react';
+import {
+  AlertCircle,
+  as,
+  ChevronDown,
+  ChevronUp,
+  ImagePlus,
+  Link,
+  LinkIcon,
+  Loader2,
+  Trash2
+} from 'lucide-react';
 
 interface ImageUploaderProps {
   images: string[];

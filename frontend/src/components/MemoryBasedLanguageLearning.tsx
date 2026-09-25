@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Languages, X, RefreshCw, Info, BookOpen, Star, Plus, Volume2, CheckCircle, Target, TrendingUp, Calendar } from 'lucide-react';
+import {
+  BookOpen,
+  Calendar,
+  CheckCircle,
+  Info,
+  Languages,
+  Plus,
+  RefreshCw,
+  Star,
+  Target,
+  TrendingUp,
+  Volume2
+} from 'lucide-react';
 
 interface MemoryBasedLanguageLearningProps {
   onCancel?: () => void;

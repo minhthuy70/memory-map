@@ -1,7 +1,42 @@
 'use client';
 
 import { useState } from 'react';
-import { Music, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Mic, RefreshCw, Check, Zap as ZapIcon, Plus, PlayCircle, StopCircle, Podcast, Share2, Trash2 as TrashIcon, FileAudio, Volume2, Zap as ZapIcon2, Languages, Clock as ClockIcon, MessageSquare, Sparkles, ExternalLink } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  ClockIcon,
+  Download,
+  ExternalLink,
+  FileAudio,
+  Filter,
+  Languages,
+  MessageSquare,
+  Mic,
+  Music,
+  Pause,
+  Play,
+  PlayCircle,
+  Plus,
+  Podcast,
+  RefreshCw,
+  Settings,
+  SettingsIcon,
+  Share2,
+  Sparkles,
+  StopCircle,
+  Trash2,
+  TrashIcon,
+  Volume2,
+  Zap,
+  ZapIcon,
+  ZapIcon2
+} from 'lucide-react';
 
 interface NarrationSegment {
   id: string;

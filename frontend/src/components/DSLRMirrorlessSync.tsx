@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Camera, X, RefreshCw, Info, Wifi, Download, Settings, CheckCircle, AlertCircle, Aperture, Image as ImageIcon, HardDrive } from 'lucide-react';
+import {
+  AlertCircle,
+  Aperture,
+  as,
+  Camera,
+  CheckCircle,
+  Download,
+  HardDrive,
+  Image,
+  ImageIcon,
+  Info,
+  RefreshCw,
+  Settings,
+  Wifi
+} from 'lucide-react';
 
 interface DSLRMirrorlessSyncProps {
   onCancel?: () => void;
@@ -135,10 +149,10 @@ export default function DSLRMirrorlessSync({ onCancel }: DSLRMirrorlessSyncProps
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              DSLR/Mirrorless Sync
+              DSLR/Mirrorless RefreshCcw
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Sync photos from DSLR/mirrorless cameras
+              RefreshCcw photos from DSLR/mirrorless cameras
             </p>
           </div>
         </div>
@@ -193,7 +207,7 @@ export default function DSLRMirrorlessSync({ onCancel }: DSLRMirrorlessSyncProps
               onChange={(e) => setIsSyncEnabled(e.target.checked)}
               className="rounded"
             />
-            <span className="text-slate-700 dark:text-slate-300">Enable Sync</span>
+            <span className="text-slate-700 dark:text-slate-300">Enable RefreshCcw</span>
           </div>
           <button
             type="button"
@@ -212,12 +226,12 @@ export default function DSLRMirrorlessSync({ onCancel }: DSLRMirrorlessSyncProps
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Sync Settings</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">RefreshCcw Settings</h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-purple-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Auto Sync</span>
+                <span className="text-xs text-slate-900 dark:text-white">Auto RefreshCcw</span>
               </div>
               <input
                 type="checkbox"
@@ -229,7 +243,7 @@ export default function DSLRMirrorlessSync({ onCancel }: DSLRMirrorlessSyncProps
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <ImageIcon className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sync Format</span>
+                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw Format</span>
               </div>
               <select
                 value={cameraSyncSettings.syncFormat}
@@ -256,7 +270,7 @@ export default function DSLRMirrorlessSync({ onCancel }: DSLRMirrorlessSyncProps
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <AlertCircle className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Delete After Sync</span>
+                <span className="text-xs text-slate-900 dark:text-white">Delete After RefreshCcw</span>
               </div>
               <input
                 type="checkbox"
@@ -322,7 +336,7 @@ export default function DSLRMirrorlessSync({ onCancel }: DSLRMirrorlessSyncProps
                     <p className="text-xs font-bold text-slate-900 dark:text-white">{device.photosCount}</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-xs text-slate-500 dark:text-slate-400">Last Sync</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Last RefreshCcw</p>
                     <p className="text-xs text-slate-500 dark:text-slate-400">{device.lastSync || 'Never'}</p>
                   </div>
                 </div>
@@ -333,7 +347,7 @@ export default function DSLRMirrorlessSync({ onCancel }: DSLRMirrorlessSyncProps
                     className="w-full px-2 py-1 rounded text-xs bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1"
                   >
                     <Download className="h-3 w-3" />
-                    Sync Photos
+                    RefreshCcw Photos
                   </button>
                 )}
               </div>
@@ -397,7 +411,7 @@ export default function DSLRMirrorlessSync({ onCancel }: DSLRMirrorlessSyncProps
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">DSLR/Mirrorless Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• Connect DSLR/mirrorless cameras via WiFi for sync</li>
-              <li>• Sync RAW, JPEG, or video files</li>
+              <li>• RefreshCcw RAW, JPEG, or video files</li>
               <li>• Preserve camera folder structure</li>
               <li>• View metadata: lens, aperture, ISO, shutter speed</li>
             </ul>

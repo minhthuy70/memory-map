@@ -1,7 +1,121 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Upload, Image as ImageIcon, CheckCheck, FolderOpen, Lock, Unlock, CheckCircle as CheckCircleIcon, ExternalLink, Filter as FilterIcon, Search, Calendar as CalendarIcon, MapPin, Clock as ClockIcon, Eye, EyeOff, Trash2 as TrashIcon, Shield, AlertCircle, Database, Globe, Cloud, Wifi, Loader2, CheckSquare, Square, AlertTriangle as AlertTriangleIcon, Copyright, Heart, MessageCircle, Share2, Hash, Camera, Grid, Copyright as CopyRightIcon, Archive, Calendar as CalendarIcon2, Image as ImageIcon2, Video, ThumbsUp, Star, Users, Smile, Gift, Cake, Sparkles, BookOpen, FileText, Smile as SmileIcon, Frown, Meh, Angry as AngryIcon, Zap as ZapIcon2, Thermometer, Droplet, Moon, Sun, Activity as ActivityIcon, Coffee, Briefcase, School, Home, Plane, Utensils, ShoppingBag, Music, Gamepad2, Dumbbell, Palette, Code, Headphones, Coffee as CoffeeIcon, Heart as HeartIcon, Star as StarIcon, Monitor, PenTool, Image as ImageIcon3, Map as MapIcon, Link, Paperclip, Tag as TagIcon, MoreHorizontal, Copy as CopyIcon, Edit2, FolderOpen as FolderOpenIcon, Calendar as CalendarIcon3, Clock as ClockIcon2, MapPin as MapPinIcon, Check as CheckIcon, X as XIcon } from 'lucide-react';
+import {
+  Activity,
+  ActivityIcon,
+  AlertCircle,
+  AlertTriangle,
+  AlertTriangleIcon,
+  Angry,
+  AngryIcon,
+  Archive,
+  as,
+  BarChart3,
+  BookOpen,
+  Briefcase,
+  Cake,
+  Calendar,
+  CalendarIcon,
+  CalendarIcon2,
+  CalendarIcon3,
+  Camera,
+  Check,
+  CheckCheck,
+  CheckCircle,
+  CheckCircleIcon,
+  CheckIcon,
+  CheckSquare,
+  Clock,
+  ClockIcon,
+  ClockIcon2,
+  Cloud,
+  Code,
+  Coffee,
+  CoffeeIcon,
+  Copy,
+  CopyIcon,
+  Copyright,
+  CopyRightIcon,
+  Database,
+  Download,
+  Droplet,
+  Dumbbell,
+  Edit2,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  FileText,
+  Filter,
+  FilterIcon,
+  FolderOpen,
+  FolderOpenIcon,
+  Frown,
+  Gamepad2,
+  Gift,
+  Globe,
+  Grid,
+  Hash,
+  Headphones,
+  Heart,
+  HeartIcon,
+  Home,
+  Image,
+  ImageIcon,
+  ImageIcon2,
+  ImageIcon3,
+  Link,
+  Loader2,
+  Lock,
+  Map,
+  MapIcon,
+  MapPin,
+  MapPinIcon,
+  Meh,
+  MessageCircle,
+  Monitor,
+  Moon,
+  MoreHorizontal,
+  Music,
+  Palette,
+  Paperclip,
+  Pause,
+  PenTool,
+  Plane,
+  Play,
+  Plus,
+  RefreshCw,
+  School,
+  Search,
+  Settings,
+  SettingsIcon,
+  Share2,
+  Shield,
+  ShoppingBag,
+  Smile,
+  SmileIcon,
+  Sparkles,
+  Square,
+  Star,
+  StarIcon,
+  Sun,
+  Tag,
+  TagIcon,
+  Thermometer,
+  ThumbsUp,
+  Trash2,
+  TrashIcon,
+  Unlock,
+  Upload,
+  Users,
+  Utensils,
+  Video,
+  Wifi,
+  XIcon,
+  Zap,
+  ZapIcon,
+  ZapIcon2
+} from 'lucide-react';
 
 interface DayOneEntry {
   id: string;
@@ -263,7 +377,7 @@ export default function ImportFromDayOne({ onCancel, onConnect, onImport, onDisc
                 <option value="all">All</option>
                 <option value="week">Last Week</option>
                 <option value="month">Last Month</option>
-                <option value="year">Last Year</option>
+                <option value="year">Last CalendarDays</option>
               </select>
             </div>
           </div>
@@ -423,7 +537,7 @@ export default function ImportFromDayOne({ onCancel, onConnect, onImport, onDisc
                   {entry.isDuplicate && (
                     <div className="flex items-center gap-1 ml-2">
                       <AlertTriangleIcon className="h-3 w-3 text-amber-500" />
-                      <span className="text-[10px] text-amber-600 dark:text-amber-400">Duplicate</span>
+                      <span className="text-[10px] text-amber-600 dark:text-amber-400">Files</span>
                     </div>
                   )}
                 </div>

@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Heart, Frown, Smile, Meh, Zap, BarChart3, Check, X, RefreshCw, Settings, TrendingUp, AlertTriangle } from 'lucide-react';
+import {
+  AlertTriangle,
+  BarChart3,
+  Check,
+  Frown,
+  Heart,
+  Meh,
+  RefreshCw,
+  Settings,
+  Smile,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface SentimentResult {
   id: string;

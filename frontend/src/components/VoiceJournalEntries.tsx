@@ -1,7 +1,43 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, BookOpen, RefreshCw, Check, Zap as ZapIcon, Plus, Mic as MicIcon, StopCircle, PlayCircle, Volume2, Trash2 as TrashIcon, ExternalLink, Calendar as CalendarIcon, Save, Edit, FileAudio, Sparkles, MessageSquare, Lock, Unlock } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  BookOpen,
+  Calendar,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  Clock,
+  Download,
+  Edit,
+  ExternalLink,
+  FileAudio,
+  Filter,
+  Lock,
+  MessageSquare,
+  Mic,
+  MicIcon,
+  Pause,
+  Play,
+  PlayCircle,
+  Plus,
+  RefreshCw,
+  Save,
+  Settings,
+  SettingsIcon,
+  Sparkles,
+  StopCircle,
+  Trash2,
+  TrashIcon,
+  Unlock,
+  Volume2,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface JournalEntry {
   id: string;

@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { MessageSquare, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Send, Hash } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  Hash,
+  Info,
+  MessageSquare,
+  Plus,
+  RefreshCw,
+  Send,
+  Settings,
+  Trash2
+} from 'lucide-react';
 
 interface SlackIntegrationProps {
   onCancel?: () => void;
@@ -308,7 +322,7 @@ export default function SlackIntegration({ onCancel }: SlackIntegrationProps) {
                 </div>
                 <div className="flex gap-2">
                   <span className="text-xs text-slate-500 dark:text-slate-400">Channels: {workspace.channelCount}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Last Sync: {workspace.lastSync || 'Never'}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Last RefreshCcw: {workspace.lastSync || 'Never'}</span>
                 </div>
               </div>
             ))}

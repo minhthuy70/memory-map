@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Globe, X, RefreshCw, Info, CheckCircle, Languages, Settings, Check } from 'lucide-react';
+import { Check, CheckCircle, Globe, Info, Languages, RefreshCw, Settings } from 'lucide-react';
 
 interface LanguageAutoDetectionProps {
   onCancel?: () => void;

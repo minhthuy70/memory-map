@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Gem, X, RefreshCw, Info, CheckCircle, Star, Zap, Image, Upload, Wallet, Share2 } from 'lucide-react';
+import {
+  CheckCircle,
+  Gem,
+  Image,
+  Info,
+  RefreshCw,
+  Share2,
+  Star,
+  Upload,
+  Wallet,
+  Zap
+} from 'lucide-react';
 
 interface MintMemoryAsNFTProps {
   onCancel?: () => void;

@@ -1,7 +1,31 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, TrendingUp, TrendingDown, Medal, Award, Crown, Star, Filter, ChevronDown, ChevronUp, RefreshCw, Search, Eye, EyeOff, ArrowUp, ArrowDown, Minus, Clock, Zap, Flame, Target, Trophy, BarChart3 } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowUp,
+  Award,
+  BarChart3,
+  Calendar,
+  ChevronDown,
+  ChevronUp,
+  Clock,
+  Crown,
+  Eye,
+  EyeOff,
+  Filter,
+  Flame,
+  Medal,
+  Minus,
+  RefreshCw,
+  Search,
+  Star,
+  Target,
+  TrendingDown,
+  TrendingUp,
+  Trophy,
+  Zap
+} from 'lucide-react';
 
 interface MonthlyLeaderboardProps {
   onCancel?: () => void;
@@ -288,9 +312,9 @@ export default function MonthlyLeaderboard({ onCancel }: MonthlyLeaderboardProps
             onChange={(e) => setSortBy(e.target.value as any)}
             className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0"
           >
-            <option value="xp">Sort by Total XP</option>
-            <option value="xpGained">Sort by XP Gained</option>
-            <option value="activities">Sort by Activities</option>
+            <option value="xp">ListOrdered by Total XP</option>
+            <option value="xpGained">ListOrdered by XP Gained</option>
+            <option value="activities">ListOrdered by Activities</option>
           </select>
           <button
             type="button"

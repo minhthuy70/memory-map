@@ -1,7 +1,38 @@
 'use client';
 
 import { useState } from 'react';
-import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Scissors, PlayCircle, RefreshCw, Check, Zap as ZapIcon, SkipBack, SkipForward, Maximize2, Crop, RotateCw, FileVideo, Save, Undo, Redo } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Crop,
+  Download,
+  FileVideo,
+  Filter,
+  Maximize2,
+  Pause,
+  Play,
+  PlayCircle,
+  Redo,
+  RefreshCw,
+  RotateCw,
+  Save,
+  Scissors,
+  Settings,
+  SettingsIcon,
+  SkipBack,
+  SkipForward,
+  Trash2,
+  Undo,
+  Video,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface TrimSegment {
   id: string;

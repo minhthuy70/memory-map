@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Layers, X, RefreshCw, Search, Filter, User, CheckCircle, Trash2, Shield, Key, Info, Download, AlertTriangle, Ban, CheckSquare, Square } from 'lucide-react';
+import {
+  AlertTriangle,
+  Ban,
+  CheckCircle,
+  CheckSquare,
+  Download,
+  Filter,
+  Info,
+  Key,
+  Layers,
+  RefreshCw,
+  Search,
+  Shield,
+  Square,
+  Trash2,
+  User
+} from 'lucide-react';
 
 interface BulkUserActionsProps {
   onCancel?: () => void;

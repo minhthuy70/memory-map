@@ -1,7 +1,64 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Upload, Image as ImageIcon, CheckCheck, FolderOpen, Lock, Unlock, CheckCircle as CheckCircleIcon, ExternalLink, Filter as FilterIcon, Search, Calendar as CalendarIcon, MapPin, Clock as ClockIcon, Eye, EyeOff, Trash2 as TrashIcon, Shield, AlertCircle, Database, Globe, Cloud, Wifi, Loader2, CheckSquare, Square, AlertTriangle as AlertTriangleIcon, Copyright, Smartphone, HardDrive, Apple, FileText, Image as ImageIcon2, Calendar as CalendarIcon2, Map as MapIcon, Tag } from 'lucide-react';
+import {
+  Activity,
+  AlertCircle,
+  AlertTriangle,
+  AlertTriangleIcon,
+  Apple,
+  as,
+  BarChart3,
+  Calendar,
+  CalendarIcon,
+  CalendarIcon2,
+  Check,
+  CheckCheck,
+  CheckCircle,
+  CheckCircleIcon,
+  CheckSquare,
+  Clock,
+  ClockIcon,
+  Cloud,
+  Copyright,
+  Database,
+  Download,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  FileText,
+  Filter,
+  FilterIcon,
+  FolderOpen,
+  Globe,
+  HardDrive,
+  Image,
+  ImageIcon,
+  ImageIcon2,
+  Loader2,
+  Lock,
+  Map,
+  MapIcon,
+  MapPin,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Search,
+  Settings,
+  SettingsIcon,
+  Shield,
+  Smartphone,
+  Square,
+  Tag,
+  Trash2,
+  TrashIcon,
+  Unlock,
+  Upload,
+  Wifi,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface ApplePhoto {
   id: string;
@@ -25,7 +82,7 @@ interface ApplePhotosImportProps {
 const DEFAULT_PHOTOS: ApplePhoto[] = [
   {
     id: 'ap-1',
-    title: 'Birthday Party',
+    title: 'PartyPopper Party',
     description: 'Family celebration',
     imageUrl: '/ap-1.heic',
     date: new Date('2024-01-10'),
@@ -395,7 +452,7 @@ export default function ImportFromApplePhotos({ onCancel, onConnect, onImport, o
                 {photo.isDuplicate && (
                   <div className="mt-1 flex items-center gap-1">
                     <AlertTriangleIcon className="h-3 w-3 text-amber-500" />
-                    <span className="text-[10px] text-amber-600 dark:text-amber-400">Duplicate</span>
+                    <span className="text-[10px] text-amber-600 dark:text-amber-400">Files</span>
                   </div>
                 )}
               </div>

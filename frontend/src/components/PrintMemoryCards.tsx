@@ -1,7 +1,59 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Printer, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, FlipHorizontal, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, CreditCard, CreditCard, Package, Truck, Clock as ClockIcon, DollarSign, AlertCircle, Copyright } from 'lucide-react';
+import {
+  Activity,
+  AlertCircle,
+  AlertTriangle,
+  AlignCenter,
+  AlignLeft,
+  AlignRight,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  ClockIcon,
+  Copyright,
+  CreditCard,
+  DollarSign,
+  Download,
+  DownloadIcon,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  FileText,
+  Filter,
+  FlipHorizontal,
+  Image,
+  ImageIcon,
+  Layers,
+  LayoutGrid,
+  Maximize2,
+  Minimize2,
+  Package,
+  Palette,
+  Pause,
+  Play,
+  Plus,
+  Printer,
+  RefreshCw,
+  RotateCw,
+  Settings,
+  SettingsIcon,
+  Share2,
+  Sparkles,
+  Trash2,
+  TrashIcon,
+  Truck,
+  Type,
+  TypeIcon,
+  Zap,
+  ZapIcon,
+  ZoomIn,
+  ZoomOut
+} from 'lucide-react';
 
 interface MemoryCard {
   id: string;
@@ -252,7 +304,7 @@ export default function PrintMemoryCards({ onCancel, onPrint, onPreview }: Print
             </div>
             <div>
               <label className="text-xs text-slate-600 dark:text-slate-400 mb-1 block">
-                Quality
+                Gauge
               </label>
               <select
                 value={config.quality}

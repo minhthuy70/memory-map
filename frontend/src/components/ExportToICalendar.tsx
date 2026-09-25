@@ -1,7 +1,36 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Download, Calendar as CalendarIcon, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Clock, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Share2, Eye, EyeOff, File, CalendarClock, Layers, Copy, Clock as ClockIcon } from 'lucide-react';
+import {
+  AlertTriangle,
+  as,
+  Calendar,
+  CalendarClock,
+  CalendarIcon,
+  Check,
+  CheckCircle,
+  ChevronDown,
+  ChevronUp,
+  Clock,
+  ClockIcon,
+  Copy,
+  Download,
+  Eye,
+  EyeOff,
+  File,
+  Filter,
+  Image,
+  ImageIcon,
+  Layers,
+  Layout,
+  Loader2,
+  MapPin,
+  Pause,
+  Play,
+  RefreshCw,
+  Settings,
+  Share2
+} from 'lucide-react';
 
 interface ExportToICalendarProps {
   onCancel?: () => void;

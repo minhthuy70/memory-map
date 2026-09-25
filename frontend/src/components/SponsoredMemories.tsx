@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { DollarSign, X, RefreshCw, Info, CheckCircle, Plus, Trash2, MapPin, Eye, TrendingUp } from 'lucide-react';
+import {
+  CheckCircle,
+  DollarSign,
+  Eye,
+  Info,
+  MapPin,
+  Plus,
+  RefreshCw,
+  Trash2,
+  TrendingUp
+} from 'lucide-react';
 
 interface SponsoredMemoriesProps {
   onCancel?: () => void;

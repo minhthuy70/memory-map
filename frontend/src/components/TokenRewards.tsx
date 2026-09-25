@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Coins, X, RefreshCw, Info, CheckCircle, Star, Zap, Gift, TrendingUp, Award } from 'lucide-react';
+import {
+  Award,
+  CheckCircle,
+  Coins,
+  Gift,
+  Info,
+  RefreshCw,
+  Star,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface TokenRewardsProps {
   onCancel?: () => void;

@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { DollarSign, X, RefreshCw, Info, CheckCircle, Plus, Trash2, TrendingUp, Users, Download } from 'lucide-react';
+import {
+  CheckCircle,
+  DollarSign,
+  Download,
+  Info,
+  Plus,
+  RefreshCw,
+  Trash2,
+  TrendingUp,
+  Users
+} from 'lucide-react';
 
 interface CreatorRevenueShareProps {
   onCancel?: () => void;

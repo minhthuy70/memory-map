@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Link2, Copy, Check, Clock, Shield, ExternalLink, Trash2 } from 'lucide-react';
+import { Check, Clock, Copy, ExternalLink, Link2, Shield, Trash2 } from 'lucide-react';
 import { memoriesApi } from '@/lib/memories-api';
 
 interface PublicMemoryLinkProps {

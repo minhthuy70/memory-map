@@ -1,7 +1,44 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Smile, RefreshCw, Check, Zap as ZapIcon, Plus, Mic as MicIcon, StopCircle, PlayCircle, Volume2, Trash2 as TrashIcon, ExternalLink, Heart, Frown, Meh, Zap as ZapIcon2, AlertCircle, Sparkles, FileAudio, Activity as ActivityIcon, Gauge } from 'lucide-react';
+import {
+  Activity,
+  ActivityIcon,
+  AlertCircle,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  FileAudio,
+  Filter,
+  Frown,
+  Gauge,
+  Heart,
+  Meh,
+  Mic,
+  MicIcon,
+  Pause,
+  Play,
+  PlayCircle,
+  Plus,
+  RefreshCw,
+  Settings,
+  SettingsIcon,
+  Smile,
+  Sparkles,
+  StopCircle,
+  Trash2,
+  TrashIcon,
+  Volume2,
+  Zap,
+  ZapIcon,
+  ZapIcon2
+} from 'lucide-react';
 
 interface EmotionDetection {
   id: string;

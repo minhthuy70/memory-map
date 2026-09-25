@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Vote, X, RefreshCw, Info, CheckCircle, Star, Zap, Users, ThumbsUp, ThumbsDown, Clock, CheckSquare } from 'lucide-react';
+import {
+  CheckCircle,
+  CheckSquare,
+  Clock,
+  Info,
+  RefreshCw,
+  Star,
+  ThumbsDown,
+  ThumbsUp,
+  Users,
+  Vote,
+  Zap
+} from 'lucide-react';
 
 interface DAOGovernanceProps {
   onCancel?: () => void;

@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, RefreshCw, Info, CheckCircle, Plus, Trash2, Play, Pause, Volume2, Settings, Zap } from 'lucide-react';
+import {
+  CheckCircle,
+  Info,
+  Mic,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Settings,
+  Trash2,
+  Volume2,
+  Zap
+} from 'lucide-react';
 
 interface VoiceControlSupportProps {
   onCancel?: () => void;

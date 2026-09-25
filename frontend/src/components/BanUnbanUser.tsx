@@ -1,7 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { Ban, X, RefreshCw, AlertTriangle, CheckCircle, Shield, Search, Filter, Calendar, User, MessageSquare, Trash2, Info } from 'lucide-react';
+import {
+  AlertTriangle,
+  Ban,
+  Calendar,
+  CheckCircle,
+  Filter,
+  Info,
+  MessageSquare,
+  RefreshCw,
+  Search,
+  Shield,
+  Trash2,
+  User
+} from 'lucide-react';
 
 interface BanUnbanUserProps {
   onCancel?: () => void;

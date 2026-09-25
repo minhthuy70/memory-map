@@ -1,7 +1,32 @@
 'use client';
 
 import { useState } from 'react';
-import { User, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Shield, Users, Camera, Image as ImageIcon, Smile as Smile, Lock, Unlock, Search, Plus, Trash2 } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Camera,
+  CheckCircle,
+  Clock,
+  Eye,
+  Filter,
+  Image,
+  ImageIcon,
+  Lock,
+  Plus,
+  Scan,
+  Search,
+  Settings,
+  Shield,
+  Smile,
+  Trash2,
+  Unlock,
+  User,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface DetectedFace {
   id: string;
@@ -270,7 +295,7 @@ export default function FaceRecognition({ onCancel, onRunRecognition, onAddPerso
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <FaceSmile className="h-3 w-3 text-slate-500" />
+            <Smile className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Avg Confidence</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -456,7 +481,7 @@ export default function FaceRecognition({ onCancel, onRunRecognition, onAddPerso
                   >
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <FaceSmile className={`h-4 w-4 ${face.isIdentified ? 'text-green-500' : 'text-amber-500'}`} />
+                        <Smile className={`h-4 w-4 ${face.isIdentified ? 'text-green-500' : 'text-amber-500'}`} />
                         <div>
                           <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                             {face.isIdentified ? face.personName : 'Unknown'}

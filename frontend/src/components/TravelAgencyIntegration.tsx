@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Plane, X, RefreshCw, Info, CheckCircle, Plus, Trash2, MapPin, Users, Star } from 'lucide-react';
+import {
+  CheckCircle,
+  Info,
+  MapPin,
+  Plane,
+  Plus,
+  RefreshCw,
+  Star,
+  Trash2,
+  Users
+} from 'lucide-react';
 
 interface TravelAgencyIntegrationProps {
   onCancel?: () => void;

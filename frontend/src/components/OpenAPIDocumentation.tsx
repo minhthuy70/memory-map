@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { FileText, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Download, Search } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  FileText,
+  Info,
+  Plus,
+  RefreshCw,
+  Search,
+  Settings,
+  Trash2
+} from 'lucide-react';
 
 interface OpenAPIDocumentationProps {
   onCancel?: () => void;

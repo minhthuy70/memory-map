@@ -1,7 +1,36 @@
 'use client';
 
 import { useState } from 'react';
-import { FolderOpen, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Image as ImageIcon, Sparkles, Zap as ZapIcon, Layers, FolderPlus, Copy, ArrowRight, Calendar as CalendarIcon, MapPin, Tag, Users, RefreshCw, Trash2, Edit2 } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowRight,
+  as,
+  BarChart3,
+  Calendar,
+  CalendarIcon,
+  CheckCircle,
+  Clock,
+  Copy,
+  Edit2,
+  Eye,
+  Filter,
+  FolderOpen,
+  FolderPlus,
+  Image,
+  ImageIcon,
+  Layers,
+  MapPin,
+  RefreshCw,
+  Scan,
+  Settings,
+  Sparkles,
+  Tag,
+  Trash2,
+  Users,
+  Zap,
+  ZapIcon
+} from 'lucide-react';
 
 interface OrganizationRule {
   id: string;
@@ -243,7 +272,7 @@ export default function PhotoOrganization({ onCancel, onRunOrganization, onCreat
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600 dark:text-slate-400">
-                Duplicate detection
+                Files detection
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
             </div>
@@ -279,7 +308,7 @@ export default function PhotoOrganization({ onCancel, onRunOrganization, onCreat
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Duplicate className="h-3 w-3 text-slate-500" />
+            <Files className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Duplicates</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -432,10 +461,10 @@ export default function PhotoOrganization({ onCancel, onRunOrganization, onCreat
         </div>
       </div>
 
-      {/* Duplicate Detection */}
+      {/* Files Detection */}
       <div className="mb-4">
         <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Duplicate Detection
+          Files Detection
         </h4>
         <div className="space-y-2">
           {duplicates.map((group) => (
@@ -445,10 +474,10 @@ export default function PhotoOrganization({ onCancel, onRunOrganization, onCreat
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <Duplicate className="h-4 w-4 text-amber-500" />
+                  <Files className="h-4 w-4 text-amber-500" />
                   <div>
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                      Duplicate Group
+                      Files Group
                     </span>
                     <div className="text-xs text-slate-500 dark:text-slate-400">
                       {group.photos.length} photos
@@ -464,7 +493,7 @@ export default function PhotoOrganization({ onCancel, onRunOrganization, onCreat
                 </span>
               </div>
 
-              {/* Duplicate Photos */}
+              {/* Files Photos */}
               <div className="space-y-2 mb-2">
                 {group.photos.map((photo) => (
                   <div

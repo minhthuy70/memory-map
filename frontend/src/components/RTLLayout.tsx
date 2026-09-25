@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AlignLeft, X, RefreshCw, Info, CheckCircle, Globe, ArrowLeftRight, Eye } from 'lucide-react';
+import { AlignLeft, ArrowLeftRight, CheckCircle, Eye, Globe, Info, RefreshCw } from 'lucide-react';
 
 interface RTLLayoutProps {
   onCancel?: () => void;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, X, RefreshCw, Info, CheckCircle, Globe, Building, Home } from 'lucide-react';
+import { Building, CheckCircle, Globe, Home, Info, MapPin, RefreshCw } from 'lucide-react';
 
 interface AddressFormatLocalizationProps {
   onCancel?: () => void;

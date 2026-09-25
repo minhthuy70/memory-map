@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Moon, X, RefreshCw, Info, CheckCircle, Calendar, Sun, Star } from 'lucide-react';
+import { Calendar, CheckCircle, Info, Moon, RefreshCw, Star, Sun } from 'lucide-react';
 
 interface LunarCalendarDisplayProps {
   onCancel?: () => void;
@@ -83,7 +83,7 @@ export default function LunarCalendarDisplay({ onCancel }: LunarCalendarDisplayP
             <p className="text-lg font-bold text-slate-900 dark:text-white">{currentDate.toLocaleDateString()}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Lunar Year</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Lunar CalendarDays</p>
             <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{currentLunar.lunarYear}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">

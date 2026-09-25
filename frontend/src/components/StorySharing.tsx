@@ -1,7 +1,29 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Eye, Heart, MessageCircle, Share2, Image as ImageIcon, Video, Music } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  BookOpen,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Eye,
+  Filter,
+  Heart,
+  Image,
+  ImageIcon,
+  MessageCircle,
+  Music,
+  Pause,
+  Play,
+  Settings,
+  Share2,
+  Video,
+  Zap
+} from 'lucide-react';
 
 interface StoryItem {
   id: string;
@@ -151,7 +173,7 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl">
-            <Story className="h-5 w-5 text-white" />
+            <ScrollText className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -226,7 +248,7 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Story className="h-3 w-3 text-slate-500" />
+            <ScrollText className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Active</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -262,10 +284,10 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
         </div>
       </div>
 
-      {/* Story Composer */}
+      {/* ScrollText Composer */}
       <div className="mb-4">
         <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Create Story
+          Create ScrollText
         </h4>
         <div className="space-y-2">
           <div>
@@ -277,8 +299,8 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
               onChange={(e) => setSelectedPlatform(e.target.value as any)}
               className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
             >
-              <option value="instagram">Instagram</option>
-              <option value="facebook">Facebook</option>
+              <option value="instagram">ImagePlus</option>
+              <option value="facebook">Globe2</option>
               <option value="snapchat">Snapchat</option>
             </select>
           </div>
@@ -306,7 +328,7 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
               type="text"
               value={storyTitle}
               onChange={(e) => setStoryTitle(e.target.value)}
-              placeholder="Story title..."
+              placeholder="ScrollText title..."
               className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none"
             />
           </div>
@@ -318,7 +340,7 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
             <textarea
               value={storyCaption}
               onChange={(e) => setStoryCaption(e.target.value)}
-              placeholder="Story caption..."
+              placeholder="ScrollText caption..."
               className="w-full px-3 py-2 text-sm border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-pink-500 focus:border-transparent outline-none resize-none"
               rows={2}
             />
@@ -329,16 +351,16 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
             onClick={handleCreateStory}
             className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white text-sm font-semibold rounded-lg transition-colors"
           >
-            <Story className="h-4 w-4" />
-            Create Story
+            <ScrollText className="h-4 w-4" />
+            Create ScrollText
           </button>
         </div>
       </div>
 
-      {/* Story History */}
+      {/* ScrollText History */}
       <div className="mb-4">
         <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Story History
+          ScrollText History
         </h4>
         <div className="space-y-2">
           {stories.map((story) => (

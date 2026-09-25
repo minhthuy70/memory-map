@@ -1,7 +1,26 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, CheckCircle, Circle, Award, RefreshCw, Star, Trophy, Target, MapPin, Camera, Sparkles, Flame, Gift, ChevronRight, Info, BarChart3, Clock, TrendingUp } from 'lucide-react';
+import {
+  Award,
+  BarChart3,
+  Calendar,
+  Camera,
+  CheckCircle,
+  ChevronRight,
+  Circle,
+  Clock,
+  Flame,
+  Gift,
+  Info,
+  MapPin,
+  RefreshCw,
+  Sparkles,
+  Star,
+  Target,
+  TrendingUp,
+  Trophy
+} from 'lucide-react';
 
 interface MonthlyMilestonesProps {
   onCancel?: () => void;

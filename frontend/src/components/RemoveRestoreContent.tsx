@@ -1,7 +1,24 @@
 'use client';
 
 import { useState } from 'react';
-import { Trash2, RefreshCw, CheckCircle, XCircle, AlertTriangle, Info, Undo2, FileText, Image, Video, MessageSquare, Search, Filter, Calendar, User, ArrowUpRight } from 'lucide-react';
+import {
+  AlertTriangle,
+  ArrowUpRight,
+  Calendar,
+  CheckCircle,
+  FileText,
+  Filter,
+  Image,
+  Info,
+  MessageSquare,
+  RefreshCw,
+  Search,
+  Trash2,
+  Undo2,
+  User,
+  Video,
+  XCircle
+} from 'lucide-react';
 
 interface RemoveRestoreContentProps {
   onCancel?: () => void;

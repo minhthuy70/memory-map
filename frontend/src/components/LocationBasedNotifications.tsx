@@ -1,7 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Navigation, Plus, Trash2, Edit, Check, X, Save, Settings, AlertTriangle, Info, Bell } from 'lucide-react';
+import {
+  AlertTriangle,
+  Bell,
+  Check,
+  Edit,
+  Info,
+  MapPin,
+  Navigation,
+  Plus,
+  Save,
+  Settings,
+  Trash2
+} from 'lucide-react';
 
 interface LocationZone {
   id: string;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MousePointer, X, RefreshCw, Info, CheckCircle, Settings, Target, Zap } from 'lucide-react';
+import { CheckCircle, Info, MousePointer, RefreshCw, Settings, Target, Zap } from 'lucide-react';
 
 interface LargeClickTargetsProps {
   onCancel?: () => void;

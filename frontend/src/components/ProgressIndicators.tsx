@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { CheckCircle, Circle, Trophy, Target, Star, Zap } from 'lucide-react';
+import { CheckCircle, Circle, Star, Target, Trophy, Zap } from 'lucide-react';
 
 interface ProgressItem {
   id: string;

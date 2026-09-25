@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { Terminal, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Download, FileText, Command } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Command,
+  Download,
+  ExternalLink,
+  FileText,
+  Info,
+  Plus,
+  RefreshCw,
+  Settings,
+  Terminal,
+  Trash2
+} from 'lucide-react';
 
 interface CLIToolProps {
   onCancel?: () => void;

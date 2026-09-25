@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Feather, X, RefreshCw, Info, CheckCircle, Star, Zap, Copy, Heart, BookOpen } from 'lucide-react';
+import {
+  BookOpen,
+  CheckCircle,
+  Copy,
+  Feather,
+  Heart,
+  Info,
+  RefreshCw,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface AIPoetryGeneratorProps {
   onCancel?: () => void;

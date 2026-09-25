@@ -1,7 +1,34 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Upload, CheckCircle, AlertTriangle, Loader2, ChevronRight, ChevronLeft, Plus, Trash2, Layers, Filter, Check, Play, Pause, SkipForward, RefreshCw, ChevronDown, ChevronUp, FileText, Database, FolderOpen, Zap, Clock, ArrowRight, ArrowLeft, Sparkles } from 'lucide-react';
+import {
+  AlertTriangle,
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  CheckCircle,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+  Clock,
+  Database,
+  FileText,
+  Filter,
+  FolderOpen,
+  Layers,
+  Loader2,
+  Pause,
+  Play,
+  Plus,
+  RefreshCw,
+  Settings,
+  SkipForward,
+  Sparkles,
+  Trash2,
+  Upload,
+  Zap
+} from 'lucide-react';
 
 interface BulkImportWizardProps {
   onCancel?: () => void;
@@ -34,12 +61,12 @@ const STEPS: ImportStep[] = [
 const AVAILABLE_SOURCES = [
   { id: 'google-photos', name: 'Google Photos', icon: FileText },
   { id: 'apple-photos', name: 'Apple Photos', icon: FileText },
-  { id: 'instagram', name: 'Instagram', icon: FileText },
-  { id: 'facebook', name: 'Facebook', icon: FileText },
+  { id: 'instagram', name: 'ImagePlus', icon: FileText },
+  { id: 'facebook', name: 'Globe2', icon: FileText },
   { id: 'daylio', name: 'Daylio', icon: FileText },
   { id: 'day-one', name: 'Day One', icon: FileText },
   { id: 'evernote', name: 'Evernote', icon: FileText },
-  { id: 'notion', name: 'Notion', icon: FileText },
+  { id: 'notion', name: 'BookMarked', icon: FileText },
   { id: 'csv', name: 'CSV Template', icon: FileText },
   { id: 'gpx', name: 'GPX Track', icon: FileText },
 ];

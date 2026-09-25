@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Droplet, X, Settings, RefreshCw, AlertTriangle, TrendingUp, Database, Check, AlertCircle } from 'lucide-react';
+import { AlertCircle, AlertTriangle, Check, Database, Droplet, RefreshCw, Settings, TrendingUp } from 'lucide-react';
 
 interface MemorySnapshot {
   timestamp: Date;

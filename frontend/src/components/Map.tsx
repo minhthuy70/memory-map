@@ -10,7 +10,20 @@ import { Memory } from '@/lib/memories-api';
 import LocationSearch from './LocationSearch';
 import MapAnnotations from './MapAnnotations';
 import MapDrawingTools from './MapDrawingTools';
-import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin, Ruler, Filter, X, Flame, PenTool, Pencil } from 'lucide-react';
+import {
+  Filter,
+  Flame,
+  Focus,
+  Layers,
+  Loader2,
+  MapPin,
+  Maximize2,
+  Minimize2,
+  Navigation,
+  Pencil,
+  PenTool,
+  Ruler
+} from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 // Fix for default marker icons in Leaflet with React

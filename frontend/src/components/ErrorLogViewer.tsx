@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { FileText, X, Download, Trash2, RefreshCw, CheckCircle, AlertTriangle, Info, Search, Filter, Calendar, Clock, Bug, Zap, Shield, AlertCircle } from 'lucide-react';
+import {
+  AlertCircle,
+  AlertTriangle,
+  Bug,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  FileText,
+  Filter,
+  Info,
+  RefreshCw,
+  Search,
+  Shield,
+  Trash2,
+  Zap
+} from 'lucide-react';
 
 interface ErrorLogViewerProps {
   onCancel?: () => void;

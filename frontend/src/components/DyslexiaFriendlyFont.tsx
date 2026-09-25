@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Type as TypeIcon, X, CheckCircle, Settings, Info, BarChart3, Smartphone, Eye, EyeOff, Minus, Plus, Zap, Focus, BookOpen } from 'lucide-react';
+import {
+  as,
+  BarChart3,
+  BookOpen,
+  CheckCircle,
+  Eye,
+  EyeOff,
+  Focus,
+  Info,
+  Minus,
+  Plus,
+  Settings,
+  Smartphone,
+  Type,
+  TypeIcon,
+  Zap
+} from 'lucide-react';
 
 interface DyslexiaFriendlyFontProps {
   onCancel?: () => void;

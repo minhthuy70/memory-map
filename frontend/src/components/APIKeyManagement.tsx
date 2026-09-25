@@ -1,7 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import { Key, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Shield, Eye, EyeOff } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  Info,
+  Key,
+  Plus,
+  RefreshCw,
+  Settings,
+  Shield,
+  Trash2
+} from 'lucide-react';
 
 interface APIKeyManagementProps {
   onCancel?: () => void;

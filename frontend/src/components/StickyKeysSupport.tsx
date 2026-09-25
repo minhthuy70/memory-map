@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { StickyNote, X, RefreshCw, Info, CheckCircle, Settings, Keyboard, Zap } from 'lucide-react';
+import { CheckCircle, Info, Keyboard, RefreshCw, Settings, StickyNote, Zap } from 'lucide-react';
 
 interface StickyKeysSupportProps {
   onCancel?: () => void;

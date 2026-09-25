@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { categoriesApi, Category, CreateCategoryData, UpdateCategoryData } from '@/lib/categories-api';
-import { Folder, Plus, Edit2, Trash2, X, Save, Check } from 'lucide-react';
+import { Check, Edit2, Folder, Plus, Save, Trash2 } from 'lucide-react';
 
 interface CategoryManagerProps {
   categories: Category[];

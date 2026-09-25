@@ -1,7 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { Smartphone, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, Share2 } from 'lucide-react';
+import {
+  CheckCircle,
+  Clock,
+  Download,
+  Info,
+  Play,
+  RefreshCw,
+  Share2,
+  Smartphone,
+  Star,
+  Zap
+} from 'lucide-react';
 
 interface MemoryReelsProps {
   onCancel?: () => void;
@@ -102,10 +113,10 @@ export default function MemoryReels({ onCancel }: MemoryReelsProps) {
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Memory Reels (Instagram-style)
+              Memory Reels (ImagePlus-style)
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Short Instagram-style memory reels
+              Short ImagePlus-style memory reels
             </p>
           </div>
         </div>
@@ -206,7 +217,7 @@ export default function MemoryReels({ onCancel }: MemoryReelsProps) {
               >
                 <option value="9:16">9:16 (Portrait)</option>
                 <option value="1:1">1:1 (Square)</option>
-                <option value="4:5">4:5 (Instagram)</option>
+                <option value="4:5">4:5 (ImagePlus)</option>
               </select>
             </div>
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
@@ -318,7 +329,7 @@ export default function MemoryReels({ onCancel }: MemoryReelsProps) {
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Memory Reels Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
-              <li>• Instagram-style short memory reels</li>
+              <li>• ImagePlus-style short memory reels</li>
               <li>• Aspect ratios: 9:16, 1:1, 4:5</li>
               <li>• Styles: trending, aesthetic, minimal, vibrant</li>
               <li>• Auto filters and music options</li>

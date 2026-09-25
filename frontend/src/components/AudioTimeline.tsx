@@ -1,7 +1,42 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Timeline, RefreshCw, Check, Zap as ZapIcon, Plus, PlayCircle, PauseCircle, SkipBack, SkipForward, Volume2, Trash2 as TrashIcon, ExternalLink, Scissors, Layers, FileAudio, ZoomIn, ZoomOut, MoveHorizontal } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  FileAudio,
+  Filter,
+  Layers,
+  Mic,
+  MoveHorizontal,
+  Pause,
+  PauseCircle,
+  Play,
+  PlayCircle,
+  Plus,
+  RefreshCw,
+  Scissors,
+  Settings,
+  SettingsIcon,
+  SkipBack,
+  SkipForward,
+  Timeline,
+  Trash2,
+  TrashIcon,
+  Volume2,
+  Zap,
+  ZapIcon,
+  ZoomIn,
+  ZoomOut
+} from 'lucide-react';
 
 interface AudioSegment {
   id: string;
@@ -303,7 +338,7 @@ export default function AudioTimelineComponent({ onCancel, onPlay, onPause, onSe
               </span>
             </div>
 
-            {/* Waveform */}
+            {/* BarChart2 */}
             {showWaveform && (
               <div className="mb-3 h-16 bg-slate-200 dark:bg-slate-600 rounded-lg overflow-hidden relative">
                 <div className="absolute inset-0 flex items-center justify-around px-1">

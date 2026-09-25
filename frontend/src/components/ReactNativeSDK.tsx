@@ -1,7 +1,21 @@
 'use client';
 
 import { useState } from 'react';
-import { Smartphone, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Download, FileText } from 'lucide-react';
+import {
+  AlertCircle,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  FileText,
+  Info,
+  Plus,
+  RefreshCw,
+  Settings,
+  Smartphone,
+  Trash2
+} from 'lucide-react';
 
 interface ReactNativeSDKProps {
   onCancel?: () => void;

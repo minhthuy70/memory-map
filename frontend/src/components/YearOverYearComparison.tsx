@@ -1,7 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, Settings, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, Activity, TrendingUp, TrendingDown, BarChart3, Filter, Zap } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  ArrowDown,
+  ArrowUp,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Filter,
+  Settings,
+  TrendingDown,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
 
 interface YearData {
   year: number;
@@ -190,12 +203,12 @@ export default function YearOverYearComparison({ onCancel, onCompareYears }: Yea
         </div>
       )}
 
-      {/* Year Selection */}
+      {/* CalendarDays Selection */}
       <div className="mb-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-              Year 1
+              CalendarDays 1
             </label>
             <select
               value={selectedYear1}
@@ -209,7 +222,7 @@ export default function YearOverYearComparison({ onCancel, onCompareYears }: Yea
           </div>
           <div>
             <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-              Year 2
+              CalendarDays 2
             </label>
             <select
               value={selectedYear2}
@@ -272,10 +285,10 @@ export default function YearOverYearComparison({ onCancel, onCompareYears }: Yea
         </div>
       </div>
 
-      {/* Year Details */}
+      {/* CalendarDays Details */}
       <div className="mb-4">
         <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Year Details
+          CalendarDays Details
         </h4>
         <div className="grid grid-cols-2 gap-4">
           {year1Data && (

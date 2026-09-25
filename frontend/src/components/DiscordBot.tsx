@@ -1,7 +1,23 @@
 'use client';
 
 import { useState } from 'react';
-import { Gamepad2, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Send, Hash as HashIcon } from 'lucide-react';
+import {
+  AlertCircle,
+  as,
+  Calendar,
+  CheckCircle,
+  Clock,
+  ExternalLink,
+  Gamepad2,
+  Hash,
+  HashIcon,
+  Info,
+  Plus,
+  RefreshCw,
+  Send,
+  Settings,
+  Trash2
+} from 'lucide-react';
 
 interface DiscordBotProps {
   onCancel?: () => void;
@@ -345,7 +361,7 @@ export default function DiscordBot({ onCancel }: DiscordBotProps) {
                 <div className="flex gap-2">
                   <span className="text-xs text-slate-500 dark:text-slate-400">Channels: {server.channelCount}</span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Members: {server.memberCount}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Last Sync: {server.lastSync || 'Never'}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Last RefreshCcw: {server.lastSync || 'Never'}</span>
                 </div>
               </div>
             ))}

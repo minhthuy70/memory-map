@@ -1,7 +1,28 @@
 'use client';
 
 import { useState } from 'react';
-import { MessageSquare, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, Plus, Heart, Trash2, Edit2, Reply, MoreHorizontal, ThumbsUp, Ban, Shield } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  Ban,
+  BarChart3,
+  Calendar,
+  CheckCircle,
+  Clock,
+  Edit2,
+  Filter,
+  Heart,
+  MessageSquare,
+  MoreHorizontal,
+  Plus,
+  Reply,
+  Settings,
+  Shield,
+  ThumbsUp,
+  Trash2,
+  Users,
+  Zap
+} from 'lucide-react';
 
 interface Comment {
   id: string;

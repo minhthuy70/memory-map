@@ -1,7 +1,20 @@
 'use client';
 
 import { useState } from 'react';
-import { Watch, X, RefreshCw, Info, Settings, Smartphone, Battery, Wifi, Bell, CheckCircle, AlertCircle, Heart, Activity, Smartphone } from 'lucide-react';
+import {
+  Activity,
+  AlertCircle,
+  Battery,
+  Bell,
+  CheckCircle,
+  Heart,
+  Info,
+  RefreshCw,
+  Settings,
+  Smartphone,
+  Watch,
+  Wifi
+} from 'lucide-react';
 
 interface WearOSSupportProps {
   onCancel?: () => void;
@@ -106,7 +119,7 @@ export default function WearOSSupport({ onCancel }: WearOSSupportProps) {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl">
-            <Android className="h-5 w-5 text-white" />
+            <TabletSmartphone className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -192,7 +205,7 @@ export default function WearOSSupport({ onCancel }: WearOSSupportProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-green-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Auto Sync</span>
+                <span className="text-xs text-slate-900 dark:text-white">Auto RefreshCcw</span>
               </div>
               <input
                 type="checkbox"
@@ -228,7 +241,7 @@ export default function WearOSSupport({ onCancel }: WearOSSupportProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Heart className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Health Data Sync</span>
+                <span className="text-xs text-slate-900 dark:text-white">Health Data RefreshCcw</span>
               </div>
               <input
                 type="checkbox"
@@ -240,7 +253,7 @@ export default function WearOSSupport({ onCancel }: WearOSSupportProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Wifi className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Sync Interval (min)</span>
+                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw Interval (min)</span>
               </div>
               <input
                 type="number"
@@ -283,7 +296,7 @@ export default function WearOSSupport({ onCancel }: WearOSSupportProps) {
                 <div className="flex gap-2 mb-2">
                   <span className="text-xs text-slate-500 dark:text-slate-400">Battery: {device.batteryLevel}%</span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Paired with: {device.pairedWith || 'None'}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Last Sync: {device.lastSync || 'Never'}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Last RefreshCcw: {device.lastSync || 'Never'}</span>
                 </div>
                 {device.isConnected && (
                   <button
@@ -292,7 +305,7 @@ export default function WearOSSupport({ onCancel }: WearOSSupportProps) {
                     className="w-full px-2 py-1 rounded text-xs bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1"
                   >
                     <RefreshCw className="h-3 w-3" />
-                    Sync Now
+                    RefreshCcw Now
                   </button>
                 )}
               </div>
@@ -365,10 +378,10 @@ export default function WearOSSupport({ onCancel }: WearOSSupportProps) {
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Wear OS Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
-              <li>• Pair Wear OS watch with Android phone for memory access</li>
+              <li>• Pair Wear OS watch with TabletSmartphone phone for memory access</li>
               <li>• Install Memory Map companion app on watch</li>
               <li>• Quick capture memories directly from wrist</li>
-              <li>• Sync health data for memory context</li>
+              <li>• RefreshCcw health data for memory context</li>
             </ul>
           </div>
         )}

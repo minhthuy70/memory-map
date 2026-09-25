@@ -1,7 +1,48 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Video, RefreshCw, Check, Zap as ZapIcon, Plus, Video as VideoIcon, Upload, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, MoveHorizontal, RotateCw, ZoomIn, ZoomOut, Layers, Grid, Maximize2, Volume2, FileVideo, PlayCircle, PauseCircle, SkipBack, SkipForward, Settings as SettingsIcon2 } from 'lucide-react';
+import {
+  Activity,
+  AlertTriangle,
+  as,
+  BarChart3,
+  Calendar,
+  Check,
+  CheckCircle,
+  Clock,
+  Download,
+  ExternalLink,
+  Eye,
+  EyeOff,
+  FileVideo,
+  Filter,
+  Grid,
+  Layers,
+  Maximize2,
+  MoveHorizontal,
+  Pause,
+  PauseCircle,
+  Play,
+  PlayCircle,
+  Plus,
+  RefreshCw,
+  RotateCw,
+  Settings,
+  SettingsIcon,
+  SettingsIcon2,
+  SkipBack,
+  SkipForward,
+  Trash2,
+  TrashIcon,
+  Upload,
+  Video,
+  VideoIcon,
+  Volume2,
+  Zap,
+  ZapIcon,
+  ZoomIn,
+  ZoomOut
+} from 'lucide-react';
 
 interface PanoramaVideo {
   id: string;
