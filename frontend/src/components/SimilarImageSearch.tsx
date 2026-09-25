@@ -84,7 +84,7 @@ export default function SimilarImageSearch({ onCancel, onSearch }: SimilarImageS
   const [isSearching, setIsSearching] = useState(false);
 
   const totalSimilarImages = results.reduce((sum, r) => sum + r.similarImages.length, 0);
-  const avgSimilarity = results.reduce((sum, r) => sum + r.similarImages.reduce((s, i) => s + i.similarity, 0), 0), 0) / totalSimilarImages;
+  const avgSimilarity = totalSimilarImages > 0 ? results.reduce((sum, r) => sum + r.similarImages.reduce((s, i) => s + i.similarity, 0), 0) / totalSimilarImages : 0;
   const avgSearchTime = results.reduce((sum, r) => sum + r.searchTime, 0) / results.length;
 
   const getMatchTypeColor = (matchType: string) => {

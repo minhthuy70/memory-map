@@ -164,7 +164,7 @@ export default function ProPlan({ onCancel }: ProPlanProps) {
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Pro Plan Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• Pro plan includes advanced AI features</li>
-li>• 100GB storage for power users</li>
+              <li>• 100GB storage for power users</li>
               <li>• Video support for rich memories</li>
               <li>• Priority support for quick assistance</li>
             </ul>

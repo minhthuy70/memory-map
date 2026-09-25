@@ -84,7 +84,7 @@ export default function UserGrowthChart({ onCancel }: UserGrowthChartProps) {
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
             <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">New Users</p>
-p className="text-lg font-bold text-blue-600 dark:text-blue-400">{totalNewUsers.toLocaleString()}</p>
+            <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{totalNewUsers.toLocaleString()}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
             <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Active Users</p>

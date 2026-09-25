@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Image as ImageIcon, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, MapPin, Home, Plane, TreePine, Beach, Mountain, Building, Sparkles, Zap as ZapIcon } from 'lucide-react';
+import { Image as ImageIcon, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Zap as ZapIcon, Calendar, Scan, Eye, MapPin, Home, Plane, TreePine, Mountain, Building, Sparkles, Palmtree } from 'lucide-react';
 
 interface SceneCategory {
   id: string;
@@ -61,7 +61,7 @@ const DEFAULT_CATEGORIES: SceneCategory[] = [
   {
     id: 'beach',
     name: 'Beach',
-    icon: Beach,
+    icon: Palmtree,
     description: 'Beach and water scenes',
   },
   {
@@ -115,7 +115,7 @@ export default function SceneClassification({ onCancel, onRunClassification }: S
   const [isProcessing, setIsProcessing] = useState(false);
 
   const totalScenes = results.reduce((sum, r) => sum + r.scenes.length, 0);
-  const avgConfidence = results.reduce((sum, r) => sum + r.scenes.reduce((s, o) => s + o.confidence, 0), 0), 0) / totalScenes;
+  const avgConfidence = totalScenes > 0 ? results.reduce((sum, r) => sum + r.scenes.reduce((s, o) => s + o.confidence, 0), 0) / totalScenes : 0;
   const avgProcessingTime = results.reduce((sum, r) => sum + r.processingTime, 0) / results.length;
 
   const getCategoryIcon = (category: string) => {

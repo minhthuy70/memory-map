@@ -105,7 +105,7 @@ export default function ObjectDetection({ onCancel, onRunDetection }: ObjectDete
   const [isProcessing, setIsProcessing] = useState(false);
 
   const totalObjects = results.reduce((sum, r) => sum + r.objects.length, 0);
-  const avgConfidence = results.reduce((sum, r) => sum + r.objects.reduce((s, o) => s + o.confidence, 0), 0), 0) / totalObjects;
+  const avgConfidence = totalObjects > 0 ? results.reduce((sum, r) => sum + r.objects.reduce((s, o) => s + o.confidence, 0), 0) / totalObjects : 0;
   const avgProcessingTime = results.reduce((sum, r) => sum + r.processingTime, 0) / results.length;
 
   const getCategoryColor = (category: string) => {

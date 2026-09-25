@@ -30,10 +30,10 @@ export default function RevenueDashboard({ onCancel }: RevenueDashboardProps) {
     { period: '2026-09-08', total: 6200, subscriptions: 4600, oneTime: 1100, marketplace: 500 },
     { period: '2026-09-09', total: 5900, subscriptions: 4300, oneTime: 1100, marketplace: 500 },
     { period: '2026-09-10', total: 6100, subscriptions: 4500, oneTime: 1100, marketplace: 500 },
-    { period: '2026-09-11', total: 6300, subscriptions: 4700, one-time: 1100, marketplace: 500 },
-    { period: '2026-09-12', total: 6500, subscriptions: 4900, one-time: 1100, marketplace: 500 },
-    { period: '2026-09-13', total: 6400, subscriptions: 4800, one-time: 1100, marketplace: 500 },
-    { period: '2026-09-14', total: 6600, subscriptions: 5000, one-time: 1100, marketplace: 500 },
+    { period: '2026-09-11', total: 6300, subscriptions: 4700, oneTime: 1100, marketplace: 500 },
+    { period: '2026-09-12', total: 6500, subscriptions: 4900, oneTime: 1100, marketplace: 500 },
+    { period: '2026-09-13', total: 6400, subscriptions: 4800, oneTime: 1100, marketplace: 500 },
+    { period: '2026-09-14', total: 6600, subscriptions: 5000, oneTime: 1100, marketplace: 500 },
   ]);
 
   const totalRevenue = revenueData.reduce((sum, d) => sum + d.total, 0);

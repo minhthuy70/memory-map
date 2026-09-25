@@ -140,7 +140,7 @@ export default function SeasonalEvents({ onCancel }: SeasonalEventsProps) {
       tasks: [
         { id: '1', name: 'Create 5 romantic memories', description: 'Share special moments', completed: false, reward: '100 coins' },
         { id: '2', name: 'Couple photos', description: 'Upload 5 couple photos', completed: false, reward: 'Love badge' },
-        { id: '3', name 'Share with partner', description: 'Share memories with your partner', completed: false, reward: 'Romantic sticker pack' },
+        { id: '3', name: 'Share with partner', description: 'Share memories with your partner', completed: false, reward: 'Romantic sticker pack' },
       ],
       progress: 0,
       maxProgress: 3,

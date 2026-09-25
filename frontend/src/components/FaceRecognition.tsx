@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { User, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Shield, Users, Camera, Image as ImageIcon, FaceSmile, Lock, Unlock, Search, Plus, Trash2 } from 'lucide-react';
+import { User, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Shield, Users, Camera, Image as ImageIcon, Smile as FaceSmile, Lock, Unlock, Search, Plus, Trash2 } from 'lucide-react';
 
 interface DetectedFace {
   id: string;
@@ -124,7 +124,7 @@ export default function FaceRecognition({ onCancel, onRunRecognition, onAddPerso
   const totalFaces = results.reduce((sum, r) => sum + r.faces.length, 0);
   const identifiedFaces = results.reduce((sum, r) => sum + r.faces.filter(f => f.isIdentified).length, 0);
   const unidentifiedFaces = totalFaces - identifiedFaces;
-  const avgConfidence = results.reduce((sum, r) => sum + r.faces.reduce((s, f) => s + f.confidence, 0), 0), 0) / totalFaces;
+  const avgConfidence = totalFaces > 0 ? results.reduce((sum, r) => sum + r.faces.reduce((s, f) => s + f.confidence, 0), 0) / totalFaces : 0;
 
   const handleRunRecognition = async (imageId: string) => {
     setIsProcessing(true);
