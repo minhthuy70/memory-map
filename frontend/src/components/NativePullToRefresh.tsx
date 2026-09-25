@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  ArrowDown,
-  Beaker,
-  CheckCircle,
-  Clock,
-  Cpu,
-  RefreshCw,
-  Settings,
-  Smartphone,
-  Zap
-} from 'lucide-react';
+import { RefreshCw, X, Settings, CheckCircle, AlertTriangle, Smartphone, ArrowDown, Activity, Clock, Zap, Beaker, Cpu } from 'lucide-react';
 
 interface RefreshEvent {
   id: string;

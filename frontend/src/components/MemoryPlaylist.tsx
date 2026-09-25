@@ -1,40 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  CalendarIcon,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  Filter,
-  Heart,
-  Layers,
-  ListMusic,
-  Music,
-  Pause,
-  Play,
-  PlayCircle,
-  Plus,
-  RefreshCw,
-  Repeat,
-  Settings,
-  SettingsIcon,
-  Share2,
-  Shuffle,
-  SkipBack,
-  SkipForward,
-  Trash2,
-  TrashIcon,
-  Users,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Music, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, ListMusic, RefreshCw, Check, Zap as ZapIcon, Plus, PlayCircle, SkipBack, SkipForward, Repeat, Shuffle, Heart, Share2, Trash2 as TrashIcon, Users, Calendar as CalendarIcon, Layers } from 'lucide-react';
 
 interface PlaylistSong {
   id: string;
@@ -257,7 +224,7 @@ export default function MemoryPlaylist({ onCancel, onCreate, onPlay, onPause, on
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600 dark:text-slate-400">
-                RefreshCcw with Headphones
+                Sync with Spotify
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Enabled</span>
             </div>
@@ -512,7 +479,7 @@ export default function MemoryPlaylist({ onCancel, onCreate, onPlay, onPause, on
 
       <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 rounded-lg">
         <p className="text-[10px] text-amber-700 dark:text-amber-400">
-          <strong>Lưu ý:</strong> Playlist nhạc theo giai đoạn cuộc đời với playlist creation, period-based organization (Summer/Spring/etc.), song management (add/remove/reorder), playback controls (play/pause/shuffle/repeat), favorite songs, playlist sharing, play count tracking, auto-generate from memories, Headphones sync, và cross-platform sync.
+          <strong>Lưu ý:</strong> Playlist nhạc theo giai đoạn cuộc đời với playlist creation, period-based organization (Summer/Spring/etc.), song management (add/remove/reorder), playback controls (play/pause/shuffle/repeat), favorite songs, playlist sharing, play count tracking, auto-generate from memories, Spotify sync, và cross-platform sync.
         </p>
       </div>
     </div>

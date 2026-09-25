@@ -1,38 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  ExternalLink,
-  Filter,
-  Heart,
-  ListMusic,
-  Music,
-  Pause,
-  Play,
-  PlayCircle,
-  Plus,
-  RefreshCw,
-  Repeat,
-  Search,
-  Settings,
-  SettingsIcon,
-  Share2,
-  Shuffle,
-  SkipBack,
-  SkipForward,
-  Trash2,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Music, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Search, RefreshCw, Check, Zap as ZapIcon, Plus, PlayCircle, ExternalLink, Heart, Share2, ListMusic, Music, SkipBack, SkipForward, Repeat, Shuffle } from 'lucide-react';
 
 interface SpotifySong {
   id: string;
@@ -151,11 +120,11 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl">
-            <Headphones className="h-5 w-5 text-white" />
+            <Spotify className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Gắn bài hát Headphones vào kỷ niệm
+              Gắn bài hát Spotify vào kỷ niệm
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               {totalTags} tagged songs
@@ -185,7 +154,7 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
       {showSettings && (
         <div className="mb-4 p-4 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-lg">
           <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-            Cài đặt Headphones integration
+            Cài đặt Spotify integration
           </h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between">
@@ -208,7 +177,7 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-slate-600 dark:text-slate-400">
-                Headphones connected
+                Spotify connected
               </span>
               <span className="text-xs text-green-600 dark:text-green-400 font-medium">Connected</span>
             </div>
@@ -226,7 +195,7 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Headphones className="h-3 w-3 text-slate-500" />
+            <Spotify className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Tagged</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -270,7 +239,7 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
-            placeholder="Tìm kiếm bài hát trên Headphones..."
+            placeholder="Tìm kiếm bài hát trên Spotify..."
             className="w-full px-4 py-3 pl-12 text-sm border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
           />
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -282,7 +251,7 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
           className="w-full mt-2 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 disabled:from-slate-400 disabled:to-slate-500 text-white text-sm font-semibold rounded-lg transition-colors disabled:cursor-not-allowed"
         >
           <RefreshCw className={`h-4 w-4 ${isSearching ? 'animate-spin' : ''}`} />
-          {isSearching ? 'Searching...' : 'Search Headphones'}
+          {isSearching ? 'Searching...' : 'Search Spotify'}
         </button>
       </div>
 
@@ -449,7 +418,7 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
 
       <div className="mt-4 p-3 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 rounded-lg">
         <p className="text-[10px] text-green-700 dark:text-green-400">
-          <strong>Lưu ý:</strong> Gắn bài hát Headphones vào kỷ niệm với Headphones search integration, song tagging/untaging, favorite toggle, preview playback, external link to Headphones, tag management, auto-tag from listening history, popularity tracking, và Headphones connected status.
+          <strong>Lưu ý:</strong> Gắn bài hát Spotify vào kỷ niệm với Spotify search integration, song tagging/untaging, favorite toggle, preview playback, external link to Spotify, tag management, auto-tag from listening history, popularity tracking, và Spotify connected status.
         </p>
       </div>
     </div>

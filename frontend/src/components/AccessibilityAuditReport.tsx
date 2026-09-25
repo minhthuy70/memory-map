@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Bug,
-  Calendar,
-  CheckCircle,
-  Download,
-  FileText,
-  Filter,
-  Info,
-  RefreshCw,
-  Search,
-  Shield,
-  User
-} from 'lucide-react';
+import { FileText, X, RefreshCw, Info, CheckCircle, AlertTriangle, Download, Search, Filter, Calendar, User, Bug, Shield } from 'lucide-react';
 
 interface AccessibilityAuditReportProps {
   onCancel?: () => void;

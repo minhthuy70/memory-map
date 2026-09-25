@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  CheckCircle,
-  Home,
-  Info,
-  MessageSquare,
-  Mic,
-  Play,
-  RefreshCw,
-  Settings,
-  Volume2
-} from 'lucide-react';
+import { Mic, X, RefreshCw, Info, Settings, Play, Volume2, Home, CheckCircle, AlertCircle, MessageSquare } from 'lucide-react';
 
 interface GoogleHomeIntegrationProps {
   onCancel?: () => void;

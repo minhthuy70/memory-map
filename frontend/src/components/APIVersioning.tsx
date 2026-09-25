@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  ExternalLink,
-  Globe,
-  Info,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2,
-  Zap
-} from 'lucide-react';
+import { Globe, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Zap } from 'lucide-react';
 
 interface APIVersioningProps {
   onCancel?: () => void;

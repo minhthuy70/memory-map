@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, Clock, Globe, Info, MapPin, RefreshCw } from 'lucide-react';
+import { Clock, X, RefreshCw, Info, CheckCircle, Globe, MapPin } from 'lucide-react';
 
 interface TimezoneSupportProps {
   onCancel?: () => void;

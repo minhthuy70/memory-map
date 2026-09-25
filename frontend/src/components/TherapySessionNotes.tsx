@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Calendar,
-  CheckCircle,
-  Clock,
-  Edit,
-  FileText,
-  Info,
-  Lock,
-  RefreshCw,
-  Shield,
-  Star,
-  Zap
-} from 'lucide-react';
+import { FileText, X, RefreshCw, Info, CheckCircle, Star, Zap, Lock, Calendar, Shield, Clock, Edit } from 'lucide-react';
 
 interface TherapySessionNotesProps {
   onCancel?: () => void;

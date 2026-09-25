@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Download,
-  ExternalLink,
-  FileText,
-  Info,
-  Layers,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2
-} from 'lucide-react';
+import { Layers, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Download, FileText } from 'lucide-react';
 
 interface FlutterPluginProps {
   onCancel?: () => void;
@@ -288,7 +274,7 @@ export default function FlutterPlugin({ onCancel }: FlutterPluginProps) {
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Flutter Plugin Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• Install via flutter pub add</li>
-              <li>• Cross-platform support (iOS, TabletSmartphone, Web)</li>
+              <li>• Cross-platform support (iOS, Android, Web)</li>
               <li>• Platform channels for native communication</li>
               <li>• Local storage with Hive/SharedPreferences</li>
             </ul>

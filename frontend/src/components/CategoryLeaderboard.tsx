@@ -1,35 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowDown,
-  ArrowUp,
-  Award,
-  BarChart3,
-  Camera,
-  ChevronDown,
-  ChevronUp,
-  Crown,
-  Eye,
-  EyeOff,
-  Filter,
-  Flame,
-  Hash,
-  Heart,
-  MapPin,
-  Medal,
-  Minus,
-  RefreshCw,
-  Search,
-  Sparkles,
-  Star,
-  Target,
-  TrendingDown,
-  TrendingUp,
-  Trophy,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Trophy, X, TrendingUp, TrendingDown, Medal, Award, Crown, Star, Filter, ChevronDown, ChevronUp, RefreshCw, Search, Eye, EyeOff, ArrowUp, ArrowDown, Minus, Camera, MapPin, Heart, Users, Zap, Target, Flame, BarChart3, Hash, Sparkles } from 'lucide-react';
 
 interface CategoryLeaderboardProps {
   onCancel?: () => void;
@@ -357,8 +329,8 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
             onChange={(e) => setSortBy(e.target.value as any)}
             className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0"
           >
-            <option value="score">ListOrdered by Score</option>
-            <option value="change">ListOrdered by Change</option>
+            <option value="score">Sort by Score</option>
+            <option value="change">Sort by Change</option>
           </select>
         </div>
 

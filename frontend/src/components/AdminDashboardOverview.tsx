@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  BarChart3,
-  Calendar,
-  Eye,
-  FileText,
-  LayoutDashboard,
-  RefreshCw,
-  Shield,
-  TrendingUp,
-  Users,
-  Zap
-} from 'lucide-react';
+import { LayoutDashboard, X, RefreshCw, Users, FileText, AlertTriangle, TrendingUp, Activity, Calendar, BarChart3, Zap, Shield, Eye } from 'lucide-react';
 
 interface AdminDashboardOverviewProps {
   onCancel?: () => void;
@@ -109,7 +96,7 @@ export default function AdminDashboardOverview({ onCancel }: AdminDashboardOverv
             <option value="day">Today</option>
             <option value="week">This Week</option>
             <option value="month">This Month</option>
-            <option value="year">This CalendarDays</option>
+            <option value="year">This Year</option>
           </select>
           <button
             type="button"

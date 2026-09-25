@@ -1,27 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Filter,
-  Key,
-  Lock,
-  Settings,
-  Shield,
-  Unlock,
-  UserMinus,
-  UserPlus,
-  Users,
-  XIcon,
-  Zap
-} from 'lucide-react';
+import { Shield, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, Lock, Unlock, Key, UserPlus, UserMinus, Check, X as XIcon } from 'lucide-react';
 
 interface Role {
   id: string;

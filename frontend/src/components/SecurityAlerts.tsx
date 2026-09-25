@@ -3,18 +3,19 @@
 import { useState } from 'react';
 import {
   AlertTriangle,
-  Ban,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
+  X,
+  Settings,
+  Search,
   Filter,
-  Flame,
+  CheckCircle2,
+  ShieldAlert,
+  Clock,
+  User,
   Globe,
   RefreshCw,
-  Search,
-  Settings,
-  ShieldAlert,
-  User
+  Ban,
+  ChevronRight,
+  Flame
 } from 'lucide-react';
 
 export interface SecurityAlertItem {

@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Bot,
-  CheckCircle,
-  Info,
-  MessageSquare,
-  RefreshCw,
-  Search,
-  Send,
-  Star,
-  User,
-  Zap
-} from 'lucide-react';
+import { MessageSquare, X, RefreshCw, Info, CheckCircle, Star, Zap, Send, User, Bot, Search } from 'lucide-react';
 
 interface AIConversationAboutMemoriesProps {
   onCancel?: () => void;

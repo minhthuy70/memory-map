@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Copy,
-  Info,
-  Mail,
-  RefreshCw,
-  Send,
-  Star,
-  User,
-  Zap
-} from 'lucide-react';
+import { Mail, X, RefreshCw, Info, CheckCircle, Star, Zap, Copy, Send, User } from 'lucide-react';
 
 interface AILetterWriterProps {
   onCancel?: () => void;

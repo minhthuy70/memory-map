@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { AlertTriangle, Bell, CheckCircle, Clock, Info, Settings, Shield, XCircle } from 'lucide-react';
+import { AlertTriangle, Info, CheckCircle, XCircle, Shield, Bell, X, Settings, Clock } from 'lucide-react';
 
 interface SystemNotification {
   id: string;

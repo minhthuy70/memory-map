@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Download,
-  Heart,
-  Info,
-  Layout,
-  Plus,
-  RefreshCw,
-  ShoppingCart,
-  Star
-} from 'lucide-react';
+import { Layout, X, RefreshCw, Info, CheckCircle, Plus, ShoppingCart, Star, Download, Heart } from 'lucide-react';
 
 interface MemoryCardTemplatesStoreProps {
   onCancel?: () => void;
@@ -42,7 +32,7 @@ export default function MemoryCardTemplatesStore({ onCancel }: MemoryCardTemplat
     { id: '2', name: 'Modern Collage', creator: 'DesignPro', category: 'Collage', price: 1.99, rating: 4.7, downloads: 42300, reviews: 2180, isPremium: true, isInstalled: false, isFavorite: false, preview: 'modern', isCustom: false },
     { id: '3', name: 'Vintage Frame', creator: 'RetroStyle', category: 'Vintage', price: 0, rating: 4.6, downloads: 38900, reviews: 1890, isPremium: false, isInstalled: false, isFavorite: true, preview: 'vintage', isCustom: false },
     { id: '4', name: 'Neon Glow', creator: 'NeonVibes', category: 'Modern', price: 2.99, rating: 4.5, downloads: 28900, reviews: 1230, isPremium: true, isInstalled: true, isFavorite: false, preview: 'neon', isCustom: false },
-    { id: '5', name: 'Travel ScrollText', creator: 'JourneyMaker', category: 'Travel', price: 1.49, rating: 4.7, downloads: 35600, reviews: 1780, isPremium: true, isInstalled: false, isFavorite: false, preview: 'travel', isCustom: false },
+    { id: '5', name: 'Travel Story', creator: 'JourneyMaker', category: 'Travel', price: 1.49, rating: 4.7, downloads: 35600, reviews: 1780, isPremium: true, isInstalled: false, isFavorite: false, preview: 'travel', isCustom: false },
   ]);
 
   const filteredTemplates = selectedCategory === 'all' 

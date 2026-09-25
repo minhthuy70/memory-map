@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Coffee,
-  Moon,
-  Settings,
-  Sun,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Clock, X, Settings, CheckCircle, AlertTriangle, Calendar, Sun, Moon, Activity, BarChart3, Zap, TrendingUp, Coffee, Moon } from 'lucide-react';
 
 interface TimeSlot {
   hour: number;
@@ -78,14 +65,14 @@ export default function TimeDistribution({ onCancel, onAnalyzeDistribution }: Ti
     if (hour >= 6 && hour < 12) return <Sun className="h-4 w-4" />;
     if (hour >= 12 && hour < 18) return <Sun className="h-4 w-4" />;
     if (hour >= 18 && hour < 22) return <Moon className="h-4 w-4" />;
-    return <Sunset className="h-4 w-4" />;
+    return <Night className="h-4 w-4" />;
   };
 
   const getTimePeriod = (hour: number) => {
     if (hour >= 6 && hour < 12) return 'Morning';
     if (hour >= 12 && hour < 18) return 'Afternoon';
     if (hour >= 18 && hour < 22) return 'Evening';
-    return 'Sunset';
+    return 'Night';
   };
 
   const peakHour = hourlyData.reduce((max, h) => h.count > max.count ? h : max, hourlyData[0]);

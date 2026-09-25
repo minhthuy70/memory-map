@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Folder,
-  Info,
-  Layers,
-  RefreshCw,
-  Sparkles,
-  Star,
-  Tag,
-  Zap
-} from 'lucide-react';
+import { Layers, X, RefreshCw, Info, CheckCircle, Star, Zap, Tag, Folder, Sparkles } from 'lucide-react';
 
 interface AIMemoryClusteringProps {
   onCancel?: () => void;
@@ -55,9 +45,9 @@ export default function AIMemoryClustering({ onCancel }: AIMemoryClusteringProps
 
   const [clusteredMemories, setClusteredMemories] = useState<ClusteredMemory[]>([
     { id: '1', title: 'Sunny Beach Day', clusterId: '1', similarity: 0.95, date: '2024-01-15' },
-    { id: '2', title: 'Family PartyPopper', clusterId: '2', similarity: 0.92, date: '2024-02-20' },
+    { id: '2', title: 'Family Birthday', clusterId: '2', similarity: 0.92, date: '2024-02-20' },
     { id: '3', title: 'Mountain Summit', clusterId: '3', similarity: 0.88, date: '2024-03-10' },
-    { id: '4', title: 'City Sunset Walk', clusterId: '4', similarity: 0.90, date: '2024-04-05' },
+    { id: '4', title: 'City Night Walk', clusterId: '4', similarity: 0.90, date: '2024-04-05' },
   ]);
 
   const [clusteringAlgorithms, setClusteringAlgorithms] = useState<ClusteringAlgorithm[]>([

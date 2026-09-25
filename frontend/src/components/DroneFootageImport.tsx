@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Download,
-  Info,
-  MapPin,
-  Plane,
-  Play,
-  RefreshCw,
-  Settings,
-  Video,
-  Wifi
-} from 'lucide-react';
+import { Plane, X, RefreshCw, Info, Wifi, Play, Download, Settings, MapPin, CheckCircle, AlertCircle, Video, Calendar } from 'lucide-react';
 
 interface DroneFootageImportProps {
   onCancel?: () => void;

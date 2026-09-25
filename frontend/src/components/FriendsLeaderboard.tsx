@@ -1,34 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowDown,
-  ArrowUp,
-  Award,
-  Calendar,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Crown,
-  Eye,
-  EyeOff,
-  Filter,
-  Mail,
-  Medal,
-  MessageCircle,
-  Minus,
-  MoreHorizontal,
-  RefreshCw,
-  Search,
-  Share2,
-  Star,
-  TrendingDown,
-  TrendingUp,
-  UserMinus,
-  UserPlus,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Users, X, TrendingUp, TrendingDown, Medal, Award, Crown, Star, UserPlus, UserMinus, Search, Filter, ChevronDown, ChevronUp, RefreshCw, Mail, MessageCircle, Share2, Eye, EyeOff, ArrowUp, ArrowDown, Minus, MoreHorizontal, Clock, Calendar, Zap } from 'lucide-react';
 
 interface FriendsLeaderboardProps {
   onCancel?: () => void;
@@ -282,9 +255,9 @@ export default function FriendsLeaderboard({ onCancel }: FriendsLeaderboardProps
             onChange={(e) => setSortBy(e.target.value as any)}
             className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0"
           >
-            <option value="xp">ListOrdered by XP</option>
-            <option value="level">ListOrdered by Level</option>
-            <option value="friendship">ListOrdered by Friendship</option>
+            <option value="xp">Sort by XP</option>
+            <option value="level">Sort by Level</option>
+            <option value="friendship">Sort by Friendship</option>
           </select>
           <button
             type="button"

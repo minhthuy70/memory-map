@@ -2,16 +2,17 @@
 
 import { useState } from 'react';
 import {
-  AlertTriangle,
   Gauge,
-  RefreshCw,
-  RotateCcw,
-  Search,
+  X,
   Settings,
-  Shield,
-  TrendingUp,
+  Search,
+  RefreshCw,
+  AlertTriangle,
   User,
-  Zap
+  Zap,
+  RotateCcw,
+  Shield,
+  TrendingUp
 } from 'lucide-react';
 
 export interface RateLimitPolicy {

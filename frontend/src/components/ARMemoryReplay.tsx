@@ -1,50 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Battery,
-  Bookmark,
-  BookmarkCheck,
-  Calendar,
-  CalendarIcon,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  ExternalLink,
-  Filter,
-  Layers,
-  Locate,
-  Map,
-  MapIcon,
-  MapPin,
-  Maximize2,
-  Navigation,
-  Pause,
-  PauseCircle,
-  Play,
-  PlayCircle,
-  Plus,
-  RefreshCw,
-  RotateCw,
-  Settings,
-  SettingsIcon,
-  Share2,
-  Signal,
-  SkipBack,
-  SkipForward,
-  Trash2,
-  Volume2,
-  Wifi,
-  Zap,
-  ZapIcon,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, PlayCircle, PauseCircle, RefreshCw, Check, Zap as ZapIcon, Plus, SkipBack, SkipForward, Volume2, RotateCw, ZoomIn, ZoomOut, Maximize2, MapPin, Locate, Navigation, Calendar as CalendarIcon, Map as MapIcon, Layers, Wifi, Battery, Signal, ExternalLink, Share2, Bookmark, BookmarkCheck } from 'lucide-react';
 
 interface ARReplay {
   id: string;

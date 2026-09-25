@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  ExternalLink,
-  Info,
-  Plus,
-  RefreshCw,
-  Settings,
-  Smartphone,
-  Trash2,
-  Zap
-} from 'lucide-react';
+import { Smartphone, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Zap } from 'lucide-react';
 
 interface AndroidIntentSupportProps {
   onCancel?: () => void;
@@ -94,14 +81,14 @@ export default function AndroidIntentSupport({ onCancel }: AndroidIntentSupportP
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-green-500 to-teal-500 rounded-xl">
-            <TabletSmartphone className="h-5 w-5 text-white" />
+            <Android className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              TabletSmartphone Intent Support
+              Android Intent Support
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Hỗ trợ TabletSmartphone intents
+              Hỗ trợ Android intents
             </p>
           </div>
         </div>
@@ -242,7 +229,7 @@ export default function AndroidIntentSupport({ onCancel }: AndroidIntentSupportP
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">TabletSmartphone Intents</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Android Intents</h4>
           <div className="space-y-2">
             {intents.map((intent) => (
               <div key={intent.id} className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
@@ -301,7 +288,7 @@ export default function AndroidIntentSupport({ onCancel }: AndroidIntentSupportP
 
         {showDetails && (
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
-            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">TabletSmartphone Intents Tips</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Android Intents Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• Create intents for inter-app communication</li>
               <li>• Configure action and category types</li>

@@ -1,35 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Award,
-  Calendar,
-  Camera,
-  Check,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Coins,
-  Crown,
-  Eye,
-  EyeOff,
-  Flame,
-  Gem,
-  Gift,
-  Lock,
-  Pen,
-  RefreshCw,
-  Shield,
-  Sparkles,
-  Star,
-  Sword,
-  Target,
-  TrendingUp,
-  Trophy,
-  Unlock,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Crown, X, Lock, Unlock, Check, Star, Zap, Award, TrendingUp, Calendar, Clock, Gift, Sparkles, Flame, Target, Trophy, Coins, Shield, Sword, Gem, Eye, EyeOff, ChevronDown, ChevronUp, RefreshCw, Users, Pen, Camera } from 'lucide-react';
 
 interface PremiumTrialUnlockProps {
   onCancel?: () => void;

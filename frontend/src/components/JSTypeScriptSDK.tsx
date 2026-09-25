@@ -1,22 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Code,
-  Download,
-  ExternalLink,
-  FileText,
-  Info,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2,
-  Upload
-} from 'lucide-react';
+import { Code, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Download, Upload, FileText } from 'lucide-react';
 
 interface JSTypeScriptSDKProps {
   onCancel?: () => void;
@@ -62,7 +47,7 @@ export default function JSTypeScriptSDK({ onCancel }: JSTypeScriptSDKProps) {
     { id: '3', name: 'Search & Filtering', description: 'Advanced search with filters', isImplemented: true },
     { id: '4', name: 'File Upload', description: 'Upload photos, videos, documents', isImplemented: true },
     { id: '5', name: 'Webhooks', description: 'Subscribe to memory events', isImplemented: true },
-    { id: '6', name: 'Real-time RefreshCcw', description: 'WebSocket real-time updates', isImplemented: true },
+    { id: '6', name: 'Real-time Sync', description: 'WebSocket real-time updates', isImplemented: true },
   ]);
 
   const [sdkInstalls, setSDKInstalls] = useState<SDKInstall[]>([

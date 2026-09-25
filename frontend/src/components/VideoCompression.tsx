@@ -1,33 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  Eye,
-  FileVideo,
-  Filter,
-  HardDrive,
-  Minimize2,
-  Pause,
-  Play,
-  RefreshCw,
-  Scale,
-  Settings,
-  SettingsIcon,
-  Sliders,
-  Trash2,
-  Video,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, FileVideo, Settings as SettingsIcon, Eye, HardDrive, Zap as ZapIcon, Minimize2, Scale, Sliders, RefreshCw, Check } from 'lucide-react';
 
 interface CompressionProfile {
   id: string;
@@ -61,7 +35,7 @@ interface VideoCompressionProps {
 const DEFAULT_PROFILES: CompressionProfile[] = [
   {
     id: 'profile-1',
-    name: 'High Gauge',
+    name: 'High Quality',
     targetSize: 80,
     quality: 'high',
     format: 'mp4',
@@ -69,7 +43,7 @@ const DEFAULT_PROFILES: CompressionProfile[] = [
   },
   {
     id: 'profile-2',
-    name: 'Medium Gauge',
+    name: 'Medium Quality',
     targetSize: 50,
     quality: 'medium',
     format: 'mp4',
@@ -77,7 +51,7 @@ const DEFAULT_PROFILES: CompressionProfile[] = [
   },
   {
     id: 'profile-3',
-    name: 'Low Gauge',
+    name: 'Low Quality',
     targetSize: 30,
     quality: 'low',
     format: 'mp4',

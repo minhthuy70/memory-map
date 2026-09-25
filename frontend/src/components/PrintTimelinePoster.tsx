@@ -1,65 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  AlignCenter,
-  AlignLeft,
-  AlignRight,
-  ArrowDown,
-  ArrowUp,
-  as,
-  BarChart3,
-  Calendar,
-  CalendarDays,
-  CalendarIcon,
-  CalendarRange,
-  Check,
-  CheckCircle,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  ClockIcon,
-  Copyright,
-  DollarSign,
-  Download,
-  DownloadIcon,
-  ExternalLink,
-  Eye,
-  EyeOff,
-  FileText,
-  Filter,
-  FilterIcon,
-  Image,
-  ImageIcon,
-  Layers,
-  LayoutGrid,
-  MapPin,
-  Maximize2,
-  Minimize2,
-  Palette,
-  Pause,
-  Play,
-  Plus,
-  Printer,
-  RefreshCw,
-  RotateCw,
-  Settings,
-  SettingsIcon,
-  Share2,
-  Sparkles,
-  Timeline,
-  Trash2,
-  TrashIcon,
-  Type,
-  TypeIcon,
-  User,
-  Zap,
-  ZapIcon,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Calendar as CalendarIcon, Clock as ClockIcon, Timeline, DollarSign, Printer, MapPin, User, Filter as FilterIcon, ArrowUp, ArrowDown, ChevronLeft, ChevronRight, CalendarRange, CalendarDays, Copyright } from 'lucide-react';
 
 interface TimelineEvent {
   id: string;
@@ -304,7 +246,7 @@ export default function PrintTimelinePoster({ onCancel, onPrint, onPreview }: Pr
                 onChange={(e) => setConfig({ ...config, timeRange: e.target.value as any })}
                 className="w-full px-3 py-2 bg-white dark:bg-slate-600 border border-slate-300 dark:border-slate-500 rounded-lg text-sm text-slate-700 dark:text-slate-300"
               >
-                <option value="year">By CalendarDays</option>
+                <option value="year">By Year</option>
                 <option value="month">By Month</option>
                 <option value="all">All Time</option>
               </select>

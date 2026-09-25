@@ -1,33 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowDownLeft,
-  ArrowUpRight,
-  Calendar,
-  Check,
-  ChevronDown,
-  ChevronUp,
-  Coins,
-  CreditCard,
-  Crown,
-  Eye,
-  EyeOff,
-  Filter,
-  Gift,
-  Heart,
-  History,
-  Lock,
-  Minus,
-  Plus,
-  RefreshCw,
-  ShoppingBag,
-  Sparkles,
-  Star,
-  TrendingUp,
-  Unlock,
-  Wallet
-} from 'lucide-react';
+import { Coins, ShoppingBag, X, Lock, Unlock, Check, ChevronDown, ChevronUp, Star, Gift, Crown, Sparkles, Heart, TrendingUp, Eye, EyeOff, Plus, Minus, Wallet, History, ArrowUpRight, ArrowDownLeft, Calendar, Filter, CreditCard, RefreshCw } from 'lucide-react';
 
 interface MemoryCoinsProps {
   onCancel?: () => void;

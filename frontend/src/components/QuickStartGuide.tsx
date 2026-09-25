@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronRight, Folder, MapPin, Plus, Search, Smile, TrendingUp } from 'lucide-react';
+import { X, ChevronRight, MapPin, Plus, Search, TrendingUp, Smile, Folder } from 'lucide-react';
 
 const steps = [
   {

@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Database,
-  Eye,
-  FileText,
-  Lock,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Settings,
-  Shield,
-  Trash2
-} from 'lucide-react';
+import { Clock, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Trash2, Calendar, FileText, Database, Eye, Play, Pause, Lock, Shield, Plus } from 'lucide-react';
 
 interface RetentionPolicy {
   id: string;

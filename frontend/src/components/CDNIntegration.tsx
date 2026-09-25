@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Check,
-  CheckCircle,
-  Cloud,
-  Download,
-  Globe,
-  RefreshCw,
-  Server,
-  Settings,
-  Upload,
-  Zap
-} from 'lucide-react';
+import { Globe, X, Settings, Check, RefreshCw, Cloud, Server, CheckCircle, AlertTriangle, Zap, Upload, Download } from 'lucide-react';
 
 interface CDNConfig {
   provider: 'cloudflare' | 'aws-cloudfront' | 'azure-cdn' | 'fastly' | 'custom';
@@ -340,7 +328,7 @@ export default function CDNIntegration({ onCancel, onConfigureCDN, onSyncAssets,
           ) : (
             <>
               <Upload className="h-4 w-4" />
-              RefreshCcw assets
+              Sync assets
             </>
           )}
         </button>

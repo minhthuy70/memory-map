@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Calendar,
-  Camera,
-  Clock,
-  DollarSign,
-  Edit,
-  FileText,
-  Info,
-  MapPin,
-  Plane,
-  Plus,
-  RefreshCw,
-  Star
-} from 'lucide-react';
+import { Plane, X, RefreshCw, Info, Calendar, MapPin, FileText, Star, Plus, Camera, Clock, DollarSign, Edit } from 'lucide-react';
 
 interface TravelDocumentationProps {
   onCancel?: () => void;
@@ -347,7 +334,7 @@ export default function TravelDocumentation({ onCancel }: TravelDocumentationPro
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Camera className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Auto RefreshCcw Photos</span>
+                <span className="text-xs text-slate-900 dark:text-white">Auto Sync Photos</span>
               </div>
               <input
                 type="checkbox"

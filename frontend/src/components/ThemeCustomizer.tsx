@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useTheme } from './ThemeProvider';
-import { Check, Palette, RotateCcw } from 'lucide-react';
+import { Palette, RotateCcw, Check } from 'lucide-react';
 import ColorPicker from './ColorPicker';
 
 export default function ThemeCustomizer() {

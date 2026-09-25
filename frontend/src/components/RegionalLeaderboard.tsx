@@ -1,31 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowDown,
-  ArrowUp,
-  Award,
-  Calendar,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Crown,
-  Eye,
-  EyeOff,
-  Filter,
-  Globe,
-  MapPin,
-  Medal,
-  Minus,
-  RefreshCw,
-  Search,
-  Star,
-  Target,
-  TrendingDown,
-  TrendingUp,
-  Users,
-  Zap
-} from 'lucide-react';
+import { MapPin, X, TrendingUp, TrendingDown, Medal, Award, Crown, Star, Globe, Filter, ChevronDown, ChevronUp, RefreshCw, Search, Eye, EyeOff, ArrowUp, ArrowDown, Minus, Users, Calendar, Clock, Zap, Target } from 'lucide-react';
 
 interface RegionalLeaderboardProps {
   onCancel?: () => void;
@@ -292,9 +268,9 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
             onChange={(e) => setSortBy(e.target.value as any)}
             className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0"
           >
-            <option value="xp">ListOrdered by XP</option>
-            <option value="level">ListOrdered by Level</option>
-            <option value="score">ListOrdered by Score</option>
+            <option value="xp">Sort by XP</option>
+            <option value="level">Sort by Level</option>
+            <option value="score">Sort by Score</option>
           </select>
         </div>
 

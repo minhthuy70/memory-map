@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, CheckCircle, Globe, Info, Languages, RefreshCw, Star, Volume2 } from 'lucide-react';
+import { Globe, X, RefreshCw, Info, CheckCircle, Languages, BookOpen, Volume2, Star } from 'lucide-react';
 
 interface LanguageTranslationProps {
   onCancel?: () => void;

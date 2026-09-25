@@ -1,49 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  ClockIcon,
-  Compass,
-  Download,
-  ExternalLink,
-  Eye,
-  EyeOff,
-  Filter,
-  Flag,
-  Globe,
-  Layers,
-  Map,
-  MapIcon,
-  MapPin,
-  Navigation,
-  Pause,
-  PauseCircle,
-  Play,
-  PlayCircle,
-  Plus,
-  RefreshCw,
-  Route,
-  Settings,
-  SettingsIcon,
-  SkipBack,
-  SkipForward,
-  Star,
-  Trash2,
-  TrashIcon,
-  Volume2,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Globe, RefreshCw, Check, Zap as ZapIcon, Plus, MapPin, Navigation, Compass, ChevronLeft, ChevronRight, SkipBack, SkipForward, PlayCircle, PauseCircle, Volume2, Layers, Route, Flag, Star, Clock as ClockIcon, ExternalLink, Map as MapIcon, Eye, EyeOff, Trash2 as TrashIcon } from 'lucide-react';
 
 interface TourLocation {
   id: string;

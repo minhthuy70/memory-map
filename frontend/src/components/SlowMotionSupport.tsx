@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Clock,
-  Download,
-  Gauge,
-  Info,
-  Play,
-  RefreshCw,
-  Star,
-  Zap
-} from 'lucide-react';
+import { Clock, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Gauge } from 'lucide-react';
 
 interface SlowMotionSupportProps {
   onCancel?: () => void;
@@ -212,7 +202,7 @@ export default function SlowMotionSupport({ onCancel }: SlowMotionSupportProps) 
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Default Gauge</span>
+                <span className="text-xs text-slate-900 dark:text-white">Default Quality</span>
               </div>
               <select
                 value={slowMotionSettings.defaultQuality}
@@ -278,7 +268,7 @@ export default function SlowMotionSupport({ onCancel }: SlowMotionSupportProps) 
                 <div className="mb-2">
                   <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                     {video.frameInterpolation && <span>Frame Interpolated</span>}
-                    <span>• Gauge: {video.quality}</span>
+                    <span>• Quality: {video.quality}</span>
                   </div>
                 </div>
                 <div className="flex gap-2">
@@ -316,7 +306,7 @@ export default function SlowMotionSupport({ onCancel }: SlowMotionSupportProps) 
               <li>• Create slow motion videos with adjustable speed</li>
               <li>• Speed range: 0.1x to 1x (slow motion)</li>
               <li>• Frame interpolation for smooth playback</li>
-              <li>• Gauge options: high, medium, low</li>
+              <li>• Quality options: high, medium, low</li>
             </ul>
           </div>
         )}

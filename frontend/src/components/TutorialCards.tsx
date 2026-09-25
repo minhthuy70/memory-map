@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronRight, Download, Filter, Image, Lightbulb, MapPin, Share2, TrendingUp } from 'lucide-react';
+import { X, Lightbulb, MapPin, Image, Filter, TrendingUp, Share2, Download, ChevronRight } from 'lucide-react';
 
 interface TutorialCard {
   id: string;
@@ -105,7 +105,7 @@ export default function TutorialCards() {
       cardsToShow = cardsToShow.filter(card => card.id !== 'first-memory');
     }
 
-    // ListOrdered by priority
+    // Sort by priority
     const priorityOrder = { high: 0, medium: 1, low: 2 };
     cardsToShow.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 

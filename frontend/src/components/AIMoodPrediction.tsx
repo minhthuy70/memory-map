@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  CloudRain,
-  CloudSun,
-  Info,
-  MapPin,
-  RefreshCw,
-  Smile,
-  Snowflake,
-  Star,
-  Thermometer,
-  Zap
-} from 'lucide-react';
+import { Smile, X, RefreshCw, Info, CheckCircle, Star, Zap, CloudSun, CloudRain, Snowflake, Thermometer, MapPin } from 'lucide-react';
 
 interface AIMoodPredictionProps {
   onCancel?: () => void;

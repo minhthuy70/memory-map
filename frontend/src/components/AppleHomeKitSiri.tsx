@@ -1,22 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Apple,
-  CheckCircle,
-  Home,
-  Info,
-  Laptop,
-  MessageSquare,
-  Mic,
-  Play,
-  RefreshCw,
-  Settings,
-  Smartphone,
-  Tablet,
-  Volume2
-} from 'lucide-react';
+import { Mic, X, RefreshCw, Info, Settings, Play, Volume2, Home, CheckCircle, AlertCircle, MessageSquare, Smartphone, Apple, Tablet, Laptop } from 'lucide-react';
 
 interface AppleHomeKitSiriProps {
   onCancel?: () => void;
@@ -278,7 +263,7 @@ export default function AppleHomeKitSiri({ onCancel }: AppleHomeKitSiriProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Shortcut RefreshCcw</span>
+                <span className="text-xs text-slate-900 dark:text-white">Shortcut Sync</span>
               </div>
               <input
                 type="checkbox"

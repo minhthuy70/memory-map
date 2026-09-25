@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  ArrowDown,
-  ArrowUp,
-  CheckCircle,
-  Clock,
-  Gauge,
-  Scroll,
-  Settings,
-  Smartphone,
-  Zap
-} from 'lucide-react';
+import { Scroll, X, Settings, CheckCircle, AlertTriangle, Smartphone, Activity, Clock, Zap, ArrowUp, ArrowDown, Gauge } from 'lucide-react';
 
 interface ScrollMetric {
   id: string;

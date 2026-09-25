@@ -1,21 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Crosshair,
-  Globe,
-  MapPin,
-  Navigation,
-  RefreshCw,
-  Satellite,
-  Settings,
-  Smartphone,
-  Target
-} from 'lucide-react';
+import { MapPin, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Navigation, Satellite, Clock, Activity, Globe, Smartphone, Target, Crosshair } from 'lucide-react';
 
 interface GPSLocation {
   latitude: number;

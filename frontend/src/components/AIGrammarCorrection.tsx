@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AlertTriangle, CheckCircle, Copy, FileText, Info, RefreshCw, Star, Zap } from 'lucide-react';
+import { CheckCircle, X, RefreshCw, Info, Star, Zap, Copy, FileText, AlertTriangle } from 'lucide-react';
 
 interface AIGrammarCorrectionProps {
   onCancel?: () => void;

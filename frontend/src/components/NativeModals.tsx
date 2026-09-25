@@ -1,22 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertCircle,
-  AlertTriangle,
-  ArrowUp,
-  CheckCircle,
-  Clock,
-  Info,
-  Layers,
-  Maximize,
-  Minimize,
-  RefreshCw,
-  Settings,
-  Smartphone,
-  Zap
-} from 'lucide-react';
+import { Maximize, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Smartphone, Layers, Zap, Clock, Activity, ArrowUp, Minimize, AlertCircle, Info } from 'lucide-react';
 
 interface ModalConfig {
   id: string;

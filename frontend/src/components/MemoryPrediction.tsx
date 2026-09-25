@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  BarChart3,
-  Brain,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Filter,
-  Settings,
-  Sparkles,
-  Target,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Brain, X, Settings, CheckCircle, AlertTriangle, TrendingUp, Calendar, Clock, Activity, BarChart3, Filter, Zap, Sparkles, Target } from 'lucide-react';
 
 interface PredictionResult {
   id: string;

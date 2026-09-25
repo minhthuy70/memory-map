@@ -1,25 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  ArrowUpRight,
-  Calendar,
-  CheckCircle,
-  Clock,
-  FileText,
-  Filter,
-  Gavel,
-  Info,
-  MessageSquare,
-  Plus,
-  RefreshCw,
-  Search,
-  Shield,
-  Trash2,
-  User,
-  XCircle
-} from 'lucide-react';
+import { Gavel, X, RefreshCw, CheckCircle, XCircle, AlertTriangle, Info, MessageSquare, Clock, User, Shield, FileText, Search, Filter, Calendar, ArrowUpRight, Plus, Trash2 } from 'lucide-react';
 
 interface AppealSystemProps {
   onCancel?: () => void;

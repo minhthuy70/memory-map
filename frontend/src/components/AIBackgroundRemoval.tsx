@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  as,
-  CheckCircle,
-  Download,
-  Image,
-  ImageIcon,
-  Info,
-  Layers,
-  RefreshCw,
-  Scissors,
-  Star,
-  Zap
-} from 'lucide-react';
+import { Scissors, X, RefreshCw, Info, CheckCircle, Star, Zap, Download, Image as ImageIcon, Layers } from 'lucide-react';
 
 interface AIBackgroundRemovalProps {
   onCancel?: () => void;

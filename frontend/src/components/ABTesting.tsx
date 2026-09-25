@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  BarChart,
-  CheckCircle,
-  GitCompare,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Settings,
-  Target,
-  TrendingUp,
-  Trophy,
-  Users
-} from 'lucide-react';
+import { GitCompare, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Play, Pause, Trophy, TrendingUp, Users, Target, Plus, BarChart } from 'lucide-react';
 
 interface Variant {
   id: string;

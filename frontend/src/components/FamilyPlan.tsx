@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, Info, RefreshCw, Shield, Star, UserPlus, Users, Zap } from 'lucide-react';
+import { Users, X, RefreshCw, Info, CheckCircle, Star, Zap, Shield, UserPlus } from 'lucide-react';
 
 interface FamilyPlanProps {
   onCancel?: () => void;

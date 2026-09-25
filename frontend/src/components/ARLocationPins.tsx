@@ -1,51 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Battery,
-  Calendar,
-  Check,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Compass,
-  Crosshair,
-  Download,
-  ExternalLink,
-  Eye,
-  EyeOff,
-  Filter,
-  FilterIcon,
-  Layers,
-  Locate,
-  Map,
-  MapIcon,
-  MapPin,
-  Maximize2,
-  Navigation,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  RotateCw,
-  Search,
-  Settings,
-  SettingsIcon,
-  Signal,
-  Target,
-  Trash2,
-  TrashIcon,
-  Wifi,
-  Zap,
-  ZapIcon,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, MapPin, RefreshCw, Check, Zap as ZapIcon, Plus, Navigation, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, Compass, Target, Crosshair, Layers, Filter as FilterIcon, ZoomIn, ZoomOut, Maximize2, RotateCw, Locate, Signal, Wifi, Battery, Map as MapIcon, Search, ChevronDown, ChevronUp } from 'lucide-react';
 
 interface ARPin {
   id: string;

@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowRight,
-  CheckCircle,
-  Circle,
-  Info,
-  Link,
-  Network,
-  RefreshCw,
-  Star,
-  Zap
-} from 'lucide-react';
+import { Network, X, RefreshCw, Info, CheckCircle, Star, Zap, Link, Circle, ArrowRight } from 'lucide-react';
 
 interface AIMemoryConnectionGraphProps {
   onCancel?: () => void;

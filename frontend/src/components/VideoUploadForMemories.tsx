@@ -1,30 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Cloud,
-  Download,
-  Eye,
-  FileVideo,
-  Filter,
-  HardDrive,
-  Pause,
-  Play,
-  Settings,
-  SettingsIcon,
-  Trash2,
-  Upload,
-  Video,
-  Zap
-} from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Upload, Play, Pause, Download, Trash2, FileVideo, Settings as SettingsIcon, Eye, HardDrive, Cloud, Check } from 'lucide-react';
 
 interface VideoUpload {
   id: string;

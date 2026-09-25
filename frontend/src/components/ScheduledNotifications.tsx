@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Calendar,
-  Check,
-  Clock,
-  Edit,
-  Plus,
-  Repeat,
-  Save,
-  Settings,
-  Trash2
-} from 'lucide-react';
+import { Clock, Calendar, Plus, Trash2, Edit, Check, X, Save, Settings, Repeat } from 'lucide-react';
 
 interface ScheduledNotification {
   id: string;

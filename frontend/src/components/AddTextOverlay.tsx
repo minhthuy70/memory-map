@@ -1,42 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  AlignCenter,
-  AlignLeft,
-  AlignRight,
-  as,
-  BarChart3,
-  Bold,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  Eye,
-  EyeOff,
-  Filter,
-  Italic,
-  Layers,
-  Move,
-  Palette,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Settings,
-  SettingsIcon,
-  Sliders,
-  Trash2,
-  TrashIcon,
-  Type,
-  Underline,
-  Video,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Type, RefreshCw, Check, Zap as ZapIcon, Layers, Plus, AlignLeft, AlignCenter, AlignRight, Bold, Italic, Underline, Move, Palette, Sliders, Eye, EyeOff, Trash2 as TrashIcon } from 'lucide-react';
 
 interface TextOverlay {
   id: string;

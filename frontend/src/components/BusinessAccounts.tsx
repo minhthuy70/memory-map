@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Building2,
-  Calendar,
-  CheckCircle,
-  Info,
-  MapPin,
-  Plus,
-  RefreshCw,
-  Trash2,
-  Users
-} from 'lucide-react';
+import { Building2, X, RefreshCw, Info, CheckCircle, Plus, Trash2, Users, Calendar, MapPin } from 'lucide-react';
 
 interface BusinessAccountsProps {
   onCancel?: () => void;

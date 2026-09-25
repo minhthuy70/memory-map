@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Calendar,
-  CheckCircle,
-  Eye,
-  FileText,
-  Globe,
-  Info,
-  Mail,
-  Phone,
-  RefreshCw,
-  Shield
-} from 'lucide-react';
+import { FileText, X, RefreshCw, Info, CheckCircle, AlertTriangle, Calendar, Mail, Phone, Globe, Shield, Eye } from 'lucide-react';
 
 interface AccessibilityStatementPageProps {
   onCancel?: () => void;

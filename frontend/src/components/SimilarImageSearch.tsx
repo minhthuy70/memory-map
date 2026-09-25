@@ -1,30 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Download,
-  Eye,
-  Filter,
-  Hash,
-  Image,
-  ImageIcon,
-  Layers,
-  RefreshCw,
-  Scan,
-  Search,
-  Settings,
-  Sparkles,
-  Upload,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Search, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Image as ImageIcon, Sparkles, Zap as ZapIcon, Upload, Download, RefreshCw, Layers, Hash } from 'lucide-react';
 
 interface SimilarImage {
   id: string;

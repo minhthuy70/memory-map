@@ -1,33 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  CheckCheck,
-  CheckCircle,
-  Clock,
-  Copy,
-  Edit2,
-  Eye,
-  Filter,
-  Image,
-  ImageIcon,
-  Languages,
-  Mic,
-  Plus,
-  RotateCcw,
-  Save,
-  Scan,
-  Settings,
-  Sparkles,
-  Trash2,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Image as ImageIcon, Sparkles, Zap as ZapIcon, Edit2, Copy, CheckCheck, Languages, RotateCcw, Save, Trash2, Plus } from 'lucide-react';
 
 interface Caption {
   id: string;

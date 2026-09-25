@@ -1,34 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Award,
-  Calendar,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Crown,
-  Download,
-  Eye,
-  EyeOff,
-  Filter,
-  Flame,
-  Grid,
-  Heart,
-  List,
-  Lock,
-  MapPin,
-  RotateCcw,
-  Search,
-  Share2,
-  Sparkles,
-  Star,
-  Target,
-  Trophy,
-  Unlock,
-  Zap
-} from 'lucide-react';
+import { Award, X, Filter, Grid, List, Search, Star, Lock, Unlock, Share2, Download, Eye, EyeOff, ChevronDown, ChevronUp, Trophy, MapPin, Calendar, Flame, Zap, Sparkles, Crown, Heart, Target, CheckCircle, Clock, RotateCcw } from 'lucide-react';
 
 interface BadgeCollectionProps {
   onCancel?: () => void;

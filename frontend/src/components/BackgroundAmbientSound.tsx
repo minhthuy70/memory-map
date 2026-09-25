@@ -1,40 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  ActivityIcon,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  ExternalLink,
-  FileAudio,
-  Filter,
-  MapPin,
-  Mic,
-  MicIcon,
-  Pause,
-  Play,
-  PlayCircle,
-  Plus,
-  RefreshCw,
-  Save,
-  Settings,
-  SettingsIcon,
-  StopCircle,
-  Trash2,
-  TrashIcon,
-  Volume2,
-  Waves,
-  Zap,
-  ZapIcon,
-  ZapIcon2
-} from 'lucide-react';
+import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Waves, RefreshCw, Check, Zap as ZapIcon, Plus, Mic as MicIcon, StopCircle, PlayCircle, Volume2, Trash2 as TrashIcon, ExternalLink, MapPin, Zap as ZapIcon2, Activity as ActivityIcon, Save, FileAudio } from 'lucide-react';
 
 interface AmbientSound {
   id: string;

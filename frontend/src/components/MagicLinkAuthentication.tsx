@@ -1,24 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  AlertTriangle,
-  Check,
-  CheckCircle,
-  Clock,
-  Copy,
-  ExternalLink,
-  Eye,
-  EyeOff,
-  Link,
-  Lock,
-  Mail,
-  RefreshCw,
-  Send,
-  Settings,
-  Shield
-} from 'lucide-react';
+import { Link, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Mail, Clock, Shield, Send, ExternalLink, Copy, Check, AlertCircle, Lock, Eye, EyeOff } from 'lucide-react';
 
 interface MagicLinkRequest {
   id: string;

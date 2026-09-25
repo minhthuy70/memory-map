@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, Crown, Info, Lock, RefreshCw, Unlock, Zap } from 'lucide-react';
+import { Crown, X, RefreshCw, Info, CheckCircle, Lock, Unlock, Zap } from 'lucide-react';
 
 interface FreemiumModelProps {
   onCancel?: () => void;

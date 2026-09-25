@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Award,
-  CheckCircle,
-  Download,
-  ExternalLink,
-  Hash,
-  Info,
-  RefreshCw,
-  Share2,
-  Shield,
-  Star,
-  Zap
-} from 'lucide-react';
+import { Award, X, RefreshCw, Info, CheckCircle, Star, Zap, Shield, Download, Share2, ExternalLink, Hash } from 'lucide-react';
 
 interface MemoryCertificateProps {
   onCancel?: () => void;
@@ -137,11 +125,11 @@ export default function MemoryCertificate({ onCancel }: MemoryCertificateProps) 
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl">
-            <BadgeCheck className="h-5 w-5 text-white" />
+            <Certificate className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Memory BadgeCheck
+              Memory Certificate
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Blockchain digital signature verification
@@ -206,8 +194,8 @@ export default function MemoryCertificate({ onCancel }: MemoryCertificateProps) 
             onClick={() => issueCertificate('mem4', 'New Memory')}
             className="px-3 py-1.5 rounded-lg text-xs bg-blue-600 hover:bg-blue-700 text-white border-0 flex items-center gap-1"
           >
-            <BadgeCheck className="h-3 w-3" />
-            Issue BadgeCheck
+            <Certificate className="h-3 w-3" />
+            Issue Certificate
           </button>
           <button
             type="button"
@@ -312,7 +300,7 @@ export default function MemoryCertificate({ onCancel }: MemoryCertificateProps) 
 
         {showDetails && (
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
-            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">BadgeCheck Tips</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Certificate Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• Certificates provide blockchain-verified authenticity</li>
               <li>• Digital signatures are stored on-chain</li>

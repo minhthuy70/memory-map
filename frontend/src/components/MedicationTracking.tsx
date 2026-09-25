@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Bell,
-  CheckCircle,
-  Clock,
-  Edit,
-  Info,
-  Pill,
-  Plus,
-  RefreshCw,
-  Star
-} from 'lucide-react';
+import { Pill, X, RefreshCw, Info, CheckCircle, Star, Clock, Bell, Plus, AlertCircle, Edit } from 'lucide-react';
 
 interface MedicationTrackingProps {
   onCancel?: () => void;

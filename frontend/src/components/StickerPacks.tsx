@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Download,
-  Heart,
-  Info,
-  Plus,
-  RefreshCw,
-  ShoppingCart,
-  Smile,
-  Star
-} from 'lucide-react';
+import { Smile, X, RefreshCw, Info, CheckCircle, Plus, ShoppingCart, Star, Download, Heart } from 'lucide-react';
 
 interface StickerPacksProps {
   onCancel?: () => void;

@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Info,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Settings,
-  ToggleLeft,
-  Trash2,
-  Zap
-} from 'lucide-react';
+import { ToggleLeft, X, RefreshCw, Info, CheckCircle, Plus, Trash2, Play, Pause, Settings, Zap } from 'lucide-react';
 
 interface SwitchControlSupportProps {
   onCancel?: () => void;

@@ -1,47 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  DownloadIcon,
-  ExternalLink,
-  Eye,
-  EyeOff,
-  Filter,
-  Image,
-  ImageIcon,
-  Layers,
-  Maximize2,
-  Minus,
-  MoveHorizontal,
-  MoveVertical,
-  Palette,
-  Pause,
-  Play,
-  Plus,
-  PlusIcon,
-  RefreshCw,
-  RotateCw,
-  Settings,
-  SettingsIcon,
-  Smile,
-  Sparkles,
-  Sticker,
-  Trash2,
-  TrashIcon,
-  Zap,
-  ZapIcon,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Smile, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, Sticker, Image as ImageIcon, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, MoveHorizontal, RotateCw, ZoomIn, ZoomOut, Maximize2, MoveVertical, Minus, Plus as PlusIcon, Sparkles, Palette, Download as DownloadIcon } from 'lucide-react';
 
 interface ARSticker {
   id: string;

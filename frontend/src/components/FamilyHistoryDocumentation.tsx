@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  BookOpen,
-  Calendar,
-  Clock,
-  FamilyTree,
-  FileText,
-  Info,
-  Plus,
-  RefreshCw,
-  Star,
-  Users
-} from 'lucide-react';
+import { Users, X, RefreshCw, Info, Calendar, FamilyTree, FileText, Star, Plus, BookOpen, Clock } from 'lucide-react';
 
 interface FamilyHistoryDocumentationProps {
   onCancel?: () => void;

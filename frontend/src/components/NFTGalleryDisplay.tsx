@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  as,
-  CheckCircle,
-  ExternalLink,
-  Grid,
-  Image,
-  ImageIcon,
-  Info,
-  List,
-  RefreshCw,
-  Share2,
-  Star,
-  Zap
-} from 'lucide-react';
+import { Image as ImageIcon, X, RefreshCw, Info, CheckCircle, Star, Zap, Grid, List, Share2, ExternalLink } from 'lucide-react';
 
 interface NFTGalleryDisplayProps {
   onCancel?: () => void;

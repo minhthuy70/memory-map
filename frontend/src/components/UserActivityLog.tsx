@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  Calendar,
-  Download,
-  Edit2,
-  Eye,
-  FileText,
-  Filter,
-  Info,
-  LogOut,
-  Plus,
-  RefreshCw,
-  Search,
-  Shield,
-  Trash2,
-  User
-} from 'lucide-react';
+import { FileText, X, RefreshCw, Search, Filter, Calendar, User, Download, Trash2, Info, Activity, LogOut, Shield, Eye, Edit2, Plus } from 'lucide-react';
 
 interface UserActivityLogProps {
   onCancel?: () => void;

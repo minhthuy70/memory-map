@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Calendar,
-  Check,
-  Clock,
-  FileText,
-  Mail,
-  Save,
-  Settings,
-  Sparkles,
-  TrendingUp
-} from 'lucide-react';
+import { Mail, Calendar, Clock, TrendingUp, Check, X, Save, Settings, FileText, Sparkles } from 'lucide-react';
 
 interface DigestConfig {
   enabled: boolean;

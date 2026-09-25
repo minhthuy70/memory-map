@@ -1,22 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Compass,
-  Navigation,
-  Pause,
-  Play,
-  RefreshCw,
-  Rotate3D,
-  RotateCw,
-  Settings,
-  Smartphone,
-  Zap
-} from 'lucide-react';
+import { RotateCw, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Smartphone, Clock, Activity, Compass, Navigation, Play, Pause, Zap, Rotate3D } from 'lucide-react';
 
 interface GyroscopeData {
   alpha: number;

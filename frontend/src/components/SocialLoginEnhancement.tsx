@@ -1,24 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  AlertTriangle,
-  Check,
-  CheckCircle,
-  Clock,
-  ExternalLink,
-  Globe,
-  Link,
-  Lock,
-  Mail,
-  Plus,
-  RefreshCw,
-  Settings,
-  Shield,
-  Trash2,
-  Users
-} from 'lucide-react';
+import { Users, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Mail, Lock, Clock, Shield, Plus, Trash2, Link, ExternalLink, Globe, Check, AlertCircle } from 'lucide-react';
 
 interface SocialProvider {
   id: string;
@@ -63,7 +46,7 @@ const DEFAULT_PROVIDERS: SocialProvider[] = [
   },
   {
     id: 'provider-2',
-    name: 'Globe2',
+    name: 'Facebook',
     type: 'facebook',
     enabled: true,
     clientId: '****',
@@ -456,7 +439,7 @@ export default function SocialLoginEnhancement({ onCancel, onEnableProvider, onD
                       onClick={() => handleSync(connection.id)}
                       disabled={isSyncing}
                       className="p-1 hover:bg-slate-200 dark:hover:bg-slate-600 rounded transition-colors"
-                      title="RefreshCcw"
+                      title="Sync"
                     >
                       <RefreshCw className={`h-3 w-3 text-slate-500 ${isSyncing ? 'animate-spin' : ''}`} />
                     </button>
@@ -528,7 +511,7 @@ export default function SocialLoginEnhancement({ onCancel, onEnableProvider, onD
 
       <div className="mt-4 p-3 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 rounded-lg">
         <p className="text-[10px] text-green-700 dark:text-green-400">
-          <strong>Lưu ý:</strong> Đăng nhập xã hội nâng cao hỗ trợ Google, Globe2, Apple, GitHub, LinkedIn với OAuth 2.0, account linking, và sync functionality.
+          <strong>Lưu ý:</strong> Đăng nhập xã hội nâng cao hỗ trợ Google, Facebook, Apple, GitHub, LinkedIn với OAuth 2.0, account linking, và sync functionality.
         </p>
       </div>
     </div>

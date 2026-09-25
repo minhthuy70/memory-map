@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, Contrast, Info, Moon, Palette, RefreshCw, Settings, Sun } from 'lucide-react';
+import { Contrast, X, RefreshCw, Info, CheckCircle, Settings, Sun, Moon, Palette } from 'lucide-react';
 
 interface HighContrastModeProps {
   onCancel?: () => void;

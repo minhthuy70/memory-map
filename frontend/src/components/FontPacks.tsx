@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Download,
-  Heart,
-  Info,
-  Plus,
-  RefreshCw,
-  ShoppingCart,
-  Star,
-  Type
-} from 'lucide-react';
+import { Type, X, RefreshCw, Info, CheckCircle, Plus, ShoppingCart, Star, Download, Heart } from 'lucide-react';
 
 interface FontPacksProps {
   onCancel?: () => void;

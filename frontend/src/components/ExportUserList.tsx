@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Download,
-  FileJson,
-  FileSpreadsheet,
-  FileText,
-  Filter,
-  Info,
-  Plus,
-  RefreshCw,
-  Search,
-  Settings,
-  Trash2,
-  User
-} from 'lucide-react';
+import { Download, X, RefreshCw, Search, Filter, User, FileText, CheckCircle, Info, FileJson, FileSpreadsheet, Settings, Plus, Trash2 } from 'lucide-react';
 
 interface ExportUserListProps {
   onCancel?: () => void;

@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Calendar,
-  Camera,
-  Edit,
-  FileText,
-  Globe,
-  Info,
-  Landmark,
-  MapPin,
-  Plus,
-  RefreshCw,
-  Star,
-  Tag
-} from 'lucide-react';
+import { Landmark, X, RefreshCw, Info, Calendar, MapPin, FileText, Star, Plus, Camera, Tag, Globe, Edit } from 'lucide-react';
 
 interface CulturalHeritageDocumentationProps {
   onCancel?: () => void;
@@ -291,7 +278,7 @@ export default function CulturalHeritageDocumentation({ onCancel }: CulturalHeri
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Calendar className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">CalendarDays Recognized</span>
+                <span className="text-xs text-slate-900 dark:text-white">Year Recognized</span>
               </div>
               <input
                 type="text"

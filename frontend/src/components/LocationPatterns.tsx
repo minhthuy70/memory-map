@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Filter,
-  Globe,
-  Map,
-  MapPin,
-  Navigation,
-  Route,
-  Settings,
-  Star,
-  Zap
-} from 'lucide-react';
+import { MapPin, X, Settings, CheckCircle, AlertTriangle, Globe, Navigation, Activity, Clock, Filter, Map, Route, Star, Zap } from 'lucide-react';
 
 interface LocationPattern {
   id: string;

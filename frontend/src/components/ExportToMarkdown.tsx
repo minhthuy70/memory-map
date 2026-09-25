@@ -1,38 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  as,
-  Calendar,
-  CalendarIcon,
-  Check,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Code,
-  Copy,
-  Download,
-  Eye,
-  EyeOff,
-  File,
-  FileText,
-  Filter,
-  Hash,
-  Image,
-  ImageIcon,
-  Layers,
-  Layout,
-  List,
-  Loader2,
-  MapPin,
-  Pause,
-  Play,
-  RefreshCw,
-  Settings,
-  Share2,
-  Type
-} from 'lucide-react';
+import { X, Settings, Download, FileText, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Type, Code, Share2, Eye, EyeOff, File, Hash, List, Layers, Copy } from 'lucide-react';
 
 interface ExportToMarkdownProps {
   onCancel?: () => void;

@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  as,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Frame,
-  Heart,
-  Image,
-  ImageIcon,
-  Info,
-  Layout,
-  Play,
-  RefreshCw,
-  Settings,
-  Wifi
-} from 'lucide-react';
+import { Frame, X, RefreshCw, Info, Settings, Play, Image as ImageIcon, Clock, Calendar, Heart, CheckCircle, AlertCircle, Layout, Wifi } from 'lucide-react';
 
 interface SmartFrameIntegrationProps {
   onCancel?: () => void;
@@ -236,7 +220,7 @@ export default function SmartFrameIntegration({ onCancel }: SmartFrameIntegratio
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <ImageIcon className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Photo Gauge</span>
+                <span className="text-xs text-slate-900 dark:text-white">Photo Quality</span>
               </div>
               <select
                 value={frameSettings.photoQuality}
@@ -331,7 +315,7 @@ export default function SmartFrameIntegration({ onCancel }: SmartFrameIntegratio
                 <div className="flex gap-2 mb-2">
                   <span className="text-xs text-slate-500 dark:text-slate-400">Brightness: {device.brightness}%</span>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Photos: {device.photoCount}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Last RefreshCcw: {device.lastSync || 'Never'}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Last Sync: {device.lastSync || 'Never'}</span>
                 </div>
                 {device.isConnected && (
                   <button

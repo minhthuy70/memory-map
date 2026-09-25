@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Code,
-  ExternalLink,
-  Info,
-  Play,
-  Plus,
-  RefreshCw,
-  Send,
-  Settings,
-  Trash2
-} from 'lucide-react';
+import { Play, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Send, Code } from 'lucide-react';
 
 interface APIPlaygroundProps {
   onCancel?: () => void;

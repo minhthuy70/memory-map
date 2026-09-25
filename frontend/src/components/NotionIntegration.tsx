@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Database,
-  ExternalLink,
-  FileText,
-  Info,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2
-} from 'lucide-react';
+import { FileText, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Database } from 'lucide-react';
 
 interface NotionIntegrationProps {
   onCancel?: () => void;
@@ -136,10 +123,10 @@ export default function NotionIntegration({ onCancel }: NotionIntegrationProps) 
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              BookMarked Integration
+              Notion Integration
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Tích hợp BookMarked database
+              Tích hợp Notion database
             </p>
           </div>
         </div>
@@ -194,7 +181,7 @@ export default function NotionIntegration({ onCancel }: NotionIntegrationProps) 
               onChange={(e) => setIsNotionEnabled(e.target.checked)}
               className="rounded"
             />
-            <span className="text-slate-700 dark:text-slate-300">Enable BookMarked</span>
+            <span className="text-slate-700 dark:text-slate-300">Enable Notion</span>
           </div>
           <button
             type="button"
@@ -213,12 +200,12 @@ export default function NotionIntegration({ onCancel }: NotionIntegrationProps) 
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">BookMarked Settings</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Notion Settings</h4>
           <div className="space-y-2">
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-gray-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Auto RefreshCcw</span>
+                <span className="text-xs text-slate-900 dark:text-white">Auto Sync</span>
               </div>
               <input
                 type="checkbox"
@@ -230,7 +217,7 @@ export default function NotionIntegration({ onCancel }: NotionIntegrationProps) 
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw Interval (min)</span>
+                <span className="text-xs text-slate-900 dark:text-white">Sync Interval (min)</span>
               </div>
               <input
                 type="number"
@@ -291,7 +278,7 @@ export default function NotionIntegration({ onCancel }: NotionIntegrationProps) 
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">BookMarked Databases</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Notion Databases</h4>
           <div className="space-y-2">
             {notionDatabases.map((database) => (
               <div key={database.id} className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
@@ -322,7 +309,7 @@ export default function NotionIntegration({ onCancel }: NotionIntegrationProps) 
                 </div>
                 <div className="flex gap-2 mb-2">
                   <span className="text-xs text-slate-500 dark:text-slate-400">Memories: {database.memoryCount}</span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">Last RefreshCcw: {database.lastSync || 'Never'}</span>
+                  <span className="text-xs text-slate-500 dark:text-slate-400">Last Sync: {database.lastSync || 'Never'}</span>
                 </div>
                 {database.isConnected && (
                   <button
@@ -331,7 +318,7 @@ export default function NotionIntegration({ onCancel }: NotionIntegrationProps) 
                     className="w-full px-2 py-1 rounded text-xs bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-1"
                   >
                     <RefreshCw className="h-3 w-3" />
-                    RefreshCcw Memory
+                    Sync Memory
                   </button>
                 )}
               </div>
@@ -340,7 +327,7 @@ export default function NotionIntegration({ onCancel }: NotionIntegrationProps) 
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">RefreshCcw History</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Sync History</h4>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {notionSyncs.map((sync) => (
               <div key={sync.id} className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
@@ -371,9 +358,9 @@ export default function NotionIntegration({ onCancel }: NotionIntegrationProps) 
 
         {showDetails && (
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
-            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">BookMarked Tips</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Notion Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
-              <li>• Connect BookMarked databases for memory sync</li>
+              <li>• Connect Notion databases for memory sync</li>
               <li>• Create pages or database entries from memories</li>
               <li>• Include attachments in sync</li>
               <li>• Configure sync interval and API key</li>

@@ -1,33 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  ArrowUpDown,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Download,
-  Eye,
-  FileVideo,
-  Filter,
-  Layers,
-  Pause,
-  Play,
-  Plus,
-  Settings,
-  SettingsIcon,
-  Trash2,
-  TrashIcon,
-  Video,
-  Zap
-} from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, FileVideo, Settings as SettingsIcon, Eye, Plus, Layers, Trash2 as TrashIcon, Check, ArrowUpDown, ChevronUp, ChevronDown } from 'lucide-react';
 
 interface MemoryVideo {
   id: string;
@@ -278,7 +252,7 @@ export default function MultipleVideoPerMemory({ onCancel, onAddVideo, onRemoveV
         </button>
       </div>
 
-      {/* ListOrdered Options */}
+      {/* Sort Options */}
       <div className="mb-4">
         <div className="flex gap-2">
           <button

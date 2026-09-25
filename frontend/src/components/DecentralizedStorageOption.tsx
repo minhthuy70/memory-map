@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Cloud,
-  Download,
-  HardDrive,
-  Info,
-  RefreshCw,
-  Shield,
-  Star,
-  Upload,
-  Zap
-} from 'lucide-react';
+import { HardDrive, X, RefreshCw, Info, CheckCircle, Star, Zap, Cloud, Upload, Download, Shield } from 'lucide-react';
 
 interface DecentralizedStorageProps {
   onCancel?: () => void;

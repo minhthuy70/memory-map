@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  ArrowRight,
-  Calendar,
-  CheckCircle,
-  Clock,
-  ExternalLink,
-  Info,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2
-} from 'lucide-react';
+import { ArrowRight, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink } from 'lucide-react';
 
 interface IFTTTIntegrationProps {
   onCancel?: () => void;
@@ -51,13 +39,13 @@ export default function IFTTTIntegration({ onCancel }: IFTTTIntegrationProps) {
 
   const [iftttApplets, setIftttApplets] = useState<IFTTTApplet[]>([
     { id: '1', name: 'Memory to Evernote', trigger: 'New Memory Created', action: 'Create Evernote Note', isEnabled: true, lastRun: '2024-01-17 18:30', runCount: 98, status: 'active' },
-    { id: '2', name: 'Memory to MessageCircle', trigger: 'New Memory Created', action: 'Post Tweet', isEnabled: true, lastRun: '2024-01-16 10:15', runCount: 67, status: 'active' },
+    { id: '2', name: 'Memory to Twitter', trigger: 'New Memory Created', action: 'Post Tweet', isEnabled: true, lastRun: '2024-01-16 10:15', runCount: 67, status: 'active' },
     { id: '3', name: 'Photo Backup', trigger: 'New Photo Memory', action: 'Save to Google Drive', isEnabled: false, lastRun: '2024-01-15 14:00', runCount: 34, status: 'paused' },
   ]);
 
   const [iftttServices, setIftttServices] = useState<IFTTTService[]>([
     { id: '1', name: 'Evernote', category: 'Productivity', isConnected: true },
-    { id: '2', name: 'MessageCircle', category: 'Social', isConnected: true },
+    { id: '2', name: 'Twitter', category: 'Social', isConnected: true },
     { id: '3', name: 'Google Drive', category: 'Storage', isConnected: false },
     { id: '4', name: 'Dropbox', category: 'Storage', isConnected: false },
   ]);
@@ -205,7 +193,7 @@ export default function IFTTTIntegration({ onCancel }: IFTTTIntegrationProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-blue-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Auto RefreshCcw</span>
+                <span className="text-xs text-slate-900 dark:text-white">Auto Sync</span>
               </div>
               <input
                 type="checkbox"
@@ -217,7 +205,7 @@ export default function IFTTTIntegration({ onCancel }: IFTTTIntegrationProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw Interval (min)</span>
+                <span className="text-xs text-slate-900 dark:text-white">Sync Interval (min)</span>
               </div>
               <input
                 type="number"

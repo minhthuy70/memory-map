@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Check,
-  Code,
-  Download,
-  FileText,
-  Layers,
-  RefreshCw,
-  Settings,
-  TrendingUp
-} from 'lucide-react';
+import { Code, X, Settings, RefreshCw, Layers, FileText, Download, Check, TrendingUp, AlertTriangle } from 'lucide-react';
 
 interface CodeChunk {
   name: string;

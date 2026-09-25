@@ -1,29 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  Filter,
-  FilterIcon,
-  Heart,
-  Image,
-  ImageIcon,
-  LineChart,
-  MapPin,
-  Settings,
-  Users,
-  Zap,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { LineChart, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Image as ImageIcon, MapPin, Heart, Filter as FilterIcon } from 'lucide-react';
 
 interface TimelineEvent {
   id: string;
@@ -63,7 +41,7 @@ const DEFAULT_EVENTS: TimelineEvent[] = [
   },
   {
     id: 'event-2',
-    title: "Tom's 8th PartyPopper",
+    title: "Tom's 8th Birthday",
     type: 'birthday',
     date: new Date('2024-01-20'),
     participants: ['Dad', 'Mom', 'Emma'],
@@ -293,7 +271,7 @@ export default function FamilyTimeline({ onCancel, onViewMemory }: FamilyTimelin
         </div>
       </div>
 
-      {/* CalendarDays Navigation */}
+      {/* Year Navigation */}
       <div className="mb-4">
         <div className="flex items-center justify-between">
           <button
@@ -379,7 +357,7 @@ export default function FamilyTimeline({ onCancel, onViewMemory }: FamilyTimelin
               <option value="all">All Types</option>
               <option value="memory">Memory</option>
               <option value="milestone">Milestone</option>
-              <option value="birthday">PartyPopper</option>
+              <option value="birthday">Birthday</option>
               <option value="anniversary">Anniversary</option>
               <option value="vacation">Vacation</option>
             </select>
@@ -466,10 +444,10 @@ export default function FamilyTimeline({ onCancel, onViewMemory }: FamilyTimelin
         </div>
       </div>
 
-      {/* CalendarDays Overview */}
+      {/* Year Overview */}
       <div className="mb-4">
         <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          CalendarDays Overview
+          Year Overview
         </h4>
         <div className="space-y-2">
           {years.map((year) => (

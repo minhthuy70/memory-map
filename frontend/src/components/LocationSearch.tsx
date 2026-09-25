@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Loader2, MapPin, Search } from 'lucide-react';
+import { Search, MapPin, X, Loader2 } from 'lucide-react';
 
 interface SearchResult {
   place_id: number;

@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  as,
-  CheckCircle,
-  Download,
-  Image,
-  ImageIcon,
-  Info,
-  Layers,
-  Maximize,
-  RefreshCw,
-  Star,
-  Zap
-} from 'lucide-react';
+import { Maximize, X, RefreshCw, Info, CheckCircle, Star, Zap, Download, Image as ImageIcon, Layers } from 'lucide-react';
 
 interface AIPhotoUpscalingProps {
   onCancel?: () => void;
@@ -148,7 +136,7 @@ export default function AIPhotoUpscaling({ onCancel }: AIPhotoUpscalingProps) {
             <p className="text-lg font-bold text-slate-900 dark:text-white">{upscaledPhotos.length}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Avg Gauge</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Avg Quality</p>
             <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{(upscaledPhotos.reduce((acc, p) => acc + p.qualityScore, 0) / upscaledPhotos.length).toFixed(0)}%</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">

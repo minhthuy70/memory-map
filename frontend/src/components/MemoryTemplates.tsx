@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Copy, FileText, Plus, Trash2 } from 'lucide-react';
+import { Copy, Trash2, Plus, FileText } from 'lucide-react';
 
 interface MemoryTemplate {
   id: string;

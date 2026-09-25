@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Pause,
-  Play,
-  RotateCw,
-  Settings,
-  SkipForward,
-  Smartphone,
-  Sparkles,
-  Square,
-  Zap
-} from 'lucide-react';
+import { Sparkles, X, Settings, CheckCircle, AlertTriangle, Smartphone, Activity, Clock, Zap, Play, Pause, Square, SkipForward, RotateCw } from 'lucide-react';
 
 interface AnimationConfig {
   id: string;

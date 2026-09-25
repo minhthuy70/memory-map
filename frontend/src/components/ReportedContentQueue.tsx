@@ -1,24 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  FileText,
-  Filter,
-  Flag,
-  Image,
-  Info,
-  MessageSquare,
-  RefreshCw,
-  Search,
-  Shield,
-  User,
-  Video,
-  XCircle,
-  Zap
-} from 'lucide-react';
+import { Flag, X, CheckCircle, XCircle, AlertTriangle, Info, Clock, User, MessageSquare, Image, Video, FileText, RefreshCw, Filter, Search, Zap, Shield } from 'lucide-react';
 
 interface ReportedContentQueueProps {
   onCancel?: () => void;

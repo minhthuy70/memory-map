@@ -1,38 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  FileAudio,
-  Filter,
-  ListMusic,
-  Music,
-  Music2,
-  Pause,
-  Play,
-  PlayCircle,
-  Plus,
-  RefreshCw,
-  Repeat,
-  Settings,
-  SettingsIcon,
-  Shuffle,
-  SkipBack,
-  SkipForward,
-  Trash2,
-  Upload,
-  Volume2,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Music, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Upload, RefreshCw, Check, Zap as ZapIcon, Plus, PlayCircle, SkipBack, SkipForward, Volume2, Music2, FileAudio, ListMusic, Shuffle, Repeat } from 'lucide-react';
 
 interface AttachedMusic {
   id: string;

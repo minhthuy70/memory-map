@@ -1,27 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  Angry,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Eye,
-  Filter,
-  Frown,
-  Heart,
-  Laugh,
-  Meh,
-  Settings,
-  Smile,
-  Sparkles,
-  ThumbsUp,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Heart, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, ThumbsUp, Laugh, Frown, Angry, Smile, Meh, Eye, Sparkles } from 'lucide-react';
 
 interface Reaction {
   id: string;
@@ -76,7 +56,7 @@ const DEFAULT_MEMORY_REACTIONS: MemoryReaction[] = [
   },
   {
     memoryId: 'mem-2',
-    memoryTitle: 'PartyPopper Party',
+    memoryTitle: 'Birthday Party',
     reactions: [
       { id: 'react-2', type: 'love', emoji: '❤️', count: 30, userReacted: true },
       { id: 'react-3', type: 'laugh', emoji: '😂', count: 15, userReacted: false },
@@ -99,7 +79,7 @@ const DEFAULT_NOTIFICATIONS: ReactionNotification[] = [
     id: 'notif-2',
     type: 'new_reaction',
     user: 'Tom',
-    memory: 'PartyPopper Party',
+    memory: 'Birthday Party',
     reactionType: 'laugh',
     timestamp: new Date('2024-01-10'),
   },

@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  Clock,
-  Heart,
-  Info,
-  Moon,
-  RefreshCw,
-  Star,
-  Sun,
-  Target,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Heart, X, RefreshCw, Info, TrendingUp, Activity, Target, Star, Zap, Moon, Sun, Clock } from 'lucide-react';
 
 interface WellnessScoreTrackingProps {
   onCancel?: () => void;

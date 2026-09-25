@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Clock,
-  Download,
-  Info,
-  Map,
-  Play,
-  RefreshCw,
-  Route,
-  Star,
-  Zap
-} from 'lucide-react';
+import { Map, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, Route } from 'lucide-react';
 
 interface JourneyVideoFromMapPointsProps {
   onCancel?: () => void;

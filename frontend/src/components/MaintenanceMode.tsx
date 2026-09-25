@@ -1,25 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Globe,
-  Info,
-  Pause,
-  Play,
-  RefreshCw,
-  Save,
-  Shield,
-  ToggleLeft,
-  ToggleRight,
-  Trash2,
-  Users,
-  Wrench,
-  Zap
-} from 'lucide-react';
+import { Wrench, X, Save, RefreshCw, CheckCircle, AlertTriangle, Info, Clock, Calendar, Shield, Users, Globe, Zap, ToggleLeft, ToggleRight, Play, Pause, Trash2 } from 'lucide-react';
 
 interface MaintenanceModeProps {
   onCancel?: () => void;

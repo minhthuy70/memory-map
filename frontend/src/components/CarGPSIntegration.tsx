@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  Car,
-  CheckCircle,
-  Info,
-  MapPin,
-  Navigation,
-  Play,
-  RefreshCw,
-  Route,
-  Settings
-} from 'lucide-react';
+import { Car, X, RefreshCw, Info, MapPin, Route, Calendar, Play, Settings, CheckCircle, AlertCircle, Navigation } from 'lucide-react';
 
 interface CarGPSIntegrationProps {
   onCancel?: () => void;
@@ -204,7 +192,7 @@ export default function CarGPSIntegration({ onCancel }: CarGPSIntegrationProps) 
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <AlertCircle className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Delete After RefreshCcw</span>
+                <span className="text-xs text-slate-900 dark:text-white">Delete After Sync</span>
               </div>
               <input
                 type="checkbox"

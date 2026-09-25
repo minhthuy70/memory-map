@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  Filter,
-  MapPin,
-  Settings,
-  Star,
-  Timeline,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { Timeline, X, Settings, CheckCircle, AlertTriangle, Calendar, MapPin, Activity, Clock, Filter, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, BarChart3, Star } from 'lucide-react';
 
 interface TimelineMemory {
   id: string;
@@ -46,7 +30,7 @@ const DEFAULT_MEMORIES: TimelineMemory[] = [
   },
   {
     id: 'mem-2',
-    title: 'PartyPopper Party',
+    title: 'Birthday Party',
     date: new Date('2020-06-20'),
     location: 'Da Nang',
     category: 'Personal',
@@ -213,7 +197,7 @@ export default function LifeTimelineDashboard({ onCancel, onFilterMemories }: Li
         </div>
       )}
 
-      {/* CalendarDays Navigation */}
+      {/* Year Navigation */}
       <div className="mb-4 flex items-center justify-between">
         <button
           type="button"
@@ -253,7 +237,7 @@ export default function LifeTimelineDashboard({ onCancel, onFilterMemories }: Li
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
             <Calendar className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">This CalendarDays</span>
+            <span className="text-[10px] text-slate-600 dark:text-slate-400">This Year</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
             {filteredMemories.length}

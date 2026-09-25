@@ -1,24 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlignCenter,
-  AlignLeft,
-  AlignRight,
-  BarChart3,
-  BookOpen,
-  CheckCircle,
-  Eye,
-  EyeOff,
-  Focus,
-  Info,
-  Minus,
-  Plus,
-  Ruler,
-  Settings,
-  Smartphone,
-  Zap
-} from 'lucide-react';
+import { BookOpen, X, Minus, Plus, Settings, Info, BarChart3, Smartphone, CheckCircle, Eye, EyeOff, AlignLeft, AlignCenter, AlignRight, Ruler, Zap, Focus } from 'lucide-react';
 
 interface ReadingGuideOverlayProps {
   onCancel?: () => void;

@@ -1,30 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Copy,
-  Edit2,
-  FileText,
-  Filter,
-  Languages,
-  Lightbulb,
-  MessageSquare,
-  PenTool,
-  RefreshCw,
-  Settings,
-  Sparkles,
-  XIcon,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Lightbulb, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Sparkles, Zap as ZapIcon, Check, X as XIcon, RefreshCw, Edit2, Copy, Languages, MessageSquare, FileText, PenTool } from 'lucide-react';
 
 interface TextSuggestion {
   id: string;

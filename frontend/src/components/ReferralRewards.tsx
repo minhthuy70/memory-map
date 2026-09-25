@@ -1,28 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AtSign,
-  Award,
-  Calendar,
-  Check,
-  Clock,
-  Coins,
-  Copy,
-  Crown,
-  Download,
-  Gift,
-  Link,
-  Mail,
-  MessageCircle,
-  QrCode,
-  RefreshCw,
-  Share2,
-  Star,
-  TrendingUp,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Share2, X, Copy, Check, Gift, Users, Link, Calendar, TrendingUp, Award, Star, Crown, Mail, MessageCircle, AtSign, Users, QrCode, Download, RefreshCw, Clock, Zap, Coins } from 'lucide-react';
 
 interface ReferralRewardsProps {
   onCancel?: () => void;
@@ -216,16 +195,16 @@ export default function ReferralRewards({ onCancel }: ReferralRewardsProps) {
               onClick={() => handleShare('twitter')}
               className="flex items-center gap-2 px-3 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors text-xs"
             >
-              <MessageCircle className="h-4 w-4" />
-              MessageCircle
+              <Twitter className="h-4 w-4" />
+              Twitter
             </button>
             <button
               type="button"
               onClick={() => handleShare('facebook')}
               className="flex items-center gap-2 px-3 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors text-xs"
             >
-              <Globe2 className="h-4 w-4" />
-              Globe2
+              <Facebook className="h-4 w-4" />
+              Facebook
             </button>
             <button
               type="button"

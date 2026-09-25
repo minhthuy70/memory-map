@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Check,
-  Clock,
-  Eye,
-  Lock,
-  Plus,
-  Settings,
-  Share2,
-  Sparkles,
-  Users
-} from 'lucide-react';
+import { Users, Plus, Share2, X, Settings, Check, Lock, Clock, Eye, Sparkles, AlertTriangle } from 'lucide-react';
 
 interface SharedAlbum {
   id: string;

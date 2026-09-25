@@ -1,22 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  ArrowDown,
-  ArrowUp,
-  BarChart3,
-  Calendar,
-  Clock,
-  Download,
-  Eye,
-  Filter,
-  Mouse,
-  RefreshCw,
-  Settings,
-  TrendingUp,
-  Users
-} from 'lucide-react';
+import { BarChart3, X, Settings, RefreshCw, Users, Activity, TrendingUp, Clock, Eye, Mouse, ArrowUp, ArrowDown, Calendar, Filter, Download } from 'lucide-react';
 
 interface DashboardMetric {
   name: string;

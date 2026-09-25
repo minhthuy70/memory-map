@@ -1,29 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Clock,
-  FileText,
-  Filter,
-  Folder,
-  Globe,
-  Home,
-  Image,
-  ImageIcon,
-  Lock,
-  Plus,
-  Settings,
-  Share2,
-  Star,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Home, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, Plus, Folder, Share2, Lock, Globe, Image as ImageIcon, FileText, Star } from 'lucide-react';
 
 interface FamilyMember {
   id: string;
@@ -106,7 +84,7 @@ const DEFAULT_MEMORIES: SharedMemory[] = [
   },
   {
     id: 'memory-2',
-    title: 'PartyPopper Party',
+    title: 'Birthday Party',
     type: 'video',
     createdBy: 'Mom',
     createdAt: new Date('2024-01-08'),
@@ -137,7 +115,7 @@ const DEFAULT_ACTIVITIES: FamilyActivity[] = [
   {
     id: 'activity-2',
     type: 'comment_added',
-    description: 'commented on "PartyPopper Party"',
+    description: 'commented on "Birthday Party"',
     user: 'Emma',
     timestamp: new Date('2024-01-09'),
   },

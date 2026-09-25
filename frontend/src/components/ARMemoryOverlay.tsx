@@ -1,50 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Battery,
-  Calendar,
-  Camera,
-  Check,
-  CheckCircle,
-  Clock,
-  Compass,
-  Crosshair,
-  Download,
-  ExternalLink,
-  Eye,
-  EyeOff,
-  Filter,
-  Layers,
-  Locate,
-  Map,
-  MapIcon,
-  MapPin,
-  Maximize2,
-  Navigation,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  RotateCw,
-  Settings,
-  SettingsIcon,
-  Signal,
-  Target,
-  ToggleLeft,
-  ToggleRight,
-  Trash2,
-  TrashIcon,
-  Wifi,
-  Zap,
-  ZapIcon,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Camera, RefreshCw, Check, Zap as ZapIcon, Plus, MapPin, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, Target, Crosshair, Navigation, Locate, Map as MapIcon, Layers, ToggleLeft, ToggleRight, RotateCw, ZoomIn, ZoomOut, Maximize2, Compass, Signal, Wifi, Battery } from 'lucide-react';
 
 interface ARMemory {
   id: string;

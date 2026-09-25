@@ -1,24 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  BarChart3,
-  CheckCircle,
-  Clock,
-  Database,
-  Download,
-  Eye,
-  EyeOff,
-  HardDrive,
-  Info,
-  RefreshCw,
-  Save,
-  Settings,
-  Smartphone,
-  Trash2,
-  Upload,
-  Zap
-} from 'lucide-react';
+import { Save, X, CheckCircle, Clock, RefreshCw, Settings, Info, BarChart3, Smartphone, Eye, EyeOff, HardDrive, Database, Upload, Download, Trash2, Zap } from 'lucide-react';
 
 interface ProgressSaveProps {
   onCancel?: () => void;

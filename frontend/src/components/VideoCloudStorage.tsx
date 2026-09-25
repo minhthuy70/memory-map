@@ -1,36 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Cloud,
-  Copy,
-  Database,
-  Download,
-  Eye,
-  Filter,
-  Gauge,
-  HardDrive,
-  Link,
-  Pause,
-  Play,
-  RefreshCw,
-  Settings,
-  SettingsIcon,
-  Shield,
-  Trash2,
-  Upload,
-  Video,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, HardDrive, Settings as SettingsIcon, Cloud, Upload, RefreshCw, Check, Zap as ZapIcon, Shield, Gauge, Database, Link, Copy, Eye } from 'lucide-react';
 
 interface StorageProvider {
   id: string;
@@ -332,7 +303,7 @@ export default function VideoCloudStorage({ onCancel, onUploadToStorage, onSync 
                   className="flex items-center gap-2 px-3 py-2 bg-blue-100 dark:bg-blue-900/30 hover:bg-blue-200 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded-lg transition-colors"
                 >
                   <RefreshCw className="h-3 w-3" />
-                  RefreshCcw
+                  Sync
                 </button>
               </div>
 

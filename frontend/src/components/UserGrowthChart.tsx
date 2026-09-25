@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  ArrowDown,
-  ArrowUp,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Download,
-  Eye,
-  EyeOff,
-  Filter,
-  Info,
-  RefreshCw,
-  TrendingUp,
-  Users,
-  Zap
-} from 'lucide-react';
+import { TrendingUp, X, Calendar, Filter, BarChart3, Download, RefreshCw, Users, ArrowUp, ArrowDown, Info, CheckCircle, AlertTriangle, Zap, Eye, EyeOff } from 'lucide-react';
 
 interface UserGrowthChartProps {
   onCancel?: () => void;
@@ -121,7 +105,7 @@ export default function UserGrowthChart({ onCancel }: UserGrowthChartProps) {
             <option value="week">This Week</option>
             <option value="month">This Month</option>
             <option value="quarter">This Quarter</option>
-            <option value="year">This CalendarDays</option>
+            <option value="year">This Year</option>
           </select>
           <button
             type="button"

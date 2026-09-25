@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertCircle,
-  AlertTriangle,
-  Check,
-  CheckCircle,
-  Clock,
-  Play,
-  RefreshCw,
-  Settings,
-  Smartphone,
-  Vibrate,
-  Volume2,
-  Zap
-} from 'lucide-react';
+import { Vibrate, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Smartphone, Zap, Clock, Activity, Play, Volume2, AlertCircle, Check } from 'lucide-react';
 
 interface HapticPattern {
   id: string;

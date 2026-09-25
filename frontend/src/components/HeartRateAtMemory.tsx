@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Heart,
-  Info,
-  RefreshCw,
-  Settings,
-  TrendingDown,
-  TrendingUp
-} from 'lucide-react';
+import { Heart, X, RefreshCw, Info, Settings, Activity, TrendingUp, TrendingDown, CheckCircle, AlertCircle, Clock, Calendar } from 'lucide-react';
 
 interface HeartRateAtMemoryProps {
   onCancel?: () => void;
@@ -244,7 +232,7 @@ export default function HeartRateAtMemory({ onCancel }: HeartRateAtMemoryProps) 
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Activity className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw with Health</span>
+                <span className="text-xs text-slate-900 dark:text-white">Sync with Health</span>
               </div>
               <input
                 type="checkbox"
@@ -326,7 +314,7 @@ export default function HeartRateAtMemory({ onCancel }: HeartRateAtMemoryProps) 
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• Auto-record heart rate when creating memories</li>
               <li>• Track heart rate zones: resting/fat burn/cardio/peak</li>
-              <li>• RefreshCcw with health apps for comprehensive data</li>
+              <li>• Sync with health apps for comprehensive data</li>
               <li>• View heart rate context in memory details</li>
             </ul>
           </div>

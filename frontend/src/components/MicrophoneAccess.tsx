@@ -1,22 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Download,
-  Mic,
-  Pause,
-  Play,
-  RefreshCw,
-  Settings,
-  Smartphone,
-  Square,
-  Trash2,
-  Volume2,
-  Waves
-} from 'lucide-react';
+import { Mic, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Play, Pause, Square, Volume2, Clock, Smartphone, Download, Trash2, Waves } from 'lucide-react';
 
 interface MicrophonePermission {
   granted: boolean;
@@ -342,7 +327,7 @@ export default function MicrophoneAccess({ onCancel, onRequestPermission, onStar
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <Waves className="h-4 w-4 text-slate-500" />
+                  <Wave className="h-4 w-4 text-slate-500" />
                   <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                     {recording.name}
                   </span>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { BarChart3, Calendar, Map, Plus, User } from 'lucide-react';
+import { Map, Calendar, BarChart3, User, Plus } from 'lucide-react';
 
 export default function BottomNavigation() {
   const router = useRouter();

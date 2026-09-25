@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Copy,
-  FileText,
-  Info,
-  Maximize,
-  Minimize,
-  RefreshCw,
-  Star,
-  Zap
-} from 'lucide-react';
+import { FileText, X, RefreshCw, Info, CheckCircle, Star, Zap, Copy, Maximize, Minimize } from 'lucide-react';
 
 interface AIExpandShortNotesProps {
   onCancel?: () => void;

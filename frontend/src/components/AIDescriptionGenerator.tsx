@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  as,
-  CheckCircle,
-  Copy,
-  FileText,
-  Image,
-  ImageIcon,
-  Info,
-  MapPin,
-  RefreshCw,
-  Star,
-  Zap
-} from 'lucide-react';
+import { FileText, X, RefreshCw, Info, CheckCircle, Star, Zap, Copy, Image as ImageIcon, MapPin } from 'lucide-react';
 
 interface AIDescriptionGeneratorProps {
   onCancel?: () => void;

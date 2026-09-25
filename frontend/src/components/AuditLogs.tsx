@@ -2,21 +2,22 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import {
+  FileText,
+  X,
+  Settings,
+  Search,
+  Filter,
+  Download,
+  RefreshCw,
   AlertTriangle,
   CheckCircle2,
-  ChevronRight,
-  Clock,
-  Download,
-  FileText,
-  Filter,
-  Globe,
-  RefreshCw,
-  Search,
-  Settings,
+  XCircle,
   Shield,
-  Trash2,
+  Clock,
   User,
-  XCircle
+  Globe,
+  Trash2,
+  ChevronRight
 } from 'lucide-react';
 
 export interface AuditLogEntry {
@@ -228,7 +229,7 @@ export default function AuditLogs({
           details: 'Đồng bộ 3 kỷ niệm mới từ ứng dụng di động.',
           severity: 'info' as const,
           status: 'SUCCESS' as const,
-          resource: 'Memories/RefreshCcw',
+          resource: 'Memories/Sync',
         },
       ];
       const randomAction = simulatedActions[Math.floor(Math.random() * simulatedActions.length)];

@@ -1,31 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Building,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Eye,
-  Filter,
-  Home,
-  Image,
-  ImageIcon,
-  MapPin,
-  Mountain,
-  Palmtree,
-  Plane,
-  Scan,
-  Settings,
-  Sparkles,
-  TreePine,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Image as ImageIcon, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Zap as ZapIcon, Calendar, Scan, Eye, MapPin, Home, Plane, TreePine, Mountain, Building, Sparkles, Palmtree } from 'lucide-react';
 
 interface SceneCategory {
   id: string;

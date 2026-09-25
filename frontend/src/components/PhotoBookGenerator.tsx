@@ -1,46 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  as,
-  Book,
-  BookOpen,
-  Calendar,
-  CalendarIcon,
-  Check,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Copy,
-  Download,
-  Eye,
-  EyeOff,
-  File,
-  Filter,
-  Grid,
-  GridIcon,
-  Image,
-  ImageIcon,
-  ImagePlus,
-  Layers,
-  Layout,
-  LayoutGrid,
-  Loader2,
-  MapPin,
-  Maximize2,
-  Minimize2,
-  Move,
-  Pause,
-  Play,
-  RefreshCw,
-  RotateCw,
-  Settings,
-  Share2,
-  Sparkles,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, Download, BookOpen, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Share2, Eye, EyeOff, File, Book, Layers, Copy, Grid as GridIcon, LayoutGrid, Sparkles, ImagePlus, Move, RotateCw, ZoomIn, ZoomOut, Maximize2, Minimize2 } from 'lucide-react';
 
 interface PhotoBookGeneratorProps {
   onCancel?: () => void;
@@ -276,7 +237,7 @@ export default function PhotoBookGenerator({ onCancel, onExport }: PhotoBookGene
               </div>
               <div>
                 <label className="text-xs text-slate-600 dark:text-slate-400 block mb-1">
-                  Gauge
+                  Quality
                 </label>
                 <select
                   value={options.quality}

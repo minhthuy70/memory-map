@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Code,
-  ExternalLink,
-  Filter,
-  RefreshCw,
-  Search,
-  Settings,
-  Trash2,
-  User
-} from 'lucide-react';
+import { AlertCircle, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Code, User, Clock, Filter, Search, Trash2, ExternalLink } from 'lucide-react';
 
 interface ErrorLog {
   id: string;
@@ -85,7 +72,7 @@ const DEFAULT_ERRORS: ErrorLog[] = [
     severity: 'info',
     message: 'Performance warning: Long task detected (120ms)',
     url: '/map',
-    userAgent: 'Mozilla/5.0 (Linux; TabletSmartphone 10)',
+    userAgent: 'Mozilla/5.0 (Linux; Android 10)',
     timestamp: new Date(Date.now() - 1800000),
     occurrences: 5,
     resolved: false,

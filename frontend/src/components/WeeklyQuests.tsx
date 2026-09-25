@@ -1,26 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Award,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  ChevronRight,
-  Circle,
-  Clock,
-  Flame,
-  Gift,
-  Info,
-  Map,
-  RefreshCw,
-  Sparkles,
-  Star,
-  Target,
-  Trophy,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Map, X, CheckCircle, Circle, Calendar, Gift, RefreshCw, Award, Star, Flame, Trophy, Target, Sparkles, Users, Zap, ChevronRight, Info, BarChart3, Clock } from 'lucide-react';
 
 interface WeeklyQuestsProps {
   onCancel?: () => void;

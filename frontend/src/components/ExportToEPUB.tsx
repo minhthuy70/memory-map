@@ -1,42 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  as,
-  Book,
-  BookOpen,
-  Calendar,
-  CalendarIcon,
-  Check,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Download,
-  Eye,
-  EyeOff,
-  FileText,
-  Filter,
-  Grid,
-  Image,
-  ImageIcon,
-  Layers,
-  Layout,
-  Loader2,
-  MapPin,
-  Monitor,
-  Palette,
-  Pause,
-  Play,
-  RefreshCw,
-  Settings,
-  Share2,
-  Smartphone,
-  Tablet,
-  Type,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, Download, BookOpen, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Palette, Type, ZoomIn, ZoomOut, Smartphone, Tablet, Monitor, Share2, Eye, EyeOff, Book, FileText, Layers, Grid } from 'lucide-react';
 
 interface ExportToEPUBProps {
   onCancel?: () => void;

@@ -1,18 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  FileText,
-  RefreshCw,
-  Settings,
-  TrendingDown,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Clock, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Activity, TrendingUp, TrendingDown, Zap, FileText } from 'lucide-react';
 
 interface APIEndpoint {
   name: string;

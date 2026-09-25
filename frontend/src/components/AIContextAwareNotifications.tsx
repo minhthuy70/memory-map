@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Bell,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Home,
-  Info,
-  MapPin,
-  Moon,
-  RefreshCw,
-  Star,
-  Sun,
-  Zap
-} from 'lucide-react';
+import { Bell, X, RefreshCw, Info, CheckCircle, Star, Zap, MapPin, Clock, Sun, Moon, Calendar, Home } from 'lucide-react';
 
 interface AIContextAwareNotificationsProps {
   onCancel?: () => void;

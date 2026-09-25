@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, Copy, Heading, Info, Lightbulb, RefreshCw, Star, Zap } from 'lucide-react';
+import { Heading, X, RefreshCw, Info, CheckCircle, Star, Zap, Copy, Lightbulb } from 'lucide-react';
 
 interface AITitleSuggesterProps {
   onCancel?: () => void;

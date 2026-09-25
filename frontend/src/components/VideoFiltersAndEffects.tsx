@@ -1,41 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Contrast,
-  Download,
-  Droplets,
-  Eye,
-  EyeOff,
-  Filter,
-  Image,
-  ImageIcon,
-  Layers,
-  Palette,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Settings,
-  SettingsIcon,
-  Sliders,
-  SlidersIcon,
-  Sparkles,
-  Sun,
-  Trash2,
-  TrashIcon,
-  Video,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Sparkles, RefreshCw, Check, Zap as ZapIcon, Sliders, Layers, Plus, Trash2 as TrashIcon, Eye, EyeOff, Sliders as SlidersIcon, Contrast, Sun, Droplets, Palette, Image as ImageIcon } from 'lucide-react';
 
 interface VideoFilter {
   id: string;

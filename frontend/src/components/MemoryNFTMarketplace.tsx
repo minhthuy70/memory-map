@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Gem,
-  Heart,
-  Info,
-  RefreshCw,
-  Share2,
-  ShoppingBag,
-  Star,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { ShoppingBag, X, RefreshCw, Info, CheckCircle, Star, Zap, Gem, TrendingUp, Heart, Share2 } from 'lucide-react';
 
 interface MemoryNFTMarketplaceProps {
   onCancel?: () => void;

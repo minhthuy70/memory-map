@@ -1,28 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  BarChart3,
-  Bell,
-  Calendar,
-  CheckCircle,
-  CheckCircle2,
-  Clock,
-  Edit3,
-  Eye,
-  Filter,
-  Heart,
-  MessageSquare,
-  Plus,
-  Settings,
-  Share2,
-  Trash2,
-  UserPlus,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Activity, X, Settings, CheckCircle, AlertTriangle, Clock, BarChart3, Filter, Zap, Calendar, Users, Plus, Heart, MessageSquare, Edit3, Share2, Bell, Eye, CheckCircle2, UserPlus, Trash2 } from 'lucide-react';
 
 interface ActivityItem {
   id: string;
@@ -62,7 +41,7 @@ const DEFAULT_ACTIVITIES: ActivityItem[] = [
     type: 'comment_added',
     user: 'Mom',
     userAvatar: '/mom.jpg',
-    target: 'PartyPopper Party',
+    target: 'Birthday Party',
     description: 'commented on memory',
     timestamp: new Date('2024-01-10'),
     isRead: true,

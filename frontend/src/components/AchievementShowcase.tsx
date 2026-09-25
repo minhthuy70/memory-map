@@ -1,35 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Award,
-  Calendar,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Copy,
-  Crown,
-  Download,
-  Edit,
-  Eye,
-  EyeOff,
-  Filter,
-  Flame,
-  Grid,
-  Heart,
-  Link,
-  List,
-  Lock,
-  MapPin,
-  Settings,
-  Share2,
-  Sparkles,
-  Star,
-  Target,
-  Trophy,
-  Unlock,
-  Zap
-} from 'lucide-react';
+import { Award, X, Share2, Download, Eye, EyeOff, Grid, List, Filter, Star, Trophy, Target, Sparkles, Flame, Zap, Crown, Heart, MapPin, Calendar, Lock, Unlock, ChevronDown, ChevronUp, Settings, Edit, Link, Copy, CheckCircle } from 'lucide-react';
 
 interface AchievementShowcaseProps {
   onCancel?: () => void;

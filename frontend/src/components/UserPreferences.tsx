@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { RotateCcw, Save, Settings } from 'lucide-react';
+import { Settings, Save, RotateCcw } from 'lucide-react';
 
 interface UserPreferences {
   defaultView: 'map' | 'list';
@@ -109,7 +109,7 @@ export default function UserPreferences() {
           </select>
         </div>
 
-        {/* Default ListOrdered */}
+        {/* Default Sort */}
         <div>
           <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-2">
             Sắp xếp mặc định

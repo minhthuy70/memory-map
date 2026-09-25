@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Calendar,
-  CheckCircle,
-  Clock,
-  Edit,
-  Info,
-  Plus,
-  RefreshCw,
-  Repeat,
-  Star,
-  Target,
-  TrendingUp
-} from 'lucide-react';
+import { Repeat, X, RefreshCw, Info, Clock, Star, Plus, CheckCircle, Target, TrendingUp, Calendar, Edit } from 'lucide-react';
 
 interface SpacedRepetitionReviewProps {
   onCancel?: () => void;

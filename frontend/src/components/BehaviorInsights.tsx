@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Filter,
-  Lightbulb,
-  Settings,
-  Sparkles,
-  Target,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Lightbulb, X, Settings, CheckCircle, AlertTriangle, TrendingUp, Clock, Activity, BarChart3, Filter, Zap, Sparkles, Target, Calendar } from 'lucide-react';
 
 interface BehaviorPattern {
   id: string;

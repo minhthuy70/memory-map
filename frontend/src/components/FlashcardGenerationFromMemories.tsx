@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  BookOpen,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Info,
-  Layers,
-  Plus,
-  RefreshCw,
-  RotateCw,
-  Star,
-  Target
-} from 'lucide-react';
+import { Layers, X, RefreshCw, Info, BookOpen, Star, Plus, CheckCircle, Target, Clock, RotateCw, Calendar } from 'lucide-react';
 
 interface FlashcardGenerationFromMemoriesProps {
   onCancel?: () => void;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, CheckCircle, Info, RefreshCw, Shield, Sparkles, Star, Zap } from 'lucide-react';
+import { Check, X, RefreshCw, Info, CheckCircle, Star, Zap, Shield, Sparkles } from 'lucide-react';
 
 interface ProPlanProps {
   onCancel?: () => void;

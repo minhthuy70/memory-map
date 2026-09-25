@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Download,
-  Eye,
-  EyeOff,
-  Info,
-  Key,
-  Lock,
-  RefreshCw,
-  Shield,
-  Star,
-  Upload,
-  Zap
-} from 'lucide-react';
+import { Lock, X, RefreshCw, Info, CheckCircle, Star, Zap, Key, Download, Upload, Shield, Eye, EyeOff } from 'lucide-react';
 
 interface EncryptedBackupWithUserKeyProps {
   onCancel?: () => void;

@@ -1,22 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  ArrowDown,
-  ArrowUp,
-  BarChart3,
-  CheckCircle,
-  Filter,
-  Folder,
-  PieChart,
-  Settings,
-  Star,
-  TrendingDown,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Folder, X, Settings, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, Activity, TrendingUp, TrendingDown, BarChart3, Filter, Zap, PieChart, Star } from 'lucide-react';
 
 interface CategoryData {
   category: string;
@@ -172,7 +157,7 @@ export default function CategoryComparison({ onCancel, onCompareCategories }: Ca
             </div>
             <div>
               <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                ListOrdered by
+                Sort by
               </label>
               <select
                 value={sortBy}

@@ -1,18 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Database,
-  HardDrive,
-  RefreshCw,
-  Settings,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Database, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Activity, HardDrive, Clock, Zap, TrendingUp } from 'lucide-react';
 
 interface DatabaseMetrics {
   name: string;

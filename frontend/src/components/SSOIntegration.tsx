@@ -1,26 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  AlertTriangle,
-  Building2,
-  Check,
-  CheckCircle,
-  Clock,
-  FileText,
-  Globe,
-  Key,
-  Link,
-  Lock,
-  Plus,
-  RefreshCw,
-  Settings,
-  Shield,
-  Trash2,
-  User,
-  Users
-} from 'lucide-react';
+import { Building2, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Shield, Clock, User, Users, Key, Globe, Lock, Plus, Trash2, Link, FileText, Check, AlertCircle } from 'lucide-react';
 
 interface SSOProvider {
   id: string;
@@ -389,7 +370,7 @@ export default function SSOIntegration({ onCancel, onEnableProvider, onDisablePr
                       disabled={isSyncing}
                       className="px-2 py-1 bg-green-500 hover:bg-green-600 disabled:bg-slate-300 dark:disabled:bg-slate-600 text-white text-[10px] font-semibold rounded-lg transition-colors"
                     >
-                      {isSyncing ? 'Syncing...' : 'RefreshCcw'}
+                      {isSyncing ? 'Syncing...' : 'Sync'}
                     </button>
                   )}
                   {provider.enabled ? (
@@ -437,7 +418,7 @@ export default function SSOIntegration({ onCancel, onEnableProvider, onDisablePr
                   </div>
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Last RefreshCcw</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Last Sync</div>
                   <div className="text-xs text-slate-700 dark:text-slate-300">
                     {provider.lastSync 
                       ? new Date(provider.lastSync).toLocaleDateString('vi-VN')
@@ -545,7 +526,7 @@ export default function SSOIntegration({ onCancel, onEnableProvider, onDisablePr
               </div>
               <div>
                 <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                  BadgeCheck
+                  Certificate
                 </label>
                 <textarea
                   placeholder="Paste X.509 certificate..."

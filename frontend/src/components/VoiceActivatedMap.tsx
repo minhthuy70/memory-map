@@ -1,43 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Compass,
-  Crosshair,
-  Download,
-  ExternalLink,
-  Filter,
-  Globe,
-  Layers,
-  Locate,
-  Map,
-  MapPin,
-  Mic,
-  Move,
-  Navigation,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  RotateCw,
-  Settings,
-  SettingsIcon,
-  StopCircle,
-  Trash2,
-  TrashIcon,
-  Zap,
-  ZapIcon,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Map, RefreshCw, Check, Zap as ZapIcon, Plus, MapPin, ZoomIn, ZoomOut, Layers, Navigation, Move, RotateCw, Crosshair, Locate, Trash2 as TrashIcon, ExternalLink, StopCircle, Globe, Compass } from 'lucide-react';
 
 interface VoiceMapCommand {
   id: string;

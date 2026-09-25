@@ -1,27 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Bell,
-  Cake,
-  Calendar,
-  CheckCircle,
-  Clock,
-  ClockIcon,
-  Filter,
-  Gift,
-  Heart,
-  MapPin,
-  Plane,
-  Plus,
-  Settings,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Calendar, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Plus, Users, Bell, MapPin, Cake, Plane, Gift, Heart, Clock as ClockIcon } from 'lucide-react';
 
 interface CalendarEvent {
   id: string;
@@ -53,7 +33,7 @@ interface SharedCalendarsProps {
 const DEFAULT_EVENTS: CalendarEvent[] = [
   {
     id: 'event-1',
-    title: "Tom's PartyPopper",
+    title: "Tom's Birthday",
     type: 'birthday',
     date: new Date('2024-01-20'),
     endDate: null,
@@ -125,7 +105,7 @@ export default function SharedCalendars({ onCancel, onCreateEvent }: SharedCalen
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'birthday':
-        return <PartyPopper className="h-4 w-4" />;
+        return <BirthdayCake className="h-4 w-4" />;
       case 'anniversary':
         return <Heart className="h-4 w-4" />;
       case 'vacation':
@@ -343,7 +323,7 @@ export default function SharedCalendars({ onCancel, onCreateEvent }: SharedCalen
                 : 'bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-300'
             }`}
           >
-            PartyPopper
+            Birthday
           </button>
           <button
             type="button"

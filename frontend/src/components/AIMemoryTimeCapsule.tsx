@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Calendar,
-  CheckCircle,
-  Clock,
-  Eye,
-  Info,
-  Lock,
-  Package,
-  RefreshCw,
-  Star,
-  Unlock,
-  Zap
-} from 'lucide-react';
+import { Package, X, RefreshCw, Info, CheckCircle, Star, Zap, Clock, Lock, Unlock, Eye, Calendar } from 'lucide-react';
 
 interface AIMemoryTimeCapsuleProps {
   onCancel?: () => void;

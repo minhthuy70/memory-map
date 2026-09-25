@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { memoriesApi } from '@/lib/memories-api';
-import { Bell, Calendar, Check, Clock, Loader2 } from 'lucide-react';
+import { Bell, Clock, Calendar, Check, X, Loader2 } from 'lucide-react';
 
 interface Reminder {
   id: string;

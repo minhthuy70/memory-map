@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  ArrowDown,
-  ArrowUp,
-  BarChart3,
-  CheckCircle,
-  Filter,
-  Globe,
-  Map,
-  MapPin,
-  Settings,
-  Star,
-  TrendingDown,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Map, X, Settings, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, Activity, TrendingUp, TrendingDown, BarChart3, Filter, Zap, MapPin, Globe, Star } from 'lucide-react';
 
 interface LocationData {
   location: string;
@@ -209,7 +193,7 @@ export default function LocationComparison({ onCancel, onCompareLocations }: Loc
             </div>
             <div>
               <label className="text-xs font-medium text-slate-700 dark:text-slate-300 block mb-1">
-                ListOrdered by
+                Sort by
               </label>
               <select
                 value={sortBy}

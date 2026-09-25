@@ -1,24 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  BarChart3,
-  CheckCircle,
-  Download,
-  Eye,
-  EyeOff,
-  Filter,
-  Globe,
-  Grid,
-  Info,
-  Layers,
-  MapPin,
-  RefreshCw,
-  Users,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { Globe, X, MapPin, BarChart3, Download, RefreshCw, Filter, Eye, EyeOff, Info, Grid, Users, Layers, CheckCircle, AlertTriangle, ZoomIn, ZoomOut } from 'lucide-react';
 
 interface GeographicDistributionMapProps {
   onCancel?: () => void;
@@ -130,7 +113,7 @@ export default function GeographicDistributionMap({ onCancel }: GeographicDistri
             <option value="week">This Week</option>
             <option value="month">This Month</option>
             <option value="quarter">This Quarter</option>
-            <option value="year">This CalendarDays</option>
+            <option value="year">This Year</option>
           </select>
           <button
             type="button"

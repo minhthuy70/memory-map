@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertCircle,
-  AlertOctagon,
-  AlertTriangle,
-  BarChart3,
-  CheckCircle,
-  CheckCircle2,
-  Clock,
-  Filter,
-  Settings,
-  Shield,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { AlertCircle, X, Settings, CheckCircle, AlertTriangle, TrendingUp, Clock, Activity, BarChart3, Filter, Zap, Shield, AlertOctagon, CheckCircle2 } from 'lucide-react';
 
 interface Anomaly {
   id: string;

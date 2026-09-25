@@ -1,38 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  ClockIcon,
-  Download,
-  ExternalLink,
-  Filter,
-  Languages,
-  Mic,
-  MicIcon,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Search,
-  SearchIcon,
-  Settings,
-  SettingsIcon,
-  Sparkles,
-  Trash2,
-  TrashIcon,
-  Volume2,
-  Waves,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Search, RefreshCw, Check, Zap as ZapIcon, Plus, Search as SearchIcon, Mic as MicIcon, Languages, Volume2, Waves, Trash2 as TrashIcon, ExternalLink, Clock as ClockIcon, Sparkles } from 'lucide-react';
 
 interface VoiceSearchResult {
   id: string;

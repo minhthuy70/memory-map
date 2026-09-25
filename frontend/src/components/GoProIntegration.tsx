@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  Camera,
-  CheckCircle,
-  Download,
-  Info,
-  Play,
-  RefreshCw,
-  Settings,
-  Video,
-  Wifi
-} from 'lucide-react';
+import { Camera, X, RefreshCw, Info, Wifi, Play, Download, Settings, CheckCircle, AlertCircle, Video, Calendar } from 'lucide-react';
 
 interface GoProIntegrationProps {
   onCancel?: () => void;
@@ -245,7 +233,7 @@ export default function GoProIntegration({ onCancel }: GoProIntegrationProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Video className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Gauge</span>
+                <span className="text-xs text-slate-900 dark:text-white">Quality</span>
               </div>
               <select
                 value={goProSettings.quality}
@@ -298,7 +286,7 @@ export default function GoProIntegration({ onCancel }: GoProIntegrationProps) {
                     <p className="text-xs font-bold text-slate-900 dark:text-white">{device.storageUsed}/{device.storageTotal}GB</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-xs text-slate-500 dark:text-slate-400">Last RefreshCcw</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">Last Sync</p>
                     <p className="text-xs text-slate-500 dark:text-slate-400">{device.lastSync || 'Never'}</p>
                   </div>
                 </div>
@@ -371,7 +359,7 @@ export default function GoProIntegration({ onCancel }: GoProIntegrationProps) {
               <li>• Connect GoPro via WiFi for automatic import</li>
               <li>• Auto-import footage when connected</li>
               <li>• Monitor battery and storage levels</li>
-              <li>• Gauge settings: 4K, 1080p, 720p</li>
+              <li>• Quality settings: 4K, 1080p, 720p</li>
             </ul>
           </div>
         )}

@@ -1,26 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Edit3,
-  Eye,
-  Filter,
-  Lock,
-  MessageSquare,
-  RotateCcw,
-  Save,
-  Settings,
-  Sparkles,
-  Unlock,
-  Users,
-  Zap
-} from 'lucide-react';
+import { Edit3, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Users, Lock, Unlock, Eye, Save, RotateCcw, MessageSquare, Sparkles } from 'lucide-react';
 
 interface ActiveUser {
   id: string;
@@ -95,7 +76,7 @@ const DEFAULT_SESSIONS: EditSession[] = [
   {
     id: 'session-2',
     memoryId: 'mem-2',
-    memoryTitle: 'PartyPopper Party',
+    memoryTitle: 'Birthday Party',
     activeUsers: ['user-3'],
     lockedBy: 'user-3',
     lockedAt: new Date(),

@@ -1,39 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  as,
-  Calendar,
-  CalendarIcon,
-  Check,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Copy,
-  Database,
-  Eye,
-  EyeOff,
-  FileText,
-  Filter,
-  Hash,
-  Image,
-  ImageIcon,
-  Layers,
-  Loader2,
-  MapPin,
-  Music,
-  MusicIcon,
-  RefreshCw,
-  Search,
-  Settings,
-  SkipForward,
-  Trash2,
-  Video,
-  VideoIcon,
-  Zap
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Loader2, FileText, Search, Filter, Check, SkipForward, RefreshCw, ChevronDown, ChevronUp, Database, Copy, Trash2, Eye, EyeOff, Zap, Clock, Hash, Layers, Calendar as CalendarIcon, MapPin, Image as ImageIcon, Video as VideoIcon, Music as MusicIcon } from 'lucide-react';
 
 interface DuplicateDetectionProps {
   onCancel?: () => void;
@@ -119,13 +87,13 @@ export default function DuplicateDetection({ onCancel, onApply }: DuplicateDetec
       {
         id: '2',
         type: 'memory',
-        title: 'PartyPopper celebration',
+        title: 'Birthday celebration',
         date: '2024-05-20',
         hash: 'def456',
         similarity: 88,
         existingItem: {
           id: 'mem-456',
-          title: 'PartyPopper party',
+          title: 'Birthday party',
           date: '2024-05-20',
         },
         action: 'merge',
@@ -201,7 +169,7 @@ export default function DuplicateDetection({ onCancel, onApply }: DuplicateDetec
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              Files Detection
+              Duplicate Detection
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Detect and handle duplicate imports

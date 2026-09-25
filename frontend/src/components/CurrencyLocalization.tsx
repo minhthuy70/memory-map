@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, Coins, DollarSign, Globe, Info, RefreshCw } from 'lucide-react';
+import { DollarSign, X, RefreshCw, Globe, Info, CheckCircle, Coins } from 'lucide-react';
 
 interface CurrencyLocalizationProps {
   onCancel?: () => void;

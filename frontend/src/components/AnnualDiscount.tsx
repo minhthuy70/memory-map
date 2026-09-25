@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, CheckCircle, Gift, Info, RefreshCw, Star, Zap } from 'lucide-react';
+import { Calendar, X, RefreshCw, Info, CheckCircle, Star, Zap, Gift } from 'lucide-react';
 
 interface AnnualDiscountProps {
   onCancel?: () => void;

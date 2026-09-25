@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AlertTriangle, Award, CheckCircle, Info, RefreshCw, Star, Target, Trophy } from 'lucide-react';
+import { Award, X, RefreshCw, Info, CheckCircle, AlertTriangle, Star, Target, Trophy } from 'lucide-react';
 
 interface LevelAAATargetProps {
   onCancel?: () => void;

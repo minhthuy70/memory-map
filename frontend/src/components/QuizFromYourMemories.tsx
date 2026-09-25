@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Award,
-  Calendar,
-  CheckCircle,
-  Clock,
-  HelpCircle,
-  Info,
-  Plus,
-  RefreshCw,
-  Star,
-  Target,
-  Trophy
-} from 'lucide-react';
+import { HelpCircle, X, RefreshCw, Info, CheckCircle, Star, Plus, Target, Clock, Trophy, Award, Calendar } from 'lucide-react';
 
 interface QuizFromYourMemoriesProps {
   onCancel?: () => void;

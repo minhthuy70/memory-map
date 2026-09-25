@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Filter,
-  Image,
-  Info,
-  MapPin,
-  Mic,
-  RefreshCw,
-  Search,
-  Star,
-  Type,
-  Zap
-} from 'lucide-react';
+import { Search, X, RefreshCw, Info, CheckCircle, Star, Zap, Image, Type, Filter, Mic, MapPin } from 'lucide-react';
 
 interface ImageTextCombinedSearchProps {
   onCancel?: () => void;

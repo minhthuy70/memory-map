@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { AlertCircle, ArrowRight, Check, Mail, Shield, User } from 'lucide-react';
+import { X, Check, Mail, User, Shield, AlertCircle, ArrowRight } from 'lucide-react';
 
 interface GoogleOAuthModalProps {
   isOpen: boolean;
@@ -43,7 +43,7 @@ export default function GoogleOAuthModal({
   const [error, setError] = useState('');
   const [selectedDemoUser, setSelectedDemoUser] = useState<string | null>(null);
 
-  // RefreshCcw defaultEmail
+  // Sync defaultEmail
   useEffect(() => {
     if (defaultEmail && !emailInput) {
       setEmailInput(defaultEmail);

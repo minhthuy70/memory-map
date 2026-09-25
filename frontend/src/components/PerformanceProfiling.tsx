@@ -1,17 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  Clock,
-  Cpu,
-  Database,
-  RefreshCw,
-  Settings,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Zap, X, Settings, RefreshCw, Activity, Clock, Cpu, Database, TrendingUp, AlertTriangle } from 'lucide-react';
 
 interface PerformanceMetric {
   name: string;

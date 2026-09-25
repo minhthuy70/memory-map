@@ -1,38 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  Ear,
-  FileAudio,
-  Filter,
-  MapPin,
-  Mic,
-  Music,
-  Pause,
-  Play,
-  PlayCircle,
-  Plus,
-  RefreshCw,
-  Settings,
-  SettingsIcon,
-  Share2,
-  StopCircle,
-  Trash2,
-  TrashIcon,
-  Volume2,
-  Waves,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Music, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Mic, RefreshCw, Check, Zap as ZapIcon, Plus, PlayCircle, StopCircle, MapPin, Volume2, Waves, FileAudio, Ear, Share2, Trash2 as TrashIcon } from 'lucide-react';
 
 interface SoundMemory {
   id: string;

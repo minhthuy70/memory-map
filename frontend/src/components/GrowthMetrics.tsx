@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  Award,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Database,
-  Settings,
-  Target,
-  TrendingDown,
-  TrendingUp,
-  Trophy,
-  Zap
-} from 'lucide-react';
+import { BarChart3, X, Settings, CheckCircle, AlertTriangle, TrendingUp, TrendingDown, Activity, Target, Calendar, Database, Award, Zap, Trophy } from 'lucide-react';
 
 interface GrowthMetric {
   id: string;

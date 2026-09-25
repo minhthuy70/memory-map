@@ -1,28 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Award,
-  Calendar,
-  Check,
-  Clock,
-  Coins,
-  Crown,
-  Flame,
-  Gift,
-  Heart,
-  Lock,
-  Pause,
-  Play,
-  RefreshCw,
-  RotateCw,
-  Sparkles,
-  Star,
-  TrendingUp,
-  Trophy,
-  Unlock,
-  Zap
-} from 'lucide-react';
+import { RefreshCw, X, Gift, Star, Coins, Lock, Unlock, Check, Sparkles, Award, Heart, Calendar, Clock, TrendingUp, Play, Pause, RotateCw, Zap, Flame, Crown, Trophy } from 'lucide-react';
 
 interface SpinTheWheelProps {
   onCancel?: () => void;

@@ -1,31 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  BarChart,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  DollarSign,
-  Download,
-  Eye,
-  EyeOff,
-  FileText,
-  Filter,
-  Grid,
-  Info,
-  Layers,
-  LineChart,
-  PieChart,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2,
-  TrendingUp,
-  Users
-} from 'lucide-react';
+import { FileText, X, Plus, Trash2, Calendar, BarChart3, Download, RefreshCw, Filter, Eye, EyeOff, Info, Grid, Layers, CheckCircle, AlertTriangle, Settings, PieChart, LineChart, BarChart, TrendingUp, Users, DollarSign, Activity } from 'lucide-react';
 
 interface CustomReportBuilderProps {
   onCancel?: () => void;
@@ -280,7 +256,7 @@ export default function CustomReportBuilder({ onCancel }: CustomReportBuilderPro
                       <option value="week">Week</option>
                       <option value="month">Month</option>
                       <option value="quarter">Quarter</option>
-                      <option value="year">CalendarDays</option>
+                      <option value="year">Year</option>
                     </select>
                     <button
                       type="button"

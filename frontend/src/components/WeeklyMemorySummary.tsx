@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  BarChart3,
-  Calendar,
-  Check,
-  Clock,
-  FileText,
-  Save,
-  Settings,
-  Sparkles,
-  TrendingUp
-} from 'lucide-react';
+import { Calendar, Clock, FileText, TrendingUp, Check, X, Save, Settings, Sparkles, BarChart3 } from 'lucide-react';
 
 interface WeeklySummaryConfig {
   enabled: boolean;

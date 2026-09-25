@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, Check, Clock, Heart, Mail, Save, Settings, TrendingUp } from 'lucide-react';
+import { Mail, Calendar, Clock, TrendingUp, Heart, Check, X, Save, Settings } from 'lucide-react';
 
 interface EmailPreference {
   id: string;

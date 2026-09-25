@@ -1,24 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertCircle,
-  AlertTriangle,
-  ArrowDown,
-  ArrowUp,
-  as,
-  BarChart3,
-  CheckCircle,
-  Filter,
-  LineChart,
-  Settings,
-  Sparkles,
-  TrendingDown,
-  TrendingUp,
-  TrendUp,
-  Zap
-} from 'lucide-react';
+import { TrendingUp, X, Settings, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, Activity, TrendingUp as TrendUp, TrendingDown, BarChart3, Filter, Zap, LineChart, Sparkles, AlertCircle } from 'lucide-react';
 
 interface TrendData {
   period: string;

@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowRightLeft,
-  CheckCircle,
-  Download,
-  ExternalLink,
-  FileText,
-  Info,
-  RefreshCw,
-  Shield,
-  Star,
-  Upload,
-  Zap
-} from 'lucide-react';
+import { ArrowRightLeft, X, RefreshCw, Info, CheckCircle, Star, Zap, Shield, FileText, Download, Upload, ExternalLink } from 'lucide-react';
 
 interface DataPortabilityGuaranteeProps {
   onCancel?: () => void;
@@ -60,14 +48,14 @@ export default function DataPortabilityGuarantee({ onCancel }: DataPortabilityGu
 
   const [portabilityRequests, setPortabilityRequests] = useState<PortabilityRequest[]>([
     { id: '1', type: 'export', platform: 'Google Photos', status: 'completed', requestedAt: '2024-01-15', completedAt: '2024-01-16', dataSize: 250 },
-    { id: '2', type: 'import', platform: 'ImagePlus', status: 'completed', requestedAt: '2024-02-20', completedAt: '2024-02-21', dataSize: 180 },
-    { id: '3', type: 'transfer', platform: 'Globe2', status: 'pending', requestedAt: '2024-03-10', dataSize: 320 },
+    { id: '2', type: 'import', platform: 'Instagram', status: 'completed', requestedAt: '2024-02-20', completedAt: '2024-02-21', dataSize: 180 },
+    { id: '3', type: 'transfer', platform: 'Facebook', status: 'pending', requestedAt: '2024-03-10', dataSize: 320 },
   ]);
 
   const [supportedPlatforms, setSupportedPlatforms] = useState<SupportedPlatform[]>([
     { id: '1', name: 'Google Photos', icon: '📷', exportSupported: true, importSupported: true, transferSupported: true },
-    { id: '2', name: 'ImagePlus', icon: '📸', exportSupported: true, importSupported: true, transferSupported: false },
-    { id: '3', name: 'Globe2', icon: '📘', exportSupported: true, importSupported: false, transferSupported: true },
+    { id: '2', name: 'Instagram', icon: '📸', exportSupported: true, importSupported: true, transferSupported: false },
+    { id: '3', name: 'Facebook', icon: '📘', exportSupported: true, importSupported: false, transferSupported: true },
     { id: '4', name: 'Apple Photos', icon: '🍎', exportSupported: true, importSupported: true, transferSupported: false },
   ]);
 
@@ -365,7 +353,7 @@ export default function DataPortabilityGuarantee({ onCancel }: DataPortabilityGu
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Portability Guarantee Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• GDPR-compliant data export and import</li>
-              <li>• Support for multiple platforms (Google, ImagePlus, Globe2, Apple)</li>
+              <li>• Support for multiple platforms (Google, Instagram, Facebook, Apple)</li>
               <li>• Standard data formats for easy transfer</li>
               <li>• API access for programmatic data access</li>
             </ul>

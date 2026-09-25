@@ -1,37 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Award,
-  Calendar,
-  Check,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Crown,
-  Download,
-  Eye,
-  EyeOff,
-  Filter,
-  Flame,
-  Gem,
-  Gift,
-  Heart,
-  Lock,
-  Medal,
-  Mountain,
-  Pen,
-  Share2,
-  Shield,
-  Sparkles,
-  Star,
-  Sword,
-  Target,
-  TrendingUp,
-  Trophy,
-  Unlock,
-  Zap
-} from 'lucide-react';
+import { Trophy, Star, Crown, Medal, Award, Lock, Unlock, X, Filter, Check, ChevronDown, ChevronUp, Zap, Flame, Sparkles, Heart, Target, Mountain, Gem, Shield, Sword, Clock, Calendar, TrendingUp, Eye, EyeOff, Share2, Download, Gift, Pen } from 'lucide-react';
 
 interface VirtualTrophiesProps {
   onCancel?: () => void;
@@ -164,7 +134,7 @@ export default function VirtualTrophies({ onCancel }: VirtualTrophiesProps) {
     },
     {
       id: '10',
-      name: 'Sunset Owl',
+      name: 'Night Owl',
       description: 'Create a memory after midnight',
       icon: 'moon',
       rarity: 'common',

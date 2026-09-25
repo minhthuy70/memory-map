@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Bell,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Edit2,
-  Eye,
-  Info,
-  Megaphone,
-  Plus,
-  RefreshCw,
-  Send,
-  Target,
-  Trash2,
-  Zap
-} from 'lucide-react';
+import { Megaphone, X, Plus, Trash2, Send, RefreshCw, CheckCircle, AlertTriangle, Info, Calendar, Bell, Clock, Eye, Edit2, Zap, Target } from 'lucide-react';
 
 interface AnnouncementSystemProps {
   onCancel?: () => void;

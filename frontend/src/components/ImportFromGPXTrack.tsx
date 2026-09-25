@@ -1,33 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Calendar,
-  Check,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Eye,
-  FileText,
-  Filter,
-  Gauge,
-  Globe,
-  Layers,
-  Loader2,
-  Map,
-  MapPin,
-  Navigation,
-  Pause,
-  Play,
-  RefreshCw,
-  Route,
-  Settings,
-  SkipForward,
-  Upload,
-  Waypoints
-} from 'lucide-react';
+import { X, Settings, Upload, CheckCircle, AlertTriangle, Loader2, MapPin, Navigation, Route, Waypoints, Calendar, Clock, Gauge, Map, Layers, Filter, Eye, Check, Play, Pause, SkipForward, RefreshCw, ChevronDown, ChevronUp, FileText, Globe } from 'lucide-react';
 
 interface ImportFromGPXTrackProps {
   onCancel?: () => void;
@@ -377,7 +351,7 @@ export default function ImportFromGPXTrack({ onCancel, onImport }: ImportFromGPX
             {autoDetectWaypoints && (
               <div>
                 <label className="text-xs text-slate-600 dark:text-slate-400 block mb-1">
-                  Waypoints threshold (meters)
+                  Waypoint threshold (meters)
                 </label>
                 <input
                   type="number"

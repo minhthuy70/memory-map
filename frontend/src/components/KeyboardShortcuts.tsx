@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Command, Keyboard } from 'lucide-react';
+import { Keyboard, X, Command } from 'lucide-react';
 
 interface Shortcut {
   key: string;

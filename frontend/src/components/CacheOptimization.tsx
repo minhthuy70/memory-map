@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Check,
-  Clock,
-  Database,
-  HardDrive,
-  RefreshCw,
-  Settings,
-  Shield,
-  Trash2,
-  TrendingUp
-} from 'lucide-react';
+import { Database, X, Settings, Check, RefreshCw, Trash2, TrendingUp, HardDrive, Clock, Shield, AlertTriangle } from 'lucide-react';
 
 interface CacheEntry {
   key: string;

@@ -1,22 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  BookOpen,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Download,
-  ExternalLink,
-  FileText,
-  Info,
-  Plus,
-  RefreshCw,
-  Search,
-  Settings,
-  Trash2
-} from 'lucide-react';
+import { BookOpen, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Download, FileText, Search } from 'lucide-react';
 
 interface SDKDocumentationProps {
   onCancel?: () => void;

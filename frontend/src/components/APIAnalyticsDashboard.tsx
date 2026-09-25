@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertCircle,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Clock,
-  ExternalLink,
-  Info,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2,
-  TrendingDown,
-  TrendingUp,
-  Users
-} from 'lucide-react';
+import { BarChart3, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, TrendingUp, TrendingDown, Users, Activity } from 'lucide-react';
 
 interface APIAnalyticsDashboardProps {
   onCancel?: () => void;

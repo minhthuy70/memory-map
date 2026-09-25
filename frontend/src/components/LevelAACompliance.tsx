@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AlertTriangle, Award, CheckCircle, FileText, Info, RefreshCw, Shield, Star } from 'lucide-react';
+import { Shield, X, RefreshCw, Info, CheckCircle, AlertTriangle, Award, Star, FileText } from 'lucide-react';
 
 interface LevelAAComplianceProps {
   onCancel?: () => void;

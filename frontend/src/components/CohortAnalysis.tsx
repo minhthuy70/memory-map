@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  Download,
-  Eye,
-  EyeOff,
-  Filter,
-  Grid,
-  Info,
-  Layers,
-  RefreshCw,
-  TrendingDown,
-  TrendingUp,
-  Users
-} from 'lucide-react';
+import { Users, X, Calendar, BarChart3, Download, RefreshCw, Filter, Eye, EyeOff, Info, Grid, Layers, CheckCircle, AlertTriangle, TrendingUp, TrendingDown } from 'lucide-react';
 
 interface CohortAnalysisProps {
   onCancel?: () => void;
@@ -124,7 +108,7 @@ export default function CohortAnalysis({ onCancel }: CohortAnalysisProps) {
             <option value="week">This Week</option>
             <option value="month">This Month</option>
             <option value="quarter">This Quarter</option>
-            <option value="year">This CalendarDays</option>
+            <option value="year">This Year</option>
           </select>
           <button
             type="button"

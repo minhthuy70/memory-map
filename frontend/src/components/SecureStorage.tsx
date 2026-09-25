@@ -1,22 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Ban,
-  Check,
-  CheckCircle,
-  Clock,
-  Database,
-  FileText,
-  Globe,
-  HardDrive,
-  Key,
-  Lock,
-  RefreshCw,
-  Settings,
-  Shield
-} from 'lucide-react';
+import { Shield, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Key, Lock, Database, HardDrive, Globe, Check, FileText, Clock, Ban } from 'lucide-react';
 
 interface StorageItem {
   id: string;
@@ -258,7 +243,7 @@ export default function SecureStorage({ onCancel, onRevokeItem, onRefreshStorage
           <option value="all">Tất cả types</option>
           <option value="token">Token</option>
           <option value="secret">Secret</option>
-          <option value="certificate">BadgeCheck</option>
+          <option value="certificate">Certificate</option>
           <option value="data">Data</option>
         </select>
         <select

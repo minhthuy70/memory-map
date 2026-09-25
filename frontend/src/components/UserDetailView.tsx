@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  Calendar,
-  CheckCircle,
-  Edit2,
-  Eye,
-  Image,
-  Key,
-  Mail,
-  MapPin,
-  RefreshCw,
-  Shield,
-  User
-} from 'lucide-react';
+import { User, X, RefreshCw, Calendar, Shield, Mail, MapPin, Image, Activity, Edit2, Key, Eye, AlertTriangle, CheckCircle } from 'lucide-react';
 
 interface UserDetailViewProps {
   onCancel?: () => void;

@@ -1,27 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  Ban,
-  BarChart3,
-  Bell,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Eye,
-  EyeOff,
-  Filter,
-  Lock,
-  MapPin,
-  MessageSquare,
-  Settings,
-  Shield,
-  ShoppingBag,
-  Smartphone,
-  Zap
-} from 'lucide-react';
+import { Lock, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Shield, Eye, EyeOff, Ban, Smartphone, MapPin, ShoppingBag, MessageSquare, Bell } from 'lucide-react';
 
 interface ControlRule {
   id: string;

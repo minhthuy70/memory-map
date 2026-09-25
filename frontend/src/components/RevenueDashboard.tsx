@@ -1,25 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  ArrowDown,
-  ArrowUp,
-  BarChart3,
-  Calendar,
-  CheckCircle,
-  CreditCard,
-  DollarSign,
-  Download,
-  Eye,
-  EyeOff,
-  Info,
-  PieChart,
-  RefreshCw,
-  TrendingUp,
-  Wallet,
-  Zap
-} from 'lucide-react';
+import { DollarSign, X, Calendar, TrendingUp, ArrowUp, ArrowDown, BarChart3, Download, RefreshCw, Wallet, CreditCard, PieChart, Zap, CheckCircle, AlertTriangle, Info, Eye, EyeOff } from 'lucide-react';
 
 interface RevenueDashboardProps {
   onCancel?: () => void;
@@ -124,7 +106,7 @@ export default function RevenueDashboard({ onCancel }: RevenueDashboardProps) {
             <option value="week">This Week</option>
             <option value="month">This Month</option>
             <option value="quarter">This Quarter</option>
-            <option value="year">This CalendarDays</option>
+            <option value="year">This Year</option>
           </select>
           <button
             type="button"

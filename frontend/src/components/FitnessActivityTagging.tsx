@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Heart,
-  Info,
-  MapPin,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2,
-  TrendingUp
-} from 'lucide-react';
+import { Activity, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, Heart, MapPin, TrendingUp } from 'lucide-react';
 
 interface FitnessActivityTaggingProps {
   onCancel?: () => void;
@@ -263,7 +249,7 @@ export default function FitnessActivityTagging({ onCancel }: FitnessActivityTagg
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <TrendingUp className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw with Health</span>
+                <span className="text-xs text-slate-900 dark:text-white">Sync with Health</span>
               </div>
               <input
                 type="checkbox"
@@ -325,7 +311,7 @@ export default function FitnessActivityTagging({ onCancel }: FitnessActivityTagg
               <li>• Auto-tag fitness activities to memories</li>
               <li>• Activity types: running/walking/cycling/swimming/gym/yoga/hiking/sports</li>
               <li>• Track intensity: low/moderate/high/intense</li>
-              <li>• RefreshCcw with health apps for comprehensive data</li>
+              <li>• Sync with health apps for comprehensive data</li>
             </ul>
           </div>
         )}

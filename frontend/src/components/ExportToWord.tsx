@@ -1,39 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  as,
-  Calendar,
-  CalendarIcon,
-  Check,
-  CheckCircle,
-  ChevronDown,
-  ChevronUp,
-  Download,
-  Eye,
-  EyeOff,
-  File,
-  FileText,
-  FileType,
-  Filter,
-  Grid,
-  Image,
-  ImageIcon,
-  Layers,
-  Layout,
-  Loader2,
-  MapPin,
-  Palette,
-  Pause,
-  Play,
-  RefreshCw,
-  Settings,
-  Share2,
-  Type,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, Download, FileText, CheckCircle, AlertTriangle, Loader2, Image as ImageIcon, MapPin, Calendar as CalendarIcon, Filter, Check, Play, Pause, RefreshCw, ChevronDown, ChevronUp, Layout, Palette, Type, ZoomIn, ZoomOut, FileType, Share2, Eye, EyeOff, File, Layers, Grid } from 'lucide-react';
 
 interface ExportToWordProps {
   onCancel?: () => void;

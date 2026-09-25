@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Download,
-  Heart,
-  Info,
-  Map,
-  Plus,
-  RefreshCw,
-  ShoppingCart,
-  Star
-} from 'lucide-react';
+import { Map, X, RefreshCw, Info, CheckCircle, Plus, ShoppingCart, Star, Download, Heart } from 'lucide-react';
 
 interface MapSkinMarketplaceProps {
   onCancel?: () => void;

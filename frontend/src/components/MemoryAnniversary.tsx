@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Bell,
-  Calendar,
-  Check,
-  Edit,
-  Gift,
-  Heart,
-  Plus,
-  Save,
-  Settings,
-  Sparkles,
-  Trash2
-} from 'lucide-react';
+import { Heart, Gift, Calendar, Bell, Plus, Trash2, Edit, Check, X, Save, Settings, Sparkles } from 'lucide-react';
 
 interface Anniversary {
   id: string;

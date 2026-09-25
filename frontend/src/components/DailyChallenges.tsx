@@ -1,29 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Award,
-  BarChart3,
-  Calendar,
-  Camera,
-  CheckCircle,
-  ChevronRight,
-  Circle,
-  Clock,
-  Flame,
-  Gift,
-  Heart,
-  Info,
-  MapPin,
-  MessageSquare,
-  RefreshCw,
-  Share2,
-  Sparkles,
-  Star,
-  Target,
-  Trophy,
-  Zap
-} from 'lucide-react';
+import { Target, X, CheckCircle, Circle, Clock, Flame, Gift, RefreshCw, Star, Award, Calendar, Sparkles, Trophy, Zap, MapPin, Camera, Heart, MessageSquare, Share2, ChevronRight, Info, BarChart3 } from 'lucide-react';
 
 interface DailyChallengesProps {
   onCancel?: () => void;

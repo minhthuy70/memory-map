@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AlertCircle, Calendar, CheckCircle, Download, RefreshCw, Settings, XCircle } from 'lucide-react';
+import { Calendar, RefreshCw, CheckCircle, XCircle, AlertCircle, Settings, RefreshCw, Download } from 'lucide-react';
 
 interface OutlookCalendarSyncProps {
   onSync?: () => Promise<void>;
@@ -127,7 +127,7 @@ export default function OutlookCalendarSync({
         </span>
       </div>
 
-      {/* RefreshCcw Errors */}
+      {/* Sync Errors */}
       {syncErrors.length > 0 && (
         <div className="mb-3 p-3 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 rounded-lg">
           <div className="flex items-start gap-2">
@@ -205,7 +205,7 @@ export default function OutlookCalendarSync({
                 </>
               ) : (
                 <>
-                  <RefreshCcw className="h-4 w-4" />
+                  <Sync className="h-4 w-4" />
                   Đồng bộ ngay
                 </>
               )}

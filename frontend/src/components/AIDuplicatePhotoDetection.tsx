@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  as,
-  CheckCircle,
-  Copy,
-  Image,
-  ImageIcon,
-  Info,
-  Layers,
-  RefreshCw,
-  Star,
-  Trash2,
-  Zap
-} from 'lucide-react';
+import { Copy, X, RefreshCw, Info, CheckCircle, Star, Zap, Image as ImageIcon, Layers, Trash2 } from 'lucide-react';
 
 interface AIDuplicatePhotoDetectionProps {
   onCancel?: () => void;
@@ -136,7 +124,7 @@ export default function AIDuplicatePhotoDetection({ onCancel }: AIDuplicatePhoto
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
-              AI Files Photo Detection
+              AI Duplicate Photo Detection
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Detect duplicate and similar photos with AI
@@ -276,7 +264,7 @@ export default function AIDuplicatePhotoDetection({ onCancel }: AIDuplicatePhoto
         </div>
 
         <div className="p-4 bg-slate-50 dark:bg-slate-700/30 border border-slate-200 dark:border-slate-600 rounded-lg">
-          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Files Groups</h4>
+          <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Duplicate Groups</h4>
           <div className="space-y-2 max-h-48 overflow-y-auto">
             {duplicateGroups.map((group) => (
               <div key={group.id} className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
@@ -345,7 +333,7 @@ export default function AIDuplicatePhotoDetection({ onCancel }: AIDuplicatePhoto
 
         {showDetails && (
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
-            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Files Detection Tips</h4>
+            <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Duplicate Detection Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
               <li>• AI detects duplicate and similar photos</li>
               <li>• Group types: exact, near, similar matches</li>

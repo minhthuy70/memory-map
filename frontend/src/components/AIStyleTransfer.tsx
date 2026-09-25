@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  as,
-  Brush,
-  CheckCircle,
-  Download,
-  Image,
-  ImageIcon,
-  Info,
-  Palette,
-  RefreshCw,
-  Star,
-  Zap
-} from 'lucide-react';
+import { Palette, X, RefreshCw, Info, CheckCircle, Star, Zap, Download, Image as ImageIcon, Brush } from 'lucide-react';
 
 interface AIStyleTransferProps {
   onCancel?: () => void;
@@ -53,13 +41,13 @@ export default function AIStyleTransfer({ onCancel }: AIStyleTransferProps) {
   const [isTransferEnabled, setIsTransferEnabled] = useState(true);
 
   const [styledPhotos, setStyledPhotos] = useState<StyledPhoto[]>([
-    { id: '1', originalName: 'photo_1.jpg', styledName: 'photo_1_van_gogh.jpg', originalSize: 3.5, styledSize: 4.2, styleName: 'Starry Sunset', styleArtist: 'Van Gogh', processedAt: '2024-01-15', similarity: 85, status: 'completed' },
+    { id: '1', originalName: 'photo_1.jpg', styledName: 'photo_1_van_gogh.jpg', originalSize: 3.5, styledSize: 4.2, styleName: 'Starry Night', styleArtist: 'Van Gogh', processedAt: '2024-01-15', similarity: 85, status: 'completed' },
     { id: '2', originalName: 'photo_2.jpg', styledName: 'photo_2_monet.jpg', originalSize: 2.8, styledSize: 3.5, styleName: 'Water Lilies', styleArtist: 'Monet', processedAt: '2024-02-20', similarity: 88, status: 'completed' },
     { id: '3', originalName: 'photo_3.jpg', styledName: 'photo_3_anime.jpg', originalSize: 4.2, styledSize: 5.0, styleName: 'Anime Style', styleArtist: 'Anime AI', processedAt: '2024-03-10', similarity: 92, status: 'completed' },
   ]);
 
   const [artStyles, setArtStyles] = useState<ArtStyle[]>([
-    { id: '1', name: 'Starry Sunset', artist: 'Van Gogh', description: 'Impressionist swirls and colors', preview: '🎨', isActive: true },
+    { id: '1', name: 'Starry Night', artist: 'Van Gogh', description: 'Impressionist swirls and colors', preview: '🎨', isActive: true },
     { id: '2', name: 'Water Lilies', artist: 'Monet', description: 'Soft impressionist water scene', preview: '🎨', isActive: false },
     { id: '3', name: 'The Scream', artist: 'Munch', description: 'Expressionist emotional style', preview: '🎨', isActive: false },
     { id: '4', name: 'Anime Style', artist: 'Anime AI', description: 'Japanese anime aesthetic', preview: '🎨', isActive: true },

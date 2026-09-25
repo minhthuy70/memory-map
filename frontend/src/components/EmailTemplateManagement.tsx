@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  CheckCircle,
-  Copy,
-  Edit2,
-  Eye,
-  FileText,
-  Info,
-  Mail,
-  Plus,
-  RefreshCw,
-  Save,
-  Send,
-  Shield,
-  Trash2,
-  Zap
-} from 'lucide-react';
+import { Mail, X, Plus, Trash2, Edit2, Send, RefreshCw, CheckCircle, AlertTriangle, Info, Eye, Save, Copy, FileText, Zap, Shield } from 'lucide-react';
 
 interface EmailTemplateManagementProps {
   onCancel?: () => void;
@@ -352,7 +336,7 @@ export default function EmailTemplateManagement({ onCancel }: EmailTemplateManag
                     type="button"
                     onClick={() => duplicateTemplate(template)}
                     className="p-1 text-green-500 hover:bg-green-100 dark:hover:bg-green-900/30 rounded"
-                    title="Files"
+                    title="Duplicate"
                   >
                     <Copy className="h-4 w-4" />
                   </button>

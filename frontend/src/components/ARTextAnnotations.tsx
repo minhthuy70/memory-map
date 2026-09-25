@@ -1,57 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  AlignCenter,
-  AlignLeft,
-  AlignRight,
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
-  as,
-  BarChart3,
-  Bold,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  ExternalLink,
-  Eye,
-  EyeOff,
-  Filter,
-  Italic,
-  Layers,
-  Link2,
-  Maximize2,
-  Minus,
-  MoveHorizontal,
-  MoveVertical,
-  Palette,
-  Pause,
-  Play,
-  Plus,
-  PlusIcon,
-  RefreshCw,
-  RotateCw,
-  Settings,
-  SettingsIcon,
-  Sparkles,
-  Text,
-  TextIcon,
-  TextLucide,
-  Trash2,
-  TrashIcon,
-  Type,
-  Underline,
-  Zap,
-  ZapIcon,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Type, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, AlignLeft, AlignCenter, AlignRight, Bold, Italic, Underline, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, MoveHorizontal, RotateCw, ZoomIn, ZoomOut, Maximize2, MoveVertical, Minus, Plus as PlusIcon, Sparkles, Palette, Text as TextIcon, Text as TextLucide, Link2, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface ARAnnotation {
   id: string;

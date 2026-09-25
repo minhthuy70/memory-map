@@ -1,22 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  Database,
-  Download,
-  HardDrive,
-  Info,
-  Play,
-  RefreshCw,
-  Shield,
-  Trash2,
-  Upload,
-  Zap
-} from 'lucide-react';
+import { Database, X, Download, Trash2, RefreshCw, CheckCircle, AlertTriangle, Info, Calendar, Clock, Play, HardDrive, Shield, Upload, Zap } from 'lucide-react';
 
 interface DatabaseBackupManagementProps {
   onCancel?: () => void;

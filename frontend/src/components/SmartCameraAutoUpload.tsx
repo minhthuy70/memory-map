@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  as,
-  Camera,
-  CheckCircle,
-  Cloud,
-  Download,
-  Image,
-  ImageIcon,
-  Info,
-  RefreshCw,
-  Settings,
-  Wifi
-} from 'lucide-react';
+import { Camera, X, RefreshCw, Info, Wifi, Cloud, Download, Settings, CheckCircle, AlertCircle, Image as ImageIcon } from 'lucide-react';
 
 interface SmartCameraAutoUploadProps {
   onCancel?: () => void;
@@ -244,7 +231,7 @@ export default function SmartCameraAutoUpload({ onCancel }: SmartCameraAutoUploa
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <ImageIcon className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Gauge</span>
+                <span className="text-xs text-slate-900 dark:text-white">Quality</span>
               </div>
               <select
                 value={cameraSettings.quality}
@@ -364,7 +351,7 @@ export default function SmartCameraAutoUpload({ onCancel }: SmartCameraAutoUploa
               <li>• Connect smart cameras via WiFi for auto upload</li>
               <li>• Auto-upload photos when captured</li>
               <li>• Monitor battery and storage levels</li>
-              <li>• Gauge settings: original, high, medium, low</li>
+              <li>• Quality settings: original, high, medium, low</li>
             </ul>
           </div>
         )}

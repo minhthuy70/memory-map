@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useMap, Polyline, Circle, Polygon, Rectangle } from 'react-leaflet';
 import L from 'leaflet';
-import { as, Circle, CircleIcon, Layers, PenTool, Save, Square, Trash2 } from 'lucide-react';
+import { PenTool, Circle as CircleIcon, Square, Trash2, Save, X, Layers } from 'lucide-react';
 
 type DrawingTool = 'none' | 'polyline' | 'circle' | 'rectangle' | 'polygon';
 

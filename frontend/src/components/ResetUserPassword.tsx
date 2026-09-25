@@ -1,18 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  CheckCircle,
-  Copy,
-  Info,
-  Key,
-  Mail,
-  RefreshCw,
-  Search,
-  Send,
-  User
-} from 'lucide-react';
+import { Key, X, RefreshCw, CheckCircle, AlertTriangle, Search, User, Mail, Send, Copy, Info } from 'lucide-react';
 
 interface ResetUserPasswordProps {
   onCancel?: () => void;

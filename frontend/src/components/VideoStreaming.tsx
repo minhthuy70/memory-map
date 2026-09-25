@@ -1,39 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  Eye,
-  Film,
-  Filter,
-  Gauge,
-  Maximize2,
-  Pause,
-  Play,
-  PlayCircle,
-  RefreshCw,
-  Settings,
-  SettingsIcon,
-  SkipBack,
-  SkipForward,
-  Sliders,
-  Subtitles,
-  Trash2,
-  Users,
-  Video,
-  Volume2,
-  Wifi,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, PlayCircle, SkipBack, SkipForward, Volume2, Maximize2, Subtitles, Sliders, Zap as ZapIcon, Gauge, RefreshCw, Check, Wifi, Film, Users, Eye } from 'lucide-react';
 
 interface StreamQuality {
   id: string;
@@ -271,7 +239,7 @@ export default function VideoStreaming({ onCancel, onQualityChange, onSeek }: Vi
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
             <Eye className="h-3 w-3 text-slate-500" />
-            <span className="text-[10px] text-slate-600 dark:text-slate-400">Gauge</span>
+            <span className="text-[10px] text-slate-600 dark:text-slate-400">Quality</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
             {qualities.find(q => q.id === selectedQuality)?.name}
@@ -369,10 +337,10 @@ export default function VideoStreaming({ onCancel, onQualityChange, onSeek }: Vi
         </div>
       )}
 
-      {/* Gauge Selection */}
+      {/* Quality Selection */}
       <div className="mb-4">
         <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Stream Gauge
+          Stream Quality
         </h4>
         <div className="grid grid-cols-5 gap-2">
           {qualities.map((quality) => (

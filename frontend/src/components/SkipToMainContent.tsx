@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowDown,
-  CheckCircle,
-  Eye,
-  EyeOff,
-  Info,
-  Link,
-  RefreshCw,
-  Settings,
-  Zap
-} from 'lucide-react';
+import { ArrowDown, X, RefreshCw, Info, CheckCircle, Settings, Eye, EyeOff, Link, Zap } from 'lucide-react';
 
 interface SkipToMainContentProps {
   onCancel?: () => void;

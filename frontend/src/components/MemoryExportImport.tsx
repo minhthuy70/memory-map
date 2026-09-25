@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { memoriesApi } from '@/lib/memories-api';
-import { AlertCircle, CheckCircle, Download, FileText, Loader2, Upload } from 'lucide-react';
+import { Download, Upload, FileText, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function MemoryExportImport() {
   const [isExporting, setIsExporting] = useState(false);

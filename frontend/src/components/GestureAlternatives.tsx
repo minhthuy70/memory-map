@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  CheckCircle,
-  Hand,
-  Info,
-  MousePointer,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2,
-  Zap
-} from 'lucide-react';
+import { Hand, X, RefreshCw, Info, CheckCircle, Plus, Trash2, Settings, Zap, MousePointer } from 'lucide-react';
 
 interface GestureAlternativesProps {
   onCancel?: () => void;

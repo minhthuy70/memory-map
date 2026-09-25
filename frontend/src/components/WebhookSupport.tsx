@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Bell,
-  Calendar,
-  CheckCircle,
-  Clock,
-  ExternalLink,
-  Info,
-  Plus,
-  RefreshCw,
-  Send,
-  Settings,
-  Trash2,
-  Webhook
-} from 'lucide-react';
+import { Webhook, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Bell, Send } from 'lucide-react';
 
 interface WebhookSupportProps {
   onCancel?: () => void;

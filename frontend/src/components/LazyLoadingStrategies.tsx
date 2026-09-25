@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Calendar,
-  Check,
-  Clock,
-  FileText,
-  Image,
-  Layers,
-  RefreshCw,
-  Settings,
-  TrendingUp,
-  Video
-} from 'lucide-react';
+import { Layers, X, Settings, Check, RefreshCw, Image, FileText, Video, Calendar, Clock, TrendingUp, AlertTriangle } from 'lucide-react';
 
 interface LazyComponent {
   name: string;

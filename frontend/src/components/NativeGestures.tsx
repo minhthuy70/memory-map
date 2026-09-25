@@ -1,24 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
-  CheckCircle,
-  Clock,
-  Hand,
-  Minimize,
-  MousePointer2,
-  Move,
-  Settings,
-  Smartphone,
-  Zap,
-  ZoomIn
-} from 'lucide-react';
+import { Hand, X, Settings, CheckCircle, AlertTriangle, Smartphone, Activity, Clock, Zap, Move, MousePointer2, ZoomIn, Minimize, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface GestureEvent {
   id: string;

@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  ExternalLink,
-  Info,
-  Plus,
-  RefreshCw,
-  Settings,
-  Smartphone,
-  Trash2,
-  Zap
-} from 'lucide-react';
+import { Smartphone, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Zap } from 'lucide-react';
 
 interface AppShortcutsProps {
   onCancel?: () => void;
@@ -153,7 +140,7 @@ export default function AppShortcuts({ onCancel }: AppShortcutsProps) {
             <p className="text-lg font-bold text-cyan-600 dark:text-cyan-400">{shortcuts.reduce((acc, s) => acc + s.usageCount, 0)}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Cloud RefreshCcw</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Cloud Sync</p>
             <p className="text-lg font-bold text-sky-600 dark:text-sky-400">{shortcutSettings.cloudSync ? 'On' : 'Off'}</p>
           </div>
         </div>
@@ -191,7 +178,7 @@ export default function AppShortcuts({ onCancel }: AppShortcutsProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Settings className="h-4 w-4 text-blue-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Auto RefreshCcw</span>
+                <span className="text-xs text-slate-900 dark:text-white">Auto Sync</span>
               </div>
               <input
                 type="checkbox"
@@ -203,7 +190,7 @@ export default function AppShortcuts({ onCancel }: AppShortcutsProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">RefreshCcw Interval (min)</span>
+                <span className="text-xs text-slate-900 dark:text-white">Sync Interval (min)</span>
               </div>
               <input
                 type="number"
@@ -215,7 +202,7 @@ export default function AppShortcuts({ onCancel }: AppShortcutsProps) {
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <ExternalLink className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Cloud RefreshCcw</span>
+                <span className="text-xs text-slate-900 dark:text-white">Cloud Sync</span>
               </div>
               <input
                 type="checkbox"

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AlertTriangle, ArrowRight, Check, Lightbulb, RefreshCw, Settings, Sparkles, TrendingUp } from 'lucide-react';
+import { Sparkles, Lightbulb, ArrowRight, Check, X, RefreshCw, Settings, TrendingUp, AlertTriangle } from 'lucide-react';
 
 interface RecommendedMemory {
   id: string;

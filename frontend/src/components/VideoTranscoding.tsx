@@ -1,35 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  ArrowRight,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Download,
-  FileVideo,
-  Filter,
-  Gauge,
-  HardDrive,
-  Layers,
-  Pause,
-  Play,
-  RefreshCw,
-  Settings,
-  SettingsIcon,
-  Shuffle,
-  Sliders,
-  Trash2,
-  Video,
-  VideoIcon,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Shuffle, Sliders, Video as VideoIcon, HardDrive, Gauge, ArrowRight, FileVideo, Layers } from 'lucide-react';
 
 interface TranscodeFormat {
   id: string;
@@ -347,10 +319,10 @@ export default function VideoTranscoding({ onCancel, onTranscode }: VideoTransco
         </div>
       </div>
 
-      {/* Gauge Selection */}
+      {/* Quality Selection */}
       <div className="mb-4">
         <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">
-          Gauge Level
+          Quality Level
         </h4>
         <div className="grid grid-cols-3 gap-2">
           {(['high', 'medium', 'low'] as const).map((quality) => (

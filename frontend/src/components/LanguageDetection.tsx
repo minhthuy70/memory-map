@@ -1,29 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Eye,
-  FileText,
-  Filter,
-  FilterIcon,
-  Globe,
-  Languages,
-  MessageSquare,
-  RefreshCw,
-  Scan,
-  Settings,
-  Sparkles,
-  Zap,
-  ZapIcon
-} from 'lucide-react';
+import { Globe, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Languages, Zap as ZapIcon, RefreshCw, Filter as FilterIcon, Check, FileText, MessageSquare, Sparkles } from 'lucide-react';
 
 interface DetectedLanguage {
   id: string;

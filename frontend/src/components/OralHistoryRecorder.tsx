@@ -1,20 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Calendar,
-  Clock,
-  Edit,
-  FileText,
-  Info,
-  Mic,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Star,
-  User
-} from 'lucide-react';
+import { Mic, X, RefreshCw, Info, Calendar, User, FileText, Play, Pause, Star, Plus, Clock, Edit } from 'lucide-react';
 
 interface OralHistoryRecorderProps {
   onCancel?: () => void;
@@ -295,7 +282,7 @@ export default function OralHistoryRecorder({ onCancel }: OralHistoryRecorderPro
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
                 <Clock className="h-4 w-4 text-slate-400" />
-                <span className="text-xs text-slate-900 dark:text-white">Gauge</span>
+                <span className="text-xs text-slate-900 dark:text-white">Quality</span>
               </div>
               <select
                 value={recordingSettings.quality}

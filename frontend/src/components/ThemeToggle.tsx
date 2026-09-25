@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Laptop, Moon, Sun } from 'lucide-react';
+import { Sun, Moon, Laptop } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 interface ThemeToggleProps {

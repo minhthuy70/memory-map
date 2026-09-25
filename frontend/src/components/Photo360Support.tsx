@@ -1,46 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  as,
-  BarChart3,
-  Calendar,
-  Camera,
-  Check,
-  CheckCircle,
-  Clock,
-  Compass,
-  Crosshair,
-  Download,
-  ExternalLink,
-  Eye,
-  EyeOff,
-  Filter,
-  Grid,
-  Image,
-  ImageIcon,
-  Layers,
-  Maximize2,
-  Minimize2,
-  MoveHorizontal,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Rotate3D,
-  RotateCw,
-  Settings,
-  SettingsIcon,
-  Trash2,
-  TrashIcon,
-  Upload,
-  Zap,
-  ZapIcon,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Camera, RotateCw, Upload, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, MoveHorizontal, Rotate3D, ZoomIn, ZoomOut, Layers, Grid, Maximize2, Minimize2, Compass, Crosshair } from 'lucide-react';
 
 interface PanoramaPhoto {
   id: string;

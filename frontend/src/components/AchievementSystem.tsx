@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useToast } from './Toast';
-import { Award, Star, Target, Trophy } from 'lucide-react';
+import { Trophy, Star, Award, Target } from 'lucide-react';
 
 interface Achievement {
   id: string;

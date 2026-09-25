@@ -1,56 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  Anchor,
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
-  as,
-  BarChart3,
-  Battery,
-  Calendar,
-  Check,
-  CheckCircle,
-  Clock,
-  Compass,
-  Crosshair,
-  Download,
-  ExternalLink,
-  Eye,
-  EyeOff,
-  Filter,
-  Globe,
-  Layers,
-  Locate,
-  Map,
-  MapIcon,
-  MapPin,
-  Maximize2,
-  Navigation,
-  NavigationIcon,
-  Pause,
-  Pin,
-  Play,
-  Plus,
-  RefreshCw,
-  RotateCw,
-  Search,
-  Settings,
-  SettingsIcon,
-  Signal,
-  Target,
-  Trash2,
-  TrashIcon,
-  Wifi,
-  Zap,
-  ZapIcon,
-  ZoomIn,
-  ZoomOut
-} from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, MapPin, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, Navigation, Locate, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, Target, Crosshair, RotateCw, ZoomIn, ZoomOut, Maximize2, Compass, Signal, Wifi, Battery, Map as MapIcon, Search, Globe, Pin, Anchor, Navigation as NavigationIcon, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface ARMarker {
   id: string;
@@ -110,7 +61,7 @@ const DEFAULT_MARKERS: ARMarker[] = [
 
 const MARKER_TYPES = [
   { id: 'landmark', name: 'Landmark', icon: '🏛️', color: '#00FF00' },
-  { id: 'waypoint', name: 'Waypoints', icon: '📍', color: '#0000FF' },
+  { id: 'waypoint', name: 'Waypoint', icon: '📍', color: '#0000FF' },
   { id: 'hotspot', name: 'Hotspot', icon: '🔥', color: '#FF0000' },
   { id: 'checkpoint', name: 'Checkpoint', icon: '🚩', color: '#FFFF00' },
 ];

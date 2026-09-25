@@ -1,34 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowDown,
-  ArrowUp,
-  Award,
-  BarChart3,
-  Calendar,
-  ChevronDown,
-  ChevronUp,
-  Clock,
-  Download,
-  Eye,
-  EyeOff,
-  Filter,
-  Flame,
-  History,
-  LineChart,
-  Medal,
-  Minus,
-  RefreshCw,
-  Search,
-  Share2,
-  Star,
-  Target,
-  TrendingDown,
-  TrendingUp,
-  Trophy,
-  Zap
-} from 'lucide-react';
+import { History, X, TrendingUp, TrendingDown, ArrowUp, ArrowDown, Minus, Calendar, Filter, ChevronDown, ChevronUp, RefreshCw, Search, Eye, EyeOff, Download, Share2, BarChart3, LineChart, Clock, Trophy, Medal, Award, Star, Zap, Target, Flame } from 'lucide-react';
 
 interface LeaderboardHistoryProps {
   onCancel?: () => void;
@@ -304,16 +277,16 @@ export default function LeaderboardHistory({ onCancel }: LeaderboardHistoryProps
             <option value="week">This Week</option>
             <option value="month">This Month</option>
             <option value="quarter">This Quarter</option>
-            <option value="year">This CalendarDays</option>
+            <option value="year">This Year</option>
           </select>
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as any)}
             className="px-3 py-1.5 rounded-lg text-xs bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 border-0"
           >
-            <option value="date">ListOrdered by Date</option>
-            <option value="rank">ListOrdered by Rank</option>
-            <option value="xpGained">ListOrdered by XP Gained</option>
+            <option value="date">Sort by Date</option>
+            <option value="rank">Sort by Rank</option>
+            <option value="xpGained">Sort by XP Gained</option>
           </select>
         </div>
 

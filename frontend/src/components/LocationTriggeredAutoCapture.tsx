@@ -1,23 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Bell,
-  CheckCircle,
-  Clock,
-  Heart,
-  Home,
-  Info,
-  Map,
-  MapPin,
-  Navigation,
-  Plus,
-  RefreshCw,
-  Settings,
-  Trash2,
-  Work
-} from 'lucide-react';
+import { MapPin, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Navigation, Home, Work, Map, Bell, Clock, Heart } from 'lucide-react';
 
 interface LocationTriggeredAutoCaptureProps {
   onCancel?: () => void;

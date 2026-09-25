@@ -1,32 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  as,
-  BarChart3,
-  Bell,
-  Calendar,
-  CalendarIcon,
-  CheckCircle,
-  Clock,
-  Download,
-  Eye,
-  EyeOff,
-  Filter,
-  Grid,
-  Info,
-  Layers,
-  Mail,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Send,
-  Settings,
-  Trash2,
-  Zap
-} from 'lucide-react';
+import { Clock, X, Plus, Trash2, Calendar, BarChart3, Download, RefreshCw, Filter, Eye, EyeOff, Info, Grid, Layers, CheckCircle, AlertTriangle, Settings, Mail, Zap, Bell, Send, Calendar as CalendarIcon, Play, Pause } from 'lucide-react';
 
 interface ScheduledReportDeliveryProps {
   onCancel?: () => void;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CheckCircle, CreditCard, Globe, Info, RefreshCw, Shield, Star, Zap } from 'lucide-react';
+import { CreditCard, X, RefreshCw, Info, CheckCircle, Star, Zap, Shield, Globe } from 'lucide-react';
 
 interface PaymentGatewayProps {
   onCancel?: () => void;

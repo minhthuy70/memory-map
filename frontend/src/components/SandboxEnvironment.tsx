@@ -1,21 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertCircle,
-  Calendar,
-  CheckCircle,
-  Clock,
-  ExternalLink,
-  Info,
-  Pause,
-  Play,
-  Plus,
-  RefreshCw,
-  Settings,
-  Shield,
-  Trash2
-} from 'lucide-react';
+import { Shield, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Play, Pause } from 'lucide-react';
 
 interface SandboxEnvironmentProps {
   onCancel?: () => void;

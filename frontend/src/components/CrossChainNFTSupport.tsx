@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowRight,
-  CheckCircle,
-  CheckCircle2,
-  Info,
-  Link2,
-  RefreshCw,
-  Shield,
-  Star,
-  Zap
-} from 'lucide-react';
+import { Link2, X, RefreshCw, Info, CheckCircle, Star, Zap, ArrowRight, Shield, CheckCircle2 } from 'lucide-react';
 
 interface CrossChainNFTSupportProps {
   onCancel?: () => void;

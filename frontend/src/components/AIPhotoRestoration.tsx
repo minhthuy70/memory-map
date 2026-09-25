@@ -1,19 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  as,
-  CheckCircle,
-  Download,
-  Image,
-  ImageIcon,
-  Info,
-  RefreshCw,
-  Sparkles,
-  Star,
-  Wrench,
-  Zap
-} from 'lucide-react';
+import { Wrench, X, RefreshCw, Info, CheckCircle, Star, Zap, Download, Image as ImageIcon, Sparkles } from 'lucide-react';
 
 interface AIPhotoRestorationProps {
   onCancel?: () => void;
@@ -146,7 +134,7 @@ export default function AIPhotoRestoration({ onCancel }: AIPhotoRestorationProps
             <p className="text-lg font-bold text-slate-900 dark:text-white">{restoredPhotos.length}</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">
-            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Avg Gauge</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-1">Avg Quality</p>
             <p className="text-lg font-bold text-purple-600 dark:text-purple-400">{(restoredPhotos.reduce((acc, p) => acc + p.qualityScore, 0) / restoredPhotos.length).toFixed(0)}%</p>
           </div>
           <div className="p-3 bg-slate-50 dark:bg-slate-700/30 rounded-lg text-center">

@@ -1,17 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  AlertTriangle,
-  Bell,
-  Calendar,
-  Check,
-  Clock,
-  Info,
-  Mail,
-  Save,
-  Settings
-} from 'lucide-react';
+import { Bell, Clock, Calendar, Mail, Check, X, Save, Settings, AlertTriangle, Info } from 'lucide-react';
 
 interface ReminderEmailConfig {
   enabled: boolean;

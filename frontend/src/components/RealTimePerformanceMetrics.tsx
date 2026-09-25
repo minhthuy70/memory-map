@@ -1,19 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  Activity,
-  AlertTriangle,
-  CheckCircle,
-  Clock,
-  Keyboard,
-  Monitor,
-  Mouse,
-  RefreshCw,
-  Settings,
-  TrendingUp,
-  Zap
-} from 'lucide-react';
+import { Zap, X, Settings, RefreshCw, Activity, Clock, CheckCircle, AlertTriangle, TrendingUp, Monitor, Mouse, Keyboard } from 'lucide-react';
 
 interface WebVital {
   name: string;
