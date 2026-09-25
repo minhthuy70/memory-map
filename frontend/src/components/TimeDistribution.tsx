@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, BarChart3, Calendar, CheckCircle, Clock, Coffee, Moon, Settings, Sun, TrendingUp, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Clock, X, Settings, CheckCircle, AlertTriangle, Calendar, Sun, Moon, Activity, BarChart3, Zap, TrendingUp, Coffee, Moon } from 'lucide-react';
+
 
 interface TimeSlot {
   hour: number;
@@ -65,7 +66,7 @@ export default function TimeDistribution({ onCancel, onAnalyzeDistribution }: Ti
     if (hour >= 6 && hour < 12) return <Sun className="h-4 w-4" />;
     if (hour >= 12 && hour < 18) return <Sun className="h-4 w-4" />;
     if (hour >= 18 && hour < 22) return <Moon className="h-4 w-4" />;
-    return <Night className="h-4 w-4" />;
+    return <Sunset className="h-4 w-4" />;
   };
 
   const getTimePeriod = (hour: number) => {

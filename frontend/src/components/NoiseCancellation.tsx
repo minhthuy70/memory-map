@@ -1,7 +1,8 @@
+import { Activity, Activity as ActivityIcon, AlertTriangle, BarChart3, Calendar, Check, CheckCircle, Clock, Download, ExternalLink, FileAudio, Filter, Gauge, Mic, Mic as MicIcon, OctagonX, Pause, Play, Plus, RefreshCw, Settings, Settings as SettingsIcon, Shield, Sliders, ToggleLeft, ToggleRight, Trash2, Trash2 as TrashIcon, Volume2, Waves, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Zap, RefreshCw, Check, Zap as ZapIcon, Plus, Mic as MicIcon, StopCircle, Volume2, Trash2 as TrashIcon, ExternalLink, Sliders, Waves, Activity as ActivityIcon, Shield, Gauge, FileAudio, ToggleLeft, ToggleRight } from 'lucide-react';
+
 
 interface NoiseLevel {
   id: string;

@@ -1,7 +1,8 @@
+import { CheckCircle, Clock, Download, Info, Play, RefreshCw, Share2, Star, Video, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Video, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, Share2 } from 'lucide-react';
+
 
 interface VideoStabilizationProps {
   onCancel?: () => void;
@@ -95,7 +96,7 @@ export default function VideoStabilization({ onCancel }: VideoStabilizationProps
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-xl">
-            <Shake className="h-5 w-5 text-white" />
+            <Zap className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -164,7 +165,7 @@ export default function VideoStabilization({ onCancel }: VideoStabilizationProps
             onClick={stabilizeVideo}
             className="px-3 py-1.5 rounded-lg text-xs bg-blue-600 hover:bg-blue-700 text-white border-0 flex items-center gap-1"
           >
-            <Shake className="h-3 w-3" />
+            <Zap className="h-3 w-3" />
             Stabilize Video
           </button>
           <button
@@ -237,7 +238,7 @@ export default function VideoStabilization({ onCancel }: VideoStabilizationProps
             </div>
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
-                <Shake className="h-4 w-4 text-slate-400" />
+                <Zap className="h-4 w-4 text-slate-400" />
                 <span className="text-xs text-slate-900 dark:text-white">Smoothness</span>
               </div>
               <div className="flex items-center gap-2">
@@ -301,7 +302,7 @@ export default function VideoStabilization({ onCancel }: VideoStabilizationProps
                     type="button"
                     className="px-2 py-1 rounded text-xs bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 flex items-center gap-1"
                   >
-                    <Shake className="h-3 w-3" />
+                    <Zap className="h-3 w-3" />
                     Compare
                   </button>
                 </div>

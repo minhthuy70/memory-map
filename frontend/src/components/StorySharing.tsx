@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, BarChart3, BookOpen, Calendar, CheckCircle, Clock, Eye, Filter, Heart, Image, Image as ImageIcon, MessageCircle, Music, Pause, Play, Settings, Share2, Video, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { BookOpen, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Eye, Heart, MessageCircle, Share2, Image as ImageIcon, Video, Music } from 'lucide-react';
+
 
 interface StoryItem {
   id: string;
@@ -151,7 +152,7 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-pink-400 to-rose-500 rounded-xl">
-            <Story className="h-5 w-5 text-white" />
+            <ScrollText className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -226,7 +227,7 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Story className="h-3 w-3 text-slate-500" />
+            <ScrollText className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Active</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -329,7 +330,7 @@ export default function StorySharing({ onCancel, onCreateStory }: StorySharingPr
             onClick={handleCreateStory}
             className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white text-sm font-semibold rounded-lg transition-colors"
           >
-            <Story className="h-4 w-4" />
+            <ScrollText className="h-4 w-4" />
             Create Story
           </button>
         </div>

@@ -1,7 +1,8 @@
+import { BarChart3, Calendar, CheckCircle, Info, LineChart, RefreshCw, Star, TrendingUp, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { TrendingUp, X, RefreshCw, Info, CheckCircle, Star, Zap, BarChart3, Calendar, LineChart } from 'lucide-react';
+
 
 interface MoodTrackingGraphProps {
   onCancel?: () => void;
@@ -262,7 +263,7 @@ export default function MoodTrackingGraph({ onCancel }: MoodTrackingGraphProps) 
                     type="button"
                     className="px-2 py-1 rounded text-xs bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 flex items-center gap-1"
                   >
-                    <Edit className="h-3 w-3" />
+                    <Pencil className="h-3 w-3" />
                     Edit
                   </button>
                 </div>

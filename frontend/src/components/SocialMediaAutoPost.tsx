@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, AtSign, BarChart3, Briefcase, Calendar, Camera, CheckCircle, Clock, Filter, Globe, Lock, RefreshCw, Send, Settings, Share2, Users, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Share2, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Globe, Lock, Users, AtSign, Camera, Briefcase, Send, RefreshCw } from 'lucide-react';
+
 
 interface Platform {
   id: string;
@@ -40,7 +41,7 @@ const DEFAULT_PLATFORMS: Platform[] = [
   {
     id: 'facebook',
     name: 'Facebook',
-    icon: Facebook,
+    icon: Globe2,
     connected: true,
     accountName: '@memorymap.user',
     lastPosted: new Date('2024-01-10'),
@@ -48,7 +49,7 @@ const DEFAULT_PLATFORMS: Platform[] = [
   {
     id: 'twitter',
     name: 'Twitter',
-    icon: Twitter,
+    icon: MessageCircle,
     connected: true,
     accountName: '@memorymap',
     lastPosted: new Date('2024-01-12'),
@@ -56,7 +57,7 @@ const DEFAULT_PLATFORMS: Platform[] = [
   {
     id: 'instagram',
     name: 'Instagram',
-    icon: Instagram,
+    icon: ImagePlus,
     connected: false,
     accountName: '',
     lastPosted: null,
@@ -64,7 +65,7 @@ const DEFAULT_PLATFORMS: Platform[] = [
   {
     id: 'linkedin',
     name: 'LinkedIn',
-    icon: Linkedin,
+    icon: Link2,
     connected: true,
     accountName: 'Memory Map',
     lastPosted: new Date('2024-01-08'),

@@ -1,7 +1,8 @@
+import { Activity, Activity as ActivityIcon, AlertTriangle, BarChart3, Battery, Calendar, Check, CheckCircle, CheckSquare, Clock, Download, Filter, Gauge, Glasses, Monitor, Pause, Play, Plus, RefreshCw, Settings, Settings as SettingsIcon, Shield, Smartphone, Square, Trash2, Wifi, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Glasses, Glasses, Smartphone, Monitor, Shield, CheckSquare, Square, Activity as ActivityIcon, Wifi, Battery, Gauge } from 'lucide-react';
+
 
 interface XRDevice {
   id: string;
@@ -135,7 +136,7 @@ export default function WebXRIntegration({ onCancel, onConnect, onDisconnect, on
       case 'mobile':
         return <Monitor className="h-4 w-4" />;
       default:
-        return <Vr className="h-4 w-4" />;
+        return <Glasses className="h-4 w-4" />;
     }
   };
 
@@ -156,7 +157,7 @@ export default function WebXRIntegration({ onCancel, onConnect, onDisconnect, on
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-violet-400 to-purple-500 rounded-xl">
-            <Vr className="h-5 w-5 text-white" />
+            <Glasses className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -243,7 +244,7 @@ export default function WebXRIntegration({ onCancel, onConnect, onDisconnect, on
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Vr className="h-3 w-3 text-slate-500" />
+            <Glasses className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Devices</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -398,7 +399,7 @@ export default function WebXRIntegration({ onCancel, onConnect, onDisconnect, on
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <div className="p-2 rounded-lg bg-violet-100 dark:bg-violet-900/30">
-                    <Vr className="h-4 w-4 text-violet-500" />
+                    <Glasses className="h-4 w-4 text-violet-500" />
                   </div>
                   <div>
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">

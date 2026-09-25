@@ -1,7 +1,8 @@
+import { AlertTriangle, Clock, Eye, Info, LogOut, Play, RefreshCw, Search, Shield, Square, User, UserCheck, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { UserCheck, X, RefreshCw, Search, User, Play, Square, Clock, AlertTriangle, Info, Shield, Eye, LogOut } from 'lucide-react';
+
 
 interface ImpersonateUserProps {
   onCancel?: () => void;
@@ -74,7 +75,7 @@ export default function ImpersonateUser({ onCancel }: ImpersonateUserProps) {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl">
-            <UserSwitch className="h-5 w-5 text-white" />
+            <UserCog className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -121,7 +122,7 @@ export default function ImpersonateUser({ onCancel }: ImpersonateUserProps) {
                 onClick={stopImpersonation}
                 className="px-3 py-1.5 rounded-lg text-xs bg-red-600 hover:bg-red-700 text-white flex items-center gap-1"
               >
-                <Stop className="h-3 w-3" />
+                <OctagonX className="h-3 w-3" />
                 Stop Impersonation
               </button>
             </div>

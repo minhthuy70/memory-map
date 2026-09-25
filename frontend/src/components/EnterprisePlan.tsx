@@ -1,7 +1,8 @@
+import { Building, CheckCircle, Crown, Info, RefreshCw, Shield, Star, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Building, X, RefreshCw, Info, CheckCircle, Star, Zap, Shield, Crown } from 'lucide-react';
+
 
 interface EnterprisePlanProps {
   onCancel?: () => void;

@@ -1,7 +1,8 @@
+import { Award, CheckCircle, Download, ExternalLink, Hash, Info, RefreshCw, Share2, Shield, Star, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Award, X, RefreshCw, Info, CheckCircle, Star, Zap, Shield, Download, Share2, ExternalLink, Hash } from 'lucide-react';
+
 
 interface MemoryCertificateProps {
   onCancel?: () => void;
@@ -125,7 +126,7 @@ export default function MemoryCertificate({ onCancel }: MemoryCertificateProps) 
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl">
-            <Certificate className="h-5 w-5 text-white" />
+            <BadgeCheck className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -194,7 +195,7 @@ export default function MemoryCertificate({ onCancel }: MemoryCertificateProps) 
             onClick={() => issueCertificate('mem4', 'New Memory')}
             className="px-3 py-1.5 rounded-lg text-xs bg-blue-600 hover:bg-blue-700 text-white border-0 flex items-center gap-1"
           >
-            <Certificate className="h-3 w-3" />
+            <BadgeCheck className="h-3 w-3" />
             Issue Certificate
           </button>
           <button

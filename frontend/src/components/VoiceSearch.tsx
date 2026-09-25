@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, BarChart3, Calendar, Check, CheckCircle, Clock, Clock as ClockIcon, Download, ExternalLink, Filter, Languages, Mic, Mic as MicIcon, Pause, Play, Plus, RefreshCw, Search, Search as SearchIcon, Settings, Settings as SettingsIcon, Sparkles, Trash2, Trash2 as TrashIcon, Volume2, Waves, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Search, RefreshCw, Check, Zap as ZapIcon, Plus, Search as SearchIcon, Mic as MicIcon, Languages, Volume2, Waves, Trash2 as TrashIcon, ExternalLink, Clock as ClockIcon, Sparkles } from 'lucide-react';
+
 
 interface VoiceSearchResult {
   id: string;
@@ -254,7 +255,7 @@ export default function VoiceSearch({ onCancel, onSearch, onRecord, onStopRecord
             >
               {isRecording ? (
                 <>
-                  <StopCircle className="h-6 w-6 animate-pulse" />
+                  <OctagonX className="h-6 w-6 animate-pulse" />
                   Stop Recording
                 </>
               ) : (

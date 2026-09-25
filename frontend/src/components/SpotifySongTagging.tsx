@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, BarChart3, Calendar, Check, CheckCircle, Clock, Download, ExternalLink, Filter, Heart, ListMusic, Music, Pause, Play, PlayCircle, Plus, RefreshCw, Repeat, Search, Settings, Settings as SettingsIcon, Share2, Shuffle, SkipBack, SkipForward, Trash2, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Music, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Search, RefreshCw, Check, Zap as ZapIcon, Plus, PlayCircle, ExternalLink, Heart, Share2, ListMusic, Music, SkipBack, SkipForward, Repeat, Shuffle } from 'lucide-react';
+
 
 interface SpotifySong {
   id: string;
@@ -120,7 +121,7 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl">
-            <Spotify className="h-5 w-5 text-white" />
+            <Headphones className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -195,7 +196,7 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Spotify className="h-3 w-3 text-slate-500" />
+            <Headphones className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Tagged</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -418,7 +419,7 @@ export default function SpotifySongTagging({ onCancel, onSearch, onTag, onUntag,
 
       <div className="mt-4 p-3 bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900 rounded-lg">
         <p className="text-[10px] text-green-700 dark:text-green-400">
-          <strong>Lưu ý:</strong> Gắn bài hát Spotify vào kỷ niệm với Spotify search integration, song tagging/untaging, favorite toggle, preview playback, external link to Spotify, tag management, auto-tag from listening history, popularity tracking, và Spotify connected status.
+          <strong>Lưu ý:</strong> Gắn bài hát Spotify vào kỷ niệm với Spotify search integration, song tagging/untaging, favorite toggle, preview playback, external link to Headphones, tag management, auto-tag from listening history, popularity tracking, và Spotify connected status.
         </p>
       </div>
     </div>

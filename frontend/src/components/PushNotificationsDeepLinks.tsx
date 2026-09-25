@@ -1,7 +1,8 @@
+import { AlertTriangle, BarChart3, Bell, Calendar, CheckCircle, Clock, Info, Link, Moon, Plus, RefreshCw, Settings, Smartphone, Sun, Tag, Trash2, Vibrate, Volume2, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Bell, X, Plus, Trash2, RefreshCw, Clock, CheckCircle, AlertTriangle, Link, Calendar, Tag, Settings, Info, BarChart3, Smartphone, Volume2, Vibrate, Moon, Sun } from 'lucide-react';
+
 
 interface PushNotificationsDeepLinksProps {
   onCancel?: () => void;

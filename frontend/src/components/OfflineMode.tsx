@@ -1,7 +1,8 @@
+import { AlertTriangle, BarChart3, CheckCircle, Clock, Cloud, Database, Download, HardDrive, Info, RefreshCw, Settings, Smartphone, Trash2, Upload, Wifi, WifiOff, X } from 'lucide-react';
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Wifi, X, WifiOff, Download, Upload, RefreshCw, Clock, Database, HardDrive, CheckCircle, AlertTriangle, Settings, Info, BarChart3, Cloud, Smartphone, Trash2, RefreshCw } from 'lucide-react';
+
 
 interface OfflineModeProps {
   onCancel?: () => void;
@@ -196,7 +197,7 @@ export default function OfflineMode({ onCancel }: OfflineModeProps) {
             disabled={!isOnline || pendingSync === 0}
             className={`px-3 py-1.5 rounded-lg text-xs border-0 flex items-center gap-1 ${isOnline && pendingSync > 0 ? 'bg-green-500 text-white hover:bg-green-600' : 'bg-slate-100 text-slate-400 dark:bg-slate-700 dark:text-slate-500 cursor-not-allowed'}`}
           >
-            <Sync className="h-3 w-3" />
+            <RefreshCw className="h-3 w-3" />
             Sync Now
           </button>
           <button

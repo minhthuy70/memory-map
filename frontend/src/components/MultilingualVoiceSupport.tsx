@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, BarChart3, Calendar, Check, CheckCircle, CheckSquare, Clock, Download, ExternalLink, Filter, Globe, Languages, MessageSquare, Mic, OctagonX, Pause, Play, Plus, RefreshCw, Settings, Settings as SettingsIcon, Sparkles, Square, Trash2, Trash2 as TrashIcon, Volume2, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Languages, RefreshCw, Check, Zap as ZapIcon, Plus, Globe, Volume2, Trash2 as TrashIcon, ExternalLink, StopCircle, Sparkles, MessageSquare, Languages, CheckSquare, Square } from 'lucide-react';
+
 
 interface VoiceLanguage {
   code: string;
@@ -279,7 +280,7 @@ export default function MultilingualVoiceSupport({ onCancel, onLanguageToggle, o
               </>
             ) : (
               <>
-                <Translate className="h-4 w-4" />
+                <Languages className="h-4 w-4" />
                 Detect Language from Audio
               </>
             )}

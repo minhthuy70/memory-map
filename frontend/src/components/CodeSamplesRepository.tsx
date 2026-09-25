@@ -1,7 +1,8 @@
+import { AlertCircle, Calendar, CheckCircle, Clock, Download, ExternalLink, FileText, Fork, Github, Info, Plus, RefreshCw, Settings, Star, Trash2, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Github, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Download, FileText, Star, Fork } from 'lucide-react';
+
 
 interface CodeSamplesRepositoryProps {
   onCancel?: () => void;

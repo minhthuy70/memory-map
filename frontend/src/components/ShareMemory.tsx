@@ -1,7 +1,8 @@
+import { AtSign, Check, Copy, Mail, Share2, Users } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Share2, Copy, Check, Users, AtSign, Mail } from 'lucide-react';
+
 
 interface ShareMemoryProps {
   memory: {
@@ -150,7 +151,7 @@ export default function ShareMemory({ memory, onClose }: ShareMemoryProps) {
                     onClick={() => handleShare('facebook')}
                     className="flex items-center justify-center gap-2 p-3 bg-[#1877F2] text-white rounded-lg hover:bg-[#166FE5] transition-colors font-medium text-sm"
                   >
-                    <Facebook className="w-4 h-4" />
+                    <Globe2 className="w-4 h-4" />
                     <span>Facebook</span>
                   </button>
 
@@ -159,7 +160,7 @@ export default function ShareMemory({ memory, onClose }: ShareMemoryProps) {
                     onClick={() => handleShare('twitter')}
                     className="flex items-center justify-center gap-2 p-3 bg-[#1DA1F2] text-white rounded-lg hover:bg-[#1A91DA] transition-colors font-medium text-sm"
                   >
-                    <Twitter className="w-4 h-4" />
+                    <MessageCircle className="w-4 h-4" />
                     <span>Twitter</span>
                   </button>
 

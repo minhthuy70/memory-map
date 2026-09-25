@@ -1,7 +1,8 @@
+import { CheckCircle, Download, Heart, Info, Plus, RefreshCw, Shapes, ShoppingCart, Star, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Shapes, X, RefreshCw, Info, CheckCircle, Plus, ShoppingCart, Star, Download, Heart } from 'lucide-react';
+
 
 interface IconPacksProps {
   onCancel?: () => void;
@@ -99,7 +100,7 @@ export default function IconPacks({ onCancel }: IconPacksProps) {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl">
-            <Icons className="h-5 w-5 text-white" />
+            <LayoutGrid className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -184,7 +185,7 @@ export default function IconPacks({ onCancel }: IconPacksProps) {
               <div key={pack.id} className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center">
-                    <Icons className="h-5 w-5 text-slate-400" />
+                    <LayoutGrid className="h-5 w-5 text-slate-400" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-1">

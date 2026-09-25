@@ -1,7 +1,8 @@
+import { Activity, AlertCircle, AlertTriangle, AlertTriangle as AlertTriangleIcon, Archive, BarChart3, Calendar, Calendar as CalendarIcon, Camera, Check, CheckCheck, CheckCircle, CheckCircle as CheckCircleIcon, CheckSquare, Clock, Clock as ClockIcon, Cloud, Copyright, Copyright as CopyRightIcon, Database, Download, ExternalLink, Eye, EyeOff, Filter, Filter as FilterIcon, FolderOpen, Globe, Grid, Hash, Heart, Image, Image as ImageIcon, Loader2, Lock, MapPin, MessageCircle, Pause, Play, Plus, RefreshCw, Search, Settings, Settings as SettingsIcon, Share2, Shield, Square, Star, ThumbsUp, Trash2, Trash2 as TrashIcon, Unlock, Upload, Video, Wifi, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Upload, Image as ImageIcon, CheckCheck, FolderOpen, Lock, Unlock, CheckCircle as CheckCircleIcon, ExternalLink, Filter as FilterIcon, Search, Calendar as CalendarIcon, MapPin, Clock as ClockIcon, Eye, EyeOff, Trash2 as TrashIcon, Shield, AlertCircle, Database, Globe, Cloud, Wifi, Loader2, CheckSquare, Square, AlertTriangle as AlertTriangleIcon, Copyright, Heart, MessageCircle, Share2, Hash, Camera, Grid, Copyright as CopyRightIcon, Archive, Calendar as CalendarIcon2, Image as ImageIcon2, Video, ThumbsUp, Star } from 'lucide-react';
+
 
 interface InstagramPost {
   id: string;
@@ -267,7 +268,7 @@ export default function ImportFromInstagram({ onCancel, onConnect, onImport, onD
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <CopyRight className="h-3 w-3 text-slate-500" />
+            <Copyright className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Total Size</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">

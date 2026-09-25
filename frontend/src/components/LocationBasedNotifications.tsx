@@ -1,7 +1,8 @@
+import { AlertTriangle, Bell, Check, Info, MapPin, Navigation, Pencil, Plus, Save, Settings, Trash2, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Navigation, Plus, Trash2, Edit, Check, X, Save, Settings, AlertTriangle, Info, Bell } from 'lucide-react';
+
 
 interface LocationZone {
   id: string;
@@ -511,7 +512,7 @@ export default function LocationBasedNotifications({
                     className="p-1.5 hover:bg-white hover:bg-opacity-20 rounded-lg transition-colors"
                     title="Chỉnh sửa"
                   >
-                    <Edit className="h-3 w-3 text-white" />
+                    <Pencil className="h-3 w-3 text-white" />
                   </button>
                   <button
                     type="button"

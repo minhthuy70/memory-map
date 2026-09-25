@@ -1,7 +1,8 @@
+import { AlertTriangle, Bell, BellOff, Check, Settings, Shield, X } from 'lucide-react';
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Bell, BellOff, Check, X, Settings, Shield, AlertTriangle } from 'lucide-react';
+
 
 interface PushNotificationSettings {
   enabled: boolean;

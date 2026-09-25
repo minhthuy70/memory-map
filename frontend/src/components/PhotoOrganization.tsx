@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, ArrowRight, BarChart3, Calendar, Calendar as CalendarIcon, CheckCircle, Clock, Copy, Edit2, Eye, Filter, FolderOpen, FolderPlus, Image, Image as ImageIcon, Layers, MapPin, RefreshCw, Scan, Settings, Sparkles, Tag, Trash2, Users, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { FolderOpen, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Image as ImageIcon, Sparkles, Zap as ZapIcon, Layers, FolderPlus, Copy, ArrowRight, Calendar as CalendarIcon, MapPin, Tag, Users, RefreshCw, Trash2, Edit2 } from 'lucide-react';
+
 
 interface OrganizationRule {
   id: string;
@@ -279,7 +280,7 @@ export default function PhotoOrganization({ onCancel, onRunOrganization, onCreat
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Duplicate className="h-3 w-3 text-slate-500" />
+            <Files className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Duplicates</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -445,7 +446,7 @@ export default function PhotoOrganization({ onCancel, onRunOrganization, onCreat
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <Duplicate className="h-4 w-4 text-amber-500" />
+                  <Files className="h-4 w-4 text-amber-500" />
                   <div>
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
                       Duplicate Group

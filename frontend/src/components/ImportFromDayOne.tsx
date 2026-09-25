@@ -1,7 +1,8 @@
+import { Activity, Activity as ActivityIcon, AlertCircle, AlertTriangle, AlertTriangle as AlertTriangleIcon, Angry, Angry as AngryIcon, Archive, BarChart3, BookOpen, Briefcase, Cake, Calendar, Calendar as CalendarIcon, Camera, Check, Check as CheckIcon, CheckCheck, CheckCircle, CheckCircle as CheckCircleIcon, CheckSquare, Clock, Clock as ClockIcon, Cloud, Code, Coffee, Coffee as CoffeeIcon, Copy, Copy as CopyIcon, Copyright, Copyright as CopyRightIcon, Database, Download, Droplet, Dumbbell, Edit2, ExternalLink, Eye, EyeOff, FileText, Filter, Filter as FilterIcon, FolderOpen, FolderOpen as FolderOpenIcon, Frown, Gamepad2, Gift, Globe, Grid, Hash, Headphones, Heart, Heart as HeartIcon, Home, Image, Image as ImageIcon, Link, Loader2, Lock, Map, Map as MapIcon, MapPin, MapPin as MapPinIcon, Meh, MessageCircle, Monitor, Moon, MoreHorizontal, Music, Palette, Paperclip, Pause, PenTool, Plane, Play, Plus, RefreshCw, School, Search, Settings, Settings as SettingsIcon, Share2, Shield, ShoppingBag, Smile, Smile as SmileIcon, Sparkles, Square, Star, Star as StarIcon, Sun, Tag, Tag as TagIcon, Thermometer, ThumbsUp, Trash2, Trash2 as TrashIcon, Unlock, Upload, Users, Utensils, Video, Wifi, X, X as XIcon, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Upload, Image as ImageIcon, CheckCheck, FolderOpen, Lock, Unlock, CheckCircle as CheckCircleIcon, ExternalLink, Filter as FilterIcon, Search, Calendar as CalendarIcon, MapPin, Clock as ClockIcon, Eye, EyeOff, Trash2 as TrashIcon, Shield, AlertCircle, Database, Globe, Cloud, Wifi, Loader2, CheckSquare, Square, AlertTriangle as AlertTriangleIcon, Copyright, Heart, MessageCircle, Share2, Hash, Camera, Grid, Copyright as CopyRightIcon, Archive, Calendar as CalendarIcon2, Image as ImageIcon2, Video, ThumbsUp, Star, Users, Smile, Gift, Cake, Sparkles, BookOpen, FileText, Smile as SmileIcon, Frown, Meh, Angry as AngryIcon, Zap as ZapIcon2, Thermometer, Droplet, Moon, Sun, Activity as ActivityIcon, Coffee, Briefcase, School, Home, Plane, Utensils, ShoppingBag, Music, Gamepad2, Dumbbell, Palette, Code, Headphones, Coffee as CoffeeIcon, Heart as HeartIcon, Star as StarIcon, Monitor, PenTool, Image as ImageIcon3, Map as MapIcon, Link, Paperclip, Tag as TagIcon, MoreHorizontal, Copy as CopyIcon, Edit2, FolderOpen as FolderOpenIcon, Calendar as CalendarIcon3, Clock as ClockIcon2, MapPin as MapPinIcon, Check as CheckIcon, X as XIcon } from 'lucide-react';
+
 
 interface DayOneEntry {
   id: string;
@@ -301,7 +302,7 @@ export default function ImportFromDayOne({ onCancel, onConnect, onImport, onDisc
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <CopyRight className="h-3 w-3 text-slate-500" />
+            <Copyright className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Total Size</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">

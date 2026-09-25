@@ -1,7 +1,8 @@
+import { Activity, AlertCircle, AlertTriangle, AlignCenter, AlignLeft, AlignRight, BarChart3, Calendar, Check, CheckCircle, Clock, Copy, Copy as CopyIcon, Copyright, CreditCard, DollarSign, Download, Download as DownloadIcon, ExternalLink, Eye, EyeOff, FileText, Filter, Filter as FilterIcon, Globe, Image, Image as ImageIcon, Layers, LayoutGrid, Link2, Lock, Maximize2, Minimize2, Palette, Pause, Play, Plus, Printer, QrCode, RefreshCw, RotateCw, Scan, Settings, Settings as SettingsIcon, Share, Share as ShareIcon, Share2, Smartphone, Sparkles, Trash2, Trash2 as TrashIcon, Type, Type as TypeIcon, Unlock, X, Zap, Zap as ZapIcon, ZoomIn, ZoomOut } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, QrCode, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, CreditCard, CreditCard, Copyright, Link2, Scan, Smartphone, Globe, Lock, Unlock, Filter as FilterIcon, DollarSign, Printer, AlertCircle, Copy as CopyIcon, Share as ShareIcon } from 'lucide-react';
+
 
 interface QRCard {
   id: string;
@@ -181,7 +182,7 @@ export default function QRCodeMemoryCards({ onCancel, onPrint, onPreview, onGene
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <Card className="h-3 w-3 text-slate-500" />
+            <CreditCard className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Cards</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -199,7 +200,7 @@ export default function QRCodeMemoryCards({ onCancel, onPrint, onPreview, onGene
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <CopyRight className="h-3 w-3 text-slate-500" />
+            <Copyright className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Quantity</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">

@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, AlignCenter, AlignLeft, AlignRight, BarChart3, Calendar, Check, CheckCircle, Clock, Cloud, Copyright, DollarSign, Download, Download as DownloadIcon, ExternalLink, Eye, EyeOff, FileText, Filter, Filter as FilterIcon, Globe, Heart, Image, Image as ImageIcon, ImagePlus, Layers, LayoutGrid, Lock, Mail, MapPin, Maximize2, Minimize2, Palette, Pause, PenTool, Play, Plus, Printer, RefreshCw, RotateCw, Scan, Send, Settings, Settings as SettingsIcon, Share2, Smile, Sparkles, Stamp, Star, Sun, Text, Text as TextIcon, Trash2, Trash2 as TrashIcon, Type, Type as TypeIcon, Unlock, Upload, X, Zap, Zap as ZapIcon, ZoomIn, ZoomOut } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Mail, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Stamp, Copyright, DollarSign, Printer, Filter as FilterIcon, Globe, MapPin, Heart, Star, Smile, Sun, Cloud, Send, Upload, Text as TextIcon, PenTool, ImagePlus, Scan, Lock, Unlock } from 'lucide-react';
+
 
 interface Postcard {
   id: string;
@@ -194,7 +195,7 @@ export default function CustomPostcardPrint({ onCancel, onPrint, onPreview, onUp
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <CopyRight className="h-3 w-3 text-slate-500" />
+            <Copyright className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Quantity</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">

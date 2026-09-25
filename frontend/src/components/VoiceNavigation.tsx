@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, ArrowUp, BarChart3, Calendar, Calendar as CalendarIcon, Check, CheckCircle, Clock, Compass, Download, ExternalLink, Filter, Home, Layers, Layout, MapPin, Mic, Navigation, Pause, Play, Plus, RefreshCw, Settings, Settings as SettingsIcon, Trash2, Trash2 as TrashIcon, Users, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Navigation, RefreshCw, Check, Zap as ZapIcon, Plus, Compass, MapPin, ArrowRight, ArrowLeft, ArrowUp, ArrowDown, Home, Layout, Users, Calendar as CalendarIcon, Layers, Trash2 as TrashIcon, ExternalLink, Zap as ZapIcon2 } from 'lucide-react';
+
 
 interface VoiceNavigationCommand {
   id: string;
@@ -311,7 +312,7 @@ export default function VoiceNavigation({ onCancel, onNavigate, onRecord, onStop
             >
               {isRecording ? (
                 <>
-                  <StopCircle className="h-6 w-6 animate-pulse" />
+                  <OctagonX className="h-6 w-6 animate-pulse" />
                   Stop Recording
                 </>
               ) : (

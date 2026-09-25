@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, AlignCenter, AlignLeft, AlignRight, BarChart3, Building, Calendar, Check, CheckCircle, Clock, Compass, Copyright, DollarSign, Download, Download as DownloadIcon, ExternalLink, Eye, EyeOff, Filter, Filter as FilterIcon, Globe, Layers, LayoutGrid, Map, Map as MapIcon, MapPin, Maximize2, Minimize2, Mountain, Navigation, Palette, Pause, Play, Plus, Printer, RefreshCw, RotateCw, Route, Satellite, Settings, Settings as SettingsIcon, Share2, Sparkles, Trash2, Trash2 as TrashIcon, TreePine, Type, Type as TypeIcon, Waves, X, Zap, Zap as ZapIcon, ZoomIn, ZoomOut } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Map, RefreshCw, Check, Zap as ZapIcon, Plus, MapPin, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Map as MapIcon, Navigation, Globe, Compass, Route, DollarSign, Printer, Copyright, Filter as FilterIcon, Satellite, Mountain, Waves, TreePine, Building } from 'lucide-react';
+
 
 interface MapLocation {
   id: string;
@@ -195,7 +196,7 @@ export default function PrintMapPoster({ onCancel, onPrint, onPreview }: PrintMa
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <CopyRight className="h-3 w-3 text-slate-500" />
+            <Copyright className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Quantity</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">

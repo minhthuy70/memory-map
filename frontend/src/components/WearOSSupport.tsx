@@ -1,7 +1,8 @@
+import { Activity, AlertCircle, Battery, Bell, CheckCircle, Heart, Info, RefreshCw, Settings, Smartphone, Watch, Wifi, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Watch, X, RefreshCw, Info, Settings, Smartphone, Battery, Wifi, Bell, CheckCircle, AlertCircle, Heart, Activity, Smartphone } from 'lucide-react';
+
 
 interface WearOSSupportProps {
   onCancel?: () => void;
@@ -106,7 +107,7 @@ export default function WearOSSupport({ onCancel }: WearOSSupportProps) {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl">
-            <Android className="h-5 w-5 text-white" />
+            <TabletSmartphone className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">

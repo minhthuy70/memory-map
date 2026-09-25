@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, BarChart3, Bell, Cake, Calendar, CheckCircle, Clock, Clock as ClockIcon, Filter, Gift, Heart, MapPin, Plane, Plus, Settings, Users, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Plus, Users, Bell, MapPin, Cake, Plane, Gift, Heart, Clock as ClockIcon } from 'lucide-react';
+
 
 interface CalendarEvent {
   id: string;
@@ -105,7 +106,7 @@ export default function SharedCalendars({ onCancel, onCreateEvent }: SharedCalen
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'birthday':
-        return <BirthdayCake className="h-4 w-4" />;
+        return <PartyPopper className="h-4 w-4" />;
       case 'anniversary':
         return <Heart className="h-4 w-4" />;
       case 'vacation':

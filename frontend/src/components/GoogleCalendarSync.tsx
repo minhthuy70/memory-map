@@ -1,7 +1,8 @@
+import { AlertCircle, Calendar, CheckCircle, RefreshCw, Settings, XCircle } from 'lucide-react';
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Calendar, RefreshCw, CheckCircle, XCircle, AlertCircle, Settings, RefreshCw } from 'lucide-react';
+
 
 interface GoogleCalendarSyncProps {
   onSync?: () => Promise<void>;
@@ -184,7 +185,7 @@ export default function GoogleCalendarSync({
               </>
             ) : (
               <>
-                <Sync className="h-4 w-4" />
+                <RefreshCw className="h-4 w-4" />
                 Đồng bộ ngay
               </>
             )}

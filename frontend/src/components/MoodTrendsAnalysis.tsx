@@ -1,7 +1,8 @@
+import { Activity, AlertTriangle, ArrowDown, ArrowUp, BarChart3, Calendar, CheckCircle, Clock, Frown, HeartCrack, Meh, Settings, Smile, Sparkles, TrendingUp, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
-import { TrendingUp, X, Settings, CheckCircle, AlertTriangle, Smile, Frown, Meh, Sparkles, HeartCrack, Calendar, Activity, BarChart3, Clock, ArrowUp, ArrowDown } from 'lucide-react';
+
 
 interface MoodData {
   id: string;
@@ -56,7 +57,7 @@ export default function MoodTrendsAnalysis({ onCancel, onAnalyzeTrends }: MoodTr
       case 'excited':
         return <Sparkles className="h-4 w-4" />;
       case 'nostalgic':
-        return <HeartBroken className="h-4 w-4" />;
+        return <HeartCrack className="h-4 w-4" />;
       default:
         return <Meh className="h-4 w-4" />;
     }
