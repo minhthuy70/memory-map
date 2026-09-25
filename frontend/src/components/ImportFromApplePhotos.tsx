@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Upload, Image as ImageIcon, CheckCheck, FolderOpen, Lock, Unlock, CheckCircle as CheckCircleIcon, ExternalLink, Filter as FilterIcon, Search, Calendar as CalendarIcon, MapPin, Clock as ClockIcon, Eye, EyeOff, Trash2 as TrashIcon, Shield, AlertCircle, Database, Globe, Cloud, Wifi, Loader2, CheckSquare, Square, AlertTriangle as AlertTriangleIcon, CopyRight, Smartphone, HardDrive, Apple, FileText, Image as ImageIcon2, Calendar as CalendarIcon2, Map as MapIcon, Tag } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Upload, Image as ImageIcon, CheckCheck, FolderOpen, Lock, Unlock, CheckCircle as CheckCircleIcon, ExternalLink, Filter as FilterIcon, Search, Calendar as CalendarIcon, MapPin, Clock as ClockIcon, Eye, EyeOff, Trash2 as TrashIcon, Shield, AlertCircle, Database, Globe, Cloud, Wifi, Loader2, CheckSquare, Square, AlertTriangle as AlertTriangleIcon, Copyright, Smartphone, HardDrive, Apple, FileText, Image as ImageIcon2, Calendar as CalendarIcon2, Map as MapIcon, Tag } from 'lucide-react';
 
 interface ApplePhoto {
   id: string;

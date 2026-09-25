@@ -15,9 +15,11 @@ import {
   ShieldCheck,
   KeyRound,
   Smartphone,
-  ArrowLeft
+  ArrowLeft,
+  Fingerprint
 } from 'lucide-react';
 import { authApi } from '@/lib/auth-api';
+import { webauthnHelper } from '@/lib/webauthn';
 import { useAuthStore } from '@/store/auth-store';
 import GoogleOAuthModal from '@/components/GoogleOAuthModal';
 import FacebookOAuthModal from '@/components/FacebookOAuthModal';
@@ -46,6 +48,9 @@ export default function LoginPage() {
   const [isUsingBackupCode, setIsUsingBackupCode] = useState(false);
   const [twoFactorError, setTwoFactorError] = useState('');
   const [twoFactorLoading, setTwoFactorLoading] = useState(false);
+
+  // Biometric login state
+  const [biometricLoading, setBiometricLoading] = useState(false);
 
   // Load remembered email on mount
   useEffect(() => {
@@ -141,6 +146,35 @@ export default function LoginPage() {
       setTwoFactorError(msg);
     } finally {
       setTwoFactorLoading(false);
+    }
+  };
+
+  const handleBiometricLogin = async () => {
+    setError('');
+    setIsLocked(false);
+    setBiometricLoading(true);
+
+    try {
+      const response = await webauthnHelper.loginWithBiometric(
+        formData.email.trim() || undefined,
+        rememberMe,
+      );
+
+      // Handle remember me in localStorage
+      try {
+        if (rememberMe && response.user?.email) {
+          localStorage.setItem('remembered_email', response.user.email);
+        }
+      } catch {
+        // ignore storage errors
+      }
+
+      setAuth(response.access_token, response.user);
+      router.push('/dashboard');
+    } catch (err: any) {
+      setError(err.message || 'Xác thực sinh trắc học thất bại.');
+    } finally {
+      setBiometricLoading(false);
     }
   };
 
@@ -337,8 +371,21 @@ export default function LoginPage() {
             </div>
           ) : (
             <>
-              {/* OAuth Buttons */}
+              {/* OAuth Buttons & Biometric Login */}
               <div className="space-y-3 mb-6">
+                <button
+                  type="button"
+                  onClick={handleBiometricLogin}
+                  disabled={biometricLoading || oauthLoading !== null || isLoading}
+                  className="w-full flex items-center justify-center gap-2.5 px-4 py-2.5 border border-purple-300 dark:border-purple-800 rounded-xl bg-purple-50/80 dark:bg-purple-950/40 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/50 font-semibold transition-all shadow-xs hover:shadow-sm disabled:opacity-60 cursor-pointer text-sm"
+                >
+                  {biometricLoading ? (
+                    <div className="w-4 h-4 border-2 border-purple-600 border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Fingerprint className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                  )}
+                  <span>{biometricLoading ? 'Đang quét cảm biến...' : 'Đăng nhập bằng Sinh trắc học / Passkey'}</span>
+                </button>
             <button
               type="button"
               onClick={handleGoogleOAuth}

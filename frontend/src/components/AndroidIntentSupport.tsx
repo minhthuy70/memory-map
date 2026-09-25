@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Android, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Zap } from 'lucide-react';
+import { Smartphone, X, RefreshCw, Info, Settings, Plus, Trash2, CheckCircle, AlertCircle, Clock, Calendar, ExternalLink, Zap } from 'lucide-react';
 
 interface AndroidIntentSupportProps {
   onCancel?: () => void;

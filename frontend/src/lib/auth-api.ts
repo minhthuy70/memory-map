@@ -184,4 +184,57 @@ export const authApi = {
     const response = await api.post('/auth/2fa/backup-codes');
     return response.data;
   },
+
+  // WebAuthn / Biometric (FIDO2 / Passkeys / Touch ID / Face ID)
+  getWebAuthnRegisterOptions: async () => {
+    const response = await api.post('/auth/webauthn/register-options');
+    return response.data;
+  },
+
+  verifyWebAuthnRegister: async (data: { response: any; deviceName?: string }) => {
+    const response = await api.post('/auth/webauthn/register-verify', data);
+    return response.data;
+  },
+
+  getWebAuthnLoginOptions: async (email?: string) => {
+    const response = await api.post('/auth/webauthn/login-options', { email });
+    return response.data;
+  },
+
+  verifyWebAuthnLogin: async (data: { response: any; rememberMe?: boolean }): Promise<AuthResponse> => {
+    const response = await api.post('/auth/webauthn/login-verify', data);
+    return response.data;
+  },
+
+  getWebAuthnStatus: async (): Promise<WebAuthnStatusResponse> => {
+    const response = await api.get('/auth/webauthn/status');
+    return response.data;
+  },
+
+  getWebAuthnCredentials: async (): Promise<WebAuthnCredentialItem[]> => {
+    const response = await api.get('/auth/webauthn/credentials');
+    return response.data;
+  },
+
+  deleteWebAuthnCredential: async (id: string): Promise<{ success: boolean; message: string }> => {
+    const response = await api.delete(`/auth/webauthn/credentials/${id}`);
+    return response.data;
+  },
 };
+
+export interface WebAuthnCredentialItem {
+  id: string;
+  credentialId: string;
+  deviceType: string;
+  backedUp: boolean;
+  transports: string[];
+  deviceName?: string;
+  createdAt: string;
+  lastUsedAt?: string | null;
+}
+
+export interface WebAuthnStatusResponse {
+  enabled: boolean;
+  credentialsCount: number;
+  credentials: WebAuthnCredentialItem[];
+}

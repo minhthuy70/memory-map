@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Video, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, Shake } from 'lucide-react';
+import { Video, X, RefreshCw, Info, CheckCircle, Star, Zap, Play, Download, Clock, Share2 } from 'lucide-react';
 
 interface VideoStabilizationProps {
   onCancel?: () => void;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Clock, X, Settings, CheckCircle, AlertTriangle, Calendar, Sun, Moon, Activity, BarChart3, Zap, TrendingUp, Coffee, Night } from 'lucide-react';
+import { Clock, X, Settings, CheckCircle, AlertTriangle, Calendar, Sun, Moon, Activity, BarChart3, Zap, TrendingUp, Coffee, Moon } from 'lucide-react';
 
 interface TimeSlot {
   hour: number;

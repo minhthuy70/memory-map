@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Music, Volume2, VolumeX, PlayCircle, RefreshCw, Check, Zap as ZapIcon, Sliders, Upload, Trash2 as TrashIcon, Plus, Layers, Waveform, SkipBack, SkipForward } from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Music, Volume2, VolumeX, PlayCircle, RefreshCw, Check, Zap as ZapIcon, Sliders, Upload, Trash2 as TrashIcon, Plus, Layers, AudioLines, SkipBack, SkipForward } from 'lucide-react';
 
 interface AudioTrack {
   id: string;

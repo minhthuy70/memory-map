@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, Upload, CheckCircle, AlertTriangle, Loader2, MapPin, Navigation, Route, Waypoint, Calendar, Clock, Gauge, Map, Layers, Filter, Eye, Check, Play, Pause, SkipForward, RefreshCw, ChevronDown, ChevronUp, FileText, Globe } from 'lucide-react';
+import { X, Settings, Upload, CheckCircle, AlertTriangle, Loader2, MapPin, Navigation, Route, Waypoints, Calendar, Clock, Gauge, Map, Layers, Filter, Eye, Check, Play, Pause, SkipForward, RefreshCw, ChevronDown, ChevronUp, FileText, Globe } from 'lucide-react';
 
 interface ImportFromGPXTrackProps {
   onCancel?: () => void;

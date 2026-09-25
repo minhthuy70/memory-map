@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Icons, X, RefreshCw, Info, CheckCircle, Plus, ShoppingCart, Star, Download, Heart } from 'lucide-react';
+import { Shapes, X, RefreshCw, Info, CheckCircle, Plus, ShoppingCart, Star, Download, Heart } from 'lucide-react';
 
 interface IconPacksProps {
   onCancel?: () => void;

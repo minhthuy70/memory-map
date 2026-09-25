@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Vr, Glasses, Smartphone, Monitor, Shield, CheckSquare, Square, Activity as ActivityIcon, Wifi, Battery, Gauge } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Glasses, Glasses, Smartphone, Monitor, Shield, CheckSquare, Square, Activity as ActivityIcon, Wifi, Battery, Gauge } from 'lucide-react';
 
 interface XRDevice {
   id: string;

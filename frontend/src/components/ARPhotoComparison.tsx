@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, Split, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, FlipHorizontal, FlipVertical, SliderHorizontal, Calendar as CalendarIcon, MapPin, ExternalLink, Share2, Bookmark, BookmarkCheck, CalendarClock, History } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, Split, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, FlipHorizontal, FlipVertical, SlidersHorizontal, Calendar as CalendarIcon, MapPin, ExternalLink, Share2, Bookmark, BookmarkCheck, CalendarClock, History } from 'lucide-react';
 
 interface PhotoComparison {
   id: string;

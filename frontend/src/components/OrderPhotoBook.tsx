@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, BookOpen, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Book, Package, Truck, Clock as ClockIcon, DollarSign, Printer, CopyRight, Filter as FilterIcon, Package as PackageIcon, ShoppingBag, CreditCard, AlertCircle, CheckCheck, Check as CheckIcon2 } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, BookOpen, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Book, Package, Truck, Clock as ClockIcon, DollarSign, Printer, Copyright, Filter as FilterIcon, Package as PackageIcon, ShoppingBag, CreditCard, AlertCircle, CheckCheck, Check as CheckIcon2 } from 'lucide-react';
 
 interface PhotoBook {
   id: string;

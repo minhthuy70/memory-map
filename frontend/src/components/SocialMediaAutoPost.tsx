@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Share2, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Globe, Lock, Facebook, Twitter, Instagram, Linkedin, Send, RefreshCw } from 'lucide-react';
+import { Share2, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Globe, Lock, Users, AtSign, Camera, Briefcase, Send, RefreshCw } from 'lucide-react';
 
 interface Platform {
   id: string;

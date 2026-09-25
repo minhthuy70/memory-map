@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Printer, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, FlipHorizontal, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Card, CreditCard, Package, Truck, Clock as ClockIcon, DollarSign, AlertCircle, CopyRight } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Printer, RefreshCw, Check, Zap as ZapIcon, Plus, Image as ImageIcon, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, FlipHorizontal, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, CreditCard, CreditCard, Package, Truck, Clock as ClockIcon, DollarSign, AlertCircle, Copyright } from 'lucide-react';
 
 interface MemoryCard {
   id: string;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, PlayCircle, SkipBack, SkipForward, Volume2, Maximize2, Subtitles, Quality, Zap as ZapIcon, Gauge, RefreshCw, Check, Wifi, Film, Users, Eye } from 'lucide-react';
+import { Video, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, PlayCircle, SkipBack, SkipForward, Volume2, Maximize2, Subtitles, Sliders, Zap as ZapIcon, Gauge, RefreshCw, Check, Wifi, Film, Users, Eye } from 'lucide-react';
 
 interface StreamQuality {
   id: string;

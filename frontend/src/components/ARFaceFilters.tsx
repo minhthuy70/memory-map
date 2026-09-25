@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Smile, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, FaceMask, Image as ImageIcon, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, RotateCw, ZoomIn, ZoomOut, Maximize2, Sparkles, Wand2, Palette, Sliders, Star, Zap as ZapIcon2, Flame, Sparkles as SparklesIcon } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Smile, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, Shield, Image as ImageIcon, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, RotateCw, ZoomIn, ZoomOut, Maximize2, Sparkles, Wand2, Palette, Sliders, Star, Zap as ZapIcon2, Flame, Sparkles as SparklesIcon } from 'lucide-react';
 
 interface ARFaceFilter {
   id: string;

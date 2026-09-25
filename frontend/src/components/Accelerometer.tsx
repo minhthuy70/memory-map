@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Gauge, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Activity, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Smartphone, Clock, Wave, Zap, Play, Pause } from 'lucide-react';
+import { Gauge, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Activity, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, Smartphone, Clock, Waves, Zap, Play, Pause } from 'lucide-react';
 
 interface AccelerometerData {
   x: number;

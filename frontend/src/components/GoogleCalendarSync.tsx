@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Calendar, Sync, CheckCircle, XCircle, AlertCircle, Settings, RefreshCw } from 'lucide-react';
+import { Calendar, RefreshCw, CheckCircle, XCircle, AlertCircle, Settings, RefreshCw } from 'lucide-react';
 
 interface GoogleCalendarSyncProps {
   onSync?: () => Promise<void>;

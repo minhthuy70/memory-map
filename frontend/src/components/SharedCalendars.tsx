@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Plus, Users, Bell, MapPin, BirthdayCake, Plane, Gift, Heart, Clock as ClockIcon } from 'lucide-react';
+import { Calendar, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Plus, Users, Bell, MapPin, Cake, Plane, Gift, Heart, Clock as ClockIcon } from 'lucide-react';
 
 interface CalendarEvent {
   id: string;

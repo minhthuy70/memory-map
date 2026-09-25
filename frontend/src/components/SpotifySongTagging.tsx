@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Music, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Search, RefreshCw, Check, Zap as ZapIcon, Plus, PlayCircle, ExternalLink, Heart, Share2, ListMusic, Spotify, SkipBack, SkipForward, Repeat, Shuffle } from 'lucide-react';
+import { Music, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Search, RefreshCw, Check, Zap as ZapIcon, Plus, PlayCircle, ExternalLink, Heart, Share2, ListMusic, Music, SkipBack, SkipForward, Repeat, Shuffle } from 'lucide-react';
 
 interface SpotifySong {
   id: string;

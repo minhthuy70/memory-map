@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Story, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Eye, Heart, MessageCircle, Share2, Image as ImageIcon, Video, Music } from 'lucide-react';
+import { BookOpen, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Eye, Heart, MessageCircle, Share2, Image as ImageIcon, Video, Music } from 'lucide-react';
 
 interface StoryItem {
   id: string;

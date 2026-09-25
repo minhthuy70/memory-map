@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Mic, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Play, Pause, Square, Volume2, Clock, Smartphone, Download, Trash2, Wave } from 'lucide-react';
+import { Mic, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Play, Pause, Square, Volume2, Clock, Smartphone, Download, Trash2, Waves } from 'lucide-react';
 
 interface MicrophonePermission {
   granted: boolean;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Calendar as CalendarIcon, Clock as ClockIcon, Timeline, DollarSign, Printer, MapPin, User, Filter as FilterIcon, ArrowUp, ArrowDown, ChevronLeft, ChevronRight, DateRange, Year, CopyRight } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, FileText, Layers, LayoutGrid, Maximize2, Minimize2, ZoomIn, ZoomOut, RotateCw, AlignLeft, AlignCenter, AlignRight, Palette, Type as TypeIcon, Sparkles, Share2, ExternalLink, Download as DownloadIcon, Eye, EyeOff, Trash2 as TrashIcon, Calendar as CalendarIcon, Clock as ClockIcon, Timeline, DollarSign, Printer, MapPin, User, Filter as FilterIcon, ArrowUp, ArrowDown, ChevronLeft, ChevronRight, CalendarRange, CalendarDays, Copyright } from 'lucide-react';
 
 interface TimelineEvent {
   id: string;

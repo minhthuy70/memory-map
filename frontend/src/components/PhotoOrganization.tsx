@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FolderOpen, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Image as ImageIcon, Sparkles, Zap as ZapIcon, Layers, FolderPlus, Duplicate, ArrowRight, Calendar as CalendarIcon, MapPin, Tag, Users, RefreshCw, Trash2, Edit2 } from 'lucide-react';
+import { FolderOpen, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Image as ImageIcon, Sparkles, Zap as ZapIcon, Layers, FolderPlus, Copy, ArrowRight, Calendar as CalendarIcon, MapPin, Tag, Users, RefreshCw, Trash2, Edit2 } from 'lucide-react';
 
 interface OrganizationRule {
   id: string;

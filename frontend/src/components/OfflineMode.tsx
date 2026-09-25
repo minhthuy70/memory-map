@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Wifi, X, WifiOff, Download, Upload, RefreshCw, Clock, Database, HardDrive, CheckCircle, AlertTriangle, Settings, Info, BarChart3, Cloud, Smartphone, Trash2, Sync } from 'lucide-react';
+import { Wifi, X, WifiOff, Download, Upload, RefreshCw, Clock, Database, HardDrive, CheckCircle, AlertTriangle, Settings, Info, BarChart3, Cloud, Smartphone, Trash2, RefreshCw } from 'lucide-react';
 
 interface OfflineModeProps {
   onCancel?: () => void;

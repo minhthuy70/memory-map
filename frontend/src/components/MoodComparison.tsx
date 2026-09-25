@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Smile, X, Settings, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, Activity, TrendingUp, TrendingDown, BarChart3, Filter, Zap, Frown, Meh, Sparkles, HeartBroken } from 'lucide-react';
+import { Smile, X, Settings, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, Activity, TrendingUp, TrendingDown, BarChart3, Filter, Zap, Frown, Meh, Sparkles, HeartCrack } from 'lucide-react';
 
 interface MoodComparisonData {
   period: string;

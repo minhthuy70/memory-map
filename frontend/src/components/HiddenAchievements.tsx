@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Sparkles, X, Lock, Unlock, Eye, EyeOff, Star, Trophy, Target, Flame, Zap, Crown, Heart, MapPin, Gift, Clock, RefreshCw, Info, BarChart3, CheckCircle, Mystery, Award, Wand2, Infinity } from 'lucide-react';
+import { Sparkles, X, Lock, Unlock, Eye, EyeOff, Star, Trophy, Target, Flame, Zap, Crown, Heart, MapPin, Gift, Clock, RefreshCw, Info, BarChart3, CheckCircle, HelpCircle, Award, Wand2, Infinity } from 'lucide-react';
 
 interface HiddenAchievementsProps {
   onCancel?: () => void;

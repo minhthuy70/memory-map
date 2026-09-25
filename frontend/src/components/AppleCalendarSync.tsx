@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, Sync, CheckCircle, XCircle, AlertCircle, Settings, RefreshCw, Download } from 'lucide-react';
+import { Calendar, RefreshCw, CheckCircle, XCircle, AlertCircle, Settings, RefreshCw, Download } from 'lucide-react';
 
 interface AppleCalendarSyncProps {
   onSync?: () => Promise<void>;

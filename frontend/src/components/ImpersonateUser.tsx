@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { UserSwitch, X, RefreshCw, Search, User, Play, Stop, Clock, AlertTriangle, Info, Shield, Eye, LogOut } from 'lucide-react';
+import { UserCheck, X, RefreshCw, Search, User, Play, Square, Clock, AlertTriangle, Info, Shield, Eye, LogOut } from 'lucide-react';
 
 interface ImpersonateUserProps {
   onCancel?: () => void;

@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Fingerprint, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Smartphone, User, FaceSmile, Scan, Clock, Shield, Lock, Plus, Trash2, Activity } from 'lucide-react';
+import { Fingerprint, X, Settings, RefreshCw, CheckCircle, AlertTriangle, Smartphone, User, Smile, Scan, Clock, Shield, Lock, Plus, Trash2, Activity } from 'lucide-react';
+import { webauthnHelper } from '@/lib/webauthn';
 
 interface BiometricMethod {
   id: string;
@@ -120,11 +121,17 @@ export default function BiometricAuthEnhanced({ onCancel, onEnrollBiometric, onD
 
   const handleEnroll = async (methodId: string) => {
     const method = methods.find(m => m.id === methodId);
-    if (method && onEnrollBiometric) {
+    if (onEnrollBiometric && method) {
       await onEnrollBiometric(method.type);
+    } else {
+      try {
+        await webauthnHelper.registerBiometric(method?.name);
+      } catch (err: any) {
+        console.warn('WebAuthn register error:', err);
+      }
     }
     setMethods(prev => prev.map(m => 
-      m.id === methodId ? { ...m, enrolled: true, enabled: true } : m
+      m.id === methodId ? { ...m, enrolled: true, enabled: true, lastUsed: new Date() } : m
     ));
   };
 
@@ -139,13 +146,26 @@ export default function BiometricAuthEnhanced({ onCancel, onEnrollBiometric, onD
 
   const handleTest = async (methodId: string) => {
     setIsTesting(true);
+    let success = false;
+    let confidence = 95;
+
     if (onTestBiometric) {
       const result = await onTestBiometric(methodId);
+      success = result.success;
+      confidence = result.confidence;
       setTestResult(result);
     } else {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      const result = { success: Math.random() > 0.2, confidence: Math.floor(Math.random() * 30) + 70 };
-      setTestResult(result);
+      try {
+        await webauthnHelper.loginWithBiometric();
+        success = true;
+        confidence = 98;
+        setTestResult({ success: true, confidence: 98 });
+      } catch (err: any) {
+        console.warn('WebAuthn test error:', err);
+        success = false;
+        confidence = 0;
+        setTestResult({ success: false, confidence: 0 });
+      }
     }
     setIsTesting(false);
     
@@ -153,7 +173,7 @@ export default function BiometricAuthEnhanced({ onCancel, onEnrollBiometric, onD
       m.id === methodId ? { 
         ...m, 
         attempts: m.attempts + 1,
-        failures: testResult?.success ? m.failures : m.failures + 1,
+        failures: success ? m.failures : m.failures + 1,
         lastUsed: new Date()
       } : m
     ));

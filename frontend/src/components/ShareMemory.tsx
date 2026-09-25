@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Share2, Copy, Check, Facebook, Twitter, Mail } from 'lucide-react';
+import { Share2, Copy, Check, Users, AtSign, Mail } from 'lucide-react';
 
 interface ShareMemoryProps {
   memory: {

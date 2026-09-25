@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Watch, X, RefreshCw, Info, Settings, Smartphone, Battery, Wifi, Bell, CheckCircle, AlertCircle, Heart, Activity, Android } from 'lucide-react';
+import { Watch, X, RefreshCw, Info, Settings, Smartphone, Battery, Wifi, Bell, CheckCircle, AlertCircle, Heart, Activity, Smartphone } from 'lucide-react';
 
 interface WearOSSupportProps {
   onCancel?: () => void;

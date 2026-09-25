@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { User, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Shield, Users, Camera, Image as ImageIcon, Smile as FaceSmile, Lock, Unlock, Search, Plus, Trash2 } from 'lucide-react';
+import { User, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Scan, Eye, Shield, Users, Camera, Image as ImageIcon, Smile as Smile, Lock, Unlock, Search, Plus, Trash2 } from 'lucide-react';
 
 interface DetectedFace {
   id: string;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Share2, X, Copy, Check, Gift, Users, Link, Calendar, TrendingUp, Award, Star, Crown, Mail, MessageCircle, Twitter, Facebook, QrCode, Download, RefreshCw, Clock, Zap, Coins } from 'lucide-react';
+import { Share2, X, Copy, Check, Gift, Users, Link, Calendar, TrendingUp, Award, Star, Crown, Mail, MessageCircle, AtSign, Users, QrCode, Download, RefreshCw, Clock, Zap, Coins } from 'lucide-react';
 
 interface ReferralRewardsProps {
   onCancel?: () => void;

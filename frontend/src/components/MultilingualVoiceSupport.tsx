@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Languages, RefreshCw, Check, Zap as ZapIcon, Plus, Globe, Volume2, Trash2 as TrashIcon, ExternalLink, StopCircle, Sparkles, MessageSquare, Translate, CheckSquare, Square } from 'lucide-react';
+import { Mic, X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Languages, RefreshCw, Check, Zap as ZapIcon, Plus, Globe, Volume2, Trash2 as TrashIcon, ExternalLink, StopCircle, Sparkles, MessageSquare, Languages, CheckSquare, Square } from 'lucide-react';
 
 interface VoiceLanguage {
   code: string;

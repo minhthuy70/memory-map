@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Certificate, X, RefreshCw, Info, CheckCircle, Star, Zap, Shield, Download, Share2, ExternalLink, Hash } from 'lucide-react';
+import { Award, X, RefreshCw, Info, CheckCircle, Star, Zap, Shield, Download, Share2, ExternalLink, Hash } from 'lucide-react';
 
 interface MemoryCertificateProps {
   onCancel?: () => void;

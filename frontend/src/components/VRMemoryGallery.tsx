@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Vr, Glasses, Grid, Layers, Star, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, MoveHorizontal, RotateCw, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, MapPin, Calendar as CalendarIcon } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Image as ImageIcon, RefreshCw, Check, Zap as ZapIcon, Plus, Glasses, Glasses, Grid, Layers, Star, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, MoveHorizontal, RotateCw, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, MapPin, Calendar as CalendarIcon } from 'lucide-react';
 
 interface VRMemory {
   id: string;
