@@ -110,6 +110,34 @@ let AuthController = class AuthController {
     async generateBackupCodes(req) {
         return this.authService.generateNewBackupCodes(req.user.id);
     }
+    async getWebAuthnRegisterOptions(req) {
+        return this.authService.generateWebAuthnRegistrationOptions(req.user.id);
+    }
+    async verifyWebAuthnRegister(req, body) {
+        return this.authService.verifyWebAuthnRegistration(req.user.id, body);
+    }
+    async getWebAuthnLoginOptions(email) {
+        return this.authService.generateWebAuthnLoginOptions(email);
+    }
+    async verifyWebAuthnLogin(body, userAgent, forwardedFor) {
+        const deviceInfo = userAgent || 'Unknown Device (Biometric)';
+        const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
+        return this.authService.verifyWebAuthnLogin({
+            response: body.response,
+            rememberMe: body.rememberMe,
+            deviceInfo,
+            ipAddress,
+        });
+    }
+    async getWebAuthnStatus(req) {
+        return this.authService.getWebAuthnStatus(req.user.id);
+    }
+    async getWebAuthnCredentials(req) {
+        return this.authService.getWebAuthnCredentials(req.user.id);
+    }
+    async deleteWebAuthnCredential(req, credentialId) {
+        return this.authService.deleteWebAuthnCredential(req.user.id, credentialId);
+    }
 };
 exports.AuthController = AuthController;
 __decorate([
@@ -299,6 +327,66 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "generateBackupCodes", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Post)('webauthn/register-options'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "getWebAuthnRegisterOptions", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Post)('webauthn/register-verify'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "verifyWebAuthnRegister", null);
+__decorate([
+    (0, throttler_1.Throttle)({ default: { limit: 15, ttl: 60000 } }),
+    (0, common_1.Post)('webauthn/login-options'),
+    __param(0, (0, common_1.Body)('email')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "getWebAuthnLoginOptions", null);
+__decorate([
+    (0, throttler_1.Throttle)({ default: { limit: 15, ttl: 60000 } }),
+    (0, common_1.Post)('webauthn/login-verify'),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Headers)('user-agent')),
+    __param(2, (0, common_1.Headers)('x-forwarded-for')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String, String]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "verifyWebAuthnLogin", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Get)('webauthn/status'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "getWebAuthnStatus", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Get)('webauthn/credentials'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "getWebAuthnCredentials", null);
+__decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, common_1.Delete)('webauthn/credentials/:id'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "deleteWebAuthnCredential", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService,

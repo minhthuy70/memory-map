@@ -111,6 +111,7 @@ export declare class AuthController {
         pendingEmail: string | null;
         twoFactorEnabled: boolean;
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     updateProfile(req: any, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
@@ -136,6 +137,7 @@ export declare class AuthController {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     requestEmailChange(req: any, dto: RequestEmailChangeDto): Promise<{
         success: boolean;
@@ -189,5 +191,61 @@ export declare class AuthController {
         success: boolean;
         message: string;
         backupCodes: string[];
+    }>;
+    getWebAuthnRegisterOptions(req: any): Promise<any>;
+    verifyWebAuthnRegister(req: any, body: {
+        response: any;
+        deviceName?: string;
+    }): Promise<{
+        success: boolean;
+        message: string;
+        credential: {
+            id: string;
+            credentialId: string;
+            deviceName: string;
+            createdAt: Date;
+        };
+    }>;
+    getWebAuthnLoginOptions(email?: string): Promise<any>;
+    verifyWebAuthnLogin(body: {
+        response: any;
+        rememberMe?: boolean;
+    }, userAgent?: string, forwardedFor?: string): Promise<{
+        access_token: string;
+        user: {
+            id: string;
+            email: string;
+            name: string;
+            avatar: string;
+            isEmailVerified: boolean;
+        };
+    }>;
+    getWebAuthnStatus(req: any): Promise<{
+        enabled: boolean;
+        credentialsCount: number;
+        credentials: {
+            id: string;
+            createdAt: Date;
+            credentialId: string;
+            deviceType: string;
+            backedUp: boolean;
+            transports: string[];
+            deviceName: string;
+            lastUsedAt: Date;
+        }[];
+    }>;
+    getWebAuthnCredentials(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        credentialId: string;
+        deviceType: string;
+        backedUp: boolean;
+        transports: string[];
+        deviceName: string;
+        lastUsedAt: Date;
+    }[]>;
+    deleteWebAuthnCredential(req: any, credentialId: string): Promise<{
+        success: boolean;
+        message: string;
     }>;
 }

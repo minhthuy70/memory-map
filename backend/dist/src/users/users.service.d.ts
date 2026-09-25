@@ -35,6 +35,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     findByGoogleId(googleId: string): Promise<{
         id: string;
@@ -61,6 +62,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     findByFacebookId(facebookId: string): Promise<{
         id: string;
@@ -87,6 +89,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     setVerificationCode(email: string, code: string, expires: Date): Promise<{
         id: string;
@@ -113,6 +116,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     markEmailVerified(userId: string): Promise<{
         id: string;
@@ -139,6 +143,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     updateEmail(userId: string, newEmail: string): Promise<{
         id: string;
@@ -165,6 +170,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     setPendingEmail(userId: string, pendingEmail: string | null, code: string | null, expires: Date | null): Promise<{
         id: string;
@@ -191,6 +197,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     setResetPasswordToken(email: string, token: string, expires: Date): Promise<{
         id: string;
@@ -217,6 +224,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     findByResetToken(token: string): Promise<{
         id: string;
@@ -243,6 +251,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     resetPasswordWithToken(userId: string, passwordHash: string): Promise<{
         id: string;
@@ -269,6 +278,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     findByEmail(email: string): Promise<{
         id: string;
@@ -295,6 +305,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     findById(id: string): Promise<{
         id: string;
@@ -321,6 +332,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     update(id: string, data: {
         name?: string;
@@ -350,6 +362,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     updatePassword(id: string, passwordHash: string): Promise<{
         id: string;
@@ -376,6 +389,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     getMemoryCount(userId: string): Promise<number>;
     incrementLoginAttempts(userId: string): Promise<{
@@ -403,6 +417,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     resetLoginAttempts(userId: string): Promise<{
         id: string;
@@ -429,6 +444,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     lockAccount(userId: string, lockedUntil: Date): Promise<{
         id: string;
@@ -455,6 +471,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     updateLastLogin(userId: string): Promise<{
         id: string;
@@ -481,6 +498,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     deactivateAccount(userId: string): Promise<{
         id: string;
@@ -507,6 +525,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     deleteAccount(userId: string): Promise<{
         id: string;
@@ -533,6 +552,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     setTwoFactorTempSecret(userId: string, tempSecret: string | null): Promise<{
         id: string;
@@ -559,6 +579,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     enableTwoFactor(userId: string, secret: string, backupCodes: string[]): Promise<{
         id: string;
@@ -585,6 +606,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     disableTwoFactor(userId: string): Promise<{
         id: string;
@@ -611,6 +633,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     updateTwoFactorBackupCodes(userId: string, backupCodes: string[]): Promise<{
         id: string;
@@ -637,6 +660,7 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     updateTwoFactorLastUsed(userId: string): Promise<{
         id: string;
@@ -663,5 +687,131 @@ export declare class UsersService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
+    }>;
+    addWebAuthnCredential(userId: string, data: {
+        credentialId: string;
+        publicKey: Buffer;
+        counter: bigint;
+        deviceType: string;
+        backedUp: boolean;
+        transports: string[];
+        deviceName?: string;
+    }): Promise<{
+        id: string;
+        createdAt: Date;
+        credentialId: string;
+        publicKey: Buffer;
+        counter: bigint;
+        deviceType: string;
+        backedUp: boolean;
+        transports: string[];
+        deviceName: string | null;
+        lastUsedAt: Date | null;
+        userId: string;
+    }>;
+    getWebAuthnCredentials(userId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        credentialId: string;
+        deviceType: string;
+        backedUp: boolean;
+        transports: string[];
+        deviceName: string;
+        lastUsedAt: Date;
+    }[]>;
+    findWebAuthnCredential(credentialId: string): Promise<{
+        user: {
+            id: string;
+            email: string;
+            passwordHash: string | null;
+            name: string | null;
+            avatar: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+            lockedUntil: Date | null;
+            loginAttempts: number;
+            isActive: boolean;
+            lastLoginAt: Date | null;
+            facebookId: string | null;
+            googleId: string | null;
+            isEmailVerified: boolean;
+            verificationCode: string | null;
+            verificationExpires: Date | null;
+            resetPasswordExpires: Date | null;
+            resetPasswordToken: string | null;
+            pendingEmail: string | null;
+            twoFactorEnabled: boolean;
+            twoFactorSecret: string | null;
+            twoFactorTempSecret: string | null;
+            twoFactorBackupCodes: string[];
+            twoFactorLastUsed: Date | null;
+            biometricEnabled: boolean;
+        };
+    } & {
+        id: string;
+        createdAt: Date;
+        credentialId: string;
+        publicKey: Buffer;
+        counter: bigint;
+        deviceType: string;
+        backedUp: boolean;
+        transports: string[];
+        deviceName: string | null;
+        lastUsedAt: Date | null;
+        userId: string;
+    }>;
+    updateWebAuthnCounter(id: string, counter: bigint): Promise<{
+        id: string;
+        createdAt: Date;
+        credentialId: string;
+        publicKey: Buffer;
+        counter: bigint;
+        deviceType: string;
+        backedUp: boolean;
+        transports: string[];
+        deviceName: string | null;
+        lastUsedAt: Date | null;
+        userId: string;
+    }>;
+    deleteWebAuthnCredential(userId: string, credentialDbId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        credentialId: string;
+        publicKey: Buffer;
+        counter: bigint;
+        deviceType: string;
+        backedUp: boolean;
+        transports: string[];
+        deviceName: string | null;
+        lastUsedAt: Date | null;
+        userId: string;
+    }>;
+    setBiometricEnabled(userId: string, enabled: boolean): Promise<{
+        id: string;
+        email: string;
+        passwordHash: string | null;
+        name: string | null;
+        avatar: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        lockedUntil: Date | null;
+        loginAttempts: number;
+        isActive: boolean;
+        lastLoginAt: Date | null;
+        facebookId: string | null;
+        googleId: string | null;
+        isEmailVerified: boolean;
+        verificationCode: string | null;
+        verificationExpires: Date | null;
+        resetPasswordExpires: Date | null;
+        resetPasswordToken: string | null;
+        pendingEmail: string | null;
+        twoFactorEnabled: boolean;
+        twoFactorSecret: string | null;
+        twoFactorTempSecret: string | null;
+        twoFactorBackupCodes: string[];
+        twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
 }

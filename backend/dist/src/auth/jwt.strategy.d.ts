@@ -31,6 +31,7 @@ export declare class JwtStrategy extends JwtStrategy_base {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
 }
 export {};

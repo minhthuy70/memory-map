@@ -10,6 +10,7 @@ export declare class AuthService {
     private readonly sessionsService;
     private readonly mailService;
     private readonly pendingEmailVerifications;
+    private readonly webauthnChallenges;
     constructor(usersService: UsersService, jwtService: JwtService, sessionsService: SessionsService, mailService: MailService);
     validateUser(email: string, password: string): Promise<{
         id: string;
@@ -35,6 +36,7 @@ export declare class AuthService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     login(email: string, password: string, deviceInfo?: string, ipAddress?: string, rememberMe?: boolean, twoFactorCode?: string): Promise<{
         requires2FA: boolean;
@@ -109,6 +111,7 @@ export declare class AuthService {
         twoFactorTempSecret: string | null;
         twoFactorBackupCodes: string[];
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     changePassword(userId: string, currentPassword: string | undefined, newPassword: string): Promise<{
         message: string;
@@ -137,6 +140,7 @@ export declare class AuthService {
         pendingEmail: string | null;
         twoFactorEnabled: boolean;
         twoFactorLastUsed: Date | null;
+        biometricEnabled: boolean;
     }>;
     deactivateAccount(userId: string): Promise<{
         message: string;
@@ -210,4 +214,63 @@ export declare class AuthService {
         };
     }>;
     private verifyTwoFactorOrBackupCode;
+    private getWebAuthnConfig;
+    generateWebAuthnRegistrationOptions(userId: string): Promise<import("@simplewebauthn/server").PublicKeyCredentialCreationOptionsJSON>;
+    verifyWebAuthnRegistration(userId: string, body: {
+        response: any;
+        deviceName?: string;
+    }): Promise<{
+        success: boolean;
+        message: string;
+        credential: {
+            id: string;
+            credentialId: string;
+            deviceName: string;
+            createdAt: Date;
+        };
+    }>;
+    generateWebAuthnLoginOptions(email?: string): Promise<import("@simplewebauthn/server").PublicKeyCredentialRequestOptionsJSON>;
+    verifyWebAuthnLogin(body: {
+        response: any;
+        rememberMe?: boolean;
+        deviceInfo?: string;
+        ipAddress?: string;
+    }): Promise<{
+        access_token: string;
+        user: {
+            id: string;
+            email: string;
+            name: string;
+            avatar: string;
+            isEmailVerified: boolean;
+        };
+    }>;
+    getWebAuthnCredentials(userId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        credentialId: string;
+        deviceType: string;
+        backedUp: boolean;
+        transports: string[];
+        deviceName: string;
+        lastUsedAt: Date;
+    }[]>;
+    deleteWebAuthnCredential(userId: string, credentialDbId: string): Promise<{
+        success: boolean;
+        message: string;
+    }>;
+    getWebAuthnStatus(userId: string): Promise<{
+        enabled: boolean;
+        credentialsCount: number;
+        credentials: {
+            id: string;
+            createdAt: Date;
+            credentialId: string;
+            deviceType: string;
+            backedUp: boolean;
+            transports: string[];
+            deviceName: string;
+            lastUsedAt: Date;
+        }[];
+    }>;
 }

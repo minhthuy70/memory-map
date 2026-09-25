@@ -274,4 +274,108 @@ export class UsersService {
       },
     });
   }
+
+  // WEBAUTHN / BIOMETRIC CREDENTIALS
+  async addWebAuthnCredential(
+    userId: string,
+    data: {
+      credentialId: string;
+      publicKey: Buffer;
+      counter: bigint;
+      deviceType: string;
+      backedUp: boolean;
+      transports: string[];
+      deviceName?: string;
+    },
+  ) {
+    const cred = await this.prisma.webAuthnCredential.create({
+      data: {
+        userId,
+        credentialId: data.credentialId,
+        publicKey: data.publicKey,
+        counter: data.counter,
+        deviceType: data.deviceType,
+        backedUp: data.backedUp,
+        transports: data.transports,
+        deviceName: data.deviceName || 'Thiết bị sinh trắc học',
+        lastUsedAt: new Date(),
+      },
+    });
+
+    await this.prisma.user.update({
+      where: { id: userId },
+      data: { biometricEnabled: true },
+    });
+
+    return cred;
+  }
+
+  async getWebAuthnCredentials(userId: string) {
+    return this.prisma.webAuthnCredential.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+      select: {
+        id: true,
+        credentialId: true,
+        deviceType: true,
+        backedUp: true,
+        transports: true,
+        deviceName: true,
+        createdAt: true,
+        lastUsedAt: true,
+      },
+    });
+  }
+
+  async findWebAuthnCredential(credentialId: string) {
+    return this.prisma.webAuthnCredential.findUnique({
+      where: { credentialId },
+      include: {
+        user: true,
+      },
+    });
+  }
+
+  async updateWebAuthnCounter(id: string, counter: bigint) {
+    return this.prisma.webAuthnCredential.update({
+      where: { id },
+      data: {
+        counter,
+        lastUsedAt: new Date(),
+      },
+    });
+  }
+
+  async deleteWebAuthnCredential(userId: string, credentialDbId: string) {
+    const cred = await this.prisma.webAuthnCredential.findFirst({
+      where: { id: credentialDbId, userId },
+    });
+
+    if (!cred) return null;
+
+    await this.prisma.webAuthnCredential.delete({
+      where: { id: credentialDbId },
+    });
+
+    // Check if user still has credentials
+    const remaining = await this.prisma.webAuthnCredential.count({
+      where: { userId },
+    });
+
+    if (remaining === 0) {
+      await this.prisma.user.update({
+        where: { id: userId },
+        data: { biometricEnabled: false },
+      });
+    }
+
+    return cred;
+  }
+
+  async setBiometricEnabled(userId: string, enabled: boolean) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: { biometricEnabled: enabled },
+    });
+  }
 }

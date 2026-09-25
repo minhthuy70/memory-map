@@ -5,12 +5,12 @@ export declare class SessionsService {
     createSession(userId: string, token: string, deviceInfo?: string, ipAddress?: string, rememberMe?: boolean): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }>;
     findByToken(token: string): Promise<{
         user: {
@@ -38,36 +38,37 @@ export declare class SessionsService {
             twoFactorTempSecret: string | null;
             twoFactorBackupCodes: string[];
             twoFactorLastUsed: Date | null;
+            biometricEnabled: boolean;
         };
     } & {
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }>;
     updateLastActivity(token: string): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }>;
     getUserSessions(userId: string): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
         expiresAt: Date;
-        userId: string;
     }[]>;
     deleteSession(sessionId: string, userId: string): Promise<{
         message: string;

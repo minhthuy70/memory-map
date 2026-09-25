@@ -6,6 +6,7 @@ import {
   Post,
   Put,
   Query,
+  Param,
   Request,
   UseGuards,
   Headers as NestHeaders,
@@ -266,5 +267,68 @@ export class AuthController {
   @Post('2fa/backup-codes')
   async generateBackupCodes(@Request() req: any) {
     return this.authService.generateNewBackupCodes(req.user.id);
+  }
+
+  // =========================================================================
+  // WEBAUTHN / BIOMETRIC / PASSKEYS / FIDO2
+  // =========================================================================
+
+  @UseGuards(JwtAuthGuard)
+  @Post('webauthn/register-options')
+  async getWebAuthnRegisterOptions(@Request() req: any): Promise<any> {
+    return this.authService.generateWebAuthnRegistrationOptions(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('webauthn/register-verify')
+  async verifyWebAuthnRegister(
+    @Request() req: any,
+    @Body() body: { response: any; deviceName?: string },
+  ) {
+    return this.authService.verifyWebAuthnRegistration(req.user.id, body);
+  }
+
+  @Throttle({ default: { limit: 15, ttl: 60000 } })
+  @Post('webauthn/login-options')
+  async getWebAuthnLoginOptions(@Body('email') email?: string): Promise<any> {
+    return this.authService.generateWebAuthnLoginOptions(email);
+  }
+
+  @Throttle({ default: { limit: 15, ttl: 60000 } })
+  @Post('webauthn/login-verify')
+  async verifyWebAuthnLogin(
+    @Body() body: { response: any; rememberMe?: boolean },
+    @NestHeaders('user-agent') userAgent?: string,
+    @NestHeaders('x-forwarded-for') forwardedFor?: string,
+  ) {
+    const deviceInfo = userAgent || 'Unknown Device (Biometric)';
+    const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
+    return this.authService.verifyWebAuthnLogin({
+      response: body.response,
+      rememberMe: body.rememberMe,
+      deviceInfo,
+      ipAddress,
+    });
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('webauthn/status')
+  async getWebAuthnStatus(@Request() req: any) {
+    return this.authService.getWebAuthnStatus(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('webauthn/credentials')
+  async getWebAuthnCredentials(@Request() req: any) {
+    return this.authService.getWebAuthnCredentials(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Delete('webauthn/credentials/:id')
+  async deleteWebAuthnCredential(
+    @Request() req: any,
+    @Param('id') credentialId: string,
+  ) {
+    return this.authService.deleteWebAuthnCredential(req.user.id, credentialId);
   }
 }

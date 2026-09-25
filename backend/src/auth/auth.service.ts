@@ -14,6 +14,12 @@ import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import { generateSecret, generateURI, verifySync } from 'otplib';
 import * as QRCode from 'qrcode';
+import {
+  generateRegistrationOptions,
+  verifyRegistrationResponse,
+  generateAuthenticationOptions,
+  verifyAuthenticationResponse,
+} from '@simplewebauthn/server';
 
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { OAuthDto } from './dto/oauth.dto';
@@ -25,6 +31,12 @@ export class AuthService {
   private readonly pendingEmailVerifications = new Map<
     string,
     { code: string; expires: Date; verified: boolean }
+  >();
+
+  // In-memory store for WebAuthn / Passkey challenges
+  private readonly webauthnChallenges = new Map<
+    string,
+    { challenge: string; userId?: string; email?: string; expires: number }
   >();
 
   constructor(
@@ -907,5 +919,285 @@ export class AuthService {
     }
 
     return false;
+  }
+
+  // =========================================================================
+  // WEBAUTHN / BIOMETRIC AUTHENTICATION (FIDO2 / PASSKEYS / TOUCH ID / FACE ID)
+  // =========================================================================
+
+  private getWebAuthnConfig() {
+    const rpID = process.env.WEBAUTHN_RP_ID || 'localhost';
+    const rpName = process.env.WEBAUTHN_RP_NAME || 'Memory Map';
+    const origin = process.env.WEBAUTHN_ORIGIN || 'http://localhost:3000';
+    return { rpID, rpName, origin };
+  }
+
+  async generateWebAuthnRegistrationOptions(userId: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user) {
+      throw new UnauthorizedException('Không tìm thấy tài khoản.');
+    }
+
+    const config = this.getWebAuthnConfig();
+    const existingCredentials = await this.usersService.getWebAuthnCredentials(userId);
+
+    const options = await generateRegistrationOptions({
+      rpName: config.rpName,
+      rpID: config.rpID,
+      userID: new TextEncoder().encode(user.id),
+      userName: user.email,
+      userDisplayName: user.name || user.email,
+      attestationType: 'none',
+      excludeCredentials: existingCredentials.map((c) => ({
+        id: c.credentialId,
+        transports: (c.transports as any) || [],
+      })),
+      authenticatorSelection: {
+        userVerification: 'preferred',
+        residentKey: 'preferred',
+      },
+    });
+
+    this.webauthnChallenges.set(userId + ':reg', {
+      challenge: options.challenge,
+      userId,
+      expires: Date.now() + 5 * 60 * 1000,
+    });
+
+    return options;
+  }
+
+  async verifyWebAuthnRegistration(
+    userId: string,
+    body: { response: any; deviceName?: string },
+  ) {
+    const challengeKey = userId + ':reg';
+    const challengeRecord = this.webauthnChallenges.get(challengeKey);
+
+    if (!challengeRecord || challengeRecord.expires < Date.now()) {
+      this.webauthnChallenges.delete(challengeKey);
+      throw new BadRequestException('Phiên đăng ký sinh trắc học đã hết hạn hoặc không hợp lệ. Vui lòng thử lại.');
+    }
+
+    const config = this.getWebAuthnConfig();
+    const expectedOrigin = [
+      config.origin,
+      'http://localhost:3000',
+      'http://127.0.0.1:3000',
+    ];
+
+    let verification: any;
+    try {
+      verification = await verifyRegistrationResponse({
+        response: body.response,
+        expectedChallenge: challengeRecord.challenge,
+        expectedOrigin,
+        expectedRPID: config.rpID,
+      });
+    } catch (err: any) {
+      throw new BadRequestException(
+        'Xác thực thiết bị sinh trắc học thất bại: ' + (err.message || 'Lỗi không xác định'),
+      );
+    }
+
+    if (!verification.verified || !verification.registrationInfo) {
+      throw new BadRequestException('Không thể xác minh tính hợp lệ của thiết bị sinh trắc học.');
+    }
+
+    const { credential, credentialDeviceType, credentialBackedUp } = verification.registrationInfo;
+
+    const newCred = await this.usersService.addWebAuthnCredential(userId, {
+      credentialId: credential.id,
+      publicKey: Buffer.from(credential.publicKey),
+      counter: BigInt(credential.counter),
+      deviceType: credentialDeviceType,
+      backedUp: credentialBackedUp,
+      transports: (body.response?.response?.transports as string[]) || (credential.transports as string[]) || [],
+      deviceName: body.deviceName || 'Thiết bị sinh trắc học (Passkey / FIDO2)',
+    });
+
+    this.webauthnChallenges.delete(challengeKey);
+
+    return {
+      success: true,
+      message: 'Kích hoạt xác thực sinh trắc học thành công!',
+      credential: {
+        id: newCred.id,
+        credentialId: newCred.credentialId,
+        deviceName: newCred.deviceName,
+        createdAt: newCred.createdAt,
+      },
+    };
+  }
+
+  async generateWebAuthnLoginOptions(email?: string) {
+    const config = this.getWebAuthnConfig();
+    let allowCredentials: any[] = [];
+
+    if (email) {
+      const normalizedEmail = email.toLowerCase().trim();
+      const user = await this.usersService.findByEmail(normalizedEmail);
+      if (user) {
+        const credentials = await this.usersService.getWebAuthnCredentials(user.id);
+        allowCredentials = credentials.map((c) => ({
+          id: c.credentialId,
+          transports: (c.transports as any) || [],
+        }));
+      }
+    }
+
+    const options = await generateAuthenticationOptions({
+      rpID: config.rpID,
+      allowCredentials,
+      userVerification: 'preferred',
+    });
+
+    this.webauthnChallenges.set(options.challenge, {
+      challenge: options.challenge,
+      email: email ? email.toLowerCase().trim() : undefined,
+      expires: Date.now() + 5 * 60 * 1000,
+    });
+
+    return options;
+  }
+
+  async verifyWebAuthnLogin(body: {
+    response: any;
+    rememberMe?: boolean;
+    deviceInfo?: string;
+    ipAddress?: string;
+  }) {
+    if (!body?.response?.id) {
+      throw new BadRequestException('Dữ liệu xác thực sinh trắc học không hợp lệ.');
+    }
+
+    const credentialId = body.response.id;
+    const cred = await this.usersService.findWebAuthnCredential(credentialId);
+
+    if (!cred || !cred.user) {
+      throw new UnauthorizedException('Khóa sinh trắc học không tồn tại trong hệ thống.');
+    }
+
+    if (cred.user.isActive === false) {
+      throw new UnauthorizedException('Tài khoản của bạn đã bị vô hiệu hóa.');
+    }
+
+    // Decode clientDataJSON to extract challenge
+    let clientChallenge: string | null = null;
+    try {
+      const clientDataJSON = Buffer.from(body.response.response.clientDataJSON, 'base64').toString('utf8');
+      const clientData = JSON.parse(clientDataJSON);
+      clientChallenge = clientData.challenge;
+    } catch {
+      // ignore parse error
+    }
+
+    if (!clientChallenge || !this.webauthnChallenges.has(clientChallenge)) {
+      throw new UnauthorizedException('Phiên xác thực sinh trắc học đã hết hạn hoặc không hợp lệ.');
+    }
+
+    const challengeRecord = this.webauthnChallenges.get(clientChallenge)!;
+    if (challengeRecord.expires < Date.now()) {
+      this.webauthnChallenges.delete(clientChallenge);
+      throw new UnauthorizedException('Phiên xác thực sinh trắc học đã hết hạn.');
+    }
+
+    const config = this.getWebAuthnConfig();
+    const expectedOrigin = [
+      config.origin,
+      'http://localhost:3000',
+      'http://127.0.0.1:3000',
+    ];
+
+    let verification: any;
+    try {
+      verification = await verifyAuthenticationResponse({
+        response: body.response,
+        expectedChallenge: challengeRecord.challenge,
+        expectedOrigin,
+        expectedRPID: config.rpID,
+        credential: {
+          id: cred.credentialId,
+          publicKey: new Uint8Array(cred.publicKey),
+          counter: Number(cred.counter),
+          transports: (cred.transports as any) || [],
+        },
+      });
+    } catch (err: any) {
+      throw new UnauthorizedException(
+        'Xác thực sinh trắc học thất bại: ' + (err.message || 'Lỗi không xác định'),
+      );
+    }
+
+    if (!verification.verified || !verification.authenticationInfo) {
+      throw new UnauthorizedException('Xác thực sinh trắc học không thành công.');
+    }
+
+    // Update counter and lastUsedAt
+    await this.usersService.updateWebAuthnCounter(
+      cred.id,
+      BigInt(verification.authenticationInfo.newCounter),
+    );
+
+    this.webauthnChallenges.delete(clientChallenge);
+
+    // Create session and issue token with jti
+    const payload = {
+      email: cred.user.email,
+      sub: cred.user.id,
+      jti: crypto.randomUUID(),
+    };
+
+    const token = this.jwtService.sign(payload);
+
+    await this.sessionsService.createSession(
+      cred.user.id,
+      token,
+      body.deviceInfo,
+      body.ipAddress,
+      body.rememberMe,
+    );
+
+    await this.usersService.resetLoginAttempts(cred.user.id);
+    await this.usersService.updateLastLogin(cred.user.id);
+
+    return {
+      access_token: token,
+      user: {
+        id: cred.user.id,
+        email: cred.user.email,
+        name: cred.user.name,
+        avatar: cred.user.avatar,
+        isEmailVerified: cred.user.isEmailVerified,
+      },
+    };
+  }
+
+  async getWebAuthnCredentials(userId: string) {
+    return this.usersService.getWebAuthnCredentials(userId);
+  }
+
+  async deleteWebAuthnCredential(userId: string, credentialDbId: string) {
+    const cred = await this.usersService.deleteWebAuthnCredential(userId, credentialDbId);
+    if (!cred) {
+      throw new NotFoundException('Không tìm thấy thiết bị sinh trắc học cần xóa.');
+    }
+    return {
+      success: true,
+      message: 'Đã xóa thiết bị sinh trắc học thành công.',
+    };
+  }
+
+  async getWebAuthnStatus(userId: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user) {
+      throw new UnauthorizedException('Không tìm thấy tài khoản.');
+    }
+    const credentials = await this.usersService.getWebAuthnCredentials(userId);
+    return {
+      enabled: user.biometricEnabled,
+      credentialsCount: credentials.length,
+      credentials,
+    };
   }
 }
