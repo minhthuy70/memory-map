@@ -10,4 +10,8 @@ export class LoginDto {
   @IsOptional()
   @IsBoolean()
   rememberMe?: boolean;
+
+  @IsOptional()
+  @IsString({ message: 'Mã xác thực 2FA phải là chuỗi ký tự' })
+  twoFactorCode?: string;
 }

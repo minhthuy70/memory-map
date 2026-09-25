@@ -8,15 +8,15 @@ export class MailService {
   private readonly logger = new Logger(MailService.name);
   private transporter: Transporter | null = null;
 
-  constructor(private readonly configService: ConfigService) {
+  constructor(private readonly configService?: ConfigService) {
     this.initTransporter();
   }
 
   private initTransporter() {
-    const host = this.configService.get<string>('MAIL_HOST');
-    const port = this.configService.get<number>('MAIL_PORT', 587);
-    const user = this.configService.get<string>('MAIL_USER');
-    const pass = this.configService.get<string>('MAIL_PASS');
+    const host = this.configService?.get<string>('MAIL_HOST') || process.env.MAIL_HOST;
+    const port = this.configService?.get<number>('MAIL_PORT', 587) || Number(process.env.MAIL_PORT) || 587;
+    const user = this.configService?.get<string>('MAIL_USER') || process.env.MAIL_USER;
+    const pass = this.configService?.get<string>('MAIL_PASS') || process.env.MAIL_PASS;
 
     // If no mail config, we fall back to console logging (dev mode)
     if (!host || !user || !pass) {

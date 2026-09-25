@@ -224,4 +224,54 @@ export class UsersService {
       },
     });
   }
+
+  async setTwoFactorTempSecret(userId: string, tempSecret: string | null) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: { twoFactorTempSecret: tempSecret },
+    });
+  }
+
+  async enableTwoFactor(userId: string, secret: string, backupCodes: string[]) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        twoFactorEnabled: true,
+        twoFactorSecret: secret,
+        twoFactorTempSecret: null,
+        twoFactorBackupCodes: backupCodes,
+        twoFactorLastUsed: new Date(),
+      },
+    });
+  }
+
+  async disableTwoFactor(userId: string) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        twoFactorEnabled: false,
+        twoFactorSecret: null,
+        twoFactorTempSecret: null,
+        twoFactorBackupCodes: [],
+      },
+    });
+  }
+
+  async updateTwoFactorBackupCodes(userId: string, backupCodes: string[]) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        twoFactorBackupCodes: backupCodes,
+      },
+    });
+  }
+
+  async updateTwoFactorLastUsed(userId: string) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        twoFactorLastUsed: new Date(),
+      },
+    });
+  }
 }

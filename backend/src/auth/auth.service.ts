@@ -12,6 +12,8 @@ import { SessionsService } from '../sessions/sessions.service';
 
 import * as bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
+import { generateSecret, generateURI, verifySync } from 'otplib';
+import * as QRCode from 'qrcode';
 
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { OAuthDto } from './dto/oauth.dto';
@@ -120,12 +122,35 @@ export class AuthService {
     deviceInfo?: string,
     ipAddress?: string,
     rememberMe?: boolean,
+    twoFactorCode?: string,
   ) {
     const user =
       await this.validateUser(
         email,
         password,
       );
+
+    // If 2FA is enabled for this account
+    if (user.twoFactorEnabled) {
+      if (twoFactorCode) {
+        const isVerified = await this.verifyTwoFactorOrBackupCode(user, twoFactorCode);
+        if (!isVerified) {
+          throw new UnauthorizedException('Mã xác thực 2FA không chính xác hoặc mã dự phòng đã qua sử dụng.');
+        }
+        await this.usersService.updateTwoFactorLastUsed(user.id);
+      } else {
+        // Return 2FA challenge with temporary short-lived token
+        const tempToken = this.jwtService.sign(
+          { sub: user.id, email: user.email, is2FA: true, rememberMe: !!rememberMe },
+          { expiresIn: '5m' },
+        );
+        return {
+          requires2FA: true,
+          tempToken,
+          message: 'Tài khoản đã kích hoạt bảo mật 2 lớp. Vui lòng nhập mã xác thực từ ứng dụng Authenticator hoặc mã dự phòng.',
+        };
+      }
+    }
 
     const payload = {
       email: user.email,
@@ -448,6 +473,9 @@ export class AuthService {
 
     const {
       passwordHash,
+      twoFactorSecret,
+      twoFactorTempSecret,
+      twoFactorBackupCodes,
       ...result
     } = user;
 
@@ -455,6 +483,7 @@ export class AuthService {
       ...result,
       memoryCount,
       hasPassword: !!passwordHash,
+      twoFactorBackupCodesCount: twoFactorBackupCodes?.length || 0,
     };
   }
 
@@ -631,5 +660,249 @@ export class AuthService {
       },
       message: 'Thay đổi email thành công!',
     };
+  }
+
+  // ==========================================
+  // TWO-FACTOR AUTHENTICATION (2FA / TOTP)
+  // ==========================================
+
+  async generateTwoFactorSecret(userId: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user) {
+      throw new NotFoundException('Người dùng không tồn tại.');
+    }
+
+    const secret = generateSecret();
+    const issuer = 'Memory Map';
+    const otpauthUrl = generateURI({
+      secret,
+      label: user.email,
+      issuer,
+    });
+
+    const qrCodeUrl = await QRCode.toDataURL(otpauthUrl, {
+      width: 256,
+      margin: 2,
+      color: {
+        dark: '#1e293b',
+        light: '#ffffff',
+      },
+    });
+
+    await this.usersService.setTwoFactorTempSecret(user.id, secret);
+
+    return {
+      secret,
+      qrCodeUrl,
+      otpauthUrl,
+    };
+  }
+
+  async enableTwoFactor(userId: string, code: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user) {
+      throw new NotFoundException('Người dùng không tồn tại.');
+    }
+
+    if (!user.twoFactorTempSecret) {
+      throw new BadRequestException('Chưa tạo khóa bí mật 2FA. Vui lòng tạo mã QR trước.');
+    }
+
+    const numericCode = (code || '').trim().replace(/\s+/g, '');
+    const verification = verifySync({
+      token: numericCode,
+      secret: user.twoFactorTempSecret,
+      epochTolerance: 30,
+    });
+
+    if (!verification.valid) {
+      throw new BadRequestException('Mã xác thực Authenticator không chính xác hoặc đã hết hạn.');
+    }
+
+    // Generate 10 one-time backup recovery codes
+    const plainBackupCodes: string[] = [];
+    const hashedBackupCodes: string[] = [];
+
+    for (let i = 0; i < 10; i++) {
+      const raw = crypto.randomBytes(8).toString('hex').toUpperCase();
+      const formatted = `${raw.substring(0, 4)}-${raw.substring(4, 8)}-${raw.substring(8, 12)}-${raw.substring(12, 16)}`;
+      plainBackupCodes.push(formatted);
+      hashedBackupCodes.push(await bcrypt.hash(formatted, 10));
+    }
+
+    await this.usersService.enableTwoFactor(
+      user.id,
+      user.twoFactorTempSecret,
+      hashedBackupCodes,
+    );
+
+    return {
+      success: true,
+      message: 'Xác thực hai yếu tố (2FA) đã được kích hoạt thành công!',
+      backupCodes: plainBackupCodes,
+    };
+  }
+
+  async disableTwoFactor(userId: string, code?: string, password?: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user) {
+      throw new NotFoundException('Người dùng không tồn tại.');
+    }
+
+    if (!user.twoFactorEnabled) {
+      throw new BadRequestException('Tài khoản chưa bật xác thực hai yếu tố.');
+    }
+
+    // Verify password if user has password set
+    if (password && user.passwordHash) {
+      const isPasswordValid = await bcrypt.compare(password, user.passwordHash);
+      if (!isPasswordValid) {
+        throw new BadRequestException('Mật khẩu không chính xác.');
+      }
+    } else if (code) {
+      const isVerified = await this.verifyTwoFactorOrBackupCode(user, code);
+      if (!isVerified) {
+        throw new BadRequestException('Mã xác thực không chính xác.');
+      }
+    } else if (user.passwordHash) {
+      throw new BadRequestException('Vui lòng cung cấp mật khẩu hoặc mã xác thực để tắt 2FA.');
+    }
+
+    await this.usersService.disableTwoFactor(user.id);
+
+    return {
+      success: true,
+      message: 'Đã hủy kích hoạt xác thực hai yếu tố.',
+    };
+  }
+
+  async getTwoFactorStatus(userId: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user) {
+      throw new NotFoundException('Người dùng không tồn tại.');
+    }
+
+    return {
+      enabled: !!user.twoFactorEnabled,
+      backupCodesCount: user.twoFactorBackupCodes?.length || 0,
+      lastUsed: user.twoFactorLastUsed,
+    };
+  }
+
+  async generateNewBackupCodes(userId: string) {
+    const user = await this.usersService.findById(userId);
+    if (!user || !user.twoFactorEnabled) {
+      throw new BadRequestException('Bạn cần kích hoạt 2FA trước khi tạo mã dự phòng mới.');
+    }
+
+    const plainBackupCodes: string[] = [];
+    const hashedBackupCodes: string[] = [];
+
+    for (let i = 0; i < 10; i++) {
+      const raw = crypto.randomBytes(8).toString('hex').toUpperCase();
+      const formatted = `${raw.substring(0, 4)}-${raw.substring(4, 8)}-${raw.substring(8, 12)}-${raw.substring(12, 16)}`;
+      plainBackupCodes.push(formatted);
+      hashedBackupCodes.push(await bcrypt.hash(formatted, 10));
+    }
+
+    await this.usersService.updateTwoFactorBackupCodes(user.id, hashedBackupCodes);
+
+    return {
+      success: true,
+      message: 'Đã tạo 10 mã dự phòng mới thành công.',
+      backupCodes: plainBackupCodes,
+    };
+  }
+
+  async verifyTwoFactorLogin(
+    tempToken: string,
+    code: string,
+    deviceInfo?: string,
+    ipAddress?: string,
+    rememberMe?: boolean,
+  ) {
+    let payload: any;
+    try {
+      payload = this.jwtService.verify(tempToken);
+    } catch {
+      throw new UnauthorizedException('Phiên xác thực 2FA đã hết hạn hoặc không hợp lệ. Vui lòng đăng nhập lại.');
+    }
+
+    if (!payload?.is2FA || !payload?.sub) {
+      throw new UnauthorizedException('Token xác thực 2FA không hợp lệ.');
+    }
+
+    const user = await this.usersService.findById(payload.sub);
+    if (!user || !user.twoFactorEnabled || !user.twoFactorSecret) {
+      throw new UnauthorizedException('Trạng thái xác thực 2FA không hợp lệ.');
+    }
+
+    const isValid = await this.verifyTwoFactorOrBackupCode(user, code);
+    if (!isValid) {
+      throw new UnauthorizedException('Mã xác thực 2FA không chính xác hoặc mã dự phòng đã qua sử dụng.');
+    }
+
+    const shouldUseRememberMe = rememberMe ?? payload.rememberMe ?? false;
+    const token = this.jwtService.sign({ email: user.email, sub: user.id });
+
+    await this.sessionsService.createSession(
+      user.id,
+      token,
+      deviceInfo,
+      ipAddress,
+      shouldUseRememberMe,
+    );
+
+    await this.usersService.updateTwoFactorLastUsed(user.id);
+
+    return {
+      access_token: token,
+      user: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        avatar: user.avatar,
+        isEmailVerified: user.isEmailVerified,
+      },
+    };
+  }
+
+  private async verifyTwoFactorOrBackupCode(user: any, rawCode: string): Promise<boolean> {
+    const code = (rawCode || '').trim();
+    if (!code) return false;
+
+    // 1. Try TOTP (6-digit Authenticator code)
+    const numericCode = code.replace(/\s+/g, '');
+    if (/^\d{6}$/.test(numericCode) && user.twoFactorSecret) {
+      try {
+        const verification = verifySync({
+          token: numericCode,
+          secret: user.twoFactorSecret,
+          epochTolerance: 30,
+        });
+        if (verification.valid) {
+          return true;
+        }
+      } catch {
+        // Continue to backup code check
+      }
+    }
+
+    // 2. Try Backup Codes
+    if (user.twoFactorBackupCodes && user.twoFactorBackupCodes.length > 0) {
+      const normalizedInput = code.toUpperCase();
+      for (let i = 0; i < user.twoFactorBackupCodes.length; i++) {
+        const hashed = user.twoFactorBackupCodes[i];
+        const isMatch = await bcrypt.compare(normalizedInput, hashed);
+        if (isMatch) {
+          // Consume used backup code
+          const remainingCodes = user.twoFactorBackupCodes.filter((_: any, idx: number) => idx !== i);
+          await this.usersService.updateTwoFactorBackupCodes(user.id, remainingCodes);
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 }

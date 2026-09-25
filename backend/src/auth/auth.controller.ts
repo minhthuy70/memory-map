@@ -25,6 +25,11 @@ import { ResetPasswordDto } from './dto/reset-password.dto';
 import { RequestEmailChangeDto, ConfirmEmailChangeDto } from './dto/change-email.dto';
 import { UpdateProfileDto } from './dto/update-profile.dto';
 import { ChangePasswordDto } from './dto/change-password.dto';
+import {
+  EnableTwoFactorDto,
+  DisableTwoFactorDto,
+  VerifyTwoFactorLoginDto,
+} from './dto/two-factor.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -68,6 +73,26 @@ export class AuthController {
       deviceInfo,
       ipAddress,
       loginDto.rememberMe,
+      loginDto.twoFactorCode,
+    );
+  }
+
+  @Throttle({ default: { limit: 10, ttl: 60000 } })
+  @Post('2fa/verify')
+  async verify2FALogin(
+    @Body() dto: VerifyTwoFactorLoginDto,
+    @NestHeaders('user-agent') userAgent?: string,
+    @NestHeaders('x-forwarded-for') forwardedFor?: string,
+  ) {
+    const deviceInfo = userAgent || 'Unknown Device';
+    const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
+
+    return this.authService.verifyTwoFactorLogin(
+      dto.tempToken,
+      dto.code,
+      deviceInfo,
+      ipAddress,
+      dto.rememberMe,
     );
   }
 
@@ -201,5 +226,45 @@ export class AuthController {
     const token = authHeader?.replace('Bearer ', '');
     await this.sessionsService.deleteSessionByToken(token);
     return { message: 'Logged out successfully' };
+  }
+
+  // ==========================================
+  // 2FA / TOTP MANAGEMENT (AUTHENTICATED)
+  // ==========================================
+
+  @UseGuards(JwtAuthGuard)
+  @Get('2fa/status')
+  async getTwoFactorStatus(@Request() req: any) {
+    return this.authService.getTwoFactorStatus(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('2fa/generate')
+  async generateTwoFactor(@Request() req: any) {
+    return this.authService.generateTwoFactorSecret(req.user.id);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('2fa/enable')
+  async enableTwoFactor(
+    @Request() req: any,
+    @Body() dto: EnableTwoFactorDto,
+  ) {
+    return this.authService.enableTwoFactor(req.user.id, dto.code);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('2fa/disable')
+  async disableTwoFactor(
+    @Request() req: any,
+    @Body() dto: DisableTwoFactorDto,
+  ) {
+    return this.authService.disableTwoFactor(req.user.id, dto.code, dto.password);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('2fa/backup-codes')
+  async generateBackupCodes(@Request() req: any) {
+    return this.authService.generateNewBackupCodes(req.user.id);
   }
 }
