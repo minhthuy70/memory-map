@@ -54,13 +54,14 @@ import { LocalStrategy } from './local.strategy';
     JwtAuthGuard,
     JwtStrategy,
     LocalStrategy,
-    SessionsService,
   ],
 
   exports: [
     AuthService,
     JwtAuthGuard,
     JwtModule,
+    UsersModule,
+    SessionsModule,
   ],
 })
 export class AuthModule {}

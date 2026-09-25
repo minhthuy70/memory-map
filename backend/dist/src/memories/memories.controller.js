@@ -1,0 +1,254 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.MemoriesController = void 0;
+const common_1 = require("@nestjs/common");
+const throttler_1 = require("@nestjs/throttler");
+const memories_service_1 = require("./memories.service");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const public_decorator_1 = require("../auth/public.decorator");
+const create_memory_dto_1 = require("./dto/create-memory.dto");
+const update_memory_dto_1 = require("./dto/update-memory.dto");
+let MemoriesController = class MemoriesController {
+    constructor(memoriesService) {
+        this.memoriesService = memoriesService;
+    }
+    async create(req, createMemoryDto) {
+        return this.memoriesService.create(req.user.id, createMemoryDto);
+    }
+    async findAll(req, categoryId, mood, from, to, search, page, limit) {
+        const filters = {};
+        if (categoryId)
+            filters.categoryId = categoryId;
+        if (mood)
+            filters.mood = mood;
+        if (from)
+            filters.from = new Date(from);
+        if (to)
+            filters.to = new Date(to);
+        if (search)
+            filters.search = search;
+        if (page)
+            filters.page = parseInt(page);
+        if (limit)
+            filters.limit = parseInt(limit);
+        return this.memoriesService.findAll(req.user.id, filters);
+    }
+    async getStatistics(req) {
+        return this.memoriesService.getStatistics(req.user.id);
+    }
+    async getTravelStatistics(req) {
+        return this.memoriesService.getTravelStatistics(req.user.id);
+    }
+    async getLocationFrequency(req) {
+        return this.memoriesService.getLocationFrequency(req.user.id);
+    }
+    async getUpcomingReminders(req) {
+        return this.memoriesService.getUpcomingReminders(req.user.id);
+    }
+    async importMemories(req, memories) {
+        return this.memoriesService.importMemories(req.user.id, memories);
+    }
+    async exportMemories(req) {
+        return this.memoriesService.exportMemories(req.user.id);
+    }
+    async getPublicMemory(slug) {
+        return this.memoriesService.getPublicMemoryBySlug(slug);
+    }
+    async findOne(id, req) {
+        return this.memoriesService.findOne(id, req.user.id);
+    }
+    async markReminderSent(id, req) {
+        return this.memoriesService.markReminderSent(id, req.user.id);
+    }
+    async update(id, req, updateMemoryDto) {
+        return this.memoriesService.update(id, req.user.id, updateMemoryDto);
+    }
+    async delete(id, req) {
+        return this.memoriesService.delete(id, req.user.id);
+    }
+    async addImage(id, req, imageUrl) {
+        return this.memoriesService.addImage(id, req.user.id, imageUrl);
+    }
+    async deleteImage(memoryId, imageId, req) {
+        return this.memoriesService.deleteImage(imageId, req.user.id);
+    }
+    async updateImageOrder(memoryId, imageId, req, order) {
+        return this.memoriesService.updateImageOrder(imageId, req.user.id, order);
+    }
+    async generatePublicLink(id, req) {
+        return this.memoriesService.generatePublicSlug(id, req.user.id);
+    }
+    async makeMemoryPrivate(id, req) {
+        return this.memoriesService.makeMemoryPrivate(id, req.user.id);
+    }
+};
+exports.MemoriesController = MemoriesController;
+__decorate([
+    (0, throttler_1.Throttle)({ default: { limit: 20, ttl: 60000 } }),
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, create_memory_dto_1.CreateMemoryDto]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "create", null);
+__decorate([
+    (0, common_1.Get)(),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Query)('categoryId')),
+    __param(2, (0, common_1.Query)('mood')),
+    __param(3, (0, common_1.Query)('from')),
+    __param(4, (0, common_1.Query)('to')),
+    __param(5, (0, common_1.Query)('search')),
+    __param(6, (0, common_1.Query)('page')),
+    __param(7, (0, common_1.Query)('limit')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String, String, String, String, String, String, String]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('statistics'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "getStatistics", null);
+__decorate([
+    (0, common_1.Get)('travel-statistics'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "getTravelStatistics", null);
+__decorate([
+    (0, common_1.Get)('location-frequency'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "getLocationFrequency", null);
+__decorate([
+    (0, common_1.Get)('reminders/upcoming'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "getUpcomingReminders", null);
+__decorate([
+    (0, common_1.Post)('import'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Array]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "importMemories", null);
+__decorate([
+    (0, common_1.Get)('export-data'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "exportMemories", null);
+__decorate([
+    (0, public_decorator_1.Public)(),
+    (0, common_1.Get)('public/:slug'),
+    __param(0, (0, common_1.Param)('slug')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "getPublicMemory", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(':id/reminder/sent'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "markReminderSent", null);
+__decorate([
+    (0, common_1.Put)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, update_memory_dto_1.UpdateMemoryDto]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "delete", null);
+__decorate([
+    (0, common_1.Post)(':id/images'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)('imageUrl')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, String]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "addImage", null);
+__decorate([
+    (0, common_1.Delete)(':memoryId/images/:imageId'),
+    __param(0, (0, common_1.Param)('memoryId')),
+    __param(1, (0, common_1.Param)('imageId')),
+    __param(2, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "deleteImage", null);
+__decorate([
+    (0, common_1.Put)(':memoryId/images/:imageId/order'),
+    __param(0, (0, common_1.Param)('memoryId')),
+    __param(1, (0, common_1.Param)('imageId')),
+    __param(2, (0, common_1.Request)()),
+    __param(3, (0, common_1.Body)('order')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Object, Number]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "updateImageOrder", null);
+__decorate([
+    (0, common_1.Post)(':id/public'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "generatePublicLink", null);
+__decorate([
+    (0, common_1.Delete)(':id/public'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], MemoriesController.prototype, "makeMemoryPrivate", null);
+exports.MemoriesController = MemoriesController = __decorate([
+    (0, common_1.Controller)('memories'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    __metadata("design:paramtypes", [memories_service_1.MemoriesService])
+], MemoriesController);
+//# sourceMappingURL=memories.controller.js.map
