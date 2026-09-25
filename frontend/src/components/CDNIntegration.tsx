@@ -75,9 +75,9 @@ export default function CDNIntegration({ onCancel, onConfigureCDN, onSyncAssets,
       await onSyncAssets();
     } else {
       await new Promise(resolve => setTimeout(resolve, 2000));
+      setConfig(prev => ({ ...prev, lastSync: new Date() }));
       setStats({
         ...stats,
-        lastSync: new Date(),
         cachedAssets: Math.floor(stats.totalAssets * 0.9),
       });
     }

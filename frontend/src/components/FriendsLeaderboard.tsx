@@ -44,6 +44,7 @@ export default function FriendsLeaderboard({ onCancel }: FriendsLeaderboardProps
     },
     {
       id: '2',
+      rank: 2,
       username: 'Bob',
       avatar: 'BO',
       xp: 72000,
@@ -56,6 +57,7 @@ export default function FriendsLeaderboard({ onCancel }: FriendsLeaderboardProps
     },
     {
       id: '3',
+      rank: 3,
       username: 'Charlie',
       avatar: 'CH',
       xp: 68000,
@@ -68,6 +70,7 @@ export default function FriendsLeaderboard({ onCancel }: FriendsLeaderboardProps
     },
     {
       id: '4',
+      rank: 4,
       username: 'Diana',
       avatar: 'DI',
       xp: 54000,
@@ -80,6 +83,7 @@ export default function FriendsLeaderboard({ onCancel }: FriendsLeaderboardProps
     },
     {
       id: '5',
+      rank: 5,
       username: 'Eve',
       avatar: 'EV',
       xp: 48000,
@@ -92,6 +96,7 @@ export default function FriendsLeaderboard({ onCancel }: FriendsLeaderboardProps
     },
     {
       id: '6',
+      rank: 6,
       username: 'Frank',
       avatar: 'FR',
       xp: 42000,

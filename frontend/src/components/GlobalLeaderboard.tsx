@@ -45,6 +45,7 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
     },
     {
       id: '2',
+      rank: 2,
       username: 'StoryTeller',
       avatar: 'ST',
       xp: 118000,
@@ -57,6 +58,7 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
     },
     {
       id: '3',
+      rank: 3,
       username: 'WorldExplorer',
       avatar: 'WE',
       xp: 112000,
@@ -69,6 +71,7 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
     },
     {
       id: '4',
+      rank: 4,
       username: 'PhotoKing',
       avatar: 'PK',
       xp: 105000,
@@ -81,6 +84,7 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
     },
     {
       id: '5',
+      rank: 5,
       username: 'MemoryKeeper',
       avatar: 'MK',
       xp: 98000,
@@ -93,6 +97,7 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
     },
     {
       id: '6',
+      rank: 6,
       username: 'TravelDiary',
       avatar: 'TD',
       xp: 92000,
@@ -105,6 +110,7 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
     },
     {
       id: '7',
+      rank: 7,
       username: 'LifeLogger',
       avatar: 'LL',
       xp: 87000,
@@ -117,6 +123,7 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
     },
     {
       id: '8',
+      rank: 8,
       username: 'MomentCapture',
       avatar: 'MC',
       xp: 82000,
@@ -129,6 +136,7 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
     },
     {
       id: '9',
+      rank: 9,
       username: 'DailyRecorder',
       avatar: 'DR',
       xp: 78000,
@@ -141,6 +149,7 @@ export default function GlobalLeaderboard({ onCancel }: GlobalLeaderboardProps) 
     },
     {
       id: '10',
+      rank: 10,
       username: 'MemoryArchitect',
       avatar: 'MA',
       xp: 74000,

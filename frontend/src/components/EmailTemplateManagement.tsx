@@ -366,7 +366,7 @@ export default function EmailTemplateManagement({ onCancel }: EmailTemplateManag
           <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-lg">
             <h4 className="font-semibold text-slate-900 dark:text-white text-sm mb-3">Template Tips</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
-              <li>• Use {{variable}} syntax for dynamic content</li>
+              <li>• Use {'{{variable}}'} syntax for dynamic content</li>
               <li>• Test templates before sending to users</li>
               <li>• Keep subjects clear and concise</li>
               <li>• Monitor template usage for optimization</li>

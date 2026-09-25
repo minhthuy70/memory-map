@@ -47,7 +47,7 @@ export default function LanguageAutoDetection({ onCancel }: LanguageAutoDetectio
     if (typeof window !== 'undefined') {
       setBrowserInfo({
         language: navigator.language,
-        languages: navigator.languages,
+        languages: [...navigator.languages],
         userAgent: navigator.userAgent,
       });
     }

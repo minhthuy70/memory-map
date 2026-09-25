@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Crown, X, TrendingUp, Star, Zap, Award, Target, Sparkles, Flame, ChevronRight, ChevronLeft, Info, Gift, Shield, Sword, Gem, Wand2, Heart, MapPin, Calendar, Clock, BarChart3, RefreshCw } from 'lucide-react';
+import { Crown, X, TrendingUp, Star, Zap, Award, Target, Sparkles, Flame, ChevronRight, ChevronLeft, Info, Gift, Shield, Sword, Gem, Wand2, Heart, MapPin, Calendar, Clock, BarChart3, RefreshCw, Trophy, Check as CheckIcon } from 'lucide-react';
 
 interface LevelProgressionProps {
   onCancel?: () => void;
@@ -18,7 +18,7 @@ interface Level {
 
 export default function LevelProgression({ onCancel }: LevelProgressionProps) {
   const [currentXP, setCurrentXP] = useState(45000);
-  const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
+  const [selectedLevel, setSelectedLevel] = useState<Level | null>(null);
   const [showPerks, setShowPerks] = useState(false);
 
   const levels: Level[] = [
@@ -325,7 +325,7 @@ export default function LevelProgression({ onCancel }: LevelProgressionProps) {
               {selectedLevel.level > currentLevel.level && (
                 <div className="p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
                   <p className="text-xs text-amber-600 dark:text-amber-400">
-                    {selectedLevel.xpRequired - currentXP.toLocaleString()} XP more to unlock this level
+                    {(selectedLevel.xpRequired - currentXP).toLocaleString()} XP more to unlock this level
                   </p>
                 </div>
               )}

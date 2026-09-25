@@ -123,7 +123,7 @@ export default function ARLocationPins({ onCancel, onAddPin, onRemovePin, onUpda
               Pin kỷ niệm AR xuất hiện khi trỏ camera vào hướng
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              {visiblePins} pins visible
+              {visiblePins.length} pins visible
             </p>
           </div>
         </div>
@@ -223,7 +223,7 @@ export default function ARLocationPins({ onCancel, onAddPin, onRemovePin, onUpda
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Visible</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {visiblePins}
+            {visiblePins.length}
           </div>
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">

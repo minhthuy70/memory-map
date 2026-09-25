@@ -1,0 +1,143 @@
+﻿src/components/Accelerometer.tsx(196,14): error TS2552: Cannot find name 'Wave'. Did you mean 'Waves'?
+src/components/AddMusicToVideo.tsx(284,14): error TS2304: Cannot find name 'Waveform'.
+src/components/AndroidIntentSupport.tsx(84,14): error TS2304: Cannot find name 'Android'.
+src/components/AnnualDiscount.tsx(138,44): error TS2304: Cannot find name 'Check'.
+src/components/AppleCalendarSync.tsx(4,20): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/AppleCalendarSync.tsx(4,76): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/AppleCalendarSync.tsx(208,20): error TS2304: Cannot find name 'Sync'.
+src/components/ARMemoryCloud.tsx(4,87): error TS2300: Duplicate identifier 'Zap'.
+src/components/ARMemoryCloud.tsx(4,214): error TS2300: Duplicate identifier 'Zap'.
+src/components/BiometricAuthEnhanced.tsx(195,17): error TS2304: Cannot find name 'FaceSmile'.
+src/components/BrowserPushNotifications.tsx(376,18): error TS2304: Cannot find name 'Save'.
+src/components/CodeSamplesRepository.tsx(4,10): error TS2305: Module '"lucide-react"' has no exported member 'Github'.
+src/components/CodeSamplesRepository.tsx(4,145): error TS2305: Module '"lucide-react"' has no exported member 'Fork'.
+src/components/CustomPostcardPrint.tsx(197,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/DyslexiaFriendlyFont.tsx(103,14): error TS2304: Cannot find name 'Type'.
+src/components/EnterprisePlan.tsx(102,28): error TS2304: Cannot find name 'Check'.
+src/components/EnterprisePlan.tsx(128,45): error TS2304: Cannot find name 'Check'.
+src/components/FaceRecognition.tsx(273,14): error TS2304: Cannot find name 'FaceSmile'.
+src/components/FaceRecognition.tsx(459,26): error TS2304: Cannot find name 'FaceSmile'.
+src/components/FamilyHistoryDocumentation.tsx(4,47): error TS2305: Module '"lucide-react"' has no exported member 'FamilyTree'.
+src/components/FamilyPlan.tsx(149,28): error TS2304: Cannot find name 'Check'.
+src/components/FamilyPlan.tsx(222,45): error TS2304: Cannot find name 'Check'.
+src/components/GoogleCalendarSync.tsx(4,20): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/GoogleCalendarSync.tsx(4,76): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/GoogleCalendarSync.tsx(187,18): error TS2304: Cannot find name 'Sync'.
+src/components/GratitudeJournalIntegration.tsx(248,18): error TS2304: Cannot find name 'Clock'.
+src/components/GratitudeJournalIntegration.tsx(326,22): error TS2304: Cannot find name 'Edit'.
+src/components/HiddenAchievements.tsx(141,31): error TS2304: Cannot find name 'Mystery'.
+src/components/HiddenAchievements.tsx(157,24): error TS2304: Cannot find name 'Mystery'.
+src/components/HiddenAchievements.tsx(252,87): error TS2304: Cannot find name 'Mystery'.
+src/components/IconPacks.tsx(102,14): error TS2304: Cannot find name 'Icons'.
+src/components/IconPacks.tsx(187,22): error TS2304: Cannot find name 'Icons'.
+src/components/ImpersonateUser.tsx(77,14): error TS2304: Cannot find name 'UserSwitch'.
+src/components/ImpersonateUser.tsx(124,18): error TS2304: Cannot find name 'Stop'.
+src/components/ImportFromApplePhotos.tsx(273,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromDayOne.tsx(304,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromEvernote.tsx(4,1337): error TS2305: Module '"lucide-react"' has no exported member 'Elephant'.
+src/components/ImportFromFacebook.tsx(273,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromGooglePhotos.tsx(228,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromInstagram.tsx(270,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromNotion.tsx(4,287): error TS2300: Duplicate identifier 'Video'.
+src/components/ImportFromNotion.tsx(4,308): error TS2300: Duplicate identifier 'Video'.
+src/components/ImportFromNotion.tsx(184,14): error TS2304: Cannot find name 'Notion'.
+src/components/LevelProgression.tsx(4,203): error TS2440: Import declaration conflicts with local declaration of 'CheckIcon'.
+src/components/LocationBasedNotifications.tsx(218,18): error TS2304: Cannot find name 'BellOff'.
+src/components/LocationTriggeredAutoCapture.tsx(4,106): error TS2305: Module '"lucide-react"' has no exported member 'Work'.
+src/components/MemoryCertificate.tsx(128,14): error TS2304: Cannot find name 'Certificate'.
+src/components/MemoryCertificate.tsx(197,14): error TS2304: Cannot find name 'Certificate'.
+src/components/MicrophoneAccess.tsx(330,20): error TS2304: Cannot find name 'Wave'.
+src/components/MoodComparison.tsx(66,17): error TS2304: Cannot find name 'HeartBroken'.
+src/components/MoodTrackingGraph.tsx(265,22): error TS2304: Cannot find name 'Edit'.
+src/components/MoodTrendsAnalysis.tsx(59,17): error TS2304: Cannot find name 'HeartBroken'.
+src/components/MultilingualVoiceSupport.tsx(4,164): error TS2300: Duplicate identifier 'Languages'.
+src/components/MultilingualVoiceSupport.tsx(4,303): error TS2300: Duplicate identifier 'Languages'.
+src/components/MultilingualVoiceSupport.tsx(282,18): error TS2304: Cannot find name 'Translate'.
+src/components/NoiseCancellation.tsx(4,92): error TS2300: Duplicate identifier 'Zap'.
+src/components/NoiseCancellation.tsx(4,164): error TS2300: Duplicate identifier 'Zap'.
+src/components/OfflineMode.tsx(4,46): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/OfflineMode.tsx(4,167): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/OfflineMode.tsx(199,14): error TS2304: Cannot find name 'Sync'.
+src/components/OrderPhotoBook.tsx(178,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/OutlookCalendarSync.tsx(4,20): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/OutlookCalendarSync.tsx(4,76): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/OutlookCalendarSync.tsx(208,20): error TS2304: Cannot find name 'Sync'.
+src/components/Photo360Support.tsx(365,18): error TS2304: Cannot find name 'Star'.
+src/components/Photo360Support.tsx(412,24): error TS2304: Cannot find name 'Star'.
+src/components/Photo360Support.tsx(419,24): error TS2304: Cannot find name 'Star'.
+src/components/PhotoOrganization.tsx(282,14): error TS2304: Cannot find name 'Duplicate'.
+src/components/PhotoOrganization.tsx(448,20): error TS2304: Cannot find name 'Duplicate'.
+src/components/PrintMapPoster.tsx(198,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/PrintMemoryCards.tsx(4,478): error TS2300: Duplicate identifier 'CreditCard'.
+src/components/PrintMemoryCards.tsx(4,490): error TS2300: Duplicate identifier 'CreditCard'.
+src/components/PrintMemoryCards.tsx(168,14): error TS2304: Cannot find name 'Card'.
+src/components/PrintMemoryCards.tsx(186,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/PrintMemoryCards.tsx(355,18): error TS2304: Cannot find name 'Card'.
+src/components/PrintTimelinePoster.tsx(200,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/PushNotificationsDeepLinks.tsx(301,65): error TS2304: Cannot find name 'id'.
+src/components/QRCodeMemoryCards.tsx(4,461): error TS2300: Duplicate identifier 'CreditCard'.
+src/components/QRCodeMemoryCards.tsx(4,473): error TS2300: Duplicate identifier 'CreditCard'.
+src/components/QRCodeMemoryCards.tsx(184,14): error TS2304: Cannot find name 'Card'.
+src/components/QRCodeMemoryCards.tsx(202,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ReferralRewards.tsx(4,40): error TS2300: Duplicate identifier 'Users'.
+src/components/ReferralRewards.tsx(4,124): error TS2300: Duplicate identifier 'Users'.
+src/components/ReferralRewards.tsx(198,16): error TS2304: Cannot find name 'Twitter'.
+src/components/ReferralRewards.tsx(206,16): error TS2304: Cannot find name 'Facebook'.
+src/components/RemoveRestoreContent.tsx(50,23): error TS2345: Argument of type '(ContentItem | { status: "removed"; removedAt: string; removedBy: string; reason: string; id: string; type: string; content: string; author: string; date: string; })[]' is not assignable to parameter of type 'SetStateAction<ContentItem[]>'.
+  Type '(ContentItem | { status: "removed"; removedAt: string; removedBy: string; reason: string; id: string; type: string; content: string; author: string; date: string; })[]' is not assignable to type 'ContentItem[]'.
+    Type 'ContentItem | { status: "removed"; removedAt: string; removedBy: string; reason: string; id: string; type: string; content: string; author: string; date: string; }' is not assignable to type 'ContentItem'.
+      Type '{ status: "removed"; removedAt: string; removedBy: string; reason: string; id: string; type: string; content: string; author: string; date: string; }' is not assignable to type 'ContentItem'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type '"memory" | "video" | "comment" | "photo"'.
+src/components/RemoveRestoreContent.tsx(58,23): error TS2345: Argument of type '(ContentItem | { status: "restored"; id: string; type: string; content: string; author: string; removedAt: string; removedBy: string; reason: string; date: string; })[]' is not assignable to parameter of type 'SetStateAction<ContentItem[]>'.
+  Type '(ContentItem | { status: "restored"; id: string; type: string; content: string; author: string; removedAt: string; removedBy: string; reason: string; date: string; })[]' is not assignable to type 'ContentItem[]'.
+    Type 'ContentItem | { status: "restored"; id: string; type: string; content: string; author: string; removedAt: string; removedBy: string; reason: string; date: string; }' is not assignable to type 'ContentItem'.
+      Type '{ status: "restored"; id: string; type: string; content: string; author: string; removedAt: string; removedBy: string; reason: string; date: string; }' is not assignable to type 'ContentItem'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type '"memory" | "video" | "comment" | "photo"'.
+src/components/RemoveRestoreContent.tsx(117,14): error TS2304: Cannot find name 'X'.
+src/components/ResourceUsage.tsx(279,72): error TS2532: Object is possibly 'undefined'.
+src/components/SandboxEnvironment.tsx(193,21): error TS2322: Type 'string | number | boolean' is not assignable to type 'string | number | readonly string[] | undefined'.
+  Type 'false' is not assignable to type 'string | number | readonly string[] | undefined'.
+src/components/SharedAlbums.tsx(77,27): error TS2345: Argument of type '{ name: string; description: string; visibility: SharedAlbum["visibility"]; }' is not assignable to parameter of type 'Omit<SharedAlbum, "id" | "createdAt" | "lastModified">'.
+  Type '{ name: string; description: string; visibility: "link" | "public" | "private"; }' is missing the following properties from type 'Omit<SharedAlbum, "id" | "createdAt" | "lastModified">': memories, members
+src/components/SharedCalendars.tsx(108,17): error TS2304: Cannot find name 'BirthdayCake'.
+src/components/ShareMemory.tsx(138,20): error TS2774: This condition will always return true since this function is always defined. Did you mean to call it instead?
+src/components/ShareMemory.tsx(153,22): error TS2304: Cannot find name 'Facebook'.
+src/components/ShareMemory.tsx(162,22): error TS2304: Cannot find name 'Twitter'.
+src/components/SocialMediaAutoPost.tsx(43,11): error TS2304: Cannot find name 'Facebook'.
+src/components/SocialMediaAutoPost.tsx(51,11): error TS2304: Cannot find name 'Twitter'.
+src/components/SocialMediaAutoPost.tsx(59,11): error TS2304: Cannot find name 'Instagram'.
+src/components/SocialMediaAutoPost.tsx(67,11): error TS2304: Cannot find name 'Linkedin'.
+src/components/SocialShare.tsx(53,44): error TS2774: This condition will always return true since this function is always defined. Did you mean to call it instead?
+src/components/SpotifySongTagging.tsx(4,10): error TS2300: Duplicate identifier 'Music'.
+src/components/SpotifySongTagging.tsx(4,266): error TS2300: Duplicate identifier 'Music'.
+src/components/SpotifySongTagging.tsx(123,14): error TS2304: Cannot find name 'Spotify'.
+src/components/SpotifySongTagging.tsx(198,14): error TS2304: Cannot find name 'Spotify'.
+src/components/StickyKeysSupport.tsx(205,15): error TS17001: JSX elements cannot have multiple attributes with the same name.
+src/components/StorySharing.tsx(154,14): error TS2304: Cannot find name 'Story'.
+src/components/StorySharing.tsx(229,14): error TS2304: Cannot find name 'Story'.
+src/components/StorySharing.tsx(332,14): error TS2304: Cannot find name 'Story'.
+src/components/StudentDiscount.tsx(218,44): error TS2304: Cannot find name 'Check'.
+src/components/TimeDistribution.tsx(4,73): error TS2300: Duplicate identifier 'Moon'.
+src/components/TimeDistribution.tsx(4,125): error TS2300: Duplicate identifier 'Moon'.
+src/components/TimeDistribution.tsx(68,13): error TS2304: Cannot find name 'Night'.
+src/components/Video360Memories.tsx(431,18): error TS2304: Cannot find name 'Star'.
+src/components/Video360Memories.tsx(478,24): error TS2304: Cannot find name 'Star'.
+src/components/Video360Memories.tsx(488,24): error TS2304: Cannot find name 'Star'.
+src/components/VideoStabilization.tsx(98,14): error TS2304: Cannot find name 'Shake'.
+src/components/VideoStabilization.tsx(167,14): error TS2304: Cannot find name 'Shake'.
+src/components/VideoStabilization.tsx(240,18): error TS2304: Cannot find name 'Shake'.
+src/components/VideoStabilization.tsx(304,22): error TS2304: Cannot find name 'Shake'.
+src/components/VoiceNavigation.tsx(290,14): error TS2304: Cannot find name 'Sparkles'.
+src/components/VoiceNavigation.tsx(314,20): error TS2304: Cannot find name 'StopCircle'.
+src/components/VoiceSearch.tsx(257,20): error TS2304: Cannot find name 'StopCircle'.
+src/components/WearOSSupport.tsx(4,47): error TS2300: Duplicate identifier 'Smartphone'.
+src/components/WearOSSupport.tsx(4,123): error TS2300: Duplicate identifier 'Smartphone'.
+src/components/WearOSSupport.tsx(109,14): error TS2304: Cannot find name 'Android'.
+src/components/WebXRIntegration.tsx(4,199): error TS2300: Duplicate identifier 'Glasses'.
+src/components/WebXRIntegration.tsx(4,208): error TS2300: Duplicate identifier 'Glasses'.
+src/components/WebXRIntegration.tsx(138,17): error TS2304: Cannot find name 'Vr'.
+src/components/WebXRIntegration.tsx(159,14): error TS2304: Cannot find name 'Vr'.
+src/components/WebXRIntegration.tsx(246,14): error TS2304: Cannot find name 'Vr'.
+src/components/WebXRIntegration.tsx(401,22): error TS2304: Cannot find name 'Vr'.

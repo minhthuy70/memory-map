@@ -49,6 +49,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '2',
+      rank: 2,
       username: 'NomadLife',
       avatar: 'NL',
       score: 72,
@@ -60,6 +61,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '3',
+      rank: 3,
       username: 'AdventureSeeker',
       avatar: 'AS',
       score: 65,
@@ -71,6 +73,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '4',
+      rank: 4,
       username: 'PhotoPro',
       avatar: 'PP',
       score: 1520,
@@ -82,6 +85,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '5',
+      rank: 5,
       username: 'SnapMaster',
       avatar: 'SM',
       score: 1380,
@@ -93,6 +97,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '6',
+      rank: 6,
       username: 'MemoryKeeper',
       avatar: 'MK',
       score: 1250,
@@ -104,6 +109,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '7',
+      rank: 7,
       username: 'SocialButterfly',
       avatar: 'SB',
       score: 342,
@@ -115,6 +121,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '8',
+      rank: 8,
       username: 'Connector',
       avatar: 'CN',
       score: 298,
@@ -126,6 +133,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '9',
+      rank: 9,
       username: 'CommunityBuilder',
       avatar: 'CB',
       score: 275,
@@ -137,6 +145,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '10',
+      rank: 10,
       username: 'StoryWeaver',
       avatar: 'SW',
       score: 45000,
@@ -148,6 +157,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '11',
+      rank: 11,
       username: 'WordSmith',
       avatar: 'WS',
       score: 38500,
@@ -159,6 +169,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '12',
+      rank: 12,
       username: 'CreativeMind',
       avatar: 'CM',
       score: 32000,
@@ -170,6 +181,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '13',
+      rank: 13,
       username: 'StreakKing',
       avatar: 'SK',
       score: 365,
@@ -181,6 +193,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '14',
+      rank: 14,
       username: 'DailyDedicator',
       avatar: 'DD',
       score: 289,
@@ -192,6 +205,7 @@ export default function CategoryLeaderboard({ onCancel }: CategoryLeaderboardPro
     },
     {
       id: '15',
+      rank: 15,
       username: 'ConsistentCreator',
       avatar: 'CC',
       score: 234,

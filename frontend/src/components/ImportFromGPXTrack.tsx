@@ -134,11 +134,12 @@ export default function ImportFromGPXTrack({ onCancel, onImport }: ImportFromGPX
   };
 
   const calculateDuration = (points: GPXPoint[]): number => {
-    if (points.length < 2 || !points[0].time || !points[points.length - 1].time) {
-      return 0;
-    }
-    const start = new Date(points[0].time).getTime();
-    const end = new Date(points[points.length - 1].time).getTime();
+    if (points.length < 2) return 0;
+    const firstTime = points[0]?.time;
+    const lastTime = points[points.length - 1]?.time;
+    if (!firstTime || !lastTime) return 0;
+    const start = new Date(firstTime).getTime();
+    const end = new Date(lastTime).getTime();
     return (end - start) / 1000;
   };
 
@@ -146,8 +147,10 @@ export default function ImportFromGPXTrack({ onCancel, onImport }: ImportFromGPX
     let gain = 0;
     let loss = 0;
     for (let i = 1; i < points.length; i++) {
-      if (points[i - 1].ele !== undefined && points[i].ele !== undefined) {
-        const diff = points[i].ele - points[i - 1].ele;
+      const prevEle = points[i - 1]?.ele;
+      const currEle = points[i]?.ele;
+      if (prevEle !== undefined && currEle !== undefined) {
+        const diff = currEle - prevEle;
         if (diff > 0) gain += diff;
         else loss += Math.abs(diff);
       }

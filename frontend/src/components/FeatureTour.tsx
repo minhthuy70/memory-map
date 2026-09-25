@@ -1,14 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Joyride, { CallBackProps, STATUS, Step } from 'react-joyride';
-import { useAuthStore } from '@/lib/auth-store';
+import { Joyride, STATUS, Step, EventData } from 'react-joyride';
+import { useAuthStore } from '@/store/auth-store';
 
 const tourSteps: Step[] = [
   {
     target: '.dashboard-header',
     content: 'Chào mừng bạn đến với Memory Map! Đây là bảng điều khiển chính để quản lý kỷ niệm của bạn.',
-    disableBeacon: true,
+    skipBeacon: true,
     placement: 'bottom',
   },
   {
@@ -63,10 +63,10 @@ export default function FeatureTour() {
     }
   }, [user]);
 
-  const handleJoyrideCallback = (data: CallBackProps) => {
+  const handleJoyrideCallback = (data: EventData) => {
     const { status } = data;
 
-    if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
+    if (([STATUS.FINISHED, STATUS.SKIPPED] as string[]).includes(status)) {
       setRunTour(false);
       localStorage.setItem('hasSeenFeatureTour', 'true');
     }
@@ -82,37 +82,14 @@ export default function FeatureTour() {
         steps={tourSteps}
         run={runTour}
         continuous
-        showSkipButton
-        showProgress
-        disableOverlayClose
-        hideCloseButton
-        callback={handleJoyrideCallback}
-        styles={{
-          options: {
-            zIndex: 10000,
-            primaryColor: '#6366f1',
-            backgroundColor: '#ffffff',
-            textColor: '#1e293b',
-          },
-          tooltip: {
-            fontSize: '14px',
-            padding: '16px',
-          },
-          tooltipContent: {
-            padding: '8px 0',
-          },
-          buttonNext: {
-            backgroundColor: '#6366f1',
-            borderRadius: '8px',
-            padding: '8px 16px',
-          },
-          buttonBack: {
-            color: '#64748b',
-            marginRight: '8px',
-          },
-          buttonSkip: {
-            color: '#64748b',
-          },
+        onEvent={handleJoyrideCallback}
+        options={{
+          zIndex: 10000,
+          primaryColor: '#6366f1',
+          backgroundColor: '#ffffff',
+          textColor: '#1e293b',
+          buttons: ['back', 'close', 'primary', 'skip'],
+          showProgress: true,
         }}
         locale={{
           back: 'Quay lại',

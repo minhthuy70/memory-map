@@ -1,0 +1,1338 @@
+{
+  "﻿src/components/Accelerometer.tsx": [
+    {
+      "pos": "196,14",
+      "code": "TS2552",
+      "msg": "Cannot find name 'Wave'. Did you mean 'Waves'?"
+    }
+  ],
+  "src/components/AddMusicToVideo.tsx": [
+    {
+      "pos": "284,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Waveform'."
+    }
+  ],
+  "src/components/AIWritingStyleCoach.tsx": [
+    {
+      "pos": "40,97",
+      "code": "TS2322",
+      "msg": "Type '\"concise\"' is not assignable to type '\"formal\" | \"casual\" | \"professional\" | \"creative\" | \"academic\"'."
+    }
+  ],
+  "src/components/AndroidIntentSupport.tsx": [
+    {
+      "pos": "84,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Android'."
+    }
+  ],
+  "src/components/AnnualDiscount.tsx": [
+    {
+      "pos": "138,44",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Check'."
+    }
+  ],
+  "src/components/AppleCalendarSync.tsx": [
+    {
+      "pos": "4,20",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'RefreshCw'."
+    },
+    {
+      "pos": "4,76",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'RefreshCw'."
+    },
+    {
+      "pos": "208,20",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Sync'."
+    }
+  ],
+  "src/components/ARFaceFilters.tsx": [
+    {
+      "pos": "83,7",
+      "code": "TS2322",
+      "msg": "Type 'string' is not assignable to type '\"color\" | \"mask\" | \"accessory\" | \"effect\"'."
+    },
+    {
+      "pos": "124,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'FaceMask'."
+    },
+    {
+      "pos": "199,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'FaceMask'."
+    },
+    {
+      "pos": "338,20",
+      "code": "TS2304",
+      "msg": "Cannot find name 'FaceMask'."
+    }
+  ],
+  "src/components/ARLocationPins.tsx": [
+    {
+      "pos": "126,15",
+      "code": "TS2322",
+      "msg": "Type 'ARPin[]' is not assignable to type 'ReactNode'."
+    },
+    {
+      "pos": "226,13",
+      "code": "TS2322",
+      "msg": "Type 'ARPin[]' is not assignable to type 'ReactNode'."
+    }
+  ],
+  "src/components/ARMemoryCloud.tsx": [
+    {
+      "pos": "4,87",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Zap'."
+    },
+    {
+      "pos": "4,214",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Zap'."
+    }
+  ],
+  "src/components/ARMemoryOverlay.tsx": [
+    {
+      "pos": "109,15",
+      "code": "TS2322",
+      "msg": "Type 'ARMemory[]' is not assignable to type 'ReactNode'."
+    },
+    {
+      "pos": "202,13",
+      "code": "TS2322",
+      "msg": "Type 'ARMemory[]' is not assignable to type 'ReactNode'."
+    }
+  ],
+  "src/components/BiometricAuthEnhanced.tsx": [
+    {
+      "pos": "195,17",
+      "code": "TS2304",
+      "msg": "Cannot find name 'FaceSmile'."
+    }
+  ],
+  "src/components/BrowserPushNotifications.tsx": [
+    {
+      "pos": "376,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Save'."
+    }
+  ],
+  "src/components/CategoryComparison.tsx": [
+    {
+      "pos": "32,71",
+      "code": "TS2353",
+      "msg": "Object literal may only specify known properties, and 'narcissistic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'."
+    },
+    {
+      "pos": "48,71",
+      "code": "TS2353",
+      "msg": "Object literal may only specify known properties, and 'narcissistic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'."
+    },
+    {
+      "pos": "56,70",
+      "code": "TS2353",
+      "msg": "Object literal may only specify known properties, and 'narcissistic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'."
+    }
+  ],
+  "src/components/CategoryLeaderboard.tsx": [
+    {
+      "pos": "50,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"travel\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "61,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"travel\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "72,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"photos\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "83,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"photos\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "94,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"photos\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "105,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"social\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "116,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"social\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "127,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"social\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "138,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"creativity\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "149,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"creativity\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "160,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"creativity\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "171,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"consistency\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "182,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"consistency\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    },
+    {
+      "pos": "193,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: \"consistency\"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'."
+    }
+  ],
+  "src/components/CDNIntegration.tsx": [
+    {
+      "pos": "80,9",
+      "code": "TS2353",
+      "msg": "Object literal may only specify known properties, and 'lastSync' does not exist in type 'SetStateAction<CDNStats>'."
+    }
+  ],
+  "src/components/CodeSamplesRepository.tsx": [
+    {
+      "pos": "4,10",
+      "code": "TS2305",
+      "msg": "Module '\"lucide-react\"' has no exported member 'Github'."
+    },
+    {
+      "pos": "4,145",
+      "code": "TS2305",
+      "msg": "Module '\"lucide-react\"' has no exported member 'Fork'."
+    }
+  ],
+  "src/components/CustomPostcardPrint.tsx": [
+    {
+      "pos": "197,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/DyslexiaFriendlyFont.tsx": [
+    {
+      "pos": "103,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Type'."
+    }
+  ],
+  "src/components/EmailTemplateManagement.tsx": [
+    {
+      "pos": "369,27",
+      "code": "TS2353",
+      "msg": "Object literal may only specify known properties, and 'variable' does not exist in type 'ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<...>'."
+    },
+    {
+      "pos": "369,27",
+      "code": "TS18004",
+      "msg": "No value exists in scope for the shorthand property 'variable'. Either declare one or provide an initializer."
+    }
+  ],
+  "src/components/EnterprisePlan.tsx": [
+    {
+      "pos": "102,28",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Check'."
+    },
+    {
+      "pos": "128,45",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Check'."
+    }
+  ],
+  "src/components/FaceRecognition.tsx": [
+    {
+      "pos": "273,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'FaceSmile'."
+    },
+    {
+      "pos": "459,26",
+      "code": "TS2304",
+      "msg": "Cannot find name 'FaceSmile'."
+    }
+  ],
+  "src/components/FamilyHistoryDocumentation.tsx": [
+    {
+      "pos": "4,47",
+      "code": "TS2305",
+      "msg": "Module '\"lucide-react\"' has no exported member 'FamilyTree'."
+    }
+  ],
+  "src/components/FamilyPlan.tsx": [
+    {
+      "pos": "149,28",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Check'."
+    },
+    {
+      "pos": "222,45",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Check'."
+    }
+  ],
+  "src/components/FeatureTour.tsx": [
+    {
+      "pos": "4,8",
+      "code": "TS2613",
+      "msg": "Module '\"D:/DUANCANHAN/memory-map/frontend/node_modules/react-joyride/dist/index\"' has no default export. Did you mean to use 'import { Joyride } from \"D:/DUANCANHAN/memory-map/frontend/node_modules/react-joyride/dist/index\"' instead?"
+    },
+    {
+      "pos": "4,19",
+      "code": "TS2305",
+      "msg": "Module '\"react-joyride\"' has no exported member 'CallBackProps'."
+    },
+    {
+      "pos": "5,30",
+      "code": "TS2307",
+      "msg": "Cannot find module '@/lib/auth-store' or its corresponding type declarations."
+    },
+    {
+      "pos": "11,5",
+      "code": "TS2353",
+      "msg": "Object literal may only specify known properties, and 'disableBeacon' does not exist in type '{ arrowComponent?: ElementType<ArrowRenderProps> | undefined; beaconComponent?: ElementType<BeaconRenderProps> | undefined; ... 46 more ...; title?: ReactNode; }'."
+    }
+  ],
+  "src/components/FriendsLeaderboard.tsx": [
+    {
+      "pos": "45,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: \"online\"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'."
+    },
+    {
+      "pos": "57,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: \"away\"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'."
+    },
+    {
+      "pos": "69,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: \"offline\"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'."
+    },
+    {
+      "pos": "81,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: \"offline\"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'."
+    },
+    {
+      "pos": "93,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: \"online\"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'."
+    }
+  ],
+  "src/components/GlobalLeaderboard.tsx": [
+    {
+      "pos": "46,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'."
+    },
+    {
+      "pos": "58,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'."
+    },
+    {
+      "pos": "70,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'."
+    },
+    {
+      "pos": "82,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'."
+    },
+    {
+      "pos": "94,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'."
+    },
+    {
+      "pos": "106,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'."
+    },
+    {
+      "pos": "118,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'."
+    },
+    {
+      "pos": "130,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'."
+    },
+    {
+      "pos": "142,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'."
+    }
+  ],
+  "src/components/GoogleCalendarSync.tsx": [
+    {
+      "pos": "4,20",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'RefreshCw'."
+    },
+    {
+      "pos": "4,76",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'RefreshCw'."
+    },
+    {
+      "pos": "187,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Sync'."
+    }
+  ],
+  "src/components/GratitudeJournalIntegration.tsx": [
+    {
+      "pos": "248,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Clock'."
+    },
+    {
+      "pos": "326,22",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Edit'."
+    }
+  ],
+  "src/components/HiddenAchievements.tsx": [
+    {
+      "pos": "141,31",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Mystery'."
+    },
+    {
+      "pos": "157,24",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Mystery'."
+    },
+    {
+      "pos": "252,87",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Mystery'."
+    }
+  ],
+  "src/components/IconPacks.tsx": [
+    {
+      "pos": "102,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Icons'."
+    },
+    {
+      "pos": "187,22",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Icons'."
+    }
+  ],
+  "src/components/ImpersonateUser.tsx": [
+    {
+      "pos": "77,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'UserSwitch'."
+    },
+    {
+      "pos": "124,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Stop'."
+    }
+  ],
+  "src/components/ImportFromApplePhotos.tsx": [
+    {
+      "pos": "273,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/ImportFromDayOne.tsx": [
+    {
+      "pos": "304,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/ImportFromEvernote.tsx": [
+    {
+      "pos": "4,1337",
+      "code": "TS2305",
+      "msg": "Module '\"lucide-react\"' has no exported member 'Elephant'."
+    }
+  ],
+  "src/components/ImportFromFacebook.tsx": [
+    {
+      "pos": "273,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/ImportFromGooglePhotos.tsx": [
+    {
+      "pos": "228,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/ImportFromGPXTrack.tsx": [
+    {
+      "pos": "141,26",
+      "code": "TS2769",
+      "msg": "No overload matches this call."
+    },
+    {
+      "pos": "150,22",
+      "code": "TS2532",
+      "msg": "Object is possibly 'undefined'."
+    },
+    {
+      "pos": "150,38",
+      "code": "TS2532",
+      "msg": "Object is possibly 'undefined'."
+    }
+  ],
+  "src/components/ImportFromInstagram.tsx": [
+    {
+      "pos": "270,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/ImportFromNotion.tsx": [
+    {
+      "pos": "4,287",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Video'."
+    },
+    {
+      "pos": "4,308",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Video'."
+    },
+    {
+      "pos": "184,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Notion'."
+    }
+  ],
+  "src/components/LanguageAutoDetection.tsx": [
+    {
+      "pos": "50,9",
+      "code": "TS4104",
+      "msg": "The type 'readonly string[]' is 'readonly' and cannot be assigned to the mutable type 'string[]'."
+    }
+  ],
+  "src/components/LevelProgression.tsx": [
+    {
+      "pos": "118,30",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Trophy'."
+    },
+    {
+      "pos": "256,49",
+      "code": "TS2345",
+      "msg": "Argument of type 'Level' is not assignable to parameter of type 'SetStateAction<number | null>'."
+    },
+    {
+      "pos": "307,72",
+      "code": "TS2339",
+      "msg": "Property 'color' does not exist on type 'number'."
+    },
+    {
+      "pos": "307,111",
+      "code": "TS2339",
+      "msg": "Property 'level' does not exist on type 'number'."
+    },
+    {
+      "pos": "308,47",
+      "code": "TS2339",
+      "msg": "Property 'icon' does not exist on type 'number'."
+    },
+    {
+      "pos": "310,108",
+      "code": "TS2339",
+      "msg": "Property 'level' does not exist on type 'number'."
+    },
+    {
+      "pos": "311,95",
+      "code": "TS2339",
+      "msg": "Property 'name' does not exist on type 'number'."
+    },
+    {
+      "pos": "312,90",
+      "code": "TS2339",
+      "msg": "Property 'xpRequired' does not exist on type 'number'."
+    },
+    {
+      "pos": "317,34",
+      "code": "TS2339",
+      "msg": "Property 'benefits' does not exist on type 'number'."
+    },
+    {
+      "pos": "317,48",
+      "code": "TS7006",
+      "msg": "Parameter 'benefit' implicitly has an 'any' type."
+    },
+    {
+      "pos": "317,57",
+      "code": "TS7006",
+      "msg": "Parameter 'index' implicitly has an 'any' type."
+    },
+    {
+      "pos": "325,30",
+      "code": "TS2339",
+      "msg": "Property 'level' does not exist on type 'number'."
+    },
+    {
+      "pos": "328,36",
+      "code": "TS2339",
+      "msg": "Property 'xpRequired' does not exist on type 'number'."
+    },
+    {
+      "pos": "328,49",
+      "code": "TS2363",
+      "msg": "The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type."
+    }
+  ],
+  "src/components/LocationBasedNotifications.tsx": [
+    {
+      "pos": "218,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'BellOff'."
+    }
+  ],
+  "src/components/LocationComparison.tsx": [
+    {
+      "pos": "73,70",
+      "code": "TS2353",
+      "msg": "Object literal may only specify known properties, and 'narcissistic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'."
+    }
+  ],
+  "src/components/LocationTriggeredAutoCapture.tsx": [
+    {
+      "pos": "4,106",
+      "code": "TS2305",
+      "msg": "Module '\"lucide-react\"' has no exported member 'Work'."
+    }
+  ],
+  "src/components/Map.tsx": [
+    {
+      "pos": "6,30",
+      "code": "TS7016",
+      "msg": "Could not find a declaration file for module 'react-leaflet-heatmap-layer'. 'D:/DUANCANHAN/memory-map/frontend/node_modules/react-leaflet-heatmap-layer/lib/HeatmapLayer.js' implicitly has an 'any' type."
+    }
+  ],
+  "src/components/MapDrawingTools.tsx": [
+    {
+      "pos": "86,13",
+      "code": "TS2322",
+      "msg": "Type 'number[]' is not assignable to type '[number, number]'."
+    }
+  ],
+  "src/components/MemoryCertificate.tsx": [
+    {
+      "pos": "128,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Certificate'."
+    },
+    {
+      "pos": "197,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Certificate'."
+    }
+  ],
+  "src/components/MicrophoneAccess.tsx": [
+    {
+      "pos": "330,20",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Wave'."
+    }
+  ],
+  "src/components/MonthlyLeaderboard.tsx": [
+    {
+      "pos": "43,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "56,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "69,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "82,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "95,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "108,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "121,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "134,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "147,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "160,7",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "176,5",
+      "code": "TS2322",
+      "msg": "Type 'number' is not assignable to type 'string'."
+    },
+    {
+      "pos": "185,26",
+      "code": "TS2367",
+      "msg": "This comparison appears to be unintentional because the types 'string' and 'number' have no overlap."
+    }
+  ],
+  "src/components/MonthOverMonthComparison.tsx": [
+    {
+      "pos": "74,69",
+      "code": "TS2353",
+      "msg": "Object literal may only specify known properties, and 'narcissitic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'."
+    },
+    {
+      "pos": "106,7",
+      "code": "TS2322",
+      "msg": "Type '{ change: number; changePercent: number; trend: string; metric: string; month1: number; month2: number; }' is not assignable to type 'ComparisonMetric'."
+    },
+    {
+      "pos": "112,7",
+      "code": "TS2322",
+      "msg": "Type '{ change: number; changePercent: number; trend: string; metric: string; month1: number; month2: number; }' is not assignable to type 'ComparisonMetric'."
+    },
+    {
+      "pos": "118,7",
+      "code": "TS2322",
+      "msg": "Type '{ change: number; changePercent: number; trend: string; metric: string; month1: number; month2: number; }' is not assignable to type 'ComparisonMetric'."
+    }
+  ],
+  "src/components/MoodComparison.tsx": [
+    {
+      "pos": "66,17",
+      "code": "TS2304",
+      "msg": "Cannot find name 'HeartBroken'."
+    }
+  ],
+  "src/components/MoodTrackingGraph.tsx": [
+    {
+      "pos": "265,22",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Edit'."
+    }
+  ],
+  "src/components/MoodTrendsAnalysis.tsx": [
+    {
+      "pos": "59,17",
+      "code": "TS2304",
+      "msg": "Cannot find name 'HeartBroken'."
+    }
+  ],
+  "src/components/MultilingualVoiceSupport.tsx": [
+    {
+      "pos": "4,164",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Languages'."
+    },
+    {
+      "pos": "4,303",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Languages'."
+    },
+    {
+      "pos": "282,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Translate'."
+    }
+  ],
+  "src/components/NoiseCancellation.tsx": [
+    {
+      "pos": "4,92",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Zap'."
+    },
+    {
+      "pos": "4,164",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Zap'."
+    }
+  ],
+  "src/components/OfflineMode.tsx": [
+    {
+      "pos": "4,46",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'RefreshCw'."
+    },
+    {
+      "pos": "4,167",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'RefreshCw'."
+    },
+    {
+      "pos": "199,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Sync'."
+    }
+  ],
+  "src/components/OrderPhotoBook.tsx": [
+    {
+      "pos": "178,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/OutlookCalendarSync.tsx": [
+    {
+      "pos": "4,20",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'RefreshCw'."
+    },
+    {
+      "pos": "4,76",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'RefreshCw'."
+    },
+    {
+      "pos": "208,20",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Sync'."
+    }
+  ],
+  "src/components/Photo360Support.tsx": [
+    {
+      "pos": "365,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Star'."
+    },
+    {
+      "pos": "412,24",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Star'."
+    },
+    {
+      "pos": "419,24",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Star'."
+    }
+  ],
+  "src/components/PhotoOrganization.tsx": [
+    {
+      "pos": "282,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Duplicate'."
+    },
+    {
+      "pos": "448,20",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Duplicate'."
+    }
+  ],
+  "src/components/PrintMapPoster.tsx": [
+    {
+      "pos": "198,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/PrintMemoryCards.tsx": [
+    {
+      "pos": "4,478",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'CreditCard'."
+    },
+    {
+      "pos": "4,490",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'CreditCard'."
+    },
+    {
+      "pos": "168,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Card'."
+    },
+    {
+      "pos": "186,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    },
+    {
+      "pos": "355,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Card'."
+    }
+  ],
+  "src/components/PrintTimelinePoster.tsx": [
+    {
+      "pos": "200,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/PushNotificationsDeepLinks.tsx": [
+    {
+      "pos": "301,65",
+      "code": "TS2304",
+      "msg": "Cannot find name 'id'."
+    }
+  ],
+  "src/components/QRCodeMemoryCards.tsx": [
+    {
+      "pos": "4,461",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'CreditCard'."
+    },
+    {
+      "pos": "4,473",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'CreditCard'."
+    },
+    {
+      "pos": "184,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Card'."
+    },
+    {
+      "pos": "202,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'CopyRight'."
+    }
+  ],
+  "src/components/ReferralRewards.tsx": [
+    {
+      "pos": "4,40",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Users'."
+    },
+    {
+      "pos": "4,124",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Users'."
+    },
+    {
+      "pos": "198,16",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Twitter'."
+    },
+    {
+      "pos": "206,16",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Facebook'."
+    }
+  ],
+  "src/components/RegionalLeaderboard.tsx": [
+    {
+      "pos": "54,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'."
+    },
+    {
+      "pos": "66,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'."
+    },
+    {
+      "pos": "78,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'."
+    },
+    {
+      "pos": "90,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'."
+    },
+    {
+      "pos": "102,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'."
+    },
+    {
+      "pos": "114,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'."
+    },
+    {
+      "pos": "126,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'."
+    },
+    {
+      "pos": "138,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'."
+    },
+    {
+      "pos": "150,5",
+      "code": "TS2741",
+      "msg": "Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'."
+    }
+  ],
+  "src/components/RemoveRestoreContent.tsx": [
+    {
+      "pos": "50,23",
+      "code": "TS2345",
+      "msg": "Argument of type '(ContentItem | { status: \"removed\"; removedAt: string; removedBy: string; reason: string; id: string; type: string; content: string; author: string; date: string; })[]' is not assignable to parameter of type 'SetStateAction<ContentItem[]>'."
+    },
+    {
+      "pos": "58,23",
+      "code": "TS2345",
+      "msg": "Argument of type '(ContentItem | { status: \"restored\"; id: string; type: string; content: string; author: string; removedAt: string; removedBy: string; reason: string; date: string; })[]' is not assignable to parameter of type 'SetStateAction<ContentItem[]>'."
+    },
+    {
+      "pos": "117,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'X'."
+    }
+  ],
+  "src/components/ResourceUsage.tsx": [
+    {
+      "pos": "279,72",
+      "code": "TS2532",
+      "msg": "Object is possibly 'undefined'."
+    }
+  ],
+  "src/components/SandboxEnvironment.tsx": [
+    {
+      "pos": "193,21",
+      "code": "TS2322",
+      "msg": "Type 'string | number | boolean' is not assignable to type 'string | number | readonly string[] | undefined'."
+    }
+  ],
+  "src/components/SharedAlbums.tsx": [
+    {
+      "pos": "77,27",
+      "code": "TS2345",
+      "msg": "Argument of type '{ name: string; description: string; visibility: SharedAlbum[\"visibility\"]; }' is not assignable to parameter of type 'Omit<SharedAlbum, \"id\" | \"createdAt\" | \"lastModified\">'."
+    }
+  ],
+  "src/components/SharedCalendars.tsx": [
+    {
+      "pos": "108,17",
+      "code": "TS2304",
+      "msg": "Cannot find name 'BirthdayCake'."
+    }
+  ],
+  "src/components/ShareMemory.tsx": [
+    {
+      "pos": "138,20",
+      "code": "TS2774",
+      "msg": "This condition will always return true since this function is always defined. Did you mean to call it instead?"
+    },
+    {
+      "pos": "153,22",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Facebook'."
+    },
+    {
+      "pos": "162,22",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Twitter'."
+    }
+  ],
+  "src/components/SocialMediaAutoPost.tsx": [
+    {
+      "pos": "43,11",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Facebook'."
+    },
+    {
+      "pos": "51,11",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Twitter'."
+    },
+    {
+      "pos": "59,11",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Instagram'."
+    },
+    {
+      "pos": "67,11",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Linkedin'."
+    }
+  ],
+  "src/components/SocialShare.tsx": [
+    {
+      "pos": "53,44",
+      "code": "TS2774",
+      "msg": "This condition will always return true since this function is always defined. Did you mean to call it instead?"
+    }
+  ],
+  "src/components/SpotifySongTagging.tsx": [
+    {
+      "pos": "4,10",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Music'."
+    },
+    {
+      "pos": "4,266",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Music'."
+    },
+    {
+      "pos": "123,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Spotify'."
+    },
+    {
+      "pos": "198,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Spotify'."
+    }
+  ],
+  "src/components/StickyKeysSupport.tsx": [
+    {
+      "pos": "205,15",
+      "code": "TS17001",
+      "msg": "JSX elements cannot have multiple attributes with the same name."
+    }
+  ],
+  "src/components/StorySharing.tsx": [
+    {
+      "pos": "154,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Story'."
+    },
+    {
+      "pos": "229,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Story'."
+    },
+    {
+      "pos": "332,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Story'."
+    }
+  ],
+  "src/components/StudentDiscount.tsx": [
+    {
+      "pos": "218,44",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Check'."
+    }
+  ],
+  "src/components/TimeDistribution.tsx": [
+    {
+      "pos": "4,73",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Moon'."
+    },
+    {
+      "pos": "4,125",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Moon'."
+    },
+    {
+      "pos": "68,13",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Night'."
+    }
+  ],
+  "src/components/Video360Memories.tsx": [
+    {
+      "pos": "431,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Star'."
+    },
+    {
+      "pos": "478,24",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Star'."
+    },
+    {
+      "pos": "488,24",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Star'."
+    }
+  ],
+  "src/components/VideoStabilization.tsx": [
+    {
+      "pos": "98,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Shake'."
+    },
+    {
+      "pos": "167,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Shake'."
+    },
+    {
+      "pos": "240,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Shake'."
+    },
+    {
+      "pos": "304,22",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Shake'."
+    }
+  ],
+  "src/components/VoiceNavigation.tsx": [
+    {
+      "pos": "290,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Sparkles'."
+    },
+    {
+      "pos": "314,20",
+      "code": "TS2304",
+      "msg": "Cannot find name 'StopCircle'."
+    }
+  ],
+  "src/components/VoiceSearch.tsx": [
+    {
+      "pos": "257,20",
+      "code": "TS2304",
+      "msg": "Cannot find name 'StopCircle'."
+    }
+  ],
+  "src/components/VRMemoryGallery.tsx": [
+    {
+      "pos": "4,219",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Glasses'."
+    },
+    {
+      "pos": "4,228",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Glasses'."
+    },
+    {
+      "pos": "119,15",
+      "code": "TS2322",
+      "msg": "Type 'VRMemory[]' is not assignable to type 'ReactNode'."
+    },
+    {
+      "pos": "209,13",
+      "code": "TS2322",
+      "msg": "Type 'VRMemory[]' is not assignable to type 'ReactNode'."
+    },
+    {
+      "pos": "214,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Vr'."
+    },
+    {
+      "pos": "247,18",
+      "code": "TS2304",
+      "msg": "Cannot find name 'ExitVR'."
+    }
+  ],
+  "src/components/WearOSSupport.tsx": [
+    {
+      "pos": "4,47",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Smartphone'."
+    },
+    {
+      "pos": "4,123",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Smartphone'."
+    },
+    {
+      "pos": "109,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Android'."
+    }
+  ],
+  "src/components/WebXRIntegration.tsx": [
+    {
+      "pos": "4,199",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Glasses'."
+    },
+    {
+      "pos": "4,208",
+      "code": "TS2300",
+      "msg": "Duplicate identifier 'Glasses'."
+    },
+    {
+      "pos": "138,17",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Vr'."
+    },
+    {
+      "pos": "159,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Vr'."
+    },
+    {
+      "pos": "246,14",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Vr'."
+    },
+    {
+      "pos": "401,22",
+      "code": "TS2304",
+      "msg": "Cannot find name 'Vr'."
+    }
+  ],
+  "src/components/YearOverYearComparison.tsx": [
+    {
+      "pos": "80,7",
+      "code": "TS2322",
+      "msg": "Type '{ change: number; changePercent: number; trend: string; metric: string; year1: number; year2: number; }' is not assignable to type 'ComparisonMetric'."
+    },
+    {
+      "pos": "86,7",
+      "code": "TS2322",
+      "msg": "Type '{ change: number; changePercent: number; trend: string; metric: string; year1: number; year2: number; }' is not assignable to type 'ComparisonMetric'."
+    },
+    {
+      "pos": "92,7",
+      "code": "TS2322",
+      "msg": "Type '{ change: number; changePercent: number; trend: string; metric: string; year1: number; year2: number; }' is not assignable to type 'ComparisonMetric'."
+    }
+  ]
+}

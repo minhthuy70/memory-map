@@ -70,7 +70,7 @@ const DEFAULT_LOCATIONS: LocationData[] = [
     lat: 10.0452,
     lng: 105.7469,
     memoryCount: 35,
-    moodDistribution: { happy: 20, sad: 8, neutral: 10, excited: 15, narcissistic: 8 },
+    moodDistribution: { happy: 20, sad: 8, neutral: 10, excited: 15, nostalgic: 8 },
     averageRating: 4.1,
     growthRate: -5,
     trend: 'down',

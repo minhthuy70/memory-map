@@ -53,6 +53,7 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
     },
     {
       id: '2',
+      rank: 2,
       username: 'NYC_Memories',
       avatar: 'NY',
       xp: 92000,
@@ -65,6 +66,7 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
     },
     {
       id: '3',
+      rank: 3,
       username: 'LondonLife',
       avatar: 'LL',
       xp: 87000,
@@ -77,6 +79,7 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
     },
     {
       id: '4',
+      rank: 4,
       username: 'SeoulStories',
       avatar: 'SS',
       xp: 82000,
@@ -89,6 +92,7 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
     },
     {
       id: '5',
+      rank: 5,
       username: 'ParisMoments',
       avatar: 'PM',
       xp: 78000,
@@ -101,6 +105,7 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
     },
     {
       id: '6',
+      rank: 6,
       username: 'SydneyScenes',
       avatar: 'SY',
       xp: 74000,
@@ -113,6 +118,7 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
     },
     {
       id: '7',
+      rank: 7,
       username: 'TorontoTales',
       avatar: 'TT',
       xp: 70000,
@@ -125,6 +131,7 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
     },
     {
       id: '8',
+      rank: 8,
       username: 'BerlinBooks',
       avatar: 'BB',
       xp: 66000,
@@ -137,6 +144,7 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
     },
     {
       id: '9',
+      rank: 9,
       username: 'SingaporeSnapshots',
       avatar: 'SN',
       xp: 62000,
@@ -149,6 +157,7 @@ export default function RegionalLeaderboard({ onCancel }: RegionalLeaderboardPro
     },
     {
       id: '10',
+      rank: 10,
       username: 'BangkokBeats',
       avatar: 'BB',
       xp: 58000,

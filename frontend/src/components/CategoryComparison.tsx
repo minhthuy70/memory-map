@@ -29,7 +29,7 @@ const DEFAULT_CATEGORIES: CategoryData[] = [
   {
     category: 'Career',
     count: 85,
-    moodDistribution: { happy: 35, sad: 15, neutral: 25, excited: 20, narcissistic: 10 },
+    moodDistribution: { happy: 35, sad: 15, neutral: 25, excited: 20, nostalgic: 10 },
     averageRating: 4.2,
     growthRate: 8,
     trend: 'up',
@@ -45,7 +45,7 @@ const DEFAULT_CATEGORIES: CategoryData[] = [
   {
     category: 'Education',
     count: 45,
-    moodDistribution: { happy: 25, sad: 12, neutral: 18, excited: 15, narcissistic: 8 },
+    moodDistribution: { happy: 25, sad: 12, neutral: 18, excited: 15, nostalgic: 8 },
     averageRating: 4.0,
     growthRate: 5,
     trend: 'stable',
@@ -53,7 +53,7 @@ const DEFAULT_CATEGORIES: CategoryData[] = [
   {
     category: 'Social',
     count: 35,
-    moodDistribution: { happy: 20, sad: 8, neutral: 10, excited: 18, narcissistic: 12 },
+    moodDistribution: { happy: 20, sad: 8, neutral: 10, excited: 18, nostalgic: 12 },
     averageRating: 4.3,
     growthRate: -5,
     trend: 'down',

@@ -79,7 +79,7 @@ export default function MapDrawingTools({
           setCurrentPoints([[lat, lng]]);
         } else {
           const start = currentPoints[0];
-          const end = [lat, lng];
+          const end: [number, number] = [lat, lng];
           const rectanglePoints: [number, number][] = [
             start,
             [end[0], start[1]],

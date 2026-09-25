@@ -71,7 +71,7 @@ const DEFAULT_MONTH_DATA: MonthData[] = [
     year: 2023,
     month: 'Jun',
     memoryCount: 28,
-    moodDistribution: { happy: 16, sad: 4, neutral: 8, excited: 10, narcissitic: 4 },
+    moodDistribution: { happy: 16, sad: 4, neutral: 8, excited: 10, nostalgic: 4 },
     topLocations: ['Hanoi', 'Can Tho'],
     averageRating: 4.3,
   },
@@ -95,7 +95,7 @@ export default function MonthOverMonthComparison({ onCancel, onCompareMonths }: 
     return {
       change,
       changePercent,
-      trend: change > 0 ? 'up' : change < 0 ? 'down' : 'stable',
+      trend: (change > 0 ? 'up' : change < 0 ? 'down' : 'stable') as 'up' | 'down' | 'stable',
     };
   };
 

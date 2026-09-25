@@ -69,7 +69,7 @@ export default function YearOverYearComparison({ onCancel, onCompareYears }: Yea
     return {
       change,
       changePercent,
-      trend: change > 0 ? 'up' : change < 0 ? 'down' : 'stable',
+      trend: (change > 0 ? 'up' : change < 0 ? 'down' : 'stable') as 'up' | 'down' | 'stable',
     };
   };
 

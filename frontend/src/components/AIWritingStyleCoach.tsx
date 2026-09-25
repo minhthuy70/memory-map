@@ -11,7 +11,7 @@ interface StyleSuggestion {
   id: string;
   originalText: string;
   suggestedText: string;
-  style: 'formal' | 'casual' | 'academic' | 'creative' | 'professional';
+  style: 'formal' | 'casual' | 'academic' | 'creative' | 'professional' | 'concise';
   reason: string;
   readabilityScore: number;
   isApplied: boolean;

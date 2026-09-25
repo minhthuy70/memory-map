@@ -1,0 +1,300 @@
+﻿src/components/Accelerometer.tsx(196,14): error TS2552: Cannot find name 'Wave'. Did you mean 'Waves'?
+src/components/AddMusicToVideo.tsx(284,14): error TS2304: Cannot find name 'Waveform'.
+src/components/AIWritingStyleCoach.tsx(40,97): error TS2322: Type '"concise"' is not assignable to type '"formal" | "casual" | "professional" | "creative" | "academic"'.
+src/components/AndroidIntentSupport.tsx(84,14): error TS2304: Cannot find name 'Android'.
+src/components/AnnualDiscount.tsx(138,44): error TS2304: Cannot find name 'Check'.
+src/components/AppleCalendarSync.tsx(4,20): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/AppleCalendarSync.tsx(4,76): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/AppleCalendarSync.tsx(208,20): error TS2304: Cannot find name 'Sync'.
+src/components/ARFaceFilters.tsx(83,7): error TS2322: Type 'string' is not assignable to type '"color" | "mask" | "accessory" | "effect"'.
+src/components/ARFaceFilters.tsx(124,14): error TS2304: Cannot find name 'FaceMask'.
+src/components/ARFaceFilters.tsx(199,14): error TS2304: Cannot find name 'FaceMask'.
+src/components/ARFaceFilters.tsx(338,20): error TS2304: Cannot find name 'FaceMask'.
+src/components/ARLocationPins.tsx(126,15): error TS2322: Type 'ARPin[]' is not assignable to type 'ReactNode'.
+  Type 'ARPin[]' is not assignable to type 'Iterable<ReactNode>'.
+    The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+      Type 'IteratorResult<ARPin, undefined>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+        Type 'IteratorYieldResult<ARPin>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<ARPin>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+            Type 'ARPin' is not assignable to type 'ReactNode'.
+src/components/ARLocationPins.tsx(226,13): error TS2322: Type 'ARPin[]' is not assignable to type 'ReactNode'.
+  Type 'ARPin[]' is not assignable to type 'Iterable<ReactNode>'.
+    The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+      Type 'IteratorResult<ARPin, undefined>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+        Type 'IteratorYieldResult<ARPin>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<ARPin>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+            Type 'ARPin' is not assignable to type 'ReactNode'.
+src/components/ARMemoryCloud.tsx(4,87): error TS2300: Duplicate identifier 'Zap'.
+src/components/ARMemoryCloud.tsx(4,214): error TS2300: Duplicate identifier 'Zap'.
+src/components/ARMemoryOverlay.tsx(109,15): error TS2322: Type 'ARMemory[]' is not assignable to type 'ReactNode'.
+  Type 'ARMemory[]' is not assignable to type 'Iterable<ReactNode>'.
+    The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+      Type 'IteratorResult<ARMemory, undefined>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+        Type 'IteratorYieldResult<ARMemory>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<ARMemory>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+            Type 'ARMemory' is not assignable to type 'ReactNode'.
+src/components/ARMemoryOverlay.tsx(202,13): error TS2322: Type 'ARMemory[]' is not assignable to type 'ReactNode'.
+  Type 'ARMemory[]' is not assignable to type 'Iterable<ReactNode>'.
+    The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+      Type 'IteratorResult<ARMemory, undefined>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+        Type 'IteratorYieldResult<ARMemory>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<ARMemory>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+            Type 'ARMemory' is not assignable to type 'ReactNode'.
+src/components/BiometricAuthEnhanced.tsx(195,17): error TS2304: Cannot find name 'FaceSmile'.
+src/components/BrowserPushNotifications.tsx(376,18): error TS2304: Cannot find name 'Save'.
+src/components/CategoryComparison.tsx(32,71): error TS2353: Object literal may only specify known properties, and 'narcissistic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'.
+src/components/CategoryComparison.tsx(48,71): error TS2353: Object literal may only specify known properties, and 'narcissistic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'.
+src/components/CategoryComparison.tsx(56,70): error TS2353: Object literal may only specify known properties, and 'narcissistic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'.
+src/components/CategoryLeaderboard.tsx(50,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "travel"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(61,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "travel"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(72,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "photos"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(83,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "photos"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(94,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "photos"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(105,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "social"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(116,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "social"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(127,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "social"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(138,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "creativity"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(149,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "creativity"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(160,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "creativity"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(171,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "consistency"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(182,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "consistency"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CategoryLeaderboard.tsx(193,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; score: number; category: "consistency"; metric: string; unit: string; change: number; badge: string; }' but required in type 'CategoryEntry'.
+src/components/CDNIntegration.tsx(80,9): error TS2353: Object literal may only specify known properties, and 'lastSync' does not exist in type 'SetStateAction<CDNStats>'.
+src/components/CodeSamplesRepository.tsx(4,10): error TS2305: Module '"lucide-react"' has no exported member 'Github'.
+src/components/CodeSamplesRepository.tsx(4,145): error TS2305: Module '"lucide-react"' has no exported member 'Fork'.
+src/components/CustomPostcardPrint.tsx(197,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/DyslexiaFriendlyFont.tsx(103,14): error TS2304: Cannot find name 'Type'.
+src/components/EmailTemplateManagement.tsx(369,27): error TS2353: Object literal may only specify known properties, and 'variable' does not exist in type 'ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<...>'.
+src/components/EmailTemplateManagement.tsx(369,27): error TS18004: No value exists in scope for the shorthand property 'variable'. Either declare one or provide an initializer.
+src/components/EnterprisePlan.tsx(102,28): error TS2304: Cannot find name 'Check'.
+src/components/EnterprisePlan.tsx(128,45): error TS2304: Cannot find name 'Check'.
+src/components/FaceRecognition.tsx(273,14): error TS2304: Cannot find name 'FaceSmile'.
+src/components/FaceRecognition.tsx(459,26): error TS2304: Cannot find name 'FaceSmile'.
+src/components/FamilyHistoryDocumentation.tsx(4,47): error TS2305: Module '"lucide-react"' has no exported member 'FamilyTree'.
+src/components/FamilyPlan.tsx(149,28): error TS2304: Cannot find name 'Check'.
+src/components/FamilyPlan.tsx(222,45): error TS2304: Cannot find name 'Check'.
+src/components/FeatureTour.tsx(4,8): error TS2613: Module '"D:/DUANCANHAN/memory-map/frontend/node_modules/react-joyride/dist/index"' has no default export. Did you mean to use 'import { Joyride } from "D:/DUANCANHAN/memory-map/frontend/node_modules/react-joyride/dist/index"' instead?
+src/components/FeatureTour.tsx(4,19): error TS2305: Module '"react-joyride"' has no exported member 'CallBackProps'.
+src/components/FeatureTour.tsx(5,30): error TS2307: Cannot find module '@/lib/auth-store' or its corresponding type declarations.
+src/components/FeatureTour.tsx(11,5): error TS2353: Object literal may only specify known properties, and 'disableBeacon' does not exist in type '{ arrowComponent?: ElementType<ArrowRenderProps> | undefined; beaconComponent?: ElementType<BeaconRenderProps> | undefined; ... 46 more ...; title?: ReactNode; }'.
+src/components/FriendsLeaderboard.tsx(45,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: "online"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'.
+src/components/FriendsLeaderboard.tsx(57,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: "away"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'.
+src/components/FriendsLeaderboard.tsx(69,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: "offline"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'.
+src/components/FriendsLeaderboard.tsx(81,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: "offline"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'.
+src/components/FriendsLeaderboard.tsx(93,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; status: "online"; lastActive: string; change: number; isFriend: true; friendshipLevel: number; }' but required in type 'FriendEntry'.
+src/components/GlobalLeaderboard.tsx(46,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'.
+src/components/GlobalLeaderboard.tsx(58,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'.
+src/components/GlobalLeaderboard.tsx(70,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'.
+src/components/GlobalLeaderboard.tsx(82,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'.
+src/components/GlobalLeaderboard.tsx(94,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'.
+src/components/GlobalLeaderboard.tsx(106,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'.
+src/components/GlobalLeaderboard.tsx(118,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'.
+src/components/GlobalLeaderboard.tsx(130,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'.
+src/components/GlobalLeaderboard.tsx(142,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; change: number; badges: string[]; streak: number; }' but required in type 'LeaderboardEntry'.
+src/components/GoogleCalendarSync.tsx(4,20): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/GoogleCalendarSync.tsx(4,76): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/GoogleCalendarSync.tsx(187,18): error TS2304: Cannot find name 'Sync'.
+src/components/GratitudeJournalIntegration.tsx(248,18): error TS2304: Cannot find name 'Clock'.
+src/components/GratitudeJournalIntegration.tsx(326,22): error TS2304: Cannot find name 'Edit'.
+src/components/HiddenAchievements.tsx(141,31): error TS2304: Cannot find name 'Mystery'.
+src/components/HiddenAchievements.tsx(157,24): error TS2304: Cannot find name 'Mystery'.
+src/components/HiddenAchievements.tsx(252,87): error TS2304: Cannot find name 'Mystery'.
+src/components/IconPacks.tsx(102,14): error TS2304: Cannot find name 'Icons'.
+src/components/IconPacks.tsx(187,22): error TS2304: Cannot find name 'Icons'.
+src/components/ImpersonateUser.tsx(77,14): error TS2304: Cannot find name 'UserSwitch'.
+src/components/ImpersonateUser.tsx(124,18): error TS2304: Cannot find name 'Stop'.
+src/components/ImportFromApplePhotos.tsx(273,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromDayOne.tsx(304,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromEvernote.tsx(4,1337): error TS2305: Module '"lucide-react"' has no exported member 'Elephant'.
+src/components/ImportFromFacebook.tsx(273,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromGooglePhotos.tsx(228,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromGPXTrack.tsx(141,26): error TS2769: No overload matches this call.
+  Overload 1 of 4, '(value: string | number | Date): Date', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string | number | Date'.
+      Type 'undefined' is not assignable to type 'string | number | Date'.
+  Overload 2 of 4, '(value: string | number): Date', gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string | number'.
+      Type 'undefined' is not assignable to type 'string | number'.
+src/components/ImportFromGPXTrack.tsx(150,22): error TS2532: Object is possibly 'undefined'.
+src/components/ImportFromGPXTrack.tsx(150,38): error TS2532: Object is possibly 'undefined'.
+src/components/ImportFromInstagram.tsx(270,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ImportFromNotion.tsx(4,287): error TS2300: Duplicate identifier 'Video'.
+src/components/ImportFromNotion.tsx(4,308): error TS2300: Duplicate identifier 'Video'.
+src/components/ImportFromNotion.tsx(184,14): error TS2304: Cannot find name 'Notion'.
+src/components/LanguageAutoDetection.tsx(50,9): error TS4104: The type 'readonly string[]' is 'readonly' and cannot be assigned to the mutable type 'string[]'.
+src/components/LevelProgression.tsx(118,30): error TS2304: Cannot find name 'Trophy'.
+src/components/LevelProgression.tsx(256,49): error TS2345: Argument of type 'Level' is not assignable to parameter of type 'SetStateAction<number | null>'.
+src/components/LevelProgression.tsx(307,72): error TS2339: Property 'color' does not exist on type 'number'.
+src/components/LevelProgression.tsx(307,111): error TS2339: Property 'level' does not exist on type 'number'.
+src/components/LevelProgression.tsx(308,47): error TS2339: Property 'icon' does not exist on type 'number'.
+src/components/LevelProgression.tsx(310,108): error TS2339: Property 'level' does not exist on type 'number'.
+src/components/LevelProgression.tsx(311,95): error TS2339: Property 'name' does not exist on type 'number'.
+src/components/LevelProgression.tsx(312,90): error TS2339: Property 'xpRequired' does not exist on type 'number'.
+src/components/LevelProgression.tsx(317,34): error TS2339: Property 'benefits' does not exist on type 'number'.
+src/components/LevelProgression.tsx(317,48): error TS7006: Parameter 'benefit' implicitly has an 'any' type.
+src/components/LevelProgression.tsx(317,57): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/components/LevelProgression.tsx(325,30): error TS2339: Property 'level' does not exist on type 'number'.
+src/components/LevelProgression.tsx(328,36): error TS2339: Property 'xpRequired' does not exist on type 'number'.
+src/components/LevelProgression.tsx(328,49): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/components/LocationBasedNotifications.tsx(218,18): error TS2304: Cannot find name 'BellOff'.
+src/components/LocationComparison.tsx(73,70): error TS2353: Object literal may only specify known properties, and 'narcissistic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'.
+src/components/LocationTriggeredAutoCapture.tsx(4,106): error TS2305: Module '"lucide-react"' has no exported member 'Work'.
+src/components/Map.tsx(6,30): error TS7016: Could not find a declaration file for module 'react-leaflet-heatmap-layer'. 'D:/DUANCANHAN/memory-map/frontend/node_modules/react-leaflet-heatmap-layer/lib/HeatmapLayer.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/react-leaflet-heatmap-layer` if it exists or add a new declaration (.d.ts) file containing `declare module 'react-leaflet-heatmap-layer';`
+src/components/MapDrawingTools.tsx(86,13): error TS2322: Type 'number[]' is not assignable to type '[number, number]'.
+  Target requires 2 element(s) but source may have fewer.
+src/components/MemoryCertificate.tsx(128,14): error TS2304: Cannot find name 'Certificate'.
+src/components/MemoryCertificate.tsx(197,14): error TS2304: Cannot find name 'Certificate'.
+src/components/MicrophoneAccess.tsx(330,20): error TS2304: Cannot find name 'Wave'.
+src/components/MonthlyLeaderboard.tsx(43,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(56,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(69,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(82,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(95,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(108,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(121,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(134,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(147,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(160,7): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(176,5): error TS2322: Type 'number' is not assignable to type 'string'.
+src/components/MonthlyLeaderboard.tsx(185,26): error TS2367: This comparison appears to be unintentional because the types 'string' and 'number' have no overlap.
+src/components/MonthOverMonthComparison.tsx(74,69): error TS2353: Object literal may only specify known properties, and 'narcissitic' does not exist in type '{ happy: number; sad: number; neutral: number; excited: number; nostalgic: number; }'.
+src/components/MonthOverMonthComparison.tsx(106,7): error TS2322: Type '{ change: number; changePercent: number; trend: string; metric: string; month1: number; month2: number; }' is not assignable to type 'ComparisonMetric'.
+  Types of property 'trend' are incompatible.
+    Type 'string' is not assignable to type '"down" | "stable" | "up"'.
+src/components/MonthOverMonthComparison.tsx(112,7): error TS2322: Type '{ change: number; changePercent: number; trend: string; metric: string; month1: number; month2: number; }' is not assignable to type 'ComparisonMetric'.
+  Types of property 'trend' are incompatible.
+    Type 'string' is not assignable to type '"down" | "stable" | "up"'.
+src/components/MonthOverMonthComparison.tsx(118,7): error TS2322: Type '{ change: number; changePercent: number; trend: string; metric: string; month1: number; month2: number; }' is not assignable to type 'ComparisonMetric'.
+  Types of property 'trend' are incompatible.
+    Type 'string' is not assignable to type '"down" | "stable" | "up"'.
+src/components/MoodComparison.tsx(66,17): error TS2304: Cannot find name 'HeartBroken'.
+src/components/MoodTrackingGraph.tsx(265,22): error TS2304: Cannot find name 'Edit'.
+src/components/MoodTrendsAnalysis.tsx(59,17): error TS2304: Cannot find name 'HeartBroken'.
+src/components/MultilingualVoiceSupport.tsx(4,164): error TS2300: Duplicate identifier 'Languages'.
+src/components/MultilingualVoiceSupport.tsx(4,303): error TS2300: Duplicate identifier 'Languages'.
+src/components/MultilingualVoiceSupport.tsx(282,18): error TS2304: Cannot find name 'Translate'.
+src/components/NoiseCancellation.tsx(4,92): error TS2300: Duplicate identifier 'Zap'.
+src/components/NoiseCancellation.tsx(4,164): error TS2300: Duplicate identifier 'Zap'.
+src/components/OfflineMode.tsx(4,46): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/OfflineMode.tsx(4,167): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/OfflineMode.tsx(199,14): error TS2304: Cannot find name 'Sync'.
+src/components/OrderPhotoBook.tsx(178,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/OutlookCalendarSync.tsx(4,20): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/OutlookCalendarSync.tsx(4,76): error TS2300: Duplicate identifier 'RefreshCw'.
+src/components/OutlookCalendarSync.tsx(208,20): error TS2304: Cannot find name 'Sync'.
+src/components/Photo360Support.tsx(365,18): error TS2304: Cannot find name 'Star'.
+src/components/Photo360Support.tsx(412,24): error TS2304: Cannot find name 'Star'.
+src/components/Photo360Support.tsx(419,24): error TS2304: Cannot find name 'Star'.
+src/components/PhotoOrganization.tsx(282,14): error TS2304: Cannot find name 'Duplicate'.
+src/components/PhotoOrganization.tsx(448,20): error TS2304: Cannot find name 'Duplicate'.
+src/components/PrintMapPoster.tsx(198,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/PrintMemoryCards.tsx(4,478): error TS2300: Duplicate identifier 'CreditCard'.
+src/components/PrintMemoryCards.tsx(4,490): error TS2300: Duplicate identifier 'CreditCard'.
+src/components/PrintMemoryCards.tsx(168,14): error TS2304: Cannot find name 'Card'.
+src/components/PrintMemoryCards.tsx(186,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/PrintMemoryCards.tsx(355,18): error TS2304: Cannot find name 'Card'.
+src/components/PrintTimelinePoster.tsx(200,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/PushNotificationsDeepLinks.tsx(301,65): error TS2304: Cannot find name 'id'.
+src/components/QRCodeMemoryCards.tsx(4,461): error TS2300: Duplicate identifier 'CreditCard'.
+src/components/QRCodeMemoryCards.tsx(4,473): error TS2300: Duplicate identifier 'CreditCard'.
+src/components/QRCodeMemoryCards.tsx(184,14): error TS2304: Cannot find name 'Card'.
+src/components/QRCodeMemoryCards.tsx(202,14): error TS2304: Cannot find name 'CopyRight'.
+src/components/ReferralRewards.tsx(4,40): error TS2300: Duplicate identifier 'Users'.
+src/components/ReferralRewards.tsx(4,124): error TS2300: Duplicate identifier 'Users'.
+src/components/ReferralRewards.tsx(198,16): error TS2304: Cannot find name 'Twitter'.
+src/components/ReferralRewards.tsx(206,16): error TS2304: Cannot find name 'Facebook'.
+src/components/RegionalLeaderboard.tsx(54,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'.
+src/components/RegionalLeaderboard.tsx(66,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'.
+src/components/RegionalLeaderboard.tsx(78,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'.
+src/components/RegionalLeaderboard.tsx(90,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'.
+src/components/RegionalLeaderboard.tsx(102,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'.
+src/components/RegionalLeaderboard.tsx(114,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'.
+src/components/RegionalLeaderboard.tsx(126,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'.
+src/components/RegionalLeaderboard.tsx(138,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'.
+src/components/RegionalLeaderboard.tsx(150,5): error TS2741: Property 'rank' is missing in type '{ id: string; username: string; avatar: string; xp: number; level: number; country: string; region: string; city: string; change: number; score: number; }' but required in type 'RegionalEntry'.
+src/components/RemoveRestoreContent.tsx(50,23): error TS2345: Argument of type '(ContentItem | { status: "removed"; removedAt: string; removedBy: string; reason: string; id: string; type: string; content: string; author: string; date: string; })[]' is not assignable to parameter of type 'SetStateAction<ContentItem[]>'.
+  Type '(ContentItem | { status: "removed"; removedAt: string; removedBy: string; reason: string; id: string; type: string; content: string; author: string; date: string; })[]' is not assignable to type 'ContentItem[]'.
+    Type 'ContentItem | { status: "removed"; removedAt: string; removedBy: string; reason: string; id: string; type: string; content: string; author: string; date: string; }' is not assignable to type 'ContentItem'.
+      Type '{ status: "removed"; removedAt: string; removedBy: string; reason: string; id: string; type: string; content: string; author: string; date: string; }' is not assignable to type 'ContentItem'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type '"memory" | "video" | "comment" | "photo"'.
+src/components/RemoveRestoreContent.tsx(58,23): error TS2345: Argument of type '(ContentItem | { status: "restored"; id: string; type: string; content: string; author: string; removedAt: string; removedBy: string; reason: string; date: string; })[]' is not assignable to parameter of type 'SetStateAction<ContentItem[]>'.
+  Type '(ContentItem | { status: "restored"; id: string; type: string; content: string; author: string; removedAt: string; removedBy: string; reason: string; date: string; })[]' is not assignable to type 'ContentItem[]'.
+    Type 'ContentItem | { status: "restored"; id: string; type: string; content: string; author: string; removedAt: string; removedBy: string; reason: string; date: string; }' is not assignable to type 'ContentItem'.
+      Type '{ status: "restored"; id: string; type: string; content: string; author: string; removedAt: string; removedBy: string; reason: string; date: string; }' is not assignable to type 'ContentItem'.
+        Types of property 'type' are incompatible.
+          Type 'string' is not assignable to type '"memory" | "video" | "comment" | "photo"'.
+src/components/RemoveRestoreContent.tsx(117,14): error TS2304: Cannot find name 'X'.
+src/components/ResourceUsage.tsx(279,72): error TS2532: Object is possibly 'undefined'.
+src/components/SandboxEnvironment.tsx(193,21): error TS2322: Type 'string | number | boolean' is not assignable to type 'string | number | readonly string[] | undefined'.
+  Type 'false' is not assignable to type 'string | number | readonly string[] | undefined'.
+src/components/SharedAlbums.tsx(77,27): error TS2345: Argument of type '{ name: string; description: string; visibility: SharedAlbum["visibility"]; }' is not assignable to parameter of type 'Omit<SharedAlbum, "id" | "createdAt" | "lastModified">'.
+  Type '{ name: string; description: string; visibility: "link" | "public" | "private"; }' is missing the following properties from type 'Omit<SharedAlbum, "id" | "createdAt" | "lastModified">': memories, members
+src/components/SharedCalendars.tsx(108,17): error TS2304: Cannot find name 'BirthdayCake'.
+src/components/ShareMemory.tsx(138,20): error TS2774: This condition will always return true since this function is always defined. Did you mean to call it instead?
+src/components/ShareMemory.tsx(153,22): error TS2304: Cannot find name 'Facebook'.
+src/components/ShareMemory.tsx(162,22): error TS2304: Cannot find name 'Twitter'.
+src/components/SocialMediaAutoPost.tsx(43,11): error TS2304: Cannot find name 'Facebook'.
+src/components/SocialMediaAutoPost.tsx(51,11): error TS2304: Cannot find name 'Twitter'.
+src/components/SocialMediaAutoPost.tsx(59,11): error TS2304: Cannot find name 'Instagram'.
+src/components/SocialMediaAutoPost.tsx(67,11): error TS2304: Cannot find name 'Linkedin'.
+src/components/SocialShare.tsx(53,44): error TS2774: This condition will always return true since this function is always defined. Did you mean to call it instead?
+src/components/SpotifySongTagging.tsx(4,10): error TS2300: Duplicate identifier 'Music'.
+src/components/SpotifySongTagging.tsx(4,266): error TS2300: Duplicate identifier 'Music'.
+src/components/SpotifySongTagging.tsx(123,14): error TS2304: Cannot find name 'Spotify'.
+src/components/SpotifySongTagging.tsx(198,14): error TS2304: Cannot find name 'Spotify'.
+src/components/StickyKeysSupport.tsx(205,15): error TS17001: JSX elements cannot have multiple attributes with the same name.
+src/components/StorySharing.tsx(154,14): error TS2304: Cannot find name 'Story'.
+src/components/StorySharing.tsx(229,14): error TS2304: Cannot find name 'Story'.
+src/components/StorySharing.tsx(332,14): error TS2304: Cannot find name 'Story'.
+src/components/StudentDiscount.tsx(218,44): error TS2304: Cannot find name 'Check'.
+src/components/TimeDistribution.tsx(4,73): error TS2300: Duplicate identifier 'Moon'.
+src/components/TimeDistribution.tsx(4,125): error TS2300: Duplicate identifier 'Moon'.
+src/components/TimeDistribution.tsx(68,13): error TS2304: Cannot find name 'Night'.
+src/components/Video360Memories.tsx(431,18): error TS2304: Cannot find name 'Star'.
+src/components/Video360Memories.tsx(478,24): error TS2304: Cannot find name 'Star'.
+src/components/Video360Memories.tsx(488,24): error TS2304: Cannot find name 'Star'.
+src/components/VideoStabilization.tsx(98,14): error TS2304: Cannot find name 'Shake'.
+src/components/VideoStabilization.tsx(167,14): error TS2304: Cannot find name 'Shake'.
+src/components/VideoStabilization.tsx(240,18): error TS2304: Cannot find name 'Shake'.
+src/components/VideoStabilization.tsx(304,22): error TS2304: Cannot find name 'Shake'.
+src/components/VoiceNavigation.tsx(290,14): error TS2304: Cannot find name 'Sparkles'.
+src/components/VoiceNavigation.tsx(314,20): error TS2304: Cannot find name 'StopCircle'.
+src/components/VoiceSearch.tsx(257,20): error TS2304: Cannot find name 'StopCircle'.
+src/components/VRMemoryGallery.tsx(4,219): error TS2300: Duplicate identifier 'Glasses'.
+src/components/VRMemoryGallery.tsx(4,228): error TS2300: Duplicate identifier 'Glasses'.
+src/components/VRMemoryGallery.tsx(119,15): error TS2322: Type 'VRMemory[]' is not assignable to type 'ReactNode'.
+  Type 'VRMemory[]' is not assignable to type 'Iterable<ReactNode>'.
+    The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+      Type 'IteratorResult<VRMemory, undefined>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+        Type 'IteratorYieldResult<VRMemory>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<VRMemory>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+            Type 'VRMemory' is not assignable to type 'ReactNode'.
+src/components/VRMemoryGallery.tsx(209,13): error TS2322: Type 'VRMemory[]' is not assignable to type 'ReactNode'.
+  Type 'VRMemory[]' is not assignable to type 'Iterable<ReactNode>'.
+    The types returned by '[Symbol.iterator]().next(...)' are incompatible between these types.
+      Type 'IteratorResult<VRMemory, undefined>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+        Type 'IteratorYieldResult<VRMemory>' is not assignable to type 'IteratorResult<ReactNode, any>'.
+          Type 'IteratorYieldResult<VRMemory>' is not assignable to type 'IteratorYieldResult<ReactNode>'.
+            Type 'VRMemory' is not assignable to type 'ReactNode'.
+src/components/VRMemoryGallery.tsx(214,14): error TS2304: Cannot find name 'Vr'.
+src/components/VRMemoryGallery.tsx(247,18): error TS2304: Cannot find name 'ExitVR'.
+src/components/WearOSSupport.tsx(4,47): error TS2300: Duplicate identifier 'Smartphone'.
+src/components/WearOSSupport.tsx(4,123): error TS2300: Duplicate identifier 'Smartphone'.
+src/components/WearOSSupport.tsx(109,14): error TS2304: Cannot find name 'Android'.
+src/components/WebXRIntegration.tsx(4,199): error TS2300: Duplicate identifier 'Glasses'.
+src/components/WebXRIntegration.tsx(4,208): error TS2300: Duplicate identifier 'Glasses'.
+src/components/WebXRIntegration.tsx(138,17): error TS2304: Cannot find name 'Vr'.
+src/components/WebXRIntegration.tsx(159,14): error TS2304: Cannot find name 'Vr'.
+src/components/WebXRIntegration.tsx(246,14): error TS2304: Cannot find name 'Vr'.
+src/components/WebXRIntegration.tsx(401,22): error TS2304: Cannot find name 'Vr'.
+src/components/YearOverYearComparison.tsx(80,7): error TS2322: Type '{ change: number; changePercent: number; trend: string; metric: string; year1: number; year2: number; }' is not assignable to type 'ComparisonMetric'.
+  Types of property 'trend' are incompatible.
+    Type 'string' is not assignable to type '"down" | "stable" | "up"'.
+src/components/YearOverYearComparison.tsx(86,7): error TS2322: Type '{ change: number; changePercent: number; trend: string; metric: string; year1: number; year2: number; }' is not assignable to type 'ComparisonMetric'.
+  Types of property 'trend' are incompatible.
+    Type 'string' is not assignable to type '"down" | "stable" | "up"'.
+src/components/YearOverYearComparison.tsx(92,7): error TS2322: Type '{ change: number; changePercent: number; trend: string; metric: string; year1: number; year2: number; }' is not assignable to type 'ComparisonMetric'.
+  Types of property 'trend' are incompatible.
+    Type 'string' is not assignable to type '"down" | "stable" | "up"'.
