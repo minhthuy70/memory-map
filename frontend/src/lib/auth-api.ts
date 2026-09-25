@@ -31,6 +31,34 @@ export interface AuthResponse {
   };
 }
 
+export type LoginResponse = 
+  | (AuthResponse & { requires2FA?: false })
+  | { requires2FA: true; tempToken: string; message: string };
+
+export interface TwoFactorStatusResponse {
+  enabled: boolean;
+  hasSecret: boolean;
+  backupCodesCount: number;
+  lastUsedAt?: string | null;
+}
+
+export interface TwoFactorGenerateResponse {
+  secret: string;
+  qrCodeUrl: string;
+  otpauthUrl: string;
+}
+
+export interface TwoFactorEnableResponse {
+  success: boolean;
+  message: string;
+  backupCodes: string[];
+}
+
+export interface TwoFactorBackupCodesResponse {
+  success: boolean;
+  backupCodes: string[];
+}
+
 export interface UpdateProfileData {
   name?: string;
   avatar?: string;
@@ -42,7 +70,7 @@ export interface ChangePasswordData {
 }
 
 export const authApi = {
-  login: async (data: LoginData): Promise<AuthResponse> => {
+  login: async (data: LoginData): Promise<LoginResponse> => {
     const response = await api.post('/auth/login', data);
     return response.data;
   },
@@ -119,6 +147,41 @@ export const authApi = {
 
   logout: async () => {
     const response = await api.post('/auth/logout');
+    return response.data;
+  },
+
+  // 2FA / TOTP Endpoints
+  verify2FALogin: async (data: {
+    tempToken: string;
+    code: string;
+    rememberMe?: boolean;
+  }): Promise<AuthResponse> => {
+    const response = await api.post('/auth/2fa/verify', data);
+    return response.data;
+  },
+
+  get2FAStatus: async (): Promise<TwoFactorStatusResponse> => {
+    const response = await api.get('/auth/2fa/status');
+    return response.data;
+  },
+
+  generate2FA: async (): Promise<TwoFactorGenerateResponse> => {
+    const response = await api.post('/auth/2fa/generate');
+    return response.data;
+  },
+
+  enable2FA: async (code: string): Promise<TwoFactorEnableResponse> => {
+    const response = await api.post('/auth/2fa/enable', { code });
+    return response.data;
+  },
+
+  disable2FA: async (data: { password?: string; code?: string }): Promise<{ success: boolean; message: string }> => {
+    const response = await api.post('/auth/2fa/disable', data);
+    return response.data;
+  },
+
+  generateBackupCodes: async (): Promise<TwoFactorBackupCodesResponse> => {
+    const response = await api.post('/auth/2fa/backup-codes');
     return response.data;
   },
 };

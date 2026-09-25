@@ -11,7 +11,11 @@ import {
   EyeOff, 
   AlertCircle, 
   ArrowRight,
-  ShieldAlert
+  ShieldAlert,
+  ShieldCheck,
+  KeyRound,
+  Smartphone,
+  ArrowLeft
 } from 'lucide-react';
 import { authApi } from '@/lib/auth-api';
 import { useAuthStore } from '@/store/auth-store';
@@ -35,6 +39,13 @@ export default function LoginPage() {
   const [oauthLoading, setOauthLoading] = useState<'google' | 'facebook' | null>(null);
   const [showGoogleModal, setShowGoogleModal] = useState(false);
   const [showFacebookModal, setShowFacebookModal] = useState(false);
+
+  // 2FA Challenge state
+  const [twoFactorChallenge, setTwoFactorChallenge] = useState<{ tempToken: string; message?: string } | null>(null);
+  const [twoFactorCode, setTwoFactorCode] = useState('');
+  const [isUsingBackupCode, setIsUsingBackupCode] = useState(false);
+  const [twoFactorError, setTwoFactorError] = useState('');
+  const [twoFactorLoading, setTwoFactorLoading] = useState(false);
 
   // Load remembered email on mount
   useEffect(() => {
@@ -62,6 +73,17 @@ export default function LoginPage() {
         rememberMe,
       });
 
+      // Handle 2FA Challenge
+      if (response.requires2FA) {
+        setTwoFactorChallenge({
+          tempToken: response.tempToken,
+          message: response.message,
+        });
+        setTwoFactorCode('');
+        setTwoFactorError('');
+        return;
+      }
+
       // Handle remember me in localStorage
       try {
         if (rememberMe) {
@@ -84,6 +106,41 @@ export default function LoginPage() {
       }
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleVerify2FA = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!twoFactorChallenge || !twoFactorCode.trim()) return;
+
+    setTwoFactorError('');
+    setTwoFactorLoading(true);
+
+    try {
+      const response = await authApi.verify2FALogin({
+        tempToken: twoFactorChallenge.tempToken,
+        code: twoFactorCode.trim(),
+        rememberMe,
+      });
+
+      // Handle remember me in localStorage
+      try {
+        if (rememberMe) {
+          localStorage.setItem('remembered_email', formData.email);
+        } else {
+          localStorage.removeItem('remembered_email');
+        }
+      } catch {
+        // ignore storage errors
+      }
+
+      setAuth(response.access_token, response.user);
+      router.push('/dashboard');
+    } catch (err: any) {
+      const msg = err.response?.data?.message || err.message || 'Mã xác thực 2FA không chính xác hoặc đã hết hạn.';
+      setTwoFactorError(msg);
+    } finally {
+      setTwoFactorLoading(false);
     }
   };
 
@@ -182,8 +239,106 @@ export default function LoginPage() {
 
         {/* Card */}
         <div className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8">
-          {/* OAuth Buttons */}
-          <div className="space-y-3 mb-6">
+          {twoFactorChallenge ? (
+            <div className="space-y-5 animate-in fade-in">
+              <div className="text-center">
+                <div className="w-14 h-14 mx-auto mb-3 rounded-2xl bg-primary/10 dark:bg-primary/20 text-primary flex items-center justify-center border border-primary/20 shadow-xs">
+                  <ShieldCheck className="w-7 h-7" />
+                </div>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+                  Xác thực 2 yếu tố (2FA)
+                </h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">
+                  {twoFactorChallenge.message || 'Tài khoản của bạn đã kích hoạt bảo mật 2 lớp. Vui lòng nhập mã xác thực để tiếp tục.'}
+                </p>
+              </div>
+
+              {/* Method Switcher */}
+              <div className="flex p-1 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold">
+                <button
+                  type="button"
+                  onClick={() => { setIsUsingBackupCode(false); setTwoFactorCode(''); setTwoFactorError(''); }}
+                  className={`flex-1 py-2 rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                    !isUsingBackupCode 
+                      ? 'bg-white dark:bg-slate-700 text-primary shadow-xs font-bold' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  <Smartphone className="w-3.5 h-3.5" />
+                  <span>Mã Authenticator</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setIsUsingBackupCode(true); setTwoFactorCode(''); setTwoFactorError(''); }}
+                  className={`flex-1 py-2 rounded-lg flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+                    isUsingBackupCode 
+                      ? 'bg-white dark:bg-slate-700 text-primary shadow-xs font-bold' 
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  <KeyRound className="w-3.5 h-3.5" />
+                  <span>Mã dự phòng</span>
+                </button>
+              </div>
+
+              {twoFactorError && (
+                <div className="p-3.5 bg-rose-50 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-900 text-rose-800 dark:text-rose-300 rounded-xl text-xs sm:text-sm flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 shrink-0 text-rose-600 dark:text-rose-400" />
+                  <span>{twoFactorError}</span>
+                </div>
+              )}
+
+              <form onSubmit={handleVerify2FA} className="space-y-4">
+                <div>
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                    {isUsingBackupCode ? 'Nhập mã dự phòng (Backup Code):' : 'Nhập mã 6 chữ số từ ứng dụng Authenticator:'}
+                  </label>
+                  <input
+                    type="text"
+                    autoFocus
+                    required
+                    value={twoFactorCode}
+                    onChange={(e) => setTwoFactorCode(isUsingBackupCode ? e.target.value.toUpperCase() : e.target.value)}
+                    placeholder={isUsingBackupCode ? 'ABCD-EFGH-IJKL-MNOP' : '123456'}
+                    maxLength={isUsingBackupCode ? 25 : 6}
+                    className="w-full px-4 py-3 text-center text-lg font-mono font-bold tracking-widest border border-slate-300 dark:border-slate-600 rounded-xl bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all shadow-inner"
+                  />
+                  <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-1.5 text-center">
+                    {isUsingBackupCode 
+                      ? 'Mã dự phòng chỉ sử dụng được 1 lần và sẽ tự động hủy.' 
+                      : 'Mã số mới được tạo lại mỗi 30 giây trong ứng dụng Authenticator.'}
+                  </p>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={twoFactorLoading || !twoFactorCode.trim()}
+                  className="w-full py-3 px-4 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 text-sm"
+                >
+                  {twoFactorLoading ? (
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <span>Xác nhận & Đăng nhập</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => { setTwoFactorChallenge(null); setTwoFactorError(''); }}
+                  className="w-full py-2.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  <span>Quay lại đăng nhập thông thường</span>
+                </button>
+              </form>
+            </div>
+          ) : (
+            <>
+              {/* OAuth Buttons */}
+              <div className="space-y-3 mb-6">
             <button
               type="button"
               onClick={handleGoogleOAuth}
@@ -352,6 +507,8 @@ export default function LoginPage() {
               Đăng ký ngay
             </Link>
           </div>
+            </>
+          )}
         </div>
       </div>
 

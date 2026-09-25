@@ -14,6 +14,9 @@ export declare class AuthService {
     validateUser(email: string, password: string): Promise<{
         id: string;
         email: string;
+        facebookId: string | null;
+        googleId: string | null;
+        resetPasswordToken: string | null;
         name: string | null;
         avatar: string | null;
         createdAt: Date;
@@ -22,13 +25,10 @@ export declare class AuthService {
         loginAttempts: number;
         isActive: boolean;
         lastLoginAt: Date | null;
-        facebookId: string | null;
-        googleId: string | null;
         isEmailVerified: boolean;
         verificationCode: string | null;
         verificationExpires: Date | null;
         resetPasswordExpires: Date | null;
-        resetPasswordToken: string | null;
         pendingEmail: string | null;
         twoFactorEnabled: boolean;
         twoFactorSecret: string | null;
@@ -88,6 +88,9 @@ export declare class AuthService {
     updateProfile(userId: string, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
         email: string;
+        facebookId: string | null;
+        googleId: string | null;
+        resetPasswordToken: string | null;
         name: string | null;
         avatar: string | null;
         createdAt: Date;
@@ -96,13 +99,10 @@ export declare class AuthService {
         loginAttempts: number;
         isActive: boolean;
         lastLoginAt: Date | null;
-        facebookId: string | null;
-        googleId: string | null;
         isEmailVerified: boolean;
         verificationCode: string | null;
         verificationExpires: Date | null;
         resetPasswordExpires: Date | null;
-        resetPasswordToken: string | null;
         pendingEmail: string | null;
         twoFactorEnabled: boolean;
         twoFactorSecret: string | null;
@@ -119,6 +119,9 @@ export declare class AuthService {
         twoFactorBackupCodesCount: number;
         id: string;
         email: string;
+        facebookId: string | null;
+        googleId: string | null;
+        resetPasswordToken: string | null;
         name: string | null;
         avatar: string | null;
         createdAt: Date;
@@ -127,13 +130,10 @@ export declare class AuthService {
         loginAttempts: number;
         isActive: boolean;
         lastLoginAt: Date | null;
-        facebookId: string | null;
-        googleId: string | null;
         isEmailVerified: boolean;
         verificationCode: string | null;
         verificationExpires: Date | null;
         resetPasswordExpires: Date | null;
-        resetPasswordToken: string | null;
         pendingEmail: string | null;
         twoFactorEnabled: boolean;
         twoFactorLastUsed: Date | null;

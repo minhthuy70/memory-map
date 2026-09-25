@@ -27,6 +27,7 @@ import {
 import { useAuthStore } from '@/store/auth-store';
 import { authApi } from '@/lib/auth-api';
 import SessionsManager from '@/components/SessionsManager';
+import TwoFactorAuthentication from '@/components/TwoFactorAuthentication';
 import ThemeToggle from '@/components/ThemeToggle';
 import ThemeCustomizer from '@/components/ThemeCustomizer';
 import MemoryExportImport from '@/components/MemoryExportImport';
@@ -78,6 +79,7 @@ export default function ProfilePage() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showDeactivateConfirm, setShowDeactivateConfirm] = useState(false);
   const [showSessionsManager, setShowSessionsManager] = useState(false);
+  const [show2FAManager, setShow2FAManager] = useState(false);
 
   // Email resend timer
   useEffect(() => {
@@ -690,6 +692,15 @@ export default function ProfilePage() {
 
               <button
                 type="button"
+                onClick={() => setShow2FAManager(!show2FAManager)}
+                className="flex items-center gap-2 px-4 py-2.5 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 font-semibold text-sm transition-all shadow-xs cursor-pointer"
+              >
+                <ShieldCheck className="h-4 w-4" />
+                <span>{show2FAManager ? 'Đóng xác thực 2FA' : 'Xác thực 2 yếu tố (2FA)'}</span>
+              </button>
+
+              <button
+                type="button"
                 onClick={() => setShowDeactivateConfirm(true)}
                 className="flex items-center gap-2 px-4 py-2.5 bg-amber-500 text-white rounded-xl hover:bg-amber-600 font-semibold text-sm transition-all shadow-xs cursor-pointer"
               >
@@ -706,6 +717,13 @@ export default function ProfilePage() {
                 <span>Xóa tài khoản</span>
               </button>
             </div>
+
+            {/* Two-Factor Authentication Manager */}
+            {show2FAManager && (
+              <div className="mb-6 animate-in fade-in">
+                <TwoFactorAuthentication onCancel={() => setShow2FAManager(false)} />
+              </div>
+            )}
 
             {/* Sessions Manager */}
             {showSessionsManager && (

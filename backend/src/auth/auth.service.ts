@@ -141,7 +141,7 @@ export class AuthService {
       } else {
         // Return 2FA challenge with temporary short-lived token
         const tempToken = this.jwtService.sign(
-          { sub: user.id, email: user.email, is2FA: true, rememberMe: !!rememberMe },
+          { sub: user.id, email: user.email, is2FA: true, rememberMe: !!rememberMe, jti: crypto.randomUUID() },
           { expiresIn: '5m' },
         );
         return {
@@ -155,6 +155,7 @@ export class AuthService {
     const payload = {
       email: user.email,
       sub: user.id,
+      jti: crypto.randomUUID(),
     };
 
     const token = this.jwtService.sign(payload);
@@ -220,6 +221,7 @@ export class AuthService {
     const payload = {
       email: user.email,
       sub: user.id,
+      jti: crypto.randomUUID(),
     };
 
     const token = this.jwtService.sign(payload);
@@ -299,6 +301,7 @@ export class AuthService {
     const payload = {
       email: user.email,
       sub: user.id,
+      jti: crypto.randomUUID(),
     };
 
     const token = this.jwtService.sign(payload);
@@ -843,7 +846,7 @@ export class AuthService {
     }
 
     const shouldUseRememberMe = rememberMe ?? payload.rememberMe ?? false;
-    const token = this.jwtService.sign({ email: user.email, sub: user.id });
+    const token = this.jwtService.sign({ email: user.email, sub: user.id, jti: crypto.randomUUID() });
 
     await this.sessionsService.createSession(
       user.id,

@@ -110,7 +110,7 @@ let AuthService = class AuthService {
                 await this.usersService.updateTwoFactorLastUsed(user.id);
             }
             else {
-                const tempToken = this.jwtService.sign({ sub: user.id, email: user.email, is2FA: true, rememberMe: !!rememberMe }, { expiresIn: '5m' });
+                const tempToken = this.jwtService.sign({ sub: user.id, email: user.email, is2FA: true, rememberMe: !!rememberMe, jti: crypto.randomUUID() }, { expiresIn: '5m' });
                 return {
                     requires2FA: true,
                     tempToken,
@@ -121,6 +121,7 @@ let AuthService = class AuthService {
         const payload = {
             email: user.email,
             sub: user.id,
+            jti: crypto.randomUUID(),
         };
         const token = this.jwtService.sign(payload);
         await this.sessionsService.createSession(user.id, token, deviceInfo, ipAddress, rememberMe);
@@ -156,6 +157,7 @@ let AuthService = class AuthService {
         const payload = {
             email: user.email,
             sub: user.id,
+            jti: crypto.randomUUID(),
         };
         const token = this.jwtService.sign(payload);
         await this.sessionsService.createSession(user.id, token, deviceInfo, ipAddress);
@@ -215,6 +217,7 @@ let AuthService = class AuthService {
         const payload = {
             email: user.email,
             sub: user.id,
+            jti: crypto.randomUUID(),
         };
         const token = this.jwtService.sign(payload);
         await this.sessionsService.createSession(user.id, token, deviceInfo, ipAddress);
@@ -590,7 +593,7 @@ let AuthService = class AuthService {
             throw new common_1.UnauthorizedException('Mã xác thực 2FA không chính xác hoặc mã dự phòng đã qua sử dụng.');
         }
         const shouldUseRememberMe = rememberMe ?? payload.rememberMe ?? false;
-        const token = this.jwtService.sign({ email: user.email, sub: user.id });
+        const token = this.jwtService.sign({ email: user.email, sub: user.id, jti: crypto.randomUUID() });
         await this.sessionsService.createSession(user.id, token, deviceInfo, ipAddress, shouldUseRememberMe);
         await this.usersService.updateTwoFactorLastUsed(user.id);
         return {
