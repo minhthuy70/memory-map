@@ -8,6 +8,7 @@ import { MemoriesModule } from './memories/memories.module';
 import { CategoriesModule } from './categories/categories.module';
 import { SessionsModule } from './sessions/sessions.module';
 import { PrismaModule } from './prisma/prisma.module';
+import { EventStreamingModule } from './event-streaming/event-streaming.module';
 
 @Module({
   imports: [
@@ -34,6 +35,8 @@ import { PrismaModule } from './prisma/prisma.module';
     CategoriesModule,
 
     SessionsModule,
+
+    EventStreamingModule,
   ],
 })
 export class AppModule {}
