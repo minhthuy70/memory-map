@@ -56,7 +56,7 @@ let HybridCloudService = class HybridCloudService {
     async createOfflineSync(userId, dto) {
         return this.prisma.offlineSyncState.create({
             data: {
-                userId,
+                user: { connect: { id: userId } },
                 entityType: dto.entityType,
                 entityId: dto.entityId,
                 operation: dto.operation,
@@ -105,9 +105,10 @@ let HybridCloudService = class HybridCloudService {
     async createNASBackup(userId, dto) {
         return this.prisma.nASBackup.create({
             data: {
-                userId,
+                user: { connect: { id: userId } },
                 provider: dto.provider,
                 backupPath: dto.backupPath,
+                backupSize: BigInt(0),
                 schedule: dto.schedule || nas_backup_dto_1.BackupSchedule.DAILY,
                 isActive: dto.isActive ?? true,
             },
@@ -174,7 +175,7 @@ let HybridCloudService = class HybridCloudService {
         const accessCode = dto.isPublic ? crypto.randomBytes(16).toString('hex') : null;
         const exportData = await this.prisma.vaultExport.create({
             data: {
-                userId,
+                user: { connect: { id: userId } },
                 fileName: dto.fileName,
                 filePath: `/exports/${userId}/${dto.fileName}.html`,
                 fileSize: BigInt(0),
@@ -236,7 +237,7 @@ let HybridCloudService = class HybridCloudService {
     async createUserWidget(userId, dto) {
         return this.prisma.userWidget.create({
             data: {
-                userId,
+                user: { connect: { id: userId } },
                 widgetType: dto.widgetType,
                 widgetId: dto.widgetId,
                 widgetName: dto.widgetName,
@@ -291,7 +292,7 @@ let HybridCloudService = class HybridCloudService {
         const expiresAt = dto.expiresAt ? new Date(dto.expiresAt) : new Date(Date.now() + 5 * 60 * 1000);
         return this.prisma.clipboardSync.create({
             data: {
-                userId,
+                user: { connect: { id: userId } },
                 clipboardId,
                 dataType: dto.dataType,
                 data: dto.data,

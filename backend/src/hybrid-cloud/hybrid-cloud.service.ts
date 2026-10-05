@@ -105,6 +105,7 @@ export class HybridCloudService {
         user: { connect: { id: userId } },
         provider: dto.provider,
         backupPath: dto.backupPath,
+        backupSize: BigInt(0),
         schedule: dto.schedule || BackupSchedule.DAILY,
         isActive: dto.isActive ?? true,
       },
