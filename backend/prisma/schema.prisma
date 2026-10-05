@@ -46,6 +46,16 @@ model User {
   verticalStoryExports   VerticalStoryExport[]
   friendVoiceCommentaries FriendVoiceCommentary[]
 
+  // Hybrid Cloud & Offline-First
+  offlineSyncStates OfflineSyncState[]
+  nasBackups NASBackup[]
+  vaultExports VaultExport[]
+  p2pSyncSessions P2PSyncSession[]
+  userWidgets UserWidget[]
+  watchComplications WatchComplication[]
+  carIntegrations CarIntegration[]
+  clipboardSyncs ClipboardSync[]
+
   @@map("users")
 }
 
@@ -370,4 +380,148 @@ model FriendVoiceCommentary {
   @@index([userId])
   @@index([memoryId])
   @@map("friend_voice_commentaries")
+}
+
+// Hybrid Cloud & Offline-First
+model OfflineSyncState {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  entityType  String   @map("entity_type") // memory, image, etc
+  entityId    String   @map("entity_id")
+  operation   String   // create, update, delete
+  data        String   @map("data") // JSON payload
+  createdAt   DateTime @default(now()) @map("created_at")
+  syncedAt    DateTime? @map("synced_at")
+  isSynced    Boolean  @default(false) @map("is_synced")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([isSynced])
+  @@map("offline_sync_states")
+}
+
+model NASBackup {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  provider    String   // webdav, s3, dropbox, onedrive
+  backupPath String   @map("backup_path")
+  backupSize  BigInt   @map("backup_size")
+  lastBackupAt DateTime? @map("last_backup_at")
+  schedule    String   @default("daily") // daily, weekly, monthly
+  isActive    Boolean  @default(true) @map("is_active")
+  status      String   @default("idle") // idle, running, success, failed
+  errorMessage String?  @map("error_message")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([provider])
+  @@index([isActive])
+  @@map("nas_backups")
+}
+
+model VaultExport {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  fileName    String   @map("file_name")
+  filePath    String   @map("file_path")
+  fileSize    BigInt   @map("file_size")
+  exportDate  DateTime @default(now()) @map("export_date")
+  expiresAt   DateTime? @map("expires_at")
+  downloadCount Int      @default(0) @map("download_count")
+  isPublic    Boolean  @default(false) @map("is_public")
+  accessCode  String?  @unique @map("access_code")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([accessCode])
+  @@map("vault_exports")
+}
+
+model P2PSyncSession {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  sessionId   String   @unique @map("session_id")
+  peerAddress String   @map("peer_address")
+  peerName    String?  @map("peer_name")
+  isConnected Boolean  @default(false) @map("is_connected")
+  lastSeen    DateTime @default(now()) @map("last_seen")
+  syncCount   Int      @default(0) @map("sync_count")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([sessionId])
+  @@index([isConnected])
+  @@map("p2p_sync_sessions")
+}
+
+model UserWidget {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  widgetType  String   @map("widget_type") // ios, android, desktop
+  widgetId    String   @map("widget_id")
+  widgetName  String   @map("widget_name")
+  config      String   @map("config") // JSON config
+  isEnabled   Boolean  @default(true) @map("is_enabled")
+  position    Int      @default(0) @map("position")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([widgetType])
+  @@map("user_widgets")
+}
+
+model WatchComplication {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  complicationType String @map("complication_type") // apple, wearos
+  complicationId String   @map("complication_id")
+  action      String   @map("action") // audio-memo, heart-rate, coordinate, step-count
+  isEnabled   Boolean  @default(true) @map("is_enabled")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([complicationType])
+  @@map("watch_complications")
+}
+
+model CarIntegration {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  carType     String   @map("car_type") // apple, android
+  integrationType String @map("integration_type") // carplay, android-auto
+  deviceId    String   @map("device_id")
+  isEnabled   Boolean  @default(true) @map("is_enabled")
+  autoPlay    Boolean  @default(false) @map("auto_play")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([carType])
+  @@map("car_integrations")
+}
+
+model ClipboardSync {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  clipboardId String   @unique @map("clipboard_id")
+  dataType    String   @map("data_type") // location, photo, text
+  data        String   @map("data") // JSON payload
+  sourceDevice String   @map("source_device")
+  expiresAt   DateTime @default(now()) @map("expires_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([clipboardId])
+  @@index([expiresAt])
+  @@map("clipboard_syncs")
 }
