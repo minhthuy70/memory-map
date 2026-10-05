@@ -1,4 +1,4 @@
-import { IsDate, IsString } from 'class-validator';
+import { IsDate, IsOptional, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateEventGuestWallDto {

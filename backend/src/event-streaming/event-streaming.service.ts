@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { EventStreamingGateway } from './event-streaming.gateway';
 import { 
   CreateLiveJourneyBroadcastDto, 
   UpdateLiveJourneyBroadcastDto, 
@@ -39,7 +40,10 @@ import * as QRCode from 'qrcode';
 
 @Injectable()
 export class EventStreamingService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private gateway: EventStreamingGateway
+  ) {}
 
   // Live Journey Broadcast
   async createLiveJourneyBroadcast(userId: string, dto: CreateLiveJourneyBroadcastDto) {
@@ -129,13 +133,22 @@ export class EventStreamingService {
       throw new ForbiddenException();
     }
 
-    return this.prisma.liveJourneyLocation.create({
+    const location = await this.prisma.liveJourneyLocation.create({
       data: {
         broadcastId,
         latitude: dto.latitude,
         longitude: dto.longitude,
       },
     });
+
+    // Broadcast to WebSocket clients
+    this.gateway.broadcastLocationUpdate(broadcastId, {
+      latitude: dto.latitude,
+      longitude: dto.longitude,
+      timestamp: location.timestamp,
+    });
+
+    return location;
   }
 
   // Virtual Watch Party
@@ -254,7 +267,7 @@ export class EventStreamingService {
   }
 
   async addGuestContribution(wallId: string, dto: CreateGuestContributionDto) {
-    return this.prisma.eventGuestContribution.create({
+    const contribution = await this.prisma.eventGuestContribution.create({
       data: {
         wallId,
         guestName: dto.guestName,
@@ -262,6 +275,11 @@ export class EventStreamingService {
         imageUrl: dto.imageUrl,
       },
     });
+
+    // Broadcast to WebSocket clients
+    this.gateway.broadcastGuestContribution(wallId, contribution);
+
+    return contribution;
   }
 
   // Temporary Shared Links
@@ -288,7 +306,7 @@ export class EventStreamingService {
   }
 
   async accessSharedLink(url: string, dto: AccessSharedLinkDto) {
-    const link = await this.prisma.temporarySharedLink.findUnique({
+    const link = await this.prisma.temporarySharedLink.findFirst({
       where: { url },
     });
 
@@ -318,7 +336,7 @@ export class EventStreamingService {
   }
 
   async revokeSharedLink(id: string, userId: string) {
-    const link = await this.prisma.temporarySharedLink.findUnique({
+    const link = await this.prisma.temporarySharedLink.findFirst({
       where: { id },
     });
 
@@ -360,7 +378,7 @@ export class EventStreamingService {
   }
 
   async getPublicPortfolio(customDomain: string) {
-    const portfolio = await this.prisma.travelPortfolio.findUnique({
+    const portfolio = await this.prisma.travelPortfolio.findFirst({
       where: { customDomain },
       include: {
         user: {
@@ -527,7 +545,9 @@ export class EventStreamingService {
   async createVerticalStoryExport(userId: string, dto: CreateVerticalStoryExportDto) {
     return this.prisma.verticalStoryExport.create({
       data: {
-        userId,
+        user: {
+          connect: { id: userId },
+        },
         memoryId: dto.memoryId,
         resolution: dto.resolution || '1080p',
         format: dto.format || 'mp4',

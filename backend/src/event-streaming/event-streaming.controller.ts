@@ -1,11 +1,11 @@
-import { 
-  Controller, 
-  Get, 
-  Post, 
-  Put, 
-  Delete, 
-  Body, 
-  Param, 
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Body,
+  Param,
   UseGuards,
   Request,
   HttpCode,
@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { EventStreamingService } from './event-streaming.service';
+import { WebRTCService } from './webRTC.service';
 import { 
   CreateLiveJourneyBroadcastDto, 
   UpdateLiveJourneyBroadcastDto, 
@@ -51,7 +52,10 @@ import {
 @Controller('event-streaming')
 @UseGuards(JwtAuthGuard)
 export class EventStreamingController {
-  constructor(private readonly eventStreamingService: EventStreamingService) {}
+  constructor(
+    private readonly eventStreamingService: EventStreamingService,
+    private readonly webRTCService: WebRTCService
+  ) {}
 
   // Live Journey Broadcast
   @Post('live-journey')
@@ -257,5 +261,46 @@ export class EventStreamingController {
   @Get('voice-commentary/memory/:memoryId')
   getMemoryVoiceCommentaries(@Param('memoryId') memoryId: string) {
     return this.eventStreamingService.getMemoryVoiceCommentaries(memoryId);
+  }
+
+  // WebRTC Signaling
+  @Post('webrtc/signal')
+  @HttpCode(HttpStatus.OK)
+  sendWebRTCSignal(@Body() dto: { roomCode: string; signal: any; from: string; to: string }) {
+    this.webRTCService.sendSignal(dto.roomCode, {
+      type: dto.signal.type,
+      from: dto.from,
+      to: dto.to,
+      data: dto.signal.data,
+    });
+    return { success: true };
+  }
+
+  @Post('webrtc/join-call')
+  @HttpCode(HttpStatus.OK)
+  joinCall(@Body() dto: { roomCode: string; userId: string }) {
+    this.webRTCService.handleJoinCall(dto.roomCode, dto.userId);
+    return { success: true };
+  }
+
+  @Post('webrtc/leave-call')
+  @HttpCode(HttpStatus.OK)
+  leaveCall(@Body() dto: { roomCode: string; userId: string }) {
+    this.webRTCService.handleLeaveCall(dto.roomCode, dto.userId);
+    return { success: true };
+  }
+
+  @Post('webrtc/toggle-mute')
+  @HttpCode(HttpStatus.OK)
+  toggleMute(@Body() dto: { roomCode: string; userId: string; muted: boolean }) {
+    this.webRTCService.toggleMute(dto.roomCode, dto.userId, dto.muted);
+    return { success: true };
+  }
+
+  @Post('webrtc/toggle-video')
+  @HttpCode(HttpStatus.OK)
+  toggleVideo(@Body() dto: { roomCode: string; userId: string; videoOff: boolean }) {
+    this.webRTCService.toggleVideo(dto.roomCode, dto.userId, dto.videoOff);
+    return { success: true };
   }
 }

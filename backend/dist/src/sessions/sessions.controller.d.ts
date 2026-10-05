@@ -4,13 +4,13 @@ export declare class SessionsController {
     constructor(sessionsService: SessionsService);
     getSessions(req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        expiresAt: Date;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
-        expiresAt: Date;
     }[]>;
     deleteAllSessions(req: any): Promise<{
         message: string;

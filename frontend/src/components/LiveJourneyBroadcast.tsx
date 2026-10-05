@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
+import { io, Socket } from 'socket.io-client';
 
 interface LocationUpdate {
   id: string;
@@ -23,12 +24,14 @@ interface Broadcast {
 }
 
 export default function LiveJourneyBroadcast() {
-  const { token } = useAuth();
+  const { token, userId } = useAuth();
   const [broadcasts, setBroadcasts] = useState<Broadcast[]>([]);
   const [activeBroadcast, setActiveBroadcast] = useState<Broadcast | null>(null);
   const [isTracking, setIsTracking] = useState(false);
   const [watchId, setWatchId] = useState<number | null>(null);
   const [batteryLevel, setBatteryLevel] = useState<number | null>(null);
+  const [socket, setSocket] = useState<Socket | null>(null);
+  const [liveLocations, setLiveLocations] = useState<LocationUpdate[]>([]);
 
   const fetchBroadcasts = async () => {
     try {
@@ -64,6 +67,19 @@ export default function LiveJourneyBroadcast() {
   const startTracking = async (broadcast: Broadcast) => {
     setActiveBroadcast(broadcast);
     setIsTracking(true);
+
+    // Connect to WebSocket
+    const newSocket = io('http://localhost:3001');
+    setSocket(newSocket);
+
+    newSocket.on('connect', () => {
+      console.log('Connected to WebSocket');
+      newSocket.emit('join-broadcast', broadcast.id);
+    });
+
+    newSocket.on('location-update', (location: LocationUpdate) => {
+      setLiveLocations((prev) => [location, ...prev].slice(0, 50));
+    });
 
     // Start GPS tracking
     if ('geolocation' in navigator) {
@@ -103,7 +119,15 @@ export default function LiveJourneyBroadcast() {
       navigator.geolocation.clearWatch(watchId);
       setWatchId(null);
     }
+    
+    if (socket) {
+      socket.emit('leave-broadcast', activeBroadcast?.id);
+      socket.disconnect();
+      setSocket(null);
+    }
+    
     setIsTracking(false);
+    setLiveLocations([]);
 
     if (activeBroadcast) {
       await fetch(`http://localhost:3001/event-streaming/live-journey/${activeBroadcast.id}/end`, {
@@ -169,6 +193,23 @@ export default function LiveJourneyBroadcast() {
               </span>
             )}
           </div>
+          
+          {/* Live Location Updates */}
+          {liveLocations.length > 0 && (
+            <div className="mt-4 p-3 bg-white dark:bg-gray-700 rounded">
+              <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
+                Live Location Updates ({liveLocations.length})
+              </h4>
+              <div className="space-y-1 max-h-40 overflow-y-auto">
+                {liveLocations.slice(0, 10).map((loc, index) => (
+                  <div key={index} className="text-xs text-gray-600 dark:text-gray-400">
+                    {new Date(loc.timestamp).toLocaleTimeString()}: {loc.latitude.toFixed(6)}, {loc.longitude.toFixed(6)}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          
           <button
             onClick={stopTracking}
             className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"

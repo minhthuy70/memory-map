@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
+import WatchPartyVideoCall from './WatchPartyVideoCall';
 
 interface Participant {
   id: string;
@@ -25,6 +26,7 @@ export default function VirtualWatchParty() {
   const [parties, setParties] = useState<WatchParty[]>([]);
   const [activeParty, setActiveParty] = useState<WatchParty | null>(null);
   const [isJoined, setIsJoined] = useState(false);
+  const [showVideoCall, setShowVideoCall] = useState(false);
 
   const fetchParties = async () => {
     try {
@@ -145,12 +147,37 @@ export default function VirtualWatchParty() {
               Participants: {activeParty.participants.length}
             </span>
           </div>
-          <button
-            onClick={leaveParty}
-            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-          >
-            Leave Party
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setShowVideoCall(true)}
+              className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+            >
+              📹 Start Video Call
+            </button>
+            <button
+              onClick={leaveParty}
+              className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+            >
+              Leave Party
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showVideoCall && activeParty && (
+        <div className="mb-6">
+          <div className="flex justify-end mb-2">
+            <button
+              onClick={() => setShowVideoCall(false)}
+              className="px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600 text-sm"
+            >
+              Close Video Call
+            </button>
+          </div>
+          <WatchPartyVideoCall
+            roomCode={activeParty.roomCode}
+            onEndCall={() => setShowVideoCall(false)}
+          />
         </div>
       )}
 

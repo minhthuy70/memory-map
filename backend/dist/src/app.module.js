@@ -16,6 +16,7 @@ const memories_module_1 = require("./memories/memories.module");
 const categories_module_1 = require("./categories/categories.module");
 const sessions_module_1 = require("./sessions/sessions.module");
 const prisma_module_1 = require("./prisma/prisma.module");
+const event_streaming_module_1 = require("./event-streaming/event-streaming.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -38,6 +39,7 @@ exports.AppModule = AppModule = __decorate([
             memories_module_1.MemoriesModule,
             categories_module_1.CategoriesModule,
             sessions_module_1.SessionsModule,
+            event_streaming_module_1.EventStreamingModule,
         ],
     })
 ], AppModule);

@@ -341,7 +341,7 @@ model VerticalStoryExport {
   id          String   @id @default(uuid())
   userId      String   @map("user_id")
   memoryId    String   @map("memory_id")
-  videoUrl    String   @map("video_url")
+  videoUrl    String?  @map("video_url")
   resolution  String   @default("1080p")
   format      String   @default("mp4")
   duration    Int?
