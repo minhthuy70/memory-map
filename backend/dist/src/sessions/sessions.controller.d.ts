@@ -4,8 +4,8 @@ export declare class SessionsController {
     constructor(sessionsService: SessionsService);
     getSessions(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         expiresAt: Date;
         token: string;
         deviceInfo: string | null;

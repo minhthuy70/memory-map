@@ -92,9 +92,9 @@ export declare class AuthController {
         hasPassword: boolean;
         twoFactorBackupCodesCount: number;
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         avatar: string | null;
@@ -115,9 +115,9 @@ export declare class AuthController {
     }>;
     updateProfile(req: any, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         avatar: string | null;

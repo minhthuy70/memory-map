@@ -1,0 +1,248 @@
+import { PrismaService } from '../prisma/prisma.service';
+import { CreateOfflineSyncDto } from './dto/offline-sync.dto';
+import { CreateNASBackupDto, UpdateNASBackupDto } from './dto/nas-backup.dto';
+import { CreateVaultExportDto } from './dto/vault-export.dto';
+import { CreateUserWidgetDto, UpdateUserWidgetDto, WidgetType } from './dto/widget.dto';
+import { CreateClipboardSyncDto } from './dto/clipboard-sync.dto';
+export declare class HybridCloudService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    createOfflineSync(userId: string, dto: CreateOfflineSyncDto): Promise<{
+        data: string;
+        id: string;
+        entityType: string;
+        entityId: string;
+        operation: string;
+        createdAt: Date;
+        syncedAt: Date | null;
+        isSynced: boolean;
+        userId: string;
+    }>;
+    getPendingSyncs(userId: string): Promise<{
+        data: string;
+        id: string;
+        entityType: string;
+        entityId: string;
+        operation: string;
+        createdAt: Date;
+        syncedAt: Date | null;
+        isSynced: boolean;
+        userId: string;
+    }[]>;
+    syncOfflineChanges(userId: string, forceSync?: boolean): Promise<{
+        message: string;
+        syncedCount: number;
+    }>;
+    markSynced(syncId: string): Promise<{
+        data: string;
+        id: string;
+        entityType: string;
+        entityId: string;
+        operation: string;
+        createdAt: Date;
+        syncedAt: Date | null;
+        isSynced: boolean;
+        userId: string;
+    }>;
+    createNASBackup(userId: string, dto: CreateNASBackupDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        provider: string;
+        backupPath: string;
+        backupSize: bigint;
+        lastBackupAt: Date | null;
+        schedule: string;
+        isActive: boolean;
+        status: string;
+        errorMessage: string | null;
+        updatedAt: Date;
+    }>;
+    getNASBackups(userId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        provider: string;
+        backupPath: string;
+        backupSize: bigint;
+        lastBackupAt: Date | null;
+        schedule: string;
+        isActive: boolean;
+        status: string;
+        errorMessage: string | null;
+        updatedAt: Date;
+    }[]>;
+    getNASBackup(id: string, userId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        provider: string;
+        backupPath: string;
+        backupSize: bigint;
+        lastBackupAt: Date | null;
+        schedule: string;
+        isActive: boolean;
+        status: string;
+        errorMessage: string | null;
+        updatedAt: Date;
+    }>;
+    updateNASBackup(id: string, userId: string, dto: UpdateNASBackupDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        provider: string;
+        backupPath: string;
+        backupSize: bigint;
+        lastBackupAt: Date | null;
+        schedule: string;
+        isActive: boolean;
+        status: string;
+        errorMessage: string | null;
+        updatedAt: Date;
+    }>;
+    deleteNASBackup(id: string, userId: string): Promise<{
+        message: string;
+    }>;
+    triggerBackup(id: string, userId: string): Promise<{
+        message: string;
+        status: string;
+    }>;
+    createVaultExport(userId: string, dto: CreateVaultExportDto): Promise<{
+        id: string;
+        userId: string;
+        fileName: string;
+        filePath: string;
+        fileSize: bigint;
+        exportDate: Date;
+        expiresAt: Date | null;
+        downloadCount: number;
+        isPublic: boolean;
+        accessCode: string | null;
+    }>;
+    getVaultExports(userId: string): Promise<{
+        id: string;
+        userId: string;
+        fileName: string;
+        filePath: string;
+        fileSize: bigint;
+        exportDate: Date;
+        expiresAt: Date | null;
+        downloadCount: number;
+        isPublic: boolean;
+        accessCode: string | null;
+    }[]>;
+    getVaultExport(id: string, userId: string): Promise<{
+        id: string;
+        userId: string;
+        fileName: string;
+        filePath: string;
+        fileSize: bigint;
+        exportDate: Date;
+        expiresAt: Date | null;
+        downloadCount: number;
+        isPublic: boolean;
+        accessCode: string | null;
+    }>;
+    verifyVaultExportAccess(accessCode: string): Promise<{
+        id: string;
+        userId: string;
+        fileName: string;
+        filePath: string;
+        fileSize: bigint;
+        exportDate: Date;
+        expiresAt: Date | null;
+        downloadCount: number;
+        isPublic: boolean;
+        accessCode: string | null;
+    }>;
+    deleteVaultExport(id: string, userId: string): Promise<{
+        message: string;
+    }>;
+    createUserWidget(userId: string, dto: CreateUserWidgetDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        updatedAt: Date;
+        widgetType: string;
+        widgetId: string;
+        widgetName: string;
+        config: string;
+        isEnabled: boolean;
+        position: number;
+    }>;
+    getUserWidgets(userId: string, widgetType?: WidgetType): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        updatedAt: Date;
+        widgetType: string;
+        widgetId: string;
+        widgetName: string;
+        config: string;
+        isEnabled: boolean;
+        position: number;
+    }[]>;
+    getUserWidget(id: string, userId: string): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        updatedAt: Date;
+        widgetType: string;
+        widgetId: string;
+        widgetName: string;
+        config: string;
+        isEnabled: boolean;
+        position: number;
+    }>;
+    updateUserWidget(id: string, userId: string, dto: UpdateUserWidgetDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        updatedAt: Date;
+        widgetType: string;
+        widgetId: string;
+        widgetName: string;
+        config: string;
+        isEnabled: boolean;
+        position: number;
+    }>;
+    deleteUserWidget(id: string, userId: string): Promise<{
+        message: string;
+    }>;
+    createClipboardSync(userId: string, dto: CreateClipboardSyncDto): Promise<{
+        data: string;
+        id: string;
+        createdAt: Date;
+        userId: string;
+        expiresAt: Date;
+        clipboardId: string;
+        dataType: string;
+        sourceDevice: string;
+    }>;
+    getClipboardSync(clipboardId: string, userId: string): Promise<{
+        data: string;
+        id: string;
+        createdAt: Date;
+        userId: string;
+        expiresAt: Date;
+        clipboardId: string;
+        dataType: string;
+        sourceDevice: string;
+    }>;
+    getClipboardSyncs(userId: string): Promise<{
+        data: string;
+        id: string;
+        createdAt: Date;
+        userId: string;
+        expiresAt: Date;
+        clipboardId: string;
+        dataType: string;
+        sourceDevice: string;
+    }[]>;
+    deleteClipboardSync(clipboardId: string, userId: string): Promise<{
+        message: string;
+    }>;
+    cleanupExpiredClipboardSyncs(): Promise<{
+        deletedCount: number;
+    }>;
+}

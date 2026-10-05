@@ -9,9 +9,9 @@ export declare class JwtStrategy extends JwtStrategy_base {
     constructor(configService: ConfigService, usersService: UsersService);
     validate(payload: any): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         avatar: string | null;

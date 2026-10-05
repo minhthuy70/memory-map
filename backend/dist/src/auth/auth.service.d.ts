@@ -14,9 +14,9 @@ export declare class AuthService {
     constructor(usersService: UsersService, jwtService: JwtService, sessionsService: SessionsService, mailService: MailService);
     validateUser(email: string, password: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         avatar: string | null;
@@ -89,9 +89,9 @@ export declare class AuthService {
     }>;
     updateProfile(userId: string, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         avatar: string | null;
@@ -121,9 +121,9 @@ export declare class AuthService {
         hasPassword: boolean;
         twoFactorBackupCodesCount: number;
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         avatar: string | null;

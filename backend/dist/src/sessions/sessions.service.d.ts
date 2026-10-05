@@ -4,8 +4,8 @@ export declare class SessionsService {
     constructor(prisma: PrismaService);
     createSession(userId: string, token: string, deviceInfo?: string, ipAddress?: string, rememberMe?: boolean): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         expiresAt: Date;
         token: string;
         deviceInfo: string | null;
@@ -15,9 +15,9 @@ export declare class SessionsService {
     findByToken(token: string): Promise<{
         user: {
             id: string;
-            isActive: boolean;
-            name: string | null;
             createdAt: Date;
+            name: string | null;
+            isActive: boolean;
             updatedAt: Date;
             email: string;
             passwordHash: string | null;
@@ -42,8 +42,8 @@ export declare class SessionsService {
         };
     } & {
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         expiresAt: Date;
         token: string;
         deviceInfo: string | null;
@@ -52,8 +52,8 @@ export declare class SessionsService {
     }>;
     updateLastActivity(token: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         expiresAt: Date;
         token: string;
         deviceInfo: string | null;
@@ -62,8 +62,8 @@ export declare class SessionsService {
     }>;
     getUserSessions(userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         expiresAt: Date;
         token: string;
         deviceInfo: string | null;

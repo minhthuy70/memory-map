@@ -12,9 +12,9 @@ export declare class UsersService {
         isEmailVerified?: boolean;
     }): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -39,9 +39,9 @@ export declare class UsersService {
     }>;
     findByGoogleId(googleId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -66,9 +66,9 @@ export declare class UsersService {
     }>;
     findByFacebookId(facebookId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -93,9 +93,9 @@ export declare class UsersService {
     }>;
     setVerificationCode(email: string, code: string, expires: Date): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -120,9 +120,9 @@ export declare class UsersService {
     }>;
     markEmailVerified(userId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -147,9 +147,9 @@ export declare class UsersService {
     }>;
     updateEmail(userId: string, newEmail: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -174,9 +174,9 @@ export declare class UsersService {
     }>;
     setPendingEmail(userId: string, pendingEmail: string | null, code: string | null, expires: Date | null): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -201,9 +201,9 @@ export declare class UsersService {
     }>;
     setResetPasswordToken(email: string, token: string, expires: Date): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -228,9 +228,9 @@ export declare class UsersService {
     }>;
     findByResetToken(token: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -255,9 +255,9 @@ export declare class UsersService {
     }>;
     resetPasswordWithToken(userId: string, passwordHash: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -282,9 +282,9 @@ export declare class UsersService {
     }>;
     findByEmail(email: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -309,9 +309,9 @@ export declare class UsersService {
     }>;
     findById(id: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -339,9 +339,9 @@ export declare class UsersService {
         avatar?: string;
     }): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -366,9 +366,9 @@ export declare class UsersService {
     }>;
     updatePassword(id: string, passwordHash: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -394,9 +394,9 @@ export declare class UsersService {
     getMemoryCount(userId: string): Promise<number>;
     incrementLoginAttempts(userId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -421,9 +421,9 @@ export declare class UsersService {
     }>;
     resetLoginAttempts(userId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -448,9 +448,9 @@ export declare class UsersService {
     }>;
     lockAccount(userId: string, lockedUntil: Date): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -475,9 +475,9 @@ export declare class UsersService {
     }>;
     updateLastLogin(userId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -502,9 +502,9 @@ export declare class UsersService {
     }>;
     deactivateAccount(userId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -529,9 +529,9 @@ export declare class UsersService {
     }>;
     deleteAccount(userId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -556,9 +556,9 @@ export declare class UsersService {
     }>;
     setTwoFactorTempSecret(userId: string, tempSecret: string | null): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -583,9 +583,9 @@ export declare class UsersService {
     }>;
     enableTwoFactor(userId: string, secret: string, backupCodes: string[]): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -610,9 +610,9 @@ export declare class UsersService {
     }>;
     disableTwoFactor(userId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -637,9 +637,9 @@ export declare class UsersService {
     }>;
     updateTwoFactorBackupCodes(userId: string, backupCodes: string[]): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -664,9 +664,9 @@ export declare class UsersService {
     }>;
     updateTwoFactorLastUsed(userId: string): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;
@@ -699,8 +699,8 @@ export declare class UsersService {
         deviceName?: string;
     }): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         credentialId: string;
         publicKey: Buffer;
         counter: bigint;
@@ -723,9 +723,9 @@ export declare class UsersService {
     findWebAuthnCredential(credentialId: string): Promise<{
         user: {
             id: string;
-            isActive: boolean;
-            name: string | null;
             createdAt: Date;
+            name: string | null;
+            isActive: boolean;
             updatedAt: Date;
             email: string;
             passwordHash: string | null;
@@ -750,8 +750,8 @@ export declare class UsersService {
         };
     } & {
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         credentialId: string;
         publicKey: Buffer;
         counter: bigint;
@@ -763,8 +763,8 @@ export declare class UsersService {
     }>;
     updateWebAuthnCounter(id: string, counter: bigint): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         credentialId: string;
         publicKey: Buffer;
         counter: bigint;
@@ -776,8 +776,8 @@ export declare class UsersService {
     }>;
     deleteWebAuthnCredential(userId: string, credentialDbId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         credentialId: string;
         publicKey: Buffer;
         counter: bigint;
@@ -789,9 +789,9 @@ export declare class UsersService {
     }>;
     setBiometricEnabled(userId: string, enabled: boolean): Promise<{
         id: string;
-        isActive: boolean;
-        name: string | null;
         createdAt: Date;
+        name: string | null;
+        isActive: boolean;
         updatedAt: Date;
         email: string;
         passwordHash: string | null;

@@ -42,7 +42,7 @@ export class HybridCloudService {
   async createOfflineSync(userId: string, dto: CreateOfflineSyncDto) {
     return this.prisma.offlineSyncState.create({
       data: {
-        userId,
+        user: { connect: { id: userId } },
         entityType: dto.entityType,
         entityId: dto.entityId,
         operation: dto.operation,
@@ -102,7 +102,7 @@ export class HybridCloudService {
   async createNASBackup(userId: string, dto: CreateNASBackupDto) {
     return this.prisma.nASBackup.create({
       data: {
-        userId,
+        user: { connect: { id: userId } },
         provider: dto.provider,
         backupPath: dto.backupPath,
         schedule: dto.schedule || BackupSchedule.DAILY,
@@ -193,7 +193,7 @@ export class HybridCloudService {
     // In production, this would generate the actual HTML file
     const exportData = await this.prisma.vaultExport.create({
       data: {
-        userId,
+        user: { connect: { id: userId } },
         fileName: dto.fileName,
         filePath: `/exports/${userId}/${dto.fileName}.html`,
         fileSize: BigInt(0),
@@ -275,7 +275,7 @@ export class HybridCloudService {
   async createUserWidget(userId: string, dto: CreateUserWidgetDto) {
     return this.prisma.userWidget.create({
       data: {
-        userId,
+        user: { connect: { id: userId } },
         widgetType: dto.widgetType,
         widgetId: dto.widgetId,
         widgetName: dto.widgetName,
@@ -344,7 +344,7 @@ export class HybridCloudService {
 
     return this.prisma.clipboardSync.create({
       data: {
-        userId,
+        user: { connect: { id: userId } },
         clipboardId,
         dataType: dto.dataType,
         data: dto.data,
