@@ -10,24 +10,24 @@ export declare class HybridCloudService {
     createOfflineSync(userId: string, dto: CreateOfflineSyncDto): Promise<{
         data: string;
         id: string;
+        userId: string;
+        createdAt: Date;
         entityType: string;
         entityId: string;
         operation: string;
-        createdAt: Date;
         syncedAt: Date | null;
         isSynced: boolean;
-        userId: string;
     }>;
     getPendingSyncs(userId: string): Promise<{
         data: string;
         id: string;
+        userId: string;
+        createdAt: Date;
         entityType: string;
         entityId: string;
         operation: string;
-        createdAt: Date;
         syncedAt: Date | null;
         isSynced: boolean;
-        userId: string;
     }[]>;
     syncOfflineChanges(userId: string, forceSync?: boolean): Promise<{
         message: string;
@@ -36,69 +36,69 @@ export declare class HybridCloudService {
     markSynced(syncId: string): Promise<{
         data: string;
         id: string;
+        userId: string;
+        createdAt: Date;
         entityType: string;
         entityId: string;
         operation: string;
-        createdAt: Date;
         syncedAt: Date | null;
         isSynced: boolean;
-        userId: string;
     }>;
     createNASBackup(userId: string, dto: CreateNASBackupDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         updatedAt: Date;
         isActive: boolean;
+        status: string;
+        errorMessage: string | null;
         provider: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
         schedule: string;
-        status: string;
-        errorMessage: string | null;
     }>;
     getNASBackups(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         updatedAt: Date;
         isActive: boolean;
+        status: string;
+        errorMessage: string | null;
         provider: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
         schedule: string;
-        status: string;
-        errorMessage: string | null;
     }[]>;
     getNASBackup(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         updatedAt: Date;
         isActive: boolean;
+        status: string;
+        errorMessage: string | null;
         provider: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
         schedule: string;
-        status: string;
-        errorMessage: string | null;
     }>;
     updateNASBackup(id: string, userId: string, dto: UpdateNASBackupDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         updatedAt: Date;
         isActive: boolean;
+        status: string;
+        errorMessage: string | null;
         provider: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
         schedule: string;
-        status: string;
-        errorMessage: string | null;
     }>;
     deleteNASBackup(id: string, userId: string): Promise<{
         message: string;
@@ -110,49 +110,49 @@ export declare class HybridCloudService {
     createVaultExport(userId: string, dto: CreateVaultExportDto): Promise<{
         id: string;
         userId: string;
+        expiresAt: Date | null;
+        isPublic: boolean;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
-        expiresAt: Date | null;
         downloadCount: number;
-        isPublic: boolean;
         accessCode: string | null;
     }>;
     getVaultExports(userId: string): Promise<{
         id: string;
         userId: string;
+        expiresAt: Date | null;
+        isPublic: boolean;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
-        expiresAt: Date | null;
         downloadCount: number;
-        isPublic: boolean;
         accessCode: string | null;
     }[]>;
     getVaultExport(id: string, userId: string): Promise<{
         id: string;
         userId: string;
+        expiresAt: Date | null;
+        isPublic: boolean;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
-        expiresAt: Date | null;
         downloadCount: number;
-        isPublic: boolean;
         accessCode: string | null;
     }>;
     verifyVaultExportAccess(accessCode: string): Promise<{
         id: string;
         userId: string;
+        expiresAt: Date | null;
+        isPublic: boolean;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
-        expiresAt: Date | null;
         downloadCount: number;
-        isPublic: boolean;
         accessCode: string | null;
     }>;
     deleteVaultExport(id: string, userId: string): Promise<{
@@ -160,11 +160,11 @@ export declare class HybridCloudService {
     }>;
     createUserWidget(userId: string, dto: CreateUserWidgetDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         updatedAt: Date;
-        widgetType: string;
         widgetId: string;
+        widgetType: string;
         widgetName: string;
         config: string;
         isEnabled: boolean;
@@ -172,11 +172,11 @@ export declare class HybridCloudService {
     }>;
     getUserWidgets(userId: string, widgetType?: WidgetType): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         updatedAt: Date;
-        widgetType: string;
         widgetId: string;
+        widgetType: string;
         widgetName: string;
         config: string;
         isEnabled: boolean;
@@ -184,11 +184,11 @@ export declare class HybridCloudService {
     }[]>;
     getUserWidget(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         updatedAt: Date;
-        widgetType: string;
         widgetId: string;
+        widgetType: string;
         widgetName: string;
         config: string;
         isEnabled: boolean;
@@ -196,11 +196,11 @@ export declare class HybridCloudService {
     }>;
     updateUserWidget(id: string, userId: string, dto: UpdateUserWidgetDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         updatedAt: Date;
-        widgetType: string;
         widgetId: string;
+        widgetType: string;
         widgetName: string;
         config: string;
         isEnabled: boolean;
@@ -212,8 +212,8 @@ export declare class HybridCloudService {
     createClipboardSync(userId: string, dto: CreateClipboardSyncDto): Promise<{
         data: string;
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         expiresAt: Date;
         clipboardId: string;
         dataType: string;
@@ -222,8 +222,8 @@ export declare class HybridCloudService {
     getClipboardSync(clipboardId: string, userId: string): Promise<{
         data: string;
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         expiresAt: Date;
         clipboardId: string;
         dataType: string;
@@ -232,8 +232,8 @@ export declare class HybridCloudService {
     getClipboardSyncs(userId: string): Promise<{
         data: string;
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         expiresAt: Date;
         clipboardId: string;
         dataType: string;

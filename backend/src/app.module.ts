@@ -10,6 +10,7 @@ import { SessionsModule } from './sessions/sessions.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { EventStreamingModule } from './event-streaming/event-streaming.module';
 import { HybridCloudModule } from './hybrid-cloud/hybrid-cloud.module';
+import { AICompanionModule } from './ai-companion/ai-companion.module';
 
 @Module({
   imports: [
@@ -40,6 +41,8 @@ import { HybridCloudModule } from './hybrid-cloud/hybrid-cloud.module';
     EventStreamingModule,
 
     HybridCloudModule,
+
+    AICompanionModule,
   ],
 })
 export class AppModule {}

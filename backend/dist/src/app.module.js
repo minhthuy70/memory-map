@@ -18,6 +18,7 @@ const sessions_module_1 = require("./sessions/sessions.module");
 const prisma_module_1 = require("./prisma/prisma.module");
 const event_streaming_module_1 = require("./event-streaming/event-streaming.module");
 const hybrid_cloud_module_1 = require("./hybrid-cloud/hybrid-cloud.module");
+const ai_companion_module_1 = require("./ai-companion/ai-companion.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -42,6 +43,7 @@ exports.AppModule = AppModule = __decorate([
             sessions_module_1.SessionsModule,
             event_streaming_module_1.EventStreamingModule,
             hybrid_cloud_module_1.HybridCloudModule,
+            ai_companion_module_1.AICompanionModule,
         ],
     })
 ], AppModule);
