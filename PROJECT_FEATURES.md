@@ -1744,18 +1744,18 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 53.1. Live Tracking & Virtual Experiences (Theo dõi trực tiếp & Trải nghiệm ảo)
-[ ] - Real-time Live Journey Broadcast - Phát trực tiếp hành trình theo thời gian thực - LiveJourneyBroadcast.tsx (live GPS breadcrumbs sharing with battery status and elevation for hiking/cycling expeditions, emergency beacon mode, password protected link)
-[ ] - 3D Virtual Memory Room & Watch Party - Phòng xem chung kỷ niệm 3D trực tuyến - VirtualWatchParty.tsx (virtual 3D living room with WebRTC voice/video chat, synchronized slideshow viewing, interactive memory map table for remote families)
-[ ] - Event & Wedding Guest Contribution Wall - Tường kỷ niệm tiệc cưới và sự kiện - EventGuestWall.tsx (event QR code for wedding/birthday guests to upload live photos and blessings directly to on-stage projector screen)
-[ ] - Digital Graduation & School Year Memory Book - Kỷ yếu số trường học gắn liền địa điểm - SchoolYearMemoryBook.tsx (interactive campus map with memories pinned to classrooms, sports grounds, cafeteria, class roster and signatures)
-[ ] - Temporary Shared Links with Passcode & Expiration - Link chia sẻ có mật mã và tự hủy - ExpiringSharedLinks.tsx (customizable shareable URLs with view count limits, PIN code protection, auto-expiration in 1-7 days, revoke link anytime)
+[x] - Real-time Live Journey Broadcast - Phát trực tiếp hành trình theo thời gian thực - LiveJourneyBroadcast.tsx (live GPS breadcrumbs sharing with battery status and elevation for hiking/cycling expeditions, emergency beacon mode, password protected link, WebSocket real-time location updates)
+[x] - 3D Virtual Memory Room & Watch Party - Phòng xem chung kỷ niệm 3D trực tuyến - VirtualWatchParty.tsx (virtual 3D living room with WebRTC voice/video chat, synchronized slideshow viewing, interactive memory map table for remote families, WatchPartyVideoCall component with video call interface)
+[x] - Event & Wedding Guest Contribution Wall - Tường kỷ niệm tiệc cưới và sự kiện - EventGuestWall.tsx (event QR code for wedding/birthday guests to upload live photos and blessings directly to on-stage projector screen, WebSocket real-time contribution updates)
+[x] - Digital Graduation & School Year Memory Book - Kỷ yếu số trường học gắn liền địa điểm - SchoolYearMemoryBook.tsx (interactive campus map with memories pinned to classrooms, sports grounds, cafeteria, class roster and signatures)
+[x] - Temporary Shared Links with Passcode & Expiration - Link chia sẻ có mật mã và tự hủy - ExpiringSharedLinks.tsx (customizable shareable URLs with view count limits, PIN code protection, auto-expiration in 1-7 days, revoke link anytime)
 
 53.2. Embedding & Physical Merchandise (Nhúng web & Vật phẩm vật lý)
-[ ] - Custom Branded Travel Portfolio Webpage - Trang portfolio du lịch cá nhân tên miền riêng - TravelPortfolioSite.tsx (custom domain support memory.yourname.com, responsive portfolio layout, curated highlights, biography, contact form)
-[ ] - Embeddable Interactive Map Widget - Mã nhúng iframe bản đồ cho blog & website - EmbeddableMapWidget.tsx (responsive iframe snippet to embed live memory map into personal blogs, WordPress, Notion, customizable theme and controls)
-[ ] - Smart QR Code Stickers for Souvenirs - Tem dán mã QR cho đồ lưu niệm ngoài đời - SouvenirQRStickers.tsx (generate and print QR stickers to paste on physical fridge magnets, mugs, souvenirs; scanning opens the exact memory and photo gallery)
-[ ] - Social Media Vertical Story Auto-exporter - Tự động xuất video dọc 9:16 cho Reels/TikTok - VerticalStoryAutoExporter.tsx (auto-render 9:16 cinematic vertical video with dynamic text captions, location stickers, trending background beats, ready for TikTok/Shorts/Reels)
-[ ] - Audio Voice Commentary for Friends' Memories - Gửi lời nhắn thoại vào kỷ niệm của bạn bè - FriendVoiceCommentary.tsx (record 30-second audio voice notes attached to friend's memory pin, wave animation player, notification to author)
+[x] - Custom Branded Travel Portfolio Webpage - Trang portfolio du lịch cá nhân tên miền riêng - TravelPortfolio.tsx (custom domain support memory.yourname.com, responsive portfolio layout, curated highlights, biography, contact form, add/remove featured memories)
+[x] - Embeddable Interactive Map Widget - Mã nhúng iframe bản đồ cho blog & website - EmbeddableMapWidget.tsx (responsive iframe snippet to embed live memory map into personal blogs, WordPress, Notion, customizable theme and controls, generate embed code)
+[x] - Smart QR Code Stickers for Souvenirs - Tem dán mã QR cho đồ lưu niệm ngoài đời - QRCodeSticker.tsx (generate and print QR stickers to paste on physical fridge magnets, mugs, souvenirs; scanning opens the exact memory and photo gallery, track scan count)
+[x] - Social Media Vertical Story Auto-exporter - Tự động xuất video dọc 9:16 cho Reels/TikTok - VerticalStoryExport.tsx (auto-render 9:16 cinematic vertical video with dynamic text captions, location stickers, trending background beats, ready for TikTok/Shorts/Reels, status tracking pending/processing/completed)
+[x] - Audio Voice Commentary for Friends' Memories - Gửi lời nhắn thoại vào kỷ niệm của bạn bè - FriendVoiceCommentary.tsx (record 30-second audio voice notes attached to friend's memory pin, wave animation player, notification to author, view memory-specific commentaries)
  
 ================================================================================
  
@@ -1763,10 +1763,10 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1160
-Số lượng tính năng đã implement: 1048 (90.3%)
+Số lượng tính năng đã implement: 1060 (91.4%)
 Số lượng tính năng đang phát triển: 0
 Số lượng tính năng tương lai (Roadmap): 112 (9.7%)
  
-Last Updated: 2026-09-22
+Last Updated: 2026-10-05
 Version: 16.0 (Future Roadmap)
 

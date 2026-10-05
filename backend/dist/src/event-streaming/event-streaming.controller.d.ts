@@ -258,10 +258,10 @@ export declare class EventStreamingController {
         title: string;
         userId: string;
         createdAt: Date;
-        updatedAt: Date;
         customDomain: string | null;
         bio: string | null;
         isPublic: boolean;
+        updatedAt: Date;
     }>;
     getTravelPortfolios(req: any): Promise<({
         featuredMemories: ({
@@ -270,10 +270,10 @@ export declare class EventStreamingController {
                 title: string;
                 userId: string;
                 createdAt: Date;
-                updatedAt: Date;
                 customDomain: string | null;
                 bio: string | null;
                 isPublic: boolean;
+                updatedAt: Date;
             };
         } & {
             id: string;
@@ -287,30 +287,53 @@ export declare class EventStreamingController {
         title: string;
         userId: string;
         createdAt: Date;
-        updatedAt: Date;
         customDomain: string | null;
         bio: string | null;
         isPublic: boolean;
+        updatedAt: Date;
     })[]>;
     getPublicPortfolio(customDomain: string): Promise<{
+        user: {
+            name: string;
+            avatar: string;
+        };
+        featuredMemories: ({
+            portfolio: {
+                id: string;
+                title: string;
+                userId: string;
+                createdAt: Date;
+                customDomain: string | null;
+                bio: string | null;
+                isPublic: boolean;
+                updatedAt: Date;
+            };
+        } & {
+            id: string;
+            memoryId: string;
+            portfolioId: string;
+            order: number;
+            isFeatured: boolean;
+        })[];
+    } & {
         id: string;
         title: string;
         userId: string;
         createdAt: Date;
-        updatedAt: Date;
         customDomain: string | null;
         bio: string | null;
         isPublic: boolean;
+        updatedAt: Date;
     }>;
     updateTravelPortfolio(id: string, req: any, dto: UpdateTravelPortfolioDto): Promise<{
         id: string;
         title: string;
         userId: string;
         createdAt: Date;
-        updatedAt: Date;
         customDomain: string | null;
         bio: string | null;
         isPublic: boolean;
+        updatedAt: Date;
     }>;
     addPortfolioMemory(id: string, req: any, dto: AddPortfolioMemoryDto): Promise<{
         id: string;
@@ -406,7 +429,7 @@ export declare class EventStreamingController {
         userId: string;
         createdAt: Date;
         memoryId: string;
-        videoUrl: string;
+        videoUrl: string | null;
         resolution: string;
         format: string;
         duration: number | null;
@@ -418,7 +441,7 @@ export declare class EventStreamingController {
         userId: string;
         createdAt: Date;
         memoryId: string;
-        videoUrl: string;
+        videoUrl: string | null;
         resolution: string;
         format: string;
         duration: number | null;

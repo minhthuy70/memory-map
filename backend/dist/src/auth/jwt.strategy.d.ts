@@ -12,9 +12,9 @@ export declare class JwtStrategy extends JwtStrategy_base {
         isActive: boolean;
         name: string | null;
         createdAt: Date;
+        updatedAt: Date;
         email: string;
         avatar: string | null;
-        updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         lastLoginAt: Date | null;

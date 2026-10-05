@@ -32,8 +32,8 @@ export declare class MemoriesController {
         latitude: number;
         longitude: number;
         createdAt: Date;
-        updatedAt: Date;
         isPublic: boolean;
+        updatedAt: Date;
         content: string | null;
         locationName: string | null;
         memoryDate: Date;
@@ -67,8 +67,8 @@ export declare class MemoriesController {
             latitude: number;
             longitude: number;
             createdAt: Date;
-            updatedAt: Date;
             isPublic: boolean;
+            updatedAt: Date;
             content: string | null;
             locationName: string | null;
             memoryDate: Date;
@@ -146,8 +146,8 @@ export declare class MemoriesController {
         latitude: number;
         longitude: number;
         createdAt: Date;
-        updatedAt: Date;
         isPublic: boolean;
+        updatedAt: Date;
         content: string | null;
         locationName: string | null;
         memoryDate: Date;
@@ -186,8 +186,8 @@ export declare class MemoriesController {
         latitude: number;
         longitude: number;
         createdAt: Date;
-        updatedAt: Date;
         isPublic: boolean;
+        updatedAt: Date;
         content: string | null;
         locationName: string | null;
         memoryDate: Date;
@@ -221,8 +221,8 @@ export declare class MemoriesController {
         latitude: number;
         longitude: number;
         createdAt: Date;
-        updatedAt: Date;
         isPublic: boolean;
+        updatedAt: Date;
         content: string | null;
         locationName: string | null;
         memoryDate: Date;
@@ -240,8 +240,8 @@ export declare class MemoriesController {
         latitude: number;
         longitude: number;
         createdAt: Date;
-        updatedAt: Date;
         isPublic: boolean;
+        updatedAt: Date;
         content: string | null;
         locationName: string | null;
         memoryDate: Date;

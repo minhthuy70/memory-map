@@ -269,7 +269,7 @@ let EventStreamingService = class EventStreamingService {
         });
     }
     async accessSharedLink(url, dto) {
-        const link = await this.prisma.temporarySharedLink.findUnique({
+        const link = await this.prisma.temporarySharedLink.findFirst({
             where: { url },
         });
         if (!link || link.isRevoked) {
@@ -291,8 +291,8 @@ let EventStreamingService = class EventStreamingService {
         return link;
     }
     async revokeSharedLink(id, userId) {
-        const link = await this.prisma.temporarySharedLink.findUnique({
-            where: { id },
+        const link = await this.prisma.temporarySharedLink.findFirst({
+            where: { id, userId },
         });
         if (!link || link.userId !== userId) {
             throw new common_1.ForbiddenException();
@@ -327,7 +327,7 @@ let EventStreamingService = class EventStreamingService {
         });
     }
     async getPublicPortfolio(customDomain) {
-        const portfolio = await this.prisma.travelPortfolio.findUnique({
+        const portfolio = await this.prisma.travelPortfolio.findFirst({
             where: { customDomain },
             include: {
                 user: {
@@ -463,7 +463,9 @@ let EventStreamingService = class EventStreamingService {
     async createVerticalStoryExport(userId, dto) {
         return this.prisma.verticalStoryExport.create({
             data: {
-                userId,
+                user: {
+                    connect: { id: userId },
+                },
                 memoryId: dto.memoryId,
                 resolution: dto.resolution || '1080p',
                 format: dto.format || 'mp4',

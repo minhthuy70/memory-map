@@ -337,7 +337,7 @@ export class EventStreamingService {
 
   async revokeSharedLink(id: string, userId: string) {
     const link = await this.prisma.temporarySharedLink.findFirst({
-      where: { id },
+      where: { id, userId },
     });
 
     if (!link || link.userId !== userId) {

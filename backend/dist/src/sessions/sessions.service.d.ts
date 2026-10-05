@@ -18,10 +18,10 @@ export declare class SessionsService {
             isActive: boolean;
             name: string | null;
             createdAt: Date;
+            updatedAt: Date;
             email: string;
             passwordHash: string | null;
             avatar: string | null;
-            updatedAt: Date;
             lockedUntil: Date | null;
             loginAttempts: number;
             lastLoginAt: Date | null;
