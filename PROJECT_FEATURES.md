@@ -1706,16 +1706,16 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 51.1. Autonomous Chronicler & Interviewer (Thư ký tự hành & Phỏng vấn viên)
-[ ] - Autonomous Evening Chronicler Agent - Trợ lý AI tự động soạn nhật ký mỗi tối - AutonomousChroniclerAgent.tsx (runs autonomously at 21:00, groups daytime camera roll photos, identifies visit locations, drafts a complete poetic journal entry for review)
-[ ] - AI Biographer Voice Interviewer - AI nhà viết tiểu sử phỏng vấn bằng giọng nói - AIBiographerInterviewer.tsx (friendly conversational AI interviewer asking thought-provoking life questions: "What was your biggest dream that year?", transcribes & crafts life story)
-[ ] - Automated Multi-photo Quality Curation - AI chọn lọc ảnh chất lượng cao nhất - AutoPhotoCuration.tsx (computer vision scoring for aesthetics, focus sharpness, smile detection, removes blurry and closed-eye shots, picks top 5 highlight photos)
-[ ] - Natural Semantic Deep Search - Tìm kiếm ngữ nghĩa tự nhiên chuyên sâu - SemanticDeepSearch.tsx (vector embeddings search via CLIP/Gemini: search concepts like "relaxing by the lake during twilight in Dalat" without exact keyword matches)
+[x] - Autonomous Evening Chronicler Agent - Trợ lý AI tự động soạn nhật ký mỗi tối - AutonomousChroniclerAgent.tsx (runs autonomously at 21:00, groups daytime camera roll photos, identifies visit locations, drafts a complete poetic journal entry for review)
+[x] - AI Biographer Voice Interviewer - AI nhà viết tiểu sử phỏng vấn bằng giọng nói - AIBiographerInterviewer.tsx (friendly conversational AI interviewer asking thought-provoking life questions: "What was your biggest dream that year?", transcribes & crafts life story)
+[x] - Automated Multi-photo Quality Curation - AI chọn lọc ảnh chất lượng cao nhất - AutoPhotoCuration.tsx (computer vision scoring for aesthetics, focus sharpness, smile detection, removes blurry and closed-eye shots, picks top 5 highlight photos)
+[x] - Natural Semantic Deep Search - Tìm kiếm ngữ nghĩa tự nhiên chuyên sâu - SemanticDeepSearch.tsx (vector embeddings search via CLIP/Gemini: search concepts like "relaxing by the lake during twilight in Dalat" without exact keyword matches)
 [ ] - AI Travel Route Auto-narrator - AI tự động viết du ký từ các điểm dừng chân - TravelRouteAutoNarrator.tsx (converts sequential map pins and timestamps into an engaging travelogue essay in choice of tones: humorous, poetic, adventurous)
 
 51.2. Creative AI Transformations (Biến đổi hình ảnh & Ký ức bằng AI)
 [ ] - Historical Time-travel Simulator - Tái hiện khung cảnh lịch sử 100 năm trước - HistoricalTimeTravelSim.tsx (generative AI reconstruction of what the current GPS coordinates looked like in 1900 or 1950, historical context notes)
 [ ] - Visual Age Regression & Progression - Tái hiện dung mạo quá khứ & tương lai - AgeRegressionProgression.tsx (AI generative portrait adjusting user's appearance at this landmark to 10 years younger or predicting look 20 years into the future)
-[ ] - Personal AI Voice Cloning for Narration - Nhân bản giọng nói chính mình để đọc ký ức - PersonalVoiceCloning.tsx (train custom voice model from 1-minute audio sample, synthesizes natural audio narration of your old journal entries in your own voice)
+[x] - Personal AI Voice Cloning for Narration - Nhân bản giọng nói chính mình để đọc ký ức - PersonalVoiceCloning.tsx (train custom voice model from 1-minute audio sample, synthesizes natural audio narration of your old journal entries in your own voice)
 [ ] - Multi-perspective Memory Synthesizer - Tổng hợp hồi ký nhóm từ nhiều góc nhìn - MultiPerspectiveSynthesizer.tsx (combines notes and photos from 4 friends on the same trip into a harmonious unified multi-chapter memoir)
 [ ] - Predictive Resurfacing for Stress Relief - Dự đoán khoảnh khắc mệt mỏi để xoa dịu - PredictiveResurfacing.tsx (sentiment and schedule awareness detects busy/stressful periods to gently present your most calming, joyful memory)
 
