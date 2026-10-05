@@ -9,6 +9,7 @@ import { CategoriesModule } from './categories/categories.module';
 import { SessionsModule } from './sessions/sessions.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { EventStreamingModule } from './event-streaming/event-streaming.module';
+import { HybridCloudModule } from './hybrid-cloud/hybrid-cloud.module';
 
 @Module({
   imports: [
@@ -37,6 +38,8 @@ import { EventStreamingModule } from './event-streaming/event-streaming.module';
     SessionsModule,
 
     EventStreamingModule,
+
+    HybridCloudModule,
   ],
 })
 export class AppModule {}
