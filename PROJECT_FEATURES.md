@@ -1765,7 +1765,7 @@ END OF FEATURE LIST
 Tổng số tính năng: 1160
 Số lượng tính năng đã implement: 1060 (91.4%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai (Roadmap): 112 (9.7%)
+Số lượng tính năng tương lai (Roadmap): 100 (8.6%)
  
 Last Updated: 2026-10-05
 Version: 16.0 (Future Roadmap)
