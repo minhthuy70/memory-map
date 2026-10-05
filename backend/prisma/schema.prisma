@@ -56,6 +56,14 @@ model User {
   carIntegrations CarIntegration[]
   clipboardSyncs ClipboardSync[]
 
+  // AI Multi-agent Companion
+  aiJournalEntries AIJournalEntry[]
+  aiInterviews AIInterview[]
+  photoCurations PhotoCuration[]
+  semanticSearchIndices SemanticSearchIndex[]
+  voiceCloneModels VoiceCloneModel[]
+  memorySyntheses MemorySynthesis[]
+
   @@map("users")
 }
 
@@ -524,4 +532,115 @@ model ClipboardSync {
   @@index([clipboardId])
   @@index([expiresAt])
   @@map("clipboard_syncs")
+}
+
+// AI Multi-agent Companion
+model AIJournalEntry {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  date        DateTime @map("date")
+  title       String
+  content     String   @db.Text
+  photos      String   @map("photos") // JSON array of photo URLs
+  locations   String   @map("locations") // JSON array of location data
+  isDraft     Boolean  @default(true) @map("is_draft")
+  isReviewed  Boolean  @default(false) @map("is_reviewed")
+  generatedAt DateTime @default(now()) @map("generated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([date])
+  @@index([isDraft])
+  @@map("ai_journal_entries")
+}
+
+model AIInterview {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  question    String   @db.Text
+  answer      String?  @db.Text
+  audioUrl    String?  @map("audio_url")
+  duration    Int?
+  isCompleted Boolean  @default(false) @map("is_completed")
+  createdAt   DateTime @default(now()) @map("created_at")
+  completedAt DateTime? @map("completed_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isCompleted])
+  @@map("ai_interviews")
+}
+
+model PhotoCuration {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String   @map("memory_id")
+  photoId     String   @map("photo_id")
+  aestheticScore Float  @map("aesthetic_score")
+  focusScore    Float  @map("focus_score")
+  smileScore    Float  @map("smile_score")
+  overallScore  Float  @map("overall_score")
+  isHighlighted Boolean @default(false) @map("is_highlighted")
+  isRejected   Boolean @default(false) @map("is_rejected")
+  reasons      String?  @map("reasons") // JSON array of rejection reasons
+  createdAt    DateTime @default(now()) @map("created_at")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@index([overallScore])
+  @@map("photo_curations")
+}
+
+model SemanticSearchIndex {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  entityType  String   @map("entity_type") // memory, image
+  entityId    String   @map("entity_id")
+  embedding   String   @map("embedding") // Vector embedding as JSON array
+  metadata    String   @map("metadata") // JSON metadata
+  indexedAt   DateTime @default(now()) @map("indexed_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@map("semantic_search_indices")
+}
+
+model VoiceCloneModel {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  modelName   String   @map("model_name")
+  sampleAudioUrl String @map("sample_audio_url")
+  modelPath   String   @map("model_path")
+  status      String   @default("training") // training, ready, failed
+  trainingProgress Int  @default(0) @map("training_progress")
+  errorMessage String?  @map("error_message")
+  createdAt   DateTime @default(now()) @map("created_at")
+  readyAt     DateTime? @map("ready_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("voice_clone_models")
+}
+
+model MemorySynthesis {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  description String   @db.Text
+  participantIds String @map("participant_ids") // JSON array of user IDs
+  memoryIds   String   @map("memory_ids") // JSON array of memory IDs
+  chapters    String   @map("chapters") // JSON array of chapter data
+  tone        String   @default("neutral") // humorous, poetic, adventurous, neutral
+  status      String   @default("pending") // pending, processing, completed, failed
+  generatedAt DateTime? @map("generated_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("memory_syntheses")
 }
