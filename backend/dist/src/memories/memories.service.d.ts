@@ -35,44 +35,44 @@ export declare class MemoriesService {
         categoryId: string;
         reminderDate?: Date;
     }): Promise<{
+        category: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            color: string;
+            icon: string;
+        };
         user: {
             id: string;
             name: string;
             email: string;
             avatar: string;
         };
-        category: {
-            id: string;
-            name: string;
-            createdAt: Date;
-            color: string;
-            icon: string;
-        };
         images: {
             id: string;
+            memoryId: string;
             createdAt: Date;
             order: number;
-            memoryId: string;
             imageUrl: string;
         }[];
     } & {
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     findAll(userId: string, filters?: {
         categoryId?: string;
@@ -86,36 +86,36 @@ export declare class MemoriesService {
         memories: ({
             category: {
                 id: string;
-                name: string;
                 createdAt: Date;
+                name: string;
                 color: string;
                 icon: string;
             };
             images: {
                 id: string;
+                memoryId: string;
                 createdAt: Date;
                 order: number;
-                memoryId: string;
                 imageUrl: string;
             }[];
         } & {
             id: string;
             userId: string;
-            updatedAt: Date;
-            createdAt: Date;
-            isPublic: boolean;
-            title: string;
             content: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+            title: string;
+            mood: import(".prisma/client").$Enums.Mood;
+            locationName: string | null;
             latitude: number;
             longitude: number;
-            locationName: string | null;
             memoryDate: Date;
-            mood: import(".prisma/client").$Enums.Mood;
+            categoryId: string;
             reminderDate: Date | null;
             reminderSent: boolean;
+            isPublic: boolean;
             publicExpiresAt: Date | null;
             publicSlug: string | null;
-            categoryId: string;
         })[];
         pagination: {
             page: number;
@@ -127,44 +127,44 @@ export declare class MemoriesService {
         };
     }>;
     findOne(id: string, userId: string): Promise<{
+        category: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            color: string;
+            icon: string;
+        };
         user: {
             id: string;
             name: string;
             email: string;
             avatar: string;
         };
-        category: {
-            id: string;
-            name: string;
-            createdAt: Date;
-            color: string;
-            icon: string;
-        };
         images: {
             id: string;
+            memoryId: string;
             createdAt: Date;
             order: number;
-            memoryId: string;
             imageUrl: string;
         }[];
     } & {
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     update(id: string, userId: string, data: {
         title?: string;
@@ -179,75 +179,75 @@ export declare class MemoriesService {
     }): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
+            memoryId: string;
             createdAt: Date;
             order: number;
-            memoryId: string;
             imageUrl: string;
         }[];
     } & {
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     delete(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     addImage(memoryId: string, userId: string, imageUrl: string): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         order: number;
-        memoryId: string;
         imageUrl: string;
     }>;
     deleteImage(imageId: string, userId: string): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         order: number;
-        memoryId: string;
         imageUrl: string;
     }>;
     updateImageOrder(imageId: string, userId: string, order: number): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         order: number;
-        memoryId: string;
         imageUrl: string;
     }>;
     getStatistics(userId: string): Promise<{
@@ -283,36 +283,36 @@ export declare class MemoriesService {
     getPublicMemoryBySlug(slug: string): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
+            memoryId: string;
             createdAt: Date;
             order: number;
-            memoryId: string;
             imageUrl: string;
         }[];
     } & {
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     private generateSlug;
     getTravelStatistics(userId: string): Promise<{

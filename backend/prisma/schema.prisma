@@ -81,6 +81,14 @@ model User {
   leaderboardEntries LeaderboardEntry[]
   virtualSouvenirs VirtualSouvenir[]
 
+  // Psychology & Mindfulness
+  emotionalGeographyPoints EmotionalGeographyPoint[]
+  gratitudeEntries GratitudeEntry[]
+  resilienceMoments ResilienceMoment[]
+  dailySerendipities DailySerendipity?
+  emotionalWaveforms EmotionalWaveform[]
+  dreamJournals DreamJournal[]
+
   @@map("users")
 }
 
@@ -916,4 +924,105 @@ model VirtualSouvenir {
   @@index([userId])
   @@index([type])
   @@map("virtual_souvenirs")
+}
+
+// Psychology & Mindfulness
+model EmotionalGeographyPoint {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String   @map("memory_id")
+  latitude    Float
+  longitude   Float
+  emotionType String   @map("emotion_type") // happiness, peace, creativity, stress
+  intensity   Float    // 0-1
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@index([emotionType])
+  @@map("emotional_geography_points")
+}
+
+model GratitudeEntry {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  content     String   @db.Text
+  category    String   // people, experience, opportunity, nature
+  isShared    Boolean  @default(false) @map("is_shared")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([category])
+  @@map("gratitude_entries")
+}
+
+model ResilienceMoment {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  description String   @db.Text
+  date        DateTime @map("date")
+  difficulty  Int      // 1-10
+  overcomeAt  DateTime? @map("overcome_at")
+  selfEncouragement String? @map("self_encouragement")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([date])
+  @@map("resilience_moments")
+}
+
+model DailySerendipity {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  memoryId    String   @map("memory_id")
+  date        DateTime @map("date")
+  viewedAt    DateTime? @map("viewed_at")
+  isViewed    Boolean  @default(false) @map("is_viewed")
+  moodBefore  String?  @map("mood_before") // happy, neutral, sad
+  moodAfter   String?  @map("mood_after")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([date])
+  @@map("daily_serendipities")
+}
+
+model EmotionalWaveform {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  date        DateTime @map("date")
+  mood        Float    // -1 to 1 (negative to positive)
+  stressLevel Float   @map("stress_level") // 0-1
+  notes       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([date])
+  @@map("emotional_waveforms")
+}
+
+model DreamJournal {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  description String   @db.Text
+  dreamDate   DateTime @default(now()) @map("dream_date")
+  isLucid     Boolean  @default(false) @map("is_lucid")
+  symbols     String   @map("symbols") // JSON array of dream symbols
+  locationLatitude Float? @map("location_latitude")
+  locationLongitude Float? @map("location_longitude")
+  locationName String?  @map("location_name")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([dreamDate])
+  @@map("dream_journals")
 }

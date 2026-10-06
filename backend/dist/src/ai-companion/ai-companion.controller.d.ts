@@ -10,9 +10,9 @@ export declare class AICompanionController {
     createAIJournalEntry(req: any, dto: CreateAIJournalEntryDto): Promise<{
         id: string;
         userId: string;
-        title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
+        title: string;
         date: Date;
         photos: string;
         locations: string;
@@ -23,9 +23,9 @@ export declare class AICompanionController {
     getAIJournalEntries(req: any, startDate?: string, endDate?: string): Promise<{
         id: string;
         userId: string;
-        title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
+        title: string;
         date: Date;
         photos: string;
         locations: string;
@@ -36,9 +36,9 @@ export declare class AICompanionController {
     getAIJournalEntry(id: string, req: any): Promise<{
         id: string;
         userId: string;
-        title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
+        title: string;
         date: Date;
         photos: string;
         locations: string;
@@ -49,9 +49,9 @@ export declare class AICompanionController {
     updateAIJournalEntry(id: string, req: any, dto: UpdateAIJournalEntryDto): Promise<{
         id: string;
         userId: string;
-        title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
+        title: string;
         date: Date;
         photos: string;
         locations: string;
@@ -65,9 +65,9 @@ export declare class AICompanionController {
     generateJournalEntry(req: any, dto: GenerateJournalEntryDto): Promise<{
         id: string;
         userId: string;
-        title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
+        title: string;
         date: Date;
         photos: string;
         locations: string;
@@ -79,8 +79,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         createdAt: Date;
-        completedAt: Date | null;
         duration: number | null;
+        completedAt: Date | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -90,8 +90,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         createdAt: Date;
-        completedAt: Date | null;
         duration: number | null;
+        completedAt: Date | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -101,8 +101,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         createdAt: Date;
-        completedAt: Date | null;
         duration: number | null;
+        completedAt: Date | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -112,8 +112,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         createdAt: Date;
-        completedAt: Date | null;
         duration: number | null;
+        completedAt: Date | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -126,8 +126,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         createdAt: Date;
-        completedAt: Date | null;
         duration: number | null;
+        completedAt: Date | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -136,8 +136,8 @@ export declare class AICompanionController {
     createPhotoCuration(req: any, dto: CreatePhotoCurationDto): Promise<{
         id: string;
         userId: string;
-        createdAt: Date;
         memoryId: string;
+        createdAt: Date;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -150,8 +150,8 @@ export declare class AICompanionController {
     getPhotoCurations(req: any, memoryId?: string): Promise<{
         id: string;
         userId: string;
-        createdAt: Date;
         memoryId: string;
+        createdAt: Date;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -164,8 +164,8 @@ export declare class AICompanionController {
     getPhotoCuration(id: string, req: any): Promise<{
         id: string;
         userId: string;
-        createdAt: Date;
         memoryId: string;
+        createdAt: Date;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -178,8 +178,8 @@ export declare class AICompanionController {
     updatePhotoCuration(id: string, req: any, dto: UpdatePhotoCurationDto): Promise<{
         id: string;
         userId: string;
-        createdAt: Date;
         memoryId: string;
+        createdAt: Date;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -196,10 +196,10 @@ export declare class AICompanionController {
     indexEntity(req: any, dto: IndexEntityDto): Promise<{
         id: string;
         userId: string;
-        metadata: string;
         entityType: string;
         entityId: string;
         embedding: string;
+        metadata: string;
         indexedAt: Date;
     }>;
     semanticSearch(req: any, dto: SemanticSearchDto): Promise<{
@@ -211,10 +211,10 @@ export declare class AICompanionController {
     getSearchIndices(req: any, entityType?: string): Promise<{
         id: string;
         userId: string;
-        metadata: string;
         entityType: string;
         entityId: string;
         embedding: string;
+        metadata: string;
         indexedAt: Date;
     }[]>;
     deleteSearchIndex(id: string, req: any): Promise<{

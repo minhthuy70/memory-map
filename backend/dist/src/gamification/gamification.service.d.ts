@@ -5,6 +5,7 @@ export declare class GamificationService {
     getUserStats(userId: string): Promise<{
         id: string;
         userId: string;
+        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -13,11 +14,11 @@ export declare class GamificationService {
         locationsVisited: number;
         streakDays: number;
         longestStreak: number;
-        updatedAt: Date;
     }>;
     addXP(userId: string, amount: number): Promise<{
         id: string;
         userId: string;
+        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -26,11 +27,11 @@ export declare class GamificationService {
         locationsVisited: number;
         streakDays: number;
         longestStreak: number;
-        updatedAt: Date;
     }>;
     updateMemoryCount(userId: string): Promise<{
         id: string;
         userId: string;
+        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -39,47 +40,46 @@ export declare class GamificationService {
         locationsVisited: number;
         streakDays: number;
         longestStreak: number;
-        updatedAt: Date;
     }>;
     getBadges(userId: string): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
         badgeType: string;
         badgeName: string;
         rarity: string;
         progress: number;
         target: number;
         unlockedAt: Date | null;
-        createdAt: Date;
     }[]>;
     createBadge(userId: string, badgeType: string, badgeName: string, target: number): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
         badgeType: string;
         badgeName: string;
         rarity: string;
         progress: number;
         target: number;
         unlockedAt: Date | null;
-        createdAt: Date;
     }>;
     updateBadgeProgress(badgeId: string, increment: number): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
         badgeType: string;
         badgeName: string;
         rarity: string;
         progress: number;
         target: number;
         unlockedAt: Date | null;
-        createdAt: Date;
     }>;
     getJournalingStreak(userId: string): Promise<{
         id: string;
         userId: string;
-        longestStreak: number;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        longestStreak: number;
         currentStreak: number;
         lastJournalDate: Date | null;
         freezeTokens: number;
@@ -88,9 +88,9 @@ export declare class GamificationService {
     recordJournalEntry(userId: string): Promise<{
         id: string;
         userId: string;
-        longestStreak: number;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        longestStreak: number;
         currentStreak: number;
         lastJournalDate: Date | null;
         freezeTokens: number;
@@ -135,9 +135,9 @@ export declare class GamificationService {
             id: string;
             userId: string;
             createdAt: Date;
+            completedAt: Date | null;
             challengeId: string;
             completedIndices: string;
-            completedAt: Date | null;
             rewardClaimed: boolean;
         };
     }>;
@@ -145,46 +145,46 @@ export declare class GamificationService {
         id: string;
         userId: string;
         createdAt: Date;
+        completedAt: Date | null;
         challengeId: string;
         completedIndices: string;
-        completedAt: Date | null;
         rewardClaimed: boolean;
     }>;
     private checkBingo;
     getVirtualSouvenirs(userId: string): Promise<{
         id: string;
         userId: string;
-        name: string;
-        unlockedAt: Date;
         createdAt: Date;
+        name: string;
+        position: number;
+        metadata: string | null;
+        unlockedAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
-        position: number;
-        metadata: string | null;
     }[]>;
     unlockSouvenir(userId: string, name: string, type: string, location: string): Promise<{
         id: string;
         userId: string;
-        name: string;
-        unlockedAt: Date;
         createdAt: Date;
+        name: string;
+        position: number;
+        metadata: string | null;
+        unlockedAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
-        position: number;
-        metadata: string | null;
     }>;
     updateSouvenirPosition(id: string, userId: string, position: number): Promise<{
         id: string;
         userId: string;
-        name: string;
-        unlockedAt: Date;
         createdAt: Date;
+        name: string;
+        position: number;
+        metadata: string | null;
+        unlockedAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
-        position: number;
-        metadata: string | null;
     }>;
 }

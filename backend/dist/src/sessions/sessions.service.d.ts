@@ -15,15 +15,15 @@ export declare class SessionsService {
     findByToken(token: string): Promise<{
         user: {
             id: string;
-            updatedAt: Date;
-            name: string | null;
             createdAt: Date;
+            name: string | null;
             email: string;
             facebookId: string | null;
             googleId: string | null;
             resetPasswordToken: string | null;
             passwordHash: string | null;
             avatar: string | null;
+            updatedAt: Date;
             lockedUntil: Date | null;
             loginAttempts: number;
             isActive: boolean;

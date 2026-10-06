@@ -10,8 +10,8 @@ export declare class HybridCloudService {
     createOfflineSync(userId: string, dto: CreateOfflineSyncDto): Promise<{
         id: string;
         userId: string;
-        data: string;
         createdAt: Date;
+        data: string;
         entityType: string;
         entityId: string;
         operation: string;
@@ -21,8 +21,8 @@ export declare class HybridCloudService {
     getPendingSyncs(userId: string): Promise<{
         id: string;
         userId: string;
-        data: string;
         createdAt: Date;
+        data: string;
         entityType: string;
         entityId: string;
         operation: string;
@@ -36,8 +36,8 @@ export declare class HybridCloudService {
     markSynced(syncId: string): Promise<{
         id: string;
         userId: string;
-        data: string;
         createdAt: Date;
+        data: string;
         entityType: string;
         entityId: string;
         operation: string;
@@ -47,8 +47,8 @@ export declare class HybridCloudService {
     createNASBackup(userId: string, dto: CreateNASBackupDto): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
         isActive: boolean;
         provider: string;
         status: string;
@@ -61,8 +61,8 @@ export declare class HybridCloudService {
     getNASBackups(userId: string): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
         isActive: boolean;
         provider: string;
         status: string;
@@ -75,8 +75,8 @@ export declare class HybridCloudService {
     getNASBackup(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
         isActive: boolean;
         provider: string;
         status: string;
@@ -89,8 +89,8 @@ export declare class HybridCloudService {
     updateNASBackup(id: string, userId: string, dto: UpdateNASBackupDto): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
         isActive: boolean;
         provider: string;
         status: string;
@@ -110,8 +110,8 @@ export declare class HybridCloudService {
     createVaultExport(userId: string, dto: CreateVaultExportDto): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -122,8 +122,8 @@ export declare class HybridCloudService {
     getVaultExports(userId: string): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -134,8 +134,8 @@ export declare class HybridCloudService {
     getVaultExport(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -146,8 +146,8 @@ export declare class HybridCloudService {
     verifyVaultExportAccess(accessCode: string): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -161,50 +161,50 @@ export declare class HybridCloudService {
     createUserWidget(userId: string, dto: CreateUserWidgetDto): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         createdAt: Date;
-        position: number;
+        updatedAt: Date;
         widgetId: string;
         widgetType: string;
         widgetName: string;
         config: string;
         isEnabled: boolean;
+        position: number;
     }>;
     getUserWidgets(userId: string, widgetType?: WidgetType): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         createdAt: Date;
-        position: number;
+        updatedAt: Date;
         widgetId: string;
         widgetType: string;
         widgetName: string;
         config: string;
         isEnabled: boolean;
+        position: number;
     }[]>;
     getUserWidget(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         createdAt: Date;
-        position: number;
+        updatedAt: Date;
         widgetId: string;
         widgetType: string;
         widgetName: string;
         config: string;
         isEnabled: boolean;
+        position: number;
     }>;
     updateUserWidget(id: string, userId: string, dto: UpdateUserWidgetDto): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         createdAt: Date;
-        position: number;
+        updatedAt: Date;
         widgetId: string;
         widgetType: string;
         widgetName: string;
         config: string;
         isEnabled: boolean;
+        position: number;
     }>;
     deleteUserWidget(id: string, userId: string): Promise<{
         message: string;
@@ -212,8 +212,8 @@ export declare class HybridCloudService {
     createClipboardSync(userId: string, dto: CreateClipboardSyncDto): Promise<{
         id: string;
         userId: string;
-        data: string;
         createdAt: Date;
+        data: string;
         expiresAt: Date;
         clipboardId: string;
         dataType: string;
@@ -222,8 +222,8 @@ export declare class HybridCloudService {
     getClipboardSync(clipboardId: string, userId: string): Promise<{
         id: string;
         userId: string;
-        data: string;
         createdAt: Date;
+        data: string;
         expiresAt: Date;
         clipboardId: string;
         dataType: string;
@@ -232,8 +232,8 @@ export declare class HybridCloudService {
     getClipboardSyncs(userId: string): Promise<{
         id: string;
         userId: string;
-        data: string;
         createdAt: Date;
+        data: string;
         expiresAt: Date;
         clipboardId: string;
         dataType: string;

@@ -13,6 +13,7 @@ import { HybridCloudModule } from './hybrid-cloud/hybrid-cloud.module';
 import { AICompanionModule } from './ai-companion/ai-companion.module';
 import { PrivacyVaultModule } from './privacy-vault/privacy-vault.module';
 import { GamificationModule } from './gamification/gamification.module';
+import { PsychologyModule } from './psychology/psychology.module';
 
 @Module({
   imports: [
@@ -49,6 +50,8 @@ import { GamificationModule } from './gamification/gamification.module';
     PrivacyVaultModule,
 
     GamificationModule,
+
+    PsychologyModule,
   ],
 })
 export class AppModule {}

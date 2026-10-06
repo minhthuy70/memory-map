@@ -8,9 +8,9 @@ export declare class PrivacyVaultService {
     createVaultMemory(userId: string, dto: CreateVaultMemoryDto): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -22,9 +22,9 @@ export declare class PrivacyVaultService {
     getVaultMemories(userId: string, vaultType?: VaultType): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -36,9 +36,9 @@ export declare class PrivacyVaultService {
     getVaultMemory(id: string, userId: string): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -50,9 +50,9 @@ export declare class PrivacyVaultService {
     updateVaultMemory(id: string, userId: string, dto: UpdateVaultMemoryDto): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -67,9 +67,9 @@ export declare class PrivacyVaultService {
     accessVaultMemory(id: string, userId: string, dto: AccessVaultMemoryDto): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -81,9 +81,9 @@ export declare class PrivacyVaultService {
     destroyVaultMemory(id: string, userId: string): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -96,10 +96,10 @@ export declare class PrivacyVaultService {
         id: string;
         userId: string;
         createdAt: Date;
-        metadata: string | null;
         ipAddress: string | null;
         entityType: string;
         entityId: string | null;
+        metadata: string | null;
         action: string;
         userAgent: string | null;
         previousHash: string | null;
@@ -109,10 +109,10 @@ export declare class PrivacyVaultService {
         id: string;
         userId: string;
         createdAt: Date;
-        metadata: string | null;
         ipAddress: string | null;
         entityType: string;
         entityId: string | null;
+        metadata: string | null;
         action: string;
         userAgent: string | null;
         previousHash: string | null;

@@ -5,79 +5,79 @@ export declare class MemoriesController {
     private memoriesService;
     constructor(memoriesService: MemoriesService);
     create(req: any, createMemoryDto: CreateMemoryDto): Promise<{
+        category: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            color: string;
+            icon: string;
+        };
         user: {
             id: string;
             name: string;
             email: string;
             avatar: string;
         };
-        category: {
-            id: string;
-            name: string;
-            createdAt: Date;
-            color: string;
-            icon: string;
-        };
         images: {
             id: string;
+            memoryId: string;
             createdAt: Date;
             order: number;
-            memoryId: string;
             imageUrl: string;
         }[];
     } & {
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     findAll(req: any, categoryId?: string, mood?: string, from?: string, to?: string, search?: string, page?: string, limit?: string): Promise<{
         memories: ({
             category: {
                 id: string;
-                name: string;
                 createdAt: Date;
+                name: string;
                 color: string;
                 icon: string;
             };
             images: {
                 id: string;
+                memoryId: string;
                 createdAt: Date;
                 order: number;
-                memoryId: string;
                 imageUrl: string;
             }[];
         } & {
             id: string;
             userId: string;
-            updatedAt: Date;
-            createdAt: Date;
-            isPublic: boolean;
-            title: string;
             content: string | null;
+            createdAt: Date;
+            updatedAt: Date;
+            title: string;
+            mood: import(".prisma/client").$Enums.Mood;
+            locationName: string | null;
             latitude: number;
             longitude: number;
-            locationName: string | null;
             memoryDate: Date;
-            mood: import(".prisma/client").$Enums.Mood;
+            categoryId: string;
             reminderDate: Date | null;
             reminderSent: boolean;
+            isPublic: boolean;
             publicExpiresAt: Date | null;
             publicSlug: string | null;
-            categoryId: string;
         })[];
         pagination: {
             page: number;
@@ -127,150 +127,150 @@ export declare class MemoriesController {
     getPublicMemory(slug: string): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
+            memoryId: string;
             createdAt: Date;
             order: number;
-            memoryId: string;
             imageUrl: string;
         }[];
     } & {
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     findOne(id: string, req: any): Promise<{
+        category: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            color: string;
+            icon: string;
+        };
         user: {
             id: string;
             name: string;
             email: string;
             avatar: string;
         };
-        category: {
-            id: string;
-            name: string;
-            createdAt: Date;
-            color: string;
-            icon: string;
-        };
         images: {
             id: string;
+            memoryId: string;
             createdAt: Date;
             order: number;
-            memoryId: string;
             imageUrl: string;
         }[];
     } & {
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     markReminderSent(id: string, req: any): Promise<void>;
     update(id: string, req: any, updateMemoryDto: UpdateMemoryDto): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
+            memoryId: string;
             createdAt: Date;
             order: number;
-            memoryId: string;
             imageUrl: string;
         }[];
     } & {
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     delete(id: string, req: any): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
-        createdAt: Date;
-        isPublic: boolean;
-        title: string;
         content: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        title: string;
+        mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
         latitude: number;
         longitude: number;
-        locationName: string | null;
         memoryDate: Date;
-        mood: import(".prisma/client").$Enums.Mood;
+        categoryId: string;
         reminderDate: Date | null;
         reminderSent: boolean;
+        isPublic: boolean;
         publicExpiresAt: Date | null;
         publicSlug: string | null;
-        categoryId: string;
     }>;
     addImage(id: string, req: any, imageUrl: string): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         order: number;
-        memoryId: string;
         imageUrl: string;
     }>;
     deleteImage(memoryId: string, imageId: string, req: any): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         order: number;
-        memoryId: string;
         imageUrl: string;
     }>;
     updateImageOrder(memoryId: string, imageId: string, req: any, order: number): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         order: number;
-        memoryId: string;
         imageUrl: string;
     }>;
     generatePublicLink(id: string, req: any): Promise<{

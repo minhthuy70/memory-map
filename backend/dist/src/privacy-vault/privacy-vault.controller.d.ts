@@ -8,9 +8,9 @@ export declare class PrivacyVaultController {
     createVaultMemory(req: any, dto: CreateVaultMemoryDto): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -22,9 +22,9 @@ export declare class PrivacyVaultController {
     getVaultMemories(req: any, vaultType?: VaultType): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -36,9 +36,9 @@ export declare class PrivacyVaultController {
     getVaultMemory(id: string, req: any): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -50,9 +50,9 @@ export declare class PrivacyVaultController {
     updateVaultMemory(id: string, req: any, dto: UpdateVaultMemoryDto): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -67,9 +67,9 @@ export declare class PrivacyVaultController {
     accessVaultMemory(id: string, req: any, dto: AccessVaultMemoryDto): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -81,9 +81,9 @@ export declare class PrivacyVaultController {
     destroyVaultMemory(id: string, req: any): Promise<{
         id: string;
         userId: string;
+        memoryId: string;
         createdAt: Date;
         expiresAt: Date | null;
-        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -96,10 +96,10 @@ export declare class PrivacyVaultController {
         id: string;
         userId: string;
         createdAt: Date;
-        metadata: string | null;
         ipAddress: string | null;
         entityType: string;
         entityId: string | null;
+        metadata: string | null;
         action: string;
         userAgent: string | null;
         previousHash: string | null;
@@ -109,10 +109,10 @@ export declare class PrivacyVaultController {
         id: string;
         userId: string;
         createdAt: Date;
-        metadata: string | null;
         ipAddress: string | null;
         entityType: string;
         entityId: string | null;
+        metadata: string | null;
         action: string;
         userAgent: string | null;
         previousHash: string | null;

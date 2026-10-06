@@ -5,6 +5,7 @@ export declare class GamificationController {
     getUserStats(req: any): Promise<{
         id: string;
         userId: string;
+        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -13,13 +14,13 @@ export declare class GamificationController {
         locationsVisited: number;
         streakDays: number;
         longestStreak: number;
-        updatedAt: Date;
     }>;
     addXP(req: any, body: {
         amount: number;
     }): Promise<{
         id: string;
         userId: string;
+        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -28,11 +29,11 @@ export declare class GamificationController {
         locationsVisited: number;
         streakDays: number;
         longestStreak: number;
-        updatedAt: Date;
     }>;
     updateMemoryCount(req: any): Promise<{
         id: string;
         userId: string;
+        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -41,18 +42,17 @@ export declare class GamificationController {
         locationsVisited: number;
         streakDays: number;
         longestStreak: number;
-        updatedAt: Date;
     }>;
     getBadges(req: any): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
         badgeType: string;
         badgeName: string;
         rarity: string;
         progress: number;
         target: number;
         unlockedAt: Date | null;
-        createdAt: Date;
     }[]>;
     createBadge(req: any, body: {
         badgeType: string;
@@ -61,33 +61,33 @@ export declare class GamificationController {
     }): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
         badgeType: string;
         badgeName: string;
         rarity: string;
         progress: number;
         target: number;
         unlockedAt: Date | null;
-        createdAt: Date;
     }>;
     updateBadgeProgress(id: string, body: {
         increment: number;
     }): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
         badgeType: string;
         badgeName: string;
         rarity: string;
         progress: number;
         target: number;
         unlockedAt: Date | null;
-        createdAt: Date;
     }>;
     getJournalingStreak(req: any): Promise<{
         id: string;
         userId: string;
-        longestStreak: number;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        longestStreak: number;
         currentStreak: number;
         lastJournalDate: Date | null;
         freezeTokens: number;
@@ -96,9 +96,9 @@ export declare class GamificationController {
     recordJournalEntry(req: any): Promise<{
         id: string;
         userId: string;
-        longestStreak: number;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        longestStreak: number;
         currentStreak: number;
         lastJournalDate: Date | null;
         freezeTokens: number;
@@ -140,9 +140,9 @@ export declare class GamificationController {
             id: string;
             userId: string;
             createdAt: Date;
+            completedAt: Date | null;
             challengeId: string;
             completedIndices: string;
-            completedAt: Date | null;
             rewardClaimed: boolean;
         };
     }>;
@@ -152,22 +152,22 @@ export declare class GamificationController {
         id: string;
         userId: string;
         createdAt: Date;
+        completedAt: Date | null;
         challengeId: string;
         completedIndices: string;
-        completedAt: Date | null;
         rewardClaimed: boolean;
     }>;
     getVirtualSouvenirs(req: any): Promise<{
         id: string;
         userId: string;
-        name: string;
-        unlockedAt: Date;
         createdAt: Date;
+        name: string;
+        position: number;
+        metadata: string | null;
+        unlockedAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
-        position: number;
-        metadata: string | null;
     }[]>;
     unlockSouvenir(req: any, body: {
         name: string;
@@ -176,27 +176,27 @@ export declare class GamificationController {
     }): Promise<{
         id: string;
         userId: string;
-        name: string;
-        unlockedAt: Date;
         createdAt: Date;
+        name: string;
+        position: number;
+        metadata: string | null;
+        unlockedAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
-        position: number;
-        metadata: string | null;
     }>;
     updateSouvenirPosition(id: string, req: any, body: {
         position: number;
     }): Promise<{
         id: string;
         userId: string;
-        name: string;
-        unlockedAt: Date;
         createdAt: Date;
+        name: string;
+        position: number;
+        metadata: string | null;
+        unlockedAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
-        position: number;
-        metadata: string | null;
     }>;
 }
