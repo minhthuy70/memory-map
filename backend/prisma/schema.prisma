@@ -70,6 +70,17 @@ model User {
   duressPasswords DuressPassword[]
   vaultAccessLogs VaultAccessLog[]
 
+  // Gamification & Geo-exploration
+  userStats UserStats?
+  badges Badge[]
+  journalingStreaks JournalingStreak?
+  passportStamps PassportStamp[]
+  geoCaches GeoCache[] @relation("GeoCacheCreator")
+  geoCacheLogs GeoCacheLog[]
+  bingoCompletions BingoCompletion[]
+  leaderboardEntries LeaderboardEntry[]
+  virtualSouvenirs VirtualSouvenir[]
+
   @@map("users")
 }
 
@@ -727,4 +738,182 @@ model VaultAccessLog {
   @@index([success])
   @@index([createdAt])
   @@map("vault_access_logs")
+}
+
+// Gamification & Geo-exploration
+model UserStats {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  xp          Int      @default(0)
+  level       Int      @default(1)
+  totalMemories Int    @default(0) @map("total_memories")
+  totalPhotos Int      @default(0) @map("total_photos")
+  totalDistance Int    @default(0) @map("total_distance") // in meters
+  locationsVisited Int  @default(0) @map("locations_visited")
+  streakDays  Int      @default(0) @map("streak_days")
+  longestStreak Int    @default(0) @map("longest_streak")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([level])
+  @@map("user_stats")
+}
+
+model Badge {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  badgeType   String   @map("badge_type") // coffee_connoisseur, island_hopper, summit_seeker
+  badgeName   String   @map("badge_name")
+  rarity      String   @default("bronze") // bronze, silver, gold, platinum
+  progress    Int      @default(0)
+  target      Int
+  unlockedAt  DateTime? @map("unlocked_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([badgeType])
+  @@index([rarity])
+  @@map("badges")
+}
+
+model JournalingStreak {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  currentStreak Int    @default(0) @map("current_streak")
+  longestStreak Int    @default(0) @map("longest_streak")
+  lastJournalDate DateTime? @map("last_journal_date")
+  freezeTokens Int      @default(0) @map("freeze_tokens")
+  milestones  String   @map("milestones") // JSON array of milestone dates
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("journaling_streaks")
+}
+
+model PassportStamp {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  country     String
+  city        String
+  province    String
+  stampDate   DateTime @default(now()) @map("stamp_date")
+  stampDesign String   @map("stamp_design") // vintage design name
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([country])
+  @@index([city])
+  @@map("passport_stamps")
+}
+
+model GeoCache {
+  id          String   @id @default(uuid())
+  creatorId   String   @map("creator_id")
+  name        String
+  description String   @db.Text
+  latitude    Float
+  longitude   Float
+  difficulty  Int      @default(1) // 1-5
+  hint        String?
+  riddle      String?
+  isHidden    Boolean  @default(false) @map("is_hidden")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  creator     User     @relation("GeoCacheCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+
+  @@index([creatorId])
+  @@index([latitude, longitude])
+  @@map("geo_caches")
+}
+
+model GeoCacheLog {
+  id          String   @id @default(uuid())
+  geoCacheId  String   @map("geo_cache_id")
+  userId      String   @map("user_id")
+  logMessage  String   @map("log_message")
+  foundAt     DateTime @default(now()) @map("found_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([geoCacheId])
+  @@index([userId])
+  @@map("geo_cache_logs")
+}
+
+model BingoChallenge {
+  id          String   @id @default(uuid())
+  year        Int
+  challenges  String   @map("challenges") // JSON array of 25 challenges
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([year])
+  @@index([isActive])
+  @@map("bingo_challenges")
+}
+
+model BingoCompletion {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  challengeId String   @map("challenge_id")
+  completedIndices String @map("completed_indices") // JSON array of completed indices (0-24)
+  completedAt DateTime? @map("completed_at")
+  rewardClaimed Boolean @default(false) @map("reward_claimed")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, challengeId])
+  @@index([userId])
+  @@index([challengeId])
+  @@map("bingo_completions")
+}
+
+model Leaderboard {
+  id          String   @id @default(uuid())
+  name        String
+  type        String   // friends, global, monthly
+  metric      String   // total_km, provinces_unlocked, steps_taken
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@index([type])
+  @@map("leaderboards")
+}
+
+model LeaderboardEntry {
+  id          String   @id @default(uuid())
+  leaderboardId String @map("leaderboard_id")
+  userId      String   @map("user_id")
+  score       Float
+  rank        Int
+  period      String   @default("all_time") // all_time, monthly, weekly
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([leaderboardId])
+  @@index([userId])
+  @@index([rank])
+  @@map("leaderboard_entries")
+}
+
+model VirtualSouvenir {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  name        String
+  type        String   // figurine, postcard, magnet, keychain
+  location    String
+  unlockedAt  DateTime @default(now()) @map("unlocked_at")
+  isDisplayed Boolean  @default(true) @map("is_displayed")
+  position    Int      @default(0) // position on shelf
+  metadata    String?  @map("metadata") // JSON metadata (3D model path, color, etc)
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([type])
+  @@map("virtual_souvenirs")
 }

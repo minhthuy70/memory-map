@@ -1688,17 +1688,17 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 50.1. Vault Security & Camouflage (Két bí mật & Chế độ ngụy trang)
 [ ] - Calculator Camouflage & Decoy Mode - Chế độ ngụy trang máy tính bỏ túi - CalculatorCamouflage.tsx (app disguise as fully functional calculator, typing secret PIN opens Memory Map vault, customizable app icon and decoy name)
-[ ] - Duress Distress Password - Mật mã cưỡng ép hiển thị kho giả lập - DuressDistressPassword.tsx (entering secondary emergency PIN displays dummy profile with harmless generic photos, silently sends discreet alert to emergency contacts)
-[ ] - Multi-biometric Double Locking Vault - Két bảo mật hai lớp sinh trắc học - BiometricDoubleLockVault.tsx (separate ultra-secure vault folder requiring both Face ID and Fingerprint or two-factor hardware token to view sensitive memories)
-[ ] - Ephemeral Self-destructing Memories - Kỷ niệm tự hủy theo thời gian - SelfDestructingMemories.tsx (burn-after-reading or timed auto-delete: memory wiped completely from database and storage after 1 view or 24h/7d with zero trace)
-[ ] - Coordinate Fuzzing & Ghost Location - Làm mờ tọa độ ngẫu nhiên bảo vệ nơi ở - CoordinateFuzzing.tsx (automatically randomize coordinates by 500m-1km radius for sensitive home/work memories when shared publicly to protect real address)
+[x] - Duress Distress Password - Mật mã cưỡng ép hiển thị kho giả lập - DuressDistressPassword.tsx (entering secondary emergency PIN displays dummy profile with harmless generic photos, silently sends discreet alert to emergency contacts)
+[x] - Multi-biometric Double Locking Vault - Két bảo mật hai lớp sinh trắc học - BiometricDoubleLockVault.tsx (separate ultra-secure vault folder requiring both Face ID and Fingerprint or two-factor hardware token to view sensitive memories)
+[x] - Ephemeral Self-destructing Memories - Kỷ niệm tự hủy theo thời gian - SelfDestructingMemories.tsx (burn-after-reading or timed auto-delete: memory wiped completely from database and storage after 1 view or 24h/7d with zero trace)
+[x] - Coordinate Fuzzing & Ghost Location - Làm mờ tọa độ ngẫu nhiên bảo vệ nơi ở - CoordinateFuzzing.tsx (automatically randomize coordinates by 500m-1km radius for sensitive home/work memories when shared publicly to protect real address)
 
 50.2. Data Privacy & Compliance (Quyền riêng tư & Tuân thủ dữ liệu)
 [ ] - Zero-Knowledge End-to-End Encryption (E2EE) - Mã hóa đầu cuối toàn diện - ZeroKnowledgeE2EE.tsx (AES-256-GCM + Argon2id client-side encryption, user holds master key, server and cloud administrators cannot view photos or notes)
 [ ] - Automatic Metadata & EXIF Sanitizer - Tự động xóa thông tin nhạy cảm khỏi ảnh - ExifSanitizer.tsx (strip camera serial, lens ID, device IMEI, and network info before storage or public sharing, retain only stripped date & GPS if permitted)
 [ ] - Screenshot Prevention & Privacy Screen Filter - Chống chụp màn hình & bảo vệ đa nhiệm - ScreenshotPrevention.tsx (FLAG_SECURE on Android, blur window preview on iOS app switcher, anti-screenshot watermark overlay)
-[ ] - Immutable Audit Log Ledger - Sổ cái kiểm toán bất biến - ImmutableAuditLedger.tsx (SHA-256 cryptographic chained audit log of all logins, exports, edits, viewings, and vault entries for tamper-evident security tracking)
-[ ] - Remote Emergency Kill-Switch - Xóa sạch dữ liệu từ xa khi mất máy - RemoteEmergencyKillSwitch.tsx (instant remote data wipe trigger from web dashboard if phone is stolen, revokes all active JWT tokens and sessions immediately)
+[x] - Immutable Audit Log Ledger - Sổ cái kiểm toán bất biến - ImmutableAuditLedger.tsx (SHA-256 cryptographic chained audit log of all logins, exports, edits, viewings, and vault entries for tamper-evident security tracking)
+[x] - Remote Emergency Kill-Switch - Xóa sạch dữ liệu từ xa khi mất máy - RemoteEmergencyKillSwitch.tsx (instant remote data wipe trigger from web dashboard if phone is stolen, revokes all active JWT tokens and sessions immediately)
 
 ================================================================================
  
@@ -1763,9 +1763,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1160
-Số lượng tính năng đã implement: 1069 (92.2%)
+Số lượng tính năng đã implement: 1073 (92.5%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai (Roadmap): 91 (7.8%)
+Số lượng tính năng tương lai (Roadmap): 87 (7.5%)
  
 Last Updated: 2026-10-05
 Version: 16.0 (Future Roadmap)
