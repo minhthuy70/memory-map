@@ -10,8 +10,8 @@ export declare class HybridCloudController {
     createOfflineSync(req: any, dto: CreateOfflineSyncDto): Promise<{
         data: string;
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         entityType: string;
         entityId: string;
         operation: string;
@@ -21,8 +21,8 @@ export declare class HybridCloudController {
     getPendingSyncs(req: any): Promise<{
         data: string;
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         entityType: string;
         entityId: string;
         operation: string;
@@ -36,8 +36,8 @@ export declare class HybridCloudController {
     markSynced(id: string): Promise<{
         data: string;
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         entityType: string;
         entityId: string;
         operation: string;
@@ -46,59 +46,59 @@ export declare class HybridCloudController {
     }>;
     createNASBackup(req: any, dto: CreateNASBackupDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isActive: boolean;
-        status: string;
-        errorMessage: string | null;
         provider: string;
+        status: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
         schedule: string;
+        errorMessage: string | null;
     }>;
     getNASBackups(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isActive: boolean;
-        status: string;
-        errorMessage: string | null;
         provider: string;
+        status: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
         schedule: string;
+        errorMessage: string | null;
     }[]>;
     getNASBackup(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isActive: boolean;
-        status: string;
-        errorMessage: string | null;
         provider: string;
+        status: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
         schedule: string;
+        errorMessage: string | null;
     }>;
     updateNASBackup(id: string, req: any, dto: UpdateNASBackupDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isActive: boolean;
-        status: string;
-        errorMessage: string | null;
         provider: string;
+        status: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
         schedule: string;
+        errorMessage: string | null;
     }>;
     deleteNASBackup(id: string, req: any): Promise<{
         message: string;
@@ -109,8 +109,8 @@ export declare class HybridCloudController {
     }>;
     createVaultExport(req: any, dto: CreateVaultExportDto): Promise<{
         id: string;
-        userId: string;
         expiresAt: Date | null;
+        userId: string;
         isPublic: boolean;
         fileName: string;
         filePath: string;
@@ -121,8 +121,8 @@ export declare class HybridCloudController {
     }>;
     getVaultExports(req: any): Promise<{
         id: string;
-        userId: string;
         expiresAt: Date | null;
+        userId: string;
         isPublic: boolean;
         fileName: string;
         filePath: string;
@@ -133,8 +133,8 @@ export declare class HybridCloudController {
     }[]>;
     getVaultExport(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         expiresAt: Date | null;
+        userId: string;
         isPublic: boolean;
         fileName: string;
         filePath: string;
@@ -145,8 +145,8 @@ export declare class HybridCloudController {
     }>;
     verifyVaultExportAccess(dto: DownloadVaultExportDto): Promise<{
         id: string;
-        userId: string;
         expiresAt: Date | null;
+        userId: string;
         isPublic: boolean;
         fileName: string;
         filePath: string;
@@ -160,8 +160,8 @@ export declare class HybridCloudController {
     }>;
     createUserWidget(req: any, dto: CreateUserWidgetDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         widgetId: string;
         widgetType: string;
@@ -172,8 +172,8 @@ export declare class HybridCloudController {
     }>;
     getUserWidgets(req: any, query: GetWidgetsDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         widgetId: string;
         widgetType: string;
@@ -184,8 +184,8 @@ export declare class HybridCloudController {
     }[]>;
     getUserWidget(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         widgetId: string;
         widgetType: string;
@@ -196,8 +196,8 @@ export declare class HybridCloudController {
     }>;
     updateUserWidget(id: string, req: any, dto: UpdateUserWidgetDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         widgetId: string;
         widgetType: string;
@@ -212,9 +212,9 @@ export declare class HybridCloudController {
     createClipboardSync(req: any, dto: CreateClipboardSyncDto): Promise<{
         data: string;
         id: string;
-        userId: string;
-        createdAt: Date;
         expiresAt: Date;
+        createdAt: Date;
+        userId: string;
         clipboardId: string;
         dataType: string;
         sourceDevice: string;
@@ -222,9 +222,9 @@ export declare class HybridCloudController {
     getClipboardSync(clipboardId: string, req: any): Promise<{
         data: string;
         id: string;
-        userId: string;
-        createdAt: Date;
         expiresAt: Date;
+        createdAt: Date;
+        userId: string;
         clipboardId: string;
         dataType: string;
         sourceDevice: string;
@@ -232,9 +232,9 @@ export declare class HybridCloudController {
     getClipboardSyncs(req: any): Promise<{
         data: string;
         id: string;
-        userId: string;
-        createdAt: Date;
         expiresAt: Date;
+        createdAt: Date;
+        userId: string;
         clipboardId: string;
         dataType: string;
         sourceDevice: string;

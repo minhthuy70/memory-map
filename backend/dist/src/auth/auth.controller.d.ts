@@ -92,13 +92,13 @@ export declare class AuthController {
         hasPassword: boolean;
         twoFactorBackupCodesCount: number;
         id: string;
+        createdAt: Date;
         email: string;
         facebookId: string | null;
         googleId: string | null;
         resetPasswordToken: string | null;
         name: string | null;
         avatar: string | null;
-        createdAt: Date;
         updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
@@ -115,13 +115,13 @@ export declare class AuthController {
     }>;
     updateProfile(req: any, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
+        createdAt: Date;
         email: string;
         facebookId: string | null;
         googleId: string | null;
         resetPasswordToken: string | null;
         name: string | null;
         avatar: string | null;
-        createdAt: Date;
         updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
@@ -226,23 +226,23 @@ export declare class AuthController {
         credentials: {
             id: string;
             createdAt: Date;
+            lastUsedAt: Date;
             credentialId: string;
             deviceType: string;
             backedUp: boolean;
             transports: string[];
             deviceName: string;
-            lastUsedAt: Date;
         }[];
     }>;
     getWebAuthnCredentials(req: any): Promise<{
         id: string;
         createdAt: Date;
+        lastUsedAt: Date;
         credentialId: string;
         deviceType: string;
         backedUp: boolean;
         transports: string[];
         deviceName: string;
-        lastUsedAt: Date;
     }[]>;
     deleteWebAuthnCredential(req: any, credentialId: string): Promise<{
         success: boolean;

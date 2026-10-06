@@ -43,8 +43,8 @@ export declare class MemoriesService {
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
@@ -57,12 +57,12 @@ export declare class MemoriesService {
         }[];
     } & {
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;
@@ -86,8 +86,8 @@ export declare class MemoriesService {
         memories: ({
             category: {
                 id: string;
-                name: string;
                 createdAt: Date;
+                name: string;
                 color: string;
                 icon: string;
             };
@@ -100,12 +100,12 @@ export declare class MemoriesService {
             }[];
         } & {
             id: string;
-            title: string;
-            content: string | null;
-            userId: string;
             createdAt: Date;
+            userId: string;
             updatedAt: Date;
             isPublic: boolean;
+            title: string;
+            content: string | null;
             latitude: number;
             longitude: number;
             locationName: string | null;
@@ -135,8 +135,8 @@ export declare class MemoriesService {
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
@@ -149,12 +149,12 @@ export declare class MemoriesService {
         }[];
     } & {
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;
@@ -179,8 +179,8 @@ export declare class MemoriesService {
     }): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
@@ -193,12 +193,12 @@ export declare class MemoriesService {
         }[];
     } & {
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;
@@ -212,12 +212,12 @@ export declare class MemoriesService {
     }>;
     delete(id: string, userId: string): Promise<{
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;
@@ -283,8 +283,8 @@ export declare class MemoriesService {
     getPublicMemoryBySlug(slug: string): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
@@ -297,12 +297,12 @@ export declare class MemoriesService {
         }[];
     } & {
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;

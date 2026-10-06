@@ -13,8 +13,8 @@ export declare class MemoriesController {
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
@@ -27,12 +27,12 @@ export declare class MemoriesController {
         }[];
     } & {
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;
@@ -48,8 +48,8 @@ export declare class MemoriesController {
         memories: ({
             category: {
                 id: string;
-                name: string;
                 createdAt: Date;
+                name: string;
                 color: string;
                 icon: string;
             };
@@ -62,12 +62,12 @@ export declare class MemoriesController {
             }[];
         } & {
             id: string;
-            title: string;
-            content: string | null;
-            userId: string;
             createdAt: Date;
+            userId: string;
             updatedAt: Date;
             isPublic: boolean;
+            title: string;
+            content: string | null;
             latitude: number;
             longitude: number;
             locationName: string | null;
@@ -127,8 +127,8 @@ export declare class MemoriesController {
     getPublicMemory(slug: string): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
@@ -141,12 +141,12 @@ export declare class MemoriesController {
         }[];
     } & {
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;
@@ -167,8 +167,8 @@ export declare class MemoriesController {
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
@@ -181,12 +181,12 @@ export declare class MemoriesController {
         }[];
     } & {
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;
@@ -202,8 +202,8 @@ export declare class MemoriesController {
     update(id: string, req: any, updateMemoryDto: UpdateMemoryDto): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
@@ -216,12 +216,12 @@ export declare class MemoriesController {
         }[];
     } & {
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;
@@ -235,12 +235,12 @@ export declare class MemoriesController {
     }>;
     delete(id: string, req: any): Promise<{
         id: string;
-        title: string;
-        content: string | null;
-        userId: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isPublic: boolean;
+        title: string;
+        content: string | null;
         latitude: number;
         longitude: number;
         locationName: string | null;

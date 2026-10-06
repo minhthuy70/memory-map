@@ -11,6 +11,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { EventStreamingModule } from './event-streaming/event-streaming.module';
 import { HybridCloudModule } from './hybrid-cloud/hybrid-cloud.module';
 import { AICompanionModule } from './ai-companion/ai-companion.module';
+import { PrivacyVaultModule } from './privacy-vault/privacy-vault.module';
 
 @Module({
   imports: [
@@ -43,6 +44,8 @@ import { AICompanionModule } from './ai-companion/ai-companion.module';
     HybridCloudModule,
 
     AICompanionModule,
+
+    PrivacyVaultModule,
   ],
 })
 export class AppModule {}

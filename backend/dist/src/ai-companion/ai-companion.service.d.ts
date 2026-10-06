@@ -10,54 +10,54 @@ export declare class AICompanionService {
     createAIJournalEntry(userId: string, dto: CreateAIJournalEntryDto): Promise<{
         id: string;
         memoryId: string | null;
-        date: Date;
+        userId: string;
         title: string;
         content: string;
+        date: Date;
         photos: string;
         locations: string;
         isDraft: boolean;
         isReviewed: boolean;
         generatedAt: Date;
-        userId: string;
     }>;
     getAIJournalEntries(userId: string, startDate?: Date, endDate?: Date): Promise<{
         id: string;
         memoryId: string | null;
-        date: Date;
+        userId: string;
         title: string;
         content: string;
+        date: Date;
         photos: string;
         locations: string;
         isDraft: boolean;
         isReviewed: boolean;
         generatedAt: Date;
-        userId: string;
     }[]>;
     getAIJournalEntry(id: string, userId: string): Promise<{
         id: string;
         memoryId: string | null;
-        date: Date;
+        userId: string;
         title: string;
         content: string;
+        date: Date;
         photos: string;
         locations: string;
         isDraft: boolean;
         isReviewed: boolean;
         generatedAt: Date;
-        userId: string;
     }>;
     updateAIJournalEntry(id: string, userId: string, dto: UpdateAIJournalEntryDto): Promise<{
         id: string;
         memoryId: string | null;
-        date: Date;
+        userId: string;
         title: string;
         content: string;
+        date: Date;
         photos: string;
         locations: string;
         isDraft: boolean;
         isReviewed: boolean;
         generatedAt: Date;
-        userId: string;
     }>;
     deleteAIJournalEntry(id: string, userId: string): Promise<{
         message: string;
@@ -65,79 +65,79 @@ export declare class AICompanionService {
     generateJournalEntry(userId: string, dto: GenerateJournalEntryDto): Promise<{
         id: string;
         memoryId: string | null;
-        date: Date;
+        userId: string;
         title: string;
         content: string;
+        date: Date;
         photos: string;
         locations: string;
         isDraft: boolean;
         isReviewed: boolean;
         generatedAt: Date;
-        userId: string;
     }>;
     createAIInterview(userId: string, dto: CreateAIInterviewDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        question: string;
-        answer: string | null;
-        audioUrl: string | null;
+        userId: string;
         duration: number | null;
-        isCompleted: boolean;
         completedAt: Date | null;
+        audioUrl: string | null;
+        answer: string | null;
+        question: string;
+        isCompleted: boolean;
     }>;
     getAIInterviews(userId: string, completedOnly?: boolean): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        question: string;
-        answer: string | null;
-        audioUrl: string | null;
+        userId: string;
         duration: number | null;
-        isCompleted: boolean;
         completedAt: Date | null;
+        audioUrl: string | null;
+        answer: string | null;
+        question: string;
+        isCompleted: boolean;
     }[]>;
     getAIInterview(id: string, userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        question: string;
-        answer: string | null;
-        audioUrl: string | null;
+        userId: string;
         duration: number | null;
-        isCompleted: boolean;
         completedAt: Date | null;
+        audioUrl: string | null;
+        answer: string | null;
+        question: string;
+        isCompleted: boolean;
     }>;
     updateAIInterview(id: string, userId: string, dto: UpdateAIInterviewDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        question: string;
-        answer: string | null;
-        audioUrl: string | null;
+        userId: string;
         duration: number | null;
-        isCompleted: boolean;
         completedAt: Date | null;
+        audioUrl: string | null;
+        answer: string | null;
+        question: string;
+        isCompleted: boolean;
     }>;
     deleteAIInterview(id: string, userId: string): Promise<{
         message: string;
     }>;
     generateQuestion(userId: string, dto: GenerateQuestionDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        question: string;
-        answer: string | null;
-        audioUrl: string | null;
+        userId: string;
         duration: number | null;
-        isCompleted: boolean;
         completedAt: Date | null;
+        audioUrl: string | null;
+        answer: string | null;
+        question: string;
+        isCompleted: boolean;
     }>;
     createPhotoCuration(userId: string, dto: CreatePhotoCurationDto): Promise<{
         id: string;
         memoryId: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -150,8 +150,8 @@ export declare class AICompanionService {
     getPhotoCurations(userId: string, memoryId?: string): Promise<{
         id: string;
         memoryId: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -164,8 +164,8 @@ export declare class AICompanionService {
     getPhotoCuration(id: string, userId: string): Promise<{
         id: string;
         memoryId: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -178,8 +178,8 @@ export declare class AICompanionService {
     updatePhotoCuration(id: string, userId: string, dto: UpdatePhotoCurationDto): Promise<{
         id: string;
         memoryId: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -198,8 +198,8 @@ export declare class AICompanionService {
         userId: string;
         entityType: string;
         entityId: string;
-        embedding: string;
         metadata: string;
+        embedding: string;
         indexedAt: Date;
     }>;
     semanticSearch(userId: string, dto: SemanticSearchDto): Promise<{
@@ -213,8 +213,8 @@ export declare class AICompanionService {
         userId: string;
         entityType: string;
         entityId: string;
-        embedding: string;
         metadata: string;
+        embedding: string;
         indexedAt: Date;
     }[]>;
     deleteSearchIndex(id: string, userId: string): Promise<{
@@ -222,50 +222,50 @@ export declare class AICompanionService {
     }>;
     createVoiceCloneModel(userId: string, dto: CreateVoiceCloneModelDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
+        status: string;
+        errorMessage: string | null;
         modelName: string;
         sampleAudioUrl: string;
         modelPath: string;
-        status: string;
         trainingProgress: number;
-        errorMessage: string | null;
         readyAt: Date | null;
     }>;
     getVoiceCloneModels(userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
+        status: string;
+        errorMessage: string | null;
         modelName: string;
         sampleAudioUrl: string;
         modelPath: string;
-        status: string;
         trainingProgress: number;
-        errorMessage: string | null;
         readyAt: Date | null;
     }[]>;
     getVoiceCloneModel(id: string, userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
+        status: string;
+        errorMessage: string | null;
         modelName: string;
         sampleAudioUrl: string;
         modelPath: string;
-        status: string;
         trainingProgress: number;
-        errorMessage: string | null;
         readyAt: Date | null;
     }>;
     updateVoiceCloneModel(id: string, userId: string, status: VoiceCloneStatus, progress: number): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
+        status: string;
+        errorMessage: string | null;
         modelName: string;
         sampleAudioUrl: string;
         modelPath: string;
-        status: string;
         trainingProgress: number;
-        errorMessage: string | null;
         readyAt: Date | null;
     }>;
     deleteVoiceCloneModel(id: string, userId: string): Promise<{
