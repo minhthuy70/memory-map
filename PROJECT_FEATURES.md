@@ -1670,13 +1670,13 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 49.1. Quests & Discovery Mechanics (Nhiệm vụ & Cơ chế khám phá)
 [ ] - Fog of War Mystery Map - Bản đồ sương mù bí ẩn mở dần theo bước chân - FogOfWarMap.tsx (classic game fog of war overlay covering world map, clears dynamically around GPS tracks where user actually walks/drives, % world explored counter)
 [ ] - Geo-caching & Real-world Treasure Hunt - Săn kho báu tọa độ thực địa - GeocachingTreasureHunt.tsx (create and discover community geocaches, cryptic riddles with GPS coordinates, digital logbook signing, hidden memory hints)
-[ ] - City Explorer Milestone Badges - Huy hiệu chinh phục địa danh & thành phố - ExplorerBadges.tsx (achievements system: Coffee Connoisseur (20 cafes), Island Hopper (5 islands), Summit Seeker (3 peaks), badge rarity levels: Bronze/Silver/Gold/Platinum)
-[ ] - Virtual Passport with Visa Stamps - Hộ chiếu ảo đóng dấu mộc thị thực - VirtualPassportStamps.tsx (digital passport booklet with realistic rubber stamps stamped upon arrival in new cities/nations, vintage graphic designs per province)
-[ ] - Memory Journaling Streaks - Hệ thống chuỗi ngày liên tiếp ghi chép - JournalingStreaks.tsx (daily check-in streak tracking, streak freeze tokens, milestone rewards at 7/30/100/365 days, celebratory confetti animations)
-[ ] - Explorer Level & XP Progression - Hệ thống thăng cấp nhà thám hiểm - ExplorerXPProgression.tsx (XP earned per memory created, photo uploaded, new district visited, tiers: Novice Explorer -> Wanderer -> Wayfarer -> Master Cartographer)
+[x] - City Explorer Milestone Badges - Huy hiệu chinh phục địa danh & thành phố - ExplorerBadges.tsx (achievements system: Coffee Connoisseur (20 cafes), Island Hopper (5 islands), Summit Seeker (3 peaks), badge rarity levels: Bronze/Silver/Gold/Platinum)
+[x] - Virtual Passport with Visa Stamps - Hộ chiếu ảo đóng dấu mộc thị thực - VirtualPassportStamps.tsx (digital passport booklet with realistic rubber stamps stamped upon arrival in new cities/nations, vintage graphic designs per province)
+[x] - Memory Journaling Streaks - Hệ thống chuỗi ngày liên tiếp ghi chép - JournalingStreaks.tsx (daily check-in streak tracking, streak freeze tokens, milestone rewards at 7/30/100/365 days, celebratory confetti animations)
+[x] - Explorer Level & XP Progression - Hệ thống thăng cấp nhà thám hiểm - ExplorerXPProgression.tsx (XP earned per memory created, photo uploaded, new district visited, tiers: Novice Explorer -> Wanderer -> Wayfarer -> Master Cartographer)
 
 49.2. Social Gamification & Mini-games (Game hóa cộng đồng & Mini-games)
-[ ] - Memory Bingo Challenge Card - Thẻ Bingo 25 trải nghiệm trong năm - MemoryBingoCard.tsx (annual 5x5 Bingo board: Watch sunrise at sea, Camp under stars, Try street food, Sleep in sleeper train, complete rows for rewards)
+[x] - Memory Bingo Challenge Card - Thẻ Bingo 25 trải nghiệm trong năm - MemoryBingoCard.tsx (annual 5x5 Bingo board: Watch sunrise at sea, Camp under stars, Try street food, Sleep in sleeper train, complete rows for rewards)
 [ ] - AR Virtual Treasure Chests - Rương báu thực tế tăng cường tại địa danh - ARVirtualTreasureChests.tsx (discover floating AR chests in parks and tourist spots via phone camera, unlock virtual souvenirs, discount coupons, special photo filters)
 [ ] - Friendly Travel Competition Leaderboard - Bảng xếp hạng du lịch cùng bạn bè - TravelCompetitionLeaderboard.tsx (private leaderboards among friend circles: total km traversed, provinces unlocked, steps taken, monthly podium winners)
 [ ] - Virtual Souvenir Collection Shelf - Tủ kính trưng bày đồ lưu niệm ảo 3D - VirtualSouvenirShelf.tsx (interactive 3D shelf with collectible souvenirs unlocked per destination, inspect 3D items, customize shelf wood/lighting, share showcase)
@@ -1763,9 +1763,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1160
-Số lượng tính năng đã implement: 1073 (92.5%)
+Số lượng tính năng đã implement: 1078 (92.9%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai (Roadmap): 87 (7.5%)
+Số lượng tính năng tương lai (Roadmap): 82 (7.1%)
  
 Last Updated: 2026-10-05
 Version: 16.0 (Future Roadmap)
