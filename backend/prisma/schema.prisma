@@ -64,6 +64,12 @@ model User {
   voiceCloneModels VoiceCloneModel[]
   memorySyntheses MemorySynthesis[]
 
+  // Advanced Privacy & Vault
+  vaultMemories VaultMemory[]
+  auditLogs AuditLog[]
+  duressPasswords DuressPassword[]
+  vaultAccessLogs VaultAccessLog[]
+
   @@map("users")
 }
 
@@ -643,4 +649,82 @@ model MemorySynthesis {
   @@index([userId])
   @@index([status])
   @@map("memory_syntheses")
+}
+
+// Advanced Privacy & Vault
+model VaultMemory {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String   @map("memory_id")
+  vaultType   String   @map("vault_type") // standard, double-lock, ephemeral
+  encryptionKey String? @map("encryption_key")
+  isEncrypted Boolean  @default(false) @map("is_encrypted")
+  viewCount   Int      @default(0) @map("view_count")
+  maxViews    Int?     @map("max_views")
+  expiresAt   DateTime? @map("expires_at")
+  isDestroyed Boolean  @default(false) @map("is_destroyed")
+  destroyedAt DateTime? @map("destroyed_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@index([vaultType])
+  @@index([isDestroyed])
+  @@map("vault_memories")
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  action      String   // login, export, edit, view, vault_access
+  entityType  String   @map("entity_type") // memory, image, vault
+  entityId    String?  @map("entity_id")
+  ipAddress   String?  @map("ip_address")
+  userAgent   String?  @map("user_agent")
+  metadata    String?  @map("metadata") // JSON metadata
+  previousHash String? @map("previous_hash") // For cryptographic chain
+  currentHash String   @map("current_hash") // SHA-256 hash
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@index([currentHash])
+  @@map("audit_logs")
+}
+
+model DuressPassword {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  passwordHash String  @map("password_hash")
+  isEmergency Boolean  @default(false) @map("is_emergency")
+  alertSent   Boolean  @default(false) @map("alert_sent")
+  alertContacts String @map("alert_contacts") // JSON array of contact info
+  lastUsedAt  DateTime? @map("last_used_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isEmergency])
+  @@map("duress_passwords")
+}
+
+model VaultAccessLog {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  vaultMemoryId String @map("vault_memory_id")
+  accessMethod String  @map("access_method") // biometric, password, both
+  success     Boolean
+  failureReason String? @map("failure_reason")
+  ipAddress   String?  @map("ip_address")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([vaultMemoryId])
+  @@index([success])
+  @@index([createdAt])
+  @@map("vault_access_logs")
 }
