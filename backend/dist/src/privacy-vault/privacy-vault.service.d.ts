@@ -8,8 +8,8 @@ export declare class PrivacyVaultService {
     createVaultMemory(userId: string, dto: CreateVaultMemoryDto): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -22,8 +22,8 @@ export declare class PrivacyVaultService {
     getVaultMemories(userId: string, vaultType?: VaultType): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -36,8 +36,8 @@ export declare class PrivacyVaultService {
     getVaultMemory(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -50,8 +50,8 @@ export declare class PrivacyVaultService {
     updateVaultMemory(id: string, userId: string, dto: UpdateVaultMemoryDto): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -67,8 +67,8 @@ export declare class PrivacyVaultService {
     accessVaultMemory(id: string, userId: string, dto: AccessVaultMemoryDto): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -81,8 +81,8 @@ export declare class PrivacyVaultService {
     destroyVaultMemory(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;

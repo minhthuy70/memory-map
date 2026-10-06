@@ -44,35 +44,35 @@ export declare class GamificationService {
     getBadges(userId: string): Promise<{
         id: string;
         userId: string;
+        unlockedAt: Date | null;
         createdAt: Date;
         badgeType: string;
         badgeName: string;
         rarity: string;
         progress: number;
         target: number;
-        unlockedAt: Date | null;
     }[]>;
     createBadge(userId: string, badgeType: string, badgeName: string, target: number): Promise<{
         id: string;
         userId: string;
+        unlockedAt: Date | null;
         createdAt: Date;
         badgeType: string;
         badgeName: string;
         rarity: string;
         progress: number;
         target: number;
-        unlockedAt: Date | null;
     }>;
     updateBadgeProgress(badgeId: string, increment: number): Promise<{
         id: string;
         userId: string;
+        unlockedAt: Date | null;
         createdAt: Date;
         badgeType: string;
         badgeName: string;
         rarity: string;
         progress: number;
         target: number;
-        unlockedAt: Date | null;
     }>;
     getJournalingStreak(userId: string): Promise<{
         id: string;
@@ -154,11 +154,11 @@ export declare class GamificationService {
     getVirtualSouvenirs(userId: string): Promise<{
         id: string;
         userId: string;
+        unlockedAt: Date;
         createdAt: Date;
         name: string;
         position: number;
         metadata: string | null;
-        unlockedAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
@@ -166,11 +166,11 @@ export declare class GamificationService {
     unlockSouvenir(userId: string, name: string, type: string, location: string): Promise<{
         id: string;
         userId: string;
+        unlockedAt: Date;
         createdAt: Date;
         name: string;
         position: number;
         metadata: string | null;
-        unlockedAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
@@ -178,11 +178,11 @@ export declare class GamificationService {
     updateSouvenirPosition(id: string, userId: string, position: number): Promise<{
         id: string;
         userId: string;
+        unlockedAt: Date;
         createdAt: Date;
         name: string;
         position: number;
         metadata: string | null;
-        unlockedAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;

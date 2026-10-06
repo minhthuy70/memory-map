@@ -163,6 +163,7 @@ export class GenealogyService {
         photoUrl: data.photoUrl,
         isPublic: data.isPublic ?? false,
         accessCode: data.accessCode,
+        condolences: '[]',
       },
     });
   }

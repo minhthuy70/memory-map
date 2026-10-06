@@ -1633,12 +1633,12 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Interactive Multi-generational Family Tree - Cây phả hệ gia đình tương tác - FamilyTreeInteractive.tsx (ancestral family tree graph with D3.js/Canvas, attach memories and life locations to each family member, birthplaces map overlay, lineage search)
 [ ] - Ancestral Migration Timeline Map - Bản đồ hành trình di cư của dòng họ - AncestralMigrationMap.tsx (visualize generational movements across provinces and continents over decades/centuries, migration reasons tags, historical map tile overlays)
 [ ] - Oral History & Dialect Preservation Vault - Kho lưu trữ lời kể và phương ngữ của ông bà - OralHistoryVault.tsx (elderly oral storytelling recorder, regional dialect tagging, transcription with phonetics, photo slideshow during playback, archive preservation tag)
-[ ] - Family Heirloom & Relic Digital Archive - Bảo tàng số kỷ vật gia truyền - HeirloomArchive.tsx (3D photo archive of family heirlooms: vintage handwritten letters, war medals, antique clocks, heirloom story and provenance recording)
-[ ] - Family Traditional Recipe Archive - Lưu giữ công thức nấu ăn gia truyền - FamilyRecipeArchive.tsx (step-by-step secret family recipes linked to family reunion memories, ingredient lists, voice notes of Grandma's tips, photo gallery of dishes)
+[x] - Family Heirloom & Relic Digital Archive - Bảo tàng số kỷ vật gia truyền - HeirloomArchive.tsx (3D photo archive of family heirlooms: vintage handwritten letters, war medals, antique clocks, heirloom story and provenance recording)
+[x] - Family Traditional Recipe Archive - Lưu giữ công thức nấu ăn gia truyền - FamilyRecipeArchive.tsx (step-by-step secret family recipes linked to family reunion memories, ingredient lists, voice notes of Grandma's tips, photo gallery of dishes)
 [ ] - Generational Photo Comparison (Lookalike) - So sánh nét tương đồng giữa các thế hệ - GenerationalLookalike.tsx (side-by-side comparison of parent and child at the exact same age, facial similarity AI scoring, genetic trait highlights)
 
 47.2. Digital Time Capsules & Legacy (Hộp ký ức & Di sản cho tương lai)
-[ ] - Time-locked Smart Capsule - Hộp ký ức số khóa theo thời gian - TimeLockedCapsule.tsx (cryptographically sealed memory capsules, unlock date picker: 1 year, 5 years, 10 years or exact milestone, countdown timer, sealed seal animation)
+[x] - Time-locked Smart Capsule - Hộp ký ức số khóa theo thời gian - TimeLockedCapsule.tsx (cryptographically sealed memory capsules, unlock date picker: 1 year, 5 years, 10 years or exact milestone, countdown timer, sealed seal animation)
 [ ] - Geofenced Location Capsule - Hộp ký ức chỉ mở khi đến đúng tọa độ GPS - GeofencedCapsule.tsx (location-based unlock mechanism, 50m radius GPS trigger, scavenger hunt clues, surprise memory unlock notification when standing at original spot)
 [ ] - Legacy Letter & Digital Will - Thư gửi tương lai và di chúc số - LegacyLetterWill.tsx (personal legacy letters to children on their 18th/30th birthday, designated memory beneficiary transfer in case of inactivity, proof-of-life ping cycle)
 [ ] - Digital Memorial & Eternal Tribute Page - Không gian tưởng niệm trang trọng - DigitalMemorialTribute.tsx (reverent memorial page for deceased loved ones, virtual candle lighting, flower offerings, shared condolence stories, eternal preservation hosting)
@@ -1763,9 +1763,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1160
-Số lượng tính năng đã implement: 1081 (93.2%)
+Số lượng tính năng đã implement: 1084 (93.4%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai (Roadmap): 79 (6.8%)
+Số lượng tính năng tương lai (Roadmap): 76 (6.6%)
  
 Last Updated: 2026-10-05
 Version: 16.0 (Future Roadmap)

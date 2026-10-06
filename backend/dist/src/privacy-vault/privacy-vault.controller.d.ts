@@ -8,8 +8,8 @@ export declare class PrivacyVaultController {
     createVaultMemory(req: any, dto: CreateVaultMemoryDto): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -22,8 +22,8 @@ export declare class PrivacyVaultController {
     getVaultMemories(req: any, vaultType?: VaultType): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -36,8 +36,8 @@ export declare class PrivacyVaultController {
     getVaultMemory(id: string, req: any): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -50,8 +50,8 @@ export declare class PrivacyVaultController {
     updateVaultMemory(id: string, req: any, dto: UpdateVaultMemoryDto): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -67,8 +67,8 @@ export declare class PrivacyVaultController {
     accessVaultMemory(id: string, req: any, dto: AccessVaultMemoryDto): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
@@ -81,8 +81,8 @@ export declare class PrivacyVaultController {
     destroyVaultMemory(id: string, req: any): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;

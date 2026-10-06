@@ -53,6 +53,8 @@ import { GenealogyModule } from './genealogy/genealogy.module';
     GamificationModule,
 
     PsychologyModule,
+
+    GenealogyModule,
   ],
 })
 export class AppModule {}

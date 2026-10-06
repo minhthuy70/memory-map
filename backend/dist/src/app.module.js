@@ -22,6 +22,7 @@ const ai_companion_module_1 = require("./ai-companion/ai-companion.module");
 const privacy_vault_module_1 = require("./privacy-vault/privacy-vault.module");
 const gamification_module_1 = require("./gamification/gamification.module");
 const psychology_module_1 = require("./psychology/psychology.module");
+const genealogy_module_1 = require("./genealogy/genealogy.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -50,6 +51,7 @@ exports.AppModule = AppModule = __decorate([
             privacy_vault_module_1.PrivacyVaultModule,
             gamification_module_1.GamificationModule,
             psychology_module_1.PsychologyModule,
+            genealogy_module_1.GenealogyModule,
         ],
     })
 ], AppModule);

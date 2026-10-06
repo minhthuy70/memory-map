@@ -5,27 +5,27 @@ export declare class PsychologyController {
     getGratitudeEntries(req: any): Promise<{
         id: string;
         userId: string;
-        memoryId: string | null;
+        createdAt: Date;
         content: string;
         category: string;
+        memoryId: string | null;
         isShared: boolean;
-        createdAt: Date;
     }[]>;
     createGratitudeEntry(req: any, data: any): Promise<{
         id: string;
         userId: string;
-        memoryId: string | null;
+        createdAt: Date;
         content: string;
         category: string;
+        memoryId: string | null;
         isShared: boolean;
-        createdAt: Date;
     }>;
     getResilienceMoments(req: any): Promise<{
         id: string;
         userId: string;
-        createdAt: Date;
         title: string;
         description: string;
+        createdAt: Date;
         date: Date;
         difficulty: number;
         overcomeAt: Date | null;
@@ -34,9 +34,9 @@ export declare class PsychologyController {
     createResilienceMoment(req: any, data: any): Promise<{
         id: string;
         userId: string;
-        createdAt: Date;
         title: string;
         description: string;
+        createdAt: Date;
         date: Date;
         difficulty: number;
         overcomeAt: Date | null;
@@ -45,8 +45,8 @@ export declare class PsychologyController {
     getDailySerendipity(req: any): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         date: Date;
         viewedAt: Date | null;
         isViewed: boolean;
@@ -56,8 +56,8 @@ export declare class PsychologyController {
     markViewed(req: any, data: any): Promise<{
         id: string;
         userId: string;
-        memoryId: string;
         createdAt: Date;
+        memoryId: string;
         date: Date;
         viewedAt: Date | null;
         isViewed: boolean;
@@ -68,8 +68,8 @@ export declare class PsychologyController {
         id: string;
         userId: string;
         createdAt: Date;
-        date: Date;
         mood: number;
+        date: Date;
         stressLevel: number;
         notes: string | null;
     }[]>;
@@ -77,35 +77,35 @@ export declare class PsychologyController {
         id: string;
         userId: string;
         createdAt: Date;
-        date: Date;
         mood: number;
+        date: Date;
         stressLevel: number;
         notes: string | null;
     }>;
     getDreamJournals(req: any): Promise<{
         id: string;
         userId: string;
-        createdAt: Date;
         title: string;
         description: string;
+        createdAt: Date;
+        locationName: string | null;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string;
         locationLatitude: number | null;
         locationLongitude: number | null;
-        locationName: string | null;
     }[]>;
     createDreamJournal(req: any, data: any): Promise<{
         id: string;
         userId: string;
-        createdAt: Date;
         title: string;
         description: string;
+        createdAt: Date;
+        locationName: string | null;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string;
         locationLatitude: number | null;
         locationLongitude: number | null;
-        locationName: string | null;
     }>;
 }
