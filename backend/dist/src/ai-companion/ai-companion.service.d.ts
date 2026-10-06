@@ -9,10 +9,10 @@ export declare class AICompanionService {
     constructor(prisma: PrismaService);
     createAIJournalEntry(userId: string, dto: CreateAIJournalEntryDto): Promise<{
         id: string;
-        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
+        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -22,10 +22,10 @@ export declare class AICompanionService {
     }>;
     getAIJournalEntries(userId: string, startDate?: Date, endDate?: Date): Promise<{
         id: string;
-        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
+        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -35,10 +35,10 @@ export declare class AICompanionService {
     }[]>;
     getAIJournalEntry(id: string, userId: string): Promise<{
         id: string;
-        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
+        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -48,10 +48,10 @@ export declare class AICompanionService {
     }>;
     updateAIJournalEntry(id: string, userId: string, dto: UpdateAIJournalEntryDto): Promise<{
         id: string;
-        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
+        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -64,10 +64,10 @@ export declare class AICompanionService {
     }>;
     generateJournalEntry(userId: string, dto: GenerateJournalEntryDto): Promise<{
         id: string;
-        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
+        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -77,10 +77,10 @@ export declare class AICompanionService {
     }>;
     createAIInterview(userId: string, dto: CreateAIInterviewDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        duration: number | null;
+        createdAt: Date;
         completedAt: Date | null;
+        duration: number | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -88,10 +88,10 @@ export declare class AICompanionService {
     }>;
     getAIInterviews(userId: string, completedOnly?: boolean): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        duration: number | null;
+        createdAt: Date;
         completedAt: Date | null;
+        duration: number | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -99,10 +99,10 @@ export declare class AICompanionService {
     }[]>;
     getAIInterview(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        duration: number | null;
+        createdAt: Date;
         completedAt: Date | null;
+        duration: number | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -110,10 +110,10 @@ export declare class AICompanionService {
     }>;
     updateAIInterview(id: string, userId: string, dto: UpdateAIInterviewDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        duration: number | null;
+        createdAt: Date;
         completedAt: Date | null;
+        duration: number | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -124,10 +124,10 @@ export declare class AICompanionService {
     }>;
     generateQuestion(userId: string, dto: GenerateQuestionDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        duration: number | null;
+        createdAt: Date;
         completedAt: Date | null;
+        duration: number | null;
         audioUrl: string | null;
         answer: string | null;
         question: string;
@@ -135,9 +135,9 @@ export declare class AICompanionService {
     }>;
     createPhotoCuration(userId: string, dto: CreatePhotoCurationDto): Promise<{
         id: string;
-        memoryId: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        memoryId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -149,9 +149,9 @@ export declare class AICompanionService {
     }>;
     getPhotoCurations(userId: string, memoryId?: string): Promise<{
         id: string;
-        memoryId: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        memoryId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -163,9 +163,9 @@ export declare class AICompanionService {
     }[]>;
     getPhotoCuration(id: string, userId: string): Promise<{
         id: string;
-        memoryId: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        memoryId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -177,9 +177,9 @@ export declare class AICompanionService {
     }>;
     updatePhotoCuration(id: string, userId: string, dto: UpdatePhotoCurationDto): Promise<{
         id: string;
-        memoryId: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        memoryId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -196,9 +196,9 @@ export declare class AICompanionService {
     indexEntity(userId: string, dto: IndexEntityDto): Promise<{
         id: string;
         userId: string;
+        metadata: string;
         entityType: string;
         entityId: string;
-        metadata: string;
         embedding: string;
         indexedAt: Date;
     }>;
@@ -211,9 +211,9 @@ export declare class AICompanionService {
     getSearchIndices(userId: string, entityType?: string): Promise<{
         id: string;
         userId: string;
+        metadata: string;
         entityType: string;
         entityId: string;
-        metadata: string;
         embedding: string;
         indexedAt: Date;
     }[]>;
@@ -222,8 +222,8 @@ export declare class AICompanionService {
     }>;
     createVoiceCloneModel(userId: string, dto: CreateVoiceCloneModelDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         status: string;
         errorMessage: string | null;
         modelName: string;
@@ -234,8 +234,8 @@ export declare class AICompanionService {
     }>;
     getVoiceCloneModels(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         status: string;
         errorMessage: string | null;
         modelName: string;
@@ -246,8 +246,8 @@ export declare class AICompanionService {
     }[]>;
     getVoiceCloneModel(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         status: string;
         errorMessage: string | null;
         modelName: string;
@@ -258,8 +258,8 @@ export declare class AICompanionService {
     }>;
     updateVoiceCloneModel(id: string, userId: string, status: VoiceCloneStatus, progress: number): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         status: string;
         errorMessage: string | null;
         modelName: string;

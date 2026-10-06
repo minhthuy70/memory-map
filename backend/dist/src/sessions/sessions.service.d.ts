@@ -4,26 +4,26 @@ export declare class SessionsService {
     constructor(prisma: PrismaService);
     createSession(userId: string, token: string, deviceInfo?: string, ipAddress?: string, rememberMe?: boolean): Promise<{
         id: string;
-        expiresAt: Date;
-        createdAt: Date;
         userId: string;
-        ipAddress: string | null;
+        createdAt: Date;
         token: string;
         deviceInfo: string | null;
+        ipAddress: string | null;
         lastActivity: Date;
+        expiresAt: Date;
     }>;
     findByToken(token: string): Promise<{
         user: {
             id: string;
+            updatedAt: Date;
+            name: string | null;
             createdAt: Date;
             email: string;
             facebookId: string | null;
             googleId: string | null;
             resetPasswordToken: string | null;
             passwordHash: string | null;
-            name: string | null;
             avatar: string | null;
-            updatedAt: Date;
             lockedUntil: Date | null;
             loginAttempts: number;
             isActive: boolean;
@@ -42,33 +42,33 @@ export declare class SessionsService {
         };
     } & {
         id: string;
-        expiresAt: Date;
-        createdAt: Date;
         userId: string;
-        ipAddress: string | null;
+        createdAt: Date;
         token: string;
         deviceInfo: string | null;
+        ipAddress: string | null;
         lastActivity: Date;
+        expiresAt: Date;
     }>;
     updateLastActivity(token: string): Promise<{
         id: string;
-        expiresAt: Date;
-        createdAt: Date;
         userId: string;
-        ipAddress: string | null;
+        createdAt: Date;
         token: string;
         deviceInfo: string | null;
+        ipAddress: string | null;
         lastActivity: Date;
+        expiresAt: Date;
     }>;
     getUserSessions(userId: string): Promise<{
         id: string;
-        expiresAt: Date;
-        createdAt: Date;
         userId: string;
-        ipAddress: string | null;
+        createdAt: Date;
         token: string;
         deviceInfo: string | null;
+        ipAddress: string | null;
         lastActivity: Date;
+        expiresAt: Date;
     }[]>;
     deleteSession(sessionId: string, userId: string): Promise<{
         message: string;

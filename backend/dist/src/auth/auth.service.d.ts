@@ -14,14 +14,14 @@ export declare class AuthService {
     constructor(usersService: UsersService, jwtService: JwtService, sessionsService: SessionsService, mailService: MailService);
     validateUser(email: string, password: string): Promise<{
         id: string;
+        updatedAt: Date;
+        name: string | null;
         createdAt: Date;
         email: string;
         facebookId: string | null;
         googleId: string | null;
         resetPasswordToken: string | null;
-        name: string | null;
         avatar: string | null;
-        updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         isActive: boolean;
@@ -89,14 +89,14 @@ export declare class AuthService {
     }>;
     updateProfile(userId: string, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
+        updatedAt: Date;
+        name: string | null;
         createdAt: Date;
         email: string;
         facebookId: string | null;
         googleId: string | null;
         resetPasswordToken: string | null;
-        name: string | null;
         avatar: string | null;
-        updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         isActive: boolean;
@@ -121,14 +121,14 @@ export declare class AuthService {
         hasPassword: boolean;
         twoFactorBackupCodesCount: number;
         id: string;
+        updatedAt: Date;
+        name: string | null;
         createdAt: Date;
         email: string;
         facebookId: string | null;
         googleId: string | null;
         resetPasswordToken: string | null;
-        name: string | null;
         avatar: string | null;
-        updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         isActive: boolean;
@@ -248,12 +248,12 @@ export declare class AuthService {
     getWebAuthnCredentials(userId: string): Promise<{
         id: string;
         createdAt: Date;
-        lastUsedAt: Date;
         credentialId: string;
         deviceType: string;
         backedUp: boolean;
         transports: string[];
         deviceName: string;
+        lastUsedAt: Date;
     }[]>;
     deleteWebAuthnCredential(userId: string, credentialDbId: string): Promise<{
         success: boolean;
@@ -265,12 +265,12 @@ export declare class AuthService {
         credentials: {
             id: string;
             createdAt: Date;
-            lastUsedAt: Date;
             credentialId: string;
             deviceType: string;
             backedUp: boolean;
             transports: string[];
             deviceName: string;
+            lastUsedAt: Date;
         }[];
     }>;
 }

@@ -12,6 +12,7 @@ import { EventStreamingModule } from './event-streaming/event-streaming.module';
 import { HybridCloudModule } from './hybrid-cloud/hybrid-cloud.module';
 import { AICompanionModule } from './ai-companion/ai-companion.module';
 import { PrivacyVaultModule } from './privacy-vault/privacy-vault.module';
+import { GamificationModule } from './gamification/gamification.module';
 
 @Module({
   imports: [
@@ -46,6 +47,8 @@ import { PrivacyVaultModule } from './privacy-vault/privacy-vault.module';
     AICompanionModule,
 
     PrivacyVaultModule,
+
+    GamificationModule,
   ],
 })
 export class AppModule {}
