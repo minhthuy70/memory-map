@@ -14,6 +14,7 @@ import { AICompanionModule } from './ai-companion/ai-companion.module';
 import { PrivacyVaultModule } from './privacy-vault/privacy-vault.module';
 import { GamificationModule } from './gamification/gamification.module';
 import { PsychologyModule } from './psychology/psychology.module';
+import { GenealogyModule } from './genealogy/genealogy.module';
 
 @Module({
   imports: [

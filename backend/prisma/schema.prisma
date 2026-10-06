@@ -89,6 +89,14 @@ model User {
   emotionalWaveforms EmotionalWaveform[]
   dreamJournals DreamJournal[]
 
+  // Genealogy & Time Travel
+  timeLockedCapsules TimeLockedCapsule[]
+  geofencedCapsules GeofencedCapsule[]
+  legacyLetters LegacyLetter[]
+  digitalMemorials DigitalMemorial[]
+  familyHeirlooms FamilyHeirloom[]
+  familyRecipes FamilyRecipe[]
+
   @@map("users")
 }
 
@@ -1025,4 +1033,117 @@ model DreamJournal {
   @@index([userId])
   @@index([dreamDate])
   @@map("dream_journals")
+}
+
+// Genealogy & Time Travel
+model TimeLockedCapsule {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  description String   @db.Text
+  memoryIds   String   @map("memory_ids") // JSON array
+  unlockDate  DateTime @map("unlock_date")
+  isUnlocked  Boolean  @default(false) @map("is_unlocked")
+  unlockedAt   DateTime? @map("unlocked_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([unlockDate])
+  @@map("time_locked_capsules")
+}
+
+model GeofencedCapsule {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  description String   @db.Text
+  memoryIds   String   @map("memory_ids") // JSON array
+  latitude    Float
+  longitude   Float
+  radiusMeters Int      @default(50) @map("radius_meters")
+  isUnlocked  Boolean  @default(false) @map("is_unlocked")
+  unlockedAt   DateTime? @map("unlocked_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([latitude, longitude])
+  @@map("geofenced_capsules")
+}
+
+model LegacyLetter {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  recipientName String @map("recipient_name")
+  recipientEmail String? @map("recipient_email")
+  recipientBirthday DateTime? @map("recipient_birthday")
+  milestoneAge Int?  @map("milestone_age") // 18, 30, etc
+  title       String
+  content     String   @db.Text
+  isDelivered Boolean  @default(false) @map("is_delivered")
+  deliveredAt  DateTime? @map("delivered_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([recipientBirthday])
+  @@map("legacy_letters")
+}
+
+model DigitalMemorial {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  deceasedName String   @map("deceased_name")
+  birthDate   DateTime? @map("birth_date")
+  deathDate   DateTime? @map("death_date")
+  biography   String   @db.Text
+  photoUrl    String?  @map("photo_url")
+  isPublic    Boolean  @default(false) @map("is_public")
+  accessCode  String?  @unique @map("access_code")
+  candles     Int      @default(0)
+  flowers     Int      @default(0)
+  condolences String   @map("condolences") // JSON array
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([isPublic])
+  @@index([accessCode])
+  @@map("digital_memorials")
+}
+
+model FamilyHeirloom {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  name        String
+  description String   @db.Text
+  photoUrl    String   @map("photo_url")
+  year        Int?
+  category    String   // letter, medal, clock, antique
+  provenance  String   @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([category])
+  @@map("family_heirlooms")
+}
+
+model FamilyRecipe {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  description String   @db.Text
+  ingredients String   @map("ingredients") // JSON array
+  steps       String   @map("steps") // JSON array of steps
+  originator   String   @map("originator") // Grandma, Aunt, etc
+  memoryId    String?  @map("memory_id")
+  voiceNoteUrl String? @map("voice_note_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([originator])
+  @@map("family_recipes")
 }
