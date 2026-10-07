@@ -15,6 +15,7 @@ import { PrivacyVaultModule } from './privacy-vault/privacy-vault.module';
 import { GamificationModule } from './gamification/gamification.module';
 import { PsychologyModule } from './psychology/psychology.module';
 import { GenealogyModule } from './genealogy/genealogy.module';
+import { AudiovisualModule } from './audiovisual/audiovisual.module';
 
 @Module({
   imports: [
@@ -55,6 +56,8 @@ import { GenealogyModule } from './genealogy/genealogy.module';
     PsychologyModule,
 
     GenealogyModule,
+
+    AudiovisualModule,
   ],
 })
 export class AppModule {}
