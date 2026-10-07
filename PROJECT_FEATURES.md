@@ -1598,8 +1598,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 [ ] - Offline Travel Guide Generator - Tạo cẩm nang du lịch offline kèm bản đồ vector - OfflineTravelGuide.tsx (bundle memories, offline vector tiles, notes, emergency contacts into downloadable offline pack, works completely without cellular data)
 
 45.2. Travel Management & Logistics (Quản lý hậu cần du lịch)
-[ ] - Trip Budget & Multi-currency Expense Tracker - Quản lý thu chi chuyến đi gắn với kỷ niệm - TripExpenseTracker.tsx (expense logging per memory location, multi-currency support, live FX rates conversion, category breakdown: food/hotel/transport/tickets, split bill with travel partners)
-[ ] - Travel Packing Checklist & Document Wallet - Danh sách đồ dùng và ví chứng từ du lịch - PackingAndDocWallet.tsx (smart packing list generator based on destination weather & trip length, encrypted wallet for boarding passes, hotel vouchers, passport scans)
+[x] - Trip Budget & Multi-currency Expense Tracker - Quản lý thu chi chuyến đi gắn với kỷ niệm - TripExpenseTracker.tsx (expense logging per memory location, multi-currency support, live FX rates conversion, category breakdown: food/hotel/transport/tickets, split bill with travel partners)
+[x] - Travel Packing Checklist & Document Wallet - Danh sách đồ dùng và ví chứng từ du lịch - PackingAndDocWallet.tsx (smart packing list generator based on destination weather & trip length, encrypted wallet for boarding passes, hotel vouchers, passport scans)
 [ ] - Live Flight & Train Status Sync - Theo dõi số hiệu chuyến bay & tàu hỏa thời gian thực - LiveFlightTrainSync.tsx (flight number tracking via FlightAware/AviationStack API, gate changes, delay alerts, auto-trigger memory draft upon landing at destination airport)
 [ ] - Country Passport & Visa Tracker - Bản đồ thị thực và hộ chiếu du lịch - PassportVisaTracker.tsx (color-coded world map of visited countries, visa validity countdown, entry requirements database, passport expiration warnings)
 [ ] - Carbon Footprint & Eco-Travel Calculator - Tính lượng phát thải CO2 hành trình - CarbonFootprintCalculator.tsx (carbon emission estimate based on flight/drive distance and vehicle type, green offset suggestions, certified tree planting partnership links)
@@ -1765,7 +1765,7 @@ END OF FEATURE LIST
 Tổng số tính năng: 1160
 Số lượng tính năng đã implement: 1086 (93.6%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai (Roadmap): 74 (6.4%)
+Số lượng tính năng tương lai (Roadmap): 72 (6.2%)
  
 Last Updated: 2026-10-05
 Version: 16.0 (Future Roadmap)
