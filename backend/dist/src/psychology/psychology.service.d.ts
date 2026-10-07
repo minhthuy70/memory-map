@@ -6,18 +6,18 @@ export declare class PsychologyService {
         id: string;
         userId: string;
         createdAt: Date;
-        content: string;
-        category: string;
         memoryId: string | null;
+        category: string;
+        content: string;
         isShared: boolean;
     }[]>;
     createGratitudeEntry(userId: string, data: any): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
-        content: string;
-        category: string;
         memoryId: string | null;
+        category: string;
+        content: string;
         isShared: boolean;
     }>;
     getResilienceMoments(userId: string): Promise<{

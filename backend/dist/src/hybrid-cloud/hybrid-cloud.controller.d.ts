@@ -111,49 +111,49 @@ export declare class HybridCloudController {
         id: string;
         userId: string;
         isPublic: boolean;
-        accessCode: string | null;
         expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
         downloadCount: number;
+        accessCode: string | null;
     }>;
     getVaultExports(req: any): Promise<{
         id: string;
         userId: string;
         isPublic: boolean;
-        accessCode: string | null;
         expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
         downloadCount: number;
+        accessCode: string | null;
     }[]>;
     getVaultExport(id: string, req: any): Promise<{
         id: string;
         userId: string;
         isPublic: boolean;
-        accessCode: string | null;
         expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
         downloadCount: number;
+        accessCode: string | null;
     }>;
     verifyVaultExportAccess(dto: DownloadVaultExportDto): Promise<{
         id: string;
         userId: string;
         isPublic: boolean;
-        accessCode: string | null;
         expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
         downloadCount: number;
+        accessCode: string | null;
     }>;
     deleteVaultExport(id: string, req: any): Promise<{
         message: string;

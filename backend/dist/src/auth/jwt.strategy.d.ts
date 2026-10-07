@@ -10,13 +10,13 @@ export declare class JwtStrategy extends JwtStrategy_base {
     validate(payload: any): Promise<{
         id: string;
         createdAt: Date;
+        updatedAt: Date;
         name: string | null;
         email: string;
         facebookId: string | null;
         googleId: string | null;
         resetPasswordToken: string | null;
         avatar: string | null;
-        updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         isActive: boolean;

@@ -111,49 +111,49 @@ export declare class HybridCloudService {
         id: string;
         userId: string;
         isPublic: boolean;
-        accessCode: string | null;
         expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
         downloadCount: number;
+        accessCode: string | null;
     }>;
     getVaultExports(userId: string): Promise<{
         id: string;
         userId: string;
         isPublic: boolean;
-        accessCode: string | null;
         expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
         downloadCount: number;
+        accessCode: string | null;
     }[]>;
     getVaultExport(id: string, userId: string): Promise<{
         id: string;
         userId: string;
         isPublic: boolean;
-        accessCode: string | null;
         expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
         downloadCount: number;
+        accessCode: string | null;
     }>;
     verifyVaultExportAccess(accessCode: string): Promise<{
         id: string;
         userId: string;
         isPublic: boolean;
-        accessCode: string | null;
         expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
         exportDate: Date;
         downloadCount: number;
+        accessCode: string | null;
     }>;
     deleteVaultExport(id: string, userId: string): Promise<{
         message: string;

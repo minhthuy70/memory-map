@@ -11,8 +11,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
         date: Date;
         photos: string;
         locations: string;
@@ -24,8 +24,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
         date: Date;
         photos: string;
         locations: string;
@@ -37,8 +37,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
         date: Date;
         photos: string;
         locations: string;
@@ -50,8 +50,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
         date: Date;
         photos: string;
         locations: string;
@@ -66,8 +66,8 @@ export declare class AICompanionController {
         id: string;
         userId: string;
         title: string;
-        content: string;
         memoryId: string | null;
+        content: string;
         date: Date;
         photos: string;
         locations: string;
@@ -80,8 +80,8 @@ export declare class AICompanionController {
         userId: string;
         createdAt: Date;
         duration: number | null;
-        completedAt: Date | null;
         audioUrl: string | null;
+        completedAt: Date | null;
         answer: string | null;
         question: string;
         isCompleted: boolean;
@@ -91,8 +91,8 @@ export declare class AICompanionController {
         userId: string;
         createdAt: Date;
         duration: number | null;
-        completedAt: Date | null;
         audioUrl: string | null;
+        completedAt: Date | null;
         answer: string | null;
         question: string;
         isCompleted: boolean;
@@ -102,8 +102,8 @@ export declare class AICompanionController {
         userId: string;
         createdAt: Date;
         duration: number | null;
-        completedAt: Date | null;
         audioUrl: string | null;
+        completedAt: Date | null;
         answer: string | null;
         question: string;
         isCompleted: boolean;
@@ -113,8 +113,8 @@ export declare class AICompanionController {
         userId: string;
         createdAt: Date;
         duration: number | null;
-        completedAt: Date | null;
         audioUrl: string | null;
+        completedAt: Date | null;
         answer: string | null;
         question: string;
         isCompleted: boolean;
@@ -127,8 +127,8 @@ export declare class AICompanionController {
         userId: string;
         createdAt: Date;
         duration: number | null;
-        completedAt: Date | null;
         audioUrl: string | null;
+        completedAt: Date | null;
         answer: string | null;
         question: string;
         isCompleted: boolean;

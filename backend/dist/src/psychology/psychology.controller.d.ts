@@ -6,18 +6,18 @@ export declare class PsychologyController {
         id: string;
         userId: string;
         createdAt: Date;
-        content: string;
-        category: string;
         memoryId: string | null;
+        category: string;
+        content: string;
         isShared: boolean;
     }[]>;
     createGratitudeEntry(req: any, data: any): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
-        content: string;
-        category: string;
         memoryId: string | null;
+        category: string;
+        content: string;
         isShared: boolean;
     }>;
     getResilienceMoments(req: any): Promise<{

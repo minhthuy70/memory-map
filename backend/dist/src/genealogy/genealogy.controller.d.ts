@@ -7,45 +7,45 @@ export declare class GenealogyController {
         userId: string;
         title: string;
         description: string;
+        createdAt: Date;
+        unlockedAt: Date | null;
         memoryIds: string;
         unlockDate: Date;
         isUnlocked: boolean;
-        unlockedAt: Date | null;
-        createdAt: Date;
     }[]>;
     createTimeLockedCapsule(req: any, data: any): Promise<{
         id: string;
         userId: string;
         title: string;
         description: string;
+        createdAt: Date;
+        unlockedAt: Date | null;
         memoryIds: string;
         unlockDate: Date;
         isUnlocked: boolean;
-        unlockedAt: Date | null;
-        createdAt: Date;
     }>;
     unlockTimeLockedCapsule(req: any, id: string): Promise<{
         id: string;
         userId: string;
         title: string;
         description: string;
+        createdAt: Date;
+        unlockedAt: Date | null;
         memoryIds: string;
         unlockDate: Date;
         isUnlocked: boolean;
-        unlockedAt: Date | null;
-        createdAt: Date;
     }>;
     getGeofencedCapsules(req: any): Promise<{
         id: string;
         userId: string;
         title: string;
         description: string;
-        memoryIds: string;
-        isUnlocked: boolean;
-        unlockedAt: Date | null;
         createdAt: Date;
         latitude: number;
         longitude: number;
+        unlockedAt: Date | null;
+        memoryIds: string;
+        isUnlocked: boolean;
         radiusMeters: number;
     }[]>;
     createGeofencedCapsule(req: any, data: any): Promise<{
@@ -53,12 +53,12 @@ export declare class GenealogyController {
         userId: string;
         title: string;
         description: string;
-        memoryIds: string;
-        isUnlocked: boolean;
-        unlockedAt: Date | null;
         createdAt: Date;
         latitude: number;
         longitude: number;
+        unlockedAt: Date | null;
+        memoryIds: string;
+        isUnlocked: boolean;
         radiusMeters: number;
     }>;
     checkGeofencedUnlock(req: any, data: any): Promise<any[]>;
@@ -67,11 +67,11 @@ export declare class GenealogyController {
         userId: string;
         title: string;
         createdAt: Date;
+        content: string;
         recipientName: string;
         recipientEmail: string | null;
         recipientBirthday: Date | null;
         milestoneAge: number | null;
-        content: string;
         isDelivered: boolean;
         deliveredAt: Date | null;
     }[]>;
@@ -80,25 +80,25 @@ export declare class GenealogyController {
         userId: string;
         title: string;
         createdAt: Date;
+        content: string;
         recipientName: string;
         recipientEmail: string | null;
         recipientBirthday: Date | null;
         milestoneAge: number | null;
-        content: string;
         isDelivered: boolean;
         deliveredAt: Date | null;
     }>;
     getDigitalMemorials(req: any): Promise<{
         id: string;
         userId: string;
+        isPublic: boolean;
         createdAt: Date;
+        accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
         deathDate: Date | null;
         biography: string;
         photoUrl: string | null;
-        isPublic: boolean;
-        accessCode: string | null;
         candles: number;
         flowers: number;
         condolences: string;
@@ -106,14 +106,14 @@ export declare class GenealogyController {
     createDigitalMemorial(req: any, data: any): Promise<{
         id: string;
         userId: string;
+        isPublic: boolean;
         createdAt: Date;
+        accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
         deathDate: Date | null;
         biography: string;
         photoUrl: string | null;
-        isPublic: boolean;
-        accessCode: string | null;
         candles: number;
         flowers: number;
         condolences: string;
@@ -121,14 +121,14 @@ export declare class GenealogyController {
     addCondolence(accessCode: string, data: any): Promise<{
         id: string;
         userId: string;
+        isPublic: boolean;
         createdAt: Date;
+        accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
         deathDate: Date | null;
         biography: string;
         photoUrl: string | null;
-        isPublic: boolean;
-        accessCode: string | null;
         candles: number;
         flowers: number;
         condolences: string;
@@ -136,14 +136,14 @@ export declare class GenealogyController {
     addCandle(accessCode: string): Promise<{
         id: string;
         userId: string;
+        isPublic: boolean;
         createdAt: Date;
+        accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
         deathDate: Date | null;
         biography: string;
         photoUrl: string | null;
-        isPublic: boolean;
-        accessCode: string | null;
         candles: number;
         flowers: number;
         condolences: string;
@@ -151,14 +151,14 @@ export declare class GenealogyController {
     addFlower(accessCode: string): Promise<{
         id: string;
         userId: string;
+        isPublic: boolean;
         createdAt: Date;
+        accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
         deathDate: Date | null;
         biography: string;
         photoUrl: string | null;
-        isPublic: boolean;
-        accessCode: string | null;
         candles: number;
         flowers: number;
         condolences: string;
@@ -169,9 +169,9 @@ export declare class GenealogyController {
         description: string;
         createdAt: Date;
         name: string;
-        photoUrl: string;
-        year: number | null;
         category: string;
+        year: number | null;
+        photoUrl: string;
         provenance: string;
     }[]>;
     createFamilyHeirloom(req: any, data: any): Promise<{
@@ -180,9 +180,9 @@ export declare class GenealogyController {
         description: string;
         createdAt: Date;
         name: string;
-        photoUrl: string;
-        year: number | null;
         category: string;
+        year: number | null;
+        photoUrl: string;
         provenance: string;
     }>;
     getFamilyRecipes(req: any): Promise<{
@@ -191,10 +191,10 @@ export declare class GenealogyController {
         title: string;
         description: string;
         createdAt: Date;
+        memoryId: string | null;
         ingredients: string;
         steps: string;
         originator: string;
-        memoryId: string | null;
         voiceNoteUrl: string | null;
     }[]>;
     createFamilyRecipe(req: any, data: any): Promise<{
@@ -203,10 +203,10 @@ export declare class GenealogyController {
         title: string;
         description: string;
         createdAt: Date;
+        memoryId: string | null;
         ingredients: string;
         steps: string;
         originator: string;
-        memoryId: string | null;
         voiceNoteUrl: string | null;
     }>;
 }

@@ -93,13 +93,13 @@ export declare class AuthController {
         twoFactorBackupCodesCount: number;
         id: string;
         createdAt: Date;
+        updatedAt: Date;
         name: string | null;
         email: string;
         facebookId: string | null;
         googleId: string | null;
         resetPasswordToken: string | null;
         avatar: string | null;
-        updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         isActive: boolean;
@@ -116,13 +116,13 @@ export declare class AuthController {
     updateProfile(req: any, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
         createdAt: Date;
+        updatedAt: Date;
         name: string | null;
         email: string;
         facebookId: string | null;
         googleId: string | null;
         resetPasswordToken: string | null;
         avatar: string | null;
-        updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         isActive: boolean;

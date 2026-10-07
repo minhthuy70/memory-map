@@ -16,6 +16,7 @@ export declare class SessionsService {
         user: {
             id: string;
             createdAt: Date;
+            updatedAt: Date;
             name: string | null;
             email: string;
             facebookId: string | null;
@@ -23,7 +24,6 @@ export declare class SessionsService {
             resetPasswordToken: string | null;
             passwordHash: string | null;
             avatar: string | null;
-            updatedAt: Date;
             lockedUntil: Date | null;
             loginAttempts: number;
             isActive: boolean;
