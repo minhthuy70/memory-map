@@ -6,8 +6,8 @@ export declare class GenealogyController {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         unlockDate: Date;
@@ -17,8 +17,8 @@ export declare class GenealogyController {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         unlockDate: Date;
@@ -28,8 +28,8 @@ export declare class GenealogyController {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         unlockDate: Date;
@@ -39,10 +39,10 @@ export declare class GenealogyController {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         latitude: number;
         longitude: number;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         isUnlocked: boolean;
@@ -52,10 +52,10 @@ export declare class GenealogyController {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         latitude: number;
         longitude: number;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         isUnlocked: boolean;
@@ -91,8 +91,8 @@ export declare class GenealogyController {
     getDigitalMemorials(req: any): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -106,8 +106,8 @@ export declare class GenealogyController {
     createDigitalMemorial(req: any, data: any): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -121,8 +121,8 @@ export declare class GenealogyController {
     addCondolence(accessCode: string, data: any): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -136,8 +136,8 @@ export declare class GenealogyController {
     addCandle(accessCode: string): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -151,8 +151,8 @@ export declare class GenealogyController {
     addFlower(accessCode: string): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -166,22 +166,22 @@ export declare class GenealogyController {
     getFamilyHeirlooms(req: any): Promise<{
         id: string;
         userId: string;
-        description: string;
         createdAt: Date;
         name: string;
         category: string;
         year: number | null;
+        description: string;
         photoUrl: string;
         provenance: string;
     }[]>;
     createFamilyHeirloom(req: any, data: any): Promise<{
         id: string;
         userId: string;
-        description: string;
         createdAt: Date;
         name: string;
         category: string;
         year: number | null;
+        description: string;
         photoUrl: string;
         provenance: string;
     }>;
@@ -189,9 +189,9 @@ export declare class GenealogyController {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         memoryId: string | null;
+        description: string;
         ingredients: string;
         steps: string;
         originator: string;
@@ -201,9 +201,9 @@ export declare class GenealogyController {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         memoryId: string | null;
+        description: string;
         ingredients: string;
         steps: string;
         originator: string;

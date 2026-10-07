@@ -255,9 +255,9 @@ export declare class EventStreamingService {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         customDomain: string | null;
         bio: string | null;
     }>;
@@ -267,9 +267,9 @@ export declare class EventStreamingService {
                 id: string;
                 userId: string;
                 title: string;
-                isPublic: boolean;
                 createdAt: Date;
                 updatedAt: Date;
+                isPublic: boolean;
                 customDomain: string | null;
                 bio: string | null;
             };
@@ -284,9 +284,9 @@ export declare class EventStreamingService {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         customDomain: string | null;
         bio: string | null;
     })[]>;
@@ -300,9 +300,9 @@ export declare class EventStreamingService {
                 id: string;
                 userId: string;
                 title: string;
-                isPublic: boolean;
                 createdAt: Date;
                 updatedAt: Date;
+                isPublic: boolean;
                 customDomain: string | null;
                 bio: string | null;
             };
@@ -317,9 +317,9 @@ export declare class EventStreamingService {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         customDomain: string | null;
         bio: string | null;
     }>;
@@ -327,9 +327,9 @@ export declare class EventStreamingService {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         customDomain: string | null;
         bio: string | null;
     }>;
@@ -391,21 +391,21 @@ export declare class EventStreamingService {
     createQRCodeSticker(userId: string, dto: CreateQRCodeStickerDto): Promise<{
         id: string;
         userId: string;
-        description: string | null;
         createdAt: Date;
         memoryId: string;
         stickerCode: string;
         qrCodeUrl: string;
+        description: string | null;
         scansCount: number;
     }>;
     getQRCodeStickers(userId: string): Promise<{
         id: string;
         userId: string;
-        description: string | null;
         createdAt: Date;
         memoryId: string;
         stickerCode: string;
         qrCodeUrl: string;
+        description: string | null;
         scansCount: number;
     }[]>;
     scanQRCodeSticker(stickerCode: string): Promise<{
@@ -415,11 +415,11 @@ export declare class EventStreamingService {
     } & {
         id: string;
         userId: string;
-        description: string | null;
         createdAt: Date;
         memoryId: string;
         stickerCode: string;
         qrCodeUrl: string;
+        description: string | null;
         scansCount: number;
     }>;
     createVerticalStoryExport(userId: string, dto: CreateVerticalStoryExportDto): Promise<{
@@ -427,10 +427,10 @@ export declare class EventStreamingService {
         userId: string;
         createdAt: Date;
         memoryId: string;
-        duration: number | null;
         videoUrl: string | null;
         resolution: string;
         format: string;
+        duration: number | null;
         status: string;
         completedAt: Date | null;
     }>;
@@ -439,10 +439,10 @@ export declare class EventStreamingService {
         userId: string;
         createdAt: Date;
         memoryId: string;
-        duration: number | null;
         videoUrl: string | null;
         resolution: string;
         format: string;
+        duration: number | null;
         status: string;
         completedAt: Date | null;
     }[]>;
@@ -451,10 +451,10 @@ export declare class EventStreamingService {
         userId: string;
         createdAt: Date;
         memoryId: string;
-        duration: number | null;
         videoUrl: string | null;
         resolution: string;
         format: string;
+        duration: number | null;
         status: string;
         completedAt: Date | null;
     }>;
@@ -464,8 +464,8 @@ export declare class EventStreamingService {
         createdAt: Date;
         memoryId: string;
         duration: number | null;
-        audioUrl: string;
         commentatorName: string;
+        audioUrl: string;
     }>;
     getFriendVoiceCommentaries(userId: string): Promise<{
         id: string;
@@ -473,8 +473,8 @@ export declare class EventStreamingService {
         createdAt: Date;
         memoryId: string;
         duration: number | null;
-        audioUrl: string;
         commentatorName: string;
+        audioUrl: string;
     }[]>;
     getMemoryVoiceCommentaries(memoryId: string): Promise<{
         id: string;
@@ -482,8 +482,8 @@ export declare class EventStreamingService {
         createdAt: Date;
         memoryId: string;
         duration: number | null;
-        audioUrl: string;
         commentatorName: string;
+        audioUrl: string;
     }[]>;
     private generateRoomCode;
 }

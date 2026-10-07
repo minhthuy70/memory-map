@@ -1,0 +1,180 @@
+import { PrismaService } from '../prisma/prisma.service';
+export declare class TripPlanningService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    getItineraries(userId: string): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        startDate: Date;
+        endDate: Date;
+        destination: string;
+        itineraryData: string;
+        isShared: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }[]>;
+    getItinerary(userId: string, id: string): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        startDate: Date;
+        endDate: Date;
+        destination: string;
+        itineraryData: string;
+        isShared: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    createItinerary(userId: string, data: any): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        startDate: Date;
+        endDate: Date;
+        destination: string;
+        itineraryData: string;
+        isShared: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    updateItinerary(userId: string, id: string, data: any): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        startDate: Date;
+        endDate: Date;
+        destination: string;
+        itineraryData: string;
+        isShared: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    deleteItinerary(userId: string, id: string): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        startDate: Date;
+        endDate: Date;
+        destination: string;
+        itineraryData: string;
+        isShared: boolean;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    getTripExpenses(userId: string, itineraryId?: string): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        itineraryId: string | null;
+        memoryId: string | null;
+        amount: number;
+        currency: string;
+        category: string;
+        date: Date;
+        notes: string | null;
+    }[]>;
+    createTripExpense(userId: string, data: any): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        itineraryId: string | null;
+        memoryId: string | null;
+        amount: number;
+        currency: string;
+        category: string;
+        date: Date;
+        notes: string | null;
+    }>;
+    deleteTripExpense(userId: string, id: string): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        itineraryId: string | null;
+        memoryId: string | null;
+        amount: number;
+        currency: string;
+        category: string;
+        date: Date;
+        notes: string | null;
+    }>;
+    getPackingLists(userId: string, itineraryId?: string): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        updatedAt: Date;
+        itineraryId: string | null;
+        items: string;
+        isCompleted: boolean;
+    }[]>;
+    createPackingList(userId: string, data: any): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        updatedAt: Date;
+        itineraryId: string | null;
+        items: string;
+        isCompleted: boolean;
+    }>;
+    updatePackingList(userId: string, id: string, data: any): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        updatedAt: Date;
+        itineraryId: string | null;
+        items: string;
+        isCompleted: boolean;
+    }>;
+    deletePackingList(userId: string, id: string): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        updatedAt: Date;
+        itineraryId: string | null;
+        items: string;
+        isCompleted: boolean;
+    }>;
+    getTravelDocuments(userId: string, itineraryId?: string): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        itineraryId: string | null;
+        notes: string | null;
+        documentType: string;
+        documentNumber: string | null;
+        expiryDate: Date | null;
+        fileUrl: string | null;
+    }[]>;
+    createTravelDocument(userId: string, data: any): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        itineraryId: string | null;
+        notes: string | null;
+        documentType: string;
+        documentNumber: string | null;
+        expiryDate: Date | null;
+        fileUrl: string | null;
+    }>;
+    deleteTravelDocument(userId: string, id: string): Promise<{
+        id: string;
+        userId: string;
+        title: string;
+        createdAt: Date;
+        itineraryId: string | null;
+        notes: string | null;
+        documentType: string;
+        documentNumber: string | null;
+        expiryDate: Date | null;
+        fileUrl: string | null;
+    }>;
+}

@@ -59,9 +59,9 @@ export declare class MemoriesService {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -102,9 +102,9 @@ export declare class MemoriesService {
             id: string;
             userId: string;
             title: string;
-            isPublic: boolean;
             createdAt: Date;
             updatedAt: Date;
+            isPublic: boolean;
             content: string | null;
             latitude: number;
             longitude: number;
@@ -151,9 +151,9 @@ export declare class MemoriesService {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -195,9 +195,9 @@ export declare class MemoriesService {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -214,9 +214,9 @@ export declare class MemoriesService {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -299,9 +299,9 @@ export declare class MemoriesService {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         content: string | null;
         latitude: number;
         longitude: number;

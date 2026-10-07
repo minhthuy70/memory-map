@@ -6,56 +6,56 @@ export declare class AudiovisualService {
         id: string;
         userId: string;
         title: string;
+        createdAt: Date;
+        updatedAt: Date;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }[]>;
     getScrapbookProject(userId: string, id: string): Promise<{
         id: string;
         userId: string;
         title: string;
+        createdAt: Date;
+        updatedAt: Date;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     createScrapbookProject(userId: string, data: any): Promise<{
         id: string;
         userId: string;
         title: string;
+        createdAt: Date;
+        updatedAt: Date;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     updateScrapbookProject(userId: string, id: string, data: any): Promise<{
         id: string;
         userId: string;
         title: string;
+        createdAt: Date;
+        updatedAt: Date;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     deleteScrapbookProject(userId: string, id: string): Promise<{
         id: string;
         userId: string;
         title: string;
+        createdAt: Date;
+        updatedAt: Date;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     getSoundscapeMixes(userId: string): Promise<{
         id: string;
@@ -63,9 +63,9 @@ export declare class AudiovisualService {
         title: string;
         createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }[]>;
     getSoundscapeMix(userId: string, id: string): Promise<{
         id: string;
@@ -73,9 +73,9 @@ export declare class AudiovisualService {
         title: string;
         createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }>;
     createSoundscapeMix(userId: string, data: any): Promise<{
         id: string;
@@ -83,9 +83,9 @@ export declare class AudiovisualService {
         title: string;
         createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }>;
     updateSoundscapeMix(userId: string, id: string, data: any): Promise<{
         id: string;
@@ -93,9 +93,9 @@ export declare class AudiovisualService {
         title: string;
         createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }>;
     deleteSoundscapeMix(userId: string, id: string): Promise<{
         id: string;
@@ -103,8 +103,8 @@ export declare class AudiovisualService {
         title: string;
         createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }>;
 }

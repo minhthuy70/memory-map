@@ -12,8 +12,8 @@ export declare class AICompanionService {
         userId: string;
         title: string;
         memoryId: string | null;
-        content: string;
         date: Date;
+        content: string;
         photos: string;
         locations: string;
         isDraft: boolean;
@@ -25,8 +25,8 @@ export declare class AICompanionService {
         userId: string;
         title: string;
         memoryId: string | null;
-        content: string;
         date: Date;
+        content: string;
         photos: string;
         locations: string;
         isDraft: boolean;
@@ -38,8 +38,8 @@ export declare class AICompanionService {
         userId: string;
         title: string;
         memoryId: string | null;
-        content: string;
         date: Date;
+        content: string;
         photos: string;
         locations: string;
         isDraft: boolean;
@@ -51,8 +51,8 @@ export declare class AICompanionService {
         userId: string;
         title: string;
         memoryId: string | null;
-        content: string;
         date: Date;
+        content: string;
         photos: string;
         locations: string;
         isDraft: boolean;
@@ -67,8 +67,8 @@ export declare class AICompanionService {
         userId: string;
         title: string;
         memoryId: string | null;
-        content: string;
         date: Date;
+        content: string;
         photos: string;
         locations: string;
         isDraft: boolean;
@@ -79,45 +79,45 @@ export declare class AICompanionService {
         id: string;
         userId: string;
         createdAt: Date;
+        isCompleted: boolean;
         duration: number | null;
-        audioUrl: string | null;
         completedAt: Date | null;
+        audioUrl: string | null;
         answer: string | null;
         question: string;
-        isCompleted: boolean;
     }>;
     getAIInterviews(userId: string, completedOnly?: boolean): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
+        isCompleted: boolean;
         duration: number | null;
-        audioUrl: string | null;
         completedAt: Date | null;
+        audioUrl: string | null;
         answer: string | null;
         question: string;
-        isCompleted: boolean;
     }[]>;
     getAIInterview(id: string, userId: string): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
+        isCompleted: boolean;
         duration: number | null;
-        audioUrl: string | null;
         completedAt: Date | null;
+        audioUrl: string | null;
         answer: string | null;
         question: string;
-        isCompleted: boolean;
     }>;
     updateAIInterview(id: string, userId: string, dto: UpdateAIInterviewDto): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
+        isCompleted: boolean;
         duration: number | null;
-        audioUrl: string | null;
         completedAt: Date | null;
+        audioUrl: string | null;
         answer: string | null;
         question: string;
-        isCompleted: boolean;
     }>;
     deleteAIInterview(id: string, userId: string): Promise<{
         message: string;
@@ -126,12 +126,12 @@ export declare class AICompanionService {
         id: string;
         userId: string;
         createdAt: Date;
+        isCompleted: boolean;
         duration: number | null;
-        audioUrl: string | null;
         completedAt: Date | null;
+        audioUrl: string | null;
         answer: string | null;
         question: string;
-        isCompleted: boolean;
     }>;
     createPhotoCuration(userId: string, dto: CreatePhotoCurationDto): Promise<{
         id: string;

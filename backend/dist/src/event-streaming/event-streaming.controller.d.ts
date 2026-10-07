@@ -257,9 +257,9 @@ export declare class EventStreamingController {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         customDomain: string | null;
         bio: string | null;
     }>;
@@ -269,9 +269,9 @@ export declare class EventStreamingController {
                 id: string;
                 userId: string;
                 title: string;
-                isPublic: boolean;
                 createdAt: Date;
                 updatedAt: Date;
+                isPublic: boolean;
                 customDomain: string | null;
                 bio: string | null;
             };
@@ -286,9 +286,9 @@ export declare class EventStreamingController {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         customDomain: string | null;
         bio: string | null;
     })[]>;
@@ -302,9 +302,9 @@ export declare class EventStreamingController {
                 id: string;
                 userId: string;
                 title: string;
-                isPublic: boolean;
                 createdAt: Date;
                 updatedAt: Date;
+                isPublic: boolean;
                 customDomain: string | null;
                 bio: string | null;
             };
@@ -319,9 +319,9 @@ export declare class EventStreamingController {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         customDomain: string | null;
         bio: string | null;
     }>;
@@ -329,9 +329,9 @@ export declare class EventStreamingController {
         id: string;
         userId: string;
         title: string;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
         customDomain: string | null;
         bio: string | null;
     }>;
@@ -393,21 +393,21 @@ export declare class EventStreamingController {
     createQRCodeSticker(req: any, dto: CreateQRCodeStickerDto): Promise<{
         id: string;
         userId: string;
-        description: string | null;
         createdAt: Date;
         memoryId: string;
         stickerCode: string;
         qrCodeUrl: string;
+        description: string | null;
         scansCount: number;
     }>;
     getQRCodeStickers(req: any): Promise<{
         id: string;
         userId: string;
-        description: string | null;
         createdAt: Date;
         memoryId: string;
         stickerCode: string;
         qrCodeUrl: string;
+        description: string | null;
         scansCount: number;
     }[]>;
     scanQRCodeSticker(stickerCode: string): Promise<{
@@ -417,11 +417,11 @@ export declare class EventStreamingController {
     } & {
         id: string;
         userId: string;
-        description: string | null;
         createdAt: Date;
         memoryId: string;
         stickerCode: string;
         qrCodeUrl: string;
+        description: string | null;
         scansCount: number;
     }>;
     createVerticalStoryExport(req: any, dto: CreateVerticalStoryExportDto): Promise<{
@@ -429,10 +429,10 @@ export declare class EventStreamingController {
         userId: string;
         createdAt: Date;
         memoryId: string;
-        duration: number | null;
         videoUrl: string | null;
         resolution: string;
         format: string;
+        duration: number | null;
         status: string;
         completedAt: Date | null;
     }>;
@@ -441,10 +441,10 @@ export declare class EventStreamingController {
         userId: string;
         createdAt: Date;
         memoryId: string;
-        duration: number | null;
         videoUrl: string | null;
         resolution: string;
         format: string;
+        duration: number | null;
         status: string;
         completedAt: Date | null;
     }[]>;
@@ -454,8 +454,8 @@ export declare class EventStreamingController {
         createdAt: Date;
         memoryId: string;
         duration: number | null;
-        audioUrl: string;
         commentatorName: string;
+        audioUrl: string;
     }>;
     getFriendVoiceCommentaries(req: any): Promise<{
         id: string;
@@ -463,8 +463,8 @@ export declare class EventStreamingController {
         createdAt: Date;
         memoryId: string;
         duration: number | null;
-        audioUrl: string;
         commentatorName: string;
+        audioUrl: string;
     }[]>;
     getMemoryVoiceCommentaries(memoryId: string): Promise<{
         id: string;
@@ -472,8 +472,8 @@ export declare class EventStreamingController {
         createdAt: Date;
         memoryId: string;
         duration: number | null;
-        audioUrl: string;
         commentatorName: string;
+        audioUrl: string;
     }[]>;
     sendWebRTCSignal(dto: {
         roomCode: string;

@@ -5,28 +5,28 @@ export declare class PsychologyController {
     getGratitudeEntries(req: any): Promise<{
         id: string;
         userId: string;
+        isShared: boolean;
         createdAt: Date;
         memoryId: string | null;
         category: string;
         content: string;
-        isShared: boolean;
     }[]>;
     createGratitudeEntry(req: any, data: any): Promise<{
         id: string;
         userId: string;
+        isShared: boolean;
         createdAt: Date;
         memoryId: string | null;
         category: string;
         content: string;
-        isShared: boolean;
     }>;
     getResilienceMoments(req: any): Promise<{
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         date: Date;
+        description: string;
         difficulty: number;
         overcomeAt: Date | null;
         selfEncouragement: string | null;
@@ -35,9 +35,9 @@ export declare class PsychologyController {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         date: Date;
+        description: string;
         difficulty: number;
         overcomeAt: Date | null;
         selfEncouragement: string | null;
@@ -68,27 +68,27 @@ export declare class PsychologyController {
         id: string;
         userId: string;
         createdAt: Date;
-        mood: number;
         date: Date;
-        stressLevel: number;
         notes: string | null;
+        mood: number;
+        stressLevel: number;
     }[]>;
     createEmotionalWaveform(req: any, data: any): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
-        mood: number;
         date: Date;
-        stressLevel: number;
         notes: string | null;
+        mood: number;
+        stressLevel: number;
     }>;
     getDreamJournals(req: any): Promise<{
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         locationName: string | null;
+        description: string;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string;
@@ -99,9 +99,9 @@ export declare class PsychologyController {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         locationName: string | null;
+        description: string;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string;

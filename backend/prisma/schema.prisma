@@ -101,6 +101,12 @@ model User {
   scrapbookProjects ScrapbookProject[]
   soundscapeMixes SoundscapeMix[]
 
+  // Advanced Trip Planning
+  itineraries Itinerary[]
+  tripExpenses TripExpense[]
+  packingLists PackingList[]
+  travelDocuments TravelDocument[]
+
   @@map("users")
 }
 
@@ -1184,4 +1190,78 @@ model SoundscapeMix {
   @@index([userId])
   @@index([memoryId])
   @@map("soundscape_mixes")
+}
+
+// Advanced Trip Planning
+model Itinerary {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  startDate   DateTime @map("start_date")
+  endDate     DateTime @map("end_date")
+  destination String
+  itineraryData String @map("itinerary_data") // JSON of day-by-day plan
+  isShared    Boolean  @default(false) @map("is_shared")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([startDate])
+  @@map("itineraries")
+}
+
+model TripExpense {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  itineraryId String?  @map("itinerary_id")
+  memoryId    String?  @map("memory_id")
+  title       String
+  amount      Float
+  currency    String   // USD, EUR, VND, etc
+  category    String   // food, hotel, transport, tickets, shopping
+  date        DateTime
+  notes       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([itineraryId])
+  @@index([date])
+  @@map("trip_expenses")
+}
+
+model PackingList {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  itineraryId String?  @map("itinerary_id")
+  title       String
+  items       String   @map("items") // JSON array of packing items
+  isCompleted Boolean  @default(false) @map("is_completed")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([itineraryId])
+  @@map("packing_lists")
+}
+
+model TravelDocument {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  itineraryId String?  @map("itinerary_id")
+  documentType String @map("document_type") // passport, visa, boarding_pass, hotel_voucher
+  title       String
+  documentNumber String? @map("document_number")
+  expiryDate  DateTime? @map("expiry_date")
+  fileUrl     String?  @map("file_url")
+  notes       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([itineraryId])
+  @@index([documentType])
+  @@map("travel_documents")
 }

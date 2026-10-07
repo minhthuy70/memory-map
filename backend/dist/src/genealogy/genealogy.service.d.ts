@@ -6,8 +6,8 @@ export declare class GenealogyService {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         unlockDate: Date;
@@ -17,8 +17,8 @@ export declare class GenealogyService {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         unlockDate: Date;
@@ -28,8 +28,8 @@ export declare class GenealogyService {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         unlockDate: Date;
@@ -39,10 +39,10 @@ export declare class GenealogyService {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         latitude: number;
         longitude: number;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         isUnlocked: boolean;
@@ -52,10 +52,10 @@ export declare class GenealogyService {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         latitude: number;
         longitude: number;
+        description: string;
         unlockedAt: Date | null;
         memoryIds: string;
         isUnlocked: boolean;
@@ -92,8 +92,8 @@ export declare class GenealogyService {
     getDigitalMemorials(userId: string): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -107,8 +107,8 @@ export declare class GenealogyService {
     createDigitalMemorial(userId: string, data: any): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -122,8 +122,8 @@ export declare class GenealogyService {
     addCondolence(accessCode: string, message: string): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -137,8 +137,8 @@ export declare class GenealogyService {
     addCandle(accessCode: string): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -152,8 +152,8 @@ export declare class GenealogyService {
     addFlower(accessCode: string): Promise<{
         id: string;
         userId: string;
-        isPublic: boolean;
         createdAt: Date;
+        isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
         birthDate: Date | null;
@@ -167,22 +167,22 @@ export declare class GenealogyService {
     getFamilyHeirlooms(userId: string): Promise<{
         id: string;
         userId: string;
-        description: string;
         createdAt: Date;
         name: string;
         category: string;
         year: number | null;
+        description: string;
         photoUrl: string;
         provenance: string;
     }[]>;
     createFamilyHeirloom(userId: string, data: any): Promise<{
         id: string;
         userId: string;
-        description: string;
         createdAt: Date;
         name: string;
         category: string;
         year: number | null;
+        description: string;
         photoUrl: string;
         provenance: string;
     }>;
@@ -190,9 +190,9 @@ export declare class GenealogyService {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         memoryId: string | null;
+        description: string;
         ingredients: string;
         steps: string;
         originator: string;
@@ -202,9 +202,9 @@ export declare class GenealogyService {
         id: string;
         userId: string;
         title: string;
-        description: string;
         createdAt: Date;
         memoryId: string | null;
+        description: string;
         ingredients: string;
         steps: string;
         originator: string;

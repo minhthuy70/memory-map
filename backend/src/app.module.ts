@@ -16,6 +16,7 @@ import { GamificationModule } from './gamification/gamification.module';
 import { PsychologyModule } from './psychology/psychology.module';
 import { GenealogyModule } from './genealogy/genealogy.module';
 import { AudiovisualModule } from './audiovisual/audiovisual.module';
+import { TripPlanningModule } from './trip-planning/trip-planning.module';
 
 @Module({
   imports: [
@@ -58,6 +59,8 @@ import { AudiovisualModule } from './audiovisual/audiovisual.module';
     GenealogyModule,
 
     AudiovisualModule,
+
+    TripPlanningModule,
   ],
 })
 export class AppModule {}
