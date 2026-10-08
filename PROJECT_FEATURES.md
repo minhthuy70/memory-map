@@ -1726,17 +1726,17 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 52.1. Offline-First & Cross-Platform (Kiến trúc Offline-First & Đa nền tảng)
 [x] - Offline-First with SQLite & CRDTs Synchronization - Hoạt động ngoại tuyến 100% với CRDTs - OfflineCRDTSync.tsx (embedded client SQLite with Conflict-free Replicated Data Types, full offline CRUD capability, instant background sync upon reconnect)
-[ ] - Native Desktop App (Tauri / Electron) - Ứng dụng Desktop cho Windows, macOS, Linux - DesktopAppWrapper.tsx (ultra-lightweight Tauri v2 desktop client, system tray integration, global keyboard shortcuts, drag-and-drop native file imports)
-[ ] - Peer-to-Peer Local Network Direct Sync - Đồng bộ trực tiếp qua mạng LAN nội bộ - P2PLocalSync.tsx (high-speed mDNS discovery and P2P TLS sync between phone and PC on home WiFi without touching external cloud servers)
+[x] - Native Desktop App (Tauri / Electron) - Ứng dụng Desktop cho Windows, macOS, Linux - DesktopAppWrapper.tsx (ultra-lightweight Tauri v2 desktop client, system tray integration, global keyboard shortcuts, drag-and-drop native file imports)
+[x] - Peer-to-Peer Local Network Direct Sync - Đồng bộ trực tiếp qua mạng LAN nội bộ - P2PLocalSync.tsx (high-speed mDNS discovery and P2P TLS sync between phone and PC on home WiFi without touching external cloud servers)
 [x] - Personal NAS & Private Cloud Backup - Tự động sao lưu lên NAS gia đình - PersonalNASBackup.tsx (WebDAV/Rsync/S3-compatible auto-sync to Synology NAS, QNAP, Nextcloud, TrueNAS, scheduled midnight incremental backup)
 [x] - Self-contained Single-file HTML Vault Export - Xuất toàn bộ dữ liệu thành 1 file HTML độc lập - SingleFileHTMLVault.tsx (bundles all memories, map viewer, photos in base64, and search engine into one portable self-contained .html file)
 
 52.2. Ecosystem Extensions & Connected Vehicles (Tiện ích mở rộng & Xe thông minh)
 [x] - Rich Desktop & Mobile Widget Studio - Bộ Widget màn hình chính và màn hình khóa - WidgetStudio.tsx (iOS CallKit/WidgetKit and Android Glance widgets: On This Day, Mini Pin Map, Daily Streak, Mood Ring, custom sizes small/medium/large)
-[ ] - Wearable Watch Face Complications - Phím tắt trên mặt đồng hồ thông minh - WatchFaceComplications.tsx (Apple Watch & Wear OS complications: one-tap audio memo, heart rate capture, current coordinate pin, step count sync)
-[ ] - Apple CarPlay & Android Auto In-car Dashboard - Tích hợp hệ thống màn hình trên ô tô - CarDashboardIntegration.tsx (in-car map display highlighting memories passed along your driving route, audio voice narration through car speakers)
+[x] - Wearable Watch Face Complications - Phím tắt trên mặt đồng hồ thông minh - WatchFaceComplications.tsx (Apple Watch & Wear OS complications: one-tap audio memo, heart rate capture, current coordinate pin, step count sync)
+[x] - Apple CarPlay & Android Auto In-car Dashboard - Tích hợp hệ thống màn hình trên ô tô - CarDashboardIntegration.tsx (in-car map display highlighting memories passed along your driving route, audio voice narration through car speakers)
 [x] - Universal Cross-device Clipboard & Drop - Sao chép và thả dữ liệu xuyên thiết bị - UniversalClipboardDrop.tsx (copy location or photo on smartphone and paste directly into memory editor on desktop with zero latency)
-[ ] - Low-bandwidth & Wilderness Data-saver Mode - Chế độ tiết kiệm dữ liệu vùng sóng yếu - WildernessDataSaver.tsx (adaptive 2G/3G compression, progressive image encoding, vector tile caching, background queue for uploads when back in 4G range)
+[x] - Low-bandwidth & Wilderness Data-saver Mode - Chế độ tiết kiệm dữ liệu vùng sóng yếu - WildernessDataSaver.tsx (adaptive 2G/3G compression, progressive image encoding, vector tile caching, background queue for uploads when back in 4G range)
 
 ================================================================================
  
@@ -1763,9 +1763,11 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1160
-Số lượng tính năng đã implement: 1094 (94.3%)
+Số lượng tính năng đã implement: 1099 (94.7%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai (Roadmap): 66 (5.7%)
+Số lượng tính năng tương lai (Roadmap): 61 (5.3%)
+
+Cập nhật lần cuối: 08/10/2026
  
 Last Updated: 2026-10-05
 Version: 16.0 (Future Roadmap)

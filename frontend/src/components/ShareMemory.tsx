@@ -1,6 +1,6 @@
-import { AtSign, Check, Copy, Mail, Share2, Users } from 'lucide-react';
 'use client';
 
+import { AtSign, Check, Copy, Mail, Share2, Users } from 'lucide-react';
 import { useState } from 'react';
 
 

@@ -29,6 +29,18 @@ import {
   GetClipboardSyncDto,
   GetClipboardSyncsDto,
 } from './dto/clipboard-sync.dto';
+import {
+  CreateDesktopAppDto,
+  UpdateDesktopAppDto,
+  Platform,
+} from './dto/desktop-app.dto';
+import {
+  CreateWildernessDataSaverDto,
+  UpdateWildernessDataSaverDto,
+  DataSaverMode,
+  CompressionLevel,
+  QualityLevel,
+} from './dto/wilderness-data-saver.dto';
 import * as crypto from 'crypto';
 import * as fs from 'fs/promises';
 import * as path from 'path';
@@ -405,5 +417,160 @@ export class HybridCloudService {
     });
 
     return { deletedCount: result.count };
+  }
+
+  // ==================== Desktop App ====================
+
+  async createDesktopApp(userId: string, dto: CreateDesktopAppDto) {
+    return this.prisma.desktopApp.create({
+      data: {
+        user: { connect: { id: userId } },
+        platform: dto.platform,
+        version: dto.version,
+        installPath: dto.installPath,
+        systemTray: dto.systemTray ?? false,
+        shortcuts: dto.shortcuts ? dto.shortcuts : '{}',
+        autoStart: dto.autoStart ?? false,
+      },
+    });
+  }
+
+  async getDesktopApps(userId: string, platform?: Platform) {
+    return this.prisma.desktopApp.findMany({
+      where: {
+        userId,
+        ...(platform && { platform }),
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async getDesktopApp(id: string, userId: string) {
+    const app = await this.prisma.desktopApp.findUnique({
+      where: { id },
+    });
+
+    if (!app) {
+      throw new NotFoundException('Desktop app not found');
+    }
+
+    if (app.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return app;
+  }
+
+  async updateDesktopApp(id: string, userId: string, dto: UpdateDesktopAppDto) {
+    const app = await this.getDesktopApp(id, userId);
+
+    return this.prisma.desktopApp.update({
+      where: { id },
+      data: {
+        ...(dto.version && { version: dto.version }),
+        ...(dto.installPath !== undefined && { installPath: dto.installPath }),
+        ...(dto.systemTray !== undefined && { systemTray: dto.systemTray }),
+        ...(dto.shortcuts && { shortcuts: dto.shortcuts }),
+        ...(dto.autoStart !== undefined && { autoStart: dto.autoStart }),
+      },
+    });
+  }
+
+  async deleteDesktopApp(id: string, userId: string) {
+    const app = await this.getDesktopApp(id, userId);
+
+    await this.prisma.desktopApp.delete({
+      where: { id },
+    });
+
+    return { message: 'Desktop app deleted successfully' };
+  }
+
+  async updateDesktopAppSync(id: string, userId: string) {
+    const app = await this.getDesktopApp(id, userId);
+
+    return this.prisma.desktopApp.update({
+      where: { id },
+      data: {
+        lastSync: new Date(),
+      },
+    });
+  }
+
+  // ==================== Wilderness Data Saver ====================
+
+  async createWildernessDataSaver(userId: string, dto: CreateWildernessDataSaverDto) {
+    return this.prisma.wildernessDataSaver.create({
+      data: {
+        user: { connect: { id: userId } },
+        isEnabled: dto.isEnabled,
+        mode: dto.mode,
+        compression: dto.compression,
+        imageQuality: dto.imageQuality,
+        videoQuality: dto.videoQuality,
+        vectorTiles: dto.vectorTiles ?? true,
+        backgroundQueue: dto.backgroundQueue ?? true,
+        dataLimit: dto.dataLimit,
+      },
+    });
+  }
+
+  async getWildernessDataSaver(userId: string) {
+    return this.prisma.wildernessDataSaver.findUnique({
+      where: { userId },
+    });
+  }
+
+  async updateWildernessDataSaver(userId: string, dto: UpdateWildernessDataSaverDto) {
+    const saver = await this.getWildernessDataSaver(userId);
+
+    if (!saver) {
+      throw new NotFoundException('Wilderness data saver config not found');
+    }
+
+    return this.prisma.wildernessDataSaver.update({
+      where: { userId },
+      data: {
+        ...(dto.isEnabled !== undefined && { isEnabled: dto.isEnabled }),
+        ...(dto.mode && { mode: dto.mode }),
+        ...(dto.compression && { compression: dto.compression }),
+        ...(dto.imageQuality && { imageQuality: dto.imageQuality }),
+        ...(dto.videoQuality && { videoQuality: dto.videoQuality }),
+        ...(dto.vectorTiles !== undefined && { vectorTiles: dto.vectorTiles }),
+        ...(dto.backgroundQueue !== undefined && { backgroundQueue: dto.backgroundQueue }),
+        ...(dto.dataLimit !== undefined && { dataLimit: dto.dataLimit }),
+      },
+    });
+  }
+
+  async triggerWildernessMode(userId: string) {
+    const saver = await this.getWildernessDataSaver(userId);
+
+    if (!saver) {
+      throw new NotFoundException('Wilderness data saver config not found');
+    }
+
+    return this.prisma.wildernessDataSaver.update({
+      where: { userId },
+      data: {
+        isEnabled: true,
+        lastTriggered: new Date(),
+      },
+    });
+  }
+
+  async disableWildernessMode(userId: string) {
+    const saver = await this.getWildernessDataSaver(userId);
+
+    if (!saver) {
+      throw new NotFoundException('Wilderness data saver config not found');
+    }
+
+    return this.prisma.wildernessDataSaver.update({
+      where: { userId },
+      data: {
+        isEnabled: false,
+      },
+    });
   }
 }

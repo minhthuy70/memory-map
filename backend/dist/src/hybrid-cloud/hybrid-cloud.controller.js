@@ -21,6 +21,8 @@ const nas_backup_dto_1 = require("./dto/nas-backup.dto");
 const vault_export_dto_1 = require("./dto/vault-export.dto");
 const widget_dto_1 = require("./dto/widget.dto");
 const clipboard_sync_dto_1 = require("./dto/clipboard-sync.dto");
+const desktop_app_dto_1 = require("./dto/desktop-app.dto");
+const wilderness_data_saver_dto_1 = require("./dto/wilderness-data-saver.dto");
 let HybridCloudController = class HybridCloudController {
     constructor(hybridCloudService) {
         this.hybridCloudService = hybridCloudService;
@@ -99,6 +101,39 @@ let HybridCloudController = class HybridCloudController {
     }
     async cleanupExpiredClipboardSyncs() {
         return this.hybridCloudService.cleanupExpiredClipboardSyncs();
+    }
+    async createDesktopApp(req, dto) {
+        return this.hybridCloudService.createDesktopApp(req.user.userId, dto);
+    }
+    async getDesktopApps(req, platform) {
+        return this.hybridCloudService.getDesktopApps(req.user.userId, platform);
+    }
+    async getDesktopApp(id, req) {
+        return this.hybridCloudService.getDesktopApp(id, req.user.userId);
+    }
+    async updateDesktopApp(id, req, dto) {
+        return this.hybridCloudService.updateDesktopApp(id, req.user.userId, dto);
+    }
+    async deleteDesktopApp(id, req) {
+        return this.hybridCloudService.deleteDesktopApp(id, req.user.userId);
+    }
+    async updateDesktopAppSync(id, req) {
+        return this.hybridCloudService.updateDesktopAppSync(id, req.user.userId);
+    }
+    async createWildernessDataSaver(req, dto) {
+        return this.hybridCloudService.createWildernessDataSaver(req.user.userId, dto);
+    }
+    async getWildernessDataSaver(req) {
+        return this.hybridCloudService.getWildernessDataSaver(req.user.userId);
+    }
+    async updateWildernessDataSaver(req, dto) {
+        return this.hybridCloudService.updateWildernessDataSaver(req.user.userId, dto);
+    }
+    async triggerWildernessMode(req) {
+        return this.hybridCloudService.triggerWildernessMode(req.user.userId);
+    }
+    async disableWildernessMode(req) {
+        return this.hybridCloudService.disableWildernessMode(req.user.userId);
     }
 };
 exports.HybridCloudController = HybridCloudController;
@@ -297,6 +332,92 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], HybridCloudController.prototype, "cleanupExpiredClipboardSyncs", null);
+__decorate([
+    (0, common_1.Post)('desktop-app'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, desktop_app_dto_1.CreateDesktopAppDto]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "createDesktopApp", null);
+__decorate([
+    (0, common_1.Get)('desktop-app'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Query)('platform')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "getDesktopApps", null);
+__decorate([
+    (0, common_1.Get)('desktop-app/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "getDesktopApp", null);
+__decorate([
+    (0, common_1.Put)('desktop-app/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, desktop_app_dto_1.UpdateDesktopAppDto]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "updateDesktopApp", null);
+__decorate([
+    (0, common_1.Delete)('desktop-app/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "deleteDesktopApp", null);
+__decorate([
+    (0, common_1.Post)('desktop-app/:id/sync'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "updateDesktopAppSync", null);
+__decorate([
+    (0, common_1.Post)('wilderness-data-saver'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, wilderness_data_saver_dto_1.CreateWildernessDataSaverDto]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "createWildernessDataSaver", null);
+__decorate([
+    (0, common_1.Get)('wilderness-data-saver'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "getWildernessDataSaver", null);
+__decorate([
+    (0, common_1.Put)('wilderness-data-saver'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, wilderness_data_saver_dto_1.UpdateWildernessDataSaverDto]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "updateWildernessDataSaver", null);
+__decorate([
+    (0, common_1.Post)('wilderness-data-saver/trigger'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "triggerWildernessMode", null);
+__decorate([
+    (0, common_1.Post)('wilderness-data-saver/disable'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], HybridCloudController.prototype, "disableWildernessMode", null);
 exports.HybridCloudController = HybridCloudController = __decorate([
     (0, common_1.Controller)('hybrid-cloud'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

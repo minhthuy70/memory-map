@@ -34,6 +34,15 @@ import {
   CreateClipboardSyncDto,
   GetClipboardSyncDto,
 } from './dto/clipboard-sync.dto';
+import {
+  CreateDesktopAppDto,
+  UpdateDesktopAppDto,
+  Platform,
+} from './dto/desktop-app.dto';
+import {
+  CreateWildernessDataSaverDto,
+  UpdateWildernessDataSaverDto,
+} from './dto/wilderness-data-saver.dto';
 
 @Controller('hybrid-cloud')
 @UseGuards(JwtAuthGuard)
@@ -200,5 +209,68 @@ export class HybridCloudController {
   @Post('clipboard-sync/cleanup')
   async cleanupExpiredClipboardSyncs() {
     return this.hybridCloudService.cleanupExpiredClipboardSyncs();
+  }
+
+  // ==================== Desktop App ====================
+
+  @Post('desktop-app')
+  async createDesktopApp(@Request() req, @Body() dto: CreateDesktopAppDto) {
+    return this.hybridCloudService.createDesktopApp(req.user.userId, dto);
+  }
+
+  @Get('desktop-app')
+  async getDesktopApps(@Request() req, @Query('platform') platform?: Platform) {
+    return this.hybridCloudService.getDesktopApps(req.user.userId, platform);
+  }
+
+  @Get('desktop-app/:id')
+  async getDesktopApp(@Param('id') id: string, @Request() req) {
+    return this.hybridCloudService.getDesktopApp(id, req.user.userId);
+  }
+
+  @Put('desktop-app/:id')
+  async updateDesktopApp(
+    @Param('id') id: string,
+    @Request() req,
+    @Body() dto: UpdateDesktopAppDto,
+  ) {
+    return this.hybridCloudService.updateDesktopApp(id, req.user.userId, dto);
+  }
+
+  @Delete('desktop-app/:id')
+  async deleteDesktopApp(@Param('id') id: string, @Request() req) {
+    return this.hybridCloudService.deleteDesktopApp(id, req.user.userId);
+  }
+
+  @Post('desktop-app/:id/sync')
+  async updateDesktopAppSync(@Param('id') id: string, @Request() req) {
+    return this.hybridCloudService.updateDesktopAppSync(id, req.user.userId);
+  }
+
+  // ==================== Wilderness Data Saver ====================
+
+  @Post('wilderness-data-saver')
+  async createWildernessDataSaver(@Request() req, @Body() dto: CreateWildernessDataSaverDto) {
+    return this.hybridCloudService.createWildernessDataSaver(req.user.userId, dto);
+  }
+
+  @Get('wilderness-data-saver')
+  async getWildernessDataSaver(@Request() req) {
+    return this.hybridCloudService.getWildernessDataSaver(req.user.userId);
+  }
+
+  @Put('wilderness-data-saver')
+  async updateWildernessDataSaver(@Request() req, @Body() dto: UpdateWildernessDataSaverDto) {
+    return this.hybridCloudService.updateWildernessDataSaver(req.user.userId, dto);
+  }
+
+  @Post('wilderness-data-saver/trigger')
+  async triggerWildernessMode(@Request() req) {
+    return this.hybridCloudService.triggerWildernessMode(req.user.userId);
+  }
+
+  @Post('wilderness-data-saver/disable')
+  async disableWildernessMode(@Request() req) {
+    return this.hybridCloudService.disableWildernessMode(req.user.userId);
   }
 }

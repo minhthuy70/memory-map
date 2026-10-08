@@ -4,6 +4,8 @@ import { CreateNASBackupDto, UpdateNASBackupDto, TriggerBackupDto } from './dto/
 import { CreateVaultExportDto, DownloadVaultExportDto } from './dto/vault-export.dto';
 import { CreateUserWidgetDto, UpdateUserWidgetDto, GetWidgetsDto } from './dto/widget.dto';
 import { CreateClipboardSyncDto } from './dto/clipboard-sync.dto';
+import { CreateDesktopAppDto, UpdateDesktopAppDto, Platform } from './dto/desktop-app.dto';
+import { CreateWildernessDataSaverDto, UpdateWildernessDataSaverDto } from './dto/wilderness-data-saver.dto';
 export declare class HybridCloudController {
     private readonly hybridCloudService;
     constructor(hybridCloudService: HybridCloudService);
@@ -244,5 +246,148 @@ export declare class HybridCloudController {
     }>;
     cleanupExpiredClipboardSyncs(): Promise<{
         deletedCount: number;
+    }>;
+    createDesktopApp(req: any, dto: CreateDesktopAppDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        platform: string;
+        version: string;
+        installPath: string | null;
+        systemTray: boolean;
+        shortcuts: string;
+        autoStart: boolean;
+        lastSync: Date;
+    }>;
+    getDesktopApps(req: any, platform?: Platform): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        platform: string;
+        version: string;
+        installPath: string | null;
+        systemTray: boolean;
+        shortcuts: string;
+        autoStart: boolean;
+        lastSync: Date;
+    }[]>;
+    getDesktopApp(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        platform: string;
+        version: string;
+        installPath: string | null;
+        systemTray: boolean;
+        shortcuts: string;
+        autoStart: boolean;
+        lastSync: Date;
+    }>;
+    updateDesktopApp(id: string, req: any, dto: UpdateDesktopAppDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        platform: string;
+        version: string;
+        installPath: string | null;
+        systemTray: boolean;
+        shortcuts: string;
+        autoStart: boolean;
+        lastSync: Date;
+    }>;
+    deleteDesktopApp(id: string, req: any): Promise<{
+        message: string;
+    }>;
+    updateDesktopAppSync(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        platform: string;
+        version: string;
+        installPath: string | null;
+        systemTray: boolean;
+        shortcuts: string;
+        autoStart: boolean;
+        lastSync: Date;
+    }>;
+    createWildernessDataSaver(req: any, dto: CreateWildernessDataSaverDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        mode: string;
+        isEnabled: boolean;
+        compression: string;
+        imageQuality: string;
+        videoQuality: string;
+        vectorTiles: boolean;
+        backgroundQueue: boolean;
+        dataLimit: number | null;
+        lastTriggered: Date | null;
+    }>;
+    getWildernessDataSaver(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        mode: string;
+        isEnabled: boolean;
+        compression: string;
+        imageQuality: string;
+        videoQuality: string;
+        vectorTiles: boolean;
+        backgroundQueue: boolean;
+        dataLimit: number | null;
+        lastTriggered: Date | null;
+    }>;
+    updateWildernessDataSaver(req: any, dto: UpdateWildernessDataSaverDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        mode: string;
+        isEnabled: boolean;
+        compression: string;
+        imageQuality: string;
+        videoQuality: string;
+        vectorTiles: boolean;
+        backgroundQueue: boolean;
+        dataLimit: number | null;
+        lastTriggered: Date | null;
+    }>;
+    triggerWildernessMode(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        mode: string;
+        isEnabled: boolean;
+        compression: string;
+        imageQuality: string;
+        videoQuality: string;
+        vectorTiles: boolean;
+        backgroundQueue: boolean;
+        dataLimit: number | null;
+        lastTriggered: Date | null;
+    }>;
+    disableWildernessMode(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        mode: string;
+        isEnabled: boolean;
+        compression: string;
+        imageQuality: string;
+        videoQuality: string;
+        vectorTiles: boolean;
+        backgroundQueue: boolean;
+        dataLimit: number | null;
+        lastTriggered: Date | null;
     }>;
 }

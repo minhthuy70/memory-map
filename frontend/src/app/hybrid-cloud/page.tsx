@@ -5,6 +5,11 @@ import PersonalNASBackup from '../../components/PersonalNASBackup';
 import SingleFileHTMLVault from '../../components/SingleFileHTMLVault';
 import WidgetStudio from '../../components/WidgetStudio';
 import UniversalClipboardDrop from '../../components/UniversalClipboardDrop';
+import DesktopAppWrapper from '../../components/DesktopAppWrapper';
+import P2PLocalSync from '../../components/P2PLocalSync';
+import WatchFaceComplications from '../../components/WatchFaceComplications';
+import CarDashboardIntegration from '../../components/CarDashboardIntegration';
+import WildernessDataSaver from '../../components/WildernessDataSaver';
 
 export default function HybridCloudPage() {
   return (
@@ -48,6 +53,36 @@ export default function HybridCloudPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Universal Cross-device Clipboard</h2>
             <UniversalClipboardDrop />
+          </section>
+
+          {/* Desktop App */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Native Desktop App</h2>
+            <DesktopAppWrapper />
+          </section>
+
+          {/* P2P Sync */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Peer-to-Peer Local Network Sync</h2>
+            <P2PLocalSync />
+          </section>
+
+          {/* Watch Complications */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Watch Face Complications</h2>
+            <WatchFaceComplications />
+          </section>
+
+          {/* Car Integration */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Car Dashboard Integration</h2>
+            <CarDashboardIntegration />
+          </section>
+
+          {/* Wilderness Data Saver */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Wilderness Data-saver Mode</h2>
+            <WildernessDataSaver />
           </section>
         </div>
       </div>
