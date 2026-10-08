@@ -4,6 +4,11 @@ import { CreateAIInterviewDto, UpdateAIInterviewDto, GenerateQuestionDto } from 
 import { CreatePhotoCurationDto, UpdatePhotoCurationDto, BatchCurationDto } from './dto/photo-curation.dto';
 import { SemanticSearchDto, IndexEntityDto } from './dto/semantic-search.dto';
 import { CreateVoiceCloneModelDto, GenerateVoiceNarrationDto } from './dto/voice-clone.dto';
+import { CreateTravelNarrationDto, UpdateTravelNarrationDto } from './dto/travel-narration.dto';
+import { CreateHistoricalSimulationDto, UpdateHistoricalSimulationDto } from './dto/historical-simulation.dto';
+import { CreateAgeProgressionDto, UpdateAgeProgressionDto } from './dto/age-progression.dto';
+import { CreateMemorySynthesisDto, UpdateMemorySynthesisDto } from './dto/memory-synthesis.dto';
+import { CreatePredictiveResurfacingDto, UpdatePredictiveResurfacingDto } from './dto/predictive-resurfacing.dto';
 export declare class AICompanionController {
     private readonly aiCompanionService;
     constructor(aiCompanionService: AICompanionService);
@@ -263,5 +268,296 @@ export declare class AICompanionController {
         audioUrl: string;
         duration: number;
         text: string;
+    }>;
+    createTravelNarration(req: any, dto: CreateTravelNarrationDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        content: string | null;
+        status: string;
+        generatedAt: Date | null;
+        tripId: string | null;
+        routeData: string;
+        tone: string;
+        wordCount: number;
+    }>;
+    getTravelNarrations(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        content: string | null;
+        status: string;
+        generatedAt: Date | null;
+        tripId: string | null;
+        routeData: string;
+        tone: string;
+        wordCount: number;
+    }[]>;
+    getTravelNarration(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        content: string | null;
+        status: string;
+        generatedAt: Date | null;
+        tripId: string | null;
+        routeData: string;
+        tone: string;
+        wordCount: number;
+    }>;
+    updateTravelNarration(id: string, req: any, dto: UpdateTravelNarrationDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        content: string | null;
+        status: string;
+        generatedAt: Date | null;
+        tripId: string | null;
+        routeData: string;
+        tone: string;
+        wordCount: number;
+    }>;
+    deleteTravelNarration(id: string, req: any): Promise<{
+        message: string;
+    }>;
+    generateTravelNarration(id: string, req: any): Promise<{
+        message: string;
+        status: string;
+    }>;
+    createHistoricalSimulation(req: any, dto: CreateHistoricalSimulationDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        year: number;
+        latitude: number;
+        longitude: number;
+        memoryId: string | null;
+        status: string;
+        generatedAt: Date | null;
+        simulatedImageUrl: string | null;
+        historicalContext: string | null;
+    }>;
+    getHistoricalSimulations(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        year: number;
+        latitude: number;
+        longitude: number;
+        memoryId: string | null;
+        status: string;
+        generatedAt: Date | null;
+        simulatedImageUrl: string | null;
+        historicalContext: string | null;
+    }[]>;
+    getHistoricalSimulation(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        year: number;
+        latitude: number;
+        longitude: number;
+        memoryId: string | null;
+        status: string;
+        generatedAt: Date | null;
+        simulatedImageUrl: string | null;
+        historicalContext: string | null;
+    }>;
+    updateHistoricalSimulation(id: string, req: any, dto: UpdateHistoricalSimulationDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        year: number;
+        latitude: number;
+        longitude: number;
+        memoryId: string | null;
+        status: string;
+        generatedAt: Date | null;
+        simulatedImageUrl: string | null;
+        historicalContext: string | null;
+    }>;
+    deleteHistoricalSimulation(id: string, req: any): Promise<{
+        message: string;
+    }>;
+    generateHistoricalSimulation(id: string, req: any): Promise<{
+        message: string;
+        status: string;
+    }>;
+    createAgeProgression(req: any, dto: CreateAgeProgressionDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string | null;
+        status: string;
+        generatedAt: Date | null;
+        originalPhotoUrl: string;
+        youngerPhotoUrl: string | null;
+        olderPhotoUrl: string | null;
+        ageAdjustment: number;
+    }>;
+    getAgeProgressions(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string | null;
+        status: string;
+        generatedAt: Date | null;
+        originalPhotoUrl: string;
+        youngerPhotoUrl: string | null;
+        olderPhotoUrl: string | null;
+        ageAdjustment: number;
+    }[]>;
+    getAgeProgression(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string | null;
+        status: string;
+        generatedAt: Date | null;
+        originalPhotoUrl: string;
+        youngerPhotoUrl: string | null;
+        olderPhotoUrl: string | null;
+        ageAdjustment: number;
+    }>;
+    updateAgeProgression(id: string, req: any, dto: UpdateAgeProgressionDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string | null;
+        status: string;
+        generatedAt: Date | null;
+        originalPhotoUrl: string;
+        youngerPhotoUrl: string | null;
+        olderPhotoUrl: string | null;
+        ageAdjustment: number;
+    }>;
+    deleteAgeProgression(id: string, req: any): Promise<{
+        message: string;
+    }>;
+    generateAgeProgression(id: string, req: any): Promise<{
+        message: string;
+        status: string;
+    }>;
+    createMemorySynthesis(req: any, dto: CreateMemorySynthesisDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        title: string;
+        description: string;
+        status: string;
+        generatedAt: Date | null;
+        tone: string;
+        participantIds: string;
+        memoryIds: string;
+        chapters: string | null;
+    }>;
+    getMemorySyntheses(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        title: string;
+        description: string;
+        status: string;
+        generatedAt: Date | null;
+        tone: string;
+        participantIds: string;
+        memoryIds: string;
+        chapters: string | null;
+    }[]>;
+    getMemorySynthesis(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        title: string;
+        description: string;
+        status: string;
+        generatedAt: Date | null;
+        tone: string;
+        participantIds: string;
+        memoryIds: string;
+        chapters: string | null;
+    }>;
+    updateMemorySynthesis(id: string, req: any, dto: UpdateMemorySynthesisDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        title: string;
+        description: string;
+        status: string;
+        generatedAt: Date | null;
+        tone: string;
+        participantIds: string;
+        memoryIds: string;
+        chapters: string | null;
+    }>;
+    deleteMemorySynthesis(id: string, req: any): Promise<{
+        message: string;
+    }>;
+    generateMemorySynthesis(id: string, req: any): Promise<{
+        message: string;
+        status: string;
+    }>;
+    createPredictiveResurfacing(req: any, dto: CreatePredictiveResurfacingDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string;
+        sentimentScore: number;
+        stressLevel: string;
+        scheduledAt: Date;
+        shownAt: Date | null;
+        wasViewed: boolean;
+        userFeedback: string | null;
+    }>;
+    getPredictiveResurfacings(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string;
+        sentimentScore: number;
+        stressLevel: string;
+        scheduledAt: Date;
+        shownAt: Date | null;
+        wasViewed: boolean;
+        userFeedback: string | null;
+    }[]>;
+    getScheduledResurfacings(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string;
+        sentimentScore: number;
+        stressLevel: string;
+        scheduledAt: Date;
+        shownAt: Date | null;
+        wasViewed: boolean;
+        userFeedback: string | null;
+    }[]>;
+    getPredictiveResurfacing(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string;
+        sentimentScore: number;
+        stressLevel: string;
+        scheduledAt: Date;
+        shownAt: Date | null;
+        wasViewed: boolean;
+        userFeedback: string | null;
+    }>;
+    updatePredictiveResurfacing(id: string, req: any, dto: UpdatePredictiveResurfacingDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string;
+        sentimentScore: number;
+        stressLevel: string;
+        scheduledAt: Date;
+        shownAt: Date | null;
+        wasViewed: boolean;
+        userFeedback: string | null;
+    }>;
+    deletePredictiveResurfacing(id: string, req: any): Promise<{
+        message: string;
     }>;
 }

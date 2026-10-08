@@ -35,6 +35,26 @@ import {
   CreateVoiceCloneModelDto,
   GenerateVoiceNarrationDto,
 } from './dto/voice-clone.dto';
+import {
+  CreateTravelNarrationDto,
+  UpdateTravelNarrationDto,
+} from './dto/travel-narration.dto';
+import {
+  CreateHistoricalSimulationDto,
+  UpdateHistoricalSimulationDto,
+} from './dto/historical-simulation.dto';
+import {
+  CreateAgeProgressionDto,
+  UpdateAgeProgressionDto,
+} from './dto/age-progression.dto';
+import {
+  CreateMemorySynthesisDto,
+  UpdateMemorySynthesisDto,
+} from './dto/memory-synthesis.dto';
+import {
+  CreatePredictiveResurfacingDto,
+  UpdatePredictiveResurfacingDto,
+} from './dto/predictive-resurfacing.dto';
 
 @Controller('ai-companion')
 @UseGuards(JwtAuthGuard)
@@ -216,5 +236,185 @@ export class AICompanionController {
   @Post('voice-clone/narrate')
   async generateVoiceNarration(@Request() req, @Body() dto: GenerateVoiceNarrationDto) {
     return this.aiCompanionService.generateVoiceNarration(req.user.userId, dto);
+  }
+
+  // ==================== Travel Narration ====================
+
+  @Post('travel-narration')
+  async createTravelNarration(@Request() req, @Body() dto: CreateTravelNarrationDto) {
+    return this.aiCompanionService.createTravelNarration(req.user.userId, dto);
+  }
+
+  @Get('travel-narration')
+  async getTravelNarrations(@Request() req) {
+    return this.aiCompanionService.getTravelNarrations(req.user.userId);
+  }
+
+  @Get('travel-narration/:id')
+  async getTravelNarration(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.getTravelNarration(id, req.user.userId);
+  }
+
+  @Put('travel-narration/:id')
+  async updateTravelNarration(
+    @Param('id') id: string,
+    @Request() req,
+    @Body() dto: UpdateTravelNarrationDto,
+  ) {
+    return this.aiCompanionService.updateTravelNarration(id, req.user.userId, dto);
+  }
+
+  @Delete('travel-narration/:id')
+  async deleteTravelNarration(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.deleteTravelNarration(id, req.user.userId);
+  }
+
+  @Post('travel-narration/:id/generate')
+  async generateTravelNarration(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.generateTravelNarration(id, req.user.userId);
+  }
+
+  // ==================== Historical Simulation ====================
+
+  @Post('historical-simulation')
+  async createHistoricalSimulation(@Request() req, @Body() dto: CreateHistoricalSimulationDto) {
+    return this.aiCompanionService.createHistoricalSimulation(req.user.userId, dto);
+  }
+
+  @Get('historical-simulation')
+  async getHistoricalSimulations(@Request() req) {
+    return this.aiCompanionService.getHistoricalSimulations(req.user.userId);
+  }
+
+  @Get('historical-simulation/:id')
+  async getHistoricalSimulation(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.getHistoricalSimulation(id, req.user.userId);
+  }
+
+  @Put('historical-simulation/:id')
+  async updateHistoricalSimulation(
+    @Param('id') id: string,
+    @Request() req,
+    @Body() dto: UpdateHistoricalSimulationDto,
+  ) {
+    return this.aiCompanionService.updateHistoricalSimulation(id, req.user.userId, dto);
+  }
+
+  @Delete('historical-simulation/:id')
+  async deleteHistoricalSimulation(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.deleteHistoricalSimulation(id, req.user.userId);
+  }
+
+  @Post('historical-simulation/:id/generate')
+  async generateHistoricalSimulation(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.generateHistoricalSimulation(id, req.user.userId);
+  }
+
+  // ==================== Age Progression ====================
+
+  @Post('age-progression')
+  async createAgeProgression(@Request() req, @Body() dto: CreateAgeProgressionDto) {
+    return this.aiCompanionService.createAgeProgression(req.user.userId, dto);
+  }
+
+  @Get('age-progression')
+  async getAgeProgressions(@Request() req) {
+    return this.aiCompanionService.getAgeProgressions(req.user.userId);
+  }
+
+  @Get('age-progression/:id')
+  async getAgeProgression(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.getAgeProgression(id, req.user.userId);
+  }
+
+  @Put('age-progression/:id')
+  async updateAgeProgression(
+    @Param('id') id: string,
+    @Request() req,
+    @Body() dto: UpdateAgeProgressionDto,
+  ) {
+    return this.aiCompanionService.updateAgeProgression(id, req.user.userId, dto);
+  }
+
+  @Delete('age-progression/:id')
+  async deleteAgeProgression(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.deleteAgeProgression(id, req.user.userId);
+  }
+
+  @Post('age-progression/:id/generate')
+  async generateAgeProgression(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.generateAgeProgression(id, req.user.userId);
+  }
+
+  // ==================== Memory Synthesis ====================
+
+  @Post('memory-synthesis')
+  async createMemorySynthesis(@Request() req, @Body() dto: CreateMemorySynthesisDto) {
+    return this.aiCompanionService.createMemorySynthesis(req.user.userId, dto);
+  }
+
+  @Get('memory-synthesis')
+  async getMemorySyntheses(@Request() req) {
+    return this.aiCompanionService.getMemorySyntheses(req.user.userId);
+  }
+
+  @Get('memory-synthesis/:id')
+  async getMemorySynthesis(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.getMemorySynthesis(id, req.user.userId);
+  }
+
+  @Put('memory-synthesis/:id')
+  async updateMemorySynthesis(
+    @Param('id') id: string,
+    @Request() req,
+    @Body() dto: UpdateMemorySynthesisDto,
+  ) {
+    return this.aiCompanionService.updateMemorySynthesis(id, req.user.userId, dto);
+  }
+
+  @Delete('memory-synthesis/:id')
+  async deleteMemorySynthesis(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.deleteMemorySynthesis(id, req.user.userId);
+  }
+
+  @Post('memory-synthesis/:id/generate')
+  async generateMemorySynthesis(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.generateMemorySynthesis(id, req.user.userId);
+  }
+
+  // ==================== Predictive Resurfacing ====================
+
+  @Post('predictive-resurfacing')
+  async createPredictiveResurfacing(@Request() req, @Body() dto: CreatePredictiveResurfacingDto) {
+    return this.aiCompanionService.createPredictiveResurfacing(req.user.userId, dto);
+  }
+
+  @Get('predictive-resurfacing')
+  async getPredictiveResurfacings(@Request() req) {
+    return this.aiCompanionService.getPredictiveResurfacings(req.user.userId);
+  }
+
+  @Get('predictive-resurfacing/scheduled')
+  async getScheduledResurfacings(@Request() req) {
+    return this.aiCompanionService.getScheduledResurfacings(req.user.userId);
+  }
+
+  @Get('predictive-resurfacing/:id')
+  async getPredictiveResurfacing(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.getPredictiveResurfacing(id, req.user.userId);
+  }
+
+  @Put('predictive-resurfacing/:id')
+  async updatePredictiveResurfacing(
+    @Param('id') id: string,
+    @Request() req,
+    @Body() dto: UpdatePredictiveResurfacingDto,
+  ) {
+    return this.aiCompanionService.updatePredictiveResurfacing(id, req.user.userId, dto);
+  }
+
+  @Delete('predictive-resurfacing/:id')
+  async deletePredictiveResurfacing(@Param('id') id: string, @Request() req) {
+    return this.aiCompanionService.deletePredictiveResurfacing(id, req.user.userId);
   }
 }

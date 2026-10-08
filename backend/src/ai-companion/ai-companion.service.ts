@@ -25,6 +25,29 @@ import {
   GenerateVoiceNarrationDto,
   VoiceCloneStatus,
 } from './dto/voice-clone.dto';
+import {
+  CreateTravelNarrationDto,
+  UpdateTravelNarrationDto,
+  NarrationTone,
+} from './dto/travel-narration.dto';
+import {
+  CreateHistoricalSimulationDto,
+  UpdateHistoricalSimulationDto,
+} from './dto/historical-simulation.dto';
+import {
+  CreateAgeProgressionDto,
+  UpdateAgeProgressionDto,
+} from './dto/age-progression.dto';
+import {
+  CreateMemorySynthesisDto,
+  UpdateMemorySynthesisDto,
+  SynthesisTone,
+} from './dto/memory-synthesis.dto';
+import {
+  CreatePredictiveResurfacingDto,
+  UpdatePredictiveResurfacingDto,
+  StressLevel,
+} from './dto/predictive-resurfacing.dto';
 
 @Injectable()
 export class AICompanionService {
@@ -466,5 +489,448 @@ export class AICompanionService {
       duration: Math.floor(dto.text.length / 10), // Estimate duration
       text: dto.text,
     };
+  }
+
+  // ==================== Travel Narration ====================
+
+  async createTravelNarration(userId: string, dto: CreateTravelNarrationDto) {
+    return this.prisma.travelNarration.create({
+      data: {
+        user: { connect: { id: userId } },
+        routeData: dto.routeData,
+        tone: dto.tone,
+        tripId: dto.tripId,
+        status: 'pending',
+      },
+    });
+  }
+
+  async getTravelNarrations(userId: string) {
+    return this.prisma.travelNarration.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async getTravelNarration(id: string, userId: string) {
+    const narration = await this.prisma.travelNarration.findUnique({
+      where: { id },
+    });
+
+    if (!narration) {
+      throw new NotFoundException('Travel narration not found');
+    }
+
+    if (narration.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return narration;
+  }
+
+  async updateTravelNarration(id: string, userId: string, dto: UpdateTravelNarrationDto) {
+    const narration = await this.getTravelNarration(id, userId);
+
+    return this.prisma.travelNarration.update({
+      where: { id },
+      data: {
+        ...(dto.routeData && { routeData: dto.routeData }),
+        ...(dto.tone && { tone: dto.tone }),
+        ...(dto.content && { content: dto.content }),
+      },
+    });
+  }
+
+  async deleteTravelNarration(id: string, userId: string) {
+    const narration = await this.getTravelNarration(id, userId);
+
+    await this.prisma.travelNarration.delete({
+      where: { id },
+    });
+
+    return { message: 'Travel narration deleted successfully' };
+  }
+
+  async generateTravelNarration(id: string, userId: string) {
+    const narration = await this.getTravelNarration(id, userId);
+
+    // Update status to processing
+    await this.prisma.travelNarration.update({
+      where: { id },
+      data: { status: 'processing' },
+    });
+
+    // Simulate AI generation
+    setTimeout(async () => {
+      const content = this.generateSampleNarration(narration.tone);
+      await this.prisma.travelNarration.update({
+        where: { id },
+        data: {
+          status: 'completed',
+          content,
+          wordCount: content.split(' ').length,
+          generatedAt: new Date(),
+        },
+      });
+    }, 5000);
+
+    return { message: 'Travel narration generation started', status: 'processing' };
+  }
+
+  private generateSampleNarration(tone: string): string {
+    const samples = {
+      humorous: 'And then we went to that place, and let me tell you, it was absolutely wild! The coffee was so strong it could wake the dead.',
+      poetic: 'As the sun dipped below the horizon, painting the sky in hues of gold and crimson, we found ourselves at a place that would forever change our journey.',
+      adventurous: 'We embarked on a daring expedition through uncharted territories, each step bringing new challenges and breathtaking discoveries.',
+      neutral: 'We visited several locations during our trip, including historical sites and natural landmarks. The journey covered multiple days.',
+    };
+    return samples[tone as keyof typeof samples] || samples.neutral;
+  }
+
+  // ==================== Historical Simulation ====================
+
+  async createHistoricalSimulation(userId: string, dto: CreateHistoricalSimulationDto) {
+    return this.prisma.historicalSimulation.create({
+      data: {
+        user: { connect: { id: userId } },
+        latitude: dto.latitude,
+        longitude: dto.longitude,
+        year: dto.year,
+        memoryId: dto.memoryId,
+        status: 'pending',
+      },
+    });
+  }
+
+  async getHistoricalSimulations(userId: string) {
+    return this.prisma.historicalSimulation.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async getHistoricalSimulation(id: string, userId: string) {
+    const simulation = await this.prisma.historicalSimulation.findUnique({
+      where: { id },
+    });
+
+    if (!simulation) {
+      throw new NotFoundException('Historical simulation not found');
+    }
+
+    if (simulation.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return simulation;
+  }
+
+  async updateHistoricalSimulation(id: string, userId: string, dto: UpdateHistoricalSimulationDto) {
+    const simulation = await this.getHistoricalSimulation(id, userId);
+
+    return this.prisma.historicalSimulation.update({
+      where: { id },
+      data: {
+        ...(dto.simulatedImageUrl && { simulatedImageUrl: dto.simulatedImageUrl }),
+        ...(dto.historicalContext && { historicalContext: dto.historicalContext }),
+      },
+    });
+  }
+
+  async deleteHistoricalSimulation(id: string, userId: string) {
+    const simulation = await this.getHistoricalSimulation(id, userId);
+
+    await this.prisma.historicalSimulation.delete({
+      where: { id },
+    });
+
+    return { message: 'Historical simulation deleted successfully' };
+  }
+
+  async generateHistoricalSimulation(id: string, userId: string) {
+    const simulation = await this.getHistoricalSimulation(id, userId);
+
+    await this.prisma.historicalSimulation.update({
+      where: { id },
+      data: { status: 'processing' },
+    });
+
+    // Simulate AI generation
+    setTimeout(async () => {
+      const context = JSON.stringify({
+        era: simulation.year < 1900 ? '19th century' : 'early 20th century',
+        description: `Historical reconstruction of coordinates ${simulation.latitude}, ${simulation.longitude} in ${simulation.year}`,
+      });
+      await this.prisma.historicalSimulation.update({
+        where: { id },
+        data: {
+          status: 'completed',
+          simulatedImageUrl: `/historical/${id}.jpg`,
+          historicalContext: context,
+          generatedAt: new Date(),
+        },
+      });
+    }, 5000);
+
+    return { message: 'Historical simulation generation started', status: 'processing' };
+  }
+
+  // ==================== Age Progression ====================
+
+  async createAgeProgression(userId: string, dto: CreateAgeProgressionDto) {
+    return this.prisma.ageProgression.create({
+      data: {
+        user: { connect: { id: userId } },
+        originalPhotoUrl: dto.originalPhotoUrl,
+        ageAdjustment: dto.ageAdjustment,
+        memoryId: dto.memoryId,
+        status: 'pending',
+      },
+    });
+  }
+
+  async getAgeProgressions(userId: string) {
+    return this.prisma.ageProgression.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async getAgeProgression(id: string, userId: string) {
+    const progression = await this.prisma.ageProgression.findUnique({
+      where: { id },
+    });
+
+    if (!progression) {
+      throw new NotFoundException('Age progression not found');
+    }
+
+    if (progression.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return progression;
+  }
+
+  async updateAgeProgression(id: string, userId: string, dto: UpdateAgeProgressionDto) {
+    const progression = await this.getAgeProgression(id, userId);
+
+    return this.prisma.ageProgression.update({
+      where: { id },
+      data: {
+        ...(dto.youngerPhotoUrl && { youngerPhotoUrl: dto.youngerPhotoUrl }),
+        ...(dto.olderPhotoUrl && { olderPhotoUrl: dto.olderPhotoUrl }),
+      },
+    });
+  }
+
+  async deleteAgeProgression(id: string, userId: string) {
+    const progression = await this.getAgeProgression(id, userId);
+
+    await this.prisma.ageProgression.delete({
+      where: { id },
+    });
+
+    return { message: 'Age progression deleted successfully' };
+  }
+
+  async generateAgeProgression(id: string, userId: string) {
+    const progression = await this.getAgeProgression(id, userId);
+
+    await this.prisma.ageProgression.update({
+      where: { id },
+      data: { status: 'processing' },
+    });
+
+    // Simulate AI generation
+    setTimeout(async () => {
+      const youngerUrl = progression.ageAdjustment < 0 ? `/age-progress/${id}-younger.jpg` : null;
+      const olderUrl = progression.ageAdjustment > 0 ? `/age-progress/${id}-older.jpg` : null;
+
+      await this.prisma.ageProgression.update({
+        where: { id },
+        data: {
+          status: 'completed',
+          youngerPhotoUrl: youngerUrl,
+          olderPhotoUrl: olderUrl,
+          generatedAt: new Date(),
+        },
+      });
+    }, 5000);
+
+    return { message: 'Age progression generation started', status: 'processing' };
+  }
+
+  // ==================== Memory Synthesis ====================
+
+  async createMemorySynthesis(userId: string, dto: CreateMemorySynthesisDto) {
+    return this.prisma.memorySynthesis.create({
+      data: {
+        user: { connect: { id: userId } },
+        title: dto.title,
+        description: dto.description,
+        participantIds: dto.participantIds,
+        memoryIds: dto.memoryIds,
+        tone: dto.tone,
+        status: 'pending',
+      },
+    });
+  }
+
+  async getMemorySyntheses(userId: string) {
+    return this.prisma.memorySynthesis.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async getMemorySynthesis(id: string, userId: string) {
+    const synthesis = await this.prisma.memorySynthesis.findUnique({
+      where: { id },
+    });
+
+    if (!synthesis) {
+      throw new NotFoundException('Memory synthesis not found');
+    }
+
+    if (synthesis.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return synthesis;
+  }
+
+  async updateMemorySynthesis(id: string, userId: string, dto: UpdateMemorySynthesisDto) {
+    const synthesis = await this.getMemorySynthesis(id, userId);
+
+    return this.prisma.memorySynthesis.update({
+      where: { id },
+      data: {
+        ...(dto.title && { title: dto.title }),
+        ...(dto.description && { description: dto.description }),
+        ...(dto.participantIds && { participantIds: dto.participantIds }),
+        ...(dto.memoryIds && { memoryIds: dto.memoryIds }),
+        ...(dto.tone && { tone: dto.tone }),
+        ...(dto.chapters && { chapters: dto.chapters }),
+      },
+    });
+  }
+
+  async deleteMemorySynthesis(id: string, userId: string) {
+    const synthesis = await this.getMemorySynthesis(id, userId);
+
+    await this.prisma.memorySynthesis.delete({
+      where: { id },
+    });
+
+    return { message: 'Memory synthesis deleted successfully' };
+  }
+
+  async generateMemorySynthesis(id: string, userId: string) {
+    const synthesis = await this.getMemorySynthesis(id, userId);
+
+    await this.prisma.memorySynthesis.update({
+      where: { id },
+      data: { status: 'processing' },
+    });
+
+    // Simulate AI generation
+    setTimeout(async () => {
+      const chapters = JSON.stringify([
+        { title: 'Chapter 1: The Beginning', content: 'Our journey started with...' },
+        { title: 'Chapter 2: Adventures', content: 'We explored many places...' },
+        { title: 'Chapter 3: Memories', content: 'Together we created unforgettable moments...' },
+      ]);
+
+      await this.prisma.memorySynthesis.update({
+        where: { id },
+        data: {
+          status: 'completed',
+          chapters,
+          generatedAt: new Date(),
+        },
+      });
+    }, 5000);
+
+    return { message: 'Memory synthesis generation started', status: 'processing' };
+  }
+
+  // ==================== Predictive Resurfacing ====================
+
+  async createPredictiveResurfacing(userId: string, dto: CreatePredictiveResurfacingDto) {
+    return this.prisma.predictiveResurfacing.create({
+      data: {
+        user: { connect: { id: userId } },
+        memoryId: dto.memoryId,
+        sentimentScore: dto.sentimentScore,
+        stressLevel: dto.stressLevel,
+        scheduledAt: new Date(dto.scheduledAt),
+      },
+    });
+  }
+
+  async getPredictiveResurfacings(userId: string) {
+    return this.prisma.predictiveResurfacing.findMany({
+      where: { userId },
+      orderBy: { scheduledAt: 'asc' },
+    });
+  }
+
+  async getPredictiveResurfacing(id: string, userId: string) {
+    const resurfacing = await this.prisma.predictiveResurfacing.findUnique({
+      where: { id },
+    });
+
+    if (!resurfacing) {
+      throw new NotFoundException('Predictive resurfacing not found');
+    }
+
+    if (resurfacing.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return resurfacing;
+  }
+
+  async updatePredictiveResurfacing(id: string, userId: string, dto: UpdatePredictiveResurfacingDto) {
+    const resurfacing = await this.getPredictiveResurfacing(id, userId);
+
+    const updateData: any = {};
+    if (dto.wasViewed !== undefined) {
+      updateData.wasViewed = dto.wasViewed;
+      if (dto.wasViewed) {
+        updateData.shownAt = new Date();
+      }
+    }
+    if (dto.userFeedback) {
+      updateData.userFeedback = dto.userFeedback;
+    }
+
+    return this.prisma.predictiveResurfacing.update({
+      where: { id },
+      data: updateData,
+    });
+  }
+
+  async deletePredictiveResurfacing(id: string, userId: string) {
+    const resurfacing = await this.getPredictiveResurfacing(id, userId);
+
+    await this.prisma.predictiveResurfacing.delete({
+      where: { id },
+    });
+
+    return { message: 'Predictive resurfacing deleted successfully' };
+  }
+
+  async getScheduledResurfacings(userId: string) {
+    const now = new Date();
+    return this.prisma.predictiveResurfacing.findMany({
+      where: {
+        userId,
+        scheduledAt: { lte: now },
+        wasViewed: false,
+      },
+      orderBy: { scheduledAt: 'asc' },
+    });
   }
 }

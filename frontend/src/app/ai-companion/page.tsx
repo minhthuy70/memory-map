@@ -5,6 +5,11 @@ import AIBiographerInterviewer from '../../components/AIBiographerInterviewer';
 import AutoPhotoCuration from '../../components/AutoPhotoCuration';
 import SemanticDeepSearch from '../../components/SemanticDeepSearch';
 import PersonalVoiceCloning from '../../components/PersonalVoiceCloning';
+import TravelRouteAutoNarrator from '../../components/TravelRouteAutoNarrator';
+import HistoricalTimeTravelSim from '../../components/HistoricalTimeTravelSim';
+import AgeRegressionProgression from '../../components/AgeRegressionProgression';
+import MultiPerspectiveSynthesizer from '../../components/MultiPerspectiveSynthesizer';
+import PredictiveResurfacing from '../../components/PredictiveResurfacing';
 
 export default function AICompanionPage() {
   return (
@@ -48,6 +53,36 @@ export default function AICompanionPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Personal AI Voice Cloning</h2>
             <PersonalVoiceCloning />
+          </section>
+
+          {/* Travel Narration */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">AI Travel Route Auto-narrator</h2>
+            <TravelRouteAutoNarrator />
+          </section>
+
+          {/* Historical Simulation */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Historical Time-travel Simulator</h2>
+            <HistoricalTimeTravelSim />
+          </section>
+
+          {/* Age Progression */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Visual Age Regression & Progression</h2>
+            <AgeRegressionProgression />
+          </section>
+
+          {/* Memory Synthesis */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Multi-perspective Memory Synthesizer</h2>
+            <MultiPerspectiveSynthesizer />
+          </section>
+
+          {/* Predictive Resurfacing */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Predictive Resurfacing for Stress Relief</h2>
+            <PredictiveResurfacing />
           </section>
         </div>
       </div>

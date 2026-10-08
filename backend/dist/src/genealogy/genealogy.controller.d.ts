@@ -8,8 +8,8 @@ export declare class GenealogyController {
         userId: string;
         title: string;
         description: string;
-        unlockedAt: Date | null;
         memoryIds: string;
+        unlockedAt: Date | null;
         unlockDate: Date;
         isUnlocked: boolean;
     }[]>;
@@ -19,8 +19,8 @@ export declare class GenealogyController {
         userId: string;
         title: string;
         description: string;
-        unlockedAt: Date | null;
         memoryIds: string;
+        unlockedAt: Date | null;
         unlockDate: Date;
         isUnlocked: boolean;
     }>;
@@ -30,8 +30,8 @@ export declare class GenealogyController {
         userId: string;
         title: string;
         description: string;
-        unlockedAt: Date | null;
         memoryIds: string;
+        unlockedAt: Date | null;
         unlockDate: Date;
         isUnlocked: boolean;
     }>;
@@ -43,8 +43,8 @@ export declare class GenealogyController {
         latitude: number;
         longitude: number;
         description: string;
-        unlockedAt: Date | null;
         memoryIds: string;
+        unlockedAt: Date | null;
         isUnlocked: boolean;
         radiusMeters: number;
     }[]>;
@@ -56,8 +56,8 @@ export declare class GenealogyController {
         latitude: number;
         longitude: number;
         description: string;
-        unlockedAt: Date | null;
         memoryIds: string;
+        unlockedAt: Date | null;
         isUnlocked: boolean;
         radiusMeters: number;
     }>;

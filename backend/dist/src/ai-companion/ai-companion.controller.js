@@ -21,6 +21,11 @@ const ai_interview_dto_1 = require("./dto/ai-interview.dto");
 const photo_curation_dto_1 = require("./dto/photo-curation.dto");
 const semantic_search_dto_1 = require("./dto/semantic-search.dto");
 const voice_clone_dto_1 = require("./dto/voice-clone.dto");
+const travel_narration_dto_1 = require("./dto/travel-narration.dto");
+const historical_simulation_dto_1 = require("./dto/historical-simulation.dto");
+const age_progression_dto_1 = require("./dto/age-progression.dto");
+const memory_synthesis_dto_1 = require("./dto/memory-synthesis.dto");
+const predictive_resurfacing_dto_1 = require("./dto/predictive-resurfacing.dto");
 let AICompanionController = class AICompanionController {
     constructor(aiCompanionService) {
         this.aiCompanionService = aiCompanionService;
@@ -105,6 +110,96 @@ let AICompanionController = class AICompanionController {
     }
     async generateVoiceNarration(req, dto) {
         return this.aiCompanionService.generateVoiceNarration(req.user.userId, dto);
+    }
+    async createTravelNarration(req, dto) {
+        return this.aiCompanionService.createTravelNarration(req.user.userId, dto);
+    }
+    async getTravelNarrations(req) {
+        return this.aiCompanionService.getTravelNarrations(req.user.userId);
+    }
+    async getTravelNarration(id, req) {
+        return this.aiCompanionService.getTravelNarration(id, req.user.userId);
+    }
+    async updateTravelNarration(id, req, dto) {
+        return this.aiCompanionService.updateTravelNarration(id, req.user.userId, dto);
+    }
+    async deleteTravelNarration(id, req) {
+        return this.aiCompanionService.deleteTravelNarration(id, req.user.userId);
+    }
+    async generateTravelNarration(id, req) {
+        return this.aiCompanionService.generateTravelNarration(id, req.user.userId);
+    }
+    async createHistoricalSimulation(req, dto) {
+        return this.aiCompanionService.createHistoricalSimulation(req.user.userId, dto);
+    }
+    async getHistoricalSimulations(req) {
+        return this.aiCompanionService.getHistoricalSimulations(req.user.userId);
+    }
+    async getHistoricalSimulation(id, req) {
+        return this.aiCompanionService.getHistoricalSimulation(id, req.user.userId);
+    }
+    async updateHistoricalSimulation(id, req, dto) {
+        return this.aiCompanionService.updateHistoricalSimulation(id, req.user.userId, dto);
+    }
+    async deleteHistoricalSimulation(id, req) {
+        return this.aiCompanionService.deleteHistoricalSimulation(id, req.user.userId);
+    }
+    async generateHistoricalSimulation(id, req) {
+        return this.aiCompanionService.generateHistoricalSimulation(id, req.user.userId);
+    }
+    async createAgeProgression(req, dto) {
+        return this.aiCompanionService.createAgeProgression(req.user.userId, dto);
+    }
+    async getAgeProgressions(req) {
+        return this.aiCompanionService.getAgeProgressions(req.user.userId);
+    }
+    async getAgeProgression(id, req) {
+        return this.aiCompanionService.getAgeProgression(id, req.user.userId);
+    }
+    async updateAgeProgression(id, req, dto) {
+        return this.aiCompanionService.updateAgeProgression(id, req.user.userId, dto);
+    }
+    async deleteAgeProgression(id, req) {
+        return this.aiCompanionService.deleteAgeProgression(id, req.user.userId);
+    }
+    async generateAgeProgression(id, req) {
+        return this.aiCompanionService.generateAgeProgression(id, req.user.userId);
+    }
+    async createMemorySynthesis(req, dto) {
+        return this.aiCompanionService.createMemorySynthesis(req.user.userId, dto);
+    }
+    async getMemorySyntheses(req) {
+        return this.aiCompanionService.getMemorySyntheses(req.user.userId);
+    }
+    async getMemorySynthesis(id, req) {
+        return this.aiCompanionService.getMemorySynthesis(id, req.user.userId);
+    }
+    async updateMemorySynthesis(id, req, dto) {
+        return this.aiCompanionService.updateMemorySynthesis(id, req.user.userId, dto);
+    }
+    async deleteMemorySynthesis(id, req) {
+        return this.aiCompanionService.deleteMemorySynthesis(id, req.user.userId);
+    }
+    async generateMemorySynthesis(id, req) {
+        return this.aiCompanionService.generateMemorySynthesis(id, req.user.userId);
+    }
+    async createPredictiveResurfacing(req, dto) {
+        return this.aiCompanionService.createPredictiveResurfacing(req.user.userId, dto);
+    }
+    async getPredictiveResurfacings(req) {
+        return this.aiCompanionService.getPredictiveResurfacings(req.user.userId);
+    }
+    async getScheduledResurfacings(req) {
+        return this.aiCompanionService.getScheduledResurfacings(req.user.userId);
+    }
+    async getPredictiveResurfacing(id, req) {
+        return this.aiCompanionService.getPredictiveResurfacing(id, req.user.userId);
+    }
+    async updatePredictiveResurfacing(id, req, dto) {
+        return this.aiCompanionService.updatePredictiveResurfacing(id, req.user.userId, dto);
+    }
+    async deletePredictiveResurfacing(id, req) {
+        return this.aiCompanionService.deletePredictiveResurfacing(id, req.user.userId);
     }
 };
 exports.AICompanionController = AICompanionController;
@@ -327,6 +422,245 @@ __decorate([
     __metadata("design:paramtypes", [Object, voice_clone_dto_1.GenerateVoiceNarrationDto]),
     __metadata("design:returntype", Promise)
 ], AICompanionController.prototype, "generateVoiceNarration", null);
+__decorate([
+    (0, common_1.Post)('travel-narration'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, travel_narration_dto_1.CreateTravelNarrationDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "createTravelNarration", null);
+__decorate([
+    (0, common_1.Get)('travel-narration'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getTravelNarrations", null);
+__decorate([
+    (0, common_1.Get)('travel-narration/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getTravelNarration", null);
+__decorate([
+    (0, common_1.Put)('travel-narration/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, travel_narration_dto_1.UpdateTravelNarrationDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "updateTravelNarration", null);
+__decorate([
+    (0, common_1.Delete)('travel-narration/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "deleteTravelNarration", null);
+__decorate([
+    (0, common_1.Post)('travel-narration/:id/generate'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "generateTravelNarration", null);
+__decorate([
+    (0, common_1.Post)('historical-simulation'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, historical_simulation_dto_1.CreateHistoricalSimulationDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "createHistoricalSimulation", null);
+__decorate([
+    (0, common_1.Get)('historical-simulation'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getHistoricalSimulations", null);
+__decorate([
+    (0, common_1.Get)('historical-simulation/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getHistoricalSimulation", null);
+__decorate([
+    (0, common_1.Put)('historical-simulation/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, historical_simulation_dto_1.UpdateHistoricalSimulationDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "updateHistoricalSimulation", null);
+__decorate([
+    (0, common_1.Delete)('historical-simulation/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "deleteHistoricalSimulation", null);
+__decorate([
+    (0, common_1.Post)('historical-simulation/:id/generate'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "generateHistoricalSimulation", null);
+__decorate([
+    (0, common_1.Post)('age-progression'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, age_progression_dto_1.CreateAgeProgressionDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "createAgeProgression", null);
+__decorate([
+    (0, common_1.Get)('age-progression'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getAgeProgressions", null);
+__decorate([
+    (0, common_1.Get)('age-progression/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getAgeProgression", null);
+__decorate([
+    (0, common_1.Put)('age-progression/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, age_progression_dto_1.UpdateAgeProgressionDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "updateAgeProgression", null);
+__decorate([
+    (0, common_1.Delete)('age-progression/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "deleteAgeProgression", null);
+__decorate([
+    (0, common_1.Post)('age-progression/:id/generate'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "generateAgeProgression", null);
+__decorate([
+    (0, common_1.Post)('memory-synthesis'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, memory_synthesis_dto_1.CreateMemorySynthesisDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "createMemorySynthesis", null);
+__decorate([
+    (0, common_1.Get)('memory-synthesis'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getMemorySyntheses", null);
+__decorate([
+    (0, common_1.Get)('memory-synthesis/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getMemorySynthesis", null);
+__decorate([
+    (0, common_1.Put)('memory-synthesis/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, memory_synthesis_dto_1.UpdateMemorySynthesisDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "updateMemorySynthesis", null);
+__decorate([
+    (0, common_1.Delete)('memory-synthesis/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "deleteMemorySynthesis", null);
+__decorate([
+    (0, common_1.Post)('memory-synthesis/:id/generate'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "generateMemorySynthesis", null);
+__decorate([
+    (0, common_1.Post)('predictive-resurfacing'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, predictive_resurfacing_dto_1.CreatePredictiveResurfacingDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "createPredictiveResurfacing", null);
+__decorate([
+    (0, common_1.Get)('predictive-resurfacing'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getPredictiveResurfacings", null);
+__decorate([
+    (0, common_1.Get)('predictive-resurfacing/scheduled'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getScheduledResurfacings", null);
+__decorate([
+    (0, common_1.Get)('predictive-resurfacing/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "getPredictiveResurfacing", null);
+__decorate([
+    (0, common_1.Put)('predictive-resurfacing/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, predictive_resurfacing_dto_1.UpdatePredictiveResurfacingDto]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "updatePredictiveResurfacing", null);
+__decorate([
+    (0, common_1.Delete)('predictive-resurfacing/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AICompanionController.prototype, "deletePredictiveResurfacing", null);
 exports.AICompanionController = AICompanionController = __decorate([
     (0, common_1.Controller)('ai-companion'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
