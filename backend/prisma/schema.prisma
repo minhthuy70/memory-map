@@ -107,6 +107,12 @@ model User {
   packingLists PackingList[]
   travelDocuments TravelDocument[]
 
+  // Social & Community
+  memoryReactions MemoryReaction[]
+  memoryComments MemoryComment[]
+  memoryCircles MemoryCircle[]
+  albumContributors AlbumContributor[]
+
   @@map("users")
 }
 
@@ -1264,4 +1270,94 @@ model TravelDocument {
   @@index([itineraryId])
   @@index([documentType])
   @@map("travel_documents")
+}
+
+// Social & Community
+model MemoryReaction {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String   @map("memory_id")
+  reactionType String @map("reaction_type") // heart, hug, moved, proud, celebration, nostalgic
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, memoryId, reactionType])
+  @@index([userId])
+  @@index([memoryId])
+  @@map("memory_reactions")
+}
+
+model MemoryComment {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String   @map("memory_id")
+  parentId    String?  @map("parent_id") // for threaded comments
+  content     String   @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@index([parentId])
+  @@map("memory_comments")
+}
+
+model MemoryCircle {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  name        String
+  description String?
+  isPublic    Boolean  @default(false) @map("is_public")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  members     CircleMember[]
+  sharedAlbums SharedAlbum[]
+
+  @@index([userId])
+  @@map("memory_circles")
+}
+
+model CircleMember {
+  id          String   @id @default(uuid())
+  circleId    String   @map("circle_id")
+  userId      String   @map("user_id")
+  role        String   // admin, member
+  joinedAt    DateTime @default(now()) @map("joined_at")
+  circle      MemoryCircle @relation(fields: [circleId], references: [id], onDelete: Cascade)
+
+  @@unique([circleId, userId])
+  @@index([circleId])
+  @@index([userId])
+  @@map("circle_members")
+}
+
+model SharedAlbum {
+  id          String   @id @default(uuid())
+  circleId    String?  @map("circle_id")
+  title       String
+  description String?
+  isPublic    Boolean  @default(false) @map("is_public")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  circle      MemoryCircle? @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  contributors AlbumContributor[]
+
+  @@index([circleId])
+  @@map("shared_albums")
+}
+
+model AlbumContributor {
+  id          String   @id @default(uuid())
+  albumId     String   @map("album_id")
+  userId      String   @map("user_id")
+  permission  String   // admin, editor, viewer
+  joinedAt    DateTime @default(now()) @map("joined_at")
+  album       SharedAlbum @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([albumId, userId])
+  @@index([albumId])
+  @@index([userId])
+  @@map("album_contributors")
 }
