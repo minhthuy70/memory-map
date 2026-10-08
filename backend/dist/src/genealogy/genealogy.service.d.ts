@@ -4,9 +4,9 @@ export declare class GenealogyService {
     constructor(prisma: PrismaService);
     getTimeLockedCapsules(userId: string): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         description: string;
         unlockedAt: Date | null;
         memoryIds: string;
@@ -15,9 +15,9 @@ export declare class GenealogyService {
     }[]>;
     createTimeLockedCapsule(userId: string, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         description: string;
         unlockedAt: Date | null;
         memoryIds: string;
@@ -26,9 +26,9 @@ export declare class GenealogyService {
     }>;
     unlockTimeLockedCapsule(userId: string, id: string): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         description: string;
         unlockedAt: Date | null;
         memoryIds: string;
@@ -37,9 +37,9 @@ export declare class GenealogyService {
     }>;
     getGeofencedCapsules(userId: string): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         latitude: number;
         longitude: number;
         description: string;
@@ -50,9 +50,9 @@ export declare class GenealogyService {
     }[]>;
     createGeofencedCapsule(userId: string, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         latitude: number;
         longitude: number;
         description: string;
@@ -65,9 +65,9 @@ export declare class GenealogyService {
     private calculateDistance;
     getLegacyLetters(userId: string): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         content: string;
         recipientName: string;
         recipientEmail: string | null;
@@ -78,9 +78,9 @@ export declare class GenealogyService {
     }[]>;
     createLegacyLetter(userId: string, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         content: string;
         recipientName: string;
         recipientEmail: string | null;
@@ -91,8 +91,8 @@ export declare class GenealogyService {
     }>;
     getDigitalMemorials(userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -106,8 +106,8 @@ export declare class GenealogyService {
     }[]>;
     createDigitalMemorial(userId: string, data: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -121,8 +121,8 @@ export declare class GenealogyService {
     }>;
     addCondolence(accessCode: string, message: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -136,8 +136,8 @@ export declare class GenealogyService {
     }>;
     addCandle(accessCode: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -151,8 +151,8 @@ export declare class GenealogyService {
     }>;
     addFlower(accessCode: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -165,22 +165,22 @@ export declare class GenealogyService {
         condolences: string;
     }>;
     getFamilyHeirlooms(userId: string): Promise<{
-        id: string;
-        userId: string;
-        createdAt: Date;
-        name: string;
         category: string;
+        id: string;
+        name: string;
+        createdAt: Date;
+        userId: string;
         year: number | null;
         description: string;
         photoUrl: string;
         provenance: string;
     }[]>;
     createFamilyHeirloom(userId: string, data: any): Promise<{
-        id: string;
-        userId: string;
-        createdAt: Date;
-        name: string;
         category: string;
+        id: string;
+        name: string;
+        createdAt: Date;
+        userId: string;
         year: number | null;
         description: string;
         photoUrl: string;
@@ -188,9 +188,9 @@ export declare class GenealogyService {
     }>;
     getFamilyRecipes(userId: string): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
         description: string;
         ingredients: string;
@@ -200,9 +200,9 @@ export declare class GenealogyService {
     }[]>;
     createFamilyRecipe(userId: string, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
         description: string;
         ingredients: string;

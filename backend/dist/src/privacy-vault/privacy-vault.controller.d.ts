@@ -7,10 +7,10 @@ export declare class PrivacyVaultController {
     constructor(privacyVaultService: PrivacyVaultService);
     createVaultMemory(req: any, dto: CreateVaultMemoryDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        memoryId: string;
+        userId: string;
         expiresAt: Date | null;
+        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -21,10 +21,10 @@ export declare class PrivacyVaultController {
     }>;
     getVaultMemories(req: any, vaultType?: VaultType): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        memoryId: string;
+        userId: string;
         expiresAt: Date | null;
+        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -35,10 +35,10 @@ export declare class PrivacyVaultController {
     }[]>;
     getVaultMemory(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        memoryId: string;
+        userId: string;
         expiresAt: Date | null;
+        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -49,10 +49,10 @@ export declare class PrivacyVaultController {
     }>;
     updateVaultMemory(id: string, req: any, dto: UpdateVaultMemoryDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        memoryId: string;
+        userId: string;
         expiresAt: Date | null;
+        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -66,10 +66,10 @@ export declare class PrivacyVaultController {
     }>;
     accessVaultMemory(id: string, req: any, dto: AccessVaultMemoryDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        memoryId: string;
+        userId: string;
         expiresAt: Date | null;
+        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -80,10 +80,10 @@ export declare class PrivacyVaultController {
     }>;
     destroyVaultMemory(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        memoryId: string;
+        userId: string;
         expiresAt: Date | null;
+        memoryId: string;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -94,8 +94,8 @@ export declare class PrivacyVaultController {
     }>;
     createAuditLog(req: any, dto: CreateAuditLogDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         ipAddress: string | null;
         entityType: string;
         entityId: string | null;
@@ -107,8 +107,8 @@ export declare class PrivacyVaultController {
     }>;
     getAuditLogs(req: any, query: GetAuditLogsDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         ipAddress: string | null;
         entityType: string;
         entityId: string | null;
@@ -124,10 +124,10 @@ export declare class PrivacyVaultController {
     }>;
     createDuressPassword(req: any, dto: CreateDuressPasswordDto): Promise<{
         id: string;
-        userId: string;
-        createdAt: Date;
         passwordHash: string;
+        createdAt: Date;
         lastUsedAt: Date | null;
+        userId: string;
         isEmergency: boolean;
         alertSent: boolean;
         alertContacts: string;
@@ -143,10 +143,10 @@ export declare class PrivacyVaultController {
     }>;
     getDuressPasswords(req: any): Promise<{
         id: string;
-        userId: string;
-        createdAt: Date;
         passwordHash: string;
+        createdAt: Date;
         lastUsedAt: Date | null;
+        userId: string;
         isEmergency: boolean;
         alertSent: boolean;
         alertContacts: string;

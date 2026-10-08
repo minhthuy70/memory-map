@@ -25,6 +25,7 @@ const psychology_module_1 = require("./psychology/psychology.module");
 const genealogy_module_1 = require("./genealogy/genealogy.module");
 const audiovisual_module_1 = require("./audiovisual/audiovisual.module");
 const trip_planning_module_1 = require("./trip-planning/trip-planning.module");
+const social_module_1 = require("./social/social.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -56,6 +57,7 @@ exports.AppModule = AppModule = __decorate([
             genealogy_module_1.GenealogyModule,
             audiovisual_module_1.AudiovisualModule,
             trip_planning_module_1.TripPlanningModule,
+            social_module_1.SocialModule,
         ],
     })
 ], AppModule);

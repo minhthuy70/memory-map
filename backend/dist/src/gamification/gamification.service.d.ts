@@ -4,8 +4,8 @@ export declare class GamificationService {
     constructor(prisma: PrismaService);
     getUserStats(userId: string): Promise<{
         id: string;
-        userId: string;
         updatedAt: Date;
+        userId: string;
         xp: number;
         level: number;
         totalMemories: number;
@@ -17,8 +17,8 @@ export declare class GamificationService {
     }>;
     addXP(userId: string, amount: number): Promise<{
         id: string;
-        userId: string;
         updatedAt: Date;
+        userId: string;
         xp: number;
         level: number;
         totalMemories: number;
@@ -30,8 +30,8 @@ export declare class GamificationService {
     }>;
     updateMemoryCount(userId: string): Promise<{
         id: string;
-        userId: string;
         updatedAt: Date;
+        userId: string;
         xp: number;
         level: number;
         totalMemories: number;
@@ -43,8 +43,8 @@ export declare class GamificationService {
     }>;
     getBadges(userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         badgeType: string;
         badgeName: string;
         rarity: string;
@@ -54,8 +54,8 @@ export declare class GamificationService {
     }[]>;
     createBadge(userId: string, badgeType: string, badgeName: string, target: number): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         badgeType: string;
         badgeName: string;
         rarity: string;
@@ -65,8 +65,8 @@ export declare class GamificationService {
     }>;
     updateBadgeProgress(badgeId: string, increment: number): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         badgeType: string;
         badgeName: string;
         rarity: string;
@@ -76,9 +76,9 @@ export declare class GamificationService {
     }>;
     getJournalingStreak(userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         longestStreak: number;
         currentStreak: number;
         lastJournalDate: Date | null;
@@ -87,9 +87,9 @@ export declare class GamificationService {
     }>;
     recordJournalEntry(userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         longestStreak: number;
         currentStreak: number;
         lastJournalDate: Date | null;
@@ -98,8 +98,8 @@ export declare class GamificationService {
     }>;
     getPassportStamps(userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         country: string;
         city: string;
         province: string;
@@ -108,8 +108,8 @@ export declare class GamificationService {
     }[]>;
     addPassportStamp(userId: string, country: string, city: string, province: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         country: string;
         city: string;
         province: string;
@@ -133,8 +133,8 @@ export declare class GamificationService {
         };
         completion: {
             id: string;
-            userId: string;
             createdAt: Date;
+            userId: string;
             completedAt: Date | null;
             challengeId: string;
             completedIndices: string;
@@ -143,8 +143,8 @@ export declare class GamificationService {
     }>;
     completeBingoItem(userId: string, year: number, index: number): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         completedAt: Date | null;
         challengeId: string;
         completedIndices: string;
@@ -153,9 +153,9 @@ export declare class GamificationService {
     private checkBingo;
     getVirtualSouvenirs(userId: string): Promise<{
         id: string;
-        userId: string;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
+        userId: string;
         position: number;
         metadata: string | null;
         unlockedAt: Date;
@@ -165,9 +165,9 @@ export declare class GamificationService {
     }[]>;
     unlockSouvenir(userId: string, name: string, type: string, location: string): Promise<{
         id: string;
-        userId: string;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
+        userId: string;
         position: number;
         metadata: string | null;
         unlockedAt: Date;
@@ -177,9 +177,9 @@ export declare class GamificationService {
     }>;
     updateSouvenirPosition(id: string, userId: string, position: number): Promise<{
         id: string;
-        userId: string;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
+        userId: string;
         position: number;
         metadata: string | null;
         unlockedAt: Date;

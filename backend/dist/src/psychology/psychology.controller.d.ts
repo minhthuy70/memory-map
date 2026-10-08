@@ -3,49 +3,49 @@ export declare class PsychologyController {
     private readonly psychologyService;
     constructor(psychologyService: PsychologyService);
     getGratitudeEntries(req: any): Promise<{
-        id: string;
-        userId: string;
-        isShared: boolean;
-        createdAt: Date;
-        memoryId: string | null;
         category: string;
+        id: string;
+        createdAt: Date;
+        userId: string;
         content: string;
+        memoryId: string | null;
+        isShared: boolean;
     }[]>;
     createGratitudeEntry(req: any, data: any): Promise<{
-        id: string;
-        userId: string;
-        isShared: boolean;
-        createdAt: Date;
-        memoryId: string | null;
         category: string;
+        id: string;
+        createdAt: Date;
+        userId: string;
         content: string;
+        memoryId: string | null;
+        isShared: boolean;
     }>;
     getResilienceMoments(req: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
-        date: Date;
         description: string;
+        date: Date;
         difficulty: number;
         overcomeAt: Date | null;
         selfEncouragement: string | null;
     }[]>;
     createResilienceMoment(req: any, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
-        date: Date;
         description: string;
+        date: Date;
         difficulty: number;
         overcomeAt: Date | null;
         selfEncouragement: string | null;
     }>;
     getDailySerendipity(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string;
         date: Date;
         viewedAt: Date | null;
@@ -55,8 +55,8 @@ export declare class PsychologyController {
     }>;
     markViewed(req: any, data: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string;
         date: Date;
         viewedAt: Date | null;
@@ -66,27 +66,27 @@ export declare class PsychologyController {
     }>;
     getEmotionalWaveforms(req: any, startDate?: string, endDate?: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        date: Date;
-        notes: string | null;
+        userId: string;
         mood: number;
+        date: Date;
         stressLevel: number;
+        notes: string | null;
     }[]>;
     createEmotionalWaveform(req: any, data: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        date: Date;
-        notes: string | null;
+        userId: string;
         mood: number;
+        date: Date;
         stressLevel: number;
+        notes: string | null;
     }>;
     getDreamJournals(req: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         locationName: string | null;
         description: string;
         dreamDate: Date;
@@ -97,9 +97,9 @@ export declare class PsychologyController {
     }[]>;
     createDreamJournal(req: any, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         locationName: string | null;
         description: string;
         dreamDate: Date;

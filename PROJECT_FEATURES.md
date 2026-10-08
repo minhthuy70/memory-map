@@ -1553,11 +1553,11 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
  
 43.1. Social Interactions (Tương tác xã hội)
 [ ] - Memory Stories (24h Ephemeral Stories) - Stories kỷ niệm biến mất sau 24h - MemoryStories.tsx (24h story reel on map, auto-archive to profile, story view analytics, interactive stickers, location tag stickers, mood reactions, background music, privacy per story: public/close-friends/private)
-[ ] - Memory Circles & Close Friends - Vòng tròn kết nối bạn thân & gia đình - MemoryCircles.tsx (custom circles: Family, Travel Buddies, Best Friends, custom access control per memory, batch share to circle, member invite/remove, circle activity feed)
+[x] - Memory Circles & Close Friends - Vòng tròn kết nối bạn thân & gia đình - MemoryCircles.tsx (custom circles: Family, Travel Buddies, Best Friends, custom access control per memory, batch share to circle, member invite/remove, circle activity feed)
 [ ] - Community Public Map Feed - Khám phá kỷ niệm công khai trên bản đồ - CommunityMapFeed.tsx (explore public memories around current GPS location or selected city, trending locations, filter by category/mood/popularity, radius filter 1km-50km, safe moderation tag)
-[ ] - Collaborative Memory Albums - Album kỷ niệm nhóm đa người dùng - CollaborativeAlbums.tsx (shared trip albums, multi-user photo/video contribution, contributor permissions admin/editor/viewer, collaborative timeline, activity log, group export)
-[ ] - Memory Reactions & Empathy System - Hệ thống cảm xúc phong phú - MemoryReactions.tsx (diverse reactions: Heart ❤️, Warm Hug 🤗, Moved 🥺, Proud 🌟, Celebration 🎉, Nostalgic 🍂, reaction counts, user reaction list, notification on reaction)
-[ ] - Memory Guestbook & Comments - Sổ lưu bút và bình luận kỷ niệm - MemoryGuestbook.tsx (digital guestbook on profile and memories, threaded comments, audio voice comments, emoji picker, mention @friends, moderation controls)
+[x] - Collaborative Memory Albums - Album kỷ niệm nhóm đa người dùng - CollaborativeAlbums.tsx (shared trip albums, multi-user photo/video contribution, contributor permissions admin/editor/viewer, collaborative timeline, activity log, group export)
+[x] - Memory Reactions & Empathy System - Hệ thống cảm xúc phong phú - MemoryReactions.tsx (diverse reactions: Heart ❤️, Warm Hug 🤗, Moved 🥺, Proud 🌟, Celebration 🎉, Nostalgic 🍂, reaction counts, user reaction list, notification on reaction)
+[x] - Memory Guestbook & Comments - Sổ lưu bút và bình luận kỷ niệm - MemoryGuestbook.tsx (digital guestbook on profile and memories, threaded comments, audio voice comments, emoji picker, mention @friends, moderation controls)
 [ ] - Nearby Friends Memory Ping - Nhận thông báo kỷ niệm bạn bè gần bạn - NearbyFriendsPing.tsx (radar detection, proximity alerts when friend visits or creates memory near you, privacy toggle, distance threshold setting, suppress notifications at home)
 [ ] - Co-presence Memory Suggestion - Gợi ý tạo kỷ niệm chung khi ở cùng địa điểm - CoPresenceSuggestion.tsx (auto-detect multiple users at same venue/event via Bluetooth/GPS, group memory prompt, merged photo suggestion, shared credit tag)
 
@@ -1763,9 +1763,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1160
-Số lượng tính năng đã implement: 1089 (93.9%)
+Số lượng tính năng đã implement: 1094 (94.3%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai (Roadmap): 70 (6.0%)
+Số lượng tính năng tương lai (Roadmap): 66 (5.7%)
  
 Last Updated: 2026-10-05
 Version: 16.0 (Future Roadmap)

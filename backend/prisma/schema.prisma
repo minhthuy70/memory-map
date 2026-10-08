@@ -112,6 +112,7 @@ model User {
   memoryComments MemoryComment[]
   memoryCircles MemoryCircle[]
   albumContributors AlbumContributor[]
+  circleMembers CircleMember[]
 
   @@map("users")
 }
@@ -1325,6 +1326,7 @@ model CircleMember {
   role        String   // admin, member
   joinedAt    DateTime @default(now()) @map("joined_at")
   circle      MemoryCircle @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([circleId, userId])
   @@index([circleId])

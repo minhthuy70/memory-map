@@ -17,6 +17,7 @@ import { PsychologyModule } from './psychology/psychology.module';
 import { GenealogyModule } from './genealogy/genealogy.module';
 import { AudiovisualModule } from './audiovisual/audiovisual.module';
 import { TripPlanningModule } from './trip-planning/trip-planning.module';
+import { SocialModule } from './social/social.module';
 
 @Module({
   imports: [
@@ -61,6 +62,8 @@ import { TripPlanningModule } from './trip-planning/trip-planning.module';
     AudiovisualModule,
 
     TripPlanningModule,
+
+    SocialModule,
   ],
 })
 export class AppModule {}

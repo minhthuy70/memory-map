@@ -4,64 +4,64 @@ export declare class AudiovisualController {
     constructor(audiovisualService: AudiovisualService);
     getScrapbookProjects(req: any): Promise<{
         id: string;
-        userId: string;
-        title: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         isPublic: boolean;
+        title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
     }[]>;
     getScrapbookProject(req: any, id: string): Promise<{
         id: string;
-        userId: string;
-        title: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         isPublic: boolean;
+        title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
     }>;
     createScrapbookProject(req: any, data: any): Promise<{
         id: string;
-        userId: string;
-        title: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         isPublic: boolean;
+        title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
     }>;
     updateScrapbookProject(req: any, id: string, data: any): Promise<{
         id: string;
-        userId: string;
-        title: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         isPublic: boolean;
+        title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
     }>;
     deleteScrapbookProject(req: any, id: string): Promise<{
         id: string;
-        userId: string;
-        title: string;
         createdAt: Date;
         updatedAt: Date;
+        userId: string;
         isPublic: boolean;
+        title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
     }>;
     getSoundscapeMixes(req: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
         duration: number;
         audioUrl: string | null;
@@ -69,9 +69,9 @@ export declare class AudiovisualController {
     }[]>;
     getSoundscapeMix(req: any, id: string): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
         duration: number;
         audioUrl: string | null;
@@ -79,9 +79,9 @@ export declare class AudiovisualController {
     }>;
     createSoundscapeMix(req: any, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
         duration: number;
         audioUrl: string | null;
@@ -89,9 +89,9 @@ export declare class AudiovisualController {
     }>;
     updateSoundscapeMix(req: any, id: string, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
         duration: number;
         audioUrl: string | null;
@@ -99,9 +99,9 @@ export declare class AudiovisualController {
     }>;
     deleteSoundscapeMix(req: any, id: string): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
         duration: number;
         audioUrl: string | null;
