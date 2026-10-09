@@ -10,16 +10,16 @@ export declare class SocialService {
         };
     } & {
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         reactionType: string;
     })[]>;
     addReaction(userId: string, memoryId: string, reactionType: string): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         reactionType: string;
     }>;
     getComments(memoryId: string): Promise<({
@@ -31,29 +31,29 @@ export declare class SocialService {
         replies: never;
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: string;
-        content: string;
         memoryId: string;
+        createdAt: Date;
+        userId: string;
+        updatedAt: Date;
+        content: string;
         parentId: string | null;
     })[]>;
     createComment(userId: string, memoryId: string, content: string, parentId?: string): Promise<{
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: string;
-        content: string;
         memoryId: string;
+        createdAt: Date;
+        userId: string;
+        updatedAt: Date;
+        content: string;
         parentId: string | null;
     }>;
     deleteComment(userId: string, id: string): Promise<{
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        userId: string;
-        content: string;
         memoryId: string;
+        createdAt: Date;
+        userId: string;
+        updatedAt: Date;
+        content: string;
         parentId: string | null;
     }>;
     getCircles(userId: string): Promise<({
@@ -72,17 +72,17 @@ export declare class SocialService {
         })[];
     } & {
         id: string;
-        name: string;
         createdAt: Date;
         userId: string;
+        name: string;
         isPublic: boolean;
         description: string | null;
     })[]>;
     createCircle(userId: string, data: any): Promise<{
         id: string;
-        name: string;
         createdAt: Date;
         userId: string;
+        name: string;
         isPublic: boolean;
         description: string | null;
     }>;
@@ -96,9 +96,9 @@ export declare class SocialService {
     getSharedAlbums(userId: string): Promise<({
         circle: {
             id: string;
-            name: string;
             createdAt: Date;
             userId: string;
+            name: string;
             isPublic: boolean;
             description: string | null;
         };

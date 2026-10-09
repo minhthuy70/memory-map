@@ -3,21 +3,21 @@ export declare class PsychologyService {
     private prisma;
     constructor(prisma: PrismaService);
     getGratitudeEntries(userId: string): Promise<{
-        category: string;
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
+        category: string;
         content: string;
-        memoryId: string | null;
         isShared: boolean;
     }[]>;
     createGratitudeEntry(userId: string, data: any): Promise<{
-        category: string;
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
+        category: string;
         content: string;
-        memoryId: string | null;
         isShared: boolean;
     }>;
     getResilienceMoments(userId: string): Promise<{
@@ -44,9 +44,9 @@ export declare class PsychologyService {
     }>;
     getDailySerendipity(userId: string): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         date: Date;
         viewedAt: Date | null;
         isViewed: boolean;
@@ -55,9 +55,9 @@ export declare class PsychologyService {
     }>;
     markViewed(userId: string, moodBefore: string, moodAfter: string): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         date: Date;
         viewedAt: Date | null;
         isViewed: boolean;

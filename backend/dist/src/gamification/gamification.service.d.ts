@@ -4,8 +4,8 @@ export declare class GamificationService {
     constructor(prisma: PrismaService);
     getUserStats(userId: string): Promise<{
         id: string;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -17,8 +17,8 @@ export declare class GamificationService {
     }>;
     addXP(userId: string, amount: number): Promise<{
         id: string;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -30,8 +30,8 @@ export declare class GamificationService {
     }>;
     updateMemoryCount(userId: string): Promise<{
         id: string;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -77,8 +77,8 @@ export declare class GamificationService {
     getJournalingStreak(userId: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         longestStreak: number;
         currentStreak: number;
         lastJournalDate: Date | null;
@@ -88,8 +88,8 @@ export declare class GamificationService {
     recordJournalEntry(userId: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         longestStreak: number;
         currentStreak: number;
         lastJournalDate: Date | null;
@@ -153,11 +153,11 @@ export declare class GamificationService {
     private checkBingo;
     getVirtualSouvenirs(userId: string): Promise<{
         id: string;
-        name: string;
         createdAt: Date;
         userId: string;
-        position: number;
+        name: string;
         metadata: string | null;
+        position: number;
         unlockedAt: Date;
         type: string;
         location: string;
@@ -165,11 +165,11 @@ export declare class GamificationService {
     }[]>;
     unlockSouvenir(userId: string, name: string, type: string, location: string): Promise<{
         id: string;
-        name: string;
         createdAt: Date;
         userId: string;
-        position: number;
+        name: string;
         metadata: string | null;
+        position: number;
         unlockedAt: Date;
         type: string;
         location: string;
@@ -177,11 +177,11 @@ export declare class GamificationService {
     }>;
     updateSouvenirPosition(id: string, userId: string, position: number): Promise<{
         id: string;
-        name: string;
         createdAt: Date;
         userId: string;
-        position: number;
+        name: string;
         metadata: string | null;
+        position: number;
         unlockedAt: Date;
         type: string;
         location: string;

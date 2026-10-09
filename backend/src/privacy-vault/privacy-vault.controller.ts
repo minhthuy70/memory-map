@@ -26,6 +26,22 @@ import {
   CreateDuressPasswordDto,
   VerifyDuressPasswordDto,
 } from './dto/duress-password.dto';
+import {
+  CreateCalculatorCamouflageDto,
+  UpdateCalculatorCamouflageDto,
+} from './dto/calculator-camouflage.dto';
+import {
+  CreateZeroKnowledgeE2EEDto,
+  UpdateZeroKnowledgeE2EEDto,
+} from './dto/zero-knowledge-e2ee.dto';
+import {
+  CreateExifSanitizerDto,
+  UpdateExifSanitizerDto,
+} from './dto/exif-sanitizer.dto';
+import {
+  CreateScreenshotPreventionDto,
+  UpdateScreenshotPreventionDto,
+} from './dto/screenshot-prevention.dto';
 
 @Controller('privacy-vault')
 @UseGuards(JwtAuthGuard)
@@ -137,5 +153,112 @@ export class PrivacyVaultController {
       body.lng,
       body.radiusMeters,
     );
+  }
+
+  // ==================== Calculator Camouflage ====================
+
+  @Post('calculator-camouflage')
+  async createCalculatorCamouflage(@Request() req, @Body() dto: CreateCalculatorCamouflageDto) {
+    return this.privacyVaultService.createCalculatorCamouflage(req.user.userId, dto);
+  }
+
+  @Get('calculator-camouflage')
+  async getCalculatorCamouflage(@Request() req) {
+    return this.privacyVaultService.getCalculatorCamouflage(req.user.userId);
+  }
+
+  @Put('calculator-camouflage')
+  async updateCalculatorCamouflage(@Request() req, @Body() dto: UpdateCalculatorCamouflageDto) {
+    return this.privacyVaultService.updateCalculatorCamouflage(req.user.userId, dto);
+  }
+
+  @Delete('calculator-camouflage')
+  async deleteCalculatorCamouflage(@Request() req) {
+    return this.privacyVaultService.deleteCalculatorCamouflage(req.user.userId);
+  }
+
+  @Post('calculator-camouflage/verify')
+  async verifySecretPin(@Request() req, @Body() body: { pin: string }) {
+    return this.privacyVaultService.verifySecretPin(req.user.userId, body.pin);
+  }
+
+  // ==================== Zero-Knowledge E2EE ====================
+
+  @Post('zero-knowledge-e2ee')
+  async createZeroKnowledgeE2EE(@Request() req, @Body() dto: CreateZeroKnowledgeE2EEDto) {
+    return this.privacyVaultService.createZeroKnowledgeE2EE(req.user.userId, dto);
+  }
+
+  @Get('zero-knowledge-e2ee')
+  async getZeroKnowledgeE2EE(@Request() req) {
+    return this.privacyVaultService.getZeroKnowledgeE2EE(req.user.userId);
+  }
+
+  @Put('zero-knowledge-e2ee')
+  async updateZeroKnowledgeE2EE(@Request() req, @Body() dto: UpdateZeroKnowledgeE2EEDto) {
+    return this.privacyVaultService.updateZeroKnowledgeE2EE(req.user.userId, dto);
+  }
+
+  @Post('zero-knowledge-e2ee/rotate-key')
+  async rotateMasterKey(@Request() req, @Body() body: { newMasterKey: string }) {
+    return this.privacyVaultService.rotateMasterKey(req.user.userId, body.newMasterKey);
+  }
+
+  @Delete('zero-knowledge-e2ee')
+  async deleteZeroKnowledgeE2EE(@Request() req) {
+    return this.privacyVaultService.deleteZeroKnowledgeE2EE(req.user.userId);
+  }
+
+  // ==================== EXIF Sanitizer ====================
+
+  @Post('exif-sanitizer')
+  async createExifSanitizer(@Request() req, @Body() dto: CreateExifSanitizerDto) {
+    return this.privacyVaultService.createExifSanitizer(req.user.userId, dto);
+  }
+
+  @Get('exif-sanitizer')
+  async getExifSanitizers(@Request() req) {
+    return this.privacyVaultService.getExifSanitizers(req.user.userId);
+  }
+
+  @Get('exif-sanitizer/:id')
+  async getExifSanitizer(@Param('id') id: string, @Request() req) {
+    return this.privacyVaultService.getExifSanitizer(id, req.user.userId);
+  }
+
+  @Put('exif-sanitizer/:id')
+  async updateExifSanitizer(
+    @Param('id') id: string,
+    @Request() req,
+    @Body() dto: UpdateExifSanitizerDto,
+  ) {
+    return this.privacyVaultService.updateExifSanitizer(id, req.user.userId, dto);
+  }
+
+  @Delete('exif-sanitizer/:id')
+  async deleteExifSanitizer(@Param('id') id: string, @Request() req) {
+    return this.privacyVaultService.deleteExifSanitizer(id, req.user.userId);
+  }
+
+  // ==================== Screenshot Prevention ====================
+
+  @Post('screenshot-prevention')
+  async createScreenshotPrevention(@Request() req, @Body() dto: CreateScreenshotPreventionDto) {
+    return this.privacyVaultService.createScreenshotPrevention(req.user.userId, dto);
+  }
+
+  @Get('screenshot-prevention')
+  async getScreenshotPrevention(@Request() req) {
+    return this.privacyVaultService.getScreenshotPrevention(req.user.userId);
+  }
+
+  @Put('screenshot-prevention')
+  async updateScreenshotPrevention(@Request() req, @Body() dto: UpdateScreenshotPreventionDto) {
+    return this.privacyVaultService.updateScreenshotPrevention(req.user.userId, dto);
+  }
+
+  @Delete('screenshot-prevention')
+  async deleteScreenshotPrevention(@Request() req) {
+    return this.privacyVaultService.deleteScreenshotPrevention(req.user.userId);
   }
 }

@@ -338,6 +338,212 @@ let PrivacyVaultService = class PrivacyVaultService {
             lng: lng + lngOffset,
         };
     }
+    async createCalculatorCamouflage(userId, dto) {
+        return this.prisma.calculatorCamouflage.create({
+            data: {
+                user: { connect: { id: userId } },
+                secretPin: dto.secretPin,
+                decoyName: dto.decoyName,
+                customIcon: dto.customIcon,
+                isEnabled: dto.isEnabled ?? false,
+            },
+        });
+    }
+    async getCalculatorCamouflage(userId) {
+        return this.prisma.calculatorCamouflage.findUnique({
+            where: { userId },
+        });
+    }
+    async updateCalculatorCamouflage(userId, dto) {
+        const camouflage = await this.getCalculatorCamouflage(userId);
+        if (!camouflage) {
+            throw new common_1.NotFoundException('Calculator camouflage not found');
+        }
+        return this.prisma.calculatorCamouflage.update({
+            where: { userId },
+            data: {
+                ...(dto.secretPin && { secretPin: dto.secretPin }),
+                ...(dto.decoyName && { decoyName: dto.decoyName }),
+                ...(dto.customIcon && { customIcon: dto.customIcon }),
+                ...(dto.isEnabled !== undefined && { isEnabled: dto.isEnabled }),
+            },
+        });
+    }
+    async deleteCalculatorCamouflage(userId) {
+        const camouflage = await this.getCalculatorCamouflage(userId);
+        if (!camouflage) {
+            throw new common_1.NotFoundException('Calculator camouflage not found');
+        }
+        await this.prisma.calculatorCamouflage.delete({
+            where: { userId },
+        });
+        return { message: 'Calculator camouflage deleted successfully' };
+    }
+    async verifySecretPin(userId, pin) {
+        const camouflage = await this.getCalculatorCamouflage(userId);
+        if (!camouflage) {
+            throw new common_1.NotFoundException('Calculator camouflage not configured');
+        }
+        if (camouflage.secretPin !== pin) {
+            throw new common_1.ForbiddenException('Invalid PIN');
+        }
+        return { valid: true, decoyName: camouflage.decoyName };
+    }
+    async createZeroKnowledgeE2EE(userId, dto) {
+        return this.prisma.zeroKnowledgeE2EE.create({
+            data: {
+                user: { connect: { id: userId } },
+                masterKey: dto.masterKey,
+                algorithm: dto.algorithm || 'AES-256-GCM',
+                keyDerivation: dto.keyDerivation || 'Argon2id',
+                isEnabled: dto.isEnabled ?? false,
+            },
+        });
+    }
+    async getZeroKnowledgeE2EE(userId) {
+        return this.prisma.zeroKnowledgeE2EE.findUnique({
+            where: { userId },
+        });
+    }
+    async updateZeroKnowledgeE2EE(userId, dto) {
+        const e2ee = await this.getZeroKnowledgeE2EE(userId);
+        if (!e2ee) {
+            throw new common_1.NotFoundException('Zero-knowledge E2EE not configured');
+        }
+        return this.prisma.zeroKnowledgeE2EE.update({
+            where: { userId },
+            data: {
+                ...(dto.masterKey && { masterKey: dto.masterKey }),
+                ...(dto.algorithm && { algorithm: dto.algorithm }),
+                ...(dto.keyDerivation && { keyDerivation: dto.keyDerivation }),
+                ...(dto.isEnabled !== undefined && { isEnabled: dto.isEnabled }),
+            },
+        });
+    }
+    async rotateMasterKey(userId, newMasterKey) {
+        const e2ee = await this.getZeroKnowledgeE2EE(userId);
+        if (!e2ee) {
+            throw new common_1.NotFoundException('Zero-knowledge E2EE not configured');
+        }
+        return this.prisma.zeroKnowledgeE2EE.update({
+            where: { userId },
+            data: {
+                masterKey: newMasterKey,
+                lastRotated: new Date(),
+            },
+        });
+    }
+    async deleteZeroKnowledgeE2EE(userId) {
+        const e2ee = await this.getZeroKnowledgeE2EE(userId);
+        if (!e2ee) {
+            throw new common_1.NotFoundException('Zero-knowledge E2EE not configured');
+        }
+        await this.prisma.zeroKnowledgeE2EE.delete({
+            where: { userId },
+        });
+        return { message: 'Zero-knowledge E2EE deleted successfully' };
+    }
+    async createExifSanitizer(userId, dto) {
+        const originalExif = dto.originalExif || JSON.stringify({ camera: 'Canon', lens: '50mm', serial: '12345' });
+        const sanitizedExif = JSON.stringify({
+            date: dto.stripDate ? null : '2024-01-01',
+            gps: dto.stripGPS ? null : { lat: 21.0285, lng: 105.8542 },
+        });
+        return this.prisma.exifSanitizer.create({
+            data: {
+                user: { connect: { id: userId } },
+                photoId: dto.photoId,
+                originalExif,
+                sanitizedExif,
+                stripDate: dto.stripDate ?? false,
+                stripGPS: dto.stripGPS ?? false,
+                stripCamera: dto.stripCamera ?? true,
+                stripDevice: dto.stripDevice ?? true,
+                stripNetwork: dto.stripNetwork ?? true,
+            },
+        });
+    }
+    async getExifSanitizers(userId) {
+        return this.prisma.exifSanitizer.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async getExifSanitizer(id, userId) {
+        const sanitizer = await this.prisma.exifSanitizer.findUnique({
+            where: { id },
+        });
+        if (!sanitizer) {
+            throw new common_1.NotFoundException('EXIF sanitizer not found');
+        }
+        if (sanitizer.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return sanitizer;
+    }
+    async updateExifSanitizer(id, userId, dto) {
+        const sanitizer = await this.getExifSanitizer(id, userId);
+        return this.prisma.exifSanitizer.update({
+            where: { id },
+            data: {
+                ...(dto.sanitizedExif && { sanitizedExif: dto.sanitizedExif }),
+                ...(dto.stripDate !== undefined && { stripDate: dto.stripDate }),
+                ...(dto.stripGPS !== undefined && { stripGPS: dto.stripGPS }),
+                ...(dto.stripCamera !== undefined && { stripCamera: dto.stripCamera }),
+                ...(dto.stripDevice !== undefined && { stripDevice: dto.stripDevice }),
+                ...(dto.stripNetwork !== undefined && { stripNetwork: dto.stripNetwork }),
+            },
+        });
+    }
+    async deleteExifSanitizer(id, userId) {
+        const sanitizer = await this.getExifSanitizer(id, userId);
+        await this.prisma.exifSanitizer.delete({
+            where: { id },
+        });
+        return { message: 'EXIF sanitizer deleted successfully' };
+    }
+    async createScreenshotPrevention(userId, dto) {
+        return this.prisma.screenshotPrevention.create({
+            data: {
+                user: { connect: { id: userId } },
+                isEnabled: dto.isEnabled,
+                watermarkEnabled: dto.watermarkEnabled ?? false,
+                watermarkText: dto.watermarkText,
+                blurPreview: dto.blurPreview ?? true,
+                platform: dto.platform,
+            },
+        });
+    }
+    async getScreenshotPrevention(userId) {
+        return this.prisma.screenshotPrevention.findUnique({
+            where: { userId },
+        });
+    }
+    async updateScreenshotPrevention(userId, dto) {
+        const prevention = await this.getScreenshotPrevention(userId);
+        if (!prevention) {
+            throw new common_1.NotFoundException('Screenshot prevention not configured');
+        }
+        return this.prisma.screenshotPrevention.update({
+            where: { userId },
+            data: {
+                ...(dto.isEnabled !== undefined && { isEnabled: dto.isEnabled }),
+                ...(dto.watermarkEnabled !== undefined && { watermarkEnabled: dto.watermarkEnabled }),
+                ...(dto.watermarkText && { watermarkText: dto.watermarkText }),
+                ...(dto.blurPreview !== undefined && { blurPreview: dto.blurPreview }),
+            },
+        });
+    }
+    async deleteScreenshotPrevention(userId) {
+        const prevention = await this.getScreenshotPrevention(userId);
+        if (!prevention) {
+            throw new common_1.NotFoundException('Screenshot prevention not configured');
+        }
+        await this.prisma.screenshotPrevention.delete({
+            where: { userId },
+        });
+        return { message: 'Screenshot prevention deleted successfully' };
+    }
 };
 exports.PrivacyVaultService = PrivacyVaultService;
 exports.PrivacyVaultService = PrivacyVaultService = __decorate([

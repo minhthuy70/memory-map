@@ -4,6 +4,10 @@ import SelfDestructingMemories from '../../components/SelfDestructingMemories';
 import DuressDistressPassword from '../../components/DuressDistressPassword';
 import ImmutableAuditLedger from '../../components/ImmutableAuditLedger';
 import RemoteEmergencyKillSwitch from '../../components/RemoteEmergencyKillSwitch';
+import CalculatorCamouflage from '../../components/CalculatorCamouflage';
+import ZeroKnowledgeE2EE from '../../components/ZeroKnowledgeE2EE';
+import ExifSanitizer from '../../components/ExifSanitizer';
+import ScreenshotPrevention from '../../components/ScreenshotPrevention';
 
 export default function PrivacyVaultPage() {
   return (

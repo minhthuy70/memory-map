@@ -5,8 +5,8 @@ export declare class AudiovisualService {
     getScrapbookProjects(userId: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         isPublic: boolean;
         title: string;
         description: string | null;
@@ -16,8 +16,8 @@ export declare class AudiovisualService {
     getScrapbookProject(userId: string, id: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         isPublic: boolean;
         title: string;
         description: string | null;
@@ -27,8 +27,8 @@ export declare class AudiovisualService {
     createScrapbookProject(userId: string, data: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         isPublic: boolean;
         title: string;
         description: string | null;
@@ -38,8 +38,8 @@ export declare class AudiovisualService {
     updateScrapbookProject(userId: string, id: string, data: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         isPublic: boolean;
         title: string;
         description: string | null;
@@ -49,8 +49,8 @@ export declare class AudiovisualService {
     deleteScrapbookProject(userId: string, id: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         isPublic: boolean;
         title: string;
         description: string | null;
@@ -59,50 +59,50 @@ export declare class AudiovisualService {
     }>;
     getSoundscapeMixes(userId: string): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         title: string;
-        memoryId: string | null;
         duration: number;
         audioUrl: string | null;
         mixData: string;
     }[]>;
     getSoundscapeMix(userId: string, id: string): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         title: string;
-        memoryId: string | null;
         duration: number;
         audioUrl: string | null;
         mixData: string;
     }>;
     createSoundscapeMix(userId: string, data: any): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         title: string;
-        memoryId: string | null;
         duration: number;
         audioUrl: string | null;
         mixData: string;
     }>;
     updateSoundscapeMix(userId: string, id: string, data: any): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         title: string;
-        memoryId: string | null;
         duration: number;
         audioUrl: string | null;
         mixData: string;
     }>;
     deleteSoundscapeMix(userId: string, id: string): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         title: string;
-        memoryId: string | null;
         duration: number;
         audioUrl: string | null;
         mixData: string;

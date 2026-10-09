@@ -165,22 +165,22 @@ export declare class GenealogyService {
         condolences: string;
     }>;
     getFamilyHeirlooms(userId: string): Promise<{
-        category: string;
         id: string;
-        name: string;
         createdAt: Date;
         userId: string;
+        name: string;
+        category: string;
         year: number | null;
         description: string;
         photoUrl: string;
         provenance: string;
     }[]>;
     createFamilyHeirloom(userId: string, data: any): Promise<{
-        category: string;
         id: string;
-        name: string;
         createdAt: Date;
         userId: string;
+        name: string;
+        category: string;
         year: number | null;
         description: string;
         photoUrl: string;
@@ -188,10 +188,10 @@ export declare class GenealogyService {
     }>;
     getFamilyRecipes(userId: string): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         title: string;
-        memoryId: string | null;
         description: string;
         ingredients: string;
         steps: string;
@@ -200,10 +200,10 @@ export declare class GenealogyService {
     }[]>;
     createFamilyRecipe(userId: string, data: any): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         title: string;
-        memoryId: string | null;
         description: string;
         ingredients: string;
         steps: string;

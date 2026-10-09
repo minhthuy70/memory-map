@@ -14,22 +14,22 @@ export declare class AuthService {
     constructor(usersService: UsersService, jwtService: JwtService, sessionsService: SessionsService, mailService: MailService);
     validateUser(email: string, password: string): Promise<{
         id: string;
+        createdAt: Date;
         email: string;
+        facebookId: string | null;
+        googleId: string | null;
+        resetPasswordToken: string | null;
         name: string | null;
         avatar: string | null;
-        createdAt: Date;
         updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         isActive: boolean;
         lastLoginAt: Date | null;
-        facebookId: string | null;
-        googleId: string | null;
         isEmailVerified: boolean;
         verificationCode: string | null;
         verificationExpires: Date | null;
         resetPasswordExpires: Date | null;
-        resetPasswordToken: string | null;
         pendingEmail: string | null;
         twoFactorEnabled: boolean;
         twoFactorSecret: string | null;
@@ -89,22 +89,22 @@ export declare class AuthService {
     }>;
     updateProfile(userId: string, updateProfileDto: UpdateProfileDto): Promise<{
         id: string;
+        createdAt: Date;
         email: string;
+        facebookId: string | null;
+        googleId: string | null;
+        resetPasswordToken: string | null;
         name: string | null;
         avatar: string | null;
-        createdAt: Date;
         updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         isActive: boolean;
         lastLoginAt: Date | null;
-        facebookId: string | null;
-        googleId: string | null;
         isEmailVerified: boolean;
         verificationCode: string | null;
         verificationExpires: Date | null;
         resetPasswordExpires: Date | null;
-        resetPasswordToken: string | null;
         pendingEmail: string | null;
         twoFactorEnabled: boolean;
         twoFactorSecret: string | null;
@@ -121,22 +121,22 @@ export declare class AuthService {
         hasPassword: boolean;
         twoFactorBackupCodesCount: number;
         id: string;
+        createdAt: Date;
         email: string;
+        facebookId: string | null;
+        googleId: string | null;
+        resetPasswordToken: string | null;
         name: string | null;
         avatar: string | null;
-        createdAt: Date;
         updatedAt: Date;
         lockedUntil: Date | null;
         loginAttempts: number;
         isActive: boolean;
         lastLoginAt: Date | null;
-        facebookId: string | null;
-        googleId: string | null;
         isEmailVerified: boolean;
         verificationCode: string | null;
         verificationExpires: Date | null;
         resetPasswordExpires: Date | null;
-        resetPasswordToken: string | null;
         pendingEmail: string | null;
         twoFactorEnabled: boolean;
         twoFactorLastUsed: Date | null;
@@ -248,12 +248,12 @@ export declare class AuthService {
     getWebAuthnCredentials(userId: string): Promise<{
         id: string;
         createdAt: Date;
+        lastUsedAt: Date;
         credentialId: string;
         deviceType: string;
         backedUp: boolean;
         transports: string[];
         deviceName: string;
-        lastUsedAt: Date;
     }[]>;
     deleteWebAuthnCredential(userId: string, credentialDbId: string): Promise<{
         success: boolean;
@@ -265,12 +265,12 @@ export declare class AuthService {
         credentials: {
             id: string;
             createdAt: Date;
+            lastUsedAt: Date;
             credentialId: string;
             deviceType: string;
             backedUp: boolean;
             transports: string[];
             deviceName: string;
-            lastUsedAt: Date;
         }[];
     }>;
 }

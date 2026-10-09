@@ -3,21 +3,21 @@ export declare class PsychologyController {
     private readonly psychologyService;
     constructor(psychologyService: PsychologyService);
     getGratitudeEntries(req: any): Promise<{
-        category: string;
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
+        category: string;
         content: string;
-        memoryId: string | null;
         isShared: boolean;
     }[]>;
     createGratitudeEntry(req: any, data: any): Promise<{
-        category: string;
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
+        category: string;
         content: string;
-        memoryId: string | null;
         isShared: boolean;
     }>;
     getResilienceMoments(req: any): Promise<{
@@ -44,9 +44,9 @@ export declare class PsychologyController {
     }>;
     getDailySerendipity(req: any): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         date: Date;
         viewedAt: Date | null;
         isViewed: boolean;
@@ -55,9 +55,9 @@ export declare class PsychologyController {
     }>;
     markViewed(req: any, data: any): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         date: Date;
         viewedAt: Date | null;
         isViewed: boolean;

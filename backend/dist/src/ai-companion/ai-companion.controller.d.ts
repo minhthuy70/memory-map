@@ -14,10 +14,10 @@ export declare class AICompanionController {
     constructor(aiCompanionService: AICompanionService);
     createAIJournalEntry(req: any, dto: CreateAIJournalEntryDto): Promise<{
         id: string;
+        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
-        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -27,10 +27,10 @@ export declare class AICompanionController {
     }>;
     getAIJournalEntries(req: any, startDate?: string, endDate?: string): Promise<{
         id: string;
+        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
-        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -40,10 +40,10 @@ export declare class AICompanionController {
     }[]>;
     getAIJournalEntry(id: string, req: any): Promise<{
         id: string;
+        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
-        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -53,10 +53,10 @@ export declare class AICompanionController {
     }>;
     updateAIJournalEntry(id: string, req: any, dto: UpdateAIJournalEntryDto): Promise<{
         id: string;
+        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
-        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -69,10 +69,10 @@ export declare class AICompanionController {
     }>;
     generateJournalEntry(req: any, dto: GenerateJournalEntryDto): Promise<{
         id: string;
+        memoryId: string | null;
         userId: string;
         title: string;
         content: string;
-        memoryId: string | null;
         date: Date;
         photos: string;
         locations: string;
@@ -140,9 +140,9 @@ export declare class AICompanionController {
     }>;
     createPhotoCuration(req: any, dto: CreatePhotoCurationDto): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -154,9 +154,9 @@ export declare class AICompanionController {
     }>;
     getPhotoCurations(req: any, memoryId?: string): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -168,9 +168,9 @@ export declare class AICompanionController {
     }[]>;
     getPhotoCuration(id: string, req: any): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -182,9 +182,9 @@ export declare class AICompanionController {
     }>;
     updatePhotoCuration(id: string, req: any, dto: UpdatePhotoCurationDto): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         photoId: string;
         aestheticScore: number;
         focusScore: number;
@@ -203,8 +203,8 @@ export declare class AICompanionController {
         userId: string;
         entityType: string;
         entityId: string;
-        embedding: string;
         metadata: string;
+        embedding: string;
         indexedAt: Date;
     }>;
     semanticSearch(req: any, dto: SemanticSearchDto): Promise<{
@@ -218,8 +218,8 @@ export declare class AICompanionController {
         userId: string;
         entityType: string;
         entityId: string;
-        embedding: string;
         metadata: string;
+        embedding: string;
         indexedAt: Date;
     }[]>;
     deleteSearchIndex(id: string, req: any): Promise<{
@@ -326,12 +326,12 @@ export declare class AICompanionController {
     }>;
     createHistoricalSimulation(req: any, dto: CreateHistoricalSimulationDto): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         year: number;
         latitude: number;
         longitude: number;
-        memoryId: string | null;
         status: string;
         generatedAt: Date | null;
         simulatedImageUrl: string | null;
@@ -339,12 +339,12 @@ export declare class AICompanionController {
     }>;
     getHistoricalSimulations(req: any): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         year: number;
         latitude: number;
         longitude: number;
-        memoryId: string | null;
         status: string;
         generatedAt: Date | null;
         simulatedImageUrl: string | null;
@@ -352,12 +352,12 @@ export declare class AICompanionController {
     }[]>;
     getHistoricalSimulation(id: string, req: any): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         year: number;
         latitude: number;
         longitude: number;
-        memoryId: string | null;
         status: string;
         generatedAt: Date | null;
         simulatedImageUrl: string | null;
@@ -365,12 +365,12 @@ export declare class AICompanionController {
     }>;
     updateHistoricalSimulation(id: string, req: any, dto: UpdateHistoricalSimulationDto): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
         year: number;
         latitude: number;
         longitude: number;
-        memoryId: string | null;
         status: string;
         generatedAt: Date | null;
         simulatedImageUrl: string | null;
@@ -385,9 +385,9 @@ export declare class AICompanionController {
     }>;
     createAgeProgression(req: any, dto: CreateAgeProgressionDto): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
-        memoryId: string | null;
         status: string;
         generatedAt: Date | null;
         originalPhotoUrl: string;
@@ -397,9 +397,9 @@ export declare class AICompanionController {
     }>;
     getAgeProgressions(req: any): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
-        memoryId: string | null;
         status: string;
         generatedAt: Date | null;
         originalPhotoUrl: string;
@@ -409,9 +409,9 @@ export declare class AICompanionController {
     }[]>;
     getAgeProgression(id: string, req: any): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
-        memoryId: string | null;
         status: string;
         generatedAt: Date | null;
         originalPhotoUrl: string;
@@ -421,9 +421,9 @@ export declare class AICompanionController {
     }>;
     updateAgeProgression(id: string, req: any, dto: UpdateAgeProgressionDto): Promise<{
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
-        memoryId: string | null;
         status: string;
         generatedAt: Date | null;
         originalPhotoUrl: string;
@@ -499,9 +499,9 @@ export declare class AICompanionController {
     }>;
     createPredictiveResurfacing(req: any, dto: CreatePredictiveResurfacingDto): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         sentimentScore: number;
         stressLevel: string;
         scheduledAt: Date;
@@ -511,9 +511,9 @@ export declare class AICompanionController {
     }>;
     getPredictiveResurfacings(req: any): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         sentimentScore: number;
         stressLevel: string;
         scheduledAt: Date;
@@ -523,9 +523,9 @@ export declare class AICompanionController {
     }[]>;
     getScheduledResurfacings(req: any): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         sentimentScore: number;
         stressLevel: string;
         scheduledAt: Date;
@@ -535,9 +535,9 @@ export declare class AICompanionController {
     }[]>;
     getPredictiveResurfacing(id: string, req: any): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         sentimentScore: number;
         stressLevel: string;
         scheduledAt: Date;
@@ -547,9 +547,9 @@ export declare class AICompanionController {
     }>;
     updatePredictiveResurfacing(id: string, req: any, dto: UpdatePredictiveResurfacingDto): Promise<{
         id: string;
+        memoryId: string;
         createdAt: Date;
         userId: string;
-        memoryId: string;
         sentimentScore: number;
         stressLevel: string;
         scheduledAt: Date;

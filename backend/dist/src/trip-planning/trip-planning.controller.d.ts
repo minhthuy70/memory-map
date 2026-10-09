@@ -5,8 +5,8 @@ export declare class TripPlanningController {
     getItineraries(req: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -17,8 +17,8 @@ export declare class TripPlanningController {
     getItinerary(req: any, id: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -29,8 +29,8 @@ export declare class TripPlanningController {
     createItinerary(req: any, data: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -41,8 +41,8 @@ export declare class TripPlanningController {
     updateItinerary(req: any, id: string, data: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -53,8 +53,8 @@ export declare class TripPlanningController {
     deleteItinerary(req: any, id: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -63,12 +63,12 @@ export declare class TripPlanningController {
         itineraryData: string;
     }>;
     getTripExpenses(req: any, itineraryId?: string): Promise<{
-        category: string;
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
+        category: string;
         title: string;
-        memoryId: string | null;
         date: Date;
         notes: string | null;
         itineraryId: string | null;
@@ -76,12 +76,12 @@ export declare class TripPlanningController {
         currency: string;
     }[]>;
     createTripExpense(req: any, data: any): Promise<{
-        category: string;
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
+        category: string;
         title: string;
-        memoryId: string | null;
         date: Date;
         notes: string | null;
         itineraryId: string | null;
@@ -89,12 +89,12 @@ export declare class TripPlanningController {
         currency: string;
     }>;
     deleteTripExpense(req: any, id: string): Promise<{
-        category: string;
         id: string;
+        memoryId: string | null;
         createdAt: Date;
         userId: string;
+        category: string;
         title: string;
-        memoryId: string | null;
         date: Date;
         notes: string | null;
         itineraryId: string | null;
@@ -104,8 +104,8 @@ export declare class TripPlanningController {
     getPackingLists(req: any, itineraryId?: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -114,8 +114,8 @@ export declare class TripPlanningController {
     createPackingList(req: any, data: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -124,8 +124,8 @@ export declare class TripPlanningController {
     updatePackingList(req: any, id: string, data: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -134,8 +134,8 @@ export declare class TripPlanningController {
     deletePackingList(req: any, id: string): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;

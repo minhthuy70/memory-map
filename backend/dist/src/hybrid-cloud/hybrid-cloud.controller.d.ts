@@ -49,9 +49,9 @@ export declare class HybridCloudController {
     createNASBackup(req: any, dto: CreateNASBackupDto): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isActive: boolean;
-        userId: string;
         provider: string;
         status: string;
         backupPath: string;
@@ -63,9 +63,9 @@ export declare class HybridCloudController {
     getNASBackups(req: any): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isActive: boolean;
-        userId: string;
         provider: string;
         status: string;
         backupPath: string;
@@ -77,9 +77,9 @@ export declare class HybridCloudController {
     getNASBackup(id: string, req: any): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isActive: boolean;
-        userId: string;
         provider: string;
         status: string;
         backupPath: string;
@@ -91,9 +91,9 @@ export declare class HybridCloudController {
     updateNASBackup(id: string, req: any, dto: UpdateNASBackupDto): Promise<{
         id: string;
         createdAt: Date;
+        userId: string;
         updatedAt: Date;
         isActive: boolean;
-        userId: string;
         provider: string;
         status: string;
         backupPath: string;
@@ -111,8 +111,8 @@ export declare class HybridCloudController {
     }>;
     createVaultExport(req: any, dto: CreateVaultExportDto): Promise<{
         id: string;
-        userId: string;
         expiresAt: Date | null;
+        userId: string;
         isPublic: boolean;
         fileName: string;
         filePath: string;
@@ -123,8 +123,8 @@ export declare class HybridCloudController {
     }>;
     getVaultExports(req: any): Promise<{
         id: string;
-        userId: string;
         expiresAt: Date | null;
+        userId: string;
         isPublic: boolean;
         fileName: string;
         filePath: string;
@@ -135,8 +135,8 @@ export declare class HybridCloudController {
     }[]>;
     getVaultExport(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         expiresAt: Date | null;
+        userId: string;
         isPublic: boolean;
         fileName: string;
         filePath: string;
@@ -147,8 +147,8 @@ export declare class HybridCloudController {
     }>;
     verifyVaultExportAccess(dto: DownloadVaultExportDto): Promise<{
         id: string;
-        userId: string;
         expiresAt: Date | null;
+        userId: string;
         isPublic: boolean;
         fileName: string;
         filePath: string;
@@ -163,49 +163,49 @@ export declare class HybridCloudController {
     createUserWidget(req: any, dto: CreateUserWidgetDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
+        isEnabled: boolean;
         widgetId: string;
         widgetType: string;
         widgetName: string;
         config: string;
-        isEnabled: boolean;
         position: number;
     }>;
     getUserWidgets(req: any, query: GetWidgetsDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
+        isEnabled: boolean;
         widgetId: string;
         widgetType: string;
         widgetName: string;
         config: string;
-        isEnabled: boolean;
         position: number;
     }[]>;
     getUserWidget(id: string, req: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
+        isEnabled: boolean;
         widgetId: string;
         widgetType: string;
         widgetName: string;
         config: string;
-        isEnabled: boolean;
         position: number;
     }>;
     updateUserWidget(id: string, req: any, dto: UpdateUserWidgetDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
+        isEnabled: boolean;
         widgetId: string;
         widgetType: string;
         widgetName: string;
         config: string;
-        isEnabled: boolean;
         position: number;
     }>;
     deleteUserWidget(id: string, req: any): Promise<{
@@ -214,9 +214,9 @@ export declare class HybridCloudController {
     createClipboardSync(req: any, dto: CreateClipboardSyncDto): Promise<{
         data: string;
         id: string;
+        expiresAt: Date;
         createdAt: Date;
         userId: string;
-        expiresAt: Date;
         clipboardId: string;
         dataType: string;
         sourceDevice: string;
@@ -224,9 +224,9 @@ export declare class HybridCloudController {
     getClipboardSync(clipboardId: string, req: any): Promise<{
         data: string;
         id: string;
+        expiresAt: Date;
         createdAt: Date;
         userId: string;
-        expiresAt: Date;
         clipboardId: string;
         dataType: string;
         sourceDevice: string;
@@ -234,9 +234,9 @@ export declare class HybridCloudController {
     getClipboardSyncs(req: any): Promise<{
         data: string;
         id: string;
+        expiresAt: Date;
         createdAt: Date;
         userId: string;
-        expiresAt: Date;
         clipboardId: string;
         dataType: string;
         sourceDevice: string;
@@ -250,8 +250,8 @@ export declare class HybridCloudController {
     createDesktopApp(req: any, dto: CreateDesktopAppDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         platform: string;
         version: string;
         installPath: string | null;
@@ -263,8 +263,8 @@ export declare class HybridCloudController {
     getDesktopApps(req: any, platform?: Platform): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         platform: string;
         version: string;
         installPath: string | null;
@@ -276,8 +276,8 @@ export declare class HybridCloudController {
     getDesktopApp(id: string, req: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         platform: string;
         version: string;
         installPath: string | null;
@@ -289,8 +289,8 @@ export declare class HybridCloudController {
     updateDesktopApp(id: string, req: any, dto: UpdateDesktopAppDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         platform: string;
         version: string;
         installPath: string | null;
@@ -305,8 +305,8 @@ export declare class HybridCloudController {
     updateDesktopAppSync(id: string, req: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
+        updatedAt: Date;
         platform: string;
         version: string;
         installPath: string | null;
@@ -318,10 +318,10 @@ export declare class HybridCloudController {
     createWildernessDataSaver(req: any, dto: CreateWildernessDataSaverDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
-        mode: string;
+        updatedAt: Date;
         isEnabled: boolean;
+        mode: string;
         compression: string;
         imageQuality: string;
         videoQuality: string;
@@ -333,10 +333,10 @@ export declare class HybridCloudController {
     getWildernessDataSaver(req: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
-        mode: string;
+        updatedAt: Date;
         isEnabled: boolean;
+        mode: string;
         compression: string;
         imageQuality: string;
         videoQuality: string;
@@ -348,10 +348,10 @@ export declare class HybridCloudController {
     updateWildernessDataSaver(req: any, dto: UpdateWildernessDataSaverDto): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
-        mode: string;
+        updatedAt: Date;
         isEnabled: boolean;
+        mode: string;
         compression: string;
         imageQuality: string;
         videoQuality: string;
@@ -363,10 +363,10 @@ export declare class HybridCloudController {
     triggerWildernessMode(req: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
-        mode: string;
+        updatedAt: Date;
         isEnabled: boolean;
+        mode: string;
         compression: string;
         imageQuality: string;
         videoQuality: string;
@@ -378,10 +378,10 @@ export declare class HybridCloudController {
     disableWildernessMode(req: any): Promise<{
         id: string;
         createdAt: Date;
-        updatedAt: Date;
         userId: string;
-        mode: string;
+        updatedAt: Date;
         isEnabled: boolean;
+        mode: string;
         compression: string;
         imageQuality: string;
         videoQuality: string;
