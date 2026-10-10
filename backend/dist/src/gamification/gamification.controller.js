@@ -16,6 +16,10 @@ exports.GamificationController = void 0;
 const common_1 = require("@nestjs/common");
 const gamification_service_1 = require("./gamification.service");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const fog_of_war_dto_1 = require("./dto/fog-of-war.dto");
+const geocache_dto_1 = require("./dto/geocache.dto");
+const ar_treasure_chest_dto_1 = require("./dto/ar-treasure-chest.dto");
+const travel_leaderboard_dto_1 = require("./dto/travel-leaderboard.dto");
 let GamificationController = class GamificationController {
     constructor(gamificationService) {
         this.gamificationService = gamificationService;
@@ -64,6 +68,66 @@ let GamificationController = class GamificationController {
     }
     async updateSouvenirPosition(id, req, body) {
         return this.gamificationService.updateSouvenirPosition(id, req.user.userId, body.position);
+    }
+    async getFogOfWarMap(req) {
+        return this.gamificationService.getFogOfWarMap(req.user.userId);
+    }
+    async updateFogOfWarMap(req, dto) {
+        return this.gamificationService.updateFogOfWarMap(req.user.userId, dto);
+    }
+    async exploreArea(req, dto) {
+        return this.gamificationService.exploreArea(req.user.userId, dto);
+    }
+    async getGeocaches(req) {
+        return this.gamificationService.getGeocaches(req.user.userId);
+    }
+    async getPublishedGeocaches() {
+        return this.gamificationService.getPublishedGeocaches();
+    }
+    async createGeocache(req, dto) {
+        return this.gamificationService.createGeocache(req.user.userId, dto);
+    }
+    async updateGeocache(id, req, dto) {
+        return this.gamificationService.updateGeocache(id, req.user.userId, dto);
+    }
+    async deleteGeocache(id, req) {
+        return this.gamificationService.deleteGeocache(id, req.user.userId);
+    }
+    async logGeocache(id, req, dto) {
+        return this.gamificationService.logGeocache(id, req.user.userId, dto);
+    }
+    async getGeocacheLogs(id) {
+        return this.gamificationService.getGeocacheLogs(id);
+    }
+    async getARTreasureChests(req) {
+        return this.gamificationService.getARTreasureChests(req.user.userId);
+    }
+    async createARTreasureChest(req, dto) {
+        return this.gamificationService.createARTreasureChest(req.user.userId, dto);
+    }
+    async updateARTreasureChest(id, req, dto) {
+        return this.gamificationService.updateARTreasureChest(id, req.user.userId, dto);
+    }
+    async unlockARTreasureChest(req, dto) {
+        return this.gamificationService.unlockARTreasureChest(req.user.userId, dto);
+    }
+    async getTravelLeaderboards(circleId) {
+        return this.gamificationService.getTravelLeaderboards(circleId);
+    }
+    async createTravelLeaderboard(dto) {
+        return this.gamificationService.createTravelLeaderboard(dto);
+    }
+    async updateTravelLeaderboard(id, dto) {
+        return this.gamificationService.updateTravelLeaderboard(id, dto);
+    }
+    async getLeaderboardEntries(id) {
+        return this.gamificationService.getLeaderboardEntries(id);
+    }
+    async createLeaderboardEntry(req, dto) {
+        return this.gamificationService.createLeaderboardEntry(req.user.userId, dto);
+    }
+    async updateLeaderboardEntry(id, req, dto) {
+        return this.gamificationService.updateLeaderboardEntry(id, req.user.userId, dto);
     }
 };
 exports.GamificationController = GamificationController;
@@ -182,6 +246,161 @@ __decorate([
     __metadata("design:paramtypes", [String, Object, Object]),
     __metadata("design:returntype", Promise)
 ], GamificationController.prototype, "updateSouvenirPosition", null);
+__decorate([
+    (0, common_1.Get)('fog-of-war'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "getFogOfWarMap", null);
+__decorate([
+    (0, common_1.Put)('fog-of-war'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, fog_of_war_dto_1.UpdateFogOfWarDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "updateFogOfWarMap", null);
+__decorate([
+    (0, common_1.Post)('fog-of-war/explore'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, fog_of_war_dto_1.ExploreAreaDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "exploreArea", null);
+__decorate([
+    (0, common_1.Get)('geocaches'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "getGeocaches", null);
+__decorate([
+    (0, common_1.Get)('geocaches/published'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "getPublishedGeocaches", null);
+__decorate([
+    (0, common_1.Post)('geocaches'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, geocache_dto_1.CreateGeocacheDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "createGeocache", null);
+__decorate([
+    (0, common_1.Put)('geocaches/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, geocache_dto_1.UpdateGeocacheDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "updateGeocache", null);
+__decorate([
+    (0, common_1.Delete)('geocaches/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "deleteGeocache", null);
+__decorate([
+    (0, common_1.Post)('geocaches/:id/logs'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, geocache_dto_1.CreateGeocacheLogDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "logGeocache", null);
+__decorate([
+    (0, common_1.Get)('geocaches/:id/logs'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "getGeocacheLogs", null);
+__decorate([
+    (0, common_1.Get)('ar-chests'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "getARTreasureChests", null);
+__decorate([
+    (0, common_1.Post)('ar-chests'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, ar_treasure_chest_dto_1.CreateARTreasureChestDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "createARTreasureChest", null);
+__decorate([
+    (0, common_1.Put)('ar-chests/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, ar_treasure_chest_dto_1.UpdateARTreasureChestDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "updateARTreasureChest", null);
+__decorate([
+    (0, common_1.Post)('ar-chests/unlock'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, ar_treasure_chest_dto_1.UnlockARTreasureChestDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "unlockARTreasureChest", null);
+__decorate([
+    (0, common_1.Get)('leaderboards/:circleId'),
+    __param(0, (0, common_1.Param)('circleId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "getTravelLeaderboards", null);
+__decorate([
+    (0, common_1.Post)('leaderboards'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [travel_leaderboard_dto_1.CreateTravelLeaderboardDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "createTravelLeaderboard", null);
+__decorate([
+    (0, common_1.Put)('leaderboards/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, travel_leaderboard_dto_1.UpdateTravelLeaderboardDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "updateTravelLeaderboard", null);
+__decorate([
+    (0, common_1.Get)('leaderboards/:id/entries'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "getLeaderboardEntries", null);
+__decorate([
+    (0, common_1.Post)('leaderboards/entries'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, travel_leaderboard_dto_1.CreateLeaderboardEntryDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "createLeaderboardEntry", null);
+__decorate([
+    (0, common_1.Put)('leaderboards/entries/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, travel_leaderboard_dto_1.UpdateLeaderboardEntryDto]),
+    __metadata("design:returntype", Promise)
+], GamificationController.prototype, "updateLeaderboardEntry", null);
 exports.GamificationController = GamificationController = __decorate([
     (0, common_1.Controller)('gamification'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

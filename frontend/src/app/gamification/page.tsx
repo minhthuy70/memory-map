@@ -4,6 +4,11 @@ import ExplorerXPProgression from '../../components/ExplorerXPProgression';
 import JournalingStreaks from '../../components/JournalingStreaks';
 import VirtualPassportStamps from '../../components/VirtualPassportStamps';
 import MemoryBingoCard from '../../components/MemoryBingoCard';
+import FogOfWarMap from '../../components/FogOfWarMap';
+import GeocachingTreasureHunt from '../../components/GeocachingTreasureHunt';
+import ARTreasureChests from '../../components/ARTreasureChests';
+import TravelCompetitionLeaderboard from '../../components/TravelCompetitionLeaderboard';
+import VirtualSouvenirShelf from '../../components/VirtualSouvenirShelf';
 
 export default function GamificationPage() {
   return (
@@ -41,6 +46,36 @@ export default function GamificationPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Memory Bingo Challenge</h2>
             <MemoryBingoCard />
+          </section>
+
+          {/* Fog of War */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Fog of War Mystery Map</h2>
+            <FogOfWarMap />
+          </section>
+
+          {/* Geocaching */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Geo-caching Treasure Hunt</h2>
+            <GeocachingTreasureHunt />
+          </section>
+
+          {/* AR Treasure Chests */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">AR Virtual Treasure Chests</h2>
+            <ARTreasureChests />
+          </section>
+
+          {/* Travel Leaderboard */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Travel Competition Leaderboard</h2>
+            <TravelCompetitionLeaderboard />
+          </section>
+
+          {/* Virtual Souvenir Shelf */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Virtual Souvenir Collection Shelf</h2>
+            <VirtualSouvenirShelf />
           </section>
         </div>
       </div>

@@ -4,69 +4,69 @@ export declare class GenealogyService {
     constructor(prisma: PrismaService);
     getTimeLockedCapsules(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        unlockedAt: Date | null;
+        createdAt: Date;
         title: string;
         description: string;
-        memoryIds: string;
-        unlockedAt: Date | null;
-        unlockDate: Date;
         isUnlocked: boolean;
+        memoryIds: string;
+        unlockDate: Date;
     }[]>;
     createTimeLockedCapsule(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        unlockedAt: Date | null;
+        createdAt: Date;
         title: string;
         description: string;
-        memoryIds: string;
-        unlockedAt: Date | null;
-        unlockDate: Date;
         isUnlocked: boolean;
+        memoryIds: string;
+        unlockDate: Date;
     }>;
     unlockTimeLockedCapsule(userId: string, id: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        unlockedAt: Date | null;
+        createdAt: Date;
         title: string;
         description: string;
-        memoryIds: string;
-        unlockedAt: Date | null;
-        unlockDate: Date;
         isUnlocked: boolean;
+        memoryIds: string;
+        unlockDate: Date;
     }>;
     getGeofencedCapsules(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        unlockedAt: Date | null;
+        createdAt: Date;
         title: string;
+        description: string;
         latitude: number;
         longitude: number;
-        description: string;
-        memoryIds: string;
-        unlockedAt: Date | null;
         isUnlocked: boolean;
+        memoryIds: string;
         radiusMeters: number;
     }[]>;
     createGeofencedCapsule(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        unlockedAt: Date | null;
+        createdAt: Date;
         title: string;
+        description: string;
         latitude: number;
         longitude: number;
-        description: string;
-        memoryIds: string;
-        unlockedAt: Date | null;
         isUnlocked: boolean;
+        memoryIds: string;
         radiusMeters: number;
     }>;
     checkGeofencedUnlock(userId: string, latitude: number, longitude: number): Promise<any[]>;
     private calculateDistance;
     getLegacyLetters(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
         content: string;
         recipientName: string;
@@ -78,8 +78,8 @@ export declare class GenealogyService {
     }[]>;
     createLegacyLetter(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
         content: string;
         recipientName: string;
@@ -91,8 +91,8 @@ export declare class GenealogyService {
     }>;
     getDigitalMemorials(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -106,8 +106,8 @@ export declare class GenealogyService {
     }[]>;
     createDigitalMemorial(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -121,8 +121,8 @@ export declare class GenealogyService {
     }>;
     addCondolence(accessCode: string, message: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -136,8 +136,8 @@ export declare class GenealogyService {
     }>;
     addCandle(accessCode: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -151,8 +151,8 @@ export declare class GenealogyService {
     }>;
     addFlower(accessCode: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         isPublic: boolean;
         accessCode: string | null;
         deceasedName: string;
@@ -166,33 +166,33 @@ export declare class GenealogyService {
     }>;
     getFamilyHeirlooms(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         name: string;
-        category: string;
+        createdAt: Date;
         year: number | null;
         description: string;
+        category: string;
         photoUrl: string;
         provenance: string;
     }[]>;
     createFamilyHeirloom(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         name: string;
-        category: string;
+        createdAt: Date;
         year: number | null;
         description: string;
+        category: string;
         photoUrl: string;
         provenance: string;
     }>;
     getFamilyRecipes(userId: string): Promise<{
         id: string;
-        memoryId: string | null;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
         description: string;
+        memoryId: string | null;
         ingredients: string;
         steps: string;
         originator: string;
@@ -200,11 +200,11 @@ export declare class GenealogyService {
     }[]>;
     createFamilyRecipe(userId: string, data: any): Promise<{
         id: string;
-        memoryId: string | null;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
         description: string;
+        memoryId: string | null;
         ingredients: string;
         steps: string;
         originator: string;

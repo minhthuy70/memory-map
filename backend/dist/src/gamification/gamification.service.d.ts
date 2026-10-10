@@ -1,11 +1,14 @@
 import { PrismaService } from '../prisma/prisma.service';
+import { UpdateFogOfWarDto, ExploreAreaDto } from './dto/fog-of-war.dto';
+import { CreateGeocacheDto, UpdateGeocacheDto, CreateGeocacheLogDto } from './dto/geocache.dto';
+import { CreateARTreasureChestDto, UpdateARTreasureChestDto, UnlockARTreasureChestDto } from './dto/ar-treasure-chest.dto';
+import { CreateTravelLeaderboardDto, UpdateTravelLeaderboardDto, CreateLeaderboardEntryDto, UpdateLeaderboardEntryDto } from './dto/travel-leaderboard.dto';
 export declare class GamificationService {
     private prisma;
     constructor(prisma: PrismaService);
     getUserStats(userId: string): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -14,11 +17,11 @@ export declare class GamificationService {
         locationsVisited: number;
         streakDays: number;
         longestStreak: number;
+        updatedAt: Date;
     }>;
     addXP(userId: string, amount: number): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -27,11 +30,11 @@ export declare class GamificationService {
         locationsVisited: number;
         streakDays: number;
         longestStreak: number;
+        updatedAt: Date;
     }>;
     updateMemoryCount(userId: string): Promise<{
         id: string;
         userId: string;
-        updatedAt: Date;
         xp: number;
         level: number;
         totalMemories: number;
@@ -40,10 +43,10 @@ export declare class GamificationService {
         locationsVisited: number;
         streakDays: number;
         longestStreak: number;
+        updatedAt: Date;
     }>;
     getBadges(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         badgeType: string;
         badgeName: string;
@@ -51,10 +54,10 @@ export declare class GamificationService {
         progress: number;
         target: number;
         unlockedAt: Date | null;
+        createdAt: Date;
     }[]>;
     createBadge(userId: string, badgeType: string, badgeName: string, target: number): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         badgeType: string;
         badgeName: string;
@@ -62,10 +65,10 @@ export declare class GamificationService {
         progress: number;
         target: number;
         unlockedAt: Date | null;
+        createdAt: Date;
     }>;
     updateBadgeProgress(badgeId: string, increment: number): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         badgeType: string;
         badgeName: string;
@@ -73,13 +76,14 @@ export declare class GamificationService {
         progress: number;
         target: number;
         unlockedAt: Date | null;
+        createdAt: Date;
     }>;
     getJournalingStreak(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        updatedAt: Date;
         longestStreak: number;
+        updatedAt: Date;
+        createdAt: Date;
         currentStreak: number;
         lastJournalDate: Date | null;
         freezeTokens: number;
@@ -87,10 +91,10 @@ export declare class GamificationService {
     }>;
     recordJournalEntry(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        updatedAt: Date;
         longestStreak: number;
+        updatedAt: Date;
+        createdAt: Date;
         currentStreak: number;
         lastJournalDate: Date | null;
         freezeTokens: number;
@@ -98,8 +102,8 @@ export declare class GamificationService {
     }>;
     getPassportStamps(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         country: string;
         city: string;
         province: string;
@@ -108,8 +112,8 @@ export declare class GamificationService {
     }[]>;
     addPassportStamp(userId: string, country: string, city: string, province: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         country: string;
         city: string;
         province: string;
@@ -133,58 +137,294 @@ export declare class GamificationService {
         };
         completion: {
             id: string;
-            createdAt: Date;
             userId: string;
-            completedAt: Date | null;
+            createdAt: Date;
             challengeId: string;
             completedIndices: string;
+            completedAt: Date | null;
             rewardClaimed: boolean;
         };
     }>;
     completeBingoItem(userId: string, year: number, index: number): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        completedAt: Date | null;
+        createdAt: Date;
         challengeId: string;
         completedIndices: string;
+        completedAt: Date | null;
         rewardClaimed: boolean;
     }>;
     private checkBingo;
     getVirtualSouvenirs(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         name: string;
-        metadata: string | null;
-        position: number;
         unlockedAt: Date;
+        createdAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
+        position: number;
+        metadata: string | null;
     }[]>;
     unlockSouvenir(userId: string, name: string, type: string, location: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         name: string;
-        metadata: string | null;
-        position: number;
         unlockedAt: Date;
+        createdAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
+        position: number;
+        metadata: string | null;
     }>;
     updateSouvenirPosition(id: string, userId: string, position: number): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         name: string;
-        metadata: string | null;
-        position: number;
         unlockedAt: Date;
+        createdAt: Date;
         type: string;
         location: string;
         isDisplayed: boolean;
+        position: number;
+        metadata: string | null;
     }>;
+    getFogOfWarMap(userId: string): Promise<{
+        id: string;
+        userId: string;
+        updatedAt: Date;
+        createdAt: Date;
+        exploredAreas: string;
+        totalAreaExplored: number;
+        worldPercentage: number;
+        lastExploreLocation: string | null;
+        lastExploreAt: Date | null;
+    }>;
+    updateFogOfWarMap(userId: string, dto: UpdateFogOfWarDto): Promise<{
+        id: string;
+        userId: string;
+        updatedAt: Date;
+        createdAt: Date;
+        exploredAreas: string;
+        totalAreaExplored: number;
+        worldPercentage: number;
+        lastExploreLocation: string | null;
+        lastExploreAt: Date | null;
+    }>;
+    exploreArea(userId: string, dto: ExploreAreaDto): Promise<{
+        id: string;
+        userId: string;
+        updatedAt: Date;
+        createdAt: Date;
+        exploredAreas: string;
+        totalAreaExplored: number;
+        worldPercentage: number;
+        lastExploreLocation: string | null;
+        lastExploreAt: Date | null;
+    }>;
+    getGeocaches(userId: string): Promise<{
+        id: string;
+        userId: string;
+        createdAt: Date;
+        title: string;
+        description: string;
+        latitude: number;
+        longitude: number;
+        difficulty: number;
+        terrain: number;
+        size: string;
+        riddle: string | null;
+        hint: string | null;
+        isPublished: boolean;
+    }[]>;
+    getPublishedGeocaches(): Promise<{
+        id: string;
+        userId: string;
+        createdAt: Date;
+        title: string;
+        description: string;
+        latitude: number;
+        longitude: number;
+        difficulty: number;
+        terrain: number;
+        size: string;
+        riddle: string | null;
+        hint: string | null;
+        isPublished: boolean;
+    }[]>;
+    createGeocache(userId: string, dto: CreateGeocacheDto): Promise<{
+        id: string;
+        userId: string;
+        createdAt: Date;
+        title: string;
+        description: string;
+        latitude: number;
+        longitude: number;
+        difficulty: number;
+        terrain: number;
+        size: string;
+        riddle: string | null;
+        hint: string | null;
+        isPublished: boolean;
+    }>;
+    updateGeocache(id: string, userId: string, dto: UpdateGeocacheDto): Promise<{
+        id: string;
+        userId: string;
+        createdAt: Date;
+        title: string;
+        description: string;
+        latitude: number;
+        longitude: number;
+        difficulty: number;
+        terrain: number;
+        size: string;
+        riddle: string | null;
+        hint: string | null;
+        isPublished: boolean;
+    }>;
+    deleteGeocache(id: string, userId: string): Promise<{
+        id: string;
+        userId: string;
+        createdAt: Date;
+        title: string;
+        description: string;
+        latitude: number;
+        longitude: number;
+        difficulty: number;
+        terrain: number;
+        size: string;
+        riddle: string | null;
+        hint: string | null;
+        isPublished: boolean;
+    }>;
+    logGeocache(geocacheId: string, userId: string, dto: CreateGeocacheLogDto): Promise<{
+        id: string;
+        userId: string;
+        username: string;
+        message: string | null;
+        logType: string;
+        loggedAt: Date;
+        geocacheId: string;
+    }>;
+    getGeocacheLogs(geocacheId: string): Promise<{
+        id: string;
+        userId: string;
+        username: string;
+        message: string | null;
+        logType: string;
+        loggedAt: Date;
+        geocacheId: string;
+    }[]>;
+    getARTreasureChests(userId: string): Promise<{
+        id: string;
+        userId: string;
+        name: string;
+        unlockedAt: Date | null;
+        createdAt: Date;
+        latitude: number;
+        longitude: number;
+        locationName: string;
+        contentType: string;
+        contentData: string;
+        isUnlocked: boolean;
+    }[]>;
+    createARTreasureChest(userId: string, dto: CreateARTreasureChestDto): Promise<{
+        id: string;
+        userId: string;
+        name: string;
+        unlockedAt: Date | null;
+        createdAt: Date;
+        latitude: number;
+        longitude: number;
+        locationName: string;
+        contentType: string;
+        contentData: string;
+        isUnlocked: boolean;
+    }>;
+    updateARTreasureChest(id: string, userId: string, dto: UpdateARTreasureChestDto): Promise<{
+        id: string;
+        userId: string;
+        name: string;
+        unlockedAt: Date | null;
+        createdAt: Date;
+        latitude: number;
+        longitude: number;
+        locationName: string;
+        contentType: string;
+        contentData: string;
+        isUnlocked: boolean;
+    }>;
+    unlockARTreasureChest(userId: string, dto: UnlockARTreasureChestDto): Promise<{
+        id: string;
+        userId: string;
+        name: string;
+        unlockedAt: Date | null;
+        createdAt: Date;
+        latitude: number;
+        longitude: number;
+        locationName: string;
+        contentType: string;
+        contentData: string;
+        isUnlocked: boolean;
+    }>;
+    getTravelLeaderboards(circleId: string): Promise<{
+        id: string;
+        name: string;
+        createdAt: Date;
+        isActive: boolean;
+        type: string;
+        circleId: string;
+        period: string;
+    }[]>;
+    createTravelLeaderboard(dto: CreateTravelLeaderboardDto): Promise<{
+        id: string;
+        name: string;
+        createdAt: Date;
+        isActive: boolean;
+        type: string;
+        circleId: string;
+        period: string;
+    }>;
+    updateTravelLeaderboard(id: string, dto: UpdateTravelLeaderboardDto): Promise<{
+        id: string;
+        name: string;
+        createdAt: Date;
+        isActive: boolean;
+        type: string;
+        circleId: string;
+        period: string;
+    }>;
+    getLeaderboardEntries(leaderboardId: string): Promise<{
+        id: string;
+        userId: string;
+        createdAt: Date;
+        leaderboardId: string;
+        score: number;
+        rank: number;
+        periodStart: Date;
+        periodEnd: Date;
+    }[]>;
+    createLeaderboardEntry(userId: string, dto: CreateLeaderboardEntryDto): Promise<{
+        id: string;
+        userId: string;
+        createdAt: Date;
+        leaderboardId: string;
+        score: number;
+        rank: number;
+        periodStart: Date;
+        periodEnd: Date;
+    }>;
+    updateLeaderboardEntry(id: string, userId: string, dto: UpdateLeaderboardEntryDto): Promise<{
+        id: string;
+        userId: string;
+        createdAt: Date;
+        leaderboardId: string;
+        score: number;
+        rank: number;
+        periodStart: Date;
+        periodEnd: Date;
+    }>;
+    private recalculateLeaderboardRanks;
 }

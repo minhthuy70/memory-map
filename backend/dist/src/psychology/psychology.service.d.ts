@@ -4,49 +4,49 @@ export declare class PsychologyService {
     constructor(prisma: PrismaService);
     getGratitudeEntries(userId: string): Promise<{
         id: string;
-        memoryId: string | null;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         category: string;
         content: string;
+        memoryId: string | null;
         isShared: boolean;
     }[]>;
     createGratitudeEntry(userId: string, data: any): Promise<{
         id: string;
-        memoryId: string | null;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         category: string;
         content: string;
+        memoryId: string | null;
         isShared: boolean;
     }>;
     getResilienceMoments(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
         description: string;
-        date: Date;
         difficulty: number;
+        date: Date;
         overcomeAt: Date | null;
         selfEncouragement: string | null;
     }[]>;
     createResilienceMoment(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
         description: string;
-        date: Date;
         difficulty: number;
+        date: Date;
         overcomeAt: Date | null;
         selfEncouragement: string | null;
     }>;
     getDailySerendipity(userId: string): Promise<{
         id: string;
-        memoryId: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        memoryId: string;
         date: Date;
         viewedAt: Date | null;
         isViewed: boolean;
@@ -55,9 +55,9 @@ export declare class PsychologyService {
     }>;
     markViewed(userId: string, moodBefore: string, moodAfter: string): Promise<{
         id: string;
-        memoryId: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        memoryId: string;
         date: Date;
         viewedAt: Date | null;
         isViewed: boolean;
@@ -66,8 +66,8 @@ export declare class PsychologyService {
     }>;
     getEmotionalWaveforms(userId: string, startDate?: Date, endDate?: Date): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         mood: number;
         date: Date;
         stressLevel: number;
@@ -75,8 +75,8 @@ export declare class PsychologyService {
     }[]>;
     createEmotionalWaveform(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         mood: number;
         date: Date;
         stressLevel: number;
@@ -84,11 +84,11 @@ export declare class PsychologyService {
     }>;
     getDreamJournals(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
-        locationName: string | null;
         description: string;
+        locationName: string | null;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string;
@@ -97,11 +97,11 @@ export declare class PsychologyService {
     }[]>;
     createDreamJournal(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
-        locationName: string | null;
         description: string;
+        locationName: string | null;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string;

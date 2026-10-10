@@ -46,6 +46,30 @@ export default function PrivacyVaultPage() {
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Immutable Audit Log Ledger</h2>
             <ImmutableAuditLedger />
           </section>
+
+          {/* Calculator Camouflage */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Calculator Camouflage & Decoy Mode</h2>
+            <CalculatorCamouflage />
+          </section>
+
+          {/* Zero-Knowledge E2EE */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Zero-Knowledge End-to-End Encryption</h2>
+            <ZeroKnowledgeE2EE />
+          </section>
+
+          {/* EXIF Sanitizer */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Automatic Metadata & EXIF Sanitizer</h2>
+            <ExifSanitizer />
+          </section>
+
+          {/* Screenshot Prevention */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Screenshot Prevention & Privacy Screen Filter</h2>
+            <ScreenshotPrevention />
+          </section>
         </div>
       </div>
     </div>

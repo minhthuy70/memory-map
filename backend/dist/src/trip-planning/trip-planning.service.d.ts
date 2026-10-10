@@ -4,9 +4,9 @@ export declare class TripPlanningService {
     constructor(prisma: PrismaService);
     getItineraries(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         updatedAt: Date;
+        createdAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -16,9 +16,9 @@ export declare class TripPlanningService {
     }[]>;
     getItinerary(userId: string, id: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         updatedAt: Date;
+        createdAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -28,9 +28,9 @@ export declare class TripPlanningService {
     }>;
     createItinerary(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         updatedAt: Date;
+        createdAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -40,9 +40,9 @@ export declare class TripPlanningService {
     }>;
     updateItinerary(userId: string, id: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         updatedAt: Date;
+        createdAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -52,9 +52,9 @@ export declare class TripPlanningService {
     }>;
     deleteItinerary(userId: string, id: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         updatedAt: Date;
+        createdAt: Date;
         title: string;
         startDate: Date;
         endDate: Date;
@@ -64,11 +64,11 @@ export declare class TripPlanningService {
     }>;
     getTripExpenses(userId: string, itineraryId?: string): Promise<{
         id: string;
-        memoryId: string | null;
-        createdAt: Date;
         userId: string;
-        category: string;
+        createdAt: Date;
         title: string;
+        category: string;
+        memoryId: string | null;
         date: Date;
         notes: string | null;
         itineraryId: string | null;
@@ -77,11 +77,11 @@ export declare class TripPlanningService {
     }[]>;
     createTripExpense(userId: string, data: any): Promise<{
         id: string;
-        memoryId: string | null;
-        createdAt: Date;
         userId: string;
-        category: string;
+        createdAt: Date;
         title: string;
+        category: string;
+        memoryId: string | null;
         date: Date;
         notes: string | null;
         itineraryId: string | null;
@@ -90,11 +90,11 @@ export declare class TripPlanningService {
     }>;
     deleteTripExpense(userId: string, id: string): Promise<{
         id: string;
-        memoryId: string | null;
-        createdAt: Date;
         userId: string;
-        category: string;
+        createdAt: Date;
         title: string;
+        category: string;
+        memoryId: string | null;
         date: Date;
         notes: string | null;
         itineraryId: string | null;
@@ -103,9 +103,9 @@ export declare class TripPlanningService {
     }>;
     getPackingLists(userId: string, itineraryId?: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         updatedAt: Date;
+        createdAt: Date;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -113,9 +113,9 @@ export declare class TripPlanningService {
     }[]>;
     createPackingList(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         updatedAt: Date;
+        createdAt: Date;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -123,9 +123,9 @@ export declare class TripPlanningService {
     }>;
     updatePackingList(userId: string, id: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         updatedAt: Date;
+        createdAt: Date;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -133,9 +133,9 @@ export declare class TripPlanningService {
     }>;
     deletePackingList(userId: string, id: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         updatedAt: Date;
+        createdAt: Date;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -143,8 +143,8 @@ export declare class TripPlanningService {
     }>;
     getTravelDocuments(userId: string, itineraryId?: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
         notes: string | null;
         itineraryId: string | null;
@@ -155,8 +155,8 @@ export declare class TripPlanningService {
     }[]>;
     createTravelDocument(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
         notes: string | null;
         itineraryId: string | null;
@@ -167,8 +167,8 @@ export declare class TripPlanningService {
     }>;
     deleteTravelDocument(userId: string, id: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         title: string;
         notes: string | null;
         itineraryId: string | null;

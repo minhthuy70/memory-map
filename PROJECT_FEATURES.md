@@ -1668,8 +1668,8 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 49.1. Quests & Discovery Mechanics (Nhiệm vụ & Cơ chế khám phá)
-[ ] - Fog of War Mystery Map - Bản đồ sương mù bí ẩn mở dần theo bước chân - FogOfWarMap.tsx (classic game fog of war overlay covering world map, clears dynamically around GPS tracks where user actually walks/drives, % world explored counter)
-[ ] - Geo-caching & Real-world Treasure Hunt - Săn kho báu tọa độ thực địa - GeocachingTreasureHunt.tsx (create and discover community geocaches, cryptic riddles with GPS coordinates, digital logbook signing, hidden memory hints)
+[x] - Fog of War Mystery Map - Bản đồ sương mù bí ẩn mở dần theo bước chân - FogOfWarMap.tsx (classic game fog of war overlay covering world map, clears dynamically around GPS tracks where user actually walks/drives, % world explored counter)
+[x] - Geo-caching & Real-world Treasure Hunt - Săn kho báu tọa độ thực địa - GeocachingTreasureHunt.tsx (create and discover community geocaches, cryptic riddles with GPS coordinates, digital logbook signing, hidden memory hints)
 [x] - City Explorer Milestone Badges - Huy hiệu chinh phục địa danh & thành phố - ExplorerBadges.tsx (achievements system: Coffee Connoisseur (20 cafes), Island Hopper (5 islands), Summit Seeker (3 peaks), badge rarity levels: Bronze/Silver/Gold/Platinum)
 [x] - Virtual Passport with Visa Stamps - Hộ chiếu ảo đóng dấu mộc thị thực - VirtualPassportStamps.tsx (digital passport booklet with realistic rubber stamps stamped upon arrival in new cities/nations, vintage graphic designs per province)
 [x] - Memory Journaling Streaks - Hệ thống chuỗi ngày liên tiếp ghi chép - JournalingStreaks.tsx (daily check-in streak tracking, streak freeze tokens, milestone rewards at 7/30/100/365 days, celebratory confetti animations)
@@ -1677,9 +1677,9 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 
 49.2. Social Gamification & Mini-games (Game hóa cộng đồng & Mini-games)
 [x] - Memory Bingo Challenge Card - Thẻ Bingo 25 trải nghiệm trong năm - MemoryBingoCard.tsx (annual 5x5 Bingo board: Watch sunrise at sea, Camp under stars, Try street food, Sleep in sleeper train, complete rows for rewards)
-[ ] - AR Virtual Treasure Chests - Rương báu thực tế tăng cường tại địa danh - ARVirtualTreasureChests.tsx (discover floating AR chests in parks and tourist spots via phone camera, unlock virtual souvenirs, discount coupons, special photo filters)
-[ ] - Friendly Travel Competition Leaderboard - Bảng xếp hạng du lịch cùng bạn bè - TravelCompetitionLeaderboard.tsx (private leaderboards among friend circles: total km traversed, provinces unlocked, steps taken, monthly podium winners)
-[ ] - Virtual Souvenir Collection Shelf - Tủ kính trưng bày đồ lưu niệm ảo 3D - VirtualSouvenirShelf.tsx (interactive 3D shelf with collectible souvenirs unlocked per destination, inspect 3D items, customize shelf wood/lighting, share showcase)
+[x] - AR Virtual Treasure Chests - Rương báu thực tế tăng cường tại địa danh - ARVirtualTreasureChests.tsx (discover floating AR chests in parks and tourist spots via phone camera, unlock virtual souvenirs, discount coupons, special photo filters)
+[x] - Friendly Travel Competition Leaderboard - Bảng xếp hạng du lịch cùng bạn bè - TravelCompetitionLeaderboard.tsx (private leaderboards among friend circles: total km traversed, provinces unlocked, steps taken, monthly podium winners)
+[x] - Virtual Souvenir Collection Shelf - Tủ kính trưng bày đồ lưu niệm ảo 3D - VirtualSouvenirShelf.tsx (interactive 3D shelf with collectible souvenirs unlocked per destination, inspect 3D items, customize shelf wood/lighting, share showcase)
 
 ================================================================================
  
@@ -1687,16 +1687,16 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 50.1. Vault Security & Camouflage (Két bí mật & Chế độ ngụy trang)
-[ ] - Calculator Camouflage & Decoy Mode - Chế độ ngụy trang máy tính bỏ túi - CalculatorCamouflage.tsx (app disguise as fully functional calculator, typing secret PIN opens Memory Map vault, customizable app icon and decoy name)
+[x] - Calculator Camouflage & Decoy Mode - Chế độ ngụy trang máy tính bỏ túi - CalculatorCamouflage.tsx (app disguise as fully functional calculator, typing secret PIN opens Memory Map vault, customizable app icon and decoy name)
 [x] - Duress Distress Password - Mật mã cưỡng ép hiển thị kho giả lập - DuressDistressPassword.tsx (entering secondary emergency PIN displays dummy profile with harmless generic photos, silently sends discreet alert to emergency contacts)
 [x] - Multi-biometric Double Locking Vault - Két bảo mật hai lớp sinh trắc học - BiometricDoubleLockVault.tsx (separate ultra-secure vault folder requiring both Face ID and Fingerprint or two-factor hardware token to view sensitive memories)
 [x] - Ephemeral Self-destructing Memories - Kỷ niệm tự hủy theo thời gian - SelfDestructingMemories.tsx (burn-after-reading or timed auto-delete: memory wiped completely from database and storage after 1 view or 24h/7d with zero trace)
 [x] - Coordinate Fuzzing & Ghost Location - Làm mờ tọa độ ngẫu nhiên bảo vệ nơi ở - CoordinateFuzzing.tsx (automatically randomize coordinates by 500m-1km radius for sensitive home/work memories when shared publicly to protect real address)
 
 50.2. Data Privacy & Compliance (Quyền riêng tư & Tuân thủ dữ liệu)
-[ ] - Zero-Knowledge End-to-End Encryption (E2EE) - Mã hóa đầu cuối toàn diện - ZeroKnowledgeE2EE.tsx (AES-256-GCM + Argon2id client-side encryption, user holds master key, server and cloud administrators cannot view photos or notes)
-[ ] - Automatic Metadata & EXIF Sanitizer - Tự động xóa thông tin nhạy cảm khỏi ảnh - ExifSanitizer.tsx (strip camera serial, lens ID, device IMEI, and network info before storage or public sharing, retain only stripped date & GPS if permitted)
-[ ] - Screenshot Prevention & Privacy Screen Filter - Chống chụp màn hình & bảo vệ đa nhiệm - ScreenshotPrevention.tsx (FLAG_SECURE on Android, blur window preview on iOS app switcher, anti-screenshot watermark overlay)
+[x] - Zero-Knowledge End-to-End Encryption (E2EE) - Mã hóa đầu cuối toàn diện - ZeroKnowledgeE2EE.tsx (AES-256-GCM + Argon2id client-side encryption, user holds master key, server and cloud administrators cannot view photos or notes)
+[x] - Automatic Metadata & EXIF Sanitizer - Tự động xóa thông tin nhạy cảm khỏi ảnh - ExifSanitizer.tsx (strip camera serial, lens ID, device IMEI, and network info before storage or public sharing, retain only stripped date & GPS if permitted)
+[x] - Screenshot Prevention & Privacy Screen Filter - Chống chụp màn hình & bảo vệ đa nhiệm - ScreenshotPrevention.tsx (FLAG_SECURE on Android, blur window preview on iOS app switcher, anti-screenshot watermark overlay)
 [x] - Immutable Audit Log Ledger - Sổ cái kiểm toán bất biến - ImmutableAuditLedger.tsx (SHA-256 cryptographic chained audit log of all logins, exports, edits, viewings, and vault entries for tamper-evident security tracking)
 [x] - Remote Emergency Kill-Switch - Xóa sạch dữ liệu từ xa khi mất máy - RemoteEmergencyKillSwitch.tsx (instant remote data wipe trigger from web dashboard if phone is stolen, revokes all active JWT tokens and sessions immediately)
 
@@ -1763,11 +1763,11 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1160
-Số lượng tính năng đã implement: 1104 (95.2%)
+Số lượng tính năng đã implement: 1112 (95.9%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai (Roadmap): 56 (4.8%)
+Số lượng tính năng tương lai (Roadmap): 48 (4.1%)
 
-Cập nhật lần cuối: 08/10/2026
+Cập nhật lần cuối: 10/10/2026
  
 Last Updated: 2026-10-05
 Version: 16.0 (Future Roadmap)

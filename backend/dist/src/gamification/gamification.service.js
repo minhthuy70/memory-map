@@ -312,6 +312,277 @@ let GamificationService = class GamificationService {
             data: { position },
         });
     }
+    async getFogOfWarMap(userId) {
+        let fogMap = await this.prisma.fogOfWarMap.findUnique({
+            where: { userId },
+        });
+        if (!fogMap) {
+            fogMap = await this.prisma.fogOfWarMap.create({
+                data: {
+                    userId,
+                    exploredAreas: '[]',
+                    totalAreaExplored: 0,
+                    worldPercentage: 0,
+                },
+            });
+        }
+        return fogMap;
+    }
+    async updateFogOfWarMap(userId, dto) {
+        const fogMap = await this.getFogOfWarMap(userId);
+        return this.prisma.fogOfWarMap.update({
+            where: { id: fogMap.id },
+            data: {
+                ...dto,
+                updatedAt: new Date(),
+            },
+        });
+    }
+    async exploreArea(userId, dto) {
+        const fogMap = await this.getFogOfWarMap(userId);
+        const exploredAreas = JSON.parse(fogMap.exploredAreas || '[]');
+        const radius = dto.radius || 500;
+        const newArea = {
+            lat: dto.latitude,
+            lng: dto.longitude,
+            radius,
+        };
+        exploredAreas.push(newArea);
+        const totalAreaExplored = exploredAreas.length * (Math.PI * radius * radius) / 1000000;
+        const worldPercentage = (totalAreaExplored / 510100000) * 100;
+        return this.prisma.fogOfWarMap.update({
+            where: { id: fogMap.id },
+            data: {
+                exploredAreas: JSON.stringify(exploredAreas),
+                totalAreaExplored,
+                worldPercentage,
+                lastExploreLocation: JSON.stringify({ lat: dto.latitude, lng: dto.longitude }),
+                lastExploreAt: new Date(),
+                updatedAt: new Date(),
+            },
+        });
+    }
+    async getGeocaches(userId) {
+        return this.prisma.geocache.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async getPublishedGeocaches() {
+        return this.prisma.geocache.findMany({
+            where: { isPublished: true },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createGeocache(userId, dto) {
+        return this.prisma.geocache.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+            },
+        });
+    }
+    async updateGeocache(id, userId, dto) {
+        const geocache = await this.prisma.geocache.findUnique({
+            where: { id },
+        });
+        if (!geocache) {
+            throw new common_1.NotFoundException('Geocache not found');
+        }
+        if (geocache.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.geocache.update({
+            where: { id },
+            data: dto,
+        });
+    }
+    async deleteGeocache(id, userId) {
+        const geocache = await this.prisma.geocache.findUnique({
+            where: { id },
+        });
+        if (!geocache) {
+            throw new common_1.NotFoundException('Geocache not found');
+        }
+        if (geocache.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.geocache.delete({
+            where: { id },
+        });
+    }
+    async logGeocache(geocacheId, userId, dto) {
+        const geocache = await this.prisma.geocache.findUnique({
+            where: { id: geocacheId },
+        });
+        if (!geocache) {
+            throw new common_1.NotFoundException('Geocache not found');
+        }
+        return this.prisma.geocacheLog.create({
+            data: {
+                geocacheId,
+                userId,
+                ...dto,
+            },
+        });
+    }
+    async getGeocacheLogs(geocacheId) {
+        return this.prisma.geocacheLog.findMany({
+            where: { geocacheId },
+            orderBy: { loggedAt: 'desc' },
+        });
+    }
+    async getARTreasureChests(userId) {
+        return this.prisma.aRTreasureChest.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createARTreasureChest(userId, dto) {
+        return this.prisma.aRTreasureChest.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+            },
+        });
+    }
+    async updateARTreasureChest(id, userId, dto) {
+        const chest = await this.prisma.aRTreasureChest.findUnique({
+            where: { id },
+        });
+        if (!chest) {
+            throw new common_1.NotFoundException('AR Treasure Chest not found');
+        }
+        if (chest.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.aRTreasureChest.update({
+            where: { id },
+            data: dto,
+        });
+    }
+    async unlockARTreasureChest(userId, dto) {
+        const chest = await this.prisma.aRTreasureChest.findUnique({
+            where: { id: dto.chestId },
+        });
+        if (!chest) {
+            throw new common_1.NotFoundException('AR Treasure Chest not found');
+        }
+        if (chest.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        if (chest.isUnlocked) {
+            return chest;
+        }
+        return this.prisma.aRTreasureChest.update({
+            where: { id: dto.chestId },
+            data: {
+                isUnlocked: true,
+                unlockedAt: new Date(),
+            },
+        });
+    }
+    async getTravelLeaderboards(circleId) {
+        return this.prisma.travelLeaderboard.findMany({
+            where: { circleId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createTravelLeaderboard(dto) {
+        return this.prisma.travelLeaderboard.create({
+            data: dto,
+        });
+    }
+    async updateTravelLeaderboard(id, dto) {
+        return this.prisma.travelLeaderboard.update({
+            where: { id },
+            data: dto,
+        });
+    }
+    async getLeaderboardEntries(leaderboardId) {
+        return this.prisma.travelLeaderboardEntry.findMany({
+            where: { leaderboardId },
+            orderBy: { rank: 'asc' },
+        });
+    }
+    async createLeaderboardEntry(userId, dto) {
+        const leaderboard = await this.prisma.travelLeaderboard.findUnique({
+            where: { id: dto.leaderboardId },
+        });
+        if (!leaderboard) {
+            throw new common_1.NotFoundException('Leaderboard not found');
+        }
+        const now = new Date();
+        let periodStart;
+        let periodEnd;
+        if (dto.period === 'weekly') {
+            periodStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay());
+            periodEnd = new Date(periodStart);
+            periodEnd.setDate(periodEnd.getDate() + 7);
+        }
+        else if (dto.period === 'monthly') {
+            periodStart = new Date(now.getFullYear(), now.getMonth(), 1);
+            periodEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        }
+        else {
+            periodStart = new Date(0);
+            periodEnd = new Date(9999, 11, 31);
+        }
+        const existing = await this.prisma.travelLeaderboardEntry.findFirst({
+            where: {
+                leaderboardId: dto.leaderboardId,
+                userId,
+                periodStart,
+            },
+        });
+        if (existing) {
+            return this.prisma.travelLeaderboardEntry.update({
+                where: { id: existing.id },
+                data: { score: dto.score },
+            });
+        }
+        const entry = await this.prisma.travelLeaderboardEntry.create({
+            data: {
+                leaderboardId: dto.leaderboardId,
+                userId,
+                score: dto.score,
+                rank: 0,
+                periodStart,
+                periodEnd,
+            },
+        });
+        await this.recalculateLeaderboardRanks(dto.leaderboardId);
+        return entry;
+    }
+    async updateLeaderboardEntry(id, userId, dto) {
+        const entry = await this.prisma.travelLeaderboardEntry.findUnique({
+            where: { id },
+        });
+        if (!entry) {
+            throw new common_1.NotFoundException('Leaderboard entry not found');
+        }
+        if (entry.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        const updated = await this.prisma.travelLeaderboardEntry.update({
+            where: { id },
+            data: dto,
+        });
+        await this.recalculateLeaderboardRanks(entry.leaderboardId);
+        return updated;
+    }
+    async recalculateLeaderboardRanks(leaderboardId) {
+        const entries = await this.prisma.travelLeaderboardEntry.findMany({
+            where: { leaderboardId },
+            orderBy: { score: 'desc' },
+        });
+        for (let i = 0; i < entries.length; i++) {
+            await this.prisma.travelLeaderboardEntry.update({
+                where: { id: entries[i].id },
+                data: { rank: i + 1 },
+            });
+        }
+    }
 };
 exports.GamificationService = GamificationService;
 exports.GamificationService = GamificationService = __decorate([
