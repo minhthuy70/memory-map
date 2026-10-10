@@ -1547,7 +1547,7 @@ model GenerationalComparison {
   childPhotoUrl  String @map("child_photo_url")
   parentAge  Int      @map("parent_age")
   childAge   Int      @map("child_age")
-  similarityScore Float @map("similarity_score") // 0-1
+  similarityScore Float @default(0) @map("similarity_score") // 0-1
   traits     String?  // JSON array of similar traits
   createdAt DateTime @default(now()) @map("created_at")
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)

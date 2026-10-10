@@ -133,4 +133,128 @@ export class GenealogyController {
   async createFamilyRecipe(@Request() req, @Body() data: any) {
     return this.genealogyService.createFamilyRecipe(req.user.userId, data);
   }
+
+  // ==================== Family Members ====================
+
+  @Get('family-members')
+  async getFamilyMembers(@Request() req) {
+    return this.genealogyService.getFamilyMembers(req.user.userId);
+  }
+
+  @Post('family-members')
+  async createFamilyMember(@Request() req, @Body() dto: CreateFamilyMemberDto) {
+    return this.genealogyService.createFamilyMember(req.user.userId, dto);
+  }
+
+  @Put('family-members/:id')
+  async updateFamilyMember(@Param('id') id: string, @Request() req, @Body() dto: UpdateFamilyMemberDto) {
+    return this.genealogyService.updateFamilyMember(id, req.user.userId, dto);
+  }
+
+  @Delete('family-members/:id')
+  async deleteFamilyMember(@Param('id') id: string, @Request() req) {
+    return this.genealogyService.deleteFamilyMember(id, req.user.userId);
+  }
+
+  // ==================== Ancestral Migrations ====================
+
+  @Get('ancestral-migrations')
+  async getAncestralMigrations(@Request() req) {
+    return this.genealogyService.getAncestralMigrations(req.user.userId);
+  }
+
+  @Post('ancestral-migrations')
+  async createAncestralMigration(@Request() req, @Body() dto: CreateAncestralMigrationDto) {
+    return this.genealogyService.createAncestralMigration(req.user.userId, dto);
+  }
+
+  @Put('ancestral-migrations/:id')
+  async updateAncestralMigration(@Param('id') id: string, @Request() req, @Body() dto: UpdateAncestralMigrationDto) {
+    return this.genealogyService.updateAncestralMigration(id, req.user.userId, dto);
+  }
+
+  @Delete('ancestral-migrations/:id')
+  async deleteAncestralMigration(@Param('id') id: string, @Request() req) {
+    return this.genealogyService.deleteAncestralMigration(id, req.user.userId);
+  }
+
+  // ==================== Oral Histories ====================
+
+  @Get('oral-histories')
+  async getOralHistories(@Request() req) {
+    return this.genealogyService.getOralHistories(req.user.userId);
+  }
+
+  @Post('oral-histories')
+  async createOralHistory(@Request() req, @Body() dto: CreateOralHistoryDto) {
+    return this.genealogyService.createOralHistory(req.user.userId, dto);
+  }
+
+  @Put('oral-histories/:id')
+  async updateOralHistory(@Param('id') id: string, @Request() req, @Body() dto: UpdateOralHistoryDto) {
+    return this.genealogyService.updateOralHistory(id, req.user.userId, dto);
+  }
+
+  @Delete('oral-histories/:id')
+  async deleteOralHistory(@Param('id') id: string, @Request() req) {
+    return this.genealogyService.deleteOralHistory(id, req.user.userId);
+  }
+
+  // ==================== Generational Comparisons ====================
+
+  @Get('generational-comparisons')
+  async getGenerationalComparisons(@Request() req) {
+    return this.genealogyService.getGenerationalComparisons(req.user.userId);
+  }
+
+  @Post('generational-comparisons')
+  async createGenerationalComparison(@Request() req, @Body() dto: CreateGenerationalComparisonDto) {
+    return this.genealogyService.createGenerationalComparison(req.user.userId, dto);
+  }
+
+  @Put('generational-comparisons/:id')
+  async updateGenerationalComparison(@Param('id') id: string, @Request() req, @Body() dto: UpdateGenerationalComparisonDto) {
+    return this.genealogyService.updateGenerationalComparison(id, req.user.userId, dto);
+  }
+
+  @Delete('generational-comparisons/:id')
+  async deleteGenerationalComparison(@Param('id') id: string, @Request() req) {
+    return this.genealogyService.deleteGenerationalComparison(id, req.user.userId);
+  }
+
+  // ==================== Update Geofenced Capsule ====================
+
+  @Put('geofenced-capsules/:id')
+  async updateGeofencedCapsule(@Param('id') id: string, @Request() req, @Body() dto: UpdateGeofencedCapsuleDto) {
+    return this.genealogyService.updateGeofencedCapsule(id, req.user.userId, dto);
+  }
+
+  @Delete('geofenced-capsules/:id')
+  async deleteGeofencedCapsule(@Param('id') id: string, @Request() req) {
+    return this.genealogyService.deleteGeofencedCapsule(id, req.user.userId);
+  }
+
+  // ==================== Update Legacy Letter ====================
+
+  @Put('legacy-letters/:id')
+  async updateLegacyLetter(@Param('id') id: string, @Request() req, @Body() dto: UpdateLegacyLetterDto) {
+    return this.genealogyService.updateLegacyLetter(id, req.user.userId, dto);
+  }
+
+  @Delete('legacy-letters/:id')
+  async deleteLegacyLetter(@Param('id') id: string, @Request() req) {
+    return this.genealogyService.deleteLegacyLetter(id, req.user.userId);
+  }
+
+  // ==================== Update Digital Memorial ====================
+
+  @Put('memorials/:id')
+  async updateDigitalMemorial(@Param('id') id: string, @Request() req, @Body() dto: UpdateDigitalMemorialDto) {
+    return this.genealogyService.updateDigitalMemorial(id, req.user.userId, dto);
+  }
+
+  @Delete('memorials/:id')
+  async deleteDigitalMemorial(@Param('id') id: string, @Request() req) {
+    return this.genealogyService.deleteDigitalMemorial(id, req.user.userId);
+  }
 }

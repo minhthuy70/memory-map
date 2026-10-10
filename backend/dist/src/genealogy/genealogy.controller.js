@@ -16,6 +16,7 @@ exports.GenealogyController = void 0;
 const common_1 = require("@nestjs/common");
 const genealogy_service_1 = require("./genealogy.service");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const genealogy_dto_1 = require("./dto/genealogy.dto");
 let GenealogyController = class GenealogyController {
     constructor(genealogyService) {
         this.genealogyService = genealogyService;
@@ -70,6 +71,72 @@ let GenealogyController = class GenealogyController {
     }
     async createFamilyRecipe(req, data) {
         return this.genealogyService.createFamilyRecipe(req.user.userId, data);
+    }
+    async getFamilyMembers(req) {
+        return this.genealogyService.getFamilyMembers(req.user.userId);
+    }
+    async createFamilyMember(req, dto) {
+        return this.genealogyService.createFamilyMember(req.user.userId, dto);
+    }
+    async updateFamilyMember(id, req, dto) {
+        return this.genealogyService.updateFamilyMember(id, req.user.userId, dto);
+    }
+    async deleteFamilyMember(id, req) {
+        return this.genealogyService.deleteFamilyMember(id, req.user.userId);
+    }
+    async getAncestralMigrations(req) {
+        return this.genealogyService.getAncestralMigrations(req.user.userId);
+    }
+    async createAncestralMigration(req, dto) {
+        return this.genealogyService.createAncestralMigration(req.user.userId, dto);
+    }
+    async updateAncestralMigration(id, req, dto) {
+        return this.genealogyService.updateAncestralMigration(id, req.user.userId, dto);
+    }
+    async deleteAncestralMigration(id, req) {
+        return this.genealogyService.deleteAncestralMigration(id, req.user.userId);
+    }
+    async getOralHistories(req) {
+        return this.genealogyService.getOralHistories(req.user.userId);
+    }
+    async createOralHistory(req, dto) {
+        return this.genealogyService.createOralHistory(req.user.userId, dto);
+    }
+    async updateOralHistory(id, req, dto) {
+        return this.genealogyService.updateOralHistory(id, req.user.userId, dto);
+    }
+    async deleteOralHistory(id, req) {
+        return this.genealogyService.deleteOralHistory(id, req.user.userId);
+    }
+    async getGenerationalComparisons(req) {
+        return this.genealogyService.getGenerationalComparisons(req.user.userId);
+    }
+    async createGenerationalComparison(req, dto) {
+        return this.genealogyService.createGenerationalComparison(req.user.userId, dto);
+    }
+    async updateGenerationalComparison(id, req, dto) {
+        return this.genealogyService.updateGenerationalComparison(id, req.user.userId, dto);
+    }
+    async deleteGenerationalComparison(id, req) {
+        return this.genealogyService.deleteGenerationalComparison(id, req.user.userId);
+    }
+    async updateGeofencedCapsule(id, req, dto) {
+        return this.genealogyService.updateGeofencedCapsule(id, req.user.userId, dto);
+    }
+    async deleteGeofencedCapsule(id, req) {
+        return this.genealogyService.deleteGeofencedCapsule(id, req.user.userId);
+    }
+    async updateLegacyLetter(id, req, dto) {
+        return this.genealogyService.updateLegacyLetter(id, req.user.userId, dto);
+    }
+    async deleteLegacyLetter(id, req) {
+        return this.genealogyService.deleteLegacyLetter(id, req.user.userId);
+    }
+    async updateDigitalMemorial(id, req, dto) {
+        return this.genealogyService.updateDigitalMemorial(id, req.user.userId, dto);
+    }
+    async deleteDigitalMemorial(id, req) {
+        return this.genealogyService.deleteDigitalMemorial(id, req.user.userId);
     }
 };
 exports.GenealogyController = GenealogyController;
@@ -201,6 +268,185 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], GenealogyController.prototype, "createFamilyRecipe", null);
+__decorate([
+    (0, common_1.Get)('family-members'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "getFamilyMembers", null);
+__decorate([
+    (0, common_1.Post)('family-members'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, genealogy_dto_1.CreateFamilyMemberDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "createFamilyMember", null);
+__decorate([
+    (0, common_1.Put)('family-members/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, genealogy_dto_1.UpdateFamilyMemberDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "updateFamilyMember", null);
+__decorate([
+    (0, common_1.Delete)('family-members/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "deleteFamilyMember", null);
+__decorate([
+    (0, common_1.Get)('ancestral-migrations'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "getAncestralMigrations", null);
+__decorate([
+    (0, common_1.Post)('ancestral-migrations'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, genealogy_dto_1.CreateAncestralMigrationDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "createAncestralMigration", null);
+__decorate([
+    (0, common_1.Put)('ancestral-migrations/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, genealogy_dto_1.UpdateAncestralMigrationDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "updateAncestralMigration", null);
+__decorate([
+    (0, common_1.Delete)('ancestral-migrations/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "deleteAncestralMigration", null);
+__decorate([
+    (0, common_1.Get)('oral-histories'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "getOralHistories", null);
+__decorate([
+    (0, common_1.Post)('oral-histories'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, genealogy_dto_1.CreateOralHistoryDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "createOralHistory", null);
+__decorate([
+    (0, common_1.Put)('oral-histories/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, genealogy_dto_1.UpdateOralHistoryDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "updateOralHistory", null);
+__decorate([
+    (0, common_1.Delete)('oral-histories/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "deleteOralHistory", null);
+__decorate([
+    (0, common_1.Get)('generational-comparisons'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "getGenerationalComparisons", null);
+__decorate([
+    (0, common_1.Post)('generational-comparisons'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, genealogy_dto_1.CreateGenerationalComparisonDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "createGenerationalComparison", null);
+__decorate([
+    (0, common_1.Put)('generational-comparisons/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, genealogy_dto_1.UpdateGenerationalComparisonDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "updateGenerationalComparison", null);
+__decorate([
+    (0, common_1.Delete)('generational-comparisons/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "deleteGenerationalComparison", null);
+__decorate([
+    (0, common_1.Put)('geofenced-capsules/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, genealogy_dto_1.UpdateGeofencedCapsuleDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "updateGeofencedCapsule", null);
+__decorate([
+    (0, common_1.Delete)('geofenced-capsules/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "deleteGeofencedCapsule", null);
+__decorate([
+    (0, common_1.Put)('legacy-letters/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, genealogy_dto_1.UpdateLegacyLetterDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "updateLegacyLetter", null);
+__decorate([
+    (0, common_1.Delete)('legacy-letters/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "deleteLegacyLetter", null);
+__decorate([
+    (0, common_1.Put)('memorials/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, genealogy_dto_1.UpdateDigitalMemorialDto]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "updateDigitalMemorial", null);
+__decorate([
+    (0, common_1.Delete)('memorials/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], GenealogyController.prototype, "deleteDigitalMemorial", null);
 exports.GenealogyController = GenealogyController = __decorate([
     (0, common_1.Controller)('genealogy'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
