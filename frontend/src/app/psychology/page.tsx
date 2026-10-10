@@ -3,6 +3,13 @@
 import GratitudeGrowthTree from '../../components/GratitudeGrowthTree';
 import DailySerendipity from '../../components/DailySerendipity';
 import ResilienceArchive from '../../components/ResilienceArchive';
+import EmotionalGeographyHeatmap from '../../components/EmotionalGeographyHeatmap';
+import ReminiscenceTherapy from '../../components/ReminiscenceTherapy';
+import InnerChildDialogue from '../../components/InnerChildDialogue';
+import BinauralSoundTherapy from '../../components/BinauralSoundTherapy';
+import ZenReflectionMode from '../../components/ZenReflectionMode';
+import EmotionalWaveformTimeline from '../../components/EmotionalWaveformTimeline';
+import DreamJournalMapAnchors from '../../components/DreamJournalMapAnchors';
 
 export default function PsychologyPage() {
   return (
@@ -34,6 +41,48 @@ export default function PsychologyPage() {
           <section>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Resilience & Strength Archive</h2>
             <ResilienceArchive />
+          </section>
+
+          {/* Emotional Geography Heatmap */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Emotional Geography & Wellbeing Heatmap</h2>
+            <EmotionalGeographyHeatmap />
+          </section>
+
+          {/* Reminiscence Therapy */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Reminiscence Therapy Workflow</h2>
+            <ReminiscenceTherapy />
+          </section>
+
+          {/* Inner Child Dialogue */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Inner Child Dialogue Space</h2>
+            <InnerChildDialogue />
+          </section>
+
+          {/* Binaural Sound Therapy */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Binaural Beats Memory Sound Therapy</h2>
+            <BinauralSoundTherapy />
+          </section>
+
+          {/* Zen Reflection Mode */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Digital Detox & Zen Reflection Mode</h2>
+            <ZenReflectionMode />
+          </section>
+
+          {/* Emotional Waveform Timeline */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Emotional Waveform Timeline</h2>
+            <EmotionalWaveformTimeline />
+          </section>
+
+          {/* Dream Journal */}
+          <section>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">Dream Journal with Map Anchors</h2>
+            <DreamJournalMapAnchors />
           </section>
         </div>
       </div>
