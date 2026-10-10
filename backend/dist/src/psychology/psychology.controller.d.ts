@@ -10,13 +10,13 @@ export declare class PsychologyController {
     constructor(psychologyService: PsychologyService);
     getEmotionalGeographyPoints(req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        memoryId: string;
+        intensity: number;
         latitude: number;
         longitude: number;
-        memoryId: string;
         emotionType: string;
-        intensity: number;
     }[]>;
     createEmotionalGeographyPoint(req: any, body: {
         memoryId: string;
@@ -26,18 +26,18 @@ export declare class PsychologyController {
         intensity: number;
     }): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        memoryId: string;
+        intensity: number;
         latitude: number;
         longitude: number;
-        memoryId: string;
         emotionType: string;
-        intensity: number;
     }>;
     getReminiscenceSessions(req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         memoryId: string | null;
         completedAt: Date | null;
         prompt: string;
@@ -48,8 +48,8 @@ export declare class PsychologyController {
     }[]>;
     createReminiscenceSession(req: any, dto: CreateReminiscenceTherapyDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         memoryId: string | null;
         completedAt: Date | null;
         prompt: string;
@@ -60,8 +60,8 @@ export declare class PsychologyController {
     }>;
     updateReminiscenceSession(id: string, req: any, dto: UpdateReminiscenceTherapyDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         memoryId: string | null;
         completedAt: Date | null;
         prompt: string;
@@ -72,8 +72,8 @@ export declare class PsychologyController {
     }>;
     getInnerChildDialogues(req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         prompt: string;
         response: string;
         childhoodPhotoUrl: string | null;
@@ -83,8 +83,8 @@ export declare class PsychologyController {
     }[]>;
     createInnerChildDialogue(req: any, dto: CreateInnerChildDialogueDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         prompt: string;
         response: string;
         childhoodPhotoUrl: string | null;
@@ -130,9 +130,9 @@ export declare class PsychologyController {
     }>;
     getZenReflectionMode(req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         theme: string;
         isEnabled: boolean;
         hideMetrics: boolean;
@@ -141,9 +141,9 @@ export declare class PsychologyController {
     }>;
     updateZenReflectionMode(req: any, dto: UpdateZenReflectionDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         theme: string;
         isEnabled: boolean;
         hideMetrics: boolean;
@@ -152,52 +152,52 @@ export declare class PsychologyController {
     }>;
     getEmotionalWaveforms(req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        intensity: number;
         mood: string;
         date: Date;
-        intensity: number;
         lifeChapter: string | null;
         note: string | null;
     }[]>;
     createEmotionalWaveform(req: any, dto: CreateEmotionalWaveformDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        intensity: number;
         mood: string;
         date: Date;
-        intensity: number;
         lifeChapter: string | null;
         note: string | null;
     }>;
     updateEmotionalWaveform(id: string, req: any, dto: UpdateEmotionalWaveformDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        intensity: number;
         mood: string;
         date: Date;
-        intensity: number;
         lifeChapter: string | null;
         note: string | null;
     }>;
     deleteEmotionalWaveform(id: string, req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        intensity: number;
         mood: string;
         date: Date;
-        intensity: number;
         lifeChapter: string | null;
         note: string | null;
     }>;
     getDreamJournals(req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         title: string;
+        description: string;
+        createdAt: Date;
         locationName: string | null;
         mood: string | null;
-        description: string;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string | null;
@@ -206,12 +206,12 @@ export declare class PsychologyController {
     }[]>;
     createDreamJournal(req: any, dto: CreateDreamJournalDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         title: string;
+        description: string;
+        createdAt: Date;
         locationName: string | null;
         mood: string | null;
-        description: string;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string | null;
@@ -220,12 +220,12 @@ export declare class PsychologyController {
     }>;
     updateDreamJournal(id: string, req: any, dto: UpdateDreamJournalDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         title: string;
+        description: string;
+        createdAt: Date;
         locationName: string | null;
         mood: string | null;
-        description: string;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string | null;
@@ -234,12 +234,12 @@ export declare class PsychologyController {
     }>;
     deleteDreamJournal(id: string, req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         title: string;
+        description: string;
+        createdAt: Date;
         locationName: string | null;
         mood: string | null;
-        description: string;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string | null;

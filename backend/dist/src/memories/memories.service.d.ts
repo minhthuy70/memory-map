@@ -37,31 +37,31 @@ export declare class MemoriesService {
     }): Promise<{
         user: {
             id: string;
-            email: string;
             name: string;
+            email: string;
             avatar: string;
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -86,25 +86,25 @@ export declare class MemoriesService {
         memories: ({
             category: {
                 id: string;
-                name: string;
                 createdAt: Date;
+                name: string;
                 color: string;
                 icon: string;
             };
             images: {
                 id: string;
                 createdAt: Date;
-                order: number;
                 memoryId: string;
                 imageUrl: string;
+                order: number;
             }[];
         } & {
             id: string;
+            userId: string;
+            title: string;
+            isPublic: boolean;
             createdAt: Date;
             updatedAt: Date;
-            userId: string;
-            isPublic: boolean;
-            title: string;
             content: string | null;
             latitude: number;
             longitude: number;
@@ -129,31 +129,31 @@ export declare class MemoriesService {
     findOne(id: string, userId: string): Promise<{
         user: {
             id: string;
-            email: string;
             name: string;
+            email: string;
             avatar: string;
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -179,25 +179,25 @@ export declare class MemoriesService {
     }): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -212,11 +212,11 @@ export declare class MemoriesService {
     }>;
     delete(id: string, userId: string): Promise<{
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -232,23 +232,23 @@ export declare class MemoriesService {
     addImage(memoryId: string, userId: string, imageUrl: string): Promise<{
         id: string;
         createdAt: Date;
-        order: number;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     deleteImage(imageId: string, userId: string): Promise<{
         id: string;
         createdAt: Date;
-        order: number;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     updateImageOrder(imageId: string, userId: string, order: number): Promise<{
         id: string;
         createdAt: Date;
-        order: number;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     getStatistics(userId: string): Promise<{
         totalMemories: number;
@@ -283,25 +283,25 @@ export declare class MemoriesService {
     getPublicMemoryBySlug(slug: string): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;

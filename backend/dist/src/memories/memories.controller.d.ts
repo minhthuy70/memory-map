@@ -7,31 +7,31 @@ export declare class MemoriesController {
     create(req: any, createMemoryDto: CreateMemoryDto): Promise<{
         user: {
             id: string;
-            email: string;
             name: string;
+            email: string;
             avatar: string;
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -48,25 +48,25 @@ export declare class MemoriesController {
         memories: ({
             category: {
                 id: string;
-                name: string;
                 createdAt: Date;
+                name: string;
                 color: string;
                 icon: string;
             };
             images: {
                 id: string;
                 createdAt: Date;
-                order: number;
                 memoryId: string;
                 imageUrl: string;
+                order: number;
             }[];
         } & {
             id: string;
+            userId: string;
+            title: string;
+            isPublic: boolean;
             createdAt: Date;
             updatedAt: Date;
-            userId: string;
-            isPublic: boolean;
-            title: string;
             content: string | null;
             latitude: number;
             longitude: number;
@@ -127,25 +127,25 @@ export declare class MemoriesController {
     getPublicMemory(slug: string): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -161,31 +161,31 @@ export declare class MemoriesController {
     findOne(id: string, req: any): Promise<{
         user: {
             id: string;
-            email: string;
             name: string;
+            email: string;
             avatar: string;
         };
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -202,25 +202,25 @@ export declare class MemoriesController {
     update(id: string, req: any, updateMemoryDto: UpdateMemoryDto): Promise<{
         category: {
             id: string;
-            name: string;
             createdAt: Date;
+            name: string;
             color: string;
             icon: string;
         };
         images: {
             id: string;
             createdAt: Date;
-            order: number;
             memoryId: string;
             imageUrl: string;
+            order: number;
         }[];
     } & {
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -235,11 +235,11 @@ export declare class MemoriesController {
     }>;
     delete(id: string, req: any): Promise<{
         id: string;
+        userId: string;
+        title: string;
+        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
-        title: string;
         content: string | null;
         latitude: number;
         longitude: number;
@@ -255,23 +255,23 @@ export declare class MemoriesController {
     addImage(id: string, req: any, imageUrl: string): Promise<{
         id: string;
         createdAt: Date;
-        order: number;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     deleteImage(memoryId: string, imageId: string, req: any): Promise<{
         id: string;
         createdAt: Date;
-        order: number;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     updateImageOrder(memoryId: string, imageId: string, req: any, order: number): Promise<{
         id: string;
         createdAt: Date;
-        order: number;
         memoryId: string;
         imageUrl: string;
+        order: number;
     }>;
     generatePublicLink(id: string, req: any): Promise<{
         slug: string;

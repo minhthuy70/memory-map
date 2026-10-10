@@ -10,10 +10,10 @@ export declare class HybridCloudController {
     private readonly hybridCloudService;
     constructor(hybridCloudService: HybridCloudService);
     createOfflineSync(req: any, dto: CreateOfflineSyncDto): Promise<{
-        data: string;
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        data: string;
         entityType: string;
         entityId: string;
         operation: string;
@@ -21,10 +21,10 @@ export declare class HybridCloudController {
         isSynced: boolean;
     }>;
     getPendingSyncs(req: any): Promise<{
-        data: string;
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        data: string;
         entityType: string;
         entityId: string;
         operation: string;
@@ -36,10 +36,10 @@ export declare class HybridCloudController {
         syncedCount: number;
     }>;
     markSynced(id: string): Promise<{
-        data: string;
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        data: string;
         entityType: string;
         entityId: string;
         operation: string;
@@ -48,12 +48,12 @@ export declare class HybridCloudController {
     }>;
     createNASBackup(req: any, dto: CreateNASBackupDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
         isActive: boolean;
-        userId: string;
-        provider: string;
         status: string;
+        provider: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
@@ -62,12 +62,12 @@ export declare class HybridCloudController {
     }>;
     getNASBackups(req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
         isActive: boolean;
-        userId: string;
-        provider: string;
         status: string;
+        provider: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
@@ -76,12 +76,12 @@ export declare class HybridCloudController {
     }[]>;
     getNASBackup(id: string, req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
         isActive: boolean;
-        userId: string;
-        provider: string;
         status: string;
+        provider: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
@@ -90,12 +90,12 @@ export declare class HybridCloudController {
     }>;
     updateNASBackup(id: string, req: any, dto: UpdateNASBackupDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
         isActive: boolean;
-        userId: string;
-        provider: string;
         status: string;
+        provider: string;
         backupPath: string;
         backupSize: bigint;
         lastBackupAt: Date | null;
@@ -112,8 +112,8 @@ export declare class HybridCloudController {
     createVaultExport(req: any, dto: CreateVaultExportDto): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -124,8 +124,8 @@ export declare class HybridCloudController {
     getVaultExports(req: any): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -136,8 +136,8 @@ export declare class HybridCloudController {
     getVaultExport(id: string, req: any): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -148,8 +148,8 @@ export declare class HybridCloudController {
     verifyVaultExportAccess(dto: DownloadVaultExportDto): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -162,9 +162,9 @@ export declare class HybridCloudController {
     }>;
     createUserWidget(req: any, dto: CreateUserWidgetDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         widgetId: string;
         widgetType: string;
         widgetName: string;
@@ -174,9 +174,9 @@ export declare class HybridCloudController {
     }>;
     getUserWidgets(req: any, query: GetWidgetsDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         widgetId: string;
         widgetType: string;
         widgetName: string;
@@ -186,9 +186,9 @@ export declare class HybridCloudController {
     }[]>;
     getUserWidget(id: string, req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         widgetId: string;
         widgetType: string;
         widgetName: string;
@@ -198,9 +198,9 @@ export declare class HybridCloudController {
     }>;
     updateUserWidget(id: string, req: any, dto: UpdateUserWidgetDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         widgetId: string;
         widgetType: string;
         widgetName: string;
@@ -212,30 +212,30 @@ export declare class HybridCloudController {
         message: string;
     }>;
     createClipboardSync(req: any, dto: CreateClipboardSyncDto): Promise<{
-        data: string;
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        data: string;
         expiresAt: Date;
         clipboardId: string;
         dataType: string;
         sourceDevice: string;
     }>;
     getClipboardSync(clipboardId: string, req: any): Promise<{
-        data: string;
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        data: string;
         expiresAt: Date;
         clipboardId: string;
         dataType: string;
         sourceDevice: string;
     }>;
     getClipboardSyncs(req: any): Promise<{
-        data: string;
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        data: string;
         expiresAt: Date;
         clipboardId: string;
         dataType: string;
@@ -249,9 +249,9 @@ export declare class HybridCloudController {
     }>;
     createDesktopApp(req: any, dto: CreateDesktopAppDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         platform: string;
         version: string;
         installPath: string | null;
@@ -262,9 +262,9 @@ export declare class HybridCloudController {
     }>;
     getDesktopApps(req: any, platform?: Platform): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         platform: string;
         version: string;
         installPath: string | null;
@@ -275,9 +275,9 @@ export declare class HybridCloudController {
     }[]>;
     getDesktopApp(id: string, req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         platform: string;
         version: string;
         installPath: string | null;
@@ -288,9 +288,9 @@ export declare class HybridCloudController {
     }>;
     updateDesktopApp(id: string, req: any, dto: UpdateDesktopAppDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         platform: string;
         version: string;
         installPath: string | null;
@@ -304,9 +304,9 @@ export declare class HybridCloudController {
     }>;
     updateDesktopAppSync(id: string, req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         platform: string;
         version: string;
         installPath: string | null;
@@ -317,9 +317,9 @@ export declare class HybridCloudController {
     }>;
     createWildernessDataSaver(req: any, dto: CreateWildernessDataSaverDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         mode: string;
         isEnabled: boolean;
         compression: string;
@@ -332,9 +332,9 @@ export declare class HybridCloudController {
     }>;
     getWildernessDataSaver(req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         mode: string;
         isEnabled: boolean;
         compression: string;
@@ -347,9 +347,9 @@ export declare class HybridCloudController {
     }>;
     updateWildernessDataSaver(req: any, dto: UpdateWildernessDataSaverDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         mode: string;
         isEnabled: boolean;
         compression: string;
@@ -362,9 +362,9 @@ export declare class HybridCloudController {
     }>;
     triggerWildernessMode(req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         mode: string;
         isEnabled: boolean;
         compression: string;
@@ -377,9 +377,9 @@ export declare class HybridCloudController {
     }>;
     disableWildernessMode(req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         mode: string;
         isEnabled: boolean;
         compression: string;

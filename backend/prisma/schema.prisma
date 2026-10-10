@@ -120,6 +120,14 @@ model User {
   // Audiovisual Creative Studio
   scrapbookProjects ScrapbookProject[]
   soundscapeMixes SoundscapeMix[]
+  handwritingCanvases HandwritingCanvas[]
+  vintageFilms VintageFilmEmulation[]
+  livePhotos LivePhotoMotionViewer[]
+  beforeAfterSliders BeforeAfterSlider[]
+  typographyStamps TypographyStampStudio[]
+  beatSyncVideos BeatSyncVideoGenerator[]
+  aiVoiceovers AIVoiceoverCommentary[]
+  memorySoundtracks MemorySoundtrackMashup[]
 
   // Advanced Trip Planning
   itineraries Itinerary[]
@@ -1567,7 +1575,7 @@ model ScrapbookProject {
   isPublic    Boolean  @default(false) @map("is_public")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([isPublic])
@@ -1590,6 +1598,151 @@ model SoundscapeMix {
   @@map("soundscape_mixes")
 }
 
+model HandwritingCanvas {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  imageUrl    String?  @map("image_url")
+  drawingData String   @map("drawing_data") // JSON of stroke paths
+  brushType   String   @map("brush_type") // pen, pencil, highlighter
+  brushColor  String   @map("brush_color")
+  brushSize   Int      @map("brush_size")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("handwriting_canvases")
+}
+
+model VintageFilmEmulation {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  originalImageUrl String @map("original_image_url")
+  filterType  String   @map("filter_type") // kodak_portra, fuji_velvia, ilford_bw, polaroid, vhs
+  intensity   Float    // 0-1
+  grainAmount Float    @map("grain_amount") // 0-1
+  lightLeak   String?  @map("light_leak") // JSON color and position
+  dateStamp  String?  @map("date_stamp") // overlay text
+  processedImageUrl String? @map("processed_image_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("vintage_films")
+}
+
+model LivePhotoMotionViewer {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  photoUrl    String   @map("photo_url")
+  videoUrl    String?  @map("video_url")
+  keyframeUrl String?  @map("keyframe_url")
+  platform    String   // ios, android
+  duration    Int?     // seconds
+  isLoop      Boolean  @default(false) @map("is_loop")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("live_photos")
+}
+
+model BeforeAfterSlider {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  beforeImageUrl String @map("before_image_url")
+  afterImageUrl  String  @map("after_image_url")
+  memoryId    String?  @map("memory_id")
+  orientation String   @default("horizontal") // horizontal, vertical
+  sliderPosition Float @default(0.5) @map("slider_position") // 0-1
+  blendMode   String   @default("normal") @map("blend_mode") // normal, multiply, screen, overlay
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("before_after_sliders")
+}
+
+model TypographyStampStudio {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  text        String
+  fontName    String   @map("font_name")
+  fontSize    Int      @map("font_size")
+  fontColor   String   @map("font_color")
+  stampType   String   @map("stamp_type") // postmark, wax_seal, watermark
+  positionX   Int      @map("position_x")
+  positionY   Int      @map("position_y")
+  rotation    Int      @default(0)
+  memoryId    String?  @map("memory_id")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("typography_stamps")
+}
+
+model BeatSyncVideoGenerator {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryIds   String   @map("memory_ids") // JSON array
+  audioUrl    String   @map("audio_url")
+  beatPattern String   @map("beat_pattern") // JSON of beat timestamps
+  pacing      String   @default("energetic") // energetic, chill, custom
+  transitionStyle String @default("fade") @map("transition_style") // fade, slide, zoom, wipe
+  videoUrl    String?  @map("video_url")
+  status      String   @default("pending") // pending, processing, completed, failed
+  createdAt   DateTime @default(now()) @map("created_at")
+  processedAt DateTime? @map("processed_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("beat_sync_videos")
+}
+
+model AIVoiceoverCommentary {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  audioUrl    String   @map("audio_url")
+  duration    Int      // seconds
+  transcript  String?  @db.Text
+  timestamps  String   @map("timestamps") // JSON of photo timestamps
+  noiseLevel  Float    @default(0) @map("noise_level") // 0-1
+  vocalFilter String   @default("broadcast") @map("vocal_filter") // broadcast, warm, natural
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("ai_voiceovers")
+}
+
+model MemorySoundtrackMashup {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  spotifyTrackId String? @map("spotify_track_id")
+  fieldRecordingUrl String? @map("field_recording_url")
+  mixSettings String   @map("mix_settings") // JSON of volume levels, ducking, fade
+  outputUrl   String?  @map("output_url")
+  duration    Int      // seconds
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("memory_soundtracks")
+}
+
 // Advanced Trip Planning
 model Itinerary {
   id          String   @id @default(uuid())
@@ -1602,7 +1755,7 @@ model Itinerary {
   isShared    Boolean  @default(false) @map("is_shared")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([startDate])
@@ -1638,7 +1791,7 @@ model PackingList {
   isCompleted Boolean  @default(false) @map("is_completed")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([itineraryId])

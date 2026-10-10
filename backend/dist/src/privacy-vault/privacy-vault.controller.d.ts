@@ -11,10 +11,10 @@ export declare class PrivacyVaultController {
     constructor(privacyVaultService: PrivacyVaultService);
     createVaultMemory(req: any, dto: CreateVaultMemoryDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        expiresAt: Date | null;
+        createdAt: Date;
         memoryId: string;
+        expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -25,10 +25,10 @@ export declare class PrivacyVaultController {
     }>;
     getVaultMemories(req: any, vaultType?: VaultType): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        expiresAt: Date | null;
+        createdAt: Date;
         memoryId: string;
+        expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -39,10 +39,10 @@ export declare class PrivacyVaultController {
     }[]>;
     getVaultMemory(id: string, req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        expiresAt: Date | null;
+        createdAt: Date;
         memoryId: string;
+        expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -53,10 +53,10 @@ export declare class PrivacyVaultController {
     }>;
     updateVaultMemory(id: string, req: any, dto: UpdateVaultMemoryDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        expiresAt: Date | null;
+        createdAt: Date;
         memoryId: string;
+        expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -70,10 +70,10 @@ export declare class PrivacyVaultController {
     }>;
     accessVaultMemory(id: string, req: any, dto: AccessVaultMemoryDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        expiresAt: Date | null;
+        createdAt: Date;
         memoryId: string;
+        expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -84,10 +84,10 @@ export declare class PrivacyVaultController {
     }>;
     destroyVaultMemory(id: string, req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        expiresAt: Date | null;
+        createdAt: Date;
         memoryId: string;
+        expiresAt: Date | null;
         maxViews: number | null;
         viewCount: number;
         vaultType: string;
@@ -98,8 +98,8 @@ export declare class PrivacyVaultController {
     }>;
     createAuditLog(req: any, dto: CreateAuditLogDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         ipAddress: string | null;
         entityType: string;
         entityId: string | null;
@@ -111,8 +111,8 @@ export declare class PrivacyVaultController {
     }>;
     getAuditLogs(req: any, query: GetAuditLogsDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         ipAddress: string | null;
         entityType: string;
         entityId: string | null;
@@ -128,10 +128,10 @@ export declare class PrivacyVaultController {
     }>;
     createDuressPassword(req: any, dto: CreateDuressPasswordDto): Promise<{
         id: string;
-        passwordHash: string;
-        createdAt: Date;
-        lastUsedAt: Date | null;
         userId: string;
+        createdAt: Date;
+        passwordHash: string;
+        lastUsedAt: Date | null;
         isEmergency: boolean;
         alertSent: boolean;
         alertContacts: string;
@@ -147,10 +147,10 @@ export declare class PrivacyVaultController {
     }>;
     getDuressPasswords(req: any): Promise<{
         id: string;
-        passwordHash: string;
-        createdAt: Date;
-        lastUsedAt: Date | null;
         userId: string;
+        createdAt: Date;
+        passwordHash: string;
+        lastUsedAt: Date | null;
         isEmergency: boolean;
         alertSent: boolean;
         alertContacts: string;
@@ -171,9 +171,9 @@ export declare class PrivacyVaultController {
     }>;
     createCalculatorCamouflage(req: any, dto: CreateCalculatorCamouflageDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         isEnabled: boolean;
         secretPin: string;
         decoyName: string;
@@ -181,9 +181,9 @@ export declare class PrivacyVaultController {
     }>;
     getCalculatorCamouflage(req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         isEnabled: boolean;
         secretPin: string;
         decoyName: string;
@@ -191,9 +191,9 @@ export declare class PrivacyVaultController {
     }>;
     updateCalculatorCamouflage(req: any, dto: UpdateCalculatorCamouflageDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         isEnabled: boolean;
         secretPin: string;
         decoyName: string;
@@ -210,9 +210,9 @@ export declare class PrivacyVaultController {
     }>;
     createZeroKnowledgeE2EE(req: any, dto: CreateZeroKnowledgeE2EEDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         isEnabled: boolean;
         masterKey: string;
         algorithm: string;
@@ -221,9 +221,9 @@ export declare class PrivacyVaultController {
     }>;
     getZeroKnowledgeE2EE(req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         isEnabled: boolean;
         masterKey: string;
         algorithm: string;
@@ -232,9 +232,9 @@ export declare class PrivacyVaultController {
     }>;
     updateZeroKnowledgeE2EE(req: any, dto: UpdateZeroKnowledgeE2EEDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         isEnabled: boolean;
         masterKey: string;
         algorithm: string;
@@ -245,9 +245,9 @@ export declare class PrivacyVaultController {
         newMasterKey: string;
     }): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         isEnabled: boolean;
         masterKey: string;
         algorithm: string;
@@ -259,8 +259,8 @@ export declare class PrivacyVaultController {
     }>;
     createExifSanitizer(req: any, dto: CreateExifSanitizerDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         photoId: string;
         originalExif: string;
         sanitizedExif: string;
@@ -272,8 +272,8 @@ export declare class PrivacyVaultController {
     }>;
     getExifSanitizers(req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         photoId: string;
         originalExif: string;
         sanitizedExif: string;
@@ -285,8 +285,8 @@ export declare class PrivacyVaultController {
     }[]>;
     getExifSanitizer(id: string, req: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         photoId: string;
         originalExif: string;
         sanitizedExif: string;
@@ -298,8 +298,8 @@ export declare class PrivacyVaultController {
     }>;
     updateExifSanitizer(id: string, req: any, dto: UpdateExifSanitizerDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         photoId: string;
         originalExif: string;
         sanitizedExif: string;
@@ -314,33 +314,33 @@ export declare class PrivacyVaultController {
     }>;
     createScreenshotPrevention(req: any, dto: CreateScreenshotPreventionDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isEnabled: boolean;
         platform: string;
+        isEnabled: boolean;
         watermarkEnabled: boolean;
         watermarkText: string | null;
         blurPreview: boolean;
     }>;
     getScreenshotPrevention(req: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isEnabled: boolean;
         platform: string;
+        isEnabled: boolean;
         watermarkEnabled: boolean;
         watermarkText: string | null;
         blurPreview: boolean;
     }>;
     updateScreenshotPrevention(req: any, dto: UpdateScreenshotPreventionDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isEnabled: boolean;
         platform: string;
+        isEnabled: boolean;
         watermarkEnabled: boolean;
         watermarkText: string | null;
         blurPreview: boolean;
