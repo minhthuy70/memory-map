@@ -4,8 +4,8 @@ export declare class SessionsService {
     constructor(prisma: PrismaService);
     createSession(userId: string, token: string, deviceInfo?: string, ipAddress?: string, rememberMe?: boolean): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
@@ -15,23 +15,23 @@ export declare class SessionsService {
     findByToken(token: string): Promise<{
         user: {
             id: string;
-            updatedAt: Date;
-            name: string | null;
-            createdAt: Date;
             email: string;
-            facebookId: string | null;
-            googleId: string | null;
-            resetPasswordToken: string | null;
             passwordHash: string | null;
+            name: string | null;
             avatar: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             lockedUntil: Date | null;
             loginAttempts: number;
             isActive: boolean;
             lastLoginAt: Date | null;
+            facebookId: string | null;
+            googleId: string | null;
             isEmailVerified: boolean;
             verificationCode: string | null;
             verificationExpires: Date | null;
             resetPasswordExpires: Date | null;
+            resetPasswordToken: string | null;
             pendingEmail: string | null;
             twoFactorEnabled: boolean;
             twoFactorSecret: string | null;
@@ -42,8 +42,8 @@ export declare class SessionsService {
         };
     } & {
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
@@ -52,8 +52,8 @@ export declare class SessionsService {
     }>;
     updateLastActivity(token: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
@@ -62,8 +62,8 @@ export declare class SessionsService {
     }>;
     getUserSessions(userId: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;

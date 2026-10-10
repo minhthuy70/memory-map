@@ -97,9 +97,13 @@ model User {
   emotionalGeographyPoints EmotionalGeographyPoint[]
   gratitudeEntries GratitudeEntry[]
   resilienceMoments ResilienceMoment[]
-  dailySerendipities DailySerendipity?
+  reminiscenceTherapySessions ReminiscenceTherapySession[]
+  innerChildDialogues InnerChildDialogue[]
+  binauralSoundTherapies BinauralSoundTherapy[]
+  zenReflectionMode ZenReflectionMode?
   emotionalWaveforms EmotionalWaveform[]
   dreamJournals DreamJournal[]
+  dailySerendipities DailySerendipity[]
 
   // Genealogy & Time Travel
   timeLockedCapsules TimeLockedCapsule[]
@@ -1240,6 +1244,74 @@ model ResilienceMoment {
   @@map("resilience_moments")
 }
 
+model ReminiscenceTherapySession {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  prompt      String   @db.Text
+  response    String?  @db.Text
+  sensoryCue  String?  @map("sensory_cue") // song, smell, location
+  moodBefore  String?  @map("mood_before") // happy, sad, neutral
+  moodAfter   String?  @map("mood_after")
+  completedAt DateTime? @map("completed_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("reminiscence_therapy_sessions")
+}
+
+model InnerChildDialogue {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  childhoodPhotoUrl String? @map("childhood_photo_url")
+  age        Int
+  prompt     String   @db.Text
+  response   String   @db.Text
+  emotionalTone String? @map("emotional_tone") // compassionate, curious, sad, hopeful
+  reflectionType String? @map("reflection_type") // healing, milestone, gratitude
+  createdAt DateTime @default(now()) @map("created_at")
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("inner_child_dialogues")
+}
+
+model BinauralSoundTherapy {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  frequency   String   // alpha, theta, delta, 432hz
+  duration    Int      // in minutes
+  natureSound String?  @map("nature_sound") // rain, ocean, forest, birds
+  moodBefore  String?  @map("mood_before")
+  moodAfter   String?  @map("mood_after")
+  notes       String?  @db.Text
+  playedAt    DateTime @default(now()) @map("played_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([frequency])
+  @@map("binaural_sound_therapies")
+}
+
+model ZenReflectionMode {
+  id          String   @id @default(uuid())
+  userId      String   @unique @map("user_id")
+  isEnabled   Boolean  @default(false) @map("is_enabled")
+  theme       String   @default("monochrome") // monochrome, warm, nature
+  hideMetrics Boolean  @default(true) @map("hide_metrics")
+  breathingReminder Boolean @default(false) @map("breathing_reminder")
+  breathingInterval Int @default(5) @map("breathing_interval") // in minutes
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("zen_reflection_modes")
+}
+
 model DailySerendipity {
   id          String   @id @default(uuid())
   userId      String   @unique @map("user_id")
@@ -1250,7 +1322,7 @@ model DailySerendipity {
   moodBefore  String?  @map("mood_before") // happy, neutral, sad
   moodAfter   String?  @map("mood_after")
   createdAt   DateTime @default(now()) @map("created_at")
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([date])
@@ -1261,11 +1333,12 @@ model EmotionalWaveform {
   id          String   @id @default(uuid())
   userId      String   @map("user_id")
   date        DateTime @map("date")
-  mood        Float    // -1 to 1 (negative to positive)
-  stressLevel Float   @map("stress_level") // 0-1
-  notes       String?
+  mood        String   // happiness, sadness, anger, peace, stress, excitement
+  intensity   Float    // 0-1
+  lifeChapter String?  @map("life_chapter") // college, travel, marriage, career
+  note        String?  @db.Text
   createdAt   DateTime @default(now()) @map("created_at")
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([date])
@@ -1279,12 +1352,13 @@ model DreamJournal {
   description String   @db.Text
   dreamDate   DateTime @default(now()) @map("dream_date")
   isLucid     Boolean  @default(false) @map("is_lucid")
-  symbols     String   @map("symbols") // JSON array of dream symbols
+  symbols     String?  @map("symbols") // JSON array of dream symbols
   locationLatitude Float? @map("location_latitude")
   locationLongitude Float? @map("location_longitude")
   locationName String?  @map("location_name")
+  mood        String?  // happy, scary, confusing, peaceful
   createdAt   DateTime @default(now()) @map("created_at")
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([dreamDate])

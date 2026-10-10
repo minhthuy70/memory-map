@@ -16,103 +16,166 @@ let PsychologyService = class PsychologyService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async getGratitudeEntries(userId) {
-        return this.prisma.gratitudeEntry.findMany({
+    async getEmotionalGeographyPoints(userId) {
+        return this.prisma.emotionalGeographyPoint.findMany({
             where: { userId },
             orderBy: { createdAt: 'desc' },
         });
     }
-    async createGratitudeEntry(userId, data) {
-        return this.prisma.gratitudeEntry.create({
+    async createEmotionalGeographyPoint(userId, memoryId, latitude, longitude, emotionType, intensity) {
+        return this.prisma.emotionalGeographyPoint.create({
             data: {
                 user: { connect: { id: userId } },
-                content: data.content,
-                category: data.category,
-                memoryId: data.memoryId,
-                isShared: data.isShared ?? false,
+                memoryId,
+                latitude,
+                longitude,
+                emotionType,
+                intensity,
             },
         });
     }
-    async getResilienceMoments(userId) {
-        return this.prisma.resilienceMoment.findMany({
+    async getReminiscenceSessions(userId) {
+        return this.prisma.reminiscenceTherapySession.findMany({
             where: { userId },
-            orderBy: { date: 'desc' },
+            orderBy: { createdAt: 'desc' },
         });
     }
-    async createResilienceMoment(userId, data) {
-        return this.prisma.resilienceMoment.create({
+    async createReminiscenceSession(userId, dto) {
+        return this.prisma.reminiscenceTherapySession.create({
             data: {
                 user: { connect: { id: userId } },
-                title: data.title,
-                description: data.description,
-                date: new Date(data.date),
-                difficulty: data.difficulty,
-                selfEncouragement: data.selfEncouragement,
+                ...dto,
             },
         });
     }
-    async getDailySerendipity(userId) {
-        let serendipity = await this.prisma.dailySerendipity.findUnique({
+    async updateReminiscenceSession(id, userId, dto) {
+        const session = await this.prisma.reminiscenceTherapySession.findUnique({
+            where: { id },
+        });
+        if (!session) {
+            throw new common_1.NotFoundException('Session not found');
+        }
+        if (session.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.reminiscenceTherapySession.update({
+            where: { id },
+            data: {
+                ...dto,
+                completedAt: dto.response ? new Date() : null,
+            },
+        });
+    }
+    async getInnerChildDialogues(userId) {
+        return this.prisma.innerChildDialogue.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createInnerChildDialogue(userId, dto) {
+        return this.prisma.innerChildDialogue.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+            },
+        });
+    }
+    async getBinauralTherapies(userId) {
+        return this.prisma.binauralSoundTherapy.findMany({
+            where: { userId },
+            orderBy: { playedAt: 'desc' },
+        });
+    }
+    async createBinauralTherapy(userId, dto) {
+        return this.prisma.binauralSoundTherapy.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+            },
+        });
+    }
+    async updateBinauralTherapy(id, userId, dto) {
+        const therapy = await this.prisma.binauralSoundTherapy.findUnique({
+            where: { id },
+        });
+        if (!therapy) {
+            throw new common_1.NotFoundException('Therapy session not found');
+        }
+        if (therapy.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.binauralSoundTherapy.update({
+            where: { id },
+            data: dto,
+        });
+    }
+    async getZenReflectionMode(userId) {
+        let zenMode = await this.prisma.zenReflectionMode.findUnique({
             where: { userId },
         });
-        if (!serendipity) {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            const randomMemory = await this.prisma.memory.findFirst({
-                where: { userId },
+        if (!zenMode) {
+            zenMode = await this.prisma.zenReflectionMode.create({
+                data: {
+                    userId,
+                    isEnabled: false,
+                    theme: 'monochrome',
+                    hideMetrics: true,
+                    breathingReminder: false,
+                    breathingInterval: 5,
+                },
             });
-            if (randomMemory) {
-                serendipity = await this.prisma.dailySerendipity.create({
-                    data: {
-                        user: { connect: { id: userId } },
-                        memoryId: randomMemory.id,
-                        date: today,
-                    },
-                });
-            }
         }
-        return serendipity;
+        return zenMode;
     }
-    async markViewed(userId, moodBefore, moodAfter) {
-        const serendipity = await this.prisma.dailySerendipity.findUnique({
-            where: { userId },
-        });
-        if (!serendipity) {
-            throw new common_1.NotFoundException('Daily serendipity not found');
-        }
-        return this.prisma.dailySerendipity.update({
-            where: { userId },
-            data: {
-                isViewed: true,
-                viewedAt: new Date(),
-                moodBefore,
-                moodAfter,
-            },
+    async updateZenReflectionMode(userId, dto) {
+        const zenMode = await this.getZenReflectionMode(userId);
+        return this.prisma.zenReflectionMode.update({
+            where: { id: zenMode.id },
+            data: dto,
         });
     }
-    async getEmotionalWaveforms(userId, startDate, endDate) {
-        const where = { userId };
-        if (startDate || endDate) {
-            where.date = {};
-            if (startDate)
-                where.date.gte = startDate;
-            if (endDate)
-                where.date.lte = endDate;
-        }
+    async getEmotionalWaveforms(userId) {
         return this.prisma.emotionalWaveform.findMany({
-            where,
+            where: { userId },
             orderBy: { date: 'asc' },
         });
     }
-    async createEmotionalWaveform(userId, data) {
+    async createEmotionalWaveform(userId, dto) {
         return this.prisma.emotionalWaveform.create({
             data: {
                 user: { connect: { id: userId } },
-                date: new Date(data.date),
-                mood: data.mood,
-                stressLevel: data.stressLevel,
-                notes: data.notes,
+                date: new Date(dto.date),
+                ...dto,
             },
+        });
+    }
+    async updateEmotionalWaveform(id, userId, dto) {
+        const waveform = await this.prisma.emotionalWaveform.findUnique({
+            where: { id },
+        });
+        if (!waveform) {
+            throw new common_1.NotFoundException('Waveform entry not found');
+        }
+        if (waveform.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.emotionalWaveform.update({
+            where: { id },
+            data: dto,
+        });
+    }
+    async deleteEmotionalWaveform(id, userId) {
+        const waveform = await this.prisma.emotionalWaveform.findUnique({
+            where: { id },
+        });
+        if (!waveform) {
+            throw new common_1.NotFoundException('Waveform entry not found');
+        }
+        if (waveform.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.emotionalWaveform.delete({
+            where: { id },
         });
     }
     async getDreamJournals(userId) {
@@ -121,19 +184,45 @@ let PsychologyService = class PsychologyService {
             orderBy: { dreamDate: 'desc' },
         });
     }
-    async createDreamJournal(userId, data) {
+    async createDreamJournal(userId, dto) {
         return this.prisma.dreamJournal.create({
             data: {
                 user: { connect: { id: userId } },
-                title: data.title,
-                description: data.description,
-                dreamDate: new Date(data.dreamDate),
-                isLucid: data.isLucid ?? false,
-                symbols: JSON.stringify(data.symbols || []),
-                locationLatitude: data.locationLatitude,
-                locationLongitude: data.locationLongitude,
-                locationName: data.locationName,
+                dreamDate: new Date(dto.dreamDate),
+                ...dto,
             },
+        });
+    }
+    async updateDreamJournal(id, userId, dto) {
+        const journal = await this.prisma.dreamJournal.findUnique({
+            where: { id },
+        });
+        if (!journal) {
+            throw new common_1.NotFoundException('Dream journal not found');
+        }
+        if (journal.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.dreamJournal.update({
+            where: { id },
+            data: {
+                ...dto,
+                dreamDate: dto.dreamDate ? new Date(dto.dreamDate) : undefined,
+            },
+        });
+    }
+    async deleteDreamJournal(id, userId) {
+        const journal = await this.prisma.dreamJournal.findUnique({
+            where: { id },
+        });
+        if (!journal) {
+            throw new common_1.NotFoundException('Dream journal not found');
+        }
+        if (journal.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.dreamJournal.delete({
+            where: { id },
         });
     }
 };

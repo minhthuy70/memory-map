@@ -4,70 +4,70 @@ export declare class TripPlanningController {
     constructor(tripPlanningService: TripPlanningService);
     getItineraries(req: any): Promise<{
         id: string;
-        userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         title: string;
         startDate: Date;
         endDate: Date;
-        isShared: boolean;
         destination: string;
         itineraryData: string;
+        isShared: boolean;
     }[]>;
     getItinerary(req: any, id: string): Promise<{
         id: string;
-        userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         title: string;
         startDate: Date;
         endDate: Date;
-        isShared: boolean;
         destination: string;
         itineraryData: string;
+        isShared: boolean;
     }>;
     createItinerary(req: any, data: any): Promise<{
         id: string;
-        userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         title: string;
         startDate: Date;
         endDate: Date;
-        isShared: boolean;
         destination: string;
         itineraryData: string;
+        isShared: boolean;
     }>;
     updateItinerary(req: any, id: string, data: any): Promise<{
         id: string;
-        userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         title: string;
         startDate: Date;
         endDate: Date;
-        isShared: boolean;
         destination: string;
         itineraryData: string;
+        isShared: boolean;
     }>;
     deleteItinerary(req: any, id: string): Promise<{
         id: string;
-        userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         title: string;
         startDate: Date;
         endDate: Date;
-        isShared: boolean;
         destination: string;
         itineraryData: string;
+        isShared: boolean;
     }>;
     getTripExpenses(req: any, itineraryId?: string): Promise<{
-        id: string;
-        userId: string;
-        createdAt: Date;
-        title: string;
         category: string;
+        id: string;
+        createdAt: Date;
+        userId: string;
+        title: string;
         memoryId: string | null;
         date: Date;
         notes: string | null;
@@ -76,11 +76,11 @@ export declare class TripPlanningController {
         currency: string;
     }[]>;
     createTripExpense(req: any, data: any): Promise<{
-        id: string;
-        userId: string;
-        createdAt: Date;
-        title: string;
         category: string;
+        id: string;
+        createdAt: Date;
+        userId: string;
+        title: string;
         memoryId: string | null;
         date: Date;
         notes: string | null;
@@ -89,11 +89,11 @@ export declare class TripPlanningController {
         currency: string;
     }>;
     deleteTripExpense(req: any, id: string): Promise<{
-        id: string;
-        userId: string;
-        createdAt: Date;
-        title: string;
         category: string;
+        id: string;
+        createdAt: Date;
+        userId: string;
+        title: string;
         memoryId: string | null;
         date: Date;
         notes: string | null;
@@ -103,9 +103,9 @@ export declare class TripPlanningController {
     }>;
     getPackingLists(req: any, itineraryId?: string): Promise<{
         id: string;
-        userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -113,9 +113,9 @@ export declare class TripPlanningController {
     }[]>;
     createPackingList(req: any, data: any): Promise<{
         id: string;
-        userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -123,9 +123,9 @@ export declare class TripPlanningController {
     }>;
     updatePackingList(req: any, id: string, data: any): Promise<{
         id: string;
-        userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -133,9 +133,9 @@ export declare class TripPlanningController {
     }>;
     deletePackingList(req: any, id: string): Promise<{
         id: string;
-        userId: string;
-        updatedAt: Date;
         createdAt: Date;
+        updatedAt: Date;
+        userId: string;
         title: string;
         isCompleted: boolean;
         itineraryId: string | null;
@@ -143,8 +143,8 @@ export declare class TripPlanningController {
     }>;
     getTravelDocuments(req: any, itineraryId?: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         title: string;
         notes: string | null;
         itineraryId: string | null;
@@ -155,8 +155,8 @@ export declare class TripPlanningController {
     }[]>;
     createTravelDocument(req: any, data: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         title: string;
         notes: string | null;
         itineraryId: string | null;
@@ -167,8 +167,8 @@ export declare class TripPlanningController {
     }>;
     deleteTravelDocument(req: any, id: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         title: string;
         notes: string | null;
         itineraryId: string | null;

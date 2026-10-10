@@ -1,110 +1,248 @@
 import { PsychologyService } from './psychology.service';
+import { CreateReminiscenceTherapyDto, UpdateReminiscenceTherapyDto } from './dto/reminiscence-therapy.dto';
+import { CreateInnerChildDialogueDto } from './dto/inner-child-dialogue.dto';
+import { CreateBinauralSoundTherapyDto, UpdateBinauralSoundTherapyDto } from './dto/binaural-sound-therapy.dto';
+import { UpdateZenReflectionDto } from './dto/zen-reflection.dto';
+import { CreateEmotionalWaveformDto, UpdateEmotionalWaveformDto } from './dto/emotional-waveform.dto';
+import { CreateDreamJournalDto, UpdateDreamJournalDto } from './dto/dream-journal.dto';
 export declare class PsychologyController {
     private readonly psychologyService;
     constructor(psychologyService: PsychologyService);
-    getGratitudeEntries(req: any): Promise<{
+    getEmotionalGeographyPoints(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        category: string;
-        content: string;
-        memoryId: string | null;
-        isShared: boolean;
-    }[]>;
-    createGratitudeEntry(req: any, data: any): Promise<{
-        id: string;
         userId: string;
-        createdAt: Date;
-        category: string;
-        content: string;
-        memoryId: string | null;
-        isShared: boolean;
-    }>;
-    getResilienceMoments(req: any): Promise<{
-        id: string;
-        userId: string;
-        createdAt: Date;
-        title: string;
-        description: string;
-        difficulty: number;
-        date: Date;
-        overcomeAt: Date | null;
-        selfEncouragement: string | null;
-    }[]>;
-    createResilienceMoment(req: any, data: any): Promise<{
-        id: string;
-        userId: string;
-        createdAt: Date;
-        title: string;
-        description: string;
-        difficulty: number;
-        date: Date;
-        overcomeAt: Date | null;
-        selfEncouragement: string | null;
-    }>;
-    getDailySerendipity(req: any): Promise<{
-        id: string;
-        userId: string;
-        createdAt: Date;
+        latitude: number;
+        longitude: number;
         memoryId: string;
-        date: Date;
-        viewedAt: Date | null;
-        isViewed: boolean;
+        emotionType: string;
+        intensity: number;
+    }[]>;
+    createEmotionalGeographyPoint(req: any, body: {
+        memoryId: string;
+        latitude: number;
+        longitude: number;
+        emotionType: string;
+        intensity: number;
+    }): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        latitude: number;
+        longitude: number;
+        memoryId: string;
+        emotionType: string;
+        intensity: number;
+    }>;
+    getReminiscenceSessions(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string | null;
+        completedAt: Date | null;
+        prompt: string;
+        response: string | null;
+        sensoryCue: string | null;
+        moodBefore: string | null;
+        moodAfter: string | null;
+    }[]>;
+    createReminiscenceSession(req: any, dto: CreateReminiscenceTherapyDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        memoryId: string | null;
+        completedAt: Date | null;
+        prompt: string;
+        response: string | null;
+        sensoryCue: string | null;
         moodBefore: string | null;
         moodAfter: string | null;
     }>;
-    markViewed(req: any, data: any): Promise<{
+    updateReminiscenceSession(id: string, req: any, dto: UpdateReminiscenceTherapyDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        memoryId: string;
-        date: Date;
-        viewedAt: Date | null;
-        isViewed: boolean;
+        userId: string;
+        memoryId: string | null;
+        completedAt: Date | null;
+        prompt: string;
+        response: string | null;
+        sensoryCue: string | null;
         moodBefore: string | null;
         moodAfter: string | null;
     }>;
-    getEmotionalWaveforms(req: any, startDate?: string, endDate?: string): Promise<{
+    getInnerChildDialogues(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        mood: number;
-        date: Date;
-        stressLevel: number;
-        notes: string | null;
+        userId: string;
+        prompt: string;
+        response: string;
+        childhoodPhotoUrl: string | null;
+        age: number;
+        emotionalTone: string | null;
+        reflectionType: string | null;
     }[]>;
-    createEmotionalWaveform(req: any, data: any): Promise<{
+    createInnerChildDialogue(req: any, dto: CreateInnerChildDialogueDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        prompt: string;
+        response: string;
+        childhoodPhotoUrl: string | null;
+        age: number;
+        emotionalTone: string | null;
+        reflectionType: string | null;
+    }>;
+    getBinauralTherapies(req: any): Promise<{
         id: string;
         userId: string;
-        createdAt: Date;
-        mood: number;
-        date: Date;
-        stressLevel: number;
+        memoryId: string | null;
+        duration: number;
+        moodBefore: string | null;
+        moodAfter: string | null;
+        frequency: string;
+        natureSound: string | null;
         notes: string | null;
+        playedAt: Date;
+    }[]>;
+    createBinauralTherapy(req: any, dto: CreateBinauralSoundTherapyDto): Promise<{
+        id: string;
+        userId: string;
+        memoryId: string | null;
+        duration: number;
+        moodBefore: string | null;
+        moodAfter: string | null;
+        frequency: string;
+        natureSound: string | null;
+        notes: string | null;
+        playedAt: Date;
+    }>;
+    updateBinauralTherapy(id: string, req: any, dto: UpdateBinauralSoundTherapyDto): Promise<{
+        id: string;
+        userId: string;
+        memoryId: string | null;
+        duration: number;
+        moodBefore: string | null;
+        moodAfter: string | null;
+        frequency: string;
+        natureSound: string | null;
+        notes: string | null;
+        playedAt: Date;
+    }>;
+    getZenReflectionMode(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        theme: string;
+        isEnabled: boolean;
+        hideMetrics: boolean;
+        breathingReminder: boolean;
+        breathingInterval: number;
+    }>;
+    updateZenReflectionMode(req: any, dto: UpdateZenReflectionDto): Promise<{
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        userId: string;
+        theme: string;
+        isEnabled: boolean;
+        hideMetrics: boolean;
+        breathingReminder: boolean;
+        breathingInterval: number;
+    }>;
+    getEmotionalWaveforms(req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        mood: string;
+        date: Date;
+        intensity: number;
+        lifeChapter: string | null;
+        note: string | null;
+    }[]>;
+    createEmotionalWaveform(req: any, dto: CreateEmotionalWaveformDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        mood: string;
+        date: Date;
+        intensity: number;
+        lifeChapter: string | null;
+        note: string | null;
+    }>;
+    updateEmotionalWaveform(id: string, req: any, dto: UpdateEmotionalWaveformDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        mood: string;
+        date: Date;
+        intensity: number;
+        lifeChapter: string | null;
+        note: string | null;
+    }>;
+    deleteEmotionalWaveform(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        mood: string;
+        date: Date;
+        intensity: number;
+        lifeChapter: string | null;
+        note: string | null;
     }>;
     getDreamJournals(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         title: string;
-        description: string;
         locationName: string | null;
+        mood: string | null;
+        description: string;
         dreamDate: Date;
         isLucid: boolean;
-        symbols: string;
+        symbols: string | null;
         locationLatitude: number | null;
         locationLongitude: number | null;
     }[]>;
-    createDreamJournal(req: any, data: any): Promise<{
+    createDreamJournal(req: any, dto: CreateDreamJournalDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         title: string;
-        description: string;
         locationName: string | null;
+        mood: string | null;
+        description: string;
         dreamDate: Date;
         isLucid: boolean;
-        symbols: string;
+        symbols: string | null;
+        locationLatitude: number | null;
+        locationLongitude: number | null;
+    }>;
+    updateDreamJournal(id: string, req: any, dto: UpdateDreamJournalDto): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        title: string;
+        locationName: string | null;
+        mood: string | null;
+        description: string;
+        dreamDate: Date;
+        isLucid: boolean;
+        symbols: string | null;
+        locationLatitude: number | null;
+        locationLongitude: number | null;
+    }>;
+    deleteDreamJournal(id: string, req: any): Promise<{
+        id: string;
+        createdAt: Date;
+        userId: string;
+        title: string;
+        locationName: string | null;
+        mood: string | null;
+        description: string;
+        dreamDate: Date;
+        isLucid: boolean;
+        symbols: string | null;
         locationLatitude: number | null;
         locationLongitude: number | null;
     }>;
