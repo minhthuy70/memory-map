@@ -1,5 +1,21 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import {
+  CreateFamilyMemberDto,
+  UpdateFamilyMemberDto,
+  CreateAncestralMigrationDto,
+  UpdateAncestralMigrationDto,
+  CreateOralHistoryDto,
+  UpdateOralHistoryDto,
+  CreateGenerationalComparisonDto,
+  UpdateGenerationalComparisonDto,
+  CreateGeofencedCapsuleDto,
+  UpdateGeofencedCapsuleDto,
+  CreateLegacyLetterDto,
+  UpdateLegacyLetterDto,
+  CreateDigitalMemorialDto,
+  UpdateDigitalMemorialDto,
+} from './dto/genealogy.dto';
 
 @Injectable()
 export class GenealogyService {
@@ -269,6 +285,364 @@ export class GenealogyService {
         memoryId: data.memoryId,
         voiceNoteUrl: data.voiceNoteUrl,
       },
+    });
+  }
+
+  // ==================== Family Members ====================
+
+  async getFamilyMembers(userId: string) {
+    return this.prisma.familyMember.findMany({
+      where: { userId },
+      orderBy: { birthDate: 'asc' },
+    });
+  }
+
+  async createFamilyMember(userId: string, dto: CreateFamilyMemberDto) {
+    return this.prisma.familyMember.create({
+      data: {
+        user: { connect: { id: userId } },
+        ...dto,
+        birthDate: dto.birthDate ? new Date(dto.birthDate) : null,
+        deathDate: dto.deathDate ? new Date(dto.deathDate) : null,
+      },
+    });
+  }
+
+  async updateFamilyMember(id: string, userId: string, dto: UpdateFamilyMemberDto) {
+    const member = await this.prisma.familyMember.findUnique({
+      where: { id },
+    });
+
+    if (!member) {
+      throw new NotFoundException('Family member not found');
+    }
+
+    if (member.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.familyMember.update({
+      where: { id },
+      data: {
+        ...dto,
+        birthDate: dto.birthDate ? new Date(dto.birthDate) : undefined,
+        deathDate: dto.deathDate ? new Date(dto.deathDate) : undefined,
+      },
+    });
+  }
+
+  async deleteFamilyMember(id: string, userId: string) {
+    const member = await this.prisma.familyMember.findUnique({
+      where: { id },
+    });
+
+    if (!member) {
+      throw new NotFoundException('Family member not found');
+    }
+
+    if (member.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.familyMember.delete({
+      where: { id },
+    });
+  }
+
+  // ==================== Ancestral Migrations ====================
+
+  async getAncestralMigrations(userId: string) {
+    return this.prisma.ancestralMigration.findMany({
+      where: { userId },
+      orderBy: { moveDate: 'asc' },
+    });
+  }
+
+  async createAncestralMigration(userId: string, dto: CreateAncestralMigrationDto) {
+    return this.prisma.ancestralMigration.create({
+      data: {
+        user: { connect: { id: userId } },
+        ...dto,
+        moveDate: new Date(dto.moveDate),
+      },
+    });
+  }
+
+  async updateAncestralMigration(id: string, userId: string, dto: UpdateAncestralMigrationDto) {
+    const migration = await this.prisma.ancestralMigration.findUnique({
+      where: { id },
+    });
+
+    if (!migration) {
+      throw new NotFoundException('Migration not found');
+    }
+
+    if (migration.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.ancestralMigration.update({
+      where: { id },
+      data: {
+        ...dto,
+        moveDate: dto.moveDate ? new Date(dto.moveDate) : undefined,
+      },
+    });
+  }
+
+  async deleteAncestralMigration(id: string, userId: string) {
+    const migration = await this.prisma.ancestralMigration.findUnique({
+      where: { id },
+    });
+
+    if (!migration) {
+      throw new NotFoundException('Migration not found');
+    }
+
+    if (migration.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.ancestralMigration.delete({
+      where: { id },
+    });
+  }
+
+  // ==================== Oral Histories ====================
+
+  async getOralHistories(userId: string) {
+    return this.prisma.oralHistory.findMany({
+      where: { userId },
+      orderBy: { recordedAt: 'desc' },
+    });
+  }
+
+  async createOralHistory(userId: string, dto: CreateOralHistoryDto) {
+    return this.prisma.oralHistory.create({
+      data: {
+        user: { connect: { id: userId } },
+        ...dto,
+        recordedAt: new Date(dto.recordedAt),
+      },
+    });
+  }
+
+  async updateOralHistory(id: string, userId: string, dto: UpdateOralHistoryDto) {
+    const history = await this.prisma.oralHistory.findUnique({
+      where: { id },
+    });
+
+    if (!history) {
+      throw new NotFoundException('Oral history not found');
+    }
+
+    if (history.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.oralHistory.update({
+      where: { id },
+      data: dto,
+    });
+  }
+
+  async deleteOralHistory(id: string, userId: string) {
+    const history = await this.prisma.oralHistory.findUnique({
+      where: { id },
+    });
+
+    if (!history) {
+      throw new NotFoundException('Oral history not found');
+    }
+
+    if (history.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.oralHistory.delete({
+      where: { id },
+    });
+  }
+
+  // ==================== Generational Comparisons ====================
+
+  async getGenerationalComparisons(userId: string) {
+    return this.prisma.generationalComparison.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async createGenerationalComparison(userId: string, dto: CreateGenerationalComparisonDto) {
+    return this.prisma.generationalComparison.create({
+      data: {
+        user: { connect: { id: userId } },
+        ...dto,
+      },
+    });
+  }
+
+  async updateGenerationalComparison(id: string, userId: string, dto: UpdateGenerationalComparisonDto) {
+    const comparison = await this.prisma.generationalComparison.findUnique({
+      where: { id },
+    });
+
+    if (!comparison) {
+      throw new NotFoundException('Comparison not found');
+    }
+
+    if (comparison.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.generationalComparison.update({
+      where: { id },
+      data: dto,
+    });
+  }
+
+  async deleteGenerationalComparison(id: string, userId: string) {
+    const comparison = await this.prisma.generationalComparison.findUnique({
+      where: { id },
+    });
+
+    if (!comparison) {
+      throw new NotFoundException('Comparison not found');
+    }
+
+    if (comparison.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.generationalComparison.delete({
+      where: { id },
+    });
+  }
+
+  // ==================== Update Geofenced Capsule ====================
+
+  async updateGeofencedCapsule(id: string, userId: string, dto: UpdateGeofencedCapsuleDto) {
+    const capsule = await this.prisma.geofencedCapsule.findUnique({
+      where: { id },
+    });
+
+    if (!capsule) {
+      throw new NotFoundException('Capsule not found');
+    }
+
+    if (capsule.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.geofencedCapsule.update({
+      where: { id },
+      data: {
+        ...dto,
+        memoryIds: dto.memoryIds !== undefined ? dto.memoryIds : undefined,
+      },
+    });
+  }
+
+  async deleteGeofencedCapsule(id: string, userId: string) {
+    const capsule = await this.prisma.geofencedCapsule.findUnique({
+      where: { id },
+    });
+
+    if (!capsule) {
+      throw new NotFoundException('Capsule not found');
+    }
+
+    if (capsule.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.geofencedCapsule.delete({
+      where: { id },
+    });
+  }
+
+  // ==================== Update Legacy Letter ====================
+
+  async updateLegacyLetter(id: string, userId: string, dto: UpdateLegacyLetterDto) {
+    const letter = await this.prisma.legacyLetter.findUnique({
+      where: { id },
+    });
+
+    if (!letter) {
+      throw new NotFoundException('Letter not found');
+    }
+
+    if (letter.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.legacyLetter.update({
+      where: { id },
+      data: {
+        ...dto,
+        recipientBirthday: dto.recipientBirthday ? new Date(dto.recipientBirthday) : undefined,
+      },
+    });
+  }
+
+  async deleteLegacyLetter(id: string, userId: string) {
+    const letter = await this.prisma.legacyLetter.findUnique({
+      where: { id },
+    });
+
+    if (!letter) {
+      throw new NotFoundException('Letter not found');
+    }
+
+    if (letter.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.legacyLetter.delete({
+      where: { id },
+    });
+  }
+
+  // ==================== Update Digital Memorial ====================
+
+  async updateDigitalMemorial(id: string, userId: string, dto: UpdateDigitalMemorialDto) {
+    const memorial = await this.prisma.digitalMemorial.findUnique({
+      where: { id },
+    });
+
+    if (!memorial) {
+      throw new NotFoundException('Memorial not found');
+    }
+
+    if (memorial.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.digitalMemorial.update({
+      where: { id },
+      data: {
+        ...dto,
+        birthDate: dto.birthDate ? new Date(dto.birthDate) : undefined,
+        deathDate: dto.deathDate ? new Date(dto.deathDate) : undefined,
+      },
+    });
+  }
+
+  async deleteDigitalMemorial(id: string, userId: string) {
+    const memorial = await this.prisma.digitalMemorial.findUnique({
+      where: { id },
+    });
+
+    if (!memorial) {
+      throw new NotFoundException('Memorial not found');
+    }
+
+    if (memorial.userId !== userId) {
+      throw new ForbiddenException('Access denied');
+    }
+
+    return this.prisma.digitalMemorial.delete({
+      where: { id },
     });
   }
 }

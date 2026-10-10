@@ -2,6 +2,8 @@ import {
   Controller,
   Get,
   Post,
+  Put,
+  Delete,
   Body,
   Param,
   UseGuards,
@@ -9,6 +11,22 @@ import {
 } from '@nestjs/common';
 import { GenealogyService } from './genealogy.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import {
+  CreateFamilyMemberDto,
+  UpdateFamilyMemberDto,
+  CreateAncestralMigrationDto,
+  UpdateAncestralMigrationDto,
+  CreateOralHistoryDto,
+  UpdateOralHistoryDto,
+  CreateGenerationalComparisonDto,
+  UpdateGenerationalComparisonDto,
+  CreateGeofencedCapsuleDto,
+  UpdateGeofencedCapsuleDto,
+  CreateLegacyLetterDto,
+  UpdateLegacyLetterDto,
+  CreateDigitalMemorialDto,
+  UpdateDigitalMemorialDto,
+} from './dto/genealogy.dto';
 
 @Controller('genealogy')
 @UseGuards(JwtAuthGuard)
