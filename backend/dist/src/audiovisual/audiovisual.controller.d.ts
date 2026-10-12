@@ -5,113 +5,113 @@ export declare class AudiovisualController {
     constructor(audiovisualService: AudiovisualService);
     getScrapbookProjects(req: any): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         userId: string;
+        isPublic: boolean;
         title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }[]>;
     getScrapbookProject(req: any, id: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         userId: string;
+        isPublic: boolean;
         title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     createScrapbookProject(req: any, data: any): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         userId: string;
+        isPublic: boolean;
         title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     updateScrapbookProject(req: any, id: string, data: any): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         userId: string;
+        isPublic: boolean;
         title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     deleteScrapbookProject(req: any, id: string): Promise<{
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
         userId: string;
+        isPublic: boolean;
         title: string;
         description: string | null;
         thumbnailUrl: string | null;
         layoutData: string;
-        isPublic: boolean;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     getSoundscapeMixes(req: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }[]>;
     getSoundscapeMix(req: any, id: string): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }>;
     createSoundscapeMix(req: any, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }>;
     updateSoundscapeMix(req: any, id: string, data: any): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }>;
     deleteSoundscapeMix(req: any, id: string): Promise<{
         id: string;
+        createdAt: Date;
         userId: string;
         title: string;
-        createdAt: Date;
         memoryId: string | null;
-        mixData: string;
         duration: number;
         audioUrl: string | null;
+        mixData: string;
     }>;
     getHandwritingCanvases(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         imageUrl: string | null;
         drawingData: string;
@@ -121,8 +121,8 @@ export declare class AudiovisualController {
     }[]>;
     createHandwritingCanvas(req: any, dto: CreateHandwritingCanvasDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         imageUrl: string | null;
         drawingData: string;
@@ -132,8 +132,8 @@ export declare class AudiovisualController {
     }>;
     updateHandwritingCanvas(id: string, req: any, dto: UpdateHandwritingCanvasDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         imageUrl: string | null;
         drawingData: string;
@@ -143,8 +143,8 @@ export declare class AudiovisualController {
     }>;
     deleteHandwritingCanvas(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         imageUrl: string | null;
         drawingData: string;
@@ -154,12 +154,12 @@ export declare class AudiovisualController {
     }>;
     getVintageFilms(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
+        intensity: number;
         originalImageUrl: string;
         filterType: string;
-        intensity: number;
         grainAmount: number;
         lightLeak: string | null;
         dateStamp: string | null;
@@ -167,12 +167,12 @@ export declare class AudiovisualController {
     }[]>;
     createVintageFilm(req: any, dto: CreateVintageFilmDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
+        intensity: number;
         originalImageUrl: string;
         filterType: string;
-        intensity: number;
         grainAmount: number;
         lightLeak: string | null;
         dateStamp: string | null;
@@ -180,12 +180,12 @@ export declare class AudiovisualController {
     }>;
     updateVintageFilm(id: string, req: any, dto: UpdateVintageFilmDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
+        intensity: number;
         originalImageUrl: string;
         filterType: string;
-        intensity: number;
         grainAmount: number;
         lightLeak: string | null;
         dateStamp: string | null;
@@ -193,12 +193,12 @@ export declare class AudiovisualController {
     }>;
     deleteVintageFilm(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
+        intensity: number;
         originalImageUrl: string;
         filterType: string;
-        intensity: number;
         grainAmount: number;
         lightLeak: string | null;
         dateStamp: string | null;
@@ -206,56 +206,56 @@ export declare class AudiovisualController {
     }>;
     getLivePhotos(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
-        duration: number | null;
-        photoUrl: string;
         videoUrl: string | null;
-        keyframeUrl: string | null;
+        duration: number | null;
         platform: string;
+        photoUrl: string;
+        keyframeUrl: string | null;
         isLoop: boolean;
     }[]>;
     createLivePhoto(req: any, dto: CreateLivePhotoDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
-        duration: number | null;
-        photoUrl: string;
         videoUrl: string | null;
-        keyframeUrl: string | null;
+        duration: number | null;
         platform: string;
+        photoUrl: string;
+        keyframeUrl: string | null;
         isLoop: boolean;
     }>;
     updateLivePhoto(id: string, req: any, dto: UpdateLivePhotoDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
-        duration: number | null;
-        photoUrl: string;
         videoUrl: string | null;
-        keyframeUrl: string | null;
+        duration: number | null;
         platform: string;
+        photoUrl: string;
+        keyframeUrl: string | null;
         isLoop: boolean;
     }>;
     deleteLivePhoto(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
-        duration: number | null;
-        photoUrl: string;
         videoUrl: string | null;
-        keyframeUrl: string | null;
+        duration: number | null;
         platform: string;
+        photoUrl: string;
+        keyframeUrl: string | null;
         isLoop: boolean;
     }>;
     getBeforeAfterSliders(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         beforeImageUrl: string;
         afterImageUrl: string;
@@ -265,8 +265,8 @@ export declare class AudiovisualController {
     }[]>;
     createBeforeAfterSlider(req: any, dto: CreateBeforeAfterSliderDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         beforeImageUrl: string;
         afterImageUrl: string;
@@ -276,8 +276,8 @@ export declare class AudiovisualController {
     }>;
     updateBeforeAfterSlider(id: string, req: any, dto: UpdateBeforeAfterSliderDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         beforeImageUrl: string;
         afterImageUrl: string;
@@ -287,8 +287,8 @@ export declare class AudiovisualController {
     }>;
     deleteBeforeAfterSlider(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         beforeImageUrl: string;
         afterImageUrl: string;
@@ -298,8 +298,8 @@ export declare class AudiovisualController {
     }>;
     getTypographyStamps(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         text: string;
         fontName: string;
@@ -312,8 +312,8 @@ export declare class AudiovisualController {
     }[]>;
     createTypographyStamp(req: any, dto: CreateTypographyStampDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         text: string;
         fontName: string;
@@ -326,8 +326,8 @@ export declare class AudiovisualController {
     }>;
     updateTypographyStamp(id: string, req: any, dto: UpdateTypographyStampDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         text: string;
         fontName: string;
@@ -340,8 +340,8 @@ export declare class AudiovisualController {
     }>;
     deleteTypographyStamp(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         text: string;
         fontName: string;
@@ -354,60 +354,60 @@ export declare class AudiovisualController {
     }>;
     getBeatSyncVideos(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        audioUrl: string;
+        userId: string;
         videoUrl: string | null;
+        status: string;
+        audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
-        status: string;
         processedAt: Date | null;
     }[]>;
     createBeatSyncVideo(req: any, dto: CreateBeatSyncVideoDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        audioUrl: string;
+        userId: string;
         videoUrl: string | null;
+        status: string;
+        audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
-        status: string;
         processedAt: Date | null;
     }>;
     updateBeatSyncVideo(id: string, req: any, dto: UpdateBeatSyncVideoDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        audioUrl: string;
+        userId: string;
         videoUrl: string | null;
+        status: string;
+        audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
-        status: string;
         processedAt: Date | null;
     }>;
     deleteBeatSyncVideo(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
-        audioUrl: string;
+        userId: string;
         videoUrl: string | null;
+        status: string;
+        audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
-        status: string;
         processedAt: Date | null;
     }>;
     getAIVoiceovers(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         duration: number;
         audioUrl: string;
@@ -418,8 +418,8 @@ export declare class AudiovisualController {
     }[]>;
     createAIVoiceover(req: any, dto: CreateAIVoiceoverDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         duration: number;
         audioUrl: string;
@@ -430,8 +430,8 @@ export declare class AudiovisualController {
     }>;
     updateAIVoiceover(id: string, req: any, dto: UpdateAIVoiceoverDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         duration: number;
         audioUrl: string;
@@ -442,8 +442,8 @@ export declare class AudiovisualController {
     }>;
     deleteAIVoiceover(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         duration: number;
         audioUrl: string;
@@ -454,8 +454,8 @@ export declare class AudiovisualController {
     }>;
     getMemorySoundtracks(req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         duration: number;
         spotifyTrackId: string | null;
@@ -465,8 +465,8 @@ export declare class AudiovisualController {
     }[]>;
     createMemorySoundtrack(req: any, dto: CreateMemorySoundtrackDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         duration: number;
         spotifyTrackId: string | null;
@@ -476,8 +476,8 @@ export declare class AudiovisualController {
     }>;
     updateMemorySoundtrack(id: string, req: any, dto: UpdateMemorySoundtrackDto): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         duration: number;
         spotifyTrackId: string | null;
@@ -487,8 +487,8 @@ export declare class AudiovisualController {
     }>;
     deleteMemorySoundtrack(id: string, req: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string | null;
         duration: number;
         spotifyTrackId: string | null;

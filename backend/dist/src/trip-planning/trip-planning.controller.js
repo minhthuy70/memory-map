@@ -16,178 +16,352 @@ exports.TripPlanningController = void 0;
 const common_1 = require("@nestjs/common");
 const trip_planning_service_1 = require("./trip-planning.service");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
+const trip_planning_dto_1 = require("./dto/trip-planning.dto");
 let TripPlanningController = class TripPlanningController {
     constructor(tripPlanningService) {
         this.tripPlanningService = tripPlanningService;
     }
-    async getItineraries(req) {
-        return this.tripPlanningService.getItineraries(req.user.userId);
+    async getRouteOptimizations(req) {
+        return this.tripPlanningService.getRouteOptimizations(req.user.userId);
     }
-    async getItinerary(req, id) {
-        return this.tripPlanningService.getItinerary(req.user.userId, id);
+    async createRouteOptimization(req, dto) {
+        return this.tripPlanningService.createRouteOptimization(req.user.userId, dto);
     }
-    async createItinerary(req, data) {
-        return this.tripPlanningService.createItinerary(req.user.userId, data);
+    async updateRouteOptimization(id, req, dto) {
+        return this.tripPlanningService.updateRouteOptimization(id, req.user.userId, dto);
     }
-    async updateItinerary(req, id, data) {
-        return this.tripPlanningService.updateItinerary(req.user.userId, id, data);
+    async deleteRouteOptimization(id, req) {
+        return this.tripPlanningService.deleteRouteOptimization(id, req.user.userId);
     }
-    async deleteItinerary(req, id) {
-        return this.tripPlanningService.deleteItinerary(req.user.userId, id);
+    async getNavigationRoutes(req) {
+        return this.tripPlanningService.getNavigationRoutes(req.user.userId);
     }
-    async getTripExpenses(req, itineraryId) {
-        return this.tripPlanningService.getTripExpenses(req.user.userId, itineraryId);
+    async createNavigationRoute(req, dto) {
+        return this.tripPlanningService.createNavigationRoute(req.user.userId, dto);
     }
-    async createTripExpense(req, data) {
-        return this.tripPlanningService.createTripExpense(req.user.userId, data);
+    async updateNavigationRoute(id, req, dto) {
+        return this.tripPlanningService.updateNavigationRoute(id, req.user.userId, dto);
     }
-    async deleteTripExpense(req, id) {
-        return this.tripPlanningService.deleteTripExpense(req.user.userId, id);
+    async deleteNavigationRoute(id, req) {
+        return this.tripPlanningService.deleteNavigationRoute(id, req.user.userId);
     }
-    async getPackingLists(req, itineraryId) {
-        return this.tripPlanningService.getPackingLists(req.user.userId, itineraryId);
+    async getOfflineGuides(req) {
+        return this.tripPlanningService.getOfflineGuides(req.user.userId);
     }
-    async createPackingList(req, data) {
-        return this.tripPlanningService.createPackingList(req.user.userId, data);
+    async createOfflineGuide(req, dto) {
+        return this.tripPlanningService.createOfflineGuide(req.user.userId, dto);
     }
-    async updatePackingList(req, id, data) {
-        return this.tripPlanningService.updatePackingList(req.user.userId, id, data);
+    async updateOfflineGuide(id, req, dto) {
+        return this.tripPlanningService.updateOfflineGuide(id, req.user.userId, dto);
     }
-    async deletePackingList(req, id) {
-        return this.tripPlanningService.deletePackingList(req.user.userId, id);
+    async deleteOfflineGuide(id, req) {
+        return this.tripPlanningService.deleteOfflineGuide(id, req.user.userId);
     }
-    async getTravelDocuments(req, itineraryId) {
-        return this.tripPlanningService.getTravelDocuments(req.user.userId, itineraryId);
+    async getFlightTrainStatuses(req) {
+        return this.tripPlanningService.getFlightTrainStatuses(req.user.userId);
     }
-    async createTravelDocument(req, data) {
-        return this.tripPlanningService.createTravelDocument(req.user.userId, data);
+    async createFlightTrainStatus(req, dto) {
+        return this.tripPlanningService.createFlightTrainStatus(req.user.userId, dto);
     }
-    async deleteTravelDocument(req, id) {
-        return this.tripPlanningService.deleteTravelDocument(req.user.userId, id);
+    async updateFlightTrainStatus(id, req, dto) {
+        return this.tripPlanningService.updateFlightTrainStatus(id, req.user.userId, dto);
+    }
+    async deleteFlightTrainStatus(id, req) {
+        return this.tripPlanningService.deleteFlightTrainStatus(id, req.user.userId);
+    }
+    async getVisitedCountries(req) {
+        return this.tripPlanningService.getVisitedCountries(req.user.userId);
+    }
+    async createVisitedCountry(req, dto) {
+        return this.tripPlanningService.createVisitedCountry(req.user.userId, dto);
+    }
+    async updateVisitedCountry(id, req, dto) {
+        return this.tripPlanningService.updateVisitedCountry(id, req.user.userId, dto);
+    }
+    async deleteVisitedCountry(id, req) {
+        return this.tripPlanningService.deleteVisitedCountry(id, req.user.userId);
+    }
+    async getCarbonFootprints(req) {
+        return this.tripPlanningService.getCarbonFootprints(req.user.userId);
+    }
+    async createCarbonFootprint(req, dto) {
+        return this.tripPlanningService.createCarbonFootprint(req.user.userId, dto);
+    }
+    async updateCarbonFootprint(id, req, dto) {
+        return this.tripPlanningService.updateCarbonFootprint(id, req.user.userId, dto);
+    }
+    async deleteCarbonFootprint(id, req) {
+        return this.tripPlanningService.deleteCarbonFootprint(id, req.user.userId);
+    }
+    async getEmergencyContacts(req) {
+        return this.tripPlanningService.getEmergencyContacts(req.user.userId);
+    }
+    async createEmergencyContact(req, dto) {
+        return this.tripPlanningService.createEmergencyContact(req.user.userId, dto);
+    }
+    async updateEmergencyContact(id, req, dto) {
+        return this.tripPlanningService.updateEmergencyContact(id, req.user.userId, dto);
+    }
+    async deleteEmergencyContact(id, req) {
+        return this.tripPlanningService.deleteEmergencyContact(id, req.user.userId);
+    }
+    async getSafetyHub(req) {
+        return this.tripPlanningService.getSafetyHub(req.user.userId);
+    }
+    async createSafetyHub(req) {
+        return this.tripPlanningService.createSafetyHub(req.user.userId);
+    }
+    async updateSafetyHub(req, dto) {
+        return this.tripPlanningService.updateSafetyHub(req.user.userId, dto);
     }
 };
 exports.TripPlanningController = TripPlanningController;
 __decorate([
-    (0, common_1.Get)('itineraries'),
+    (0, common_1.Get)('route-optimizations'),
     __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "getItineraries", null);
+], TripPlanningController.prototype, "getRouteOptimizations", null);
 __decorate([
-    (0, common_1.Get)('itineraries/:id'),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
-    __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "getItinerary", null);
-__decorate([
-    (0, common_1.Post)('itineraries'),
+    (0, common_1.Post)('route-optimizations'),
     __param(0, (0, common_1.Request)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:paramtypes", [Object, trip_planning_dto_1.CreateRouteOptimizationDto]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "createItinerary", null);
+], TripPlanningController.prototype, "createRouteOptimization", null);
 __decorate([
-    (0, common_1.Put)('itineraries/:id'),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Param)('id')),
+    (0, common_1.Put)('route-optimizations/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
     __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String, Object]),
+    __metadata("design:paramtypes", [String, Object, trip_planning_dto_1.UpdateRouteOptimizationDto]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "updateItinerary", null);
+], TripPlanningController.prototype, "updateRouteOptimization", null);
 __decorate([
-    (0, common_1.Delete)('itineraries/:id'),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Param)('id')),
+    (0, common_1.Delete)('route-optimizations/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "deleteItinerary", null);
+], TripPlanningController.prototype, "deleteRouteOptimization", null);
 __decorate([
-    (0, common_1.Get)('expenses'),
+    (0, common_1.Get)('navigation-routes'),
     __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Query)('itineraryId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "getTripExpenses", null);
+], TripPlanningController.prototype, "getNavigationRoutes", null);
 __decorate([
-    (0, common_1.Post)('expenses'),
+    (0, common_1.Post)('navigation-routes'),
     __param(0, (0, common_1.Request)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:paramtypes", [Object, trip_planning_dto_1.CreateNavigationRouteDto]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "createTripExpense", null);
+], TripPlanningController.prototype, "createNavigationRoute", null);
 __decorate([
-    (0, common_1.Delete)('expenses/:id'),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
-    __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "deleteTripExpense", null);
-__decorate([
-    (0, common_1.Get)('packing-lists'),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Query)('itineraryId')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
-    __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "getPackingLists", null);
-__decorate([
-    (0, common_1.Post)('packing-lists'),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
-    __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "createPackingList", null);
-__decorate([
-    (0, common_1.Put)('packing-lists/:id'),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Param)('id')),
+    (0, common_1.Put)('navigation-routes/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
     __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String, Object]),
+    __metadata("design:paramtypes", [String, Object, trip_planning_dto_1.UpdateNavigationRouteDto]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "updatePackingList", null);
+], TripPlanningController.prototype, "updateNavigationRoute", null);
 __decorate([
-    (0, common_1.Delete)('packing-lists/:id'),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Param)('id')),
+    (0, common_1.Delete)('navigation-routes/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "deletePackingList", null);
+], TripPlanningController.prototype, "deleteNavigationRoute", null);
 __decorate([
-    (0, common_1.Get)('documents'),
+    (0, common_1.Get)('offline-guides'),
     __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Query)('itineraryId')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "getTravelDocuments", null);
+], TripPlanningController.prototype, "getOfflineGuides", null);
 __decorate([
-    (0, common_1.Post)('documents'),
+    (0, common_1.Post)('offline-guides'),
     __param(0, (0, common_1.Request)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:paramtypes", [Object, trip_planning_dto_1.CreateOfflineGuideDto]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "createTravelDocument", null);
+], TripPlanningController.prototype, "createOfflineGuide", null);
 __decorate([
-    (0, common_1.Delete)('documents/:id'),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Param)('id')),
+    (0, common_1.Put)('offline-guides/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, String]),
+    __metadata("design:paramtypes", [String, Object, trip_planning_dto_1.UpdateOfflineGuideDto]),
     __metadata("design:returntype", Promise)
-], TripPlanningController.prototype, "deleteTravelDocument", null);
+], TripPlanningController.prototype, "updateOfflineGuide", null);
+__decorate([
+    (0, common_1.Delete)('offline-guides/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "deleteOfflineGuide", null);
+__decorate([
+    (0, common_1.Get)('flight-train-statuses'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "getFlightTrainStatuses", null);
+__decorate([
+    (0, common_1.Post)('flight-train-statuses'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, trip_planning_dto_1.CreateFlightTrainStatusDto]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "createFlightTrainStatus", null);
+__decorate([
+    (0, common_1.Put)('flight-train-statuses/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, trip_planning_dto_1.UpdateFlightTrainStatusDto]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "updateFlightTrainStatus", null);
+__decorate([
+    (0, common_1.Delete)('flight-train-statuses/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "deleteFlightTrainStatus", null);
+__decorate([
+    (0, common_1.Get)('visited-countries'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "getVisitedCountries", null);
+__decorate([
+    (0, common_1.Post)('visited-countries'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, trip_planning_dto_1.CreateVisitedCountryDto]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "createVisitedCountry", null);
+__decorate([
+    (0, common_1.Put)('visited-countries/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, trip_planning_dto_1.UpdateVisitedCountryDto]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "updateVisitedCountry", null);
+__decorate([
+    (0, common_1.Delete)('visited-countries/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "deleteVisitedCountry", null);
+__decorate([
+    (0, common_1.Get)('carbon-footprints'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "getCarbonFootprints", null);
+__decorate([
+    (0, common_1.Post)('carbon-footprints'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, trip_planning_dto_1.CreateCarbonFootprintDto]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "createCarbonFootprint", null);
+__decorate([
+    (0, common_1.Put)('carbon-footprints/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, trip_planning_dto_1.UpdateCarbonFootprintDto]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "updateCarbonFootprint", null);
+__decorate([
+    (0, common_1.Delete)('carbon-footprints/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "deleteCarbonFootprint", null);
+__decorate([
+    (0, common_1.Get)('emergency-contacts'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "getEmergencyContacts", null);
+__decorate([
+    (0, common_1.Post)('emergency-contacts'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, trip_planning_dto_1.CreateEmergencyContactDto]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "createEmergencyContact", null);
+__decorate([
+    (0, common_1.Put)('emergency-contacts/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __param(2, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, trip_planning_dto_1.UpdateEmergencyContactDto]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "updateEmergencyContact", null);
+__decorate([
+    (0, common_1.Delete)('emergency-contacts/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "deleteEmergencyContact", null);
+__decorate([
+    (0, common_1.Get)('safety-hub'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "getSafetyHub", null);
+__decorate([
+    (0, common_1.Post)('safety-hub'),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "createSafetyHub", null);
+__decorate([
+    (0, common_1.Put)('safety-hub'),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, trip_planning_dto_1.UpdateSafetyHubDto]),
+    __metadata("design:returntype", Promise)
+], TripPlanningController.prototype, "updateSafetyHub", null);
 exports.TripPlanningController = TripPlanningController = __decorate([
     (0, common_1.Controller)('trip-planning'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

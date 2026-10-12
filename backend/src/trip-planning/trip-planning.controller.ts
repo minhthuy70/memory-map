@@ -6,98 +6,202 @@ import {
   Delete,
   Body,
   Param,
-  Query,
   UseGuards,
   Request,
 } from '@nestjs/common';
 import { TripPlanningService } from './trip-planning.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import {
+  CreateRouteOptimizationDto,
+  UpdateRouteOptimizationDto,
+  CreateNavigationRouteDto,
+  UpdateNavigationRouteDto,
+  CreateOfflineGuideDto,
+  UpdateOfflineGuideDto,
+  CreateFlightTrainStatusDto,
+  UpdateFlightTrainStatusDto,
+  CreateVisitedCountryDto,
+  UpdateVisitedCountryDto,
+  CreateCarbonFootprintDto,
+  UpdateCarbonFootprintDto,
+  CreateEmergencyContactDto,
+  UpdateEmergencyContactDto,
+  UpdateSafetyHubDto,
+} from './dto/trip-planning.dto';
 
 @Controller('trip-planning')
 @UseGuards(JwtAuthGuard)
 export class TripPlanningController {
   constructor(private readonly tripPlanningService: TripPlanningService) {}
 
-  // ==================== Itineraries ====================
+  // ==================== Route Optimization ====================
 
-  @Get('itineraries')
-  async getItineraries(@Request() req) {
-    return this.tripPlanningService.getItineraries(req.user.userId);
+  @Get('route-optimizations')
+  async getRouteOptimizations(@Request() req) {
+    return this.tripPlanningService.getRouteOptimizations(req.user.userId);
   }
 
-  @Get('itineraries/:id')
-  async getItinerary(@Request() req, @Param('id') id: string) {
-    return this.tripPlanningService.getItinerary(req.user.userId, id);
+  @Post('route-optimizations')
+  async createRouteOptimization(@Request() req, @Body() dto: CreateRouteOptimizationDto) {
+    return this.tripPlanningService.createRouteOptimization(req.user.userId, dto);
   }
 
-  @Post('itineraries')
-  async createItinerary(@Request() req, @Body() data: any) {
-    return this.tripPlanningService.createItinerary(req.user.userId, data);
+  @Put('route-optimizations/:id')
+  async updateRouteOptimization(@Param('id') id: string, @Request() req, @Body() dto: UpdateRouteOptimizationDto) {
+    return this.tripPlanningService.updateRouteOptimization(id, req.user.userId, dto);
   }
 
-  @Put('itineraries/:id')
-  async updateItinerary(@Request() req, @Param('id') id: string, @Body() data: any) {
-    return this.tripPlanningService.updateItinerary(req.user.userId, id, data);
+  @Delete('route-optimizations/:id')
+  async deleteRouteOptimization(@Param('id') id: string, @Request() req) {
+    return this.tripPlanningService.deleteRouteOptimization(id, req.user.userId);
   }
 
-  @Delete('itineraries/:id')
-  async deleteItinerary(@Request() req, @Param('id') id: string) {
-    return this.tripPlanningService.deleteItinerary(req.user.userId, id);
+  // ==================== Navigation Route ====================
+
+  @Get('navigation-routes')
+  async getNavigationRoutes(@Request() req) {
+    return this.tripPlanningService.getNavigationRoutes(req.user.userId);
   }
 
-  // ==================== Trip Expenses ====================
-
-  @Get('expenses')
-  async getTripExpenses(@Request() req, @Query('itineraryId') itineraryId?: string) {
-    return this.tripPlanningService.getTripExpenses(req.user.userId, itineraryId);
+  @Post('navigation-routes')
+  async createNavigationRoute(@Request() req, @Body() dto: CreateNavigationRouteDto) {
+    return this.tripPlanningService.createNavigationRoute(req.user.userId, dto);
   }
 
-  @Post('expenses')
-  async createTripExpense(@Request() req, @Body() data: any) {
-    return this.tripPlanningService.createTripExpense(req.user.userId, data);
+  @Put('navigation-routes/:id')
+  async updateNavigationRoute(@Param('id') id: string, @Request() req, @Body() dto: UpdateNavigationRouteDto) {
+    return this.tripPlanningService.updateNavigationRoute(id, req.user.userId, dto);
   }
 
-  @Delete('expenses/:id')
-  async deleteTripExpense(@Request() req, @Param('id') id: string) {
-    return this.tripPlanningService.deleteTripExpense(req.user.userId, id);
+  @Delete('navigation-routes/:id')
+  async deleteNavigationRoute(@Param('id') id: string, @Request() req) {
+    return this.tripPlanningService.deleteNavigationRoute(id, req.user.userId);
   }
 
-  // ==================== Packing Lists ====================
+  // ==================== Offline Guide ====================
 
-  @Get('packing-lists')
-  async getPackingLists(@Request() req, @Query('itineraryId') itineraryId?: string) {
-    return this.tripPlanningService.getPackingLists(req.user.userId, itineraryId);
+  @Get('offline-guides')
+  async getOfflineGuides(@Request() req) {
+    return this.tripPlanningService.getOfflineGuides(req.user.userId);
   }
 
-  @Post('packing-lists')
-  async createPackingList(@Request() req, @Body() data: any) {
-    return this.tripPlanningService.createPackingList(req.user.userId, data);
+  @Post('offline-guides')
+  async createOfflineGuide(@Request() req, @Body() dto: CreateOfflineGuideDto) {
+    return this.tripPlanningService.createOfflineGuide(req.user.userId, dto);
   }
 
-  @Put('packing-lists/:id')
-  async updatePackingList(@Request() req, @Param('id') id: string, @Body() data: any) {
-    return this.tripPlanningService.updatePackingList(req.user.userId, id, data);
+  @Put('offline-guides/:id')
+  async updateOfflineGuide(@Param('id') id: string, @Request() req, @Body() dto: UpdateOfflineGuideDto) {
+    return this.tripPlanningService.updateOfflineGuide(id, req.user.userId, dto);
   }
 
-  @Delete('packing-lists/:id')
-  async deletePackingList(@Request() req, @Param('id') id: string) {
-    return this.tripPlanningService.deletePackingList(req.user.userId, id);
+  @Delete('offline-guides/:id')
+  async deleteOfflineGuide(@Param('id') id: string, @Request() req) {
+    return this.tripPlanningService.deleteOfflineGuide(id, req.user.userId);
   }
 
-  // ==================== Travel Documents ====================
+  // ==================== Flight/Train Status ====================
 
-  @Get('documents')
-  async getTravelDocuments(@Request() req, @Query('itineraryId') itineraryId?: string) {
-    return this.tripPlanningService.getTravelDocuments(req.user.userId, itineraryId);
+  @Get('flight-train-statuses')
+  async getFlightTrainStatuses(@Request() req) {
+    return this.tripPlanningService.getFlightTrainStatuses(req.user.userId);
   }
 
-  @Post('documents')
-  async createTravelDocument(@Request() req, @Body() data: any) {
-    return this.tripPlanningService.createTravelDocument(req.user.userId, data);
+  @Post('flight-train-statuses')
+  async createFlightTrainStatus(@Request() req, @Body() dto: CreateFlightTrainStatusDto) {
+    return this.tripPlanningService.createFlightTrainStatus(req.user.userId, dto);
   }
 
-  @Delete('documents/:id')
-  async deleteTravelDocument(@Request() req, @Param('id') id: string) {
-    return this.tripPlanningService.deleteTravelDocument(req.user.userId, id);
+  @Put('flight-train-statuses/:id')
+  async updateFlightTrainStatus(@Param('id') id: string, @Request() req, @Body() dto: UpdateFlightTrainStatusDto) {
+    return this.tripPlanningService.updateFlightTrainStatus(id, req.user.userId, dto);
+  }
+
+  @Delete('flight-train-statuses/:id')
+  async deleteFlightTrainStatus(@Param('id') id: string, @Request() req) {
+    return this.tripPlanningService.deleteFlightTrainStatus(id, req.user.userId);
+  }
+
+  // ==================== Visited Country ====================
+
+  @Get('visited-countries')
+  async getVisitedCountries(@Request() req) {
+    return this.tripPlanningService.getVisitedCountries(req.user.userId);
+  }
+
+  @Post('visited-countries')
+  async createVisitedCountry(@Request() req, @Body() dto: CreateVisitedCountryDto) {
+    return this.tripPlanningService.createVisitedCountry(req.user.userId, dto);
+  }
+
+  @Put('visited-countries/:id')
+  async updateVisitedCountry(@Param('id') id: string, @Request() req, @Body() dto: UpdateVisitedCountryDto) {
+    return this.tripPlanningService.updateVisitedCountry(id, req.user.userId, dto);
+  }
+
+  @Delete('visited-countries/:id')
+  async deleteVisitedCountry(@Param('id') id: string, @Request() req) {
+    return this.tripPlanningService.deleteVisitedCountry(id, req.user.userId);
+  }
+
+  // ==================== Carbon Footprint ====================
+
+  @Get('carbon-footprints')
+  async getCarbonFootprints(@Request() req) {
+    return this.tripPlanningService.getCarbonFootprints(req.user.userId);
+  }
+
+  @Post('carbon-footprints')
+  async createCarbonFootprint(@Request() req, @Body() dto: CreateCarbonFootprintDto) {
+    return this.tripPlanningService.createCarbonFootprint(req.user.userId, dto);
+  }
+
+  @Put('carbon-footprints/:id')
+  async updateCarbonFootprint(@Param('id') id: string, @Request() req, @Body() dto: UpdateCarbonFootprintDto) {
+    return this.tripPlanningService.updateCarbonFootprint(id, req.user.userId, dto);
+  }
+
+  @Delete('carbon-footprints/:id')
+  async deleteCarbonFootprint(@Param('id') id: string, @Request() req) {
+    return this.tripPlanningService.deleteCarbonFootprint(id, req.user.userId);
+  }
+
+  // ==================== Emergency Contact ====================
+
+  @Get('emergency-contacts')
+  async getEmergencyContacts(@Request() req) {
+    return this.tripPlanningService.getEmergencyContacts(req.user.userId);
+  }
+
+  @Post('emergency-contacts')
+  async createEmergencyContact(@Request() req, @Body() dto: CreateEmergencyContactDto) {
+    return this.tripPlanningService.createEmergencyContact(req.user.userId, dto);
+  }
+
+  @Put('emergency-contacts/:id')
+  async updateEmergencyContact(@Param('id') id: string, @Request() req, @Body() dto: UpdateEmergencyContactDto) {
+    return this.tripPlanningService.updateEmergencyContact(id, req.user.userId, dto);
+  }
+
+  @Delete('emergency-contacts/:id')
+  async deleteEmergencyContact(@Param('id') id: string, @Request() req) {
+    return this.tripPlanningService.deleteEmergencyContact(id, req.user.userId);
+  }
+
+  // ==================== Safety Hub ====================
+
+  @Get('safety-hub')
+  async getSafetyHub(@Request() req) {
+    return this.tripPlanningService.getSafetyHub(req.user.userId);
+  }
+
+  @Post('safety-hub')
+  async createSafetyHub(@Request() req) {
+    return this.tripPlanningService.createSafetyHub(req.user.userId);
+  }
+
+  @Put('safety-hub')
+  async updateSafetyHub(@Request() req, @Body() dto: UpdateSafetyHubDto) {
+    return this.tripPlanningService.updateSafetyHub(req.user.userId, dto);
   }
 }

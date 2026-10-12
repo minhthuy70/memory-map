@@ -10,15 +10,15 @@ export declare class SocialController {
         };
     } & {
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string;
         reactionType: string;
     })[]>;
     addReaction(req: any, data: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
+        userId: string;
         memoryId: string;
         reactionType: string;
     }>;
@@ -31,29 +31,29 @@ export declare class SocialController {
         replies: never;
     } & {
         id: string;
-        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        memoryId: string;
+        userId: string;
         content: string;
+        memoryId: string;
         parentId: string | null;
     })[]>;
     createComment(req: any, data: any): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        memoryId: string;
+        userId: string;
         content: string;
+        memoryId: string;
         parentId: string | null;
     }>;
     deleteComment(req: any, id: string): Promise<{
         id: string;
-        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        memoryId: string;
+        userId: string;
         content: string;
+        memoryId: string;
         parentId: string | null;
     }>;
     getCircles(req: any): Promise<({
@@ -72,19 +72,19 @@ export declare class SocialController {
         })[];
     } & {
         id: string;
-        userId: string;
-        description: string | null;
-        isPublic: boolean;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
+        userId: string;
+        isPublic: boolean;
+        description: string | null;
     })[]>;
     createCircle(req: any, data: any): Promise<{
         id: string;
-        userId: string;
-        description: string | null;
-        isPublic: boolean;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
+        userId: string;
+        isPublic: boolean;
+        description: string | null;
     }>;
     addCircleMember(req: any, circleId: string, data: any): Promise<{
         id: string;
@@ -96,11 +96,11 @@ export declare class SocialController {
     getSharedAlbums(req: any): Promise<({
         circle: {
             id: string;
-            userId: string;
-            description: string | null;
-            isPublic: boolean;
-            createdAt: Date;
             name: string;
+            createdAt: Date;
+            userId: string;
+            isPublic: boolean;
+            description: string | null;
         };
         contributors: ({
             user: {
@@ -117,20 +117,20 @@ export declare class SocialController {
         })[];
     } & {
         id: string;
-        title: string;
-        description: string | null;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
+        title: string;
+        description: string | null;
         circleId: string | null;
     })[]>;
     createSharedAlbum(req: any, data: any): Promise<{
         id: string;
-        title: string;
-        description: string | null;
-        isPublic: boolean;
         createdAt: Date;
         updatedAt: Date;
+        isPublic: boolean;
+        title: string;
+        description: string | null;
         circleId: string | null;
     }>;
     addAlbumContributor(req: any, albumId: string, data: any): Promise<{

@@ -16,199 +16,347 @@ let TripPlanningService = class TripPlanningService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async getItineraries(userId) {
-        return this.prisma.itinerary.findMany({
+    async getRouteOptimizations(userId) {
+        return this.prisma.routeOptimization.findMany({
             where: { userId },
-            orderBy: { startDate: 'desc' },
-        });
-    }
-    async getItinerary(userId, id) {
-        const itinerary = await this.prisma.itinerary.findUnique({
-            where: { id },
-        });
-        if (!itinerary) {
-            throw new common_1.NotFoundException('Itinerary not found');
-        }
-        if (itinerary.userId !== userId) {
-            throw new common_1.NotFoundException('Access denied');
-        }
-        return itinerary;
-    }
-    async createItinerary(userId, data) {
-        return this.prisma.itinerary.create({
-            data: {
-                user: { connect: { id: userId } },
-                title: data.title,
-                startDate: new Date(data.startDate),
-                endDate: new Date(data.endDate),
-                destination: data.destination,
-                itineraryData: JSON.stringify(data.itineraryData || {}),
-                isShared: data.isShared ?? false,
-            },
-        });
-    }
-    async updateItinerary(userId, id, data) {
-        const itinerary = await this.prisma.itinerary.findUnique({
-            where: { id },
-        });
-        if (!itinerary) {
-            throw new common_1.NotFoundException('Itinerary not found');
-        }
-        if (itinerary.userId !== userId) {
-            throw new common_1.NotFoundException('Access denied');
-        }
-        return this.prisma.itinerary.update({
-            where: { id },
-            data: {
-                title: data.title,
-                startDate: data.startDate ? new Date(data.startDate) : undefined,
-                endDate: data.endDate ? new Date(data.endDate) : undefined,
-                destination: data.destination,
-                itineraryData: data.itineraryData ? JSON.stringify(data.itineraryData) : undefined,
-                isShared: data.isShared,
-            },
-        });
-    }
-    async deleteItinerary(userId, id) {
-        const itinerary = await this.prisma.itinerary.findUnique({
-            where: { id },
-        });
-        if (!itinerary) {
-            throw new common_1.NotFoundException('Itinerary not found');
-        }
-        if (itinerary.userId !== userId) {
-            throw new common_1.NotFoundException('Access denied');
-        }
-        return this.prisma.itinerary.delete({
-            where: { id },
-        });
-    }
-    async getTripExpenses(userId, itineraryId) {
-        const where = { userId };
-        if (itineraryId)
-            where.itineraryId = itineraryId;
-        return this.prisma.tripExpense.findMany({
-            where,
-            orderBy: { date: 'desc' },
-        });
-    }
-    async createTripExpense(userId, data) {
-        return this.prisma.tripExpense.create({
-            data: {
-                user: { connect: { id: userId } },
-                itineraryId: data.itineraryId,
-                memoryId: data.memoryId,
-                title: data.title,
-                amount: data.amount,
-                currency: data.currency,
-                category: data.category,
-                date: new Date(data.date),
-                notes: data.notes,
-            },
-        });
-    }
-    async deleteTripExpense(userId, id) {
-        const expense = await this.prisma.tripExpense.findUnique({
-            where: { id },
-        });
-        if (!expense) {
-            throw new common_1.NotFoundException('Expense not found');
-        }
-        if (expense.userId !== userId) {
-            throw new common_1.NotFoundException('Access denied');
-        }
-        return this.prisma.tripExpense.delete({
-            where: { id },
-        });
-    }
-    async getPackingLists(userId, itineraryId) {
-        const where = { userId };
-        if (itineraryId)
-            where.itineraryId = itineraryId;
-        return this.prisma.packingList.findMany({
-            where,
             orderBy: { createdAt: 'desc' },
         });
     }
-    async createPackingList(userId, data) {
-        return this.prisma.packingList.create({
+    async createRouteOptimization(userId, dto) {
+        return this.prisma.routeOptimization.create({
             data: {
                 user: { connect: { id: userId } },
-                itineraryId: data.itineraryId,
-                title: data.title,
-                items: JSON.stringify(data.items || []),
-                isCompleted: data.isCompleted ?? false,
+                ...dto,
             },
         });
     }
-    async updatePackingList(userId, id, data) {
-        const list = await this.prisma.packingList.findUnique({
+    async updateRouteOptimization(id, userId, dto) {
+        const route = await this.prisma.routeOptimization.findUnique({
             where: { id },
         });
-        if (!list) {
-            throw new common_1.NotFoundException('Packing list not found');
+        if (!route) {
+            throw new common_1.NotFoundException('Route optimization not found');
         }
-        if (list.userId !== userId) {
-            throw new common_1.NotFoundException('Access denied');
+        if (route.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
         }
-        return this.prisma.packingList.update({
+        return this.prisma.routeOptimization.update({
             where: { id },
-            data: {
-                title: data.title,
-                items: data.items ? JSON.stringify(data.items) : undefined,
-                isCompleted: data.isCompleted,
-            },
+            data: dto,
         });
     }
-    async deletePackingList(userId, id) {
-        const list = await this.prisma.packingList.findUnique({
+    async deleteRouteOptimization(id, userId) {
+        const route = await this.prisma.routeOptimization.findUnique({
             where: { id },
         });
-        if (!list) {
-            throw new common_1.NotFoundException('Packing list not found');
+        if (!route) {
+            throw new common_1.NotFoundException('Route optimization not found');
         }
-        if (list.userId !== userId) {
-            throw new common_1.NotFoundException('Access denied');
+        if (route.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
         }
-        return this.prisma.packingList.delete({
+        return this.prisma.routeOptimization.delete({
             where: { id },
         });
     }
-    async getTravelDocuments(userId, itineraryId) {
-        const where = { userId };
-        if (itineraryId)
-            where.itineraryId = itineraryId;
-        return this.prisma.travelDocument.findMany({
-            where,
+    async getNavigationRoutes(userId) {
+        return this.prisma.navigationRoute.findMany({
+            where: { userId },
             orderBy: { createdAt: 'desc' },
         });
     }
-    async createTravelDocument(userId, data) {
-        return this.prisma.travelDocument.create({
+    async createNavigationRoute(userId, dto) {
+        return this.prisma.navigationRoute.create({
             data: {
                 user: { connect: { id: userId } },
-                itineraryId: data.itineraryId,
-                documentType: data.documentType,
-                title: data.title,
-                documentNumber: data.documentNumber,
-                expiryDate: data.expiryDate ? new Date(data.expiryDate) : null,
-                fileUrl: data.fileUrl,
-                notes: data.notes,
+                ...dto,
             },
         });
     }
-    async deleteTravelDocument(userId, id) {
-        const doc = await this.prisma.travelDocument.findUnique({
+    async updateNavigationRoute(id, userId, dto) {
+        const route = await this.prisma.navigationRoute.findUnique({
             where: { id },
         });
-        if (!doc) {
-            throw new common_1.NotFoundException('Document not found');
+        if (!route) {
+            throw new common_1.NotFoundException('Navigation route not found');
         }
-        if (doc.userId !== userId) {
-            throw new common_1.NotFoundException('Access denied');
+        if (route.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
         }
-        return this.prisma.travelDocument.delete({
+        return this.prisma.navigationRoute.update({
             where: { id },
+            data: dto,
+        });
+    }
+    async deleteNavigationRoute(id, userId) {
+        const route = await this.prisma.navigationRoute.findUnique({
+            where: { id },
+        });
+        if (!route) {
+            throw new common_1.NotFoundException('Navigation route not found');
+        }
+        if (route.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.navigationRoute.delete({
+            where: { id },
+        });
+    }
+    async getOfflineGuides(userId) {
+        return this.prisma.offlineGuide.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createOfflineGuide(userId, dto) {
+        return this.prisma.offlineGuide.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+            },
+        });
+    }
+    async updateOfflineGuide(id, userId, dto) {
+        const guide = await this.prisma.offlineGuide.findUnique({
+            where: { id },
+        });
+        if (!guide) {
+            throw new common_1.NotFoundException('Offline guide not found');
+        }
+        if (guide.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.offlineGuide.update({
+            where: { id },
+            data: dto,
+        });
+    }
+    async deleteOfflineGuide(id, userId) {
+        const guide = await this.prisma.offlineGuide.findUnique({
+            where: { id },
+        });
+        if (!guide) {
+            throw new common_1.NotFoundException('Offline guide not found');
+        }
+        if (guide.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.offlineGuide.delete({
+            where: { id },
+        });
+    }
+    async getFlightTrainStatuses(userId) {
+        return this.prisma.flightTrainStatus.findMany({
+            where: { userId },
+            orderBy: { departureTime: 'asc' },
+        });
+    }
+    async createFlightTrainStatus(userId, dto) {
+        return this.prisma.flightTrainStatus.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+                departureTime: new Date(dto.departureTime),
+                arrivalTime: new Date(dto.arrivalTime),
+            },
+        });
+    }
+    async updateFlightTrainStatus(id, userId, dto) {
+        const status = await this.prisma.flightTrainStatus.findUnique({
+            where: { id },
+        });
+        if (!status) {
+            throw new common_1.NotFoundException('Flight/train status not found');
+        }
+        if (status.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.flightTrainStatus.update({
+            where: { id },
+            data: dto,
+        });
+    }
+    async deleteFlightTrainStatus(id, userId) {
+        const status = await this.prisma.flightTrainStatus.findUnique({
+            where: { id },
+        });
+        if (!status) {
+            throw new common_1.NotFoundException('Flight/train status not found');
+        }
+        if (status.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.flightTrainStatus.delete({
+            where: { id },
+        });
+    }
+    async getVisitedCountries(userId) {
+        return this.prisma.visitedCountry.findMany({
+            where: { userId },
+            orderBy: { visitDate: 'desc' },
+        });
+    }
+    async createVisitedCountry(userId, dto) {
+        return this.prisma.visitedCountry.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+                visitDate: new Date(dto.visitDate),
+                visaExpiryDate: dto.visaExpiryDate ? new Date(dto.visaExpiryDate) : null,
+            },
+        });
+    }
+    async updateVisitedCountry(id, userId, dto) {
+        const country = await this.prisma.visitedCountry.findUnique({
+            where: { id },
+        });
+        if (!country) {
+            throw new common_1.NotFoundException('Visited country not found');
+        }
+        if (country.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.visitedCountry.update({
+            where: { id },
+            data: {
+                ...dto,
+                visaExpiryDate: dto.visaExpiryDate ? new Date(dto.visaExpiryDate) : undefined,
+            },
+        });
+    }
+    async deleteVisitedCountry(id, userId) {
+        const country = await this.prisma.visitedCountry.findUnique({
+            where: { id },
+        });
+        if (!country) {
+            throw new common_1.NotFoundException('Visited country not found');
+        }
+        if (country.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.visitedCountry.delete({
+            where: { id },
+        });
+    }
+    async getCarbonFootprints(userId) {
+        return this.prisma.carbonFootprint.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createCarbonFootprint(userId, dto) {
+        return this.prisma.carbonFootprint.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+            },
+        });
+    }
+    async updateCarbonFootprint(id, userId, dto) {
+        const footprint = await this.prisma.carbonFootprint.findUnique({
+            where: { id },
+        });
+        if (!footprint) {
+            throw new common_1.NotFoundException('Carbon footprint not found');
+        }
+        if (footprint.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.carbonFootprint.update({
+            where: { id },
+            data: dto,
+        });
+    }
+    async deleteCarbonFootprint(id, userId) {
+        const footprint = await this.prisma.carbonFootprint.findUnique({
+            where: { id },
+        });
+        if (!footprint) {
+            throw new common_1.NotFoundException('Carbon footprint not found');
+        }
+        if (footprint.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.carbonFootprint.delete({
+            where: { id },
+        });
+    }
+    async getEmergencyContacts(userId) {
+        return this.prisma.emergencyContact.findMany({
+            where: { userId },
+            orderBy: { isPrimary: 'desc' },
+        });
+    }
+    async createEmergencyContact(userId, dto) {
+        return this.prisma.emergencyContact.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+            },
+        });
+    }
+    async updateEmergencyContact(id, userId, dto) {
+        const contact = await this.prisma.emergencyContact.findUnique({
+            where: { id },
+        });
+        if (!contact) {
+            throw new common_1.NotFoundException('Emergency contact not found');
+        }
+        if (contact.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.emergencyContact.update({
+            where: { id },
+            data: dto,
+        });
+    }
+    async deleteEmergencyContact(id, userId) {
+        const contact = await this.prisma.emergencyContact.findUnique({
+            where: { id },
+        });
+        if (!contact) {
+            throw new common_1.NotFoundException('Emergency contact not found');
+        }
+        if (contact.userId !== userId) {
+            throw new common_1.ForbiddenException('Access denied');
+        }
+        return this.prisma.emergencyContact.delete({
+            where: { id },
+        });
+    }
+    async getSafetyHub(userId) {
+        return this.prisma.safetyHub.findUnique({
+            where: { userId },
+        });
+    }
+    async createSafetyHub(userId) {
+        return this.prisma.safetyHub.create({
+            data: {
+                user: { connect: { id: userId } },
+            },
+        });
+    }
+    async updateSafetyHub(userId, dto) {
+        const hub = await this.prisma.safetyHub.findUnique({
+            where: { userId },
+        });
+        if (!hub) {
+            return this.prisma.safetyHub.create({
+                data: {
+                    user: { connect: { id: userId } },
+                    ...dto,
+                    lastLocationTime: dto.lastLocationTime ? new Date(dto.lastLocationTime) : undefined,
+                    sosTriggeredAt: dto.sosTriggeredAt ? new Date(dto.sosTriggeredAt) : undefined,
+                },
+            });
+        }
+        return this.prisma.safetyHub.update({
+            where: { userId },
+            data: {
+                ...dto,
+                lastLocationTime: dto.lastLocationTime ? new Date(dto.lastLocationTime) : undefined,
+                sosTriggeredAt: dto.sosTriggeredAt ? new Date(dto.sosTriggeredAt) : undefined,
+            },
         });
     }
 };
