@@ -5,152 +5,152 @@ export declare class TripPlanningService {
     constructor(prisma: PrismaService);
     getRouteOptimizations(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        itineraryId: string | null;
         memoryIds: string;
         totalDistance: number;
-        itineraryId: string | null;
         optimizedOrder: string;
         transportMode: string;
         totalTime: number;
     }[]>;
     createRouteOptimization(userId: string, dto: CreateRouteOptimizationDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        itineraryId: string | null;
         memoryIds: string;
         totalDistance: number;
-        itineraryId: string | null;
         optimizedOrder: string;
         transportMode: string;
         totalTime: number;
     }>;
     updateRouteOptimization(id: string, userId: string, dto: UpdateRouteOptimizationDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        itineraryId: string | null;
         memoryIds: string;
         totalDistance: number;
-        itineraryId: string | null;
         optimizedOrder: string;
         transportMode: string;
         totalTime: number;
     }>;
     deleteRouteOptimization(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        itineraryId: string | null;
         memoryIds: string;
         totalDistance: number;
-        itineraryId: string | null;
         optimizedOrder: string;
         transportMode: string;
         totalTime: number;
     }>;
     getNavigationRoutes(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        steps: string;
+        createdAt: Date;
         itineraryId: string | null;
+        waypoints: string;
+        steps: string;
         transportMode: string;
         startLocation: string;
         endLocation: string;
-        waypoints: string;
         evChargingStations: string | null;
         gasStations: string | null;
         elevationGain: number | null;
     }[]>;
     createNavigationRoute(userId: string, dto: CreateNavigationRouteDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        steps: string;
+        createdAt: Date;
         itineraryId: string | null;
+        waypoints: string;
+        steps: string;
         transportMode: string;
         startLocation: string;
         endLocation: string;
-        waypoints: string;
         evChargingStations: string | null;
         gasStations: string | null;
         elevationGain: number | null;
     }>;
     updateNavigationRoute(id: string, userId: string, dto: UpdateNavigationRouteDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        steps: string;
+        createdAt: Date;
         itineraryId: string | null;
+        waypoints: string;
+        steps: string;
         transportMode: string;
         startLocation: string;
         endLocation: string;
-        waypoints: string;
         evChargingStations: string | null;
         gasStations: string | null;
         elevationGain: number | null;
     }>;
     deleteNavigationRoute(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        steps: string;
+        createdAt: Date;
         itineraryId: string | null;
+        waypoints: string;
+        steps: string;
         transportMode: string;
         startLocation: string;
         endLocation: string;
-        waypoints: string;
         evChargingStations: string | null;
         gasStations: string | null;
         elevationGain: number | null;
     }>;
     getOfflineGuides(userId: string): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         emergencyContacts: string | null;
-        userId: string;
+        itineraryId: string | null;
         title: string;
         memoryIds: string;
         notes: string | null;
-        itineraryId: string | null;
         mapTiles: string;
         downloadUrl: string | null;
         isDownloaded: boolean;
     }[]>;
     createOfflineGuide(userId: string, dto: CreateOfflineGuideDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         emergencyContacts: string | null;
-        userId: string;
+        itineraryId: string | null;
         title: string;
         memoryIds: string;
         notes: string | null;
-        itineraryId: string | null;
         mapTiles: string;
         downloadUrl: string | null;
         isDownloaded: boolean;
     }>;
     updateOfflineGuide(id: string, userId: string, dto: UpdateOfflineGuideDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         emergencyContacts: string | null;
-        userId: string;
+        itineraryId: string | null;
         title: string;
         memoryIds: string;
         notes: string | null;
-        itineraryId: string | null;
         mapTiles: string;
         downloadUrl: string | null;
         isDownloaded: boolean;
     }>;
     deleteOfflineGuide(id: string, userId: string): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         emergencyContacts: string | null;
-        userId: string;
+        itineraryId: string | null;
         title: string;
         memoryIds: string;
         notes: string | null;
-        itineraryId: string | null;
         mapTiles: string;
         downloadUrl: string | null;
         isDownloaded: boolean;
@@ -158,13 +158,13 @@ export declare class TripPlanningService {
     getFlightTrainStatuses(userId: string): Promise<{
         number: string;
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
+        itineraryId: string | null;
         status: string;
         platform: string | null;
         type: string;
-        itineraryId: string | null;
         carrier: string;
         departureTime: Date;
         arrivalTime: Date;
@@ -177,13 +177,13 @@ export declare class TripPlanningService {
     createFlightTrainStatus(userId: string, dto: CreateFlightTrainStatusDto): Promise<{
         number: string;
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
+        itineraryId: string | null;
         status: string;
         platform: string | null;
         type: string;
-        itineraryId: string | null;
         carrier: string;
         departureTime: Date;
         arrivalTime: Date;
@@ -196,13 +196,13 @@ export declare class TripPlanningService {
     updateFlightTrainStatus(id: string, userId: string, dto: UpdateFlightTrainStatusDto): Promise<{
         number: string;
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
+        itineraryId: string | null;
         status: string;
         platform: string | null;
         type: string;
-        itineraryId: string | null;
         carrier: string;
         departureTime: Date;
         arrivalTime: Date;
@@ -215,13 +215,13 @@ export declare class TripPlanningService {
     deleteFlightTrainStatus(id: string, userId: string): Promise<{
         number: string;
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
+        itineraryId: string | null;
         status: string;
         platform: string | null;
         type: string;
-        itineraryId: string | null;
         carrier: string;
         departureTime: Date;
         arrivalTime: Date;
@@ -233,8 +233,8 @@ export declare class TripPlanningService {
     }>;
     getVisitedCountries(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         notes: string | null;
         countryCode: string;
         countryName: string;
@@ -244,8 +244,8 @@ export declare class TripPlanningService {
     }[]>;
     createVisitedCountry(userId: string, dto: CreateVisitedCountryDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         notes: string | null;
         countryCode: string;
         countryName: string;
@@ -255,8 +255,8 @@ export declare class TripPlanningService {
     }>;
     updateVisitedCountry(id: string, userId: string, dto: UpdateVisitedCountryDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         notes: string | null;
         countryCode: string;
         countryName: string;
@@ -266,8 +266,8 @@ export declare class TripPlanningService {
     }>;
     deleteVisitedCountry(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         notes: string | null;
         countryCode: string;
         countryName: string;
@@ -277,8 +277,8 @@ export declare class TripPlanningService {
     }>;
     getCarbonFootprints(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         itineraryId: string | null;
         tripType: string;
         distance: number;
@@ -289,8 +289,8 @@ export declare class TripPlanningService {
     }[]>;
     createCarbonFootprint(userId: string, dto: CreateCarbonFootprintDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         itineraryId: string | null;
         tripType: string;
         distance: number;
@@ -301,8 +301,8 @@ export declare class TripPlanningService {
     }>;
     updateCarbonFootprint(id: string, userId: string, dto: UpdateCarbonFootprintDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         itineraryId: string | null;
         tripType: string;
         distance: number;
@@ -313,8 +313,8 @@ export declare class TripPlanningService {
     }>;
     deleteCarbonFootprint(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         itineraryId: string | null;
         tripType: string;
         distance: number;
@@ -325,49 +325,49 @@ export declare class TripPlanningService {
     }>;
     getEmergencyContacts(userId: string): Promise<{
         id: string;
-        email: string | null;
-        name: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        name: string;
+        email: string | null;
         relationship: string;
         phone: string;
         isPrimary: boolean;
     }[]>;
     createEmergencyContact(userId: string, dto: CreateEmergencyContactDto): Promise<{
         id: string;
-        email: string | null;
-        name: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        name: string;
+        email: string | null;
         relationship: string;
         phone: string;
         isPrimary: boolean;
     }>;
     updateEmergencyContact(id: string, userId: string, dto: UpdateEmergencyContactDto): Promise<{
         id: string;
-        email: string | null;
-        name: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        name: string;
+        email: string | null;
         relationship: string;
         phone: string;
         isPrimary: boolean;
     }>;
     deleteEmergencyContact(id: string, userId: string): Promise<{
         id: string;
-        email: string | null;
-        name: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
+        name: string;
+        email: string | null;
         relationship: string;
         phone: string;
         isPrimary: boolean;
     }>;
     getSafetyHub(userId: string): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         lastLocationLat: number | null;
         lastLocationLng: number | null;
         lastLocationTime: Date | null;
@@ -380,9 +380,9 @@ export declare class TripPlanningService {
     }>;
     createSafetyHub(userId: string): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         lastLocationLat: number | null;
         lastLocationLng: number | null;
         lastLocationTime: Date | null;
@@ -395,9 +395,9 @@ export declare class TripPlanningService {
     }>;
     updateSafetyHub(userId: string, dto: UpdateSafetyHubDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         lastLocationLat: number | null;
         lastLocationLng: number | null;
         lastLocationTime: Date | null;

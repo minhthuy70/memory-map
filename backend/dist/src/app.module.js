@@ -26,6 +26,7 @@ const genealogy_module_1 = require("./genealogy/genealogy.module");
 const audiovisual_module_1 = require("./audiovisual/audiovisual.module");
 const trip_planning_module_1 = require("./trip-planning/trip-planning.module");
 const social_module_1 = require("./social/social.module");
+const three_d_spatial_module_1 = require("./three-d-spatial/three-d-spatial.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -58,6 +59,7 @@ exports.AppModule = AppModule = __decorate([
             audiovisual_module_1.AudiovisualModule,
             trip_planning_module_1.TripPlanningModule,
             social_module_1.SocialModule,
+            three_d_spatial_module_1.ThreeDSpatialModule,
         ],
     })
 ], AppModule);

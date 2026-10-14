@@ -5,114 +5,114 @@ export declare class AudiovisualService {
     constructor(prisma: PrismaService);
     getScrapbookProjects(userId: string): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
         title: string;
+        layoutData: string;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
-        layoutData: string;
     }[]>;
     getScrapbookProject(userId: string, id: string): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
         title: string;
+        layoutData: string;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
-        layoutData: string;
     }>;
     createScrapbookProject(userId: string, data: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
         title: string;
+        layoutData: string;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
-        layoutData: string;
     }>;
     updateScrapbookProject(userId: string, id: string, data: any): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
         title: string;
+        layoutData: string;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
-        layoutData: string;
     }>;
     deleteScrapbookProject(userId: string, id: string): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
-        isPublic: boolean;
         title: string;
+        layoutData: string;
+        isPublic: boolean;
         description: string | null;
         thumbnailUrl: string | null;
-        layoutData: string;
     }>;
     getSoundscapeMixes(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        title: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
+        title: string;
         audioUrl: string | null;
         mixData: string;
     }[]>;
     getSoundscapeMix(userId: string, id: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        title: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
+        title: string;
         audioUrl: string | null;
         mixData: string;
     }>;
     createSoundscapeMix(userId: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        title: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
+        title: string;
         audioUrl: string | null;
         mixData: string;
     }>;
     updateSoundscapeMix(userId: string, id: string, data: any): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        title: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
+        title: string;
         audioUrl: string | null;
         mixData: string;
     }>;
     deleteSoundscapeMix(userId: string, id: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        title: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
+        title: string;
         audioUrl: string | null;
         mixData: string;
     }>;
     getHandwritingCanvases(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         imageUrl: string | null;
         drawingData: string;
         brushType: string;
@@ -121,9 +121,9 @@ export declare class AudiovisualService {
     }[]>;
     createHandwritingCanvas(userId: string, dto: CreateHandwritingCanvasDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         imageUrl: string | null;
         drawingData: string;
         brushType: string;
@@ -132,9 +132,9 @@ export declare class AudiovisualService {
     }>;
     updateHandwritingCanvas(id: string, userId: string, dto: UpdateHandwritingCanvasDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         imageUrl: string | null;
         drawingData: string;
         brushType: string;
@@ -143,9 +143,9 @@ export declare class AudiovisualService {
     }>;
     deleteHandwritingCanvas(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         imageUrl: string | null;
         drawingData: string;
         brushType: string;
@@ -154,9 +154,9 @@ export declare class AudiovisualService {
     }>;
     getVintageFilms(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         intensity: number;
         originalImageUrl: string;
         filterType: string;
@@ -167,9 +167,9 @@ export declare class AudiovisualService {
     }[]>;
     createVintageFilm(userId: string, dto: CreateVintageFilmDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         intensity: number;
         originalImageUrl: string;
         filterType: string;
@@ -180,9 +180,9 @@ export declare class AudiovisualService {
     }>;
     updateVintageFilm(id: string, userId: string, dto: UpdateVintageFilmDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         intensity: number;
         originalImageUrl: string;
         filterType: string;
@@ -193,9 +193,9 @@ export declare class AudiovisualService {
     }>;
     deleteVintageFilm(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         intensity: number;
         originalImageUrl: string;
         filterType: string;
@@ -206,11 +206,11 @@ export declare class AudiovisualService {
     }>;
     getLivePhotos(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
-        videoUrl: string | null;
+        createdAt: Date;
         duration: number | null;
+        videoUrl: string | null;
         platform: string;
         photoUrl: string;
         keyframeUrl: string | null;
@@ -218,11 +218,11 @@ export declare class AudiovisualService {
     }[]>;
     createLivePhoto(userId: string, dto: CreateLivePhotoDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
-        videoUrl: string | null;
+        createdAt: Date;
         duration: number | null;
+        videoUrl: string | null;
         platform: string;
         photoUrl: string;
         keyframeUrl: string | null;
@@ -230,11 +230,11 @@ export declare class AudiovisualService {
     }>;
     updateLivePhoto(id: string, userId: string, dto: UpdateLivePhotoDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
-        videoUrl: string | null;
+        createdAt: Date;
         duration: number | null;
+        videoUrl: string | null;
         platform: string;
         photoUrl: string;
         keyframeUrl: string | null;
@@ -242,11 +242,11 @@ export declare class AudiovisualService {
     }>;
     deleteLivePhoto(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
-        videoUrl: string | null;
+        createdAt: Date;
         duration: number | null;
+        videoUrl: string | null;
         platform: string;
         photoUrl: string;
         keyframeUrl: string | null;
@@ -254,9 +254,9 @@ export declare class AudiovisualService {
     }>;
     getBeforeAfterSliders(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         beforeImageUrl: string;
         afterImageUrl: string;
         orientation: string;
@@ -265,9 +265,9 @@ export declare class AudiovisualService {
     }[]>;
     createBeforeAfterSlider(userId: string, dto: CreateBeforeAfterSliderDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         beforeImageUrl: string;
         afterImageUrl: string;
         orientation: string;
@@ -276,9 +276,9 @@ export declare class AudiovisualService {
     }>;
     updateBeforeAfterSlider(id: string, userId: string, dto: UpdateBeforeAfterSliderDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         beforeImageUrl: string;
         afterImageUrl: string;
         orientation: string;
@@ -287,9 +287,9 @@ export declare class AudiovisualService {
     }>;
     deleteBeforeAfterSlider(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         beforeImageUrl: string;
         afterImageUrl: string;
         orientation: string;
@@ -298,9 +298,10 @@ export declare class AudiovisualService {
     }>;
     getTypographyStamps(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
+        rotation: number;
         text: string;
         fontName: string;
         fontSize: number;
@@ -308,13 +309,13 @@ export declare class AudiovisualService {
         stampType: string;
         positionX: number;
         positionY: number;
-        rotation: number;
     }[]>;
     createTypographyStamp(userId: string, dto: CreateTypographyStampDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
+        rotation: number;
         text: string;
         fontName: string;
         fontSize: number;
@@ -322,13 +323,13 @@ export declare class AudiovisualService {
         stampType: string;
         positionX: number;
         positionY: number;
-        rotation: number;
     }>;
     updateTypographyStamp(id: string, userId: string, dto: UpdateTypographyStampDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
+        rotation: number;
         text: string;
         fontName: string;
         fontSize: number;
@@ -336,13 +337,13 @@ export declare class AudiovisualService {
         stampType: string;
         positionX: number;
         positionY: number;
-        rotation: number;
     }>;
     deleteTypographyStamp(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
+        rotation: number;
         text: string;
         fontName: string;
         fontSize: number;
@@ -350,65 +351,64 @@ export declare class AudiovisualService {
         stampType: string;
         positionX: number;
         positionY: number;
-        rotation: number;
     }>;
     getBeatSyncVideos(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        videoUrl: string | null;
+        createdAt: Date;
         status: string;
+        processedAt: Date | null;
+        videoUrl: string | null;
         audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
-        processedAt: Date | null;
     }[]>;
     createBeatSyncVideo(userId: string, dto: CreateBeatSyncVideoDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        videoUrl: string | null;
+        createdAt: Date;
         status: string;
+        processedAt: Date | null;
+        videoUrl: string | null;
         audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
-        processedAt: Date | null;
     }>;
     updateBeatSyncVideo(id: string, userId: string, dto: UpdateBeatSyncVideoDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        videoUrl: string | null;
+        createdAt: Date;
         status: string;
+        processedAt: Date | null;
+        videoUrl: string | null;
         audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
-        processedAt: Date | null;
     }>;
     deleteBeatSyncVideo(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        videoUrl: string | null;
+        createdAt: Date;
         status: string;
+        processedAt: Date | null;
+        videoUrl: string | null;
         audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
-        processedAt: Date | null;
     }>;
     getAIVoiceovers(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
         audioUrl: string;
         transcript: string | null;
@@ -418,9 +418,9 @@ export declare class AudiovisualService {
     }[]>;
     createAIVoiceover(userId: string, dto: CreateAIVoiceoverDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
         audioUrl: string;
         transcript: string | null;
@@ -430,9 +430,9 @@ export declare class AudiovisualService {
     }>;
     updateAIVoiceover(id: string, userId: string, dto: UpdateAIVoiceoverDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
         audioUrl: string;
         transcript: string | null;
@@ -442,9 +442,9 @@ export declare class AudiovisualService {
     }>;
     deleteAIVoiceover(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
         audioUrl: string;
         transcript: string | null;
@@ -454,9 +454,9 @@ export declare class AudiovisualService {
     }>;
     getMemorySoundtracks(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
         spotifyTrackId: string | null;
         fieldRecordingUrl: string | null;
@@ -465,9 +465,9 @@ export declare class AudiovisualService {
     }[]>;
     createMemorySoundtrack(userId: string, dto: CreateMemorySoundtrackDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
         spotifyTrackId: string | null;
         fieldRecordingUrl: string | null;
@@ -476,9 +476,9 @@ export declare class AudiovisualService {
     }>;
     updateMemorySoundtrack(id: string, userId: string, dto: UpdateMemorySoundtrackDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
         spotifyTrackId: string | null;
         fieldRecordingUrl: string | null;
@@ -487,9 +487,9 @@ export declare class AudiovisualService {
     }>;
     deleteMemorySoundtrack(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         duration: number;
         spotifyTrackId: string | null;
         fieldRecordingUrl: string | null;

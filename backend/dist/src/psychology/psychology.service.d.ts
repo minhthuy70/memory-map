@@ -10,29 +10,29 @@ export declare class PsychologyService {
     constructor(prisma: PrismaService);
     getEmotionalGeographyPoints(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        memoryId: string;
         latitude: number;
         longitude: number;
-        memoryId: string;
+        createdAt: Date;
         emotionType: string;
         intensity: number;
     }[]>;
     createEmotionalGeographyPoint(userId: string, memoryId: string, latitude: number, longitude: number, emotionType: string, intensity: number): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        memoryId: string;
         latitude: number;
         longitude: number;
-        memoryId: string;
+        createdAt: Date;
         emotionType: string;
         intensity: number;
     }>;
     getReminiscenceSessions(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         completedAt: Date | null;
         prompt: string;
         response: string | null;
@@ -42,9 +42,9 @@ export declare class PsychologyService {
     }[]>;
     createReminiscenceSession(userId: string, dto: CreateReminiscenceTherapyDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         completedAt: Date | null;
         prompt: string;
         response: string | null;
@@ -54,9 +54,9 @@ export declare class PsychologyService {
     }>;
     updateReminiscenceSession(id: string, userId: string, dto: UpdateReminiscenceTherapyDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
         memoryId: string | null;
+        createdAt: Date;
         completedAt: Date | null;
         prompt: string;
         response: string | null;
@@ -66,8 +66,8 @@ export declare class PsychologyService {
     }>;
     getInnerChildDialogues(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         prompt: string;
         response: string;
         childhoodPhotoUrl: string | null;
@@ -77,8 +77,8 @@ export declare class PsychologyService {
     }[]>;
     createInnerChildDialogue(userId: string, dto: CreateInnerChildDialogueDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
+        createdAt: Date;
         prompt: string;
         response: string;
         childhoodPhotoUrl: string | null;
@@ -124,9 +124,9 @@ export declare class PsychologyService {
     }>;
     getZenReflectionMode(userId: string): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         theme: string;
         isEnabled: boolean;
         hideMetrics: boolean;
@@ -135,9 +135,9 @@ export declare class PsychologyService {
     }>;
     updateZenReflectionMode(userId: string, dto: UpdateZenReflectionDto): Promise<{
         id: string;
+        userId: string;
         createdAt: Date;
         updatedAt: Date;
-        userId: string;
         theme: string;
         isEnabled: boolean;
         hideMetrics: boolean;
@@ -146,50 +146,50 @@ export declare class PsychologyService {
     }>;
     getEmotionalWaveforms(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        mood: string;
+        createdAt: Date;
         date: Date;
+        mood: string;
         intensity: number;
         lifeChapter: string | null;
         note: string | null;
     }[]>;
     createEmotionalWaveform(userId: string, dto: CreateEmotionalWaveformDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        mood: string;
+        createdAt: Date;
         date: Date;
+        mood: string;
         intensity: number;
         lifeChapter: string | null;
         note: string | null;
     }>;
     updateEmotionalWaveform(id: string, userId: string, dto: UpdateEmotionalWaveformDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        mood: string;
+        createdAt: Date;
         date: Date;
+        mood: string;
         intensity: number;
         lifeChapter: string | null;
         note: string | null;
     }>;
     deleteEmotionalWaveform(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        mood: string;
+        createdAt: Date;
         date: Date;
+        mood: string;
         intensity: number;
         lifeChapter: string | null;
         note: string | null;
     }>;
     getDreamJournals(userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        title: string;
         locationName: string | null;
+        createdAt: Date;
+        title: string;
         mood: string | null;
         description: string;
         dreamDate: Date;
@@ -200,10 +200,10 @@ export declare class PsychologyService {
     }[]>;
     createDreamJournal(userId: string, dto: CreateDreamJournalDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        title: string;
         locationName: string | null;
+        createdAt: Date;
+        title: string;
         mood: string | null;
         description: string;
         dreamDate: Date;
@@ -214,10 +214,10 @@ export declare class PsychologyService {
     }>;
     updateDreamJournal(id: string, userId: string, dto: UpdateDreamJournalDto): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        title: string;
         locationName: string | null;
+        createdAt: Date;
+        title: string;
         mood: string | null;
         description: string;
         dreamDate: Date;
@@ -228,10 +228,10 @@ export declare class PsychologyService {
     }>;
     deleteDreamJournal(id: string, userId: string): Promise<{
         id: string;
-        createdAt: Date;
         userId: string;
-        title: string;
         locationName: string | null;
+        createdAt: Date;
+        title: string;
         mood: string | null;
         description: string;
         dreamDate: Date;

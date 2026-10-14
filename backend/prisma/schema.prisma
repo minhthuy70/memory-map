@@ -142,6 +142,15 @@ model User {
   carbonFootprints CarbonFootprint[]
   emergencyContacts EmergencyContact[]
   safetyHubs SafetyHub[]
+  terrainElevations TerrainElevation[]
+  flightPaths3D FlightPath3D[]
+  landmarks3D Landmark3D[]
+  weatherSimulations3D WeatherSimulation3D[]
+  spatialMedia SpatialMedia[]
+  gaussianSplattings GaussianSplatting[]
+  photogrammetryReconstructions PhotogrammetryReconstruction[]
+  memoryDioramas MemoryDioramaBox[]
+  virtualStreetTours VirtualStreetTour[]
 
   // Social & Community
   memoryReactions MemoryReaction[]
@@ -1974,6 +1983,164 @@ model SafetyHub {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("safety_hubs")
+}
+
+// 3D, Digital Twin & Spatial Computing
+model TerrainElevation {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  locationName String @map("location_name")
+  latitude    Float
+  longitude   Float
+  elevation   Float    // meters
+  steepness   Float?   // gradient percentage
+  demData     String?  @map("dem_data") // JSON of elevation grid
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("terrain_elevations")
+}
+
+model FlightPath3D {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  itineraryId String?  @map("itinerary_id")
+  fromLocation String @map("from_location")
+  toLocation  String   @map("to_location")
+  waypoints   String   // JSON of coordinates
+  flightPath String   @default("[]") @map("flight_path") // JSON of curved path
+  duration    Int      // seconds
+  cloudsEffect Boolean @default(false) @map("clouds_effect")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([itineraryId])
+  @@map("flight_paths_3d")
+}
+
+model Landmark3D {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  name        String
+  location    String
+  latitude    Float
+  longitude   Float
+  modelUrl    String   @map("model_url") // glTF/GLB file
+  modelType   String   @map("model_type") // gltf, glb
+  scale       Float    @default(1)
+  rotation    Float    @default(0)
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("landmarks_3d")
+}
+
+model WeatherSimulation3D {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  location    String
+  date        DateTime
+  weatherType String   @map("weather_type") // sunny, rainy, snowy, foggy
+  temperature Float
+  isDay       Boolean  @default(true) @map("is_day")
+  solarPosition String? @map("solar_position") // JSON of sun position
+  particleData String?  @map("particle_data") // JSON of rain/snow/fog particles
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("weather_simulations_3d")
+}
+
+model SpatialMedia {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  mediaType   String   @map("media_type") // spatial_video, spatial_photo
+  mediaUrl    String   @map("media_url")
+  depthMapUrl String?  @map("depth_map_url")
+  stereoscopic Boolean @default(false)
+  isSpatial   Boolean  @default(true) @map("is_spatial")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("spatial_media")
+}
+
+model GaussianSplatting {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  location    String
+  modelUrl    String   @map("model_url") // .splat or .ply file
+  splatData   String?  @map("splat_data") // JSON of point cloud
+  tags        String?  // JSON of annotation tags
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("gaussian_splattings")
+}
+
+model PhotogrammetryReconstruction {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  title       String
+  photoUrls   String   @map("photo_urls") // JSON array
+  modelUrl    String?  @map("model_url") // generated 3D model
+  meshData    String?  @map("mesh_data") // JSON of mesh
+  textureUrl  String?  @map("texture_url")
+  status      String   // processing, completed, failed
+  createdAt   DateTime @default(now()) @map("created_at")
+  processedAt DateTime? @map("processed_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("photogrammetry_reconstructions")
+}
+
+model MemoryDioramaBox {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  layoutData  String   @map("layout_data") // JSON of 2.5D photos, stickers, furniture
+  furnitureItems String? @map("furniture_items") // JSON
+  soundBoxUrl String?  @map("sound_box_url")
+  exportUrl   String?  @map("export_url") // glTF or GIF
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("memory_dioramas")
+}
+
+model VirtualStreetTour {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  panoramaIds String   @map("panorama_ids") // JSON array of 360 photo IDs
+  hotspots    String   // JSON of directional hotspots
+  floorPlan   String?  @map("floor_plan") // JSON
+  audioTransitions String? @map("audio_transitions") // JSON
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("virtual_street_tours")
 }
 
 // Social & Community

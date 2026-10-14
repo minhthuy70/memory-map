@@ -18,6 +18,7 @@ import { GenealogyModule } from './genealogy/genealogy.module';
 import { AudiovisualModule } from './audiovisual/audiovisual.module';
 import { TripPlanningModule } from './trip-planning/trip-planning.module';
 import { SocialModule } from './social/social.module';
+import { ThreeDSpatialModule } from './three-d-spatial/three-d-spatial.module';
 
 @Module({
   imports: [
@@ -64,6 +65,8 @@ import { SocialModule } from './social/social.module';
     TripPlanningModule,
 
     SocialModule,
+
+    ThreeDSpatialModule,
   ],
 })
 export class AppModule {}
