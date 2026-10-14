@@ -12,9 +12,9 @@ export declare class PsychologyService {
         id: string;
         userId: string;
         memoryId: string;
+        createdAt: Date;
         latitude: number;
         longitude: number;
-        createdAt: Date;
         emotionType: string;
         intensity: number;
     }[]>;
@@ -22,9 +22,9 @@ export declare class PsychologyService {
         id: string;
         userId: string;
         memoryId: string;
+        createdAt: Date;
         latitude: number;
         longitude: number;
-        createdAt: Date;
         emotionType: string;
         intensity: number;
     }>;
@@ -148,8 +148,8 @@ export declare class PsychologyService {
         id: string;
         userId: string;
         createdAt: Date;
-        date: Date;
         mood: string;
+        date: Date;
         intensity: number;
         lifeChapter: string | null;
         note: string | null;
@@ -158,8 +158,8 @@ export declare class PsychologyService {
         id: string;
         userId: string;
         createdAt: Date;
-        date: Date;
         mood: string;
+        date: Date;
         intensity: number;
         lifeChapter: string | null;
         note: string | null;
@@ -168,8 +168,8 @@ export declare class PsychologyService {
         id: string;
         userId: string;
         createdAt: Date;
-        date: Date;
         mood: string;
+        date: Date;
         intensity: number;
         lifeChapter: string | null;
         note: string | null;
@@ -178,8 +178,8 @@ export declare class PsychologyService {
         id: string;
         userId: string;
         createdAt: Date;
-        date: Date;
         mood: string;
+        date: Date;
         intensity: number;
         lifeChapter: string | null;
         note: string | null;
@@ -187,11 +187,11 @@ export declare class PsychologyService {
     getDreamJournals(userId: string): Promise<{
         id: string;
         userId: string;
-        locationName: string | null;
         createdAt: Date;
+        description: string;
         title: string;
         mood: string | null;
-        description: string;
+        locationName: string | null;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string | null;
@@ -201,11 +201,11 @@ export declare class PsychologyService {
     createDreamJournal(userId: string, dto: CreateDreamJournalDto): Promise<{
         id: string;
         userId: string;
-        locationName: string | null;
         createdAt: Date;
+        description: string;
         title: string;
         mood: string | null;
-        description: string;
+        locationName: string | null;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string | null;
@@ -215,11 +215,11 @@ export declare class PsychologyService {
     updateDreamJournal(id: string, userId: string, dto: UpdateDreamJournalDto): Promise<{
         id: string;
         userId: string;
-        locationName: string | null;
         createdAt: Date;
+        description: string;
         title: string;
         mood: string | null;
-        description: string;
+        locationName: string | null;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string | null;
@@ -229,11 +229,11 @@ export declare class PsychologyService {
     deleteDreamJournal(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        locationName: string | null;
         createdAt: Date;
+        description: string;
         title: string;
         mood: string | null;
-        description: string;
+        locationName: string | null;
         dreamDate: Date;
         isLucid: boolean;
         symbols: string | null;

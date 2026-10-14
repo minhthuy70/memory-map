@@ -182,6 +182,194 @@ let SocialService = class SocialService {
             },
         });
     }
+    async getStories(userId) {
+        return this.prisma.memoryStory.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createStory(userId, dto) {
+        const expiresAt = new Date();
+        expiresAt.setHours(expiresAt.getHours() + 24);
+        return this.prisma.memoryStory.create({
+            data: {
+                user: { connect: { id: userId } },
+                ...dto,
+                expiresAt,
+            },
+        });
+    }
+    async updateStory(id, userId, dto) {
+        const story = await this.prisma.memoryStory.findUnique({ where: { id } });
+        if (!story || story.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.memoryStory.update({ where: { id }, data: dto });
+    }
+    async deleteStory(id, userId) {
+        const story = await this.prisma.memoryStory.findUnique({ where: { id } });
+        if (!story || story.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.memoryStory.delete({ where: { id } });
+    }
+    async getCommunityFeeds(userId) {
+        return this.prisma.communityMapFeed.findMany({
+            where: { userId },
+            orderBy: { popularity: 'desc' },
+        });
+    }
+    async createCommunityFeed(userId, dto) {
+        return this.prisma.communityMapFeed.create({
+            data: { user: { connect: { id: userId } }, ...dto },
+        });
+    }
+    async updateCommunityFeed(id, userId, dto) {
+        const feed = await this.prisma.communityMapFeed.findUnique({ where: { id } });
+        if (!feed || feed.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.communityMapFeed.update({ where: { id }, data: dto });
+    }
+    async deleteCommunityFeed(id, userId) {
+        const feed = await this.prisma.communityMapFeed.findUnique({ where: { id } });
+        if (!feed || feed.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.communityMapFeed.delete({ where: { id } });
+    }
+    async getNearbyPings(userId) {
+        return this.prisma.nearbyFriendsPing.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createNearbyPing(userId, dto) {
+        return this.prisma.nearbyFriendsPing.create({
+            data: { user: { connect: { id: userId } }, ...dto },
+        });
+    }
+    async updateNearbyPing(id, userId, dto) {
+        const ping = await this.prisma.nearbyFriendsPing.findUnique({ where: { id } });
+        if (!ping || ping.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.nearbyFriendsPing.update({ where: { id }, data: dto });
+    }
+    async deleteNearbyPing(id, userId) {
+        const ping = await this.prisma.nearbyFriendsPing.findUnique({ where: { id } });
+        if (!ping || ping.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.nearbyFriendsPing.delete({ where: { id } });
+    }
+    async getCoPresenceSuggestions(userId) {
+        return this.prisma.coPresenceSuggestion.findMany({
+            where: { userId },
+            orderBy: { suggestedAt: 'desc' },
+        });
+    }
+    async createCoPresenceSuggestion(userId, dto) {
+        return this.prisma.coPresenceSuggestion.create({
+            data: { user: { connect: { id: userId } }, ...dto },
+        });
+    }
+    async deleteCoPresenceSuggestion(id, userId) {
+        const suggestion = await this.prisma.coPresenceSuggestion.findUnique({ where: { id } });
+        if (!suggestion || suggestion.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.coPresenceSuggestion.delete({ where: { id } });
+    }
+    async getExplorationChallenges(userId) {
+        return this.prisma.explorationChallenge.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createExplorationChallenge(userId, dto) {
+        return this.prisma.explorationChallenge.create({
+            data: { user: { connect: { id: userId } }, ...dto },
+        });
+    }
+    async updateExplorationChallenge(id, userId, dto) {
+        const challenge = await this.prisma.explorationChallenge.findUnique({ where: { id } });
+        if (!challenge || challenge.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        const data = { ...dto };
+        if (dto.progress && dto.progress >= challenge.targetCount) {
+            data.completedAt = new Date();
+        }
+        return this.prisma.explorationChallenge.update({ where: { id }, data });
+    }
+    async deleteExplorationChallenge(id, userId) {
+        const challenge = await this.prisma.explorationChallenge.findUnique({ where: { id } });
+        if (!challenge || challenge.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.explorationChallenge.delete({ where: { id } });
+    }
+    async getMemoryContests(userId) {
+        return this.prisma.memoryContest.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createMemoryContest(userId, dto) {
+        return this.prisma.memoryContest.create({
+            data: { user: { connect: { id: userId } }, ...dto, deadline: new Date(dto.deadline), votingEndsAt: new Date(dto.votingEndsAt) },
+        });
+    }
+    async updateMemoryContest(id, userId, dto) {
+        const contest = await this.prisma.memoryContest.findUnique({ where: { id } });
+        if (!contest || contest.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.memoryContest.update({ where: { id }, data: dto });
+    }
+    async deleteMemoryContest(id, userId) {
+        const contest = await this.prisma.memoryContest.findUnique({ where: { id } });
+        if (!contest || contest.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.memoryContest.delete({ where: { id } });
+    }
+    async getDigitalPostcards(userId) {
+        return this.prisma.digitalPostcard.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createDigitalPostcard(userId, dto) {
+        return this.prisma.digitalPostcard.create({
+            data: { user: { connect: { id: userId } }, ...dto },
+        });
+    }
+    async markPostcardOpened(id) {
+        return this.prisma.digitalPostcard.update({
+            where: { id },
+            data: { openedAt: new Date() },
+        });
+    }
+    async deleteDigitalPostcard(id, userId) {
+        const postcard = await this.prisma.digitalPostcard.findUnique({ where: { id } });
+        if (!postcard || postcard.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.digitalPostcard.delete({ where: { id } });
+    }
+    async getMemoryPenpals(userId) {
+        return this.prisma.memoryPenpal.findMany({
+            where: { userId },
+            orderBy: { createdAt: 'desc' },
+        });
+    }
+    async createMemoryPenpal(userId, dto) {
+        return this.prisma.memoryPenpal.create({
+            data: { user: { connect: { id: userId } }, ...dto },
+        });
+    }
+    async updateMemoryPenpal(id, userId, dto) {
+        const penpal = await this.prisma.memoryPenpal.findUnique({ where: { id } });
+        if (!penpal || penpal.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.memoryPenpal.update({ where: { id }, data: dto });
+    }
+    async deleteMemoryPenpal(id, userId) {
+        const penpal = await this.prisma.memoryPenpal.findUnique({ where: { id } });
+        if (!penpal || penpal.userId !== userId)
+            throw new common_1.NotFoundException('Not found');
+        return this.prisma.memoryPenpal.delete({ where: { id } });
+    }
 };
 exports.SocialService = SocialService;
 exports.SocialService = SocialService = __decorate([

@@ -37,8 +37,8 @@ export declare class MemoriesService {
     }): Promise<{
         user: {
             id: string;
-            name: string;
             email: string;
+            name: string;
             avatar: string;
         };
         category: {
@@ -58,16 +58,16 @@ export declare class MemoriesService {
     } & {
         id: string;
         userId: string;
-        locationName: string | null;
-        latitude: number;
-        longitude: number;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        isPublic: boolean;
         content: string | null;
-        memoryDate: Date;
+        isPublic: boolean;
+        title: string;
+        latitude: number;
+        longitude: number;
         mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
+        memoryDate: Date;
         reminderDate: Date | null;
         reminderSent: boolean;
         publicExpiresAt: Date | null;
@@ -101,16 +101,16 @@ export declare class MemoriesService {
         } & {
             id: string;
             userId: string;
-            locationName: string | null;
-            latitude: number;
-            longitude: number;
             createdAt: Date;
             updatedAt: Date;
-            title: string;
-            isPublic: boolean;
             content: string | null;
-            memoryDate: Date;
+            isPublic: boolean;
+            title: string;
+            latitude: number;
+            longitude: number;
             mood: import(".prisma/client").$Enums.Mood;
+            locationName: string | null;
+            memoryDate: Date;
             reminderDate: Date | null;
             reminderSent: boolean;
             publicExpiresAt: Date | null;
@@ -129,8 +129,8 @@ export declare class MemoriesService {
     findOne(id: string, userId: string): Promise<{
         user: {
             id: string;
-            name: string;
             email: string;
+            name: string;
             avatar: string;
         };
         category: {
@@ -150,16 +150,16 @@ export declare class MemoriesService {
     } & {
         id: string;
         userId: string;
-        locationName: string | null;
-        latitude: number;
-        longitude: number;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        isPublic: boolean;
         content: string | null;
-        memoryDate: Date;
+        isPublic: boolean;
+        title: string;
+        latitude: number;
+        longitude: number;
         mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
+        memoryDate: Date;
         reminderDate: Date | null;
         reminderSent: boolean;
         publicExpiresAt: Date | null;
@@ -194,16 +194,16 @@ export declare class MemoriesService {
     } & {
         id: string;
         userId: string;
-        locationName: string | null;
-        latitude: number;
-        longitude: number;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        isPublic: boolean;
         content: string | null;
-        memoryDate: Date;
+        isPublic: boolean;
+        title: string;
+        latitude: number;
+        longitude: number;
         mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
+        memoryDate: Date;
         reminderDate: Date | null;
         reminderSent: boolean;
         publicExpiresAt: Date | null;
@@ -213,16 +213,16 @@ export declare class MemoriesService {
     delete(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        locationName: string | null;
-        latitude: number;
-        longitude: number;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        isPublic: boolean;
         content: string | null;
-        memoryDate: Date;
+        isPublic: boolean;
+        title: string;
+        latitude: number;
+        longitude: number;
         mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
+        memoryDate: Date;
         reminderDate: Date | null;
         reminderSent: boolean;
         publicExpiresAt: Date | null;
@@ -298,16 +298,16 @@ export declare class MemoriesService {
     } & {
         id: string;
         userId: string;
-        locationName: string | null;
-        latitude: number;
-        longitude: number;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        isPublic: boolean;
         content: string | null;
-        memoryDate: Date;
+        isPublic: boolean;
+        title: string;
+        latitude: number;
+        longitude: number;
         mood: import(".prisma/client").$Enums.Mood;
+        locationName: string | null;
+        memoryDate: Date;
         reminderDate: Date | null;
         reminderSent: boolean;
         publicExpiresAt: Date | null;

@@ -16,11 +16,11 @@ export declare class EventStreamingService {
     createLiveJourneyBroadcast(userId: string, dto: CreateLiveJourneyBroadcastDto): Promise<{
         id: string;
         userId: string;
-        elevation: number | null;
         isActive: boolean;
         title: string;
         password: string | null;
         batteryLevel: number | null;
+        elevation: number | null;
         beaconMode: boolean;
         startedAt: Date;
         endedAt: Date | null;
@@ -36,11 +36,11 @@ export declare class EventStreamingService {
     } & {
         id: string;
         userId: string;
-        elevation: number | null;
         isActive: boolean;
         title: string;
         password: string | null;
         batteryLevel: number | null;
+        elevation: number | null;
         beaconMode: boolean;
         startedAt: Date;
         endedAt: Date | null;
@@ -56,11 +56,11 @@ export declare class EventStreamingService {
     } & {
         id: string;
         userId: string;
-        elevation: number | null;
         isActive: boolean;
         title: string;
         password: string | null;
         batteryLevel: number | null;
+        elevation: number | null;
         beaconMode: boolean;
         startedAt: Date;
         endedAt: Date | null;
@@ -68,11 +68,11 @@ export declare class EventStreamingService {
     updateLiveJourneyBroadcast(id: string, userId: string, dto: UpdateLiveJourneyBroadcastDto): Promise<{
         id: string;
         userId: string;
-        elevation: number | null;
         isActive: boolean;
         title: string;
         password: string | null;
         batteryLevel: number | null;
+        elevation: number | null;
         beaconMode: boolean;
         startedAt: Date;
         endedAt: Date | null;
@@ -80,11 +80,11 @@ export declare class EventStreamingService {
     endLiveJourneyBroadcast(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        elevation: number | null;
         isActive: boolean;
         title: string;
         password: string | null;
         batteryLevel: number | null;
+        elevation: number | null;
         beaconMode: boolean;
         startedAt: Date;
         endedAt: Date | null;
@@ -110,8 +110,8 @@ export declare class EventStreamingService {
         participants: {
             id: string;
             userId: string;
-            partyId: string;
             joinedAt: Date;
+            partyId: string;
         }[];
     } & {
         id: string;
@@ -157,10 +157,10 @@ export declare class EventStreamingService {
         contributions: {
             id: string;
             createdAt: Date;
+            message: string | null;
             imageUrl: string | null;
             wallId: string;
             guestName: string;
-            message: string | null;
         }[];
     } & {
         id: string;
@@ -176,10 +176,10 @@ export declare class EventStreamingService {
         contributions: {
             id: string;
             createdAt: Date;
+            message: string | null;
             imageUrl: string | null;
             wallId: string;
             guestName: string;
-            message: string | null;
         }[];
     } & {
         id: string;
@@ -194,10 +194,10 @@ export declare class EventStreamingService {
     addGuestContribution(wallId: string, dto: CreateGuestContributionDto): Promise<{
         id: string;
         createdAt: Date;
+        message: string | null;
         imageUrl: string | null;
         wallId: string;
         guestName: string;
-        message: string | null;
     }>;
     createTemporarySharedLink(userId: string, dto: CreateTemporarySharedLinkDto): Promise<{
         id: string;
@@ -205,11 +205,11 @@ export declare class EventStreamingService {
         memoryId: string | null;
         createdAt: Date;
         title: string;
+        viewCount: number;
         expiresAt: Date;
         url: string;
         passcode: string | null;
         maxViews: number | null;
-        viewCount: number;
         isRevoked: boolean;
     }>;
     getTemporarySharedLinks(userId: string): Promise<{
@@ -218,11 +218,11 @@ export declare class EventStreamingService {
         memoryId: string | null;
         createdAt: Date;
         title: string;
+        viewCount: number;
         expiresAt: Date;
         url: string;
         passcode: string | null;
         maxViews: number | null;
-        viewCount: number;
         isRevoked: boolean;
     }[]>;
     accessSharedLink(url: string, dto: AccessSharedLinkDto): Promise<{
@@ -231,11 +231,11 @@ export declare class EventStreamingService {
         memoryId: string | null;
         createdAt: Date;
         title: string;
+        viewCount: number;
         expiresAt: Date;
         url: string;
         passcode: string | null;
         maxViews: number | null;
-        viewCount: number;
         isRevoked: boolean;
     }>;
     revokeSharedLink(id: string, userId: string): Promise<{
@@ -244,11 +244,11 @@ export declare class EventStreamingService {
         memoryId: string | null;
         createdAt: Date;
         title: string;
+        viewCount: number;
         expiresAt: Date;
         url: string;
         passcode: string | null;
         maxViews: number | null;
-        viewCount: number;
         isRevoked: boolean;
     }>;
     createTravelPortfolio(userId: string, dto: CreateTravelPortfolioDto): Promise<{
@@ -256,8 +256,8 @@ export declare class EventStreamingService {
         userId: string;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
         isPublic: boolean;
+        title: string;
         customDomain: string | null;
         bio: string | null;
     }>;
@@ -268,8 +268,8 @@ export declare class EventStreamingService {
                 userId: string;
                 createdAt: Date;
                 updatedAt: Date;
-                title: string;
                 isPublic: boolean;
+                title: string;
                 customDomain: string | null;
                 bio: string | null;
             };
@@ -285,8 +285,8 @@ export declare class EventStreamingService {
         userId: string;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
         isPublic: boolean;
+        title: string;
         customDomain: string | null;
         bio: string | null;
     })[]>;
@@ -301,8 +301,8 @@ export declare class EventStreamingService {
                 userId: string;
                 createdAt: Date;
                 updatedAt: Date;
-                title: string;
                 isPublic: boolean;
+                title: string;
                 customDomain: string | null;
                 bio: string | null;
             };
@@ -318,8 +318,8 @@ export declare class EventStreamingService {
         userId: string;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
         isPublic: boolean;
+        title: string;
         customDomain: string | null;
         bio: string | null;
     }>;
@@ -328,8 +328,8 @@ export declare class EventStreamingService {
         userId: string;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
         isPublic: boolean;
+        title: string;
         customDomain: string | null;
         bio: string | null;
     }>;
@@ -346,8 +346,8 @@ export declare class EventStreamingService {
         createdAt: Date;
         updatedAt: Date;
         title: string;
-        widgetId: string;
         theme: string;
+        widgetId: string;
         showControls: boolean;
         showLabels: boolean;
         customCSS: string | null;
@@ -358,8 +358,8 @@ export declare class EventStreamingService {
         createdAt: Date;
         updatedAt: Date;
         title: string;
-        widgetId: string;
         theme: string;
+        widgetId: string;
         showControls: boolean;
         showLabels: boolean;
         customCSS: string | null;
@@ -370,8 +370,8 @@ export declare class EventStreamingService {
         createdAt: Date;
         updatedAt: Date;
         title: string;
-        widgetId: string;
         theme: string;
+        widgetId: string;
         showControls: boolean;
         showLabels: boolean;
         customCSS: string | null;
@@ -382,8 +382,8 @@ export declare class EventStreamingService {
         createdAt: Date;
         updatedAt: Date;
         title: string;
-        widgetId: string;
         theme: string;
+        widgetId: string;
         showControls: boolean;
         showLabels: boolean;
         customCSS: string | null;
@@ -393,9 +393,9 @@ export declare class EventStreamingService {
         userId: string;
         memoryId: string;
         createdAt: Date;
+        description: string | null;
         stickerCode: string;
         qrCodeUrl: string;
-        description: string | null;
         scansCount: number;
     }>;
     getQRCodeStickers(userId: string): Promise<{
@@ -403,9 +403,9 @@ export declare class EventStreamingService {
         userId: string;
         memoryId: string;
         createdAt: Date;
+        description: string | null;
         stickerCode: string;
         qrCodeUrl: string;
-        description: string | null;
         scansCount: number;
     }[]>;
     scanQRCodeSticker(stickerCode: string): Promise<{
@@ -417,9 +417,9 @@ export declare class EventStreamingService {
         userId: string;
         memoryId: string;
         createdAt: Date;
+        description: string | null;
         stickerCode: string;
         qrCodeUrl: string;
-        description: string | null;
         scansCount: number;
     }>;
     createVerticalStoryExport(userId: string, dto: CreateVerticalStoryExportDto): Promise<{
@@ -427,36 +427,36 @@ export declare class EventStreamingService {
         userId: string;
         memoryId: string;
         createdAt: Date;
-        duration: number | null;
+        completedAt: Date | null;
         status: string;
         videoUrl: string | null;
         resolution: string;
         format: string;
-        completedAt: Date | null;
+        duration: number | null;
     }>;
     getVerticalStoryExports(userId: string): Promise<{
         id: string;
         userId: string;
         memoryId: string;
         createdAt: Date;
-        duration: number | null;
+        completedAt: Date | null;
         status: string;
         videoUrl: string | null;
         resolution: string;
         format: string;
-        completedAt: Date | null;
+        duration: number | null;
     }[]>;
     updateVerticalStoryExportStatus(id: string, status: string, videoUrl?: string): Promise<{
         id: string;
         userId: string;
         memoryId: string;
         createdAt: Date;
-        duration: number | null;
+        completedAt: Date | null;
         status: string;
         videoUrl: string | null;
         resolution: string;
         format: string;
-        completedAt: Date | null;
+        duration: number | null;
     }>;
     createFriendVoiceCommentary(userId: string, dto: CreateFriendVoiceCommentaryDto): Promise<{
         id: string;

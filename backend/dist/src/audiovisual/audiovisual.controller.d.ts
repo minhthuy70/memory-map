@@ -8,63 +8,63 @@ export declare class AudiovisualController {
         userId: string;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        layoutData: string;
-        isPublic: boolean;
         description: string | null;
+        isPublic: boolean;
+        title: string;
         thumbnailUrl: string | null;
+        layoutData: string;
     }[]>;
     getScrapbookProject(req: any, id: string): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        layoutData: string;
-        isPublic: boolean;
         description: string | null;
+        isPublic: boolean;
+        title: string;
         thumbnailUrl: string | null;
+        layoutData: string;
     }>;
     createScrapbookProject(req: any, data: any): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        layoutData: string;
-        isPublic: boolean;
         description: string | null;
+        isPublic: boolean;
+        title: string;
         thumbnailUrl: string | null;
+        layoutData: string;
     }>;
     updateScrapbookProject(req: any, id: string, data: any): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        layoutData: string;
-        isPublic: boolean;
         description: string | null;
+        isPublic: boolean;
+        title: string;
         thumbnailUrl: string | null;
+        layoutData: string;
     }>;
     deleteScrapbookProject(req: any, id: string): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
         updatedAt: Date;
-        title: string;
-        layoutData: string;
-        isPublic: boolean;
         description: string | null;
+        isPublic: boolean;
+        title: string;
         thumbnailUrl: string | null;
+        layoutData: string;
     }>;
     getSoundscapeMixes(req: any): Promise<{
         id: string;
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        duration: number;
         title: string;
+        duration: number;
         audioUrl: string | null;
         mixData: string;
     }[]>;
@@ -73,8 +73,8 @@ export declare class AudiovisualController {
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        duration: number;
         title: string;
+        duration: number;
         audioUrl: string | null;
         mixData: string;
     }>;
@@ -83,8 +83,8 @@ export declare class AudiovisualController {
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        duration: number;
         title: string;
+        duration: number;
         audioUrl: string | null;
         mixData: string;
     }>;
@@ -93,8 +93,8 @@ export declare class AudiovisualController {
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        duration: number;
         title: string;
+        duration: number;
         audioUrl: string | null;
         mixData: string;
     }>;
@@ -103,8 +103,8 @@ export declare class AudiovisualController {
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        duration: number;
         title: string;
+        duration: number;
         audioUrl: string | null;
         mixData: string;
     }>;
@@ -209,8 +209,8 @@ export declare class AudiovisualController {
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        duration: number | null;
         videoUrl: string | null;
+        duration: number | null;
         platform: string;
         photoUrl: string;
         keyframeUrl: string | null;
@@ -221,8 +221,8 @@ export declare class AudiovisualController {
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        duration: number | null;
         videoUrl: string | null;
+        duration: number | null;
         platform: string;
         photoUrl: string;
         keyframeUrl: string | null;
@@ -233,8 +233,8 @@ export declare class AudiovisualController {
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        duration: number | null;
         videoUrl: string | null;
+        duration: number | null;
         platform: string;
         photoUrl: string;
         keyframeUrl: string | null;
@@ -245,8 +245,8 @@ export declare class AudiovisualController {
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        duration: number | null;
         videoUrl: string | null;
+        duration: number | null;
         platform: string;
         photoUrl: string;
         keyframeUrl: string | null;
@@ -301,7 +301,6 @@ export declare class AudiovisualController {
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        rotation: number;
         text: string;
         fontName: string;
         fontSize: number;
@@ -309,13 +308,13 @@ export declare class AudiovisualController {
         stampType: string;
         positionX: number;
         positionY: number;
+        rotation: number;
     }[]>;
     createTypographyStamp(req: any, dto: CreateTypographyStampDto): Promise<{
         id: string;
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        rotation: number;
         text: string;
         fontName: string;
         fontSize: number;
@@ -323,13 +322,13 @@ export declare class AudiovisualController {
         stampType: string;
         positionX: number;
         positionY: number;
+        rotation: number;
     }>;
     updateTypographyStamp(id: string, req: any, dto: UpdateTypographyStampDto): Promise<{
         id: string;
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        rotation: number;
         text: string;
         fontName: string;
         fontSize: number;
@@ -337,13 +336,13 @@ export declare class AudiovisualController {
         stampType: string;
         positionX: number;
         positionY: number;
+        rotation: number;
     }>;
     deleteTypographyStamp(id: string, req: any): Promise<{
         id: string;
         userId: string;
         memoryId: string | null;
         createdAt: Date;
-        rotation: number;
         text: string;
         fontName: string;
         fontSize: number;
@@ -351,58 +350,59 @@ export declare class AudiovisualController {
         stampType: string;
         positionX: number;
         positionY: number;
+        rotation: number;
     }>;
     getBeatSyncVideos(req: any): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
         status: string;
-        processedAt: Date | null;
         videoUrl: string | null;
         audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
+        processedAt: Date | null;
     }[]>;
     createBeatSyncVideo(req: any, dto: CreateBeatSyncVideoDto): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
         status: string;
-        processedAt: Date | null;
         videoUrl: string | null;
         audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
+        processedAt: Date | null;
     }>;
     updateBeatSyncVideo(id: string, req: any, dto: UpdateBeatSyncVideoDto): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
         status: string;
-        processedAt: Date | null;
         videoUrl: string | null;
         audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
+        processedAt: Date | null;
     }>;
     deleteBeatSyncVideo(id: string, req: any): Promise<{
         id: string;
         userId: string;
         createdAt: Date;
         status: string;
-        processedAt: Date | null;
         videoUrl: string | null;
         audioUrl: string;
         memoryIds: string;
         beatPattern: string;
         pacing: string;
         transitionStyle: string;
+        processedAt: Date | null;
     }>;
     getAIVoiceovers(req: any): Promise<{
         id: string;

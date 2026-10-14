@@ -1552,20 +1552,20 @@ Bản đồ kỷ niệm cá nhân - Quản lý và trực quan hóa kỷ niệm 
 ================================================================================
  
 43.1. Social Interactions (Tương tác xã hội)
-[ ] - Memory Stories (24h Ephemeral Stories) - Stories kỷ niệm biến mất sau 24h - MemoryStories.tsx (24h story reel on map, auto-archive to profile, story view analytics, interactive stickers, location tag stickers, mood reactions, background music, privacy per story: public/close-friends/private)
+[x] - Memory Stories (24h Ephemeral Stories) - Stories kỷ niệm biến mất sau 24h - MemoryStories.tsx (24h story reel on map, auto-archive to profile, story view analytics, interactive stickers, location tag stickers, mood reactions, background music, privacy per story: public/close-friends/private)
 [x] - Memory Circles & Close Friends - Vòng tròn kết nối bạn thân & gia đình - MemoryCircles.tsx (custom circles: Family, Travel Buddies, Best Friends, custom access control per memory, batch share to circle, member invite/remove, circle activity feed)
-[ ] - Community Public Map Feed - Khám phá kỷ niệm công khai trên bản đồ - CommunityMapFeed.tsx (explore public memories around current GPS location or selected city, trending locations, filter by category/mood/popularity, radius filter 1km-50km, safe moderation tag)
+[x] - Community Public Map Feed - Khám phá kỷ niệm công khai trên bản đồ - CommunityMapFeed.tsx (explore public memories around current GPS location or selected city, trending locations, filter by category/mood/popularity, radius filter 1km-50km, safe moderation tag)
 [x] - Collaborative Memory Albums - Album kỷ niệm nhóm đa người dùng - CollaborativeAlbums.tsx (shared trip albums, multi-user photo/video contribution, contributor permissions admin/editor/viewer, collaborative timeline, activity log, group export)
 [x] - Memory Reactions & Empathy System - Hệ thống cảm xúc phong phú - MemoryReactions.tsx (diverse reactions: Heart ❤️, Warm Hug 🤗, Moved 🥺, Proud 🌟, Celebration 🎉, Nostalgic 🍂, reaction counts, user reaction list, notification on reaction)
 [x] - Memory Guestbook & Comments - Sổ lưu bút và bình luận kỷ niệm - MemoryGuestbook.tsx (digital guestbook on profile and memories, threaded comments, audio voice comments, emoji picker, mention @friends, moderation controls)
-[ ] - Nearby Friends Memory Ping - Nhận thông báo kỷ niệm bạn bè gần bạn - NearbyFriendsPing.tsx (radar detection, proximity alerts when friend visits or creates memory near you, privacy toggle, distance threshold setting, suppress notifications at home)
-[ ] - Co-presence Memory Suggestion - Gợi ý tạo kỷ niệm chung khi ở cùng địa điểm - CoPresenceSuggestion.tsx (auto-detect multiple users at same venue/event via Bluetooth/GPS, group memory prompt, merged photo suggestion, shared credit tag)
+[x] - Nearby Friends Memory Ping - Nhận thông báo kỷ niệm bạn bè gần bạn - NearbyFriendsPing.tsx (radar detection, proximity alerts when friend visits or creates memory near you, privacy toggle, distance threshold setting, suppress notifications at home)
+[x] - Co-presence Memory Suggestion - Gợi ý tạo kỷ niệm chung khi ở cùng địa điểm - CoPresenceSuggestion.tsx (auto-detect multiple users at same venue/event via Bluetooth/GPS, group memory prompt, merged photo suggestion, shared credit tag)
 
 43.2. Community Engagement & Events (Sự kiện & Thử thách cộng đồng)
-[ ] - Travel & Exploration Challenges - Thử thách check-in khám phá - ExplorationChallenges.tsx (63 Vietnam provinces challenge, 10 lighthouses, 4 extreme poles, progress tracking, badges unlock, leaderboards, challenge share card)
-[ ] - Community Memory Contests - Cuộc thi ảnh và câu chuyện kỷ niệm - MemoryContests.tsx (monthly themed contests, community voting, submission deadlines, winners showcase, honorary badges, curated feature stories)
-[ ] - Digital Memory Postcard Gifting - Gửi tặng bưu thiếp kỷ niệm số - DigitalPostcardGifting.tsx (custom digital postcards with vintage stamps, postal stamp seal, personalized message, email/link delivery, surprise opening animation, postcard collection album)
-[ ] - Memory Pen-pals (Bạn bốn phương) - Kết nối bạn bè qua câu chuyện kỷ niệm - MemoryPenpals.tsx (anonymous/opt-in memory exchange with users worldwide based on shared passions, language translation, pen-pal stamps, safety reporting)
+[x] - Travel & Exploration Challenges - Thử thách check-in khám phá - ExplorationChallenges.tsx (63 Vietnam provinces challenge, 10 lighthouses, 4 extreme poles, progress tracking, badges unlock, leaderboards, challenge share card)
+[x] - Community Memory Contests - Cuộc thi ảnh và câu chuyện kỷ niệm - MemoryContests.tsx (monthly themed contests, community voting, submission deadlines, winners showcase, honorary badges, curated feature stories)
+[x] - Digital Memory Postcard Gifting - Gửi tặng bưu thiếp kỷ niệm số - DigitalPostcardGifting.tsx (custom digital postcards with vintage stamps, postal stamp seal, personalized message, email/link delivery, surprise opening animation, postcard collection album)
+[x] - Memory Pen-pals (Bạn bốn phương) - Kết nối bạn bè qua câu chuyện kỷ niệm - MemoryPenpals.tsx (anonymous/opt-in memory exchange with users worldwide based on shared passions, language translation, pen-pal stamps, safety reporting)
 
 ================================================================================
  
@@ -1763,9 +1763,9 @@ END OF FEATURE LIST
 ================================================================================
  
 Tổng số tính năng: 1160
-Số lượng tính năng đã implement: 1151 (99.3%)
+Số lượng tính năng đã implement: 1159 (99.9%)
 Số lượng tính năng đang phát triển: 0
-Số lượng tính năng tương lai (Roadmap): 9 (0.7%)
+Số lượng tính năng tương lai (Roadmap): 1 (0.1%)
 
 Cập nhật lần cuối: 14/10/2026
  

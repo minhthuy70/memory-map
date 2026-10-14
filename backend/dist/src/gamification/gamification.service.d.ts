@@ -49,10 +49,10 @@ export declare class GamificationService {
         id: string;
         userId: string;
         createdAt: Date;
+        progress: number;
         badgeType: string;
         badgeName: string;
         rarity: string;
-        progress: number;
         target: number;
         unlockedAt: Date | null;
     }[]>;
@@ -60,10 +60,10 @@ export declare class GamificationService {
         id: string;
         userId: string;
         createdAt: Date;
+        progress: number;
         badgeType: string;
         badgeName: string;
         rarity: string;
-        progress: number;
         target: number;
         unlockedAt: Date | null;
     }>;
@@ -71,10 +71,10 @@ export declare class GamificationService {
         id: string;
         userId: string;
         createdAt: Date;
+        progress: number;
         badgeType: string;
         badgeName: string;
         rarity: string;
-        progress: number;
         target: number;
         unlockedAt: Date | null;
     }>;
@@ -227,11 +227,11 @@ export declare class GamificationService {
     getGeocaches(userId: string): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
+        description: string;
+        title: string;
         latitude: number;
         longitude: number;
-        createdAt: Date;
-        title: string;
-        description: string;
         difficulty: number;
         terrain: number;
         size: string;
@@ -242,11 +242,11 @@ export declare class GamificationService {
     getPublishedGeocaches(): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
+        description: string;
+        title: string;
         latitude: number;
         longitude: number;
-        createdAt: Date;
-        title: string;
-        description: string;
         difficulty: number;
         terrain: number;
         size: string;
@@ -257,11 +257,11 @@ export declare class GamificationService {
     createGeocache(userId: string, dto: CreateGeocacheDto): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
+        description: string;
+        title: string;
         latitude: number;
         longitude: number;
-        createdAt: Date;
-        title: string;
-        description: string;
         difficulty: number;
         terrain: number;
         size: string;
@@ -272,11 +272,11 @@ export declare class GamificationService {
     updateGeocache(id: string, userId: string, dto: UpdateGeocacheDto): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
+        description: string;
+        title: string;
         latitude: number;
         longitude: number;
-        createdAt: Date;
-        title: string;
-        description: string;
         difficulty: number;
         terrain: number;
         size: string;
@@ -287,11 +287,11 @@ export declare class GamificationService {
     deleteGeocache(id: string, userId: string): Promise<{
         id: string;
         userId: string;
+        createdAt: Date;
+        description: string;
+        title: string;
         latitude: number;
         longitude: number;
-        createdAt: Date;
-        title: string;
-        description: string;
         difficulty: number;
         terrain: number;
         size: string;
@@ -302,8 +302,8 @@ export declare class GamificationService {
     logGeocache(geocacheId: string, userId: string, dto: CreateGeocacheLogDto): Promise<{
         id: string;
         userId: string;
-        message: string | null;
         username: string;
+        message: string | null;
         logType: string;
         loggedAt: Date;
         geocacheId: string;
@@ -311,8 +311,8 @@ export declare class GamificationService {
     getGeocacheLogs(geocacheId: string): Promise<{
         id: string;
         userId: string;
-        message: string | null;
         username: string;
+        message: string | null;
         logType: string;
         loggedAt: Date;
         geocacheId: string;
@@ -320,11 +320,11 @@ export declare class GamificationService {
     getARTreasureChests(userId: string): Promise<{
         id: string;
         userId: string;
-        locationName: string;
-        latitude: number;
-        longitude: number;
         createdAt: Date;
         name: string;
+        latitude: number;
+        longitude: number;
+        locationName: string;
         unlockedAt: Date | null;
         contentType: string;
         contentData: string;
@@ -333,11 +333,11 @@ export declare class GamificationService {
     createARTreasureChest(userId: string, dto: CreateARTreasureChestDto): Promise<{
         id: string;
         userId: string;
-        locationName: string;
-        latitude: number;
-        longitude: number;
         createdAt: Date;
         name: string;
+        latitude: number;
+        longitude: number;
+        locationName: string;
         unlockedAt: Date | null;
         contentType: string;
         contentData: string;
@@ -346,11 +346,11 @@ export declare class GamificationService {
     updateARTreasureChest(id: string, userId: string, dto: UpdateARTreasureChestDto): Promise<{
         id: string;
         userId: string;
-        locationName: string;
-        latitude: number;
-        longitude: number;
         createdAt: Date;
         name: string;
+        latitude: number;
+        longitude: number;
+        locationName: string;
         unlockedAt: Date | null;
         contentType: string;
         contentData: string;
@@ -359,11 +359,11 @@ export declare class GamificationService {
     unlockARTreasureChest(userId: string, dto: UnlockARTreasureChestDto): Promise<{
         id: string;
         userId: string;
-        locationName: string;
-        latitude: number;
-        longitude: number;
         createdAt: Date;
         name: string;
+        latitude: number;
+        longitude: number;
+        locationName: string;
         unlockedAt: Date | null;
         contentType: string;
         contentData: string;
@@ -374,8 +374,8 @@ export declare class GamificationService {
         createdAt: Date;
         name: string;
         isActive: boolean;
-        type: string;
         circleId: string;
+        type: string;
         period: string;
     }[]>;
     createTravelLeaderboard(dto: CreateTravelLeaderboardDto): Promise<{
@@ -383,8 +383,8 @@ export declare class GamificationService {
         createdAt: Date;
         name: string;
         isActive: boolean;
-        type: string;
         circleId: string;
+        type: string;
         period: string;
     }>;
     updateTravelLeaderboard(id: string, dto: UpdateTravelLeaderboardDto): Promise<{
@@ -392,8 +392,8 @@ export declare class GamificationService {
         createdAt: Date;
         name: string;
         isActive: boolean;
-        type: string;
         circleId: string;
+        type: string;
         period: string;
     }>;
     getLeaderboardEntries(leaderboardId: string): Promise<{

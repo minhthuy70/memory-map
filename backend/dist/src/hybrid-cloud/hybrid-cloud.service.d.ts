@@ -112,8 +112,8 @@ export declare class HybridCloudService {
     createVaultExport(userId: string, dto: CreateVaultExportDto): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -124,8 +124,8 @@ export declare class HybridCloudService {
     getVaultExports(userId: string): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -136,8 +136,8 @@ export declare class HybridCloudService {
     getVaultExport(id: string, userId: string): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;
@@ -148,8 +148,8 @@ export declare class HybridCloudService {
     verifyVaultExportAccess(accessCode: string): Promise<{
         id: string;
         userId: string;
-        expiresAt: Date | null;
         isPublic: boolean;
+        expiresAt: Date | null;
         fileName: string;
         filePath: string;
         fileSize: bigint;

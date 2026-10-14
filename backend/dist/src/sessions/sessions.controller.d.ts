@@ -6,11 +6,11 @@ export declare class SessionsController {
         id: string;
         userId: string;
         createdAt: Date;
+        expiresAt: Date;
         token: string;
         deviceInfo: string | null;
         ipAddress: string | null;
         lastActivity: Date;
-        expiresAt: Date;
     }[]>;
     deleteAllSessions(req: any): Promise<{
         message: string;

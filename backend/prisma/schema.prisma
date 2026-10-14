@@ -154,6 +154,14 @@ model User {
 
   // Social & Community
   memoryReactions MemoryReaction[]
+  memoryStories MemoryStory[]
+  communityMapFeeds CommunityMapFeed[]
+  nearbyFriendsPings NearbyFriendsPing[]
+  coPresenceSuggestions CoPresenceSuggestion[]
+  explorationChallenges ExplorationChallenge[]
+  memoryContests MemoryContest[]
+  digitalPostcards DigitalPostcard[]
+  memoryPenpals MemoryPenpal[]
   memoryComments MemoryComment[]
   memoryCircles MemoryCircle[]
   albumContributors AlbumContributor[]
@@ -2156,6 +2164,143 @@ model MemoryReaction {
   @@index([userId])
   @@index([memoryId])
   @@map("memory_reactions")
+}
+
+model MemoryStory {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  mediaUrl    String   @map("media_url")
+  location    String?
+  privacy     String   @default("public") // public, close_friends, private
+  stickers    String?  // JSON of stickers
+  musicUrl    String?  @map("music_url")
+  viewCount   Int      @default(0) @map("view_count")
+  expiresAt   DateTime @map("expires_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("memory_stories")
+}
+
+model CommunityMapFeed {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String   @map("memory_id")
+  location    String
+  latitude    Float
+  longitude   Float
+  category    String?
+  mood        String?
+  popularity  Int      @default(0)
+  isSafe      Boolean  @default(true) @map("is_safe")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@index([latitude, longitude])
+  @@map("community_map_feeds")
+}
+
+model NearbyFriendsPing {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  friendId    String   @map("friend_id")
+  memoryId    String?  @map("memory_id")
+  distance    Float    // meters
+  enabled     Boolean  @default(true)
+  threshold   Int      @default(1000) // meters
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([friendId])
+  @@map("nearby_friends_pings")
+}
+
+model CoPresenceSuggestion {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  location    String
+  latitude    Float
+  longitude   Float
+  detectedUsers String @map("detected_users") // JSON of user IDs
+  suggestedAt DateTime @default(now()) @map("suggested_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([latitude, longitude])
+  @@map("co_presence_suggestions")
+}
+
+model ExplorationChallenge {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  challengeType String @map("challenge_type") // vietnam_provinces, lighthouses, extreme_poles
+  targetCount Int      @map("target_count")
+  progress    Int      @default(0)
+  completedAt DateTime? @map("completed_at")
+  badgeUrl    String?  @map("badge_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("exploration_challenges")
+}
+
+model MemoryContest {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  title       String
+  theme       String
+  description String
+  submissionIds String @map("submission_ids") // JSON
+  deadline    DateTime
+  votingEndsAt DateTime @map("voting_ends_at")
+  winnerId    String?  @map("winner_id")
+  badgeUrl    String?  @map("badge_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("memory_contests")
+}
+
+model DigitalPostcard {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  memoryId    String?  @map("memory_id")
+  recipientEmail String @map("recipient_email")
+  message     String
+  stampUrl    String?  @map("stamp_url")
+  postcardUrl String   @map("postcard_url")
+  openedAt    DateTime? @map("opened_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([memoryId])
+  @@map("digital_postcards")
+}
+
+model MemoryPenpal {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  penpalId    String   @map("penpal_id")
+  language    String
+  interests   String   // JSON of shared interests
+  isAnonymous Boolean  @default(false) @map("is_anonymous")
+  status      String   @default("pending") // pending, active, ended
+  createdAt   DateTime @default(now()) @map("created_at")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([penpalId])
+  @@map("memory_penpals")
 }
 
 model MemoryComment {

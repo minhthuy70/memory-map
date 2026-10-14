@@ -14,9 +14,9 @@ export declare class PrivacyVaultService {
         userId: string;
         memoryId: string;
         createdAt: Date;
+        viewCount: number;
         expiresAt: Date | null;
         maxViews: number | null;
-        viewCount: number;
         vaultType: string;
         encryptionKey: string | null;
         isEncrypted: boolean;
@@ -28,9 +28,9 @@ export declare class PrivacyVaultService {
         userId: string;
         memoryId: string;
         createdAt: Date;
+        viewCount: number;
         expiresAt: Date | null;
         maxViews: number | null;
-        viewCount: number;
         vaultType: string;
         encryptionKey: string | null;
         isEncrypted: boolean;
@@ -42,9 +42,9 @@ export declare class PrivacyVaultService {
         userId: string;
         memoryId: string;
         createdAt: Date;
+        viewCount: number;
         expiresAt: Date | null;
         maxViews: number | null;
-        viewCount: number;
         vaultType: string;
         encryptionKey: string | null;
         isEncrypted: boolean;
@@ -56,9 +56,9 @@ export declare class PrivacyVaultService {
         userId: string;
         memoryId: string;
         createdAt: Date;
+        viewCount: number;
         expiresAt: Date | null;
         maxViews: number | null;
-        viewCount: number;
         vaultType: string;
         encryptionKey: string | null;
         isEncrypted: boolean;
@@ -73,9 +73,9 @@ export declare class PrivacyVaultService {
         userId: string;
         memoryId: string;
         createdAt: Date;
+        viewCount: number;
         expiresAt: Date | null;
         maxViews: number | null;
-        viewCount: number;
         vaultType: string;
         encryptionKey: string | null;
         isEncrypted: boolean;
@@ -87,9 +87,9 @@ export declare class PrivacyVaultService {
         userId: string;
         memoryId: string;
         createdAt: Date;
+        viewCount: number;
         expiresAt: Date | null;
         maxViews: number | null;
-        viewCount: number;
         vaultType: string;
         encryptionKey: string | null;
         isEncrypted: boolean;
