@@ -1,8 +1,10 @@
 import {
   Body,
+  BadRequestException,
   Controller,
   Delete,
   Get,
+  Inject,
   Post,
   Put,
   Query,
@@ -15,6 +17,7 @@ import { Throttle } from '@nestjs/throttler';
 
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
+import { SessionsService } from '../sessions/sessions.service';
 
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
@@ -34,7 +37,10 @@ import {
 @Controller('auth')
 export class AuthController {
   constructor(
+    @Inject(AuthService)
     private readonly authService: AuthService,
+    @Inject(SessionsService)
+    private readonly sessionsService: SessionsService,
   ) {}
 
   @Throttle({ default: { limit: 5, ttl: 60000 } })
@@ -63,6 +69,10 @@ export class AuthController {
     @NestHeaders('user-agent') userAgent?: string,
     @NestHeaders('x-forwarded-for') forwardedFor?: string,
   ) {
+    if (!loginDto) {
+      throw new BadRequestException('Vui lòng nhập email và mật khẩu.');
+    }
+
     const deviceInfo = userAgent || 'Unknown Device';
     const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'Unknown IP';
     

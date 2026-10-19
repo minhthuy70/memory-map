@@ -1,5 +1,6 @@
 import {
   Injectable,
+  Inject,
   UnauthorizedException,
   BadRequestException,
   ConflictException,
@@ -40,9 +41,13 @@ export class AuthService {
   >();
 
   constructor(
+    @Inject(UsersService)
     private readonly usersService: UsersService,
+    @Inject(JwtService)
     private readonly jwtService: JwtService,
+    @Inject(SessionsService)
     private readonly sessionsService: SessionsService,
+    @Inject(MailService)
     private readonly mailService: MailService,
   ) {}
 
