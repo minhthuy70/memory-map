@@ -98,7 +98,7 @@ if (typeof window !== 'undefined') {
     // Auto logout after 30 minutes of inactivity
     if (inactiveTime >= INACTIVITY_TIMEOUT) {
       state.logout();
-      window.location.href = '/login';
+      window.location.replace('/login');
     }
   }, 10000); // Check every 10 seconds for higher precision
 }

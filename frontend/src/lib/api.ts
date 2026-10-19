@@ -61,7 +61,7 @@ api.interceptors.response.use(
       localStorage.removeItem('auth-storage');
       
       if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
-        window.location.href = '/login';
+        window.location.replace('/login');
       }
     }
     return Promise.reject(error);

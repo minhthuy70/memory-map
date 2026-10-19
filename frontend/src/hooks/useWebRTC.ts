@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 
 interface WebRTCConfig {
@@ -10,6 +10,13 @@ interface WebRTCConfig {
   onUserLeft?: (userId: string) => void;
   onUserMuted?: (userId: string, muted: boolean) => void;
   onUserVideoOff?: (userId: string, videoOff: boolean) => void;
+}
+
+interface WebRTCSignal {
+  type: 'offer' | 'answer' | 'ice-candidate';
+  data: RTCSessionDescriptionInit | RTCIceCandidateInit;
+  from: string;
+  to: string;
 }
 
 export function useWebRTC(config: WebRTCConfig) {
@@ -30,6 +37,31 @@ export function useWebRTC(config: WebRTCConfig) {
     ],
   };
 
+  const handleSignal = useCallback(async (signal: WebRTCSignal) => {
+    const pc = peerConnectionRef.current;
+    if (!pc) return;
+
+    if (signal.type === 'offer') {
+      await pc.setRemoteDescription(new RTCSessionDescription(signal.data as RTCSessionDescriptionInit));
+      const answer = await pc.createAnswer();
+      await pc.setLocalDescription(answer);
+
+      socket?.emit('webrtc-signal', {
+        roomCode: config.roomCode,
+        signal: {
+          type: 'answer',
+          data: answer,
+        },
+        from: config.userId,
+        to: signal.from,
+      });
+    } else if (signal.type === 'answer') {
+      await pc.setRemoteDescription(new RTCSessionDescription(signal.data as RTCSessionDescriptionInit));
+    } else if (signal.type === 'ice-candidate') {
+      await pc.addIceCandidate(new RTCIceCandidate(signal.data as RTCIceCandidateInit));
+    }
+  }, [config.roomCode, config.userId, socket]);
+
   useEffect(() => {
     const newSocket = io(config.serverUrl);
     setSocket(newSocket);
@@ -39,7 +71,7 @@ export function useWebRTC(config: WebRTCConfig) {
       newSocket.emit('join-watch-party', config.roomCode);
     });
 
-    newSocket.on('webrtc-signal', async (signal: any) => {
+    newSocket.on('webrtc-signal', async (signal: WebRTCSignal) => {
       if (signal.to === config.userId) {
         await handleSignal(signal);
       }
@@ -64,7 +96,7 @@ export function useWebRTC(config: WebRTCConfig) {
     return () => {
       newSocket.disconnect();
     };
-  }, [config.serverUrl, config.roomCode, config.userId]);
+  }, [config.serverUrl, config.roomCode, config.userId, config.onUserJoined, config.onUserLeft, config.onUserMuted, config.onUserVideoOff, handleSignal]);
 
   const startCall = async () => {
     try {
