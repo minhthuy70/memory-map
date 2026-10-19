@@ -376,7 +376,7 @@ export default function ImportFromInstagram({ onCancel, onConnect, onImport, onD
                 onClick={() => handleTogglePost(post.id)}
               >
                 <div className="aspect-square bg-slate-200 dark:bg-slate-600 rounded-lg mb-2 flex items-center justify-center">
-                  <ImageIcon2 className="h-8 w-8 text-slate-400" />
+                  <ImageIcon className="h-8 w-8 text-slate-400" />
                 </div>
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-300 line-clamp-1">
                   {post.caption}

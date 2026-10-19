@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Zap, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Cloud, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, Zap, MapPin, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, Target, Crosshair, Locate, RotateCw, ZoomIn, ZoomOut, Maximize2, Navigation, Wifi, Battery, Signal, Globe, Map as MapIcon, Sparkles, Wind } from 'lucide-react';
+import { X, Settings, CheckCircle, AlertTriangle, Clock, Activity, BarChart3, Filter, Calendar, Play, Pause, Download, Trash2, Settings as SettingsIcon, Cloud, RefreshCw, Check, Zap as ZapIcon, Plus, Layers, MapPin, Eye, EyeOff, Trash2 as TrashIcon, ExternalLink, Target, Crosshair, Locate, RotateCw, ZoomIn, ZoomOut, Maximize2, Navigation, Wifi, Battery, Signal, Globe, Map as MapIcon, Sparkles, Wind } from 'lucide-react';
 
 interface MemoryCloud {
   id: string;

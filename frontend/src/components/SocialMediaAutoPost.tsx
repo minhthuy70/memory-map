@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, AtSign, BarChart3, Briefcase, Calendar, Camera, CheckCircle, Clock, Filter, Globe, Lock, RefreshCw, Send, Settings, Share2, Users, X, Zap } from 'lucide-react';
+import { Activity, AlertTriangle, Globe2, MessageCircle, ImagePlus, Link2, AtSign, BarChart3, Briefcase, Calendar, Camera, CheckCircle, Clock, Filter, Globe, Lock, RefreshCw, Send, Settings, Share2, Users, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

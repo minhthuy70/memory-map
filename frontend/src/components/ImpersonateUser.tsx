@@ -1,4 +1,4 @@
-import { AlertTriangle, Clock, Eye, Info, LogOut, Play, RefreshCw, Search, Shield, Square, User, UserCheck, X } from 'lucide-react';
+import { AlertTriangle, Clock, Eye, Info, LogOut, Play, RefreshCw, Search, Shield, Square, User, UserCheck, UserCog, OctagonX, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

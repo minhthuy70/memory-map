@@ -10,7 +10,6 @@ exports.EventStreamingModule = void 0;
 const common_1 = require("@nestjs/common");
 const event_streaming_service_1 = require("./event-streaming.service");
 const event_streaming_controller_1 = require("./event-streaming.controller");
-const event_streaming_gateway_1 = require("./event-streaming.gateway");
 const webRTC_service_1 = require("./webRTC.service");
 const prisma_module_1 = require("../prisma/prisma.module");
 let EventStreamingModule = class EventStreamingModule {
@@ -20,7 +19,7 @@ exports.EventStreamingModule = EventStreamingModule = __decorate([
     (0, common_1.Module)({
         imports: [prisma_module_1.PrismaModule],
         controllers: [event_streaming_controller_1.EventStreamingController],
-        providers: [event_streaming_service_1.EventStreamingService, event_streaming_gateway_1.EventStreamingGateway, webRTC_service_1.WebRTCService],
+        providers: [event_streaming_service_1.EventStreamingService, webRTC_service_1.WebRTCService],
         exports: [event_streaming_service_1.EventStreamingService],
     })
 ], EventStreamingModule);

@@ -63,6 +63,8 @@ export default function SharedAlbums({
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
+    memories: [] as string[],
+    members: [] as Array<{ id: string; name: string; role: "owner" | "editor" | "viewer" }>,
     name: '',
     description: '',
     visibility: 'private' as SharedAlbum['visibility'],
@@ -115,6 +117,8 @@ export default function SharedAlbums({
 
   const resetForm = () => {
     setFormData({
+      memories: [],
+      members: [],
       name: '',
       description: '',
       visibility: 'private',

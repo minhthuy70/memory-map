@@ -282,7 +282,7 @@ export default function AddMusicToVideo({ onCancel, onAddTrack, onMixAudio, onPr
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <BarChart2 className="h-3 w-3 text-slate-500" />
+            <BarChart3 className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Avg/Video</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">

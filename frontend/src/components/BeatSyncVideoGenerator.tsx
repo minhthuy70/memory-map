@@ -74,7 +74,7 @@ export default function BeatSyncVideoGenerator() {
                 className="w-full p-2 border rounded"
               >
                 {pacingOptions.map(option => (
-                  <option key={option} value={option} capitalize>{option}</option>
+                  <option key={option} value={option} >{option}</option>
                 ))}
               </select>
             </div>
@@ -85,7 +85,7 @@ export default function BeatSyncVideoGenerator() {
                 onChange={(e) => setTransitionStyle(e.target.value)}
                 className="w-full p-2 border rounded"
               >
-                {transitions.map(t => <option key={t} value={t} capitalize>{t}</option>)}
+                {transitions.map(t => <option key={t} value={t} >{t}</option>)}
               </select>
             </div>
           </div>

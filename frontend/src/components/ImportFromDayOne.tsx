@@ -113,7 +113,7 @@ export default function ImportFromDayOne({ onCancel, onConnect, onImport, onDisc
 
   const getAttachmentIcon = (type: string) => {
     switch (type) {
-      case 'image': return ImageIcon3;
+      case 'image': return ImageIcon;
       case 'video': return Video;
       case 'audio': return Headphones;
       default: return FileText;

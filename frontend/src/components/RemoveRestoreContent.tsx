@@ -1,4 +1,4 @@
-import { AlertTriangle, ArrowUpRight, Calendar, CheckCircle, FileText, Filter, Image, Info, MessageSquare, RefreshCw, Search, Trash2, Undo2, User, Video, XCircle } from 'lucide-react';
+import { AlertTriangle, ArrowUpRight, Calendar, CheckCircle, FileText, Filter, Image, Info, MessageSquare, RefreshCw, Search, Trash2, Undo2, User, Video, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
@@ -48,7 +48,7 @@ export default function RemoveRestoreContent({ onCancel }: RemoveRestoreContentP
     const item = [...contentItems, ...removedItems].find(i => i.id === id);
     if (item) {
       const updatedItem = { ...item, status: 'removed' as const, removedAt: new Date().toISOString().split('T')[0], removedBy: 'admin', reason: 'Manual removal' };
-      setContentItems(contentItems.map(i => i.id === id ? updatedItem : i));
+      setContentItems(contentItems.map(i => i.id === id ? { ...updatedItem, type: item.type as "memory" | "comment" | "photo" | "video" } : i));
     }
   };
 
@@ -56,7 +56,7 @@ export default function RemoveRestoreContent({ onCancel }: RemoveRestoreContentP
     const item = [...contentItems, ...removedItems].find(i => i.id === id);
     if (item) {
       const updatedItem = { ...item, status: 'restored' as const };
-      setContentItems(contentItems.map(i => i.id === id ? updatedItem : i));
+      setContentItems(contentItems.map(i => i.id === id ? { ...updatedItem, type: item.type as "memory" | "comment" | "photo" | "video" } : i));
     }
   };
 
@@ -226,7 +226,7 @@ export default function RemoveRestoreContent({ onCancel }: RemoveRestoreContentP
                         onClick={() => permanentDelete(item.id)}
                         className="px-2 py-1 rounded text-xs bg-red-600 hover:bg-red-700 text-white flex items-center justify-center gap-1"
                       >
-                        <XCircle className="h-3 w-3" />
+                        <X className="h-3 w-3" />
                         Delete
                       </button>
                     </>

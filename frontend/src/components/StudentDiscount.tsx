@@ -1,4 +1,4 @@
-import { CheckCircle, FileText, GraduationCap, Info, RefreshCw, Star, X, Zap } from 'lucide-react';
+import { Check, CheckCircle, FileText, GraduationCap, Info, RefreshCw, Star, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

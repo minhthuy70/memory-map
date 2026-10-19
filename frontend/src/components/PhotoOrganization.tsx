@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, ArrowRight, BarChart3, Calendar, Calendar as CalendarIcon, CheckCircle, Clock, Copy, Edit2, Eye, Filter, FolderOpen, FolderPlus, Image, Image as ImageIcon, Layers, MapPin, RefreshCw, Scan, Settings, Sparkles, Tag, Trash2, Users, X, Zap, Zap as ZapIcon } from 'lucide-react';
+import { Activity, AlertTriangle, ArrowRight, BarChart3, Calendar, Calendar as CalendarIcon, CheckCircle, Clock as ClockIcon, Files, Copy, Edit2, Eye, Filter, FolderOpen, FolderPlus, Image, Image as ImageIcon, Layers, MapPin, RefreshCw, Scan, Settings, Sparkles, Tag, Trash2, Users, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

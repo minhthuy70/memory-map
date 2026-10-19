@@ -1,4 +1,4 @@
-import { AlertTriangle, Bell, BellOff, Check, Settings, Shield, X } from 'lucide-react';
+import { AlertTriangle, Bell, BellOff, Save, Check, Settings, Shield, X } from 'lucide-react';
 'use client';
 
 import { useState, useEffect } from 'react';

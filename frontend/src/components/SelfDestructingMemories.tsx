@@ -267,7 +267,7 @@ export default function SelfDestructingMemories() {
                   <div className="flex gap-2 mt-4">
                     <button
                       onClick={() => accessMemory(memory.id)}
-                      disabled={memory.maxViews && memory.viewCount >= memory.maxViews}
+                      disabled={Boolean(memory.maxViews && memory.viewCount >= memory.maxViews)}
                       className="flex-1 px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 text-sm disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
                     >
                       View Memory

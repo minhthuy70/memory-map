@@ -1,4 +1,4 @@
-import { BookOpen, Calendar, Clock, FamilyTree, FileText, Info, Plus, RefreshCw, Star, Users, X } from 'lucide-react';
+import { BookOpen, Calendar, Clock, Users, FileText, Info, Plus, RefreshCw, Star, Users, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
@@ -211,7 +211,7 @@ export default function FamilyHistoryDocumentation({ onCancel }: FamilyHistoryDo
             </div>
             <div className="flex items-center justify-between p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
               <div className="flex items-center gap-3">
-                <FamilyTree className="h-4 w-4 text-slate-400" />
+                <Users className="h-4 w-4 text-slate-400" />
                 <span className="text-xs text-slate-900 dark:text-white">Relationship</span>
               </div>
               <input

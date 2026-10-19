@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, BarChart3, Calendar, Check, CheckCircle, Clock, Clock as ClockIcon, Download, ExternalLink, Filter, Languages, Mic, Mic as MicIcon, Pause, Play, Plus, RefreshCw, Search, Search as SearchIcon, Settings, Settings as SettingsIcon, Sparkles, Trash2, Trash2 as TrashIcon, Volume2, Waves, X, Zap, Zap as ZapIcon } from 'lucide-react';
+import { Activity, AlertTriangle, BarChart3, Calendar, Check, CheckCircle, Clock, Clock as ClockIcon, Download, ExternalLink, Filter, Languages, Mic, Mic as MicIcon, Pause, Play, Plus, RefreshCw, Search, Search as SearchIcon, Settings, Settings as SettingsIcon, Sparkles, OctagonX, Trash2, Trash2 as TrashIcon, Volume2, Waves, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

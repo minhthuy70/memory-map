@@ -1,4 +1,4 @@
-import { AtSign, Award, Calendar, Check, Clock, Coins, Copy, Crown, Download, Gift, Link, Mail, MessageCircle, QrCode, RefreshCw, Share2, Star, TrendingUp, Users, X, Zap } from 'lucide-react';
+import { AtSign, Award, Calendar, Globe2, Check, Clock, Coins, Copy, Crown, Download, Gift, Link, Mail, MessageCircle, QrCode, RefreshCw, Share2, Star, TrendingUp, Users, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, BarChart3, Bell, Cake, Calendar, CheckCircle, Clock, Clock as ClockIcon, Filter, Gift, Heart, MapPin, Plane, Plus, Settings, Users, X, Zap } from 'lucide-react';
+import { Activity, AlertTriangle, BarChart3, Bell, Cake, PartyPopper, Calendar, CheckCircle, Clock, Clock as ClockIcon, Filter, Gift, Heart, MapPin, Plane, Plus, Settings, Users, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

@@ -1,4 +1,4 @@
-import { CheckCircle, Info, RefreshCw, Shield, Star, UserPlus, Users, X, Zap } from 'lucide-react';
+import { Check, CheckCircle, Info, RefreshCw, Shield, Star, UserPlus, Users, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

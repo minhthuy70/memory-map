@@ -1,4 +1,4 @@
-import { Award, CheckCircle, Download, ExternalLink, Hash, Info, RefreshCw, Share2, Shield, Star, X, Zap } from 'lucide-react';
+import { Award, BadgeCheck, CheckCircle, Download, ExternalLink, Hash, Info, RefreshCw, Share2, Shield, Star, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

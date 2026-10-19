@@ -1,6 +1,6 @@
 'use client';
 
-import { AtSign, Check, Copy, Mail, Share2, Users } from 'lucide-react';
+import { AtSign, Check, Globe2, MessageCircle, Copy, Mail, Share2, Users } from 'lucide-react';
 import { useState } from 'react';
 
 
@@ -136,7 +136,7 @@ export default function ShareMemory({ memory, onClose }: ShareMemoryProps) {
 
                 <div className="grid grid-cols-2 gap-3">
                   {/* Native Share */}
-                  {navigator.share && (
+                  {typeof navigator.share !== "undefined" navigator.share && (navigator.share && ( (
                     <button
                       onClick={() => handleShare('native')}
                       className="flex items-center justify-center gap-2 p-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-medium text-sm"

@@ -71,7 +71,7 @@ export default function BeforeAfterSlider() {
                 onChange={(e) => setBlendMode(e.target.value)}
                 className="w-full p-2 border rounded"
               >
-                {blendModes.map(mode => <option key={mode} value={mode} capitalize>{mode}</option>)}
+                {blendModes.map(mode => <option key={mode} value={mode} >{mode}</option>)}
               </select>
             </div>
           </div>

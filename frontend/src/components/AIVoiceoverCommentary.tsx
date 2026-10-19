@@ -87,7 +87,7 @@ export default function AIVoiceoverCommentary() {
                 className="w-full p-2 border rounded"
               >
                 {vocalFilters.map(filter => (
-                  <option key={filter} value={filter} capitalize>{filter}</option>
+                  <option key={filter} value={filter} >{filter}</option>
                 ))}
               </select>
             </div>

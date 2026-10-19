@@ -276,7 +276,7 @@ export default function ResourceUsage({ onCancel, onRefreshResources, onOptimize
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Network</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
-            {(metrics.find(m => m.name === 'Network Up')?.value || 0 + metrics.find(m => m.name === 'Network Down')?.value || 0).toFixed(1)} Mbps
+            {((metrics.find(m => m.name === 'Network Up')?.value || 0) + (metrics.find(m => m.name === 'Network Down')?.value || 0)).toFixed(1)} Mbps
           </div>
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">

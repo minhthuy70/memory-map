@@ -201,7 +201,6 @@ export default function StickyKeysSupport({ onCancel }: StickyKeysSupportProps) 
                 const timeout = parseInt(e.target.value);
                 setStickyKeys(stickyKeys.map(key => ({ ...key, timeout })));
               }}
-              disabled={!isGloballyEnabled}
               className="disabled:opacity-50"
               >
                 <option value="3">3 seconds</option>

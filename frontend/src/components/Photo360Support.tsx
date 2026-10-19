@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, BarChart3, Calendar, Camera, Check, CheckCircle, Clock, Compass, Crosshair, Download, ExternalLink, Eye, EyeOff, Filter, Grid, Image, Image as ImageIcon, Layers, Maximize2, Minimize2, MoveHorizontal, Pause, Play, Plus, RefreshCw, Rotate3D, RotateCw, Settings, Settings as SettingsIcon, Trash2, Trash2 as TrashIcon, Upload, X, Zap, Zap as ZapIcon, ZoomIn, ZoomOut } from 'lucide-react';
+import { Activity, AlertTriangle, BarChart3, Calendar, Camera, Check, CheckCircle, Clock, Compass, Crosshair, Download, ExternalLink, Eye, EyeOff, Filter, Grid, Image, Star, Image as ImageIcon, Layers, Maximize2, Minimize2, MoveHorizontal, Pause, Play, Plus, RefreshCw, Rotate3D, RotateCw, Settings, Settings as SettingsIcon, Trash2, Trash2 as TrashIcon, Upload, X, Zap, Zap as ZapIcon, ZoomIn, ZoomOut } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

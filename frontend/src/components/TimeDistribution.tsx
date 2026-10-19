@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, BarChart3, Calendar, CheckCircle, Clock, Coffee, Moon, Settings, Sun, TrendingUp, X, Zap } from 'lucide-react';
+import { Activity, AlertTriangle, BarChart3, Calendar, CheckCircle, Sunset, Clock, Coffee, Moon, Settings, Sun, TrendingUp, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

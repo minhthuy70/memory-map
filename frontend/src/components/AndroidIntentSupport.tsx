@@ -82,7 +82,7 @@ export default function AndroidIntentSupport({ onCancel }: AndroidIntentSupportP
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-green-500 to-teal-500 rounded-xl">
-            <TabletSmartphone className="h-5 w-5 text-white" />
+            <Smartphone className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">

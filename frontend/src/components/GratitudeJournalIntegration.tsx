@@ -1,4 +1,4 @@
-import { Award, Calendar, CheckCircle, Heart, Info, RefreshCw, Sparkles, Star, X } from 'lucide-react';
+import { Award, Calendar, CheckCircle, Clock, Pencil, Heart, Info, RefreshCw, Sparkles, Star, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

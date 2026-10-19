@@ -1,4 +1,4 @@
-import { Activity, AlertCircle, Battery, Bell, CheckCircle, Heart, Info, RefreshCw, Settings, Smartphone, Watch, Wifi, X } from 'lucide-react';
+import { Activity, AlertCircle, Battery, Bell, CheckCircle, Heart, Info, RefreshCw, Settings, Smartphone, TabletSmartphone, Watch, Wifi, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

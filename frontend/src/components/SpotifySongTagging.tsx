@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, BarChart3, Calendar, Check, CheckCircle, Clock, Download, ExternalLink, Filter, Heart, ListMusic, Music, Pause, Play, PlayCircle, Plus, RefreshCw, Repeat, Search, Settings, Settings as SettingsIcon, Share2, Shuffle, SkipBack, SkipForward, Trash2, X, Zap, Zap as ZapIcon } from 'lucide-react';
+import { Activity, AlertTriangle, Headphones, BarChart3, Calendar, Check, CheckCircle, Clock, Download, ExternalLink, Filter, Heart, ListMusic, Music, Pause, Play, PlayCircle, Plus, RefreshCw, Repeat, Search, Settings, Settings as SettingsIcon, Share2, Shuffle, SkipBack, SkipForward, Trash2, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

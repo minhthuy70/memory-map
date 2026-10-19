@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function LegacyLetterWill() {
   const [letters, setLetters] = useState([
-    { id: 1, recipientName: 'Daughter Emma', recipientEmail: 'emma@example.com', milestoneAge: 18, title: 'Letter to my daughter on her 18th birthday', isDelivered: false },
+    { id: 1, recipientName: 'Daughter Emma', recipientEmail: 'emma@example.com', milestoneAge: 18, title: 'Letter to my daughter on her 18th birthday', content: 'My dear daughter...', isDelivered: false },
   ]);
   const [isAdding, setIsAdding] = useState(false);
   const [newLetter, setNewLetter] = useState({

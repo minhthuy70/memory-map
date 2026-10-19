@@ -1,4 +1,4 @@
-import { AlertCircle, Calendar, CheckCircle, Clock, Download, ExternalLink, FileText, Fork, Github, Info, Plus, RefreshCw, Settings, Star, Trash2, X } from 'lucide-react';
+import { AlertCircle, Calendar, CheckCircle, Clock, Download, ExternalLink, FileText, GitBranch, GitCommit, Info, Plus, RefreshCw, Settings, Star, Trash2, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

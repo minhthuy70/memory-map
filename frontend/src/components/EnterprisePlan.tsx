@@ -1,4 +1,4 @@
-import { Building, CheckCircle, Crown, Info, RefreshCw, Shield, Star, X, Zap } from 'lucide-react';
+import { Building, Check, CheckCircle, Crown, Info, RefreshCw, Shield, Star, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

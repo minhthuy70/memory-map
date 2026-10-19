@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, ArrowUp, BarChart3, Calendar, Calendar as CalendarIcon, Check, CheckCircle, Clock, Compass, Download, ExternalLink, Filter, Home, Layers, Layout, MapPin, Mic, Navigation, Pause, Play, Plus, RefreshCw, Settings, Settings as SettingsIcon, Trash2, Trash2 as TrashIcon, Users, X, Zap, Zap as ZapIcon } from 'lucide-react';
+import { Activity, AlertTriangle, ArrowDown, ArrowLeft, ArrowRight, ArrowUp, BarChart3, Calendar, Calendar as CalendarIcon, Check, CheckCircle, Clock, Compass, Download, ExternalLink, Filter, Home, Layers, Layout, MapPin, Mic, Navigation, Pause, Play, Plus, RefreshCw, Settings, Settings as SettingsIcon, Trash2, Trash2 as TrashIcon, Users, Sparkles, OctagonX, X, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

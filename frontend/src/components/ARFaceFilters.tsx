@@ -397,7 +397,7 @@ export default function ARFaceFilters({ onCancel, onAddFilter, onRemoveFilter, o
                     </>
                   ) : (
                     <>
-                      <ZapIcon2 className="h-3 w-3" />
+                      <ZapIcon className="h-3 w-3" />
                       Lock
                     </>
                   )}
@@ -458,7 +458,7 @@ export default function ARFaceFilters({ onCancel, onAddFilter, onRemoveFilter, o
                 </div>
                 <div className="flex items-center gap-2">
                   {filter.isLocked && (
-                    <ZapIcon2 className="h-4 w-4 text-rose-500" />
+                    <ZapIcon className="h-4 w-4 text-rose-500" />
                   )}
                   <button
                     type="button"

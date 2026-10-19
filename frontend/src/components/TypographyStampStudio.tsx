@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function TypographyStampStudio() {
   const [stamps, setStamps] = useState([
-    { id: 1, text: 'HANOI 2024', fontName: 'Vintage', fontSize: 32, stampType: 'postmark' },
+    { id: 1, text: 'HANOI 2024', fontName: 'Vintage', fontSize: 32, fontColor: '#000000', stampType: 'postmark' },
   ]);
   const [text, setText] = useState('');
   const [fontName, setFontName] = useState('Vintage');
@@ -89,7 +89,7 @@ export default function TypographyStampStudio() {
                 className="w-full p-2 border rounded"
               >
                 {stampTypes.map(type => (
-                  <option key={type} value={type} capitalize>{type.replace('_', ' ')}</option>
+                  <option key={type} value={type} >{type.replace('_', ' ')}</option>
                 ))}
               </select>
             </div>

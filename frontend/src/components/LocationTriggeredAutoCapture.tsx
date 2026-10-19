@@ -1,4 +1,4 @@
-import { AlertCircle, Bell, CheckCircle, Clock, Heart, Home, Info, Map, MapPin, Navigation, Plus, RefreshCw, Settings, Trash2, Work, X } from 'lucide-react';
+import { AlertCircle, Bell, CheckCircle, Clock, Heart, Home, Info, Map, MapPin, Navigation, Plus, RefreshCw, Settings, Trash2, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
@@ -127,7 +127,7 @@ export default function LocationTriggeredAutoCapture({ onCancel }: LocationTrigg
   const getZoneTypeIcon = (type: string) => {
     switch (type) {
       case 'home': return <Home className="h-4 w-4" />;
-      case 'work': return <Work className="h-4 w-4" />;
+      case 'work': return <Briefcase className="h-4 w-4" />;
       case 'favorite': return <Heart className="h-4 w-4" />;
       case 'custom': return <MapPin className="h-4 w-4" />;
       default: return <MapPin className="h-4 w-4" />;

@@ -1,4 +1,4 @@
-import { Activity, AlertTriangle, BarChart3, BookOpen, Calendar, CheckCircle, Clock, Eye, Filter, Heart, Image, Image as ImageIcon, MessageCircle, Music, Pause, Play, Settings, Share2, Video, X, Zap } from 'lucide-react';
+import { Activity, AlertTriangle, BarChart3, BookOpen, Calendar, CheckCircle, ScrollText, Clock, Eye, Filter, Heart, Image, Image as ImageIcon, MessageCircle, Music, Pause, Play, Settings, Share2, Video, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

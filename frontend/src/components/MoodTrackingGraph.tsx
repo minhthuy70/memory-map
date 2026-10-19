@@ -1,4 +1,4 @@
-import { BarChart3, Calendar, CheckCircle, Info, LineChart, RefreshCw, Star, TrendingUp, X, Zap } from 'lucide-react';
+import { BarChart3, Calendar, Pencil, CheckCircle, Info, LineChart, RefreshCw, Star, TrendingUp, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

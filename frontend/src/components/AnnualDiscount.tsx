@@ -1,4 +1,4 @@
-import { Calendar, CheckCircle, Gift, Info, RefreshCw, Star, X, Zap } from 'lucide-react';
+import { Calendar, Check, CheckCircle, Gift, Info, RefreshCw, Star, X, Zap } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

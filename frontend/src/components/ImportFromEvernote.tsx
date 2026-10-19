@@ -1,4 +1,4 @@
-import { Activity, Activity as ActivityIcon, AlertCircle, AlertTriangle, AlertTriangle as AlertTriangleIcon, Angry, Angry as AngryIcon, Archive, Archive as ArchiveIcon, BarChart3, BookOpen, Bookmark, Briefcase, Cake, Calendar, Calendar as CalendarIcon, Camera, Check, Check as CheckIcon, CheckCheck, CheckCircle, CheckCircle as CheckCircleIcon, CheckSquare, ChevronDown, ChevronRight, Clock, Clock as ClockIcon, Cloud, Code, Code2, Coffee, Coffee as CoffeeIcon, Copy, Copy as CopyIcon, Copyright, Copyright as CopyRightIcon, Database, Download, Download as DownloadIcon, Droplet, Dumbbell, Edit2, Elephant, ExternalLink, ExternalLink as ExternalLinkIcon, Eye, EyeOff, File, FileText, FileText as FileTextIcon, Filter, Filter as FilterIcon, Folder, Folder as FolderIcon, FolderOpen, FolderOpen as FolderOpenIcon, Frown, Gamepad2, Gift, Globe, Grid, Hash, Headphones, Heart, Heart as HeartIcon, Home, Image, Image as ImageIcon, Layers, Layout, Link, Link as LinkIcon, Link2, List, List as ListIcon, Loader2, Lock, Map, Map as MapIcon, MapPin, MapPin as MapPinIcon, Meh, MessageCircle, Minus, Monitor, Moon, MoreHorizontal, Music, Newspaper, Notebook, Palette, Paperclip, Pause, PenTool, Pencil, Pencil as EditIcon, Plane, Play, Plus, Plus as PlusIcon, Printer, RefreshCw, RefreshCw as RefreshCwIcon, Save, School, Search, Search as SearchIcon, Settings, Settings as SettingsIcon, Share, Share2, Shield, ShoppingBag, Smile, Smile as SmileIcon, Sparkles, Square, Star, Star as StarIcon, Sun, Table, Tag, Tag as TagIcon, Thermometer, ThumbsUp, Trash, Trash2, Trash2 as TrashIcon, Type, Unlock, Upload, Upload as UploadIcon, Users, Utensils, Video, Video as VideoIcon, Wifi, X, X as XIcon, Zap, Zap as ZapIcon } from 'lucide-react';
+import { Activity, Activity as ActivityIcon, AlertCircle, AlertTriangle, AlertTriangle as AlertTriangleIcon, Angry, Angry as AngryIcon, Archive, Archive as ArchiveIcon, BarChart3, BookOpen, Bookmark, Briefcase, Cake, Calendar, Calendar as CalendarIcon, Camera, Check, Check as CheckIcon, CheckCheck, CheckCircle, CheckCircle as CheckCircleIcon, CheckSquare, ChevronDown, ChevronRight, Clock, Clock as ClockIcon, Cloud, Code, Code2, Coffee, Coffee as CoffeeIcon, Copy, Copy as CopyIcon, Copyright, Copyright as CopyRightIcon, Database, Download, Download as DownloadIcon, Droplet, Dumbbell, Edit2, ExternalLink, ExternalLink as ExternalLinkIcon, Eye, EyeOff, File, FileText, FileText as FileTextIcon, Filter, Filter as FilterIcon, Folder, Folder as FolderIcon, FolderOpen, FolderOpen as FolderOpenIcon, Frown, Gamepad2, Gift, Globe, Grid, Hash, Headphones, Heart, Heart as HeartIcon, Home, Image, Image as ImageIcon, Layers, Layout, Link, Link as LinkIcon, Link2, List, List as ListIcon, Loader2, Lock, Map, Map as MapIcon, MapPin, MapPin as MapPinIcon, Meh, MessageCircle, Minus, Monitor, Moon, MoreHorizontal, Music, Newspaper, Notebook, Palette, Paperclip, Pause, PenTool, Pencil, Pencil as EditIcon, Plane, Play, Plus, Plus as PlusIcon, Printer, RefreshCw, RefreshCw as RefreshCwIcon, Save, School, Search, Search as SearchIcon, Settings, Settings as SettingsIcon, Share, Share2, Shield, ShoppingBag, Smile, Smile as SmileIcon, Sparkles, Square, Star, Star as StarIcon, Sun, Table, Tag, Tag as TagIcon, Thermometer, ThumbsUp, Trash, Trash2, Trash2 as TrashIcon, Type, Unlock, Upload, Upload as UploadIcon, Users, Utensils, Video, Video as VideoIcon, Wifi, X, X as XIcon, Zap, Zap as ZapIcon } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';
@@ -117,7 +117,7 @@ export default function ImportFromEvernote({ onCancel, onConnect, onImport, onDi
 
   const getAttachmentIcon = (type: string) => {
     switch (type) {
-      case 'image': return ImageIcon5;
+      case 'image': return ImageIcon;
       case 'video': return VideoIcon;
       case 'audio': return Headphones;
       case 'document': return FileTextIcon;
@@ -311,7 +311,7 @@ export default function ImportFromEvernote({ onCancel, onConnect, onImport, onDi
         </div>
         <div className="p-3 rounded-xl border-2 bg-slate-50 dark:bg-slate-700/50 border-slate-200 dark:border-slate-600">
           <div className="flex items-center gap-2 mb-1">
-            <FolderIcon2 className="h-3 w-3 text-slate-500" />
+            <FolderIcon className="h-3 w-3 text-slate-500" />
             <span className="text-[10px] text-slate-600 dark:text-slate-400">Notebooks</span>
           </div>
           <div className="text-lg font-bold text-slate-900 dark:text-white">
@@ -440,7 +440,7 @@ export default function ImportFromEvernote({ onCancel, onConnect, onImport, onDi
                 <div className="flex flex-wrap gap-2 mt-2">
                   {includeNotebook && (
                     <div className="flex items-center gap-1 text-[10px] text-slate-600 dark:text-slate-400">
-                      <FolderIcon2 className="h-3 w-3" />
+                      <FolderIcon className="h-3 w-3" />
                       {note.notebook}
                     </div>
                   )}
@@ -451,7 +451,7 @@ export default function ImportFromEvernote({ onCancel, onConnect, onImport, onDi
                           key={tag}
                           className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded text-[10px]"
                         >
-                          <TagIcon2 className="h-3 w-3" />
+                          <TagIcon className="h-3 w-3" />
                           {tag}
                         </span>
                       ))}
