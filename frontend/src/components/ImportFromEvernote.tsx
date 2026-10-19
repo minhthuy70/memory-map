@@ -134,7 +134,7 @@ export default function ImportFromEvernote({ onCancel, onConnect, onImport, onDi
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl">
-            <Elephant className="h-5 w-5 text-white" />
+            <Notebook className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">

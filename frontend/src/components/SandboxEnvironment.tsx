@@ -190,7 +190,7 @@ export default function SandboxEnvironment({ onCancel }: SandboxEnvironmentProps
                 ) : (
                   <input
                     type={setting.type === 'number' ? 'number' : 'text'}
-                    value={setting.type === "number" ? String(setting.value || 0) : setting.value}
+                    value={setting.type === "number" ? String(setting.value || 0) : String(setting.value || '')}
                     onChange={(e) => setSandboxSettings(sandboxSettings.map(s => s.id === setting.id ? { ...s, value: setting.type === "number" ? (parseInt(e.target.value) || 0) : e.target.value } : s))}
                     className="px-2 py-1 rounded text-xs bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white border-0 w-20"
                   />

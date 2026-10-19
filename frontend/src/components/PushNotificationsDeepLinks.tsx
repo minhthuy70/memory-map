@@ -299,7 +299,7 @@ export default function PushNotificationsDeepLinks({ onCancel }: PushNotificatio
           </div>
           <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-1">
             <li>• Deep links navigate directly to specific app screens</li>
-            <li>• Supports dynamic parameters (e.g., /memories/{id})</li>
+            <li>• Supports dynamic parameters (e.g., /memories/[id])</li>
             <li>• Works even when app is closed</li>
             <li>• Custom sounds and vibration per notification type</li>
           </ul>

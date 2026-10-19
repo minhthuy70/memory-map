@@ -74,7 +74,7 @@ export default function CodeSamplesRepository({ onCancel }: CodeSamplesRepositor
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl">
-            <Github className="h-5 w-5 text-white" />
+            <GitCommit className="h-5 w-5 text-white" />
           </div>
           <div>
             <h3 className="font-bold text-slate-900 dark:text-white text-lg">
@@ -185,7 +185,7 @@ export default function CodeSamplesRepository({ onCancel }: CodeSamplesRepositor
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-slate-100 dark:bg-slate-700 rounded-lg">
-                      <Github className="h-4 w-4 text-slate-400" />
+                      <GitBranch className="h-4 w-4 text-slate-400" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
@@ -226,7 +226,7 @@ export default function CodeSamplesRepository({ onCancel }: CodeSamplesRepositor
                     <span className="text-xs text-slate-500 dark:text-slate-400">{sample.stars}</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <Fork className="h-3 w-3 text-slate-400" />
+                    <GitBranch className="h-3 w-3 text-slate-400" />
                     <span className="text-xs text-slate-500 dark:text-slate-400">{sample.forks}</span>
                   </div>
                   <span className="text-xs text-slate-500 dark:text-slate-400">Updated: {sample.lastUpdated}</span>

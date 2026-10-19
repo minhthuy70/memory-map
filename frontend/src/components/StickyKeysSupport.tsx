@@ -195,13 +195,12 @@ export default function StickyKeysSupport({ onCancel }: StickyKeysSupportProps) 
                 <span className="text-xs text-slate-700 dark:text-slate-300">Default Timeout</span>
               </div>
               <select
-                className="px-3 py-1.5 rounded-lg text-xs bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600"
+                className="px-3 py-1.5 rounded-lg text-xs bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-600 disabled:opacity-50"
               defaultValue="5"
               onChange={(e) => {
                 const timeout = parseInt(e.target.value);
                 setStickyKeys(stickyKeys.map(key => ({ ...key, timeout })));
               }}
-              className="disabled:opacity-50"
               >
                 <option value="3">3 seconds</option>
                 <option value="5">5 seconds</option>

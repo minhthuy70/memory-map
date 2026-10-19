@@ -1,4 +1,4 @@
-import { BookOpen, Calendar, Clock, Users, FileText, Info, Plus, RefreshCw, Star, Users, X } from 'lucide-react';
+import { BookOpen, Calendar, Clock, Users, FileText, Info, Plus, RefreshCw, Star, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

@@ -1,4 +1,4 @@
-import { AlertCircle, Bell, CheckCircle, Clock, Heart, Home, Info, Map, MapPin, Navigation, Plus, RefreshCw, Settings, Trash2, X } from 'lucide-react';
+import { AlertCircle, Bell, Briefcase, CheckCircle, Clock, Heart, Home, Info, Map, MapPin, Navigation, Plus, RefreshCw, Settings, Trash2, X } from 'lucide-react';
 'use client';
 
 import { useState } from 'react';

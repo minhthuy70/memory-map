@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Crown, X, TrendingUp, Star, Zap, Award, Target, Sparkles, Flame, ChevronRight, ChevronLeft, Info, Gift, Shield, Sword, Gem, Wand2, Heart, MapPin, Calendar, Clock, BarChart3, RefreshCw, Trophy, Check as CheckIcon } from 'lucide-react';
+import { Crown, X, TrendingUp, Star, Zap, Award, Target, Sparkles, Flame, ChevronRight, ChevronLeft, Info, Gift, Shield, Sword, Gem, Wand2, Heart, MapPin, Calendar, Clock, BarChart3, RefreshCw, Trophy, Check } from 'lucide-react';
 
 interface LevelProgressionProps {
   onCancel?: () => void;
@@ -239,7 +239,7 @@ export default function LevelProgression({ onCancel }: LevelProgressionProps) {
             <ul className="space-y-2">
               {currentLevel.benefits.map((benefit, index) => (
                 <li key={index} className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                  <CheckIcon className="h-4 w-4 text-green-500" />
+                  <Check className="h-4 w-4 text-green-500" />
                   {benefit}
                 </li>
               ))}
@@ -268,7 +268,7 @@ export default function LevelProgression({ onCancel }: LevelProgressionProps) {
                 <div className="flex items-center gap-2">
                   {level.level < currentLevel.level && (
                     <div className="flex items-center gap-1 text-xs text-green-600 dark:text-green-400">
-                      <CheckIcon className="h-3 w-3" />
+                      <Check className="h-3 w-3" />
                       <span>Unlocked</span>
                     </div>
                   )}
@@ -316,7 +316,7 @@ export default function LevelProgression({ onCancel }: LevelProgressionProps) {
                 <ul className="space-y-1">
                   {selectedLevel.benefits.map((benefit, index) => (
                     <li key={index} className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
-                      <CheckIcon className="h-4 w-4 text-green-500" />
+                      <Check className="h-4 w-4 text-green-500" />
                       {benefit}
                     </li>
                   ))}
@@ -350,13 +350,5 @@ export default function LevelProgression({ onCancel }: LevelProgressionProps) {
         </div>
       </div>
     </div>
-  );
-}
-
-function CheckIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-    </svg>
   );
 }
