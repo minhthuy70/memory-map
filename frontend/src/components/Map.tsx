@@ -10,7 +10,7 @@ import { Memory } from '@/lib/memories-api';
 import LocationSearch from './LocationSearch';
 import MapAnnotations from './MapAnnotations';
 import MapDrawingTools from './MapDrawingTools';
-import { Navigation, Layers, Maximize2, Minimize2, Focus, Loader2, MapPin, Ruler, Filter, X, Flame, PenTool, Pencil } from 'lucide-react';
+import { Navigation, Layers, Maximize2, Minimize2, Focus, MapPin, Ruler, Filter, X, Flame, PenTool, Pencil } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 
 // Fix for default marker icons in Leaflet with React
@@ -288,7 +288,6 @@ export default function MemoryMap({
   onDeleteDrawingShape,
 }: MapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isClient, setIsClient] = useState(false);
   const [mapCenter, setMapCenter] = useState<[number, number]>(center);
   const [mapZoom, setMapZoom] = useState(zoom);
   const [locationError, setLocationError] = useState('');
@@ -376,10 +375,6 @@ export default function MemoryMap({
       }));
   }, [filteredMemories, localShowHeatMap]);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   // Listen for fullscreen change
   useEffect(() => {
     const handleFullscreenChange = () => {
@@ -450,20 +445,6 @@ export default function MemoryMap({
   const handleFitBounds = () => {
     setFitBoundsTrigger(prev => prev + 1);
   };
-
-  if (!isClient) {
-    return (
-      <div className="w-full h-full bg-slate-100 dark:bg-slate-800/60 backdrop-blur-xs flex flex-col items-center justify-center p-6">
-        <Loader2 className="h-8 w-8 text-primary animate-spin mb-3" />
-        <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-          Đang tải bản đồ tương tác...
-        </span>
-        <span className="text-xs text-slate-400 mt-1">
-          Trung tâm mặc định: Hà Nội (Mức zoom: {zoom})
-        </span>
-      </div>
-    );
-  }
 
   return (
     <div ref={containerRef} className="relative w-full h-full bg-slate-100 dark:bg-slate-900">
