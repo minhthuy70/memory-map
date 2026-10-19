@@ -136,7 +136,7 @@ export default function ShareMemory({ memory, onClose }: ShareMemoryProps) {
 
                 <div className="grid grid-cols-2 gap-3">
                   {/* Native Share */}
-                  {typeof navigator.share !== "undefined" navigator.share && (navigator.share && ( (
+                  {typeof navigator.share !== "undefined" && navigator.share !== null && (
                     <button
                       onClick={() => handleShare('native')}
                       className="flex items-center justify-center gap-2 p-3 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-medium text-sm"
