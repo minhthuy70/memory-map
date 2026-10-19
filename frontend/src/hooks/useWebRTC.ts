@@ -159,31 +159,6 @@ export function useWebRTC(config: WebRTCConfig) {
     }
   };
 
-  const handleSignal = async (signal: any) => {
-    const pc = peerConnectionRef.current;
-    if (!pc) return;
-
-    if (signal.type === 'offer') {
-      await pc.setRemoteDescription(new RTCSessionDescription(signal.data));
-      const answer = await pc.createAnswer();
-      await pc.setLocalDescription(answer);
-
-      socket?.emit('webrtc-signal', {
-        roomCode: config.roomCode,
-        signal: {
-          type: 'answer',
-          data: answer,
-        },
-        from: config.userId,
-        to: signal.from,
-      });
-    } else if (signal.type === 'answer') {
-      await pc.setRemoteDescription(new RTCSessionDescription(signal.data));
-    } else if (signal.type === 'ice-candidate') {
-      await pc.addIceCandidate(new RTCIceCandidate(signal.data));
-    }
-  };
-
   const toggleMute = () => {
     if (localStream) {
       const audioTrack = localStream.getAudioTracks()[0];
