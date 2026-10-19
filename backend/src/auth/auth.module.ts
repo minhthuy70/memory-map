@@ -54,6 +54,7 @@ import { LocalStrategy } from './local.strategy';
     JwtAuthGuard,
     JwtStrategy,
     LocalStrategy,
+    SessionsService,
   ],
 
   exports: [
@@ -62,6 +63,7 @@ import { LocalStrategy } from './local.strategy';
     JwtModule,
     UsersModule,
     SessionsModule,
+    SessionsService,
   ],
 })
 export class AuthModule {}
