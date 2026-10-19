@@ -10,6 +10,7 @@ import { UsersModule } from '../users/users.module';
 import { SessionsModule } from '../sessions/sessions.module';
 import { SessionsService } from '../sessions/sessions.service';
 import { MailModule } from '../mail/mail.module';
+import { MailService } from '../mail/mail.service';
 
 import { JwtStrategy } from './jwt.strategy';
 import { LocalStrategy } from './local.strategy';
@@ -54,7 +55,7 @@ import { LocalStrategy } from './local.strategy';
     JwtAuthGuard,
     JwtStrategy,
     LocalStrategy,
-    SessionsService,
+    MailService,
   ],
 
   exports: [
@@ -63,7 +64,6 @@ import { LocalStrategy } from './local.strategy';
     JwtModule,
     UsersModule,
     SessionsModule,
-    SessionsService,
   ],
 })
 export class AuthModule {}
