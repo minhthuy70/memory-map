@@ -287,9 +287,9 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+    <div className="min-h-screen bg-surface dark:bg-slate-900">
       {/* Header */}
-      <header className="dashboard-header bg-white dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700">
+      <header className="dashboard-header bg-surface-raised dark:bg-slate-800 shadow-sm border-b border-slate-200 dark:border-slate-700">
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
             <button
@@ -356,7 +356,7 @@ export default function DashboardPage() {
         <aside
           className={`${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } lg:translate-x-0 fixed lg:relative z-40 w-80 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 h-full overflow-y-auto transition-transform duration-300 ease-in-out`}
+          } lg:translate-x-0 fixed lg:relative z-40 w-80 bg-surface-raised dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 h-full overflow-y-auto transition-transform duration-300 ease-in-out`}
         >
           <div className="filter-controls p-4 space-y-5">
             {/* Active Filters Summary & Clear Button */}
@@ -627,7 +627,7 @@ export default function DashboardPage() {
                 {showStats && (
                   <div className="space-y-3 animate-in slide-in-from-top-2">
                     {/* Categories Summary */}
-                    <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+                    <div className="p-3 bg-surface dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                       <div className="flex items-center gap-2 mb-2">
                         <Folder className="h-4 w-4 text-slate-600 dark:text-slate-400" />
                         <span className="text-sm font-medium text-slate-900 dark:text-white">
@@ -664,7 +664,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* Mood Distribution */}
-                    <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+                    <div className="p-3 bg-surface dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                       <div className="flex items-center gap-2 mb-2">
                         <Smile className="h-4 w-4 text-slate-600 dark:text-slate-400" />
                         <span className="text-sm font-medium text-slate-900 dark:text-white">
@@ -697,7 +697,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* Monthly Activity */}
-                    <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+                    <div className="p-3 bg-surface dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                       <div className="flex items-center gap-2 mb-2">
                         <TrendingUp className="h-4 w-4 text-slate-600 dark:text-slate-400" />
                         <span className="text-sm font-medium text-slate-900 dark:text-white">
@@ -731,7 +731,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* Memory Growth Chart */}
-                    <div className="p-3 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
+                    <div className="p-3 bg-surface dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700">
                       <div className="flex items-center gap-2 mb-2">
                         <TrendingUp className="h-4 w-4 text-slate-600 dark:text-slate-400" />
                         <span className="text-sm font-medium text-slate-900 dark:text-white">
@@ -845,7 +845,7 @@ export default function DashboardPage() {
         </aside>
 
         {/* Main Content - Map */}
-        <main className="min-w-0 flex-1">
+        <main className="flex min-w-0 flex-1 flex-col">
           {error && (
             <div className="m-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg">
               {error}
@@ -897,7 +897,7 @@ export default function DashboardPage() {
                   { label: 'Địa điểm', value: statistics.uniqueLocations, icon: MapPin },
                   { label: 'Kỷ niệm năm nay', value: statistics.memoriesThisYear, icon: Smile },
                 ].map(({ label, value, icon: Icon }) => (
-                  <div key={label} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+                  <div key={label} className="rounded-xl border border-slate-200 bg-surface p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
                     <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                       <Icon className="h-4 w-4 text-primary" />
                       {label}
@@ -909,7 +909,7 @@ export default function DashboardPage() {
             )}
           </section>
 
-          <div className="memory-map-container h-[45vh] min-h-[300px] sm:h-[55vh] sm:min-h-[360px] sm:max-h-[640px]">
+          <div className="memory-map-container min-h-[55vh] flex-1 sm:min-h-[60vh]">
             <MemoryMap
               memories={memories}
               onLocationSelect={handleLocationSelect}

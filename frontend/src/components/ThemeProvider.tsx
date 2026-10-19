@@ -21,9 +21,9 @@ interface ThemeContextType {
 }
 
 const DEFAULT_COLORS: CustomColors = {
-  primary: '#6366f1',
-  secondary: '#8b5cf6',
-  accent: '#ec4899',
+  primary: '#0891b2',
+  secondary: '#eab308',
+  accent: '#06b6d4',
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
