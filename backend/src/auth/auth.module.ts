@@ -19,7 +19,7 @@ import { LocalStrategy } from './local.strategy';
   imports: [
     ConfigModule,
     UsersModule,
-    forwardRef(() => SessionsModule),
+    SessionsModule,
     MailModule,
 
     JwtModule.registerAsync({
