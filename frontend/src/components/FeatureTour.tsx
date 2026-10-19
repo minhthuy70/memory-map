@@ -1,8 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Joyride, STATUS, Step, EventData } from 'react-joyride';
-import { useAuthStore } from '@/store/auth-store';
 
 const tourSteps: Step[] = [
   {
@@ -19,7 +18,7 @@ const tourSteps: Step[] = [
   {
     target: '.memory-map-container',
     content: 'Bản đồ tương tác hiển thị tất cả kỷ niệm của bạn. Các marker được gom nhóm khi ở gần nhau.',
-    placement: 'top',
+    placement: 'bottom',
   },
   {
     target: '.filter-controls',
@@ -50,18 +49,6 @@ const tourSteps: Step[] = [
 
 export default function FeatureTour() {
   const [runTour, setRunTour] = useState(false);
-  const { user } = useAuthStore();
-
-  useEffect(() => {
-    // Check if user has seen the tour before
-    const hasSeenTour = localStorage.getItem('hasSeenFeatureTour');
-    if (!hasSeenTour && user) {
-      // Delay tour start to allow UI to render
-      setTimeout(() => {
-        setRunTour(true);
-      }, 1500);
-    }
-  }, [user]);
 
   const handleJoyrideCallback = (data: EventData) => {
     const { status } = data;
@@ -85,6 +72,7 @@ export default function FeatureTour() {
         onEvent={handleJoyrideCallback}
         options={{
           zIndex: 10000,
+          hideOverlay: true,
           primaryColor: '#6366f1',
           backgroundColor: '#ffffff',
           textColor: '#1e293b',
@@ -106,7 +94,7 @@ export default function FeatureTour() {
         <button
           onClick={handleStartTour}
           className="fixed bottom-6 left-6 z-[9999] bg-primary text-white px-4 py-2 rounded-full shadow-lg hover:bg-primary-hover transition-all flex items-center gap-2 text-sm font-medium"
-          title="Xem hướng dẫn tính năng"
+          title="Mở hướng dẫn tính năng"
         >
           <span>📖</span>
           <span>Hướng dẫn</span>

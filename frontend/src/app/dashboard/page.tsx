@@ -16,11 +16,9 @@ import { useMemoriesStore } from '@/store/memories-store';
 import ThemeToggle from '@/components/ThemeToggle';
 import MemoryReminders from '@/components/MemoryReminders';
 import KeyboardShortcuts from '@/components/KeyboardShortcuts';
-import WelcomeModal from '@/components/WelcomeModal';
 import Tooltip from '@/components/Tooltip';
 import { AchievementSystem } from '@/components/AchievementSystem';
 import SearchHistory from '@/components/SearchHistory';
-import FeatureTour from '@/components/FeatureTour';
 import QuickStartGuide from '@/components/QuickStartGuide';
 import TutorialCards from '@/components/TutorialCards';
 import ProgressIndicators from '@/components/ProgressIndicators';
@@ -353,7 +351,7 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <div className="flex h-[calc(100vh-64px)]">
+      <div className="flex min-h-[calc(100vh-64px)]">
         {/* Sidebar */}
         <aside
           className={`${
@@ -847,61 +845,71 @@ export default function DashboardPage() {
         </aside>
 
         {/* Main Content - Map */}
-        <main className="flex-1 relative">
+        <main className="min-w-0 flex-1">
           {error && (
-            <div className="absolute top-4 left-4 right-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg z-10">
+            <div className="m-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 px-4 py-3 rounded-lg">
               {error}
             </div>
           )}
 
-          {/* Statistics Overview Cards */}
-          {statistics && statistics.totalMemories > 0 && (
-            <div className="absolute top-4 left-4 right-4 z-10">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-3">
-                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 mb-1">
-                    <TrendingUp className="h-4 w-4" />
-                    <span className="text-xs">Tổng kỷ niệm</span>
-                  </div>
-                  <p className="text-xl font-bold text-slate-900 dark:text-white">
-                    {statistics.totalMemories}
-                  </p>
-                </div>
-
-                <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-3">
-                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 mb-1">
-                    <Folder className="h-4 w-4" />
-                    <span className="text-xs">Danh mục</span>
-                  </div>
-                  <p className="text-xl font-bold text-slate-900 dark:text-white">
-                    {statistics.uniqueCategories}
-                  </p>
-                </div>
-
-                <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-3">
-                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 mb-1">
-                    <MapPin className="h-4 w-4" />
-                    <span className="text-xs">Địa điểm</span>
-                  </div>
-                  <p className="text-xl font-bold text-slate-900 dark:text-white">
-                    {statistics.uniqueLocations}
-                  </p>
-                </div>
-
-                <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-3">
-                  <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 mb-1">
-                    <Smile className="h-4 w-4" />
-                    <span className="text-xs">Tháng này</span>
-                  </div>
-                  <p className="text-xl font-bold text-slate-900 dark:text-white">
-                    {statistics.memoriesThisYear}
-                  </p>
-                </div>
+          <section className="space-y-4 p-4 sm:p-6" aria-label="Bắt đầu sử dụng Memory Map">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 className="text-xl font-bold text-slate-900 dark:text-white">Chào mừng đến với Memory Map</h2>
+                <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+                  Chọn một mục để bắt đầu, hoặc khám phá bản đồ kỷ niệm bên dưới.
+                </p>
               </div>
+              <button
+                onClick={() => router.push('/memories/new')}
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-hover"
+              >
+                <Plus className="h-4 w-4" />
+                Tạo kỷ niệm
+              </button>
             </div>
-          )}
 
-          <div className="memory-map-container h-full">
+            <div className="grid gap-3 sm:grid-cols-3">
+              {[
+                { label: 'Dòng thời gian', description: 'Xem lại kỷ niệm theo ngày tháng.', path: '/timeline', icon: Calendar },
+                { label: 'Thống kê', description: 'Khám phá hoạt động và cảm xúc.', path: '/statistics', icon: TrendingUp },
+                { label: 'Hồ sơ cá nhân', description: 'Cập nhật thông tin tài khoản.', path: '/profile', icon: User },
+              ].map(({ label, description, path, icon: Icon }) => (
+                <button
+                  key={path}
+                  onClick={() => router.push(path)}
+                  className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 text-left shadow-sm transition hover:border-primary/50 hover:shadow-md dark:border-slate-700 dark:bg-slate-800"
+                >
+                  <span className="rounded-lg bg-primary/10 p-2 text-primary"><Icon className="h-5 w-5" /></span>
+                  <span>
+                    <span className="block font-semibold text-slate-900 dark:text-white">{label}</span>
+                    <span className="mt-1 block text-sm text-slate-600 dark:text-slate-400">{description}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {statistics && (
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+                {[
+                  { label: 'Tổng kỷ niệm', value: statistics.totalMemories, icon: TrendingUp },
+                  { label: 'Danh mục', value: statistics.uniqueCategories, icon: Folder },
+                  { label: 'Địa điểm', value: statistics.uniqueLocations, icon: MapPin },
+                  { label: 'Kỷ niệm năm nay', value: statistics.memoriesThisYear, icon: Smile },
+                ].map(({ label, value, icon: Icon }) => (
+                  <div key={label} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+                    <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                      <Icon className="h-4 w-4 text-primary" />
+                      {label}
+                    </div>
+                    <p className="mt-2 text-2xl font-bold text-slate-900 dark:text-white">{value}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+
+          <div className="memory-map-container h-[45vh] min-h-[300px] sm:h-[55vh] sm:min-h-[360px] sm:max-h-[640px]">
             <MemoryMap
               memories={memories}
               onLocationSelect={handleLocationSelect}
@@ -920,14 +928,8 @@ export default function DashboardPage() {
         </main>
       </div>
 
-      {/* Welcome Modal */}
-      <WelcomeModal />
-
       {/* Achievement System */}
       <AchievementSystem memoryCount={memories.length} />
-
-      {/* Feature Tour */}
-      <FeatureTour />
 
       {/* Quick Start Guide */}
       <QuickStartGuide />

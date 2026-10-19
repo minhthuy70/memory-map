@@ -84,7 +84,8 @@ export const memoriesApi = {
     if (filters?.search) params.append('search', filters.search);
 
     const response = await api.get(`/memories?${params.toString()}`);
-    return response.data;
+    const data: Memory[] | { memories: Memory[] } = response.data;
+    return Array.isArray(data) ? data : data.memories;
   },
 
   getById: async (id: string): Promise<Memory> => {

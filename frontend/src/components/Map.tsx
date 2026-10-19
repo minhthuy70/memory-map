@@ -43,7 +43,6 @@ const TILE_LAYERS: Record<MapLayerType, { name: string; url: string; attribution
   streets: {
     name: 'Đường phố',
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    darkUrl: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   },
   satellite: {
@@ -53,9 +52,8 @@ const TILE_LAYERS: Record<MapLayerType, { name: string; url: string; attribution
   },
   terrain: {
     name: 'Địa hình',
-    url: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-    darkUrl: 'https://{s}.basemaps.cartocdn.com/dark_matter/{z}/{x}/{y}{r}.png',
-    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+    attribution: '&copy; Esri, HERE, Garmin, Intermap, increment P Corp., GEBCO, USGS, FAO, NPS, NRCAN, GeoBase, IGN, Kadaster NL, Ordnance Survey, Esri Japan, METI, Esri China (Hong Kong), <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, and the GIS User Community',
   },
 };
 
@@ -529,6 +527,86 @@ export default function MemoryMap({
           )}
         </div>
 
+        {showFilters && (
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setShowFilterPanel(!showFilterPanel)}
+              className={`p-2.5 rounded-xl shadow-lg transition-colors flex items-center justify-center ${
+                showFilterPanel || localFilterCategory || localFilterMood
+                  ? 'bg-primary text-white'
+                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700'
+              }`}
+              title="Bộ lọc bản đồ"
+              aria-label="Bộ lọc bản đồ"
+              aria-expanded={showFilterPanel}
+            >
+              <Filter className="h-5 w-5" />
+            </button>
+
+            {showFilterPanel && (
+              <div className="absolute right-full top-0 mr-2 z-[1001] bg-white dark:bg-slate-800 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 p-4 w-64 space-y-3 animate-in fade-in slide-in-from-right-2">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-semibold text-slate-900 dark:text-white text-sm">Bộ lọc</h4>
+                  <button
+                    type="button"
+                    onClick={() => setShowFilterPanel(false)}
+                    className="p-1 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
+                    aria-label="Đóng bộ lọc"
+                  >
+                    <X className="h-4 w-4 text-slate-500" />
+                  </button>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">Danh mục</label>
+                  <select
+                    value={localFilterCategory}
+                    onChange={(e) => setLocalFilterCategory(e.target.value)}
+                    className="w-full px-3 py-2 text-xs border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  >
+                    <option value="">Tất cả danh mục</option>
+                    {Array.from(new Set(memories.map(m => m.category?.name).filter(Boolean))).map(name => (
+                      <option key={name} value={name}>{name}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">Tâm trạng</label>
+                  <select
+                    value={localFilterMood}
+                    onChange={(e) => setLocalFilterMood(e.target.value)}
+                    className="w-full px-3 py-2 text-xs border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  >
+                    <option value="">Tất cả tâm trạng</option>
+                    {Object.keys(MOOD_EMOJIS).map(mood => (
+                      <option key={mood} value={mood}>{MOOD_EMOJIS[mood]} {mood}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={handleApplyFilters}
+                    className="flex-1 px-3 py-2 bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-lg"
+                  >
+                    Áp dụng
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleClearFilters}
+                    className="px-3 py-2 bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-500"
+                  >
+                    Xóa
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Fit bounds button - View all markers */}
         {memories && memories.length > 0 && (
           <button
@@ -628,85 +706,6 @@ export default function MemoryMap({
         <div className="absolute top-20 left-4 z-[1000] bg-white/90 dark:bg-slate-800/90 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300">
           <Ruler className="h-4 w-4 text-primary" />
           <span>Tổng khoảng cách: {totalDistance.toFixed(1)} km</span>
-        </div>
-      )}
-
-      {/* Filter Button */}
-      {showFilters && (
-        <div className="absolute top-20 right-4 z-[1000]">
-          <button
-            type="button"
-            onClick={() => setShowFilterPanel(!showFilterPanel)}
-            className={`p-2.5 rounded-xl shadow-lg transition-colors flex items-center justify-center ${
-              showFilterPanel || localFilterCategory || localFilterMood
-                ? 'bg-primary text-white'
-                : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700'
-            }`}
-            title="Bộ lọc bản đồ"
-          >
-            <Filter className="h-5 w-5" />
-          </button>
-        </div>
-      )}
-
-      {/* Filter Panel */}
-      {showFilters && showFilterPanel && (
-        <div className="absolute top-32 right-4 z-[1000] bg-white dark:bg-slate-800 rounded-xl shadow-2xl border border-slate-200 dark:border-slate-700 p-4 w-64 space-y-3 animate-in fade-in slide-in-from-top-2">
-          <div className="flex items-center justify-between">
-            <h4 className="font-semibold text-slate-900 dark:text-white text-sm">Bộ lọc</h4>
-            <button
-              type="button"
-              onClick={() => setShowFilterPanel(false)}
-              className="p-1 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors"
-            >
-              <X className="h-4 w-4 text-slate-500" />
-            </button>
-          </div>
-
-          <div className="space-y-2">
-            <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">Danh mục</label>
-            <select
-              value={localFilterCategory}
-              onChange={(e) => setLocalFilterCategory(e.target.value)}
-              className="w-full px-3 py-2 text-xs border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
-            >
-              <option value="">Tất cả danh mục</option>
-              {Array.from(new Set(memories.map(m => m.category?.name).filter(Boolean))).map(name => (
-                <option key={name} value={name}>{name}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="space-y-2">
-            <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">Tâm trạng</label>
-            <select
-              value={localFilterMood}
-              onChange={(e) => setLocalFilterMood(e.target.value)}
-              className="w-full px-3 py-2 text-xs border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
-            >
-              <option value="">Tất cả tâm trạng</option>
-              {Object.keys(MOOD_EMOJIS).map(mood => (
-                <option key={mood} value={mood}>{MOOD_EMOJIS[mood]} {mood}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex gap-2 pt-2">
-            <button
-              type="button"
-              onClick={handleApplyFilters}
-              className="flex-1 px-3 py-2 bg-primary hover:bg-primary-hover text-white text-xs font-semibold rounded-lg transition-colors"
-            >
-              Áp dụng
-            </button>
-            <button
-              type="button"
-              onClick={handleClearFilters}
-              className="px-3 py-2 bg-slate-200 dark:bg-slate-600 text-slate-700 dark:text-slate-300 text-xs font-semibold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-500 transition-colors"
-            >
-              Xóa
-            </button>
-          </div>
         </div>
       )}
 

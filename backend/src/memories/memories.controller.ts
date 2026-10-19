@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards, Request, ParseIntPipe, DefaultValuePipe, ParseBoolPipe } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, Query, UseGuards, Request, ParseIntPipe, DefaultValuePipe, ParseBoolPipe, Inject } from '@nestjs/common';
 import { Throttle } from '@nestjs/throttler';
 import { MemoriesService } from './memories.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -9,7 +9,7 @@ import { UpdateMemoryDto } from './dto/update-memory.dto';
 @Controller('memories')
 @UseGuards(JwtAuthGuard)
 export class MemoriesController {
-  constructor(private memoriesService: MemoriesService) {}
+  constructor(@Inject(MemoriesService) private memoriesService: MemoriesService) {}
 
   @Throttle({ default: { limit: 20, ttl: 60000 } })
   @Post()

@@ -1,6 +1,7 @@
 
 import {
   Injectable,
+  Inject,
   NotFoundException,
   ForbiddenException,
   BadRequestException,
@@ -32,7 +33,7 @@ export interface ExportMemory {
 
 @Injectable()
 export class MemoriesService {
-  constructor(private prisma: PrismaService) {}
+  constructor(@Inject(PrismaService) private prisma: PrismaService) {}
 
   async create(
     userId: string,
